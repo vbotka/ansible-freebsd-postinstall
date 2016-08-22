@@ -1,0 +1,15 @@
+---
+
+- name: Create timezone {{zoneinfo}}
+  shell: if [ ! -e /etc/localtime ]; then tzsetup {{zoneinfo}}; printf "changed"; fi
+  register: command_result
+  changed_when: command_result.stdout == "changed"
+  notify: adjust CMOS
+  tags: config_timezone
+
+- name: Change timezone to {{zoneinfo}}
+  shell: if ( ! diff /usr/share/zoneinfo/{{zoneinfo}} /etc/localtime ); then tzsetup {{zoneinfo}}; fi
+  register: command_result
+  changed_when: command_result.stdout | search("differ")
+  notify: adjust CMOS
+  tags: config_timezone

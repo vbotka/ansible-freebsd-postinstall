@@ -1,0 +1,13 @@
+---
+# handlers for freebsd-postinstall
+    
+- name: enable ntpdate
+  service: name=ntpdate enabled=yes
+
+- name: disable ntpdate
+  service: name=ntpdate enabled=no
+
+# update the local time CMOS clock and kernel machdep.adjkerntz
+# variable when timezone changes occur
+- name: adjust CMOS
+  command: adjkerntz -a

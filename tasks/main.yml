@@ -1,0 +1,11 @@
+---
+# tasks for freebsd-postinstall
+
+- include: config_timezone.yml
+  tags: freebsd_postinstall_timezone, freebsd_postinstall
+
+- include: config_ntpdate.yml
+  tags: freebsd_postinstall_ntpdate, freebsd_postinstall
+
+- include: config_users.yml
+  tags: freebsd_postinstall_users, freebsd_postinstall

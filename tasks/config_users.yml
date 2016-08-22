@@ -1,0 +1,7 @@
+
+- name: Add or update users
+  user: name="{{ item.name }}"
+        shell="{{ item.shell }}"
+        password="{{ item.password }}"
+        update_password="{{ item.update_password }}"
+  with_items: freebsd_users

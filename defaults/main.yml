@@ -1,0 +1,16 @@
+---
+# defaults for freebsd-postinstall
+
+# details about zoneinfo in man tzsetup
+zoneinfo: "UTC"
+#zoneinfo: "Europe/London"
+zoneinfo_path: "/usr/share/zoneinfo"
+
+# Run ntpdate to sync time on boot
+ntpdate_enable: "YES"
+# -b Force the time to be stepped using the settimeofday(2) system call,
+# rather than slewed (default) using the adjtime(2) system call.  This
+# option should be used when called from a startup file at boot time.
+ntpdate_flags: "-b"
+# Sync time on ntpd startup
+ntpd_sync_on_start: "NO"
