@@ -7,7 +7,7 @@ Postinstallation configuration of FreeBSD (ntpdate, timezone, users).
 Requirements
 ------------
 
-TBD
+None.
 
 
 Variables
@@ -72,4 +72,4 @@ References
 ----------
 
 [FreeBSD handbook: Post-Installation]
-(https://www.freebsd.org/doc/handbook/bsdinstall-post.html))
+(https://www.freebsd.org/doc/handbook/bsdinstall-post.html)
