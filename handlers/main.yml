@@ -11,3 +11,18 @@
 # variable when timezone changes occur
 - name: adjust CMOS
   command: adjkerntz -a
+
+# sshd
+- name: enable and start sshd
+  service: name="sshd" state="started" enabled="yes"
+
+- name: disable and stop sshd
+  service: name="sshd" state="stopped" enabled="no"
+
+- name: restart sshd
+  service: name="sshd" state="restarted"
+
+- name: reload sshd
+  service: name="sshd" state="reloaded"
+
+# EOF

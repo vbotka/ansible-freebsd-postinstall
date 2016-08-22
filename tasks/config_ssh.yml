@@ -1,0 +1,21 @@
+---
+
+- name: Enable and start sshd
+  lineinfile: dest="/etc/rc.conf" regexp="^sshd_enable" line="sshd_enable=\"{{ sshd_enable }}\"" backup="yes"
+  notify: enable and start sshd
+  when: sshd_enable == "YES"
+  tags: config_rc_conf_ssh
+
+- name: Disable and stop sshd
+  lineinfile: dest="/etc/rc.conf" regexp="^sshd_enable" line="sshd_enable=\"{{ sshd_enable }}\"" backup="yes"
+  notify: disable and stop sshd
+  when: sshd_enable == "NO"
+  tags: config_rc_conf_ssh
+
+- name: Configure /etc/ssh/sshd_config
+  lineinfile: dest="/etc/ssh/sshd_config" regexp="{{ item.regexp }}" line="{{ item.line }}" backup="yes"
+  with_items:
+    - { regexp: "^PasswordAuthentication",  line: "PasswordAuthentication {{sshd_PasswordAuthentication}}"}
+    - { regexp: "^ChallengeResponseAuthentication",  line: "ChallengeResponseAuthentication {{sshd_ChallengeResponseAuthentication}}"}
+  notify: reload sshd
+  tags: config_sshd

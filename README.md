@@ -1,7 +1,8 @@
 freebsd-postinstall
 ===================
 
-Postinstallation configuration of FreeBSD (ntpdate, timezone, users).
+Postinstallation configuration of FreeBSD (packages, ssh, ntpdate,
+timezone, users).
 
 
 Requirements

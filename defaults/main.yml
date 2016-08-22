@@ -14,3 +14,8 @@ ntpdate_enable: "YES"
 ntpdate_flags: "-b"
 # Sync time on ntpd startup
 ntpd_sync_on_start: "NO"
+
+# SSH
+sshd_enable: "YES"
+sshd_PasswordAuthentication: "no"
+sshd_ChallengeResponseAuthentication: "no"
