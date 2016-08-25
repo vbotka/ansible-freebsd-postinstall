@@ -1,6 +1,9 @@
 ---
 # tasks for freebsd-postinstall
 
+- include: config_fstab.yml
+  tags: freebsd_postinstall_fstab, freebsd_postinstall
+
 - include: packages.yml
   tags: freebsd_postinstall_packages, freebsd_postinstall
 

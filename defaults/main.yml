@@ -1,11 +1,39 @@
 ---
 # defaults for freebsd-postinstall
 
+# ----------------------------------------------------------------------
+# Packages
+#
+freebsd_postinstall_packages:
+  - bash
+  - emacs-nox11
+  - git
+  - gtar
+  - py27-certbot
+#
+# * gtar: Ansible module unarchive needs gtar. Ansible make use of the
+#   tar argument --diff. OpenBSD and FreeBSD doesn't have an --diff,
+#   -d, --compare option for tar. Without gtar unarchive always
+#   extracts and reports as changed.
+
+# ----------------------------------------------------------------------
+# fstab
+#
+freebsd_postinstall_fstab_entries:
+  - { name: "/proc", src: "proc", fstype: "procfs", opts: "rw" }
+  - { name: "/dev/fd", src: "fdesc", fstype: "fdescfs", opts: "rw" }
+
+# ----------------------------------------------------------------------
+# Timezone
+#
 # details about zoneinfo in man tzsetup
 zoneinfo: "UTC"
 #zoneinfo: "Europe/London"
 zoneinfo_path: "/usr/share/zoneinfo"
 
+# ----------------------------------------------------------------------
+# ntpdate
+#
 # Run ntpdate to sync time on boot
 ntpdate_enable: "YES"
 # -b Force the time to be stepped using the settimeofday(2) system call,
@@ -15,7 +43,12 @@ ntpdate_flags: "-b"
 # Sync time on ntpd startup
 ntpd_sync_on_start: "NO"
 
+# ----------------------------------------------------------------------
 # SSH
+#
 sshd_enable: "YES"
 sshd_PasswordAuthentication: "no"
 sshd_ChallengeResponseAuthentication: "no"
+
+# ----------------------------------------------------------------------
+# EOF

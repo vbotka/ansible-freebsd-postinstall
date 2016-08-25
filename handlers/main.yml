@@ -25,4 +25,7 @@
 - name: reload sshd
   service: name="sshd" state="reloaded"
 
+- name: mount all
+  command: mount -a
+
 # EOF
