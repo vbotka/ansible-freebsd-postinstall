@@ -1,4 +1,4 @@
-freebsd-postinstall
+freebsd-postinstall ![Build Status](https://travis-ci.org/vbotka/ansible-freebsd-postinstall.svg?branch=master)
 ===================
 
 Postinstallation configuration of FreeBSD (fstab, packages, ssh, ntpdate,
