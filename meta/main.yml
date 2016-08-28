@@ -3,12 +3,12 @@ galaxy_info:
   description: Postinstallation configuration of FreeBSD
   company: https://botka.link
   license: BSD
-  github_branch: release
+  github_branch: master
   min_ansible_version: 1.2
   platforms:
     - name: FreeBSD
-  categories:
-  - system
+      versions:
+        - all
   galaxy_tags:
     - installer
     - freebsd
