@@ -1,7 +1,7 @@
 freebsd-postinstall
 ===================
 
-![Build Status](https://travis-ci.org/vbotka/ansible-freebsd-postinstall.svg?branch=master)
+[![Build Status](https://travis-ci.org/vbotka/ansible-freebsd-postinstall.svg?branch=master)](https://travis-ci.org/vbotka/ansible-freebsd-postinstall)
 
 Postinstallation configuration of FreeBSD (fstab, packages, ssh, ntpdate,
 timezone, users).
