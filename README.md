@@ -5,7 +5,7 @@ freebsd-postinstall
 ![license](https://img.shields.io/badge/license-BSD-red.svg)
 
 Ansible role. Postinstallation configuration of FreeBSD (fstab, packages, ssh, ntpdate,
-timezone, users).
+timezone, users, authorized_key).
 
 https://galaxy.ansible.com/vbotka/ansible-freebsd-postinstall/
 
