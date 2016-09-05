@@ -20,3 +20,11 @@
 # http://docs.ansible.com/ansible/faq.html#how-do-i-generate-crypted-passwords-for-the-user-module
 # example: mkpasswd --method=SHA-512 PASSWORD -s SALT
 # SALT can be created with: pwgen -s 16 1
+
+# ----------------------------------------------------------------------
+# authorized_key
+#
+#freebsd_postinstall_authorized_key:
+#    - { user: "admin", key: "{{ lookup('file', '/home/admin/.ssh/id_rsa.pub') }}"" }
+
+# EOF

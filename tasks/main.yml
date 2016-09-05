@@ -16,5 +16,8 @@
 - include: config_users.yml
   tags: freebsd_postinstall_users, freebsd_postinstall
 
+- include: config_authorized_key.yml
+  tags: freebsd_postinstall_authorized_key, freebsd_postinstall
+
 - include: config_ssh.yml
   tags: freebsd_postinstall_ssh, freebsd_postinstall

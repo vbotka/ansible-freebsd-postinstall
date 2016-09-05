@@ -51,4 +51,9 @@ sshd_PasswordAuthentication: "no"
 sshd_ChallengeResponseAuthentication: "no"
 
 # ----------------------------------------------------------------------
+# authorized_key
+#
+freebsd_postinstall_authorized_key: []
+
+# ----------------------------------------------------------------------
 # EOF
