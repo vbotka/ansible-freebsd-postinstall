@@ -1,14 +1,17 @@
 ---
 # vars for freebsd-postinstall
 
+# ----------------------------------------------------------------------
 #zoneinfo: "UTC"
 #zoneinfo: "Europe/London"
 #zoneinfo_path: "/usr/share/zoneinfo"
 
+# ----------------------------------------------------------------------
 #ntpdate_enable: "YES"
 #ntpdate_flags: "-b"
 #ntpd_sync_on_start: "NO"
 
+# ----------------------------------------------------------------------
 #freebsd_users:
 #  - { name: "admin"
 #      shell: "/usr/local/bin/bash"
@@ -22,8 +25,6 @@
 # SALT can be created with: pwgen -s 16 1
 
 # ----------------------------------------------------------------------
-# authorized_key
-#
 #freebsd_postinstall_authorized_key:
 #    - { user: "admin", key: "{{ lookup('file', '/home/admin/.ssh/id_rsa.pub') }}"" }
 
