@@ -13,9 +13,18 @@
   tags: config_rc_conf_ssh
 
 - name: Configure /etc/ssh/sshd_config
-  lineinfile: dest="/etc/ssh/sshd_config" regexp="{{ item.regexp }}" line="{{ item.line }}" backup="yes"
+  lineinfile: >
+    dest="/etc/ssh/sshd_config"
+    regexp="{{ item.regexp }}"
+    line="{{ item.line }}"
+    insertbefore="{{ item.insertbefore }}"
+    backup="yes"
   with_items:
-    - { regexp: "^PasswordAuthentication",  line: "PasswordAuthentication {{sshd_PasswordAuthentication}}"}
-    - { regexp: "^ChallengeResponseAuthentication",  line: "ChallengeResponseAuthentication {{sshd_ChallengeResponseAuthentication}}"}
+    - { regexp: "^PasswordAuthentication",
+        insertbefore: "^{{'#'}}PasswordAuthentication",
+        line: "PasswordAuthentication {{sshd_PasswordAuthentication}}"}
+    - { regexp: "^ChallengeResponseAuthentication",
+        insertbefore: "^{{'#'}}ChallengeResponseAuthentication",
+        line: "ChallengeResponseAuthentication {{sshd_ChallengeResponseAuthentication}}"}
   notify: reload sshd
   tags: config_sshd
