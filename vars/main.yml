@@ -2,6 +2,10 @@
 # vars for freebsd-postinstall
 
 # ----------------------------------------------------------------------
+#rc_conf_hostname: "srv.example.com"
+#digitalocean: "no"
+
+# ----------------------------------------------------------------------
 #zoneinfo: "UTC"
 #zoneinfo: "Europe/London"
 #zoneinfo_path: "/usr/share/zoneinfo"
@@ -26,6 +30,6 @@
 
 # ----------------------------------------------------------------------
 #freebsd_postinstall_authorized_key:
-#    - { user: "admin", key: "{{ lookup('file', '/home/admin/.ssh/id_rsa.pub') }}"" }
+#    - { user: "admin", key: "{{ lookup('file', '/home/admin/.ssh/id_rsa.pub') }}" }
 
 # EOF

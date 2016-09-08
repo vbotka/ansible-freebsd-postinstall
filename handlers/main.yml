@@ -1,6 +1,9 @@
 ---
 # handlers for freebsd-postinstall
-    
+
+- name: set hostname
+  command: hostname "{{rc_conf_hostname}}"
+
 - name: enable ntpdate
   service: name=ntpdate enabled=yes
 

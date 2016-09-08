@@ -2,6 +2,12 @@
 # defaults for freebsd-postinstall
 
 # ----------------------------------------------------------------------
+# Hostname
+#
+rc_conf_hostname: "srv.example.com"
+digitalocean: "no"
+
+# ----------------------------------------------------------------------
 # Packages
 #
 freebsd_postinstall_packages:
