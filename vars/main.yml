@@ -22,11 +22,14 @@
 #      password: ""
 #      update_password: "on_create"
 #      }
-#
 # SEE: How do I generate crypted passwords for the user module?
 # http://docs.ansible.com/ansible/faq.html#how-do-i-generate-crypted-passwords-for-the-user-module
 # example: mkpasswd --method=SHA-512 PASSWORD -s SALT
 # SALT can be created with: pwgen -s 16 1
+#
+#freebsd_users_groups:
+#    - { name: "admin", groups: "wheel" }
+# groups must not comprise primary group
 
 # ----------------------------------------------------------------------
 #freebsd_postinstall_authorized_key:

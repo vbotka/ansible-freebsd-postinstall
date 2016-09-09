@@ -57,9 +57,10 @@ sshd_PasswordAuthentication: "no"
 sshd_ChallengeResponseAuthentication: "no"
 
 # ----------------------------------------------------------------------
-# users
+# users and groups
 #
 freebsd_users: []
+freebsd_users_groups: []
 
 # ----------------------------------------------------------------------
 # authorized_key
