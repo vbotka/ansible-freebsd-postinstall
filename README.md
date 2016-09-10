@@ -2,7 +2,6 @@ freebsd-postinstall
 ===================
 
 [![Build Status](https://travis-ci.org/vbotka/ansible-freebsd-postinstall.svg?branch=master)](https://travis-ci.org/vbotka/ansible-freebsd-postinstall)
-[![license](https://img.shields.io/badge/license-BSD-red.svg)](https://www.freebsd.org/doc/en/articles/bsdl-gpl/article.html)
 
 Ansible role. Postinstallation configuration of FreeBSD (hostname, fstab, packages, ssh, ntpdate,
 timezone, users, authorized_key).
@@ -64,8 +63,7 @@ ansible-playbook ~/.ansible/playbooks/freebsd-postinstall.yml
 License
 -------
 
-BSD
-
+[![license](https://img.shields.io/badge/license-BSD-red.svg)](https://www.freebsd.org/doc/en/articles/bsdl-gpl/article.html)
 
 Author Information
 ------------------
