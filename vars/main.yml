@@ -11,6 +11,19 @@
 #zoneinfo_path: "/usr/share/zoneinfo"
 
 # ----------------------------------------------------------------------
+# Packages/Ports
+#
+#freebsd_postinstall_method: "packages"
+#freebsd_postinstall_method: "ports"
+#freebsd_postinstall_packages:
+#  - shells/bash
+#  - editors/emacs-nox11
+#  - devel/git
+#  - archivers/gtar
+#  - ports-mgmt/portmaster
+#  - security/py27-certbot
+
+# ----------------------------------------------------------------------
 #ntpdate_enable: "YES"
 #ntpdate_flags: "-b"
 #ntpd_sync_on_start: "NO"

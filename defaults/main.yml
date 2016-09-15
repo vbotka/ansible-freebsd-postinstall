@@ -8,14 +8,18 @@ rc_conf_hostname: "srv.example.com"
 digitalocean: "no"
 
 # ----------------------------------------------------------------------
-# Packages
+# Packages/Ports
 #
+#freebsd_postinstall_method: "packages"
+freebsd_postinstall_method: "ports"
+freebsd_postinstall_use_packages: "yes"
 freebsd_postinstall_packages:
-  - bash
-  - emacs-nox11
-  - git
-  - gtar
-  - py27-certbot
+  - shells/bash
+  - editors/emacs-nox11
+  - devel/git
+  - archivers/gtar
+  - ports-mgmt/portmaster
+  - security/py27-certbot
 #
 # * gtar: Ansible module unarchive needs gtar. Ansible make use of the
 #   tar argument --diff. OpenBSD and FreeBSD doesn't have an --diff,

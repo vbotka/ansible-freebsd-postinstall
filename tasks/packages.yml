@@ -1,4 +1,17 @@
 
 - name: Install packages
-  pkgng: name={{item}} state="present"
+  pkgng: >
+    name="{{item}}"
+    state="present"
   with_items: freebsd_postinstall_packages
+  when: freebsd_postinstall_method == "packages"
+  tags: packages
+
+- name: Install ports
+  portinstall: >
+    name="{{item}}"
+    state="present"
+    use_packages="{{freebsd_postinstall_use_packages}}"
+  with_items: freebsd_postinstall_packages
+  when: freebsd_postinstall_method == "ports"
+  tags: ports
