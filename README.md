@@ -17,6 +17,13 @@ None.
 Variables
 ---------
 
+By default freebsd_postinstall_packages are installed from packages, if available.
+
+```
+freebsd_postinstall_method: "ports"
+freebsd_postinstall_use_packages: "yes"
+```
+
 TBD (Check the defaults).
 
 
