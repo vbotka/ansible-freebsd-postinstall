@@ -1,6 +1,9 @@
 ---
 # defaults for freebsd-postinstall
 
+freebsd_install_method: "ports"
+freebsd_use_packages: "yes"
+
 # ----------------------------------------------------------------------
 # Hostname
 #
@@ -10,9 +13,7 @@ digitalocean: "no"
 # ----------------------------------------------------------------------
 # Packages/Ports
 #
-#freebsd_postinstall_method: "packages"
-freebsd_postinstall_method: "ports"
-freebsd_postinstall_use_packages: "yes"
+#freebsd_install_method: "packages"
 freebsd_postinstall_packages:
   - shells/bash
   - editors/emacs-nox11
