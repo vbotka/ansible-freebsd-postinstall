@@ -1,13 +1,21 @@
 ---
 
 - name: Enable and start sshd
-  lineinfile: dest="/etc/rc.conf" regexp="^sshd_enable" line="sshd_enable=\"{{ sshd_enable }}\"" backup="yes"
+  lineinfile: >
+    dest="/etc/rc.conf"
+    regexp="^sshd_enable"
+    line="sshd_enable=\"{{ sshd_enable }}\""
+    backup="yes"
   notify: enable and start sshd
   when: sshd_enable == "YES"
   tags: config_rc_conf_ssh
 
 - name: Disable and stop sshd
-  lineinfile: dest="/etc/rc.conf" regexp="^sshd_enable" line="sshd_enable=\"{{ sshd_enable }}\"" backup="yes"
+  lineinfile: >
+    dest="/etc/rc.conf"
+    regexp="^sshd_enable"
+    line="sshd_enable=\"{{ sshd_enable }}\""
+    backup="yes"
   notify: disable and stop sshd
   when: sshd_enable == "NO"
   tags: config_rc_conf_ssh

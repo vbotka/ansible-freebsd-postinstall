@@ -1,7 +1,11 @@
 ---
 
 - name: Configure ntpdate in /etc/rc.conf
-  lineinfile: dest="/etc/rc.conf" regexp="{{ item.regexp }}" line="{{ item.line }}" backup=yes
+  lineinfile: >
+    dest="/etc/rc.conf"
+    regexp="{{ item.regexp }}"
+    line="{{ item.line }}"
+    backup="yes"
   with_items:
     - { regexp: "^ntpdate_enable",  line: "ntpdate_enable=\"{{ntpdate_enable}}\""}
     - { regexp: "^ntpdate_flags",  line: "ntpdate_flags=\"{{ntpdate_flags}}\""}

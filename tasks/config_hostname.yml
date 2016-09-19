@@ -1,7 +1,11 @@
 ---
 
 - name: Configure hostname in /etc/rc.conf
-  lineinfile: dest="/etc/rc.conf" regexp="{{ item.regexp }}" line="{{ item.line }}" backup="yes"
+  lineinfile: >
+    dest="/etc/rc.conf"
+    regexp="{{ item.regexp }}"
+    line="{{ item.line }}"
+    backup="yes"
   with_items:
     - { regexp: "^hostname",  line: "hostname=\"{{rc_conf_hostname}}\""}
   notify: set hostname
@@ -9,7 +13,11 @@
 
 # DO overwrites hostname from rc.conf
 - name: Configure hostname in /etc/rc.digitalocean.d/droplet.conf
-  lineinfile: dest="/etc/rc.digitalocean.d/droplet.conf" regexp="{{ item.regexp }}" line="{{ item.line }}" backup=yes
+  lineinfile: >
+    dest="/etc/rc.digitalocean.d/droplet.conf"
+    regexp="{{ item.regexp }}"
+    line="{{ item.line }}"
+    backup="yes"
   with_items:
     - { regexp: "^hostname",  line: "hostname=\"{{rc_conf_hostname}}\""}
   when: digitalocean == "yes"

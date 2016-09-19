@@ -31,4 +31,10 @@
 - name: mount all
   command: mount -a
 
+- name: create and mount swap
+  shell: sh -c 'dd if=/dev/zero of={{freebsd_postinstall_swap_file}} bs=1m count={{freebsd_postinstall_swap_size}}; chmod 0600 {{freebsd_postinstall_swap_file}}; swapon -aL'
+
+- name: change and mount swap
+  shell: sh -c 'swapoff /dev/{{freebsd_postinstall_swap_md}}; mdconfig -du {{freebsd_postinstall_swap_md}}; dd if=/dev/zero of={{freebsd_postinstall_swap_file}} bs=1m count={{freebsd_postinstall_swap_size}}; chmod 0600 {{freebsd_postinstall_swap_file}}; swapon -aL'
+
 # EOF
