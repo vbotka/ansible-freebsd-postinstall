@@ -3,7 +3,7 @@ freebsd-postinstall
 
 [![Build Status](https://travis-ci.org/vbotka/ansible-freebsd-postinstall.svg?branch=master)](https://travis-ci.org/vbotka/ansible-freebsd-postinstall)
 
-Ansible role. Postinstallation configuration of FreeBSD (hostname, fstab, packages, ssh, ntpdate,
+Ansible role. Postinstallation configuration of FreeBSD (hostname, swap, fstab, packages, ssh, ntpdate,
 timezone, users, authorized_key).
 
 https://galaxy.ansible.com/vbotka/ansible-freebsd-postinstall/
@@ -81,5 +81,5 @@ Author Information
 References
 ----------
 
-[FreeBSD handbook: Post-Installation]
-(https://www.freebsd.org/doc/handbook/bsdinstall-post.html)
+- [FreeBSD handbook: Post-Installation] (https://www.freebsd.org/doc/handbook/bsdinstall-post.html)
+- [Adding Swap Space](http://www.freebsd.cz/doc/handbook/adding-swap-space.html)
