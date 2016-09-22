@@ -72,8 +72,6 @@ ansible-playbook ~/.ansible/playbooks/freebsd-postinstall.yml
 TODO
 ----
 
-- link pkg from ports /usr/local/sbin/pkg
-- configure libmap.conf
 
 License
 -------
