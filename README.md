@@ -19,7 +19,7 @@ Variables
 
 By default *freebsd_install_method* is set to install
 packages. Installation is faster. But, later, after having upgraded
-from the ports (*portmaster -a* ) switch the method to *ports*.
+from the ports (*portmaster -a*) switch the method to *ports*.
 
 ```
 freebsd_install_method: "packages"
