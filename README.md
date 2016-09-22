@@ -89,10 +89,7 @@ Author Information
 References
 ----------
 
-<<<<<<< HEAD
-[FreeBSD handbook: Post-Installation](https://www.freebsd.org/doc/handbook/bsdinstall-post.html)
-[Upgrading Ports Using Portmaster](https://www.freebsd.org/doc/handbook/ports-using.html)
-=======
-- [FreeBSD handbook: Post-Installation] (https://www.freebsd.org/doc/handbook/bsdinstall-post.html)
+- [FreeBSD handbook: Post-Installation](https://www.freebsd.org/doc/handbook/bsdinstall-post.html)
 - [Adding Swap Space](http://www.freebsd.cz/doc/handbook/adding-swap-space.html)
->>>>>>> 263fb0166c5aa4039637dcf6ead528fe8ee2a34a
+- [Upgrading Ports Using Portmaster](https://www.freebsd.org/doc/handbook/ports-using.html)
+
