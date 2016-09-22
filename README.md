@@ -27,7 +27,7 @@ freebsd_install_method: "packages"
 #freebsd_use_packages: "yes"
 ```
 
-TBD (Check the defaults).
+Review defaults and examples in vars.
 
 
 Workflow
