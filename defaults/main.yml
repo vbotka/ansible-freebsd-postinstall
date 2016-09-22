@@ -13,9 +13,9 @@ digitalocean: "no"
 # ----------------------------------------------------------------------
 # Packages
 freebsd_postinstall_packages:
+  - pkg
   - bash
   - emacs-nox11
-
   - gtar
   - portmaster
   - py27-certbot

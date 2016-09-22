@@ -17,11 +17,14 @@ None.
 Variables
 ---------
 
-By default freebsd_postinstall_packages are installed from packages, if available.
+By default *freebsd_install_method* is set to install
+packages. Installation is faster. But, later, after having upgraded
+from the ports (*portmaster -a* ) switch the method to *ports*.
 
 ```
-freebsd_postinstall_method: "ports"
-freebsd_postinstall_use_packages: "yes"
+freebsd_install_method: "packages"
+#freebsd_install_method: "ports"
+#freebsd_use_packages: "yes"
 ```
 
 TBD (Check the defaults).
@@ -66,6 +69,11 @@ ansible-galaxy install vbotka.ansible-freebsd-postinstall
 ansible-playbook ~/.ansible/playbooks/freebsd-postinstall.yml
 ```
 
+TODO
+----
+
+- link pkg from ports /usr/local/sbin/pkg
+- configure libmap.conf
 
 License
 -------
@@ -81,5 +89,5 @@ Author Information
 References
 ----------
 
-[FreeBSD handbook: Post-Installation]
-(https://www.freebsd.org/doc/handbook/bsdinstall-post.html)
+[FreeBSD handbook: Post-Installation](https://www.freebsd.org/doc/handbook/bsdinstall-post.html)
+[Upgrading Ports Using Portmaster](https://www.freebsd.org/doc/handbook/ports-using.html)
