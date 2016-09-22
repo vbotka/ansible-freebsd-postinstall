@@ -42,11 +42,15 @@
 # SALT can be created with: pwgen -s 16 1
 #
 #freebsd_users_groups:
-#    - { name: "admin", groups: "wheel" }
+#  - { name: "admin", groups: "wheel" }
 # groups must not comprise primary group
 
 # ----------------------------------------------------------------------
 #freebsd_postinstall_authorized_key:
-#    - { user: "admin", key: "{{ lookup('file', '/home/admin/.ssh/id_rsa.pub') }}" }
+#  - { user: "admin", key: "{{ lookup('file', '/home/admin/.ssh/id_rsa.pub') }}" }
+
+# ----------------------------------------------------------------------
+#freebsd_postinstall_libmap_entries:
+#  - { origin: "libxml2.so ", target: "libxml2.so.2.9.4" }
 
 # EOF

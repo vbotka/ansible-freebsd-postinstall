@@ -38,6 +38,10 @@ freebsd_postinstall_fstab_entries:
   - { name: "/dev/fd", src: "fdesc", fstype: "fdescfs", opts: "rw" }
 
 # ----------------------------------------------------------------------
+# libmap
+freebsd_postinstall_libmap_entries: []
+
+# ----------------------------------------------------------------------
 # Timezone
 # details about zoneinfo in man tzsetup
 zoneinfo: "UTC"
