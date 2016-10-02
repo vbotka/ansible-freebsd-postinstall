@@ -3,7 +3,7 @@
 - name: Configure /etc/libmap.conf
   lineinfile: >
     dest="/etc/libmap.conf"
-    regexp="^{{ item.origin }}"
+    regexp="^{{ item.origin }} "
     line="{{ item.origin }} {{ item.target }}"
     backup="yes"
   with_items: "{{freebsd_postinstall_libmap_entries}}"

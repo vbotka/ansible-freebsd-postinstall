@@ -17,6 +17,12 @@
     - freebsd_postinstall_packages
     - freebsd_postinstall
 
+- include: copy.yml
+  tags:
+    - copy
+    - freebsd_postinstall_copy
+    - freebsd_postinstall
+
 - include: config_libmap.yml
   tags:
     - freebsd_postinstall_config_libmap

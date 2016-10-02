@@ -51,6 +51,6 @@
 
 # ----------------------------------------------------------------------
 #freebsd_postinstall_libmap_entries:
-#  - { origin: "libxml2.so ", target: "libxml2.so.2.9.4" }
+#  - { origin: "libxml2.so", target: "libxml2.so.2.9.4" }
 
 # EOF

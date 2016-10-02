@@ -1,0 +1,15 @@
+---
+
+- name: copy
+  copy: >
+    src="{{freebsd_postinstall_copy_dir}}"
+    dest="/"
+    backup="yes"
+  tags: copy
+
+  # BUG: synchronize module does not work
+  # TASK [vbotka.ansible-freebsd-postinstall : copy]
+  # ******************************* fatal: [...]: FAILED!
+  # => {"changed": false, "failed": true, "module_stderr": "sudo: a
+  # password is required\n", "module_stdout": "", "msg": "MODULE
+  # FAILURE", "parsed": false}
