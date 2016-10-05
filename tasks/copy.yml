@@ -1,8 +1,15 @@
 ---
 
-- name: copy
+- name: copy default files
   copy: >
-    src="{{freebsd_postinstall_copy_dir}}"
+    src="{{freebsd_postinstall_copy_dir}}/default/"
+    dest="/"
+    backup="yes"
+  tags: copy
+
+- name: copy IP specific files
+  copy: >
+    src="{{freebsd_postinstall_copy_dir}}/{{ansible_default_ipv4.address}}/"
     dest="/"
     backup="yes"
   tags: copy

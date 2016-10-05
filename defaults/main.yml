@@ -27,7 +27,7 @@ freebsd_postinstall_packages:
 # ----------------------------------------------------------------------
 # Copy
 # directory is relative to the playbooks directory
-freebsd_postinstall_copy_dir: "copy/"
+freebsd_postinstall_copy_dir: "copy"
 
 # ----------------------------------------------------------------------
 # swap
