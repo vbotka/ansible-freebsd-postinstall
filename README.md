@@ -3,10 +3,19 @@ freebsd-postinstall
 
 [![Build Status](https://travis-ci.org/vbotka/ansible-freebsd-postinstall.svg?branch=master)](https://travis-ci.org/vbotka/ansible-freebsd-postinstall)
 
-Ansible role. Postinstallation configuration of FreeBSD (hostname, swap, fstab, packages, libmap, ssh, ntpdate,
-timezone, users, authorized_key).
-
-https://galaxy.ansible.com/vbotka/ansible-freebsd-postinstall/
+[Ansible role](https://galaxy.ansible.com/vbotka/ansible-freebsd-postinstall/). Post-install configuration of FreeBSD
+- configure hostname
+- configure swap
+- configure fstab
+- configure libmap
+- configure ssh
+- configure ntpd
+- configure ntpdate
+- configure timezone
+- add users
+- copy authorized_keys
+- install packages
+- copy overlays
 
 Requirements
 ------------
@@ -68,10 +77,6 @@ ansible-galaxy install vbotka.ansible-freebsd-postinstall
 ```
 ansible-playbook ~/.ansible/playbooks/freebsd-postinstall.yml
 ```
-
-TODO
-----
-
 
 License
 -------
