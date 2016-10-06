@@ -57,3 +57,8 @@
   tags:
     - freebsd_postinstall_hostname
     - freebsd_postinstall
+
+- include: config_ntp.yml
+  tags:
+    - freebsd_postinstall_ntp
+    - freebsd_postinstall

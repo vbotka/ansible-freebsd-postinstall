@@ -79,4 +79,36 @@ freebsd_users_groups: []
 # authorized_key
 freebsd_postinstall_authorized_key: []
 
+# ----------------------------------------------------------------------
+# ntp
+ntp_service_name: 'ntpd'
+ntp_service_state: 'started'
+ntp_pkg_state: 'installed'
+ntp_service_enabled: 'yes'
+ntp_config_server:
+  - '0.freebsd.pool.ntp.org iburst'
+  - '1.freebsd.pool.ntp.org iburst'
+  - '2.freebsd.pool.ntp.org iburst'
+ntp_config_restrict:
+  - 'default limited kod nomodify notrap nopeer noquery'
+  - '-6 default limited kod nomodify notrap nopeer noquery'
+  - '127.0.0.1'
+  - '-6 ::1'
+  - '127.127.1.0'
+ntp_config_driftfile: ''
+ntp_config_leapfile: '/var/db/ntpd.leap-seconds.list'
+ntp_config_listen: []
+ntp_config_filegen: []
+ntp_config_statistics: ''
+ntp_config_crypto: ''
+ntp_config_includefile: ''
+ntp_config_keys: ''
+ntp_config_trustedkey: ''
+ntp_config_requestkey: ''
+ntp_config_controlkey: ''
+ntp_config_broadcast: ''
+ntp_config_broadcastclient: ''
+ntp_config_multicastclient: ''
+ntp_config_tinker_panic_enabled: ''
+
 # EOF

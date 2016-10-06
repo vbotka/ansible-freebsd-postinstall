@@ -38,9 +38,12 @@
 
 - name: change and mount swap
   shell: sh -c 'swapoff /dev/{{freebsd_postinstall_swap_md}}; mdconfig -du {{freebsd_postinstall_swap_md}}; dd if=/dev/zero of={{freebsd_postinstall_swap_file}} bs=1m count={{freebsd_postinstall_swap_size}}; chmod 0600 {{freebsd_postinstall_swap_file}}; swapon -aL'
-
 # TODO: swap is created and mounted, but handler failed.
 # RUNNING HANDLER [vbotka.ansible-freebsd-postinstall : create and mount swap] ***
 # fatal: []: FAILED! => {"changed": true, "cmd": "sh -c 'dd if=/dev/zero of=/usr/swap0 bs=1m count=4096; chmod 0600 /us# r/swap0; swapon -aL'", "delta": "0:00:17.152136", "end": "2016-09-23 04:13:30.258551", "failed": true, "rc": 1, "start": "2016-09-2# 3 04:13:13.106415", "stderr": "4096+0 records in\n4096+0 records out\n4294967296 bytes transferred in 17.075478 secs (251528381 byt# es/sec)", "stdout": "swapon: adding /dev/md99 as swap device", "stdout_lines": ["swapon: adding /dev/md99 as swap device"], "warnin# gs": []}
+
+# ntp
+- name: restart ntp
+  service: name={{ ntp_service_name }} state=restarted
 
 # EOF
