@@ -16,3 +16,18 @@
   with_items: "{{freebsd_postinstall_packages}}"
   when: freebsd_install_method == "ports"
   tags: ports
+
+- name: Install smartmontools package
+  pkgng: >
+    name="smartmontools"
+    state="present"
+  when: (freebsd_install_method == "packages") and (freebsd_postinstall_smartd_service_enabled == "yes")
+  tags: packages
+
+- name: Install smartmontools port
+  portinstall: >
+    name="smartmontools"
+    state="present"
+    use_packages="{{freebsd_use_packages}}"
+  when: (freebsd_install_method == "ports") and (freebsd_postinstall_smartd_service_enabled == "yes")
+  tags: ports

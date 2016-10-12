@@ -53,4 +53,11 @@
 #freebsd_postinstall_libmap_entries:
 #  - { origin: "libxml2.so", target: "libxml2.so.2.9.4" }
 
+# ----------------------------------------------------------------------
+#freebsd_postinstall_smartd_service_name: 'smartd'
+#freebsd_postinstall_smartd_service_state: 'started'
+#freebsd_postinstall_smartd_service_enabled: 'YES'
+#freebsd_postinstall_smartd_devices:
+#  - { regexp: "^/dev/ada0", line: "/dev/ada0 -a -o on -S on -s (S/../.././02|L/../../6/03) -m admin"}
+
 # EOF

@@ -80,6 +80,13 @@ freebsd_users_groups: []
 freebsd_postinstall_authorized_key: []
 
 # ----------------------------------------------------------------------
+# smartd
+freebsd_postinstall_smartd_service_name: 'smartd'
+freebsd_postinstall_smartd_service_state: 'stopped'
+freebsd_postinstall_smartd_service_enabled: 'NO'
+freebsd_postinstall_smartd_devices: []
+
+# ----------------------------------------------------------------------
 # ntp
 ntp_service_name: 'ntpd'
 ntp_service_state: 'started'

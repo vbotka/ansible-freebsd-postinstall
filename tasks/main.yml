@@ -62,3 +62,8 @@
   tags:
     - freebsd_postinstall_ntp
     - freebsd_postinstall
+
+- include: config_smartd.yml
+  tags:
+    - freebsd_postinstall_smartd
+    - freebsd_postinstall

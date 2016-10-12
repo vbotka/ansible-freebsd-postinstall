@@ -4,7 +4,7 @@
   lineinfile: >
     dest="/etc/rc.conf"
     regexp="^sshd_enable"
-    line="sshd_enable=\"{{ sshd_enable }}\""
+    line="sshd_enable=\"YES\""
     backup="yes"
   notify: enable and start sshd
   when: sshd_enable == "YES"
@@ -14,7 +14,7 @@
   lineinfile: >
     dest="/etc/rc.conf"
     regexp="^sshd_enable"
-    line="sshd_enable=\"{{ sshd_enable }}\""
+    line="sshd_enable=\"NO\""
     backup="yes"
   notify: disable and stop sshd
   when: sshd_enable == "NO"

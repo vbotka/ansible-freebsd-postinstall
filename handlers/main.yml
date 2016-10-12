@@ -28,6 +28,19 @@
 - name: reload sshd
   service: name="sshd" state="reloaded"
 
+# smartd
+- name: enable and start smartd
+  service: name="smartd" state="started" enabled="yes"
+
+- name: disable and stop smartd
+  service: name="smartd" state="stopped" enabled="no"
+
+- name: restart smartd
+  service: name="smartd" state="restarted"
+
+- name: reload smartd
+  service: name="smartd" state="reloaded"
+
 # fstab
 - name: mount all
   command: mount -a

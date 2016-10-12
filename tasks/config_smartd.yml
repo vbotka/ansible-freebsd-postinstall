@@ -1,0 +1,40 @@
+- name: Enable and start smartd
+  lineinfile: >
+    dest="/etc/rc.conf"
+    regexp="^smartd_enable"
+    line="smartd_enable=\"YES\""
+    backup="yes"
+  notify: enable and start smartd
+  when: freebsd_postinstall_smartd_service_enabled == "YES"
+  tags: config_rc_conf_smart
+
+- name: Disable and stop smartd
+  lineinfile: >
+    dest="/etc/rc.conf"
+    regexp="^smartd_enable"
+    line="smartd_enable=\"NO\""
+    backup="yes"
+  notify: disable and stop smartd
+  when: freebsd_postinstall_smartd_service_enabled == "NO"
+  tags: config_rc_conf_smart
+
+- name: Configure smartd.conf
+  lineinfile: >
+    dest="/usr/local/etc/smartd.conf"
+    regexp="^DEVICESCAN"
+    state="absent"
+    backup="yes"
+  notify: reload smartd
+  tags:
+    - freebsd_postinstall_smartd_conf
+
+- name: Configure devices in smartd.conf
+  lineinfile: >
+    dest="/usr/local/etc/smartd.conf"
+    regexp="{{ item.regexp }}"
+    line="{{ item.line }}"
+    backup="yes"
+  with_items: "{{freebsd_postinstall_smartd_devices}}"
+  notify: reload smartd
+  tags:
+    - freebsd_postinstall_smartd_conf
