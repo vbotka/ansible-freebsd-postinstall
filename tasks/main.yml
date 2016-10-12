@@ -67,3 +67,8 @@
   tags:
     - freebsd_postinstall_smartd
     - freebsd_postinstall
+
+- include: config_hostapd.yml
+  tags:
+    - freebsd_postinstall_hostapd
+    - freebsd_postinstall

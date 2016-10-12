@@ -18,28 +18,32 @@
 # sshd
 - name: enable and start sshd
   service: name="sshd" state="started" enabled="yes"
-
 - name: disable and stop sshd
   service: name="sshd" state="stopped" enabled="no"
-
 - name: restart sshd
   service: name="sshd" state="restarted"
-
 - name: reload sshd
   service: name="sshd" state="reloaded"
 
 # smartd
 - name: enable and start smartd
   service: name="smartd" state="started" enabled="yes"
-
 - name: disable and stop smartd
   service: name="smartd" state="stopped" enabled="no"
-
 - name: restart smartd
   service: name="smartd" state="restarted"
-
 - name: reload smartd
   service: name="smartd" state="reloaded"
+
+# hostapd
+- name: enable and start hostapd
+  service: name="hostapd" state="started" enabled="yes"
+- name: disable and stop hostapd
+  service: name="hostapd" state="stopped" enabled="no"
+- name: restart hostapd
+  service: name="hostapd" state="restarted"
+- name: reload hostapd
+  service: name="hostapd" state="reloaded"
 
 # fstab
 - name: mount all

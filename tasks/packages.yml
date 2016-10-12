@@ -31,3 +31,18 @@
     use_packages="{{freebsd_use_packages}}"
   when: (freebsd_install_method == "ports") and (freebsd_postinstall_smartd_service_enabled == "yes")
   tags: ports
+
+- name: Install hostapd package
+  pkgng: >
+    name="hostapd"
+    state="present"
+  when: (freebsd_install_method == "packages") and (freebsd_postinstall_hostapd_enabled == "yes")
+  tags: packages
+
+- name: Install hostapd port
+  portinstall: >
+    name="hostapd"
+    state="present"
+    use_packages="{{freebsd_use_packages}}"
+  when: (freebsd_install_method == "ports") and (freebsd_postinstall_hostapd_enabled == "yes")
+  tags: ports

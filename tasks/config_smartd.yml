@@ -1,3 +1,5 @@
+---
+
 - name: Enable and start smartd
   lineinfile: >
     dest="/etc/rc.conf"
