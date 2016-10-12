@@ -11,6 +11,7 @@ freebsd-postinstall
 - configure ssh
 - configure ntpd
 - configure ntpdate
+- configure smartd
 - configure timezone
 - add users
 - copy authorized_keys
