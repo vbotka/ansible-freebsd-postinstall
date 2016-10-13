@@ -6,8 +6,8 @@
     regexp="^hostapd_enable"
     line="hostapd_enable=\"YES\""
     backup="yes"
+  when: (freebsd_postinstall_hostapd_enabled == "YES") and (freebsd_postinstall_hostapd_install == "YES")
   notify: enable and start hostapd
-  when: freebsd_postinstall_hostapd_enabled == "YES"
   tags: config_rc_conf_smart
 
 - name: Disable and stop hostapd
@@ -16,8 +16,8 @@
     regexp="^hostapd_enable"
     line="hostapd_enable=\"NO\""
     backup="yes"
+  when: (freebsd_postinstall_hostapd_enabled == "NO") and (freebsd_postinstall_hostapd_install == "YES")
   notify: disable and stop hostapd
-  when: freebsd_postinstall_hostapd_enabled == "NO"
   tags: config_rc_conf_smart
 
 - name: Configure interface for hostapd
@@ -33,15 +33,15 @@
         line: "wlans_{{freebsd_postinstall_hostapd_device}}=\"{{freebsd_postinstall_hostapd_interface}}\"" }
     - { regexp: "^ifconfig_{{freebsd_postinstall_hostapd_interface}}",
         line: "ifconfig_{{freebsd_postinstall_hostapd_interface}}=\"inet {{freebsd_postinstall_hostapd_inet}} netmask {{freebsd_postinstall_hostapd_netmask}}\"" }
-  notify: restart hostapd
   when: freebsd_postinstall_hostapd_enabled == "YES"
+  notify: restart hostapd
   tags: config_rc_conf_smart
   
-- name: Copy hostapd.conf template file
+- name: Configure /etc/hostapd.conf template file
   template: >
     src="hostapd.conf.j2"
     dest="/etc/hostapd.conf"
     backup="yes"
-  notify: restart hostapd
   when: freebsd_postinstall_hostapd_enabled == "YES"
+  notify: restart hostapd
   tags: freebsd_postinstall_hostapd_conf

@@ -1,0 +1,29 @@
+---
+
+- name: Enable and start ntpd
+  lineinfile: >
+    dest="/etc/rc.conf"
+    regexp="^ntpd_enable"
+    line="ntpd_enable=\"YES\""
+    backup="yes"
+  when: freebsd_postinstall_ntp_service_enabled == "YES"
+  notify: enable and start ntpd
+  tags: config_rc_conf_ntpd
+
+- name: Disable and stop ntpd
+  lineinfile: >
+    dest="/etc/rc.conf"
+    regexp="^ntpd_enable"
+    line="ntpd_enable=\"NO\""
+    backup="yes"
+  when: freebsd_postinstall_ntp_service_enabled == "NO"
+  notify: disable and stop ntpd
+  tags: config_rc_conf_ntpd
+
+- name: Copy ntp.conf template file
+  template: >
+    src="ntp.conf.j2"
+    dest="/etc/ntp.conf"
+    backup="yes"
+  notify: restart ntpd
+  tags: freebsd_postinstall_ntp_conf

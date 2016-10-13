@@ -1,14 +1,18 @@
 ---
 
 - name: Add or update users
-  user: name="{{ item.name }}"
-        shell="{{ item.shell }}"
-        password="{{ item.password }}"
-        update_password="{{ item.update_password }}"
-  with_items: freebsd_users
+  user: >
+    name="{{ item.name }}"
+    shell="{{ item.shell }}"
+    password="{{ item.password }}"
+    update_password="{{ item.update_password }}"
+  with_items: "{{freebsd_users}}"
+  tags: freebsd_postinstall_users
 
 - name: Add users to additional groups
-  user: name="{{ item.name }}"
-        groups="{{ item.groups }}"
-        append="yes"
-  with_items: freebsd_users_groups
+  user: >
+    name="{{ item.name }}"
+    groups="{{ item.groups }}"
+    append="yes"
+  with_items: "{{freebsd_users_groups}}"
+  tags: freebsd_postinstall_groups

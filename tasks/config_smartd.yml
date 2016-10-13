@@ -6,8 +6,8 @@
     regexp="^smartd_enable"
     line="smartd_enable=\"YES\""
     backup="yes"
+  when: (freebsd_postinstall_smartd_service_enabled == "YES") and (freebsd_postinstall_smartd_install == "YES")
   notify: enable and start smartd
-  when: freebsd_postinstall_smartd_service_enabled == "YES"
   tags: config_rc_conf_smart
 
 - name: Disable and stop smartd
@@ -16,8 +16,8 @@
     regexp="^smartd_enable"
     line="smartd_enable=\"NO\""
     backup="yes"
+  when: (freebsd_postinstall_smartd_service_enabled == "NO") and (freebsd_postinstall_smartd_install == "YES")
   notify: disable and stop smartd
-  when: freebsd_postinstall_smartd_service_enabled == "NO"
   tags: config_rc_conf_smart
 
 - name: Configure smartd.conf

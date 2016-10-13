@@ -81,6 +81,7 @@ freebsd_postinstall_authorized_key: []
 
 # ----------------------------------------------------------------------
 # smartd
+freebsd_postinstall_smartd_install: 'NO'
 freebsd_postinstall_smartd_service_name: 'smartd'
 freebsd_postinstall_smartd_service_state: 'stopped'
 freebsd_postinstall_smartd_service_enabled: 'NO'
@@ -88,6 +89,7 @@ freebsd_postinstall_smartd_devices: []
 
 # ----------------------------------------------------------------------
 # hostapd
+freebsd_postinstall_hostapd_install: 'NO'
 freebsd_postinstall_hostapd_name: 'hostapd'
 freebsd_postinstall_hostapd_state: 'stopped'
 freebsd_postinstall_hostapd_enabled: 'NO'
@@ -120,35 +122,34 @@ freebsd_postinstall_hostapd_logger_stdout_level: "0"
 freebsd_postinstall_hostapd_eap_server: "0"
 
 # ----------------------------------------------------------------------
-# ntp
-ntp_service_name: 'ntpd'
-ntp_service_state: 'started'
-ntp_pkg_state: 'installed'
-ntp_service_enabled: 'yes'
-ntp_config_server:
+# ntpd
+freebsd_postinstall_ntp_service_name: 'ntpd'
+freebsd_postinstall_ntp_service_state: 'started'
+freebsd_postinstall_ntp_service_enabled: 'YES'
+freebsd_postinstall_ntp_config_server:
   - '0.freebsd.pool.ntp.org iburst'
   - '1.freebsd.pool.ntp.org iburst'
   - '2.freebsd.pool.ntp.org iburst'
-ntp_config_restrict:
+freebsd_postinstall_ntp_config_restrict:
   - 'default limited kod nomodify notrap nopeer noquery'
   - '-6 default limited kod nomodify notrap nopeer noquery'
   - '127.0.0.1'
   - '-6 ::1'
   - '127.127.1.0'
-ntp_config_driftfile: ''
-ntp_config_leapfile: '/var/db/ntpd.leap-seconds.list'
-ntp_config_listen: []
-ntp_config_filegen: []
-ntp_config_statistics: ''
-ntp_config_crypto: ''
-ntp_config_includefile: ''
-ntp_config_keys: ''
-ntp_config_trustedkey: ''
-ntp_config_requestkey: ''
-ntp_config_controlkey: ''
-ntp_config_broadcast: ''
-ntp_config_broadcastclient: ''
-ntp_config_multicastclient: ''
-ntp_config_tinker_panic_enabled: ''
+freebsd_postinstall_ntp_config_driftfile: ''
+freebsd_postinstall_ntp_config_leapfile: '/var/db/ntpd.leap-seconds.list'
+freebsd_postinstall_ntp_config_listen: []
+freebsd_postinstall_ntp_config_filegen: []
+freebsd_postinstall_ntp_config_statistics: ''
+freebsd_postinstall_ntp_config_crypto: ''
+freebsd_postinstall_ntp_config_includefile: ''
+freebsd_postinstall_ntp_config_keys: ''
+freebsd_postinstall_ntp_config_trustedkey: ''
+freebsd_postinstall_ntp_config_requestkey: ''
+freebsd_postinstall_ntp_config_controlkey: ''
+freebsd_postinstall_ntp_config_broadcast: ''
+freebsd_postinstall_ntp_config_broadcastclient: ''
+freebsd_postinstall_ntp_config_multicastclient: ''
+freebsd_postinstall_ntp_config_tinker_panic_enabled: ''
 
 # EOF

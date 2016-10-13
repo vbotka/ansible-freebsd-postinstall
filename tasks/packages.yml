@@ -21,7 +21,7 @@
   pkgng: >
     name="smartmontools"
     state="present"
-  when: (freebsd_install_method == "packages") and (freebsd_postinstall_smartd_service_enabled == "yes")
+  when: (freebsd_install_method == "packages") and (freebsd_postinstall_smartd_install == "YES")
   tags: packages
 
 - name: Install smartmontools port
@@ -29,14 +29,14 @@
     name="smartmontools"
     state="present"
     use_packages="{{freebsd_use_packages}}"
-  when: (freebsd_install_method == "ports") and (freebsd_postinstall_smartd_service_enabled == "yes")
+  when: (freebsd_install_method == "ports") and (freebsd_postinstall_smartd_install == "YES")
   tags: ports
 
 - name: Install hostapd package
   pkgng: >
     name="hostapd"
     state="present"
-  when: (freebsd_install_method == "packages") and (freebsd_postinstall_hostapd_enabled == "yes")
+  when: (freebsd_install_method == "packages") and (freebsd_postinstall_hostapd_install == "YES")
   tags: packages
 
 - name: Install hostapd port
@@ -44,5 +44,5 @@
     name="hostapd"
     state="present"
     use_packages="{{freebsd_use_packages}}"
-  when: (freebsd_install_method == "ports") and (freebsd_postinstall_hostapd_enabled == "yes")
+  when: (freebsd_install_method == "ports") and (freebsd_postinstall_hostapd_install == "YES")
   tags: ports
