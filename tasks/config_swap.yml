@@ -5,6 +5,7 @@
   register: command_result
   changed_when: command_result.stdout == "create"
   notify: create and mount swap
+  when: freebsd_postinstall_swap == "yes"
   tags: create_mount_swap_file
 
 - name: Change swapfile {{freebsd_postinstall_swap_file}}
@@ -12,6 +13,7 @@
   register: command_result
   changed_when: command_result.stdout == "change"
   notify: change and mount swap
+  when: freebsd_postinstall_swap == "yes"
   tags: change_mount_swap_file
   
 - name: Create swap entry in /etc/fstab
@@ -21,4 +23,16 @@
     line="{{freebsd_postinstall_swap_md}} none swap sw,file={{freebsd_postinstall_swap_file}},late 0 0"
     backup="yes"
   notify: create and mount swap
+  when: freebsd_postinstall_swap == "yes"
+  tags: mount_swap_file
+
+- name: Remove swap entry from /etc/fstab
+  lineinfile: >
+    dest="/etc/fstab"
+    regexp="{{freebsd_postinstall_swap_file}}"
+    line="{{freebsd_postinstall_swap_md}} none swap sw,file={{freebsd_postinstall_swap_file}},late 0 0"
+    backup="yes"
+    state="absent"
+# notify: umount swap
+  when: freebsd_postinstall_swap == "no"
   tags: mount_swap_file
