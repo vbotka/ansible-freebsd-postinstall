@@ -1,18 +1,24 @@
 ---
 
-- name: copy default files
+- name: Copy default files
   copy: >
     src="{{freebsd_postinstall_copy_dir}}/default/"
     dest="/"
     backup="yes"
-  tags: copy
+  tags: freebsd_postinsall_copy
 
-- name: copy IP specific files
+- name: Check existence of {{freebsd_postinstall_copy_dir}}/{{ansible_default_ipv4.address}}
+  local_action: stat path="{{freebsd_postinstall_copy_dir}}/{{ansible_default_ipv4.address}}"
+  register: freebsd_postinsall_optional_copy
+  tags: freebsd_postinsall_optional_copy
+
+- name: Copy {{freebsd_postinstall_copy_dir}}/{{ansible_default_ipv4.address}}
   copy: >
     src="{{freebsd_postinstall_copy_dir}}/{{ansible_default_ipv4.address}}/"
     dest="/"
     backup="yes"
-  tags: copy
+  when: freebsd_postinsall_optional_copy.stat.exists
+  tags: freebsd_postinsall_optional_copy
 
   # BUG: synchronize module does not work
   # TASK [vbotka.ansible-freebsd-postinstall : copy]
