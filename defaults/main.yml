@@ -18,6 +18,7 @@ freebsd_postinstall_packages:
   - emacs-nox11
   - gtar
   - portmaster
+  - portupgrade
   - py27-certbot
 # * gtar: Ansible module unarchive needs gtar. Ansible make use of the
 #   tar argument --diff. OpenBSD and FreeBSD doesn't have an --diff,
