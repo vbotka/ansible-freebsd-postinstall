@@ -1,5 +1,6 @@
+# Subject: get fingerprint; Capability: Send fingerprint of /etc/ssh/ssh_host_ecdsa_key.pub; Name: get-fingerprint
 :0i
 * !^Subject:.*Re:
 * !^FROM_DAEMON
 * ^Subject:.*get fingerprint
-| (/usr/local/bin/formail -r -A "From: {{item.par1}}"; ssh-keygen -l -f /etc/ssh/ssh_host_ecdsa_key.pub) | $SENDMAIL -oi -t
+| (/usr/local/bin/formail -r -A "From: {{item.par1}}"; ssh-keygen -l -f /etc/ssh/ssh_host_ecdsa_key.pub; ssh-keygen -l -E MD5 -f /etc/ssh/ssh_host_ecdsa_key.pub) | $SENDMAIL -oi -t

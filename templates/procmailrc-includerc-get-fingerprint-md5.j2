@@ -1,5 +1,0 @@
-:0i
-* !^Subject:.*Re:
-* !^FROM_DAEMON
-* ^Subject:.*get fingerprint
-| (/usr/local/bin/formail -r -A "From: {{item.par1}}"; ssh-keygen -l -E MD5 -f /etc/ssh/ssh_host_ecdsa_key.pub) | $SENDMAIL -oi -t
