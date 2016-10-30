@@ -170,5 +170,9 @@ freebsd_postinstall_procmail_sendmail: "/usr/sbin/sendmail"
 freebsd_postinstall_procmail_forwarders: []
 freebsd_postinstall_procmail_includerc: []
 
+# ----------------------------------------------------------------------
+# motd
+freebsd_postinstall_motd_lines: []
+
 # EOF
 ...

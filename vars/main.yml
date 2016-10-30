@@ -72,5 +72,10 @@
 #  - { user: "responder", template: "get-message", par1: "responder@{{rc_conf_hostname}}", par2: "/home/responder/MESSAGE.procmail" }
 #  - { user: "responder", template: "get-fingerprint", par1: "responder@{{rc_conf_hostname}}", par2: "" }
 
+# ----------------------------------------------------------------------
+# motd
+#freebsd_postinstall_motd_lines:
+#  - { line: "To get capabilities of the responder send email TO: responder@{{rc_conf_hostname}} SUBJECT: capability" }
+
 # EOF
 ...

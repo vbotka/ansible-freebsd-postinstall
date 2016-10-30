@@ -1,0 +1,10 @@
+---
+
+- name: Configure /etc/motd
+  lineinfile: >
+    dest="/etc/motd"
+    line="{{ item.line }}"
+    insertafter="EOF"
+    backup="yes"
+  with_items: "{{freebsd_postinstall_motd_lines}}"
+  tags: freebsd_postinstall_motd
