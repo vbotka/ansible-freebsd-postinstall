@@ -60,4 +60,14 @@
 #freebsd_postinstall_smartd_devices:
 #  - { regexp: "^/dev/ada0", line: "/dev/ada0 -a -o on -S on -s (S/../.././02|L/../../6/03) -m admin"}
 
+# ----------------------------------------------------------------------
+# procmail
+#freebsd_postinstall_procmail_forwarders:
+#  - { user: "responder", forward: "|exec {{freebsd_postinstall_procmail_bin}}" }
+#freebsd_postinstall_procmail_includerc:
+#  - { user: "responder", template: "duplicates", par1: "", par2: "" }
+#  - { user: "responder", template: "get-message", par1: "responder@netng.co", par2: "/home/responder/MESSAGE.procmail" }
+#  - { user: "responder", template: "get-fingerprint-md5", par1: "responder@netng.co", par2: "" }
+#  - { user: "responder", template: "get-fingerprint", par1: "responder@netng.co", par2: "" }
+
 # EOF

@@ -1,0 +1,72 @@
+---
+
+- name: Create .forward files
+  command: sh -c "if [ ! -e /home/{{item.user}}/.forward ]; then touch /home/{{item.user}}/.forward; chown '{{item.user}}' /home/{{item.user}}/.forward; chmod 0644 /home/{{item.user}}/.forward; fi"
+  with_items: "{{freebsd_postinstall_procmail_forwarders}}"
+  changed_when: false
+  tags: freebsd_procmail_create_forward
+
+- name: Configure forwarders
+  blockinfile:
+    dest: "/home/{{item.user}}/.forward"
+    backup: "yes"
+    create: "yes"
+    marker: "# {mark} ANSIBLE MANAGED BLOCK"
+    block: |
+      "{{item.forward}}"
+  with_items: "{{freebsd_postinstall_procmail_forwarders}}"
+  when: freebsd_postinstall_procmail_install == "YES"
+  tags: freebsd_procmail_config_forwarders
+
+- name: Create .procmailrc files
+  command: sh -c "if [ ! -e /home/{{item.user}}/.procmailrc ]; then touch /home/{{item.user}}/.procmailrc; chown '{{item.user}}' /home/{{item.user}}/.procmailrc; chmod 0644 /home/{{item.user}}/.procmailrc; fi"
+  with_items: "{{freebsd_postinstall_procmail_forwarders}}"
+  changed_when: false
+  tags: freebsd_procmail_create_procmailrc
+
+- name: Configure .procmailrc
+  blockinfile:
+    dest: "/home/{{item.user}}/.procmailrc"
+    backup: "yes"
+    create: "yes"
+    marker: "# {mark} ANSIBLE MANAGED BLOCK"
+    block: |
+      SHELL={{freebsd_postinstall_procmail_shell}}
+      VERBOSE={{freebsd_postinstall_procmail_verbose}}
+      PATH={{freebsd_postinstall_procmail_path}}
+      MAILDIR={{freebsd_postinstall_procmail_maildir}}
+      DEFAULT=/var/mail/{{item.user}}
+      PMDIR={{freebsd_postinstall_procmail_pmdir}}
+      LOGFILE=$PMDIR/pm.log
+      LOCKFILE=$PMDIR/.lockfile
+      SENDMAIL=/usr/sbin/sendmail
+  with_items: "{{freebsd_postinstall_procmail_forwarders}}"
+  tags: freebsd_procmail_config_procmailrc
+
+- name: Create .procmail directory
+  file: >
+    path="/home/{{item.user}}/.procmail"
+    state="directory"
+    owner="{{item.user}}"
+  with_items: "{{freebsd_postinstall_procmail_forwarders}}"
+  tags: freebsd_procmail_create_procmail_dir
+
+- name: Create includerc files
+  template: >
+    src="procmailrc-includerc-{{item.template}}.j2"
+    dest="/home/{{item.user}}/.procmail/{{item.template}}.rc"
+    backup="yes"
+  with_items: "{{freebsd_postinstall_procmail_includerc}}"
+  tags: freebsd_procmail_create_includerc
+
+- name: Include rc files in .procmailrc
+  lineinfile: >
+    dest="/home/{{item.user}}/.procmailrc"
+    line="INCLUDERC=$PMDIR/{{item.template}}.rc"
+    insertafter="EOF"
+    backup="yes"
+  with_items: "{{freebsd_postinstall_procmail_includerc}}"
+  tags: freebsd_procmail_includerc_in_procmailrc
+
+# EOF
+...

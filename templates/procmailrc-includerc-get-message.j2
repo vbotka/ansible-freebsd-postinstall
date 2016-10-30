@@ -1,0 +1,20 @@
+#
+#    https://www.freebsd.org/cgi/man.cgi?query=procmailex
+#    If someone sends you a mail with the word `retrieve' in the
+#    subject, the following will automatically send back the contents
+#    of info_file to the sender.  Like in all recipes where we send
+#    mail, we watch out for mail loops.
+#    
+#    :0
+#    *	!^From +YOUR_USERNAME
+#    *	!^Subject:.*Re:
+#    *	!^FROM_DAEMON
+#    *	^Subject:.*retrieve
+#    |	(formail -r ; cat info_file) | $SENDMAIL -oi -t
+#
+
+:0i
+* !^Subject:.*Re:
+* !^FROM_DAEMON
+* ^Subject:.*get message
+| (/usr/local/bin/formail -r -A "From: {{item.par1}}"; cat {{item.par2}} ) | $SENDMAIL -oi -t

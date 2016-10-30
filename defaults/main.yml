@@ -154,4 +154,21 @@ freebsd_postinstall_ntp_config_broadcastclient: ''
 freebsd_postinstall_ntp_config_multicastclient: ''
 freebsd_postinstall_ntp_config_tinker_panic_enabled: ''
 
+# ----------------------------------------------------------------------
+# procmail
+freebsd_postinstall_procmail_install: "NO"
+freebsd_postinstall_procmail_bin: "/usr/local/bin/procmail"
+freebsd_postinstall_procmail_responder: "responder"
+freebsd_postinstall_procmail_shell: "/bin/sh"
+freebsd_postinstall_procmail_verbose: "off"
+freebsd_postinstall_procmail_path: "$HOME/bin:/bin:/usr/bin:/usr/local/bin:."
+freebsd_postinstall_procmail_maildir: "$HOME/Mail"
+freebsd_postinstall_procmail_pmdir: "$HOME/.procmail"
+freebsd_postinstall_procmail_logfile: "$PMDIR/pm.log"
+freebsd_postinstall_procmail_lockfile: "$PMDIR/.lockfile"
+freebsd_postinstall_procmail_sendmail: "/usr/sbin/sendmail"
+freebsd_postinstall_procmail_forwarders: []
+freebsd_postinstall_procmail_includerc: []
+
 # EOF
+...

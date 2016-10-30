@@ -46,3 +46,21 @@
     use_packages="{{freebsd_use_packages}}"
   when: (freebsd_install_method == "ports") and (freebsd_postinstall_hostapd_install == "YES")
   tags: ports
+
+- name: Install procmail package
+  pkgng: >
+    name="procmail"
+    state="present"
+  when: (freebsd_install_method == "packages") and (freebsd_postinstall_procmail_install == "YES")
+  tags: packages
+
+- name: Install procmail port
+  portinstall: >
+    name="procmail"
+    state="present"
+    use_packages="{{freebsd_use_packages}}"
+  when: (freebsd_install_method == "ports") and (freebsd_postinstall_procmail_install == "YES")
+  tags: ports
+
+# EOF
+...

@@ -4,71 +4,79 @@
 - include: config_swap.yml
   tags:
     - freebsd_postinstall_swap
-    - freebsd_postinstall
+    - freebsd_postinstall_all
 
 - include: config_fstab.yml
   tags:
     - freebsd_postinstall_fstab
-    - freebsd_postinstall
+    - freebsd_postinstall_all
 
 - include: packages.yml
   tags:
     - packages
     - freebsd_postinstall_packages
-    - freebsd_postinstall
+    - freebsd_postinstall_all
 
 - include: copy.yml
   tags:
     - copy
     - freebsd_postinstall_copy
-    - freebsd_postinstall
+    - freebsd_postinstall_all
 
 - include: config_libmap.yml
   tags:
     - freebsd_postinstall_config_libmap
-    - freebsd_postinstall
+    - freebsd_postinstall_all
 
 - include: config_timezone.yml
   tags:
     - freebsd_postinstall_timezone
-    - freebsd_postinstall
+    - freebsd_postinstall_all
 
 - include: config_ntpdate.yml
   tags:
   - freebsd_postinstall_ntpdate
-  - freebsd_postinstall
+  - freebsd_postinstall_all
 
 - include: config_users.yml
   tags:
     - freebsd_postinstall_users
-    - freebsd_postinstall
+    - freebsd_postinstall_all
 
 - include: config_authorized_key.yml
   tags:
   - freebsd_postinstall_authorized_key
-  - freebsd_postinstall
+  - freebsd_postinstall_all
 
 - include: config_ssh.yml
   tags:
     - freebsd_postinstall_ssh
-    - freebsd_postinstall
+    - freebsd_postinstall_all
 
 - include: config_hostname.yml
   tags:
     - freebsd_postinstall_hostname
-    - freebsd_postinstall
+    - freebsd_postinstall_all
 
 - include: config_ntpd.yml
   tags:
     - freebsd_postinstall_ntpd
-    - freebsd_postinstall
+    - freebsd_postinstall_all
 
 - include: config_smartd.yml
   tags:
     - freebsd_postinstall_smartd
-    - freebsd_postinstall
+    - freebsd_postinstall_all
 
 - include: config_hostapd.yml
   tags:
     - freebsd_postinstall_hostapd
-    - freebsd_postinstall
+    - freebsd_postinstall_all
+
+- include: config_procmail.yml
+  tags:
+    - freebsd_postinstall_procmail
+    - freebsd_postinstall_all
+
+# EOF
+...

@@ -14,6 +14,7 @@ freebsd-postinstall
 - configure timezone
 - configure smartd
 - configure hostapd
+- configure procmail
 - add users
 - copy authorized_keys
 - install packages
@@ -71,7 +72,7 @@ ansible-galaxy install vbotka.ansible-freebsd-postinstall
   become: yes
   become_method: sudo
   roles:
-    - role: vbotka.ansible-freebsd-tpostinstall
+    - role: vbotka.ansible-freebsd-postinstall
 ```
 
 5) Configure the system.
@@ -85,6 +86,7 @@ License
 
 [![license](https://img.shields.io/badge/license-BSD-red.svg)](https://www.freebsd.org/doc/en/articles/bsdl-gpl/article.html)
 
+
 Author Information
 ------------------
 
@@ -97,4 +99,4 @@ References
 - [FreeBSD handbook: Post-Installation](https://www.freebsd.org/doc/handbook/bsdinstall-post.html)
 - [Adding Swap Space](http://www.freebsd.cz/doc/handbook/adding-swap-space.html)
 - [Upgrading Ports Using Portmaster](https://www.freebsd.org/doc/handbook/ports-using.html)
-
+- [Procmail Documentation Project](http://pm-doc.sourceforge.net/)
