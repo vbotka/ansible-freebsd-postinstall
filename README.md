@@ -15,6 +15,7 @@ freebsd-postinstall
 - configure smartd
 - configure hostapd
 - configure procmail
+- configure motd
 - add users
 - copy authorized_keys
 - install packages
