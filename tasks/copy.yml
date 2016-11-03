@@ -5,7 +5,7 @@
     src="{{freebsd_postinstall_copy_dir}}/default/"
     dest="/"
     backup="yes"
-  tags: freebsd_postinstall_copy
+  tags: freebsd_postinstall_default_copy
   # NOTE: playbooks directory IS copy modules current working
   # directory. freebsd_postinstall_copy_dir is relative to it.
   # freebsd_postinstall_copy_dir is created in ~/.ansible/playbooks .
