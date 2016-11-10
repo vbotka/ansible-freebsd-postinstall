@@ -34,9 +34,13 @@ freebsd_postinstall_copy_dir: "copy"
 # swap
 freebsd_postinstall_swap: "no"
 freebsd_postinstall_swap_file: "/usr/swap0"
-freebsd_postinstall_swap_size: "4096"
 freebsd_postinstall_swap_md: "md99"
-freebsd_postinstall_swap_stsize: "4294967296"
+#freebsd_postinstall_swap_size: "4096"
+#freebsd_postinstall_swap_stsize: "4294967296"
+#freebsd_postinstall_swap_size: "2048"
+#freebsd_postinstall_swap_stsize: "2147483648"
+freebsd_postinstall_swap_size: "1536"
+freebsd_postinstall_swap_stsize: "1610612736"
 
 # ----------------------------------------------------------------------
 # fstab
