@@ -1,0 +1,30 @@
+---
+
+- name: Add {{freebsd_postinstall_gitserver_group}} group
+  group: >
+    name="{{freebsd_postinstall_gitserver_group}}"
+    state="present"
+  tags: freebsd_postinstall_groups
+
+- name: Add {{freebsd_postinstall_gitserver_owner}} user
+  user: >
+    name="{{freebsd_postinstall_gitserver_owner}}"
+    shell="/sbin/nologin"
+  tags: freebsd_postinstall_users
+
+- name: Add user {{freebsd_postinstall_gitserver_owner}} to {{freebsd_postinstall_gitserver_group}} group
+  user: >
+    name="{{freebsd_postinstall_gitserver_owner}}"
+    groups="{{freebsd_postinstall_gitserver_group}}"
+    append="yes"
+  tags: freebsd_postinstall_groups
+
+- name: Set ownership and permissions of {{freebsd_postinstall_gitserver_dir}}
+  file: >
+    path="{{freebsd_postinstall_gitserver_dir}}"
+    owner="{{freebsd_postinstall_gitserver_owner}}"
+    group="{{freebsd_postinstall_gitserver_group}}"
+    mode="{{freebsd_postinstall_gitserver_dir_mode}}"
+
+# EOF
+...

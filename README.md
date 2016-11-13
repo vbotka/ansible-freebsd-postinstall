@@ -16,6 +16,7 @@ freebsd-postinstall
 - configure hostapd
 - configure procmail
 - configure motd
+- configure gitserver
 - add users
 - copy authorized_keys
 - install packages
@@ -101,3 +102,4 @@ References
 - [Adding Swap Space](http://www.freebsd.cz/doc/handbook/adding-swap-space.html)
 - [Upgrading Ports Using Portmaster](https://www.freebsd.org/doc/handbook/ports-using.html)
 - [Procmail Documentation Project](http://pm-doc.sourceforge.net/)
+- [Getting Git on a Server](https://git-scm.com/book/ch4-2.html)

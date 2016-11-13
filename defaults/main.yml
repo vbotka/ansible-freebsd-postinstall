@@ -13,10 +13,11 @@ digitalocean: "no"
 # ----------------------------------------------------------------------
 # Packages
 freebsd_postinstall_packages:
-  - pkg
   - bash
   - emacs-nox11
+  - git
   - gtar
+  - pkg
   - portmaster
   - portupgrade
   - py27-certbot
@@ -32,7 +33,7 @@ freebsd_postinstall_copy_dir: "copy"
 
 # ----------------------------------------------------------------------
 # swap
-freebsd_postinstall_swap: "no"
+freebsd_postinstall_swap: "NO"
 freebsd_postinstall_swap_file: "/usr/swap0"
 freebsd_postinstall_swap_md: "md99"
 #freebsd_postinstall_swap_size: "4096"
@@ -177,6 +178,25 @@ freebsd_postinstall_procmail_includerc: []
 # ----------------------------------------------------------------------
 # motd
 freebsd_postinstall_motd_lines: []
+
+# ----------------------------------------------------------------------
+# groupwrappers
+freebsd_postinstall_groupwrappers_install: "NO"
+freebsd_postinstall_groupwrappers_dir: "/root/bin"
+freebsd_postinstall_groupwrappers_owner: "root"
+freebsd_postinstall_groupwrappers_group: "wheel"
+freebsd_postinstall_groupwrappers_mode: "0774"
+freebsd_postinstall_group_add: "/usr/sbin/pw groupadd"
+freebsd_postinstall_group_del: "/usr/sbin/pw groupdel"
+freebsd_postinstall_group_mod: "/usr/sbin/pw groupmod"
+
+# ----------------------------------------------------------------------
+# gitserver
+freebsd_postinstall_gitserver_install: "NO"
+freebsd_postinstall_gitserver_owner: "gitserver"
+freebsd_postinstall_gitserver_group: "gitusers"
+freebsd_postinstall_gitserver_dir: "/home/{{freebsd_postinstall_gitserver_owner}}"
+freebsd_postinstall_gitserver_dir_mode: "0770"
 
 # EOF
 ...

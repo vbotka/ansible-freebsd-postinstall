@@ -1,0 +1,34 @@
+---
+
+- name: Create groupadd wrapper in {{freebsd_postinstall_groupwrappers_dir}}
+  template: >
+    src="groupadd.j2"
+    dest="{{freebsd_postinstall_groupwrappers_dir}}/groupadd"
+    owner="{{freebsd_postinstall_groupwrappers_owner}}"
+    group="{{freebsd_postinstall_groupwrappers_group}}"
+    mode="{{freebsd_postinstall_groupwrappers_mode}}"
+    backup="no"
+  tags: freebsd_postinstall_groupwrappers_templates
+
+- name: Create groupdel wrapper in {{freebsd_postinstall_groupwrappers_dir}}
+  template: >
+    src="groupdel.j2"
+    dest="{{freebsd_postinstall_groupwrappers_dir}}/groupdel"
+    owner="{{freebsd_postinstall_groupwrappers_owner}}"
+    group="{{freebsd_postinstall_groupwrappers_group}}"
+    mode="{{freebsd_postinstall_groupwrappers_mode}}"
+    backup="no"
+  tags: freebsd_postinstall_groupwrappers_templates
+
+- name: Create groupmod wrapper in {{freebsd_postinstall_groupwrappers_dir}}
+  template: >
+    src="groupmod.j2"
+    dest="{{freebsd_postinstall_groupwrappers_dir}}/groupmod"
+    owner="{{freebsd_postinstall_groupwrappers_owner}}"
+    group="{{freebsd_postinstall_groupwrappers_group}}"
+    mode="{{freebsd_postinstall_groupwrappers_mode}}"
+    backup="no"
+  tags: freebsd_postinstall_groupwrappers_templates
+
+# EOF
+...

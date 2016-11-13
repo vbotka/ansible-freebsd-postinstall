@@ -5,6 +5,7 @@
   tags:
     - freebsd_postinstall_swap
     - freebsd_postinstall_all
+  when: freebsd_postinstall_swap == "YES"
 
 - include: config_fstab.yml
   tags:
@@ -38,6 +39,13 @@
   - freebsd_postinstall_ntpdate
   - freebsd_postinstall_all
 
+- include: groupwrappers.yml
+  tags:
+    - freebsd_postinstall_groupwrappers
+    - freebsd_postinstall_users
+    - freebsd_postinstall_all
+  when: freebsd_postinstall_groupwrappers_install == "YES" 
+
 - include: config_users.yml
   tags:
     - freebsd_postinstall_users
@@ -67,21 +75,30 @@
   tags:
     - freebsd_postinstall_smartd
     - freebsd_postinstall_all
+  when: freebsd_postinstall_smartd_install == "YES"
 
 - include: config_hostapd.yml
   tags:
     - freebsd_postinstall_hostapd
     - freebsd_postinstall_all
+  when: freebsd_postinstall_hostapd_install == "YES"
 
 - include: config_procmail.yml
   tags:
     - freebsd_postinstall_procmail
     - freebsd_postinstall_all
+  when: freebsd_postinstall_procmail_install == "YES"
 
 - include: config_motd.yml
   tags:
     - freebsd_postinstall_motd
     - freebsd_postinstall_all
+
+- include: config_gitserver.yml
+  tags:
+    - freebsd_postinstall_gitserver
+    - freebsd_postinstall_all
+  when: freebsd_postinstall_gitserver_install == "YES" 
 
 # EOF
 ...
