@@ -64,6 +64,10 @@
 - name: mount all
   command: mount -a
 
+# sysctl
+- name: reload sysctl
+  service: name="sysctl" state="reloaded"
+
 # swap
 - name: create and mount swap
   shell: sh -c 'dd if=/dev/zero of={{freebsd_postinstall_swap_file}} bs=1m count={{freebsd_postinstall_swap_size}}; chmod 0600 {{freebsd_postinstall_swap_file}}; swapon -aL'

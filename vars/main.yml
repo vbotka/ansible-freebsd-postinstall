@@ -78,5 +78,10 @@
 #freebsd_postinstall_motd_lines:
 #  - { line: "To get capabilities of the responder send email TO: responder@{{rc_conf_hostname}} SUBJECT: capability" }
 
+# ----------------------------------------------------------------------
+# sysctl
+#freebsd_postinstall_sysctl:
+#    - { regexp: "^net.inet.ip.forwarding=", line: "net.inet.ip.forwarding=1" }
+
 # EOF
 ...

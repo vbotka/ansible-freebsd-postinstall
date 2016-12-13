@@ -94,6 +94,11 @@
     - freebsd_postinstall_motd
     - freebsd_postinstall_all
 
+- include: config_sysctl.yml
+  tags:
+    - freebsd_postinstall_sysctl
+    - freebsd_postinstall_all
+
 - include: config_gitserver.yml
   tags:
     - freebsd_postinstall_gitserver

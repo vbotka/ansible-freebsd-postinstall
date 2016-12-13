@@ -6,5 +6,6 @@
     line="{{ item.line }}"
     insertafter="EOF"
     backup="yes"
+    create="yes"
   with_items: "{{freebsd_postinstall_motd_lines}}"
   tags: freebsd_postinstall_motd

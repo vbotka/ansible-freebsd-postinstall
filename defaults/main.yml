@@ -180,6 +180,10 @@ freebsd_postinstall_procmail_includerc: []
 freebsd_postinstall_motd_lines: []
 
 # ----------------------------------------------------------------------
+# sysctl
+freebsd_postinstall_sysctl: []
+
+# ----------------------------------------------------------------------
 # groupwrappers
 freebsd_postinstall_groupwrappers_install: "NO"
 freebsd_postinstall_groupwrappers_dir: "/root/bin"
