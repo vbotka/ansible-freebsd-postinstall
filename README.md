@@ -16,6 +16,7 @@ freebsd-postinstall
 - configure hostapd
 - configure procmail
 - configure motd
+- configure sysctl
 - configure gitserver
 - add users
 - copy authorized_keys
