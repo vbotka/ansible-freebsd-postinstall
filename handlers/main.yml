@@ -46,6 +46,14 @@
   service: name="smartd" state="reloaded"
   when: freebsd_postinstall_smartd_install == "YES"
 
+# apcupsd
+- name: enable and start apcupsd
+  service: name="apcupsd" state="started" enabled="yes"
+- name: disable and stop apcupsd
+  service: name="apcupsd" state="stopped" enabled="no"
+- name: restart apcupsd
+  service: name="apcupsd" state="restarted"
+
 # hostapd
 - name: enable and start hostapd
   service: name="hostapd" state="started" enabled="yes"

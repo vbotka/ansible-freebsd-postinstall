@@ -88,11 +88,43 @@ freebsd_postinstall_authorized_key: []
 
 # ----------------------------------------------------------------------
 # smartd
-freebsd_postinstall_smartd_install: 'NO'
-freebsd_postinstall_smartd_service_name: 'smartd'
-freebsd_postinstall_smartd_service_state: 'stopped'
-freebsd_postinstall_smartd_service_enabled: 'NO'
+freebsd_postinstall_smartd_install: "NO"
+freebsd_postinstall_smartd_service_name: "smartd"
+freebsd_postinstall_smartd_service_state: "stopped"
+freebsd_postinstall_smartd_service_enabled: "NO"
 freebsd_postinstall_smartd_devices: []
+
+# ----------------------------------------------------------------------
+# apcupsd
+freebsd_postinstall_apcupsd_service_enabled: "NO"
+freebsd_postinstall_apcupsd_service_name: "apcupsd"
+#freebsd_postinstall_apcupsd_devices: []
+freebsd_postinstall_apcupsd_UPSNAME: "UPS01"
+freebsd_postinstall_apcupsd_UPSCABLE: "usb"
+freebsd_postinstall_apcupsd_UPSTYPE: "usb"
+freebsd_postinstall_apcupsd_LOCKFILE: "/var/spool/lock"
+freebsd_postinstall_apcupsd_SCRIPTDIR: "/usr/local/etc/apcupsd"
+freebsd_postinstall_apcupsd_PWRFAILDIR: "/var/run"
+freebsd_postinstall_apcupsd_NOLOGINDIR: "/var/run"
+freebsd_postinstall_apcupsd_ONBATTERYDELAY: "6"
+freebsd_postinstall_apcupsd_BATTERYLEVEL: "5"
+freebsd_postinstall_apcupsd_MINUTES: "3"
+freebsd_postinstall_apcupsd_TIMEOUT: "0"
+freebsd_postinstall_apcupsd_ANNOY: "300"
+freebsd_postinstall_apcupsd_ANNOYDELAY: "60"
+freebsd_postinstall_apcupsd_NOLOGON: "disable"
+freebsd_postinstall_apcupsd_KILLDELAY: "0"
+freebsd_postinstall_apcupsd_NETSERVER: "on"
+freebsd_postinstall_apcupsd_NISIP: "0.0.0.0"
+freebsd_postinstall_apcupsd_NISPORT: "3551"
+freebsd_postinstall_apcupsd_EVENTSFILE: "/var/log/apcupsd.events"
+freebsd_postinstall_apcupsd_EVENTSFILEMAX: "10"
+freebsd_postinstall_apcupsd_UPSCLASS: "standalone"
+freebsd_postinstall_apcupsd_UPSMODE: "disable"
+freebsd_postinstall_apcupsd_STATTIME: "0"
+freebsd_postinstall_apcupsd_STATFILE: "/var/log/apcupsd.status"
+freebsd_postinstall_apcupsd_LOGSTATS: "off"
+freebsd_postinstall_apcupsd_DATATIME: "0"
 
 # ----------------------------------------------------------------------
 # hostapd

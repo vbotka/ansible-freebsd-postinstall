@@ -13,6 +13,7 @@ freebsd-postinstall
 - configure ntpdate
 - configure timezone
 - configure smartd
+- configure apcupsd
 - configure hostapd
 - configure procmail
 - configure motd
@@ -104,3 +105,4 @@ References
 - [Upgrading Ports Using Portmaster](https://www.freebsd.org/doc/handbook/ports-using.html)
 - [Procmail Documentation Project](http://pm-doc.sourceforge.net/)
 - [Getting Git on a Server](https://git-scm.com/book/ch4-2.html)
+- [apcupsd - Configuring a UPS daemon](http://www.freebsddiary.org/apcupsd.php)

@@ -1,0 +1,34 @@
+---
+
+- name: Enable and start apcupsd
+  lineinfile: >
+    dest="/etc/rc.conf"
+    regexp="^apcupsd_enable"
+    line="apcupsd_enable=\"YES\""
+    backup="yes"
+  when: freebsd_postinstall_apcupsd_service_enabled == "YES"
+  notify: enable and start apcupsd
+  tags: config_rc_conf_apcupsd
+
+- name: Disable and stop apcupsd
+  lineinfile: >
+    dest="/etc/rc.conf"
+    regexp="^apcupsd_enable"
+    line="apcupsd_enable=\"NO\""
+    backup="yes"
+  when: freebsd_postinstall_apcupsd_service_enabled == "NO"
+  notify: disable and stop apcupsd
+  tags: config_rc_conf_apcupsd
+
+- name: Configure apcupsd.conf
+  template: >
+    dest="/usr/local/etc/apcupsd/apcupsd.conf"
+    src="apcupsd.conf.j2"
+    backup="yes"
+  when: freebsd_postinstall_apcupsd_service_enabled == "YES"
+  notify: restart apcupsd
+  tags:
+    - freebsd_postinstall_apcupsd_conf
+
+# EOF
+...

@@ -77,6 +77,12 @@
     - freebsd_postinstall_all
   when: freebsd_postinstall_smartd_install == "YES"
 
+- include: config_apcupsd.yml
+  tags:
+    - freebsd_postinstall_apcupsd
+    - freebsd_postinstall_all
+  when: freebsd_postinstall_apcupsd_service_enabled == "YES"
+
 - include: config_hostapd.yml
   tags:
     - freebsd_postinstall_hostapd
