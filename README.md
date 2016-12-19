@@ -3,7 +3,7 @@ freebsd-postinstall
 
 [![Build Status](https://travis-ci.org/vbotka/ansible-freebsd-postinstall.svg?branch=master)](https://travis-ci.org/vbotka/ansible-freebsd-postinstall)
 
-[Ansible role](https://galaxy.ansible.com/vbotka/ansible-freebsd-postinstall/). Post-install configuration of FreeBSD
+[Ansible role](https://galaxy.ansible.com/vbotka/freebsd-postinstall/). Post-install configuration of FreeBSD
 - configure hostname
 - configure swap
 - configure fstab
