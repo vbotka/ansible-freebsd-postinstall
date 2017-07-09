@@ -62,5 +62,14 @@
   when: (freebsd_install_method == "ports") and (freebsd_postinstall_procmail_install == "YES")
   tags: ports
 
+- name: Create symbolic links
+  file: >
+    src="{{ item.target }}"
+    dest="{{ item.link }}"
+    state="link"
+    force="yes"
+  with_items: "{{ freebsd_postinstall_links }}"
+  tags: links
+
 # EOF
 ...
