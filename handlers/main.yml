@@ -24,6 +24,24 @@
 - name: reload sshd
   service: name="sshd" state="reloaded"
 
+# nfsd
+- name: enable and start nfs server
+  service: name="nfsd" state="started" enabled="yes"
+- name: disable and stop nfs server
+  service: name="nfsd" state="stopped" enabled="no"
+- name: enable and start lockd
+  service: name="lockd" state="started" enabled="yes"
+- name: disable and stop lockd
+  service: name="lockd" state="stopped" enabled="no"
+- name: enable and start statd
+  service: name="statd" state="started" enabled="yes"
+- name: disable and stop statd
+  service: name="statd" state="stopped" enabled="no"
+- name: disable and stop rpcbind
+  service: name="rpcbind" state="stopped" enabled="no"
+- name: reload mountd
+  service: name="mountd" state="reloaded"
+
 # ntpd
 - name: enable and start ntpd
   service: name="ntpd" state="started" enabled="yes"
@@ -35,16 +53,12 @@
 # smartd
 - name: enable and start smartd
   service: name="smartd" state="started" enabled="yes"
-  when: freebsd_postinstall_smartd_install == "YES"
 - name: disable and stop smartd
   service: name="smartd" state="stopped" enabled="no"
-  when: freebsd_postinstall_smartd_install == "YES"
 - name: restart smartd
   service: name="smartd" state="restarted"
-  when: freebsd_postinstall_smartd_install == "YES"
 - name: reload smartd
   service: name="smartd" state="reloaded"
-  when: freebsd_postinstall_smartd_install == "YES"
 
 # apcupsd
 - name: enable and start apcupsd
@@ -57,16 +71,12 @@
 # hostapd
 - name: enable and start hostapd
   service: name="hostapd" state="started" enabled="yes"
-  when: freebsd_postinstall_hostapd_install == "YES"
 - name: disable and stop hostapd
   service: name="hostapd" state="stopped" enabled="no"
-  when: freebsd_postinstall_hostapd_install == "YES"
 - name: restart hostapd
   service: name="hostapd" state="restarted"
-  when: freebsd_postinstall_hostapd_install == "YES"
 - name: reload hostapd
   service: name="hostapd" state="reloaded"
-  when: freebsd_postinstall_hostapd_install == "YES"
 
 # fstab
 - name: mount all
@@ -87,3 +97,4 @@
 # fatal: []: FAILED! => {"changed": true, "cmd": "sh -c 'dd if=/dev/zero of=/usr/swap0 bs=1m count=4096; chmod 0600 /us# r/swap0; swapon -aL'", "delta": "0:00:17.152136", "end": "2016-09-23 04:13:30.258551", "failed": true, "rc": 1, "start": "2016-09-2# 3 04:13:13.106415", "stderr": "4096+0 records in\n4096+0 records out\n4294967296 bytes transferred in 17.075478 secs (251528381 byt# es/sec)", "stdout": "swapon: adding /dev/md99 as swap device", "stdout_lines": ["swapon: adding /dev/md99 as swap device"], "warnin# gs": []}
 
 # EOF
+...

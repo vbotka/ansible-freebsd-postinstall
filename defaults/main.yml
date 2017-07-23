@@ -162,10 +162,20 @@ freebsd_postinstall_hostapd_logger_stdout_level: "0"
 freebsd_postinstall_hostapd_eap_server: "0"
 
 # ----------------------------------------------------------------------
+# nfsd
+freebsd_postinstall_nfsd_service_enable: 'NO'
+freebsd_postinstall_nfsd_service_state: 'started'
+freebsd_postinstall_rpcbind_enable: 'NO'
+freebsd_postinstall_mountd_flags: '-r'
+freebsd_postinstall_rpc_lockd_enable: 'NO'
+freebsd_postinstall_rpc_statd_enable: 'NO'
+freebsd_postinstall_nfsd_exports: []
+
+# ----------------------------------------------------------------------
 # ntpd
+freebsd_postinstall_ntp_service_enabled: 'NO'
 freebsd_postinstall_ntp_service_name: 'ntpd'
 freebsd_postinstall_ntp_service_state: 'started'
-freebsd_postinstall_ntp_service_enabled: 'YES'
 freebsd_postinstall_ntp_config_server:
   - '0.freebsd.pool.ntp.org iburst'
   - '1.freebsd.pool.ntp.org iburst'

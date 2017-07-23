@@ -54,11 +54,25 @@
 #  - { origin: "libxml2.so", target: "libxml2.so.2.9.4" }
 
 # ----------------------------------------------------------------------
+#freebsd_postinstall_smartd_service_enabled: 'YES'
 #freebsd_postinstall_smartd_service_name: 'smartd'
 #freebsd_postinstall_smartd_service_state: 'started'
-#freebsd_postinstall_smartd_service_enabled: 'YES'
 #freebsd_postinstall_smartd_devices:
 #  - { regexp: "^/dev/ada0", line: "/dev/ada0 -a -o on -S on -s (S/../.././02|L/../../6/03) -m admin"}
+
+# ----------------------------------------------------------------------
+# nfsd
+#freebsd_postinstall_nfsd_service_enable: 'YES'
+#freebsd_postinstall_rpcbind_enable: 'YES'
+#freebsd_postinstall_rpc_lockd_enable: 'YES'
+#freebsd_postinstall_rpc_statd_enable: 'YES'
+#freebsd_postinstall_nfsd_exports:
+#  - { mount_point: '/export', flags: '-alldirs -network 10.1.0.0 -mask 255.255.255.0' }
+#  - { mount_point: '/export2', flags: '-alldirs -network 10.1.0.0 -mask 255.255.255.0' }
+
+# ----------------------------------------------------------------------
+# ntpd
+freebsd_postinstall_ntp_service_enabled: 'YES'
 
 # ----------------------------------------------------------------------
 # procmail

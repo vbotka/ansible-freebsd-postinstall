@@ -1,6 +1,11 @@
 ---
 # tasks for freebsd-postinstall
 
+- include: config_sysctl.yml
+  tags:
+    - freebsd_postinstall_sysctl
+    - freebsd_postinstall_all
+
 - include: config_swap.yml
   tags:
     - freebsd_postinstall_swap
@@ -29,15 +34,10 @@
     - freebsd_postinstall_config_libmap
     - freebsd_postinstall_all
 
-- include: config_timezone.yml
+- include: config_users.yml
   tags:
-    - freebsd_postinstall_timezone
+    - freebsd_postinstall_users
     - freebsd_postinstall_all
-
-- include: config_ntpdate.yml
-  tags:
-  - freebsd_postinstall_ntpdate
-  - freebsd_postinstall_all
 
 - include: groupwrappers.yml
   tags:
@@ -46,9 +46,14 @@
     - freebsd_postinstall_all
   when: freebsd_postinstall_groupwrappers_install == "YES" 
 
-- include: config_users.yml
+- include: config_hostname.yml
   tags:
-    - freebsd_postinstall_users
+    - freebsd_postinstall_hostname
+    - freebsd_postinstall_all
+
+- include: config_ssh.yml
+  tags:
+    - freebsd_postinstall_ssh
     - freebsd_postinstall_all
 
 - include: config_authorized_key.yml
@@ -56,19 +61,24 @@
   - freebsd_postinstall_authorized_key
   - freebsd_postinstall_all
 
-- include: config_ssh.yml
+- include: config_timezone.yml
   tags:
-    - freebsd_postinstall_ssh
-    - freebsd_postinstall_all
-
-- include: config_hostname.yml
-  tags:
-    - freebsd_postinstall_hostname
+    - freebsd_postinstall_timezone
     - freebsd_postinstall_all
 
 - include: config_ntpd.yml
   tags:
     - freebsd_postinstall_ntpd
+    - freebsd_postinstall_all
+
+- include: config_ntpdate.yml
+  tags:
+  - freebsd_postinstall_ntpdate
+  - freebsd_postinstall_all
+
+- include: config_nfsd.yml
+  tags:
+    - freebsd_postinstall_nfsd
     - freebsd_postinstall_all
 
 - include: config_smartd.yml
@@ -98,11 +108,6 @@
 - include: config_motd.yml
   tags:
     - freebsd_postinstall_motd
-    - freebsd_postinstall_all
-
-- include: config_sysctl.yml
-  tags:
-    - freebsd_postinstall_sysctl
     - freebsd_postinstall_all
 
 - include: config_gitserver.yml
