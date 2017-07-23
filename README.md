@@ -9,6 +9,7 @@ freebsd-postinstall
 - configure fstab
 - configure libmap
 - configure ssh
+- configure nfsd
 - configure ntpd
 - configure ntpdate
 - configure timezone
@@ -106,3 +107,4 @@ References
 - [Procmail Documentation Project](http://pm-doc.sourceforge.net/)
 - [Getting Git on a Server](https://git-scm.com/book/ch4-2.html)
 - [apcupsd - Configuring a UPS daemon](http://www.freebsddiary.org/apcupsd.php)
+- [FreeBSD handbook: Network File System (NFS)](https://www.freebsd.org/doc/handbook/network-nfs.html)
