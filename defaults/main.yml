@@ -57,9 +57,9 @@ freebsd_postinstall_libmap_entries: []
 # ----------------------------------------------------------------------
 # Timezone
 # details about zoneinfo in man tzsetup
-zoneinfo: "UTC"
+freebsd_postinstall_zoneinfo: "UTC"
 #zoneinfo: "Europe/London"
-zoneinfo_path: "/usr/share/zoneinfo"
+freebsd_postinstall_zoneinfo_path: "/usr/share/zoneinfo"
 
 # ----------------------------------------------------------------------
 # ntpdate

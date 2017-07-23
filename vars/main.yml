@@ -6,9 +6,9 @@
 #digitalocean: "no"
 
 # ----------------------------------------------------------------------
-#zoneinfo: "UTC"
-#zoneinfo: "Europe/London"
-#zoneinfo_path: "/usr/share/zoneinfo"
+#freebsd_postinstall_zoneinfo: "UTC"
+#freebsd_postinstall_zoneinfo: "Europe/London"
+#freebsd_postinstall_zoneinfo_path: "/usr/share/zoneinfo"
 
 # ----------------------------------------------------------------------
 # Packages/Ports
