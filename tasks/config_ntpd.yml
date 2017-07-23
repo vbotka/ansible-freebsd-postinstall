@@ -6,7 +6,7 @@
     regexp="^ntpd_enable"
     line="ntpd_enable=\"YES\""
     backup="yes"
-  when: freebsd_postinstall_ntp_service_enabled == "YES"
+  when: freebsd_postinstall_ntp_service_enable == "YES"
   notify: enable and start ntpd
   tags: config_rc_conf_ntpd
 
@@ -16,7 +16,7 @@
     regexp="^ntpd_enable"
     line="ntpd_enable=\"NO\""
     backup="yes"
-  when: freebsd_postinstall_ntp_service_enabled == "NO"
+  when: freebsd_postinstall_ntp_service_enable == "NO"
   notify: disable and stop ntpd
   tags: config_rc_conf_ntpd
 
@@ -27,3 +27,6 @@
     backup="yes"
   notify: restart ntpd
   tags: freebsd_postinstall_ntp_conf
+
+# EOF
+...

@@ -173,7 +173,7 @@ freebsd_postinstall_nfsd_exports: []
 
 # ----------------------------------------------------------------------
 # ntpd
-freebsd_postinstall_ntp_service_enabled: 'NO'
+freebsd_postinstall_ntp_service_enable: 'NO'
 freebsd_postinstall_ntp_service_name: 'ntpd'
 freebsd_postinstall_ntp_service_state: 'started'
 freebsd_postinstall_ntp_config_server:

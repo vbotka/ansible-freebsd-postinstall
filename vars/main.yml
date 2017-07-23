@@ -72,7 +72,7 @@
 
 # ----------------------------------------------------------------------
 # ntpd
-freebsd_postinstall_ntp_service_enabled: 'YES'
+#freebsd_postinstall_ntp_service_enable: 'YES'
 
 # ----------------------------------------------------------------------
 # procmail
