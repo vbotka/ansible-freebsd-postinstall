@@ -1,11 +1,10 @@
 ---
 
 - name: Configure /etc/motd
-  lineinfile: >
+  template: >
+    src="motd.j2"
     dest="/etc/motd"
-    line="{{ item.line }}"
-    insertafter="EOF"
     backup="yes"
-    create="yes"
-  with_items: "{{freebsd_postinstall_motd_lines}}"
-  tags: freebsd_postinstall_motd
+
+# EOF
+...

@@ -220,7 +220,7 @@ freebsd_postinstall_procmail_includerc: []
 
 # ----------------------------------------------------------------------
 # motd
-freebsd_postinstall_motd_lines: []
+freebsd_postinstall_motd: []
 
 # ----------------------------------------------------------------------
 # sysctl
