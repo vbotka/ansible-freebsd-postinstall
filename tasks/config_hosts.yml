@@ -1,0 +1,14 @@
+---
+
+- name: Configure hosts in /etc/hosts
+  template: >
+    src="hosts.j2"
+    dest="/etc/hosts"
+    owner="root"
+    group="wheel"
+    mode="0644"
+    backup="yes"
+  when: freebsd_postinstall_hosts > 0
+  
+# EOF
+...

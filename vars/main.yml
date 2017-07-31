@@ -96,5 +96,10 @@
 #freebsd_postinstall_sysctl:
 #    - { regexp: "^net.inet.ip.forwarding=", line: "net.inet.ip.forwarding=1" }
 
+# ----------------------------------------------------------------------
+# hosts
+#freebsd_postinstall_hosts: []
+#  - { ip: "10.1.0.10", fqdn: "srv.example.com", hostname: "srv" }
+
 # EOF
 ...

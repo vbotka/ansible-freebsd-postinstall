@@ -51,6 +51,11 @@
     - freebsd_postinstall_hostname
     - freebsd_postinstall_all
 
+- include: config_hosts.yml
+  tags:
+    - freebsd_postinstall_hosts
+    - freebsd_postinstall_all
+
 - include: config_ssh.yml
   tags:
     - freebsd_postinstall_ssh

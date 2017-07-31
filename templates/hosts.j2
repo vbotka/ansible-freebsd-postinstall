@@ -1,0 +1,9 @@
+# {{ ansible_managed }}
+::1		localhost	localhost.{{ freebsd_postinstall_domain }}
+127.0.0.1	localhost	localhost.{{ freebsd_postinstall_domain }}
+
+{% for item in freebsd_postinstall_hosts %}
+{{ item.ip }}	{{ item.hostname }}	 {{ item.fqdn }}
+{% endfor %}
+
+# EOF
