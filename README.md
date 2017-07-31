@@ -4,22 +4,23 @@ freebsd-postinstall
 [![Build Status](https://travis-ci.org/vbotka/ansible-freebsd-postinstall.svg?branch=master)](https://travis-ci.org/vbotka/ansible-freebsd-postinstall)
 
 [Ansible role](https://galaxy.ansible.com/vbotka/freebsd-postinstall/). Post-install configuration of FreeBSD
-- configure hostname
-- configure swap
+- configure apcupsd
 - configure fstab
+- configure gitserver
+- configure hostapd
+- configure hostname
+- configure hosts
 - configure libmap
-- configure ssh
+- configure motd
 - configure nfsd
 - configure ntpd
 - configure ntpdate
-- configure timezone
-- configure smartd
-- configure apcupsd
-- configure hostapd
 - configure procmail
-- configure motd
+- configure smartd
+- configure ssh
+- configure swap
 - configure sysctl
-- configure gitserver
+- configure timezone
 - add users
 - copy authorized_keys
 - install packages
