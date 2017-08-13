@@ -1,5 +1,10 @@
 ---
 
+# TODO:
+# 1) Leapseconds file expired
+# https://forums.freebsd.org/threads/56645/
+# 2) ntpd_sync_on_start="YES"
+
 - name: Enable and start ntpd
   lineinfile: >
     dest="/etc/rc.conf"
