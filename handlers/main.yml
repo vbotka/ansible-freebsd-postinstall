@@ -41,6 +41,7 @@
   service: name="rpcbind" state="stopped" enabled="no"
 - name: reload mountd
   service: name="mountd" state="reloaded"
+  when: freebsd_postinstall_nfsd_service_enable|lower == "yes"
 
 # ntpd
 - name: enable and start ntpd
