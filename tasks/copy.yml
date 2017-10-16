@@ -1,8 +1,8 @@
 ---
 
-- name: Copy default files {{freebsd_postinstall_copy_dir}}/default (relative to playbooks directory)
+- name: Copy default files {{ freebsd_postinstall_copy_dir }}/default (relative to playbooks directory)
   copy: >
-    src="{{freebsd_postinstall_copy_dir}}/default/"
+    src="{{ freebsd_postinstall_copy_dir }}/default/"
     dest="/"
     backup="yes"
   tags: freebsd_postinstall_default_copy
@@ -12,30 +12,31 @@
   # /role_path/freebsd_postinstall_copy_dir is linked to
   # ~/.ansible/playbooks/freebsd_postinstall_copy_dir .
 
-- name: Check existence of {{role_path}}/{{freebsd_postinstall_copy_dir}}/{{ansible_default_ipv4.address}}
+- name: Check existence of {{ role_path }}/{{ freebsd_postinstall_copy_dir }}/{{ ansible_default_ipv4.address }}
   local_action: >
-    stat path="{{role_path}}/{{freebsd_postinstall_copy_dir}}/{{ansible_default_ipv4.address}}"
+    stat path="{{ role_path }}/{{ freebsd_postinstall_copy_dir }}/{{ ansible_default_ipv4.address }}"
   register: optional_copy
   tags: freebsd_postinstall_optional_copy
   # NOTE: playbooks directory IS NOT local_action modules current
   # working directory. Absolute path role_path is needed.
 
-- name: Copy IP specific files {{freebsd_postinstall_copy_dir}}/{{ansible_default_ipv4.address}} (relative to playbooks directory)
-  copy: >
-    src="{{freebsd_postinstall_copy_dir}}/{{ansible_default_ipv4.address}}/"
-    dest="/"
-    backup="yes"
-  when: optional_copy.stat.exists
-  tags: freebsd_postinstall_optional_copy
+#- name: Copy IP specific files {{ freebsd_postinstall_copy_dir }}/{{ ansible_default_ipv4.address }} (relative to playbooks directory)
+#  copy: >
+#    src="{{ freebsd_postinstall_copy_dir }}/{{ ansible_default_ipv4.address }}/"
+#    dest="/"
+#    backup="yes"
+#  when: optional_copy.stat.exists
+#  tags: freebsd_postinstall_optional_copy
   # NOTE: copy module does not copy a link if the target does not
   # exist. Error is reported and task is stopped. No option to come
   # arround.
-  #
-  # BUG: synchronize module does not work
-  # TASK [vbotka.ansible-freebsd-postinstall : copy]
-  # ******************************* fatal: [...]: FAILED!
-  # => {"changed": false, "failed": true, "module_stderr": "sudo: a
-  # password is required\n", "module_stdout": "", "msg": "MODULE
-  # FAILURE", "parsed": false}
+
+- name: Synchronize IP specific files {{ freebsd_postinstall_copy_dir }}/{{ ansible_default_ipv4.address }} (relative to playbooks directory)
+  synchronize: >
+    src="{{ freebsd_postinstall_copy_dir }}/{{ ansible_default_ipv4.address }}/"
+    dest="/"
+  when: optional_copy.stat.exists
+  tags: freebsd_postinstall_optional_copy
 
 # EOF
+...
