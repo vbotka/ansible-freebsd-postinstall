@@ -1,40 +1,33 @@
 ---
 
-- name: Copy default files {{ freebsd_postinstall_copy_dir }}/default (relative to playbooks directory)
-  copy: >
+- name: Synchronize default files {{ freebsd_postinstall_copy_dir }}/default (relative to playbooks directory)
+  synchronize: >
     src="{{ freebsd_postinstall_copy_dir }}/default/"
     dest="/"
-    backup="yes"
+    archive="no"
+    recursive="yes"
+    times="yes"
+    perms="yes"
+    checksum="yes"
   tags: freebsd_postinstall_default_copy
-  # NOTE: playbooks directory IS copy modules current working
-  # directory. freebsd_postinstall_copy_dir is relative to it.
-  # freebsd_postinstall_copy_dir is created in ~/.ansible/playbooks .
-  # /role_path/freebsd_postinstall_copy_dir is linked to
-  # ~/.ansible/playbooks/freebsd_postinstall_copy_dir .
 
-- name: Check existence of {{ role_path }}/{{ freebsd_postinstall_copy_dir }}/{{ ansible_default_ipv4.address }}
+- name: Check existence of {{ role_path }}/{{ freebsd_postinstall_copy_dir }}/{{ rc_conf_hostname }}
   local_action: >
-    stat path="{{ role_path }}/{{ freebsd_postinstall_copy_dir }}/{{ ansible_default_ipv4.address }}"
+    stat path="{{ role_path }}/{{ freebsd_postinstall_copy_dir }}/{{ rc_conf_hostname }}"
   register: optional_copy
   tags: freebsd_postinstall_optional_copy
   # NOTE: playbooks directory IS NOT local_action modules current
   # working directory. Absolute path role_path is needed.
 
-#- name: Copy IP specific files {{ freebsd_postinstall_copy_dir }}/{{ ansible_default_ipv4.address }} (relative to playbooks directory)
-#  copy: >
-#    src="{{ freebsd_postinstall_copy_dir }}/{{ ansible_default_ipv4.address }}/"
-#    dest="/"
-#    backup="yes"
-#  when: optional_copy.stat.exists
-#  tags: freebsd_postinstall_optional_copy
-  # NOTE: copy module does not copy a link if the target does not
-  # exist. Error is reported and task is stopped. No option to come
-  # arround.
-
-- name: Synchronize IP specific files {{ freebsd_postinstall_copy_dir }}/{{ ansible_default_ipv4.address }} (relative to playbooks directory)
+- name: Synchronize host specific files {{ freebsd_postinstall_copy_dir }}/{{ rc_conf_hostname }} (relative to playbooks directory)
   synchronize: >
-    src="{{ freebsd_postinstall_copy_dir }}/{{ ansible_default_ipv4.address }}/"
+    src="{{ freebsd_postinstall_copy_dir }}/{{ rc_conf_hostname }}/"
     dest="/"
+    archive="no"
+    recursive="yes"
+    times="yes"
+    perms="yes"
+    checksum="yes"
   when: optional_copy.stat.exists
   tags: freebsd_postinstall_optional_copy
 
