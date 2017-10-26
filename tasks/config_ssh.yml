@@ -8,7 +8,7 @@
     backup="yes"
   notify: enable and start sshd
   when: sshd_enable == "YES"
-  tags: config_rc_conf_ssh
+  tags: fp_rc_conf_ssh
 
 - name: Disable and stop sshd
   lineinfile: >
@@ -18,21 +18,28 @@
     backup="yes"
   notify: disable and stop sshd
   when: sshd_enable == "NO"
-  tags: config_rc_conf_ssh
+  tags: fp_rc_conf_ssh
+
+- name: Configure /etc/ssh/ssh_config
+  lineinfile: >
+    dest="/etc/ssh/ssh_config"
+    regexp="^{{ item.key }}"
+    insertbefore="^{{'#'}}{{ item.key }}"
+    line="{{ item.key }} {{ item.value }}"
+    backup="yes"
+  with_items: "{{ ssh_config }}"
+  tags: fp_ssh_config
 
 - name: Configure /etc/ssh/sshd_config
   lineinfile: >
     dest="/etc/ssh/sshd_config"
-    regexp="{{ item.regexp }}"
-    line="{{ item.line }}"
-    insertbefore="{{ item.insertbefore }}"
+    regexp="^{{ item.key }}"
+    insertbefore="^{{'#'}}{{ item.key }}"
+    line="{{ item.key }} {{ item.value }}"
     backup="yes"
-  with_items:
-    - { regexp: "^PasswordAuthentication",
-        insertbefore: "^{{'#'}}PasswordAuthentication",
-        line: "PasswordAuthentication {{sshd_PasswordAuthentication}}"}
-    - { regexp: "^ChallengeResponseAuthentication",
-        insertbefore: "^{{'#'}}ChallengeResponseAuthentication",
-        line: "ChallengeResponseAuthentication {{sshd_ChallengeResponseAuthentication}}"}
+  with_items: "{{ sshd_config }}"
   notify: reload sshd
-  tags: config_sshd
+  tags: fp_sshd_config
+
+# EOF
+...

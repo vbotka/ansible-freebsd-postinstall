@@ -5,6 +5,8 @@ freebsd_install_method: "packages"
 #freebsd_install_method: "ports"
 #freebsd_use_packages: "yes"
 
+freebsd_postinstall_debug: false
+
 # ----------------------------------------------------------------------
 # Hostname
 rc_conf_hostname: "srv.my.domain"
@@ -22,6 +24,7 @@ freebsd_postinstall_packages:
   - portmaster
   - portupgrade
   - py27-certbot
+  - rsync
 # * gtar: Ansible module unarchive needs gtar. Ansible make use of the
 #   tar argument --diff. OpenBSD and FreeBSD doesn't have an --diff,
 #   -d, --compare option for tar. Without gtar unarchive always
@@ -78,9 +81,15 @@ ntpd_sync_on_start: "NO"
 
 # ----------------------------------------------------------------------
 # SSH
+ssh_Protocol: "2"
+ssh_config:
+  - { key: Protocol, value: "{{ ssh_Protocol }}" }
 sshd_enable: "YES"
 sshd_PasswordAuthentication: "no"
 sshd_ChallengeResponseAuthentication: "no"
+sshd_config:
+  - { key: PasswordAuthentication, value: "{{ sshd_PasswordAuthentication }}" }
+  - { key: ChallengeResponseAuthentication, value: "{{ sshd_ChallengeResponseAuthentication }}" }
 
 # ----------------------------------------------------------------------
 # users and groups
