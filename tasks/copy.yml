@@ -4,11 +4,11 @@
   synchronize: >
     src="{{ freebsd_postinstall_copy_dir }}/default/"
     dest="/"
-    archive="no"
-    recursive="yes"
-    times="yes"
-    perms="yes"
     checksum="yes"
+    times="no"
+    perms="no"
+    owner="no"
+    group="no"
   tags: freebsd_postinstall_default_copy
 
 - name: Check existence of {{ role_path }}/{{ freebsd_postinstall_copy_dir }}/{{ rc_conf_hostname }}
@@ -23,11 +23,11 @@
   synchronize: >
     src="{{ freebsd_postinstall_copy_dir }}/{{ rc_conf_hostname }}/"
     dest="/"
-    archive="no"
-    recursive="yes"
-    times="yes"
-    perms="yes"
     checksum="yes"
+    times="no"
+    perms="no"
+    owner="no"
+    group="no"
   when: optional_copy.stat.exists
   tags: freebsd_postinstall_optional_copy
 
