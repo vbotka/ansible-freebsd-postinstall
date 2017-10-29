@@ -15,20 +15,7 @@ digitalocean: "no"
 
 # ----------------------------------------------------------------------
 # Packages
-freebsd_postinstall_packages:
-  - bash
-  - emacs-nox11
-  - git
-  - gtar
-  - pkg
-  - portmaster
-  - portupgrade
-  - py27-certbot
-  - rsync
-# * gtar: Ansible module unarchive needs gtar. Ansible make use of the
-#   tar argument --diff. OpenBSD and FreeBSD doesn't have an --diff,
-#   -d, --compare option for tar. Without gtar unarchive always
-#   extracts and reports as changed.
+freebsd_postinstall_packages: []
 freebsd_postinstall_links: []
 
 # hosts

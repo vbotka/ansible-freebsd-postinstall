@@ -21,8 +21,15 @@
 #  - editors/emacs-nox11
 #  - devel/git
 #  - archivers/gtar
+#  - ports-mgmt/pkg
 #  - ports-mgmt/portmaster
-#  - security/py27-certbot
+#  - ports-mgmt/portupgrade
+#  - security/py-certbot
+#  - net/rsync
+# * gtar: Ansible module unarchive needs gtar. Ansible make use of the
+#   tar argument --diff. OpenBSD and FreeBSD doesn't have an --diff,
+#   -d, --compare option for tar. Without gtar unarchive always
+#   extracts and reports as changed.
 
 # ----------------------------------------------------------------------
 #ntpdate_enable: "YES"
@@ -48,6 +55,40 @@
 # ----------------------------------------------------------------------
 #freebsd_postinstall_authorized_key:
 #  - { user: "admin", key: "{{ lookup('file', '/home/admin/.ssh/id_rsa.pub') }}" }
+
+# ----------------------------------------------------------------------
+#ssh_Protocol: "2"
+#ssh_ForwardAgent: "no"
+#ssh_ForwardX11: "no"
+#ssh_HostbasedAuthentication: "no"
+#ssh_StrictHostKeyChecking: "no"
+#ssh_Ciphers: " aes128-ctr,aes192-ctr,aes256-ctr,arcfour256,arcfour128,aes128-cbc,3des-cbc"
+#ssh_Tunnel: "no"
+#ssh_ServerAliveInterval: "420"
+#ssh_config:
+#  - { key: Protocol, value: "{{ ssh_Protocol }}" }
+#  - { key: ForwardAgent, value: "{{ ssh_ForwardAgent }}" }
+#  - { key: ForwardX11, value: "{{ ssh_ForwardX11 }}" }
+#  - { key: HostbasedAuthentication, value: "{{ ssh_HostbasedAuthentication }}" }
+#  - { key: StrictHostKeyChecking, value: "{{ ssh_StrictHostKeyChecking }}" }
+#  - { key: Ciphers, value: "{{ ssh_Ciphers }}" }
+#  - { key: Tunnel, value: "{{ ssh_Tunnel }}" }
+#  - { key: ServerAliveInterval, value: "{{ ssh_ServerAliveInterval }}" }
+
+#sshd_enable: "YES"
+#sshd_PasswordAuthentication: "no"
+#sshd_ChallengeResponseAuthentication: "no"
+#sshd_PermitRootLogin: "no"
+#sshd_PermitTunnel: "no"
+#sshd_AllowTcpForwarding: "yes"
+#sshd_X11Forwarding: "no"
+#sshd_config:
+#  - { key: PasswordAuthentication, value: "{{ sshd_PasswordAuthentication }}" }
+#  - { key: ChallengeResponseAuthentication, value: "{{ sshd_ChallengeResponseAuthentication }}" }
+#  - { key: PermitRootLogin, value: "{{ sshd_PermitRootLogin }}" }
+#  - { key: PermitTunnel, value: "{{ sshd_PermitTunnel }}" }
+#  - { key: AllowTcpForwarding, value: "{{ sshd_AllowTcpForwarding }}" }
+#  - { key: X11Forwarding, value: "{{ sshd_X11Forwarding }}" }
 
 # ----------------------------------------------------------------------
 #freebsd_postinstall_libmap_entries:
@@ -100,6 +141,18 @@
 # hosts
 #freebsd_postinstall_hosts: []
 #  - { ip: "10.1.0.10", fqdn: "srv.example.com", hostname: "srv" }
+
+# ----------------------------------------------------------------------
+# gitserver
+#freebsd_postinstall_gitserver_install: "YES"
+freebsd_postinstall_gitserver_owner: "git"
+freebsd_postinstall_gitserver_owner_uid: "9418"
+freebsd_postinstall_gitserver_owner_shell: "/usr/local/libexec/git-core/git-shell"
+freebsd_postinstall_gitserver_owner_home: "/git"
+freebsd_postinstall_gitserver_group: "git"
+freebsd_postinstall_gitserver_group_gid: "9418"
+
+freebsd_postinstall_gitserver_dir_mode: "0770"
 
 # EOF
 ...
