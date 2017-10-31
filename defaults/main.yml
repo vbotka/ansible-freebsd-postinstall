@@ -162,7 +162,8 @@ freebsd_postinstall_hostapd_logger_stdout_level: "0"
 freebsd_postinstall_hostapd_eap_server: "0"
 
 # ----------------------------------------------------------------------
-# nfsd
+# nfs client / nfsd server
+freebsd_postinstall_nfs_service_enable: "NO"
 freebsd_postinstall_nfsd_service_enable: 'NO'
 freebsd_postinstall_nfsd_service_state: 'started'
 freebsd_postinstall_rpcbind_enable: 'NO'

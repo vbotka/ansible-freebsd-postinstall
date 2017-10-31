@@ -24,6 +24,12 @@
 - name: reload sshd
   service: name="sshd" state="reloaded"
 
+# nfs
+- name: enable and start nfs client
+  service: name="nfs" state="started" enabled="yes"
+- name: disable and stop nfs client
+  service: name="nfs" state="stopped" enabled="no"
+
 # nfsd
 - name: enable and start nfs server
   service: name="nfsd" state="started" enabled="yes"

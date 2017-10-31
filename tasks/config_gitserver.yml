@@ -1,16 +1,18 @@
 ---
 
-- name: Add {{freebsd_postinstall_gitserver_group}} group
+- name: Add {{ freebsd_postinstall_gitserver_group }} group
   group: >
-    name="{{freebsd_postinstall_gitserver_group}}"
-    state="present"
-  tags: freebsd_postinstall_groups
+    name="{{ freebsd_postinstall_gitserver_group }}"
+    gid="{{ freebsd_postinstall_gitserver_group_gid }}"
+  tags: freebsd_postinstall_gitserver_group
 
 - name: Add {{freebsd_postinstall_gitserver_owner}} user
   user: >
-    name="{{freebsd_postinstall_gitserver_owner}}"
-    shell="/sbin/nologin"
-  tags: freebsd_postinstall_users
+    name="{{ freebsd_postinstall_gitserver_owner }}"
+    uid="{ freebsd_postinstall_gitserver_owner_uid }}"
+    shell="{{ freebsd_postinstall_gitserver_owner_shell }}"
+    home="{{ freebsd_postinstall_gitserver_owner_home }}"
+  tags: freebsd_postinstall_gitserver_owner
 
 - name: Add user {{freebsd_postinstall_gitserver_owner}} to {{freebsd_postinstall_gitserver_group}} group
   user: >

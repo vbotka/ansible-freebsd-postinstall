@@ -106,6 +106,7 @@ References
 - [Adding Swap Space](http://www.freebsd.cz/doc/handbook/adding-swap-space.html)
 - [Upgrading Ports Using Portmaster](https://www.freebsd.org/doc/handbook/ports-using.html)
 - [Procmail Documentation Project](http://pm-doc.sourceforge.net/)
+- [How to setup a Git repository](https://forums.freebsd.org/threads/10810/)
 - [Getting Git on a Server](https://git-scm.com/book/ch4-2.html)
 - [apcupsd - Configuring a UPS daemon](http://www.freebsddiary.org/apcupsd.php)
 - [FreeBSD handbook: Network File System (NFS)](https://www.freebsd.org/doc/handbook/network-nfs.html)

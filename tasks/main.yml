@@ -10,7 +10,7 @@
   tags:
     - freebsd_postinstall_swap
     - freebsd_postinstall_all
-  when: freebsd_postinstall_swap == "YES"
+  when: freebsd_postinstall_swap|lower == "yes"
 
 - include: config_fstab.yml
   tags:
@@ -44,7 +44,7 @@
     - freebsd_postinstall_groupwrappers
     - freebsd_postinstall_users
     - freebsd_postinstall_all
-  when: freebsd_postinstall_groupwrappers_install == "YES" 
+  when: freebsd_postinstall_groupwrappers_install|lower  == "yes"
 
 - include: config_hostname.yml
   tags:
@@ -81,6 +81,11 @@
   - freebsd_postinstall_ntpdate
   - freebsd_postinstall_all
 
+- include: config_nfs.yml
+  tags:
+    - freebsd_postinstall_nfs
+    - freebsd_postinstall_all
+
 - include: config_nfsd.yml
   tags:
     - freebsd_postinstall_nfsd
@@ -90,36 +95,42 @@
   tags:
     - freebsd_postinstall_smartd
     - freebsd_postinstall_all
-  when: freebsd_postinstall_smartd_install == "YES"
+  when: freebsd_postinstall_smartd_install|lower == "yes"
 
 - include: config_apcupsd.yml
   tags:
     - freebsd_postinstall_apcupsd
     - freebsd_postinstall_all
-  when: freebsd_postinstall_apcupsd_service_enabled == "YES"
+  when: freebsd_postinstall_apcupsd_service_enabled|lower == "yes"
 
 - include: config_hostapd.yml
   tags:
     - freebsd_postinstall_hostapd
     - freebsd_postinstall_all
-  when: freebsd_postinstall_hostapd_install == "YES"
+  when: freebsd_postinstall_hostapd_install|lower == "yes"
 
 - include: config_procmail.yml
   tags:
     - freebsd_postinstall_procmail
     - freebsd_postinstall_all
-  when: freebsd_postinstall_procmail_install == "YES"
+  when: freebsd_postinstall_procmail_install|lower == "yes"
 
 - include: config_motd.yml
   tags:
     - freebsd_postinstall_motd
     - freebsd_postinstall_all
 
+- debug: msg="{{ freebsd_postinstall_gitserver_install }}"
+  tags:
+   - freebsd_postinstall_gitserver
+   - freebsd_postinstall_all
+  when: freebsd_postinstall_debug|bool == true
+
 - include: config_gitserver.yml
   tags:
     - freebsd_postinstall_gitserver
     - freebsd_postinstall_all
-  when: freebsd_postinstall_gitserver_install == "YES" 
+  when: freebsd_postinstall_gitserver_install|lower == "yes"
 
 # EOF
 ...

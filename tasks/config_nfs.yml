@@ -1,0 +1,47 @@
+---
+# https://www.freebsd.org/doc/handbook/network-nfs.html
+
+- name: Enable and start nfs client
+  lineinfile: dest="/etc/rc.conf" regexp="{{ item.regexp }}" line="{{ item.line }}" backup="yes"
+  with_items:
+    - { regexp: "^nfs_client_enable", line: "nfs_client_enable=\"YES\""}
+  when: freebsd_postinstall_nfs_service_enable == "YES"
+  notify: enable and start nfs client
+
+- name: Disable and stop nfs client
+  lineinfile: dest="/etc/rc.conf" regexp="{{ item.regexp }}" line="{{ item.line }}" backup="yes"
+  with_items:
+    - { regexp: "^nfs_client_enable", line: "nfs_client_enable=\"NO\""}
+  when: freebsd_postinstall_nfs_service_enable == "NO"
+  notify: disable and stop nfs client
+
+- name: Enable and start lockd
+  lineinfile: dest="/etc/rc.conf" regexp="{{ item.regexp }}" line="{{ item.line }}" backup="yes"
+  with_items:
+    - { regexp: "^rpc_lockd_enable", line: "rpc_lockd_enable=\"YES\""}
+  when: freebsd_postinstall_rpc_lockd_enable == "YES"
+  notify: enable and start lockd
+  
+- name: Disable and stop lockd
+  lineinfile: dest="/etc/rc.conf" regexp="{{ item.regexp }}" line="{{ item.line }}" backup="yes"
+  with_items:
+    - { regexp: "^rpc_lockd_enable", line: "rpc_lockd_enable=\"NO\""}
+  when: freebsd_postinstall_rpc_lockd_enable == "NO"
+  notify: disable and stop lockd
+  
+- name: Enable and start statd
+  lineinfile: dest="/etc/rc.conf" regexp="{{ item.regexp }}" line="{{ item.line }}" backup="yes"
+  with_items:
+    - { regexp: "^rpc_statd_enable", line: "rpc_statd_enable=\"YES\""}
+  when: freebsd_postinstall_rpc_statd_enable == "YES"
+  notify: enable and start statd
+  
+- name: Disable and stop statd
+  lineinfile: dest="/etc/rc.conf" regexp="{{ item.regexp }}" line="{{ item.line }}" backup="yes"
+  with_items:
+    - { regexp: "^rpc_statd_enable", line: "rpc_statd_enable=\"NO\""}
+  when: freebsd_postinstall_rpc_statd_enable == "NO"
+  notify: disable and stop statd
+
+# EOF
+...
