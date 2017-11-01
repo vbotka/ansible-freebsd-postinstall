@@ -1,135 +1,136 @@
 ---
-# tasks for freebsd-postinstall
+# tasks for vbotka.freebsd-postinstall
 
 - include: config_sysctl.yml
   tags:
-    - freebsd_postinstall_sysctl
-    - freebsd_postinstall_all
+    - fp_sysctl
+    - fp_all
 
 - include: config_swap.yml
   tags:
-    - freebsd_postinstall_swap
-    - freebsd_postinstall_all
+    - fp_swap
+    - fp_all
   when: freebsd_postinstall_swap|lower == "yes"
 
 - include: config_fstab.yml
   tags:
-    - freebsd_postinstall_fstab
-    - freebsd_postinstall_all
+    - fp_fstab
+    - fp_all
 
 - include: packages.yml
   tags:
-    - packages
-    - freebsd_postinstall_packages
-    - freebsd_postinstall_all
+    - bsd_packages
+    - bsd_ports
+    - fp_packages
+    - fp_all
 
 - include: copy.yml
   tags:
     - copy
-    - freebsd_postinstall_copy
-    - freebsd_postinstall_all
+    - fp_copy
+    - fp_all
 
 - include: config_libmap.yml
   tags:
-    - freebsd_postinstall_config_libmap
-    - freebsd_postinstall_all
+    - fp_config_libmap
+    - fp_all
 
 - include: config_users.yml
   tags:
-    - freebsd_postinstall_users
-    - freebsd_postinstall_all
+    - fp_users
+    - fp_all
 
 - include: groupwrappers.yml
   tags:
-    - freebsd_postinstall_groupwrappers
-    - freebsd_postinstall_users
-    - freebsd_postinstall_all
+    - fp_groupwrappers
+    - fp_users
+    - fp_all
   when: freebsd_postinstall_groupwrappers_install|lower  == "yes"
 
 - include: config_hostname.yml
   tags:
-    - freebsd_postinstall_hostname
-    - freebsd_postinstall_all
+    - fp_hostname
+    - fp_all
 
 - include: config_hosts.yml
   tags:
-    - freebsd_postinstall_hosts
-    - freebsd_postinstall_all
+    - fp_hosts
+    - fp_all
 
 - include: config_ssh.yml
   tags:
-    - freebsd_postinstall_ssh
-    - freebsd_postinstall_all
+    - fp_ssh
+    - fp_all
 
 - include: config_authorized_key.yml
   tags:
-  - freebsd_postinstall_authorized_key
-  - freebsd_postinstall_all
+  - fp_authorized_key
+  - fp_all
 
 - include: config_timezone.yml
   tags:
-    - freebsd_postinstall_timezone
-    - freebsd_postinstall_all
+    - fp_timezone
+    - fp_all
 
 - include: config_ntpd.yml
   tags:
-    - freebsd_postinstall_ntpd
-    - freebsd_postinstall_all
+    - fp_ntpd
+    - fp_all
 
 - include: config_ntpdate.yml
   tags:
-  - freebsd_postinstall_ntpdate
-  - freebsd_postinstall_all
+  - fp_ntpdate
+  - fp_all
 
 - include: config_nfs.yml
   tags:
-    - freebsd_postinstall_nfs
-    - freebsd_postinstall_all
+    - fp_nfs
+    - fp_all
 
 - include: config_nfsd.yml
   tags:
-    - freebsd_postinstall_nfsd
-    - freebsd_postinstall_all
+    - fp_nfsd
+    - fp_all
 
 - include: config_smartd.yml
   tags:
-    - freebsd_postinstall_smartd
-    - freebsd_postinstall_all
+    - fp_smartd
+    - fp_all
   when: freebsd_postinstall_smartd_install|lower == "yes"
 
 - include: config_apcupsd.yml
   tags:
-    - freebsd_postinstall_apcupsd
-    - freebsd_postinstall_all
+    - fp_apcupsd
+    - fp_all
   when: freebsd_postinstall_apcupsd_service_enabled|lower == "yes"
 
 - include: config_hostapd.yml
   tags:
-    - freebsd_postinstall_hostapd
-    - freebsd_postinstall_all
+    - fp_hostapd
+    - fp_all
   when: freebsd_postinstall_hostapd_install|lower == "yes"
 
 - include: config_procmail.yml
   tags:
-    - freebsd_postinstall_procmail
-    - freebsd_postinstall_all
+    - fp_procmail
+    - fp_all
   when: freebsd_postinstall_procmail_install|lower == "yes"
 
 - include: config_motd.yml
   tags:
-    - freebsd_postinstall_motd
-    - freebsd_postinstall_all
+    - fp_motd
+    - fp_all
 
 - debug: msg="{{ freebsd_postinstall_gitserver_install }}"
   tags:
-   - freebsd_postinstall_gitserver
-   - freebsd_postinstall_all
+   - fp_gitserver
+   - fp_all
   when: freebsd_postinstall_debug|bool == true
 
 - include: config_gitserver.yml
   tags:
-    - freebsd_postinstall_gitserver
-    - freebsd_postinstall_all
+    - fp_gitserver
+    - fp_all
   when: freebsd_postinstall_gitserver_install|lower == "yes"
 
 # EOF

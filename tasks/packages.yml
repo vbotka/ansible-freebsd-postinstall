@@ -6,7 +6,7 @@
     state="present"
   with_items: "{{ freebsd_postinstall_packages }}"
   when: freebsd_install_method == "packages"
-  tags: freebsd_postinstall_packages
+  tags: fp_packages
 
 - name: Install ports
   portinstall: >
@@ -15,52 +15,64 @@
     use_packages="{{ freebsd_use_packages }}"
   with_items: "{{ freebsd_postinstall_packages }}"
   when: freebsd_install_method == "ports"
-  tags: freebsd_postinstall_ports
+  tags: fp_ports
 
 - name: Install smartmontools package
   pkgng: >
     name="smartmontools"
     state="present"
-  when: (freebsd_install_method == "packages") and (freebsd_postinstall_smartd_install == "YES")
-  tags: freebsd_postinstall_packages
+  when:
+    - freebsd_install_method == "packages"
+    - freebsd_postinstall_smartd_install|lower == "yes"
+  tags: fp_packages_smartmontools
 
 - name: Install smartmontools port
   portinstall: >
     name="smartmontools"
     state="present"
     use_packages="{{ freebsd_use_packages }}"
-  when: (freebsd_install_method == "ports") and (freebsd_postinstall_smartd_install == "YES")
-  tags: freebsd_postinstall_ports
+  when:
+    - freebsd_install_method == "ports"
+    - freebsd_postinstall_smartd_install|lower == "yes"
+  tags: fp_ports_smartmontools
 
 - name: Install hostapd package
   pkgng: >
     name="hostapd"
     state="present"
-  when: (freebsd_install_method == "packages") and (freebsd_postinstall_hostapd_install == "YES")
-  tags: freebsd_postinstall_packages
+  when:
+    - freebsd_install_method == "packages"
+    - freebsd_postinstall_hostapd_install|lower == "yes"
+  tags: fp_packages_hostapd
 
 - name: Install hostapd port
   portinstall: >
     name="hostapd"
     state="present"
     use_packages="{{ freebsd_use_packages }}"
-  when: (freebsd_install_method == "ports") and (freebsd_postinstall_hostapd_install == "YES")
-  tags: freebsd_postinstall_ports
+  when:
+    - freebsd_install_method == "ports"
+    - freebsd_postinstall_hostapd_install|lower == "yes"
+  tags: fp_ports_hostapd
 
 - name: Install procmail package
   pkgng: >
     name="procmail"
     state="present"
-  when: (freebsd_install_method == "packages") and (freebsd_postinstall_procmail_install == "YES")
-  tags: freebsd_postinstall_packages
+  when:
+    - freebsd_install_method == "packages"
+    - freebsd_postinstall_procmail_install|lower == "yes"
+  tags: fp_packages_procmail
 
 - name: Install procmail port
   portinstall: >
     name="procmail"
     state="present"
     use_packages="{{ freebsd_use_packages }}"
-  when: (freebsd_install_method == "ports") and (freebsd_postinstall_procmail_install == "YES")
-  tags: freebsd_postinstall_ports
+  when:
+    - freebsd_install_method == "ports"
+    - freebsd_postinstall_procmail_install|lower == "yes"
+  tags: fp_ports_procmail
 
 - name: Create symbolic links
   file: >
@@ -69,7 +81,7 @@
     state="link"
     force="yes"
   with_items: "{{ freebsd_postinstall_links }}"
-  tags: freebsd_postinstall_links
+  tags: fp_links
 
 # EOF
 ...
