@@ -4,7 +4,7 @@
   local_action: >
     stat path="{{ role_path }}/{{ freebsd_postinstall_copy_dir }}/default"
   register: default_copy
-  tags: fp_default_synchronize
+  tags: fp_synchronize_default
   # NOTE: playbooks directory IS NOT local_action modules current
   # working directory. Absolute path role_path is needed.
 
@@ -17,14 +17,16 @@
     perms="no"
     owner="no"
     group="no"
-  when: default_copy.stat.exists
-  tags: fp_default_synchronize
+  when:
+    - default_copy.stat.exists
+    - fp_synchronize_default|lower == "yes"
+  tags: fp_synchronize_default
 
 - name: Check existence of {{ role_path }}/{{ freebsd_postinstall_copy_dir }}/{{ rc_conf_hostname }}
   local_action: >
     stat path="{{ role_path }}/{{ freebsd_postinstall_copy_dir }}/{{ rc_conf_hostname }}"
   register: optional_copy
-  tags: fp_host_specific_synchronize
+  tags: fp_synchronize_optional
 
 - name: Synchronize host specific files {{ freebsd_postinstall_copy_dir }}/{{ rc_conf_hostname }} (relative to playbooks directory)
   synchronize: >
@@ -35,36 +37,42 @@
     perms="no"
     owner="no"
     group="no"
-  when: optional_copy.stat.exists
-  tags: fp_host_specific_synchronize
+  when:
+    - optional_copy.stat.exists
+    - fp_synchronize optional|lower == "yes"
+  tags: fp_synchronize_optional
 
 - name: Check existence of {{ role_path }}/{{ freebsd_postinstall_copy_dir }}/default.tar
   local_action: >
     stat path="{{ role_path }}/{{ freebsd_postinstall_copy_dir }}/default.tar"
   register: default_copy
-  tags: fp_default_unarchive
+  tags: fp_unarchive_default
 
 - name: Untar default files {{ freebsd_postinstall_copy_dir }}/default.tar (relative to playbooks directory)
   unarchive: >
     src="{{ freebsd_postinstall_copy_dir }}/default.tar"
     dest="/"
     keep_newer="yes"
-  when: default_copy.stat.exists
-  tags: fp_default_unarchive
+  when:
+    - default_copy.stat.exists
+    - fp_synchronize_default|lower == "yes"
+  tags: fp_unarchive_default
 
 - name: Check existence of {{ role_path }}/{{ freebsd_postinstall_copy_dir }}/{{ rc_conf_hostname }}.tar
   local_action: >
     stat path="{{ role_path }}/{{ freebsd_postinstall_copy_dir }}/{{ rc_conf_hostname }}.tar"
   register: optional_copy
-  tags: fp_host_specific_unarchive
+  tags: fp_unarchive_optional
 
 - name: Untar host specific files {{ freebsd_postinstall_copy_dir }}/{{ rc_conf_hostname }}.tar (relative to playbooks directory)
   unarchive: >
     src="{{ freebsd_postinstall_copy_dir }}/{{ rc_conf_hostname }}.tar"
     dest="/"
     keep_newer="yes"
-  when: optional_copy.stat.exists
-  tags: fp_host_specific_unarchive
+  when:
+    - optional_copy.stat.exists
+    - fp_synchronize_optional|lower == "yes"
+  tags: fp_unarchive_optional
 
 # EOF
 ...
