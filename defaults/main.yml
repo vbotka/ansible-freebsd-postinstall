@@ -67,7 +67,7 @@ freebsd_postinstall_zoneinfo_path: "/usr/share/zoneinfo"
 # ----------------------------------------------------------------------
 # ntpdate
 # Run ntpdate to sync time on boot
-ntpdate_enable: "YES"
+ntpdate_enable: "NO"
 # -b Force the time to be stepped using the settimeofday(2) system call,
 # rather than slewed (default) using the adjtime(2) system call.  This
 # option should be used when called from a startup file at boot time.
