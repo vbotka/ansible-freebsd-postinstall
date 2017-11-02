@@ -6,6 +6,13 @@
     - fp_sysctl
     - fp_all
 
+- include: config_make.yml
+  tags:
+    - bsd_packages
+    - bsd_ports
+    - fp_make
+    - fp_all
+
 - include: config_swap.yml
   tags:
     - fp_swap

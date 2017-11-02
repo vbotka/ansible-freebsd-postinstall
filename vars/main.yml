@@ -11,6 +11,14 @@
 #freebsd_postinstall_zoneinfo_path: "/usr/share/zoneinfo"
 
 # ----------------------------------------------------------------------
+# /etc/make.conf
+#make_conf_owner: "root"
+#make_conf_group: "wheel"
+#make_conf_mode: "u=rw,g=r,o=r"
+#make_conf:
+#  - { key: "DEFAULT_VERSIONS", value: "+=ssl=openssl" }
+
+# ----------------------------------------------------------------------
 # Packages/Ports
 #
 #freebsd_install_method: "packages"

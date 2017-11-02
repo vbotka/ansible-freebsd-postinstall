@@ -11,6 +11,7 @@ freebsd-postinstall
 - configure hostname
 - configure hosts
 - configure libmap
+- configure make.conf
 - configure motd
 - configure nfsd
 - configure ntpd
@@ -21,10 +22,13 @@ freebsd-postinstall
 - configure swap
 - configure sysctl
 - configure timezone
-- add users
+- configure users
 - copy authorized_keys
-- install packages
+- install packages and/or ports
 - copy overlays
+
+Tested with FreeBSD 10.3 and 11.1
+
 
 Requirements
 ------------
@@ -60,13 +64,13 @@ ansible host -e 'ansible_shell_type=csh ansible_shell_executable=/bin/csh' -a 's
 2) Install role.
 
 ```
-ansible-galaxy install vbotka.ansible-freebsd-postinstall
+ansible-galaxy install vbotka.freebsd-postinstall
 ```
 
 3) Fit variables.
 
 ```
-~/.ansible/roles/vbotka.ansible-freebsd-postinstall/vars/main.yml
+~/.ansible/roles/vbotka.freebsd-postinstall/vars/main.yml
 ```
 
 4) Create playbook.
@@ -110,3 +114,4 @@ References
 - [Getting Git on a Server](https://git-scm.com/book/ch4-2.html)
 - [apcupsd - Configuring a UPS daemon](http://www.freebsddiary.org/apcupsd.php)
 - [FreeBSD handbook: Network File System (NFS)](https://www.freebsd.org/doc/handbook/network-nfs.html)
+- [Prioritizing SSL/TLS in make.conf](https://forums.freebsd.org/threads/62930/)

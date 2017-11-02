@@ -1,0 +1,17 @@
+---
+
+- name: Configure /etc/make.conf
+  lineinfile: >
+    dest="/etc/make.conf"
+    regexp="^{{ item.key }}"
+    line="{{ item.key }}{{ item.value }}"
+    create="yes"
+    owner="{{ make_conf_owner }}"
+    group="{{ make_conf_group }}"
+    mode="{{ make_conf_mode }}"
+    backup="yes"
+  with_items: "{{ make_conf }}"
+  tags: fp_make_conf
+
+# EOF
+...
