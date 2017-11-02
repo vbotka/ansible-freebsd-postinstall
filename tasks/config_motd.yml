@@ -1,10 +1,31 @@
 ---
 
+# By default system info in added to the top of /etc/motd on reboot.
+# Set update_motd NO to disable this update.
+
 - name: Configure /etc/motd
   template: >
     src="motd.j2"
     dest="/etc/motd"
     backup="yes"
+
+- name: Set update_motd YES
+  lineinfile: >
+    dest="/etc/rc.conf"
+    regexp="^update_motd"
+    line="update_motd=\"YES\""
+    backup="yes"
+  when: freebsd_postinstall_update_motd|lower == "yes"
+  tags: fp_rc_conf_update_motd
+
+- name: Set update_motd NO
+  lineinfile: >
+    dest="/etc/rc.conf"
+    regexp="^update_motd"
+    line="update_motd=\"NO\""
+    backup="yes"
+  when: freebsd_postinstall_update_motd|lower == "no"
+  tags: fp_rc_conf_update_motd
 
 # EOF
 ...
