@@ -3,7 +3,6 @@
 # TODO:
 # 1) Leapseconds file expired
 # https://forums.freebsd.org/threads/56645/
-# 2) ntpd_sync_on_start="YES"
 
 - name: Enable and start ntpd
   lineinfile: >
@@ -11,7 +10,7 @@
     regexp="^ntpd_enable"
     line="ntpd_enable=\"YES\""
     backup="yes"
-  when: freebsd_postinstall_ntp_service_enable == "YES"
+  when: freebsd_postinstall_ntp_service_enable|lower == "yes"
   notify: enable and start ntpd
   tags: fp_rc_conf_ntpd
 
@@ -21,7 +20,7 @@
     regexp="^ntpd_enable"
     line="ntpd_enable=\"NO\""
     backup="yes"
-  when: freebsd_postinstall_ntp_service_enable == "NO"
+  when: freebsd_postinstall_ntp_service_enable|lower == "no"
   notify: disable and stop ntpd
   tags: fp_rc_conf_ntpd
 
