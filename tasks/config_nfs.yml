@@ -5,43 +5,49 @@
   lineinfile: dest="/etc/rc.conf" regexp="{{ item.regexp }}" line="{{ item.line }}" backup="yes"
   with_items:
     - { regexp: "^nfs_client_enable", line: "nfs_client_enable=\"YES\""}
-  when: freebsd_postinstall_nfs_service_enable == "YES"
+  when: freebsd_postinstall_nfs_service_enable|lower == "yes"
   notify: enable and start nfs client
+  tags: fp_enable_nfsclient
 
 - name: Disable and stop nfs client
   lineinfile: dest="/etc/rc.conf" regexp="{{ item.regexp }}" line="{{ item.line }}" backup="yes"
   with_items:
     - { regexp: "^nfs_client_enable", line: "nfs_client_enable=\"NO\""}
-  when: freebsd_postinstall_nfs_service_enable == "NO"
+  when: freebsd_postinstall_nfs_service_enable|lower == "no"
   notify: disable and stop nfs client
+  tags: fp_disable_nfsclient
 
 - name: Enable and start lockd
   lineinfile: dest="/etc/rc.conf" regexp="{{ item.regexp }}" line="{{ item.line }}" backup="yes"
   with_items:
     - { regexp: "^rpc_lockd_enable", line: "rpc_lockd_enable=\"YES\""}
-  when: freebsd_postinstall_rpc_lockd_enable == "YES"
+  when: freebsd_postinstall_rpc_lockd_enable|lower == "yes"
   notify: enable and start lockd
+  tags: fp_enable_lockd
   
 - name: Disable and stop lockd
   lineinfile: dest="/etc/rc.conf" regexp="{{ item.regexp }}" line="{{ item.line }}" backup="yes"
   with_items:
     - { regexp: "^rpc_lockd_enable", line: "rpc_lockd_enable=\"NO\""}
-  when: freebsd_postinstall_rpc_lockd_enable == "NO"
+  when: freebsd_postinstall_rpc_lockd_enable|lower == "no"
   notify: disable and stop lockd
+  tags: fp_disable_lockd
   
 - name: Enable and start statd
   lineinfile: dest="/etc/rc.conf" regexp="{{ item.regexp }}" line="{{ item.line }}" backup="yes"
   with_items:
     - { regexp: "^rpc_statd_enable", line: "rpc_statd_enable=\"YES\""}
-  when: freebsd_postinstall_rpc_statd_enable == "YES"
+  when: freebsd_postinstall_rpc_statd_enable|lower == "yes"
   notify: enable and start statd
+  tags: fp_enable_statd
   
 - name: Disable and stop statd
   lineinfile: dest="/etc/rc.conf" regexp="{{ item.regexp }}" line="{{ item.line }}" backup="yes"
   with_items:
     - { regexp: "^rpc_statd_enable", line: "rpc_statd_enable=\"NO\""}
-  when: freebsd_postinstall_rpc_statd_enable == "NO"
+  when: freebsd_postinstall_rpc_statd_enable|lower == "no"
   notify: disable and stop statd
+  tags: fp_disable_statd
 
 # EOF
 ...

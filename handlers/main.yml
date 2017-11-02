@@ -26,9 +26,9 @@
 
 # nfs
 - name: enable and start nfs client
-  service: name="nfs" state="started" enabled="yes"
+  service: name="nfsclient" state="started" enabled="yes"
 - name: disable and stop nfs client
-  service: name="nfs" state="stopped" enabled="no"
+  service: name="nfsclient" state="stopped" enabled="no"
 
 # nfsd
 - name: enable and start nfs server
