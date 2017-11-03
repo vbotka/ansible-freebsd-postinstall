@@ -1,0 +1,17 @@
+---
+
+# TODO:
+# (1) configure /usr/local/etc/sudoers.d
+# (2) configure /usr/local/etc/sudoers.dist
+
+- name: Configure {{ freebsd_postinstall_sudoers_conf }}
+  lineinfile: >
+    dest="{{ freebsd_postinstall_sudoers_conf }}"
+    regexp="^{{ item.key }}"
+    line="{{ item.key }} {{ item.value }}"
+    backup="yes"
+  with_items: "{{ freebsd_postinstall_sudoers }}"
+  tags: fp_sudoers
+
+# EOF
+...

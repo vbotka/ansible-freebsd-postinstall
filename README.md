@@ -18,6 +18,7 @@ freebsd-postinstall
 - configure ntpdate
 - configure procmail
 - configure smartd
+- configure sudoers
 - configure ssh
 - configure swap
 - configure sysctl
@@ -116,3 +117,4 @@ References
 - [FreeBSD handbook: Network File System (NFS)](https://www.freebsd.org/doc/handbook/network-nfs.html)
 - [Prioritizing SSL/TLS in make.conf](https://forums.freebsd.org/threads/62930/)
 - [Testing NTP](https://forums.freebsd.org/threads/41874/)
+- [FreeBSD handbook: Shared Administration with Sudo](https://www.freebsd.org/doc/handbook/security-sudo.html)

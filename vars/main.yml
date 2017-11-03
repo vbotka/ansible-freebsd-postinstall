@@ -162,5 +162,12 @@ freebsd_postinstall_gitserver_group_gid: "9418"
 
 freebsd_postinstall_gitserver_dir_mode: "0770"
 
+# ----------------------------------------------------------------------
+# sudoers
+#freebsd_postinstall_sudoers_conf: "/usr/local/etc/sudoers"
+#freebsd_postinstall_sudoers:
+#  - { key: admin, value: "ALL=NOPASSWD: ALL" }
+
+
 # EOF
 ...

@@ -256,5 +256,10 @@ freebsd_postinstall_gitserver_group: "gitusers"
 freebsd_postinstall_gitserver_dir: "/home/{{freebsd_postinstall_gitserver_owner}}"
 freebsd_postinstall_gitserver_dir_mode: "0770"
 
+# ----------------------------------------------------------------------
+# sudoers
+freebsd_postinstall_sudoers_conf: "/usr/local/etc/sudoers"
+freebsd_postinstall_sudoers: []
+
 # EOF
 ...

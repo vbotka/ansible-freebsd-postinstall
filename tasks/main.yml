@@ -140,5 +140,10 @@
     - fp_all
   when: freebsd_postinstall_gitserver_install|lower == "yes"
 
+- include: config_sudoers.yml
+  tags:
+    - fp_sudoers
+    - fp_all
+
 # EOF
 ...
