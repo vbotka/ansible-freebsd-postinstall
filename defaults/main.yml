@@ -32,6 +32,7 @@ freebsd_postinstall_hosts: []
 # Copy
 # directory is relative to the playbooks directory
 freebsd_postinstall_copy_dir: "copy"
+fp_unarchive_keep_newer: "no"
 fp_synchronize_default: "no"
 fp_synchronize_optional: "no"
 

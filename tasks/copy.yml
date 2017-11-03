@@ -52,7 +52,7 @@
   unarchive: >
     src="{{ freebsd_postinstall_copy_dir }}/default.tar"
     dest="/"
-    keep_newer="yes"
+    keep_newer="{{ fp_unarchive_keep_newer }}"
   when:
     - default_copy.stat.exists
     - fp_synchronize_default|lower == "yes"
@@ -68,7 +68,7 @@
   unarchive: >
     src="{{ freebsd_postinstall_copy_dir }}/{{ rc_conf_hostname }}.tar"
     dest="/"
-    keep_newer="yes"
+    keep_newer="{{ fp_unarchive_keep_newer }}"
   when:
     - optional_copy.stat.exists
     - fp_synchronize_optional|lower == "yes"
