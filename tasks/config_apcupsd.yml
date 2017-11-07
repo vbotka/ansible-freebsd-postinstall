@@ -6,9 +6,9 @@
     regexp="^apcupsd_enable"
     line="apcupsd_enable=\"YES\""
     backup="yes"
-  when: freebsd_postinstall_apcupsd_service_enabled == "YES"
+  when: freebsd_postinstall_apcupsd_service_enabled|lower == "yes"
   notify: enable and start apcupsd
-  tags: config_rc_conf_apcupsd
+  tags: fp_rc_conf_apcupsd
 
 - name: Disable and stop apcupsd
   lineinfile: >
@@ -16,19 +16,23 @@
     regexp="^apcupsd_enable"
     line="apcupsd_enable=\"NO\""
     backup="yes"
-  when: freebsd_postinstall_apcupsd_service_enabled == "NO"
+  when: freebsd_postinstall_apcupsd_service_enabled|lower == "no"
   notify: disable and stop apcupsd
-  tags: config_rc_conf_apcupsd
+  tags: fp_rc_conf_apcupsd
 
 - name: Configure apcupsd.conf
   template: >
-    dest="/usr/local/etc/apcupsd/apcupsd.conf"
     src="apcupsd.conf.j2"
+    dest="{{ freebsd_postinstall_apcupsd_conf_file }}"
+    create="yes"
+    owner="{{ freebsd_postinstall_apcupsd_conf_owner }}"
+    group="{{ freebsd_postinstall_apcupsd_conf_group }}"
+    mode="{{ freebsd_postinstall_apcupsd_conf_mode }}"
     backup="yes"
-  when: freebsd_postinstall_apcupsd_service_enabled == "YES"
+  when: freebsd_postinstall_apcupsd_service_enabled|lower == "yes"
   notify: restart apcupsd
   tags:
-    - freebsd_postinstall_apcupsd_conf
+    - fp_apcupsd_conf
 
 # EOF
 ...
