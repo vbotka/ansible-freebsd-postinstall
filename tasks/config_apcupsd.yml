@@ -20,19 +20,23 @@
   notify: disable and stop apcupsd
   tags: fp_rc_conf_apcupsd
 
+- name: Create directory {{ freebsd_postinstall_apcupsd_conf_dir }}
+  file: >
+    state="directory"
+    path="{{ freebsd_postinstall_apcupsd_conf_dir }}"
+  tags: fp_apcupsd_conf
+
 - name: Configure apcupsd.conf
   template: >
     src="apcupsd.conf.j2"
     dest="{{ freebsd_postinstall_apcupsd_conf_file }}"
-    create="yes"
     owner="{{ freebsd_postinstall_apcupsd_conf_owner }}"
     group="{{ freebsd_postinstall_apcupsd_conf_group }}"
     mode="{{ freebsd_postinstall_apcupsd_conf_mode }}"
     backup="yes"
   when: freebsd_postinstall_apcupsd_service_enabled|lower == "yes"
   notify: restart apcupsd
-  tags:
-    - fp_apcupsd_conf
+  tags: fp_apcupsd_conf
 
 # EOF
 ...

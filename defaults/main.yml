@@ -113,7 +113,8 @@ freebsd_postinstall_smartd_devices: []
 # apcupsd
 freebsd_postinstall_apcupsd_service_enabled: "NO"
 freebsd_postinstall_apcupsd_service_name: "apcupsd"
-freebsd_postinstall_apcupsd_conf_file: "/usr/local/etc/apcupsd/apcupsd.conf"
+freebsd_postinstall_apcupsd_conf_dir: "/usr/local/etc/apcupsd"
+freebsd_postinstall_apcupsd_conf_file: "{{ freebsd_postinstall_apcupsd_conf_dir }}/apcupsd.conf"
 freebsd_postinstall_apcupsd_conf_owner: "root"
 freebsd_postinstall_apcupsd_conf_group: "wheel"
 freebsd_postinstall_apcupsd_conf_mode: "644"
