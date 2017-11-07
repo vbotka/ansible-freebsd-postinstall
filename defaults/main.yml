@@ -103,6 +103,10 @@ freebsd_postinstall_smartd_install: "NO"
 freebsd_postinstall_smartd_service_name: "smartd"
 freebsd_postinstall_smartd_service_state: "stopped"
 freebsd_postinstall_smartd_service_enabled: "NO"
+freebsd_postinstall_smartd_conf_file: "/usr/local/etc/smartd.conf"
+freebsd_postinstall_smartd_conf_owner: "root"
+freebsd_postinstall_smartd_conf_group: "wheel"
+freebsd_postinstall_smartd_conf_mode: "644"
 freebsd_postinstall_smartd_devices: []
 
 # ----------------------------------------------------------------------

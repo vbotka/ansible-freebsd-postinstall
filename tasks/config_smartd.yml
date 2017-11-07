@@ -6,9 +6,11 @@
     regexp="^smartd_enable"
     line="smartd_enable=\"YES\""
     backup="yes"
-  when: (freebsd_postinstall_smartd_service_enabled == "YES") and (freebsd_postinstall_smartd_install == "YES")
+  when:
+    - freebsd_postinstall_smartd_service_enabled|lower == "yes"
+    - freebsd_postinstall_smartd_install|lower == "yes"
   notify: enable and start smartd
-  tags: config_rc_conf_smart
+  tags: fp_rc_conf_smartd
 
 - name: Disable and stop smartd
   lineinfile: >
@@ -16,9 +18,11 @@
     regexp="^smartd_enable"
     line="smartd_enable=\"NO\""
     backup="yes"
-  when: (freebsd_postinstall_smartd_service_enabled == "NO") and (freebsd_postinstall_smartd_install == "YES")
+  when:
+    - freebsd_postinstall_smartd_service_enabled|lower == "no"
+    - freebsd_postinstall_smartd_install|lower == "yes"
   notify: disable and stop smartd
-  tags: config_rc_conf_smart
+  tags: fp_rc_conf_smartd
 
 - name: Configure smartd.conf
   lineinfile: >
@@ -27,16 +31,21 @@
     state="absent"
     backup="yes"
   notify: reload smartd
-  tags:
-    - freebsd_postinstall_smartd_conf
+  tags: fp_smartd_conf
 
-- name: Configure devices in smartd.conf
+- name: Configure devices in {{ freebsd_postinstall_smartd_conf_file }}
   lineinfile: >
-    dest="/usr/local/etc/smartd.conf"
+    dest="{{ freebsd_postinstall_smartd_conf_file }}"
     regexp="{{ item.regexp }}"
     line="{{ item.line }}"
+    create="yes"
+    owner="{{ freebsd_postinstall_smartd_conf_owner }}"
+    group="{{ freebsd_postinstall_smartd_conf_group }}"
+    mode="{{ freebsd_postinstall_smartd_conf_mode }}"
     backup="yes"
   with_items: "{{freebsd_postinstall_smartd_devices}}"
   notify: reload smartd
-  tags:
-    - freebsd_postinstall_smartd_conf
+  tags: fp_smartd_conf
+
+# EOF
+...
