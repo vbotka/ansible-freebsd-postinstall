@@ -74,6 +74,16 @@
     - freebsd_postinstall_procmail_install|lower == "yes"
   tags: fp_ports_procmail
 
+- name: Install sysutils/apcupsd  port
+  portinstall: >
+    name="sysutils/apcupsd"
+    state="present"
+    use_packages="{{ freebsd_use_packages }}"
+  when:
+    - freebsd_install_method == "ports"
+    - freebsd_postinstall_apcupsd_service_enabled|lower == "yes"
+  tags: fp_ports_apcupsd
+
 - name: Create symbolic links
   file: >
     src="{{ item.target }}"
