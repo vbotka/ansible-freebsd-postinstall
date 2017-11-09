@@ -7,8 +7,12 @@
 - name: Configure {{ freebsd_postinstall_sudoers_conf }}
   lineinfile: >
     dest="{{ freebsd_postinstall_sudoers_conf }}"
+    owner="{{ freebsd_postinstall_sudoers_conf_owner }}"
+    group="{{ freebsd_postinstall_sudoers_conf_group }}"
+    mode="{{ freebsd_postinstall_sudoers_conf_mode }}"
     regexp="^{{ item.key }}"
     line="{{ item.key }} {{ item.value }}"
+    insertafter="EOF"
     backup="yes"
   with_items: "{{ freebsd_postinstall_sudoers }}"
   tags: fp_sudoers
