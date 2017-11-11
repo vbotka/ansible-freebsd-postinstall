@@ -43,7 +43,7 @@
     group="{{ freebsd_postinstall_smartd_conf_group }}"
     mode="{{ freebsd_postinstall_smartd_conf_mode }}"
     backup="yes"
-  with_items: "{{freebsd_postinstall_smartd_devices}}"
+  with_items: "{{ freebsd_postinstall_smartd_devices }}"
   notify: reload smartd
   tags: fp_smartd_conf
 
