@@ -8,9 +8,8 @@
     insertafter="EOF"
     backup="yes"
     create="yes"
-  with_items: "{{freebsd_postinstall_sysctl}}"
+  with_items: "{{ freebsd_postinstall_sysctl }}"
   notify: reload sysctl
-  tags: freebsd_postinstall_sysctl
 
 # EOF
 ...
