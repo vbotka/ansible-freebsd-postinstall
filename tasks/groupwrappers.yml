@@ -1,42 +1,45 @@
 ---
 
-- name: Create directory for wrappers {{freebsd_postinstall_groupwrappers_dir}}
+# Ansible module users needs utilities groupadd, groupdel, groupmod. There are
+# no such utililities in BSD. Let us create them.
+
+- name: Create directory for wrappers {{ freebsd_postinstall_groupwrappers_dir }}
   file: >
     state="directory"
-    path="{{freebsd_postinstall_groupwrappers_dir}}"
-    owner="{{freebsd_postinstall_groupwrappers_owner}}"
-    group="{{freebsd_postinstall_groupwrappers_group}}"
+    path="{{ freebsd_postinstall_groupwrappers_dir }}"
+    owner="{{ freebsd_postinstall_groupwrappers_owner }}"
+    group="{{ freebsd_postinstall_groupwrappers_group }}"
   tags: fp_groupwrappers_dir
 
-- name: Create groupadd wrapper in {{freebsd_postinstall_groupwrappers_dir}}
+- name: Create groupadd wrapper in {{ freebsd_postinstall_groupwrappers_dir }}
   template: >
     src="groupadd.j2"
-    dest="{{freebsd_postinstall_groupwrappers_dir}}/groupadd"
-    owner="{{freebsd_postinstall_groupwrappers_owner}}"
-    group="{{freebsd_postinstall_groupwrappers_group}}"
-    mode="{{freebsd_postinstall_groupwrappers_mode}}"
+    dest="{{ freebsd_postinstall_groupwrappers_dir }}/groupadd"
+    owner="{{ freebsd_postinstall_groupwrappers_owner }}"
+    group="{{ freebsd_postinstall_groupwrappers_group }}"
+    mode="{{ freebsd_postinstall_groupwrappers_mode }}"
     backup="no"
-  tags: fp_groupwrappers_templates
+  tags: fp_groupwrappers_groupadd
 
-- name: Create groupdel wrapper in {{freebsd_postinstall_groupwrappers_dir}}
+- name: Create groupdel wrapper in {{ freebsd_postinstall_groupwrappers_dir }}
   template: >
     src="groupdel.j2"
-    dest="{{freebsd_postinstall_groupwrappers_dir}}/groupdel"
-    owner="{{freebsd_postinstall_groupwrappers_owner}}"
-    group="{{freebsd_postinstall_groupwrappers_group}}"
-    mode="{{freebsd_postinstall_groupwrappers_mode}}"
+    dest="{{ freebsd_postinstall_groupwrappers_dir }}/groupdel"
+    owner="{{ freebsd_postinstall_groupwrappers_owner }}"
+    group="{{ freebsd_postinstall_groupwrappers_group }}"
+    mode="{{ freebsd_postinstall_groupwrappers_mode }}"
     backup="no"
-  tags: fp_groupwrappers_templates
+  tags: fp_groupwrappers_groupdel
 
-- name: Create groupmod wrapper in {{freebsd_postinstall_groupwrappers_dir}}
+- name: Create groupmod wrapper in {{ freebsd_postinstall_groupwrappers_dir }}
   template: >
     src="groupmod.j2"
-    dest="{{freebsd_postinstall_groupwrappers_dir}}/groupmod"
-    owner="{{freebsd_postinstall_groupwrappers_owner}}"
-    group="{{freebsd_postinstall_groupwrappers_group}}"
-    mode="{{freebsd_postinstall_groupwrappers_mode}}"
+    dest="{{ freebsd_postinstall_groupwrappers_dir }}/groupmod"
+    owner="{{ freebsd_postinstall_groupwrappers_owner }}"
+    group="{{ freebsd_postinstall_groupwrappers_group }}"
+    mode="{{ freebsd_postinstall_groupwrappers_mode }}"
     backup="no"
-  tags: fp_groupwrappers_templates
+  tags: fp_groupwrappers_groupmod
 
 # EOF
 ...
