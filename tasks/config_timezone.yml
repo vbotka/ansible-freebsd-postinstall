@@ -5,14 +5,14 @@
   register: command_result
   changed_when: command_result.stdout == "changed"
   notify: adjust CMOS
-  tags: config_timezone
+  tags: fp_create_timezone
 
 - name: Change timezone to {{ freebsd_postinstall_zoneinfo }}
   shell: if ( ! diff /usr/share/zoneinfo/{{ freebsd_postinstall_zoneinfo }} /etc/localtime ); then tzsetup {{ freebsd_postinstall_zoneinfo }}; fi
   register: command_result
   changed_when: command_result.stdout | search("differ")
   notify: adjust CMOS
-  tags: config_timezone
+  tags: fp_change_timezone
 
 # EOF
 ...
