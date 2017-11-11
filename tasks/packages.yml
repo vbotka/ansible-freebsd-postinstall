@@ -5,7 +5,7 @@
     name="{{ item }}"
     state="present"
   with_items: "{{ freebsd_postinstall_packages }}"
-  when: freebsd_install_method == "packages"
+  when: freebsd_install_method|lower == "packages"
   tags: fp_packages
 
 - name: Install ports
@@ -14,7 +14,7 @@
     state="present"
     use_packages="{{ freebsd_use_packages }}"
   with_items: "{{ freebsd_postinstall_packages }}"
-  when: freebsd_install_method == "ports"
+  when: freebsd_install_method|lower == "ports"
   tags: fp_ports
 
 - name: Install smartmontools package
@@ -22,7 +22,7 @@
     name="smartmontools"
     state="present"
   when:
-    - freebsd_install_method == "packages"
+    - freebsd_install_method|lower == "packages"
     - freebsd_postinstall_smartd_install|lower == "yes"
   tags: fp_packages_smartmontools
 
@@ -32,7 +32,7 @@
     state="present"
     use_packages="{{ freebsd_use_packages }}"
   when:
-    - freebsd_install_method == "ports"
+    - freebsd_install_method|lower == "ports"
     - freebsd_postinstall_smartd_install|lower == "yes"
   tags: fp_ports_smartmontools
 
@@ -41,7 +41,7 @@
     name="hostapd"
     state="present"
   when:
-    - freebsd_install_method == "packages"
+    - freebsd_install_method|lower == "packages"
     - freebsd_postinstall_hostapd_install|lower == "yes"
   tags: fp_packages_hostapd
 
@@ -51,7 +51,7 @@
     state="present"
     use_packages="{{ freebsd_use_packages }}"
   when:
-    - freebsd_install_method == "ports"
+    - freebsd_install_method|lower == "ports"
     - freebsd_postinstall_hostapd_install|lower == "yes"
   tags: fp_ports_hostapd
 
@@ -60,7 +60,7 @@
     name="procmail"
     state="present"
   when:
-    - freebsd_install_method == "packages"
+    - freebsd_install_method|lower == "packages"
     - freebsd_postinstall_procmail_install|lower == "yes"
   tags: fp_packages_procmail
 
@@ -70,7 +70,7 @@
     state="present"
     use_packages="{{ freebsd_use_packages }}"
   when:
-    - freebsd_install_method == "ports"
+    - freebsd_install_method|lower == "ports"
     - freebsd_postinstall_procmail_install|lower == "yes"
   tags: fp_ports_procmail
 
@@ -80,7 +80,7 @@
     state="present"
     use_packages="{{ freebsd_use_packages }}"
   when:
-    - freebsd_install_method == "ports"
+    - freebsd_install_method|lower == "ports"
     - freebsd_postinstall_apcupsd_service_enabled|lower == "yes"
   tags: fp_ports_apcupsd
 
