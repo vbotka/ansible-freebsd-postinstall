@@ -7,9 +7,9 @@
     line="{{ item.line }}"
     backup="yes"
   with_items:
-    - { regexp: "^hostname",  line: "hostname=\"{{rc_conf_hostname}}\""}
+    - { regexp: "^hostname",  line: "hostname=\"{{ rc_conf_hostname }}\""}
   notify: set hostname
-  tags: freebsd_postinstall_rc_conf_hostname
+  tags: fp_rc_conf_hostname
 
 # DO overwrites hostname from rc.conf
 - name: Configure hostname in /etc/rc.digitalocean.d/droplet.conf
@@ -19,8 +19,11 @@
     line="{{ item.line }}"
     backup="yes"
   with_items:
-    - { regexp: "^hostname",  line: "hostname=\"{{rc_conf_hostname}}\""}
-  when: digitalocean == "yes"
+    - { regexp: "^hostname",  line: "hostname=\"{{ rc_conf_hostname }}\""}
+  when: digitalocean|lower == "yes"
   tags:
-    - freebsd_postinstall_rc_conf_hostname_digitalocean
-    - freebsd_postinstall_rc_conf_hostname
+    - fp_rc_conf_hostname_digitalocean
+    - fp_rc_conf_hostname
+
+# EOF
+...
