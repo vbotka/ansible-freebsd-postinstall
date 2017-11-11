@@ -6,5 +6,7 @@
          fstype="{{ item.fstype }}"
          opts="{{ item.opts }}"
          state="present"
-  with_items: "{{freebsd_postinstall_fstab_entries}}"
-  tags: config_fstab
+  with_items: "{{ freebsd_postinstall_fstab_entries }}"
+
+# EOF
+...
