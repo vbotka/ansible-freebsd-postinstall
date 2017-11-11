@@ -5,8 +5,7 @@
     user="{{ item.user }}"
     key="{{ item.key }}"
     manage_dir="yes"
-  with_items: "{{freebsd_postinstall_authorized_key}}"
-  tags: config_authorized_key
+  with_items: "{{ freebsd_postinstall_authorized_key }}"
 
 # EOF
 ...
