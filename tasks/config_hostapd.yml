@@ -6,9 +6,11 @@
     regexp="^hostapd_enable"
     line="hostapd_enable=\"YES\""
     backup="yes"
-  when: (freebsd_postinstall_hostapd_enabled == "YES") and (freebsd_postinstall_hostapd_install == "YES")
+  when:
+    - freebsd_postinstall_hostapd_enabled|lower == "yes"
+    - freebsd_postinstall_hostapd_install|lower == "yes"
   notify: enable and start hostapd
-  tags: config_rc_conf_hostapd
+  tags: rc_conf_hostapd
 
 - name: Disable and stop hostapd
   lineinfile: >
@@ -16,9 +18,11 @@
     regexp="^hostapd_enable"
     line="hostapd_enable=\"NO\""
     backup="yes"
-  when: (freebsd_postinstall_hostapd_enabled == "NO") and (freebsd_postinstall_hostapd_install == "YES")
+  when:
+    - freebsd_postinstall_hostapd_enabled|lower == "no"
+    - freebsd_postinstall_hostapd_install|lower == "yes"
   notify: disable and stop hostapd
-  tags: config_rc_conf_hostapd
+  tags: rc_conf_hostapd
 
 - name: Configure interface for hostapd
   lineinfile: >
@@ -27,21 +31,24 @@
     line="{{ item.line }}"
     backup="yes"
   with_items:
-    - { regexp: "^create_args_{{freebsd_postinstall_hostapd_interface}}",
-        line: "create_args_{{freebsd_postinstall_hostapd_interface}}=\"wlanmode hostap country {{freebsd_postinstall_hostapd_country}}\""}
-    - { regexp: "^wlans_{{freebsd_postinstall_hostapd_device}}",
-        line: "wlans_{{freebsd_postinstall_hostapd_device}}=\"{{freebsd_postinstall_hostapd_interface}}\"" }
-    - { regexp: "^ifconfig_{{freebsd_postinstall_hostapd_interface}}",
-        line: "ifconfig_{{freebsd_postinstall_hostapd_interface}}=\"inet {{freebsd_postinstall_hostapd_inet}} netmask {{freebsd_postinstall_hostapd_netmask}}\"" }
-  when: freebsd_postinstall_hostapd_enabled == "YES"
+    - { regexp: "^create_args_{{ freebsd_postinstall_hostapd_interface }}",
+        line: "create_args_{{ freebsd_postinstall_hostapd_interface }}=\"wlanmode hostap country {{ freebsd_postinstall_hostapd_country }}\""}
+    - { regexp: "^wlans_{{ freebsd_postinstall_hostapd_device }}",
+        line: "wlans_{{ freebsd_postinstall_hostapd_device }}=\"{{ freebsd_postinstall_hostapd_interface }}\"" }
+    - { regexp: "^ifconfig_{{ freebsd_postinstall_hostapd_interface }}",
+        line: "ifconfig_{{ freebsd_postinstall_hostapd_interface }}=\"inet {{ freebsd_postinstall_hostapd_inet }} netmask {{ freebsd_postinstall_hostapd_netmask }}\"" }
+  when: freebsd_postinstall_hostapd_enabled|lower == "yes"
   notify: restart hostapd
-  tags: config_rc_conf_hostapd
+  tags: rc_conf_hostapd
   
 - name: Configure /etc/hostapd.conf template file
   template: >
     src="hostapd.conf.j2"
     dest="/etc/hostapd.conf"
     backup="yes"
-  when: freebsd_postinstall_hostapd_enabled == "YES"
+  when: freebsd_postinstall_hostapd_enabled|lower == "yes"
   notify: restart hostapd
   tags: freebsd_postinstall_hostapd_conf
+
+# EOF
+...
