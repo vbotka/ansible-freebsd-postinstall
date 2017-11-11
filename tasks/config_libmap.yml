@@ -6,6 +6,8 @@
     regexp="^{{ item.origin }} "
     line="{{ item.origin }} {{ item.target }}"
     backup="yes"
-  with_items: "{{freebsd_postinstall_libmap_entries}}"
+  with_items: "{{ freebsd_postinstall_libmap_entries }}"
   when: freebsd_postinstall_libmap_entries > 0
-  tags: config_libmap
+
+# EOF
+...
