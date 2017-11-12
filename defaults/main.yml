@@ -56,13 +56,13 @@ freebsd_postinstall_fstab_entries:
 
 # ----------------------------------------------------------------------
 # libmap
-freebsd_postinstall_libmap_entries: []
+freebsd_postinstall_libmap_entries: {}
 
 # ----------------------------------------------------------------------
 # Timezone
 # details about zoneinfo in man tzsetup
 freebsd_postinstall_zoneinfo: "UTC"
-#zoneinfo: "Europe/London"
+#freebsd_postinstall_zoneinfo: "Europe/London"
 freebsd_postinstall_zoneinfo_path: "/usr/share/zoneinfo"
 
 # ----------------------------------------------------------------------
@@ -90,12 +90,12 @@ sshd_config:
 
 # ----------------------------------------------------------------------
 # users and groups
-freebsd_users: []
-freebsd_users_groups: []
+freebsd_users: {}
+freebsd_users_groups: {}
 
 # ----------------------------------------------------------------------
 # authorized_key
-freebsd_postinstall_authorized_key: []
+freebsd_postinstall_authorized_key: {}
 
 # ----------------------------------------------------------------------
 # smartd
@@ -107,7 +107,7 @@ freebsd_postinstall_smartd_conf_file: "/usr/local/etc/smartd.conf"
 freebsd_postinstall_smartd_conf_owner: "root"
 freebsd_postinstall_smartd_conf_group: "wheel"
 freebsd_postinstall_smartd_conf_mode: "644"
-freebsd_postinstall_smartd_devices: []
+freebsd_postinstall_smartd_devices: {}
 
 # ----------------------------------------------------------------------
 # apcupsd
@@ -189,7 +189,7 @@ freebsd_postinstall_rpcbind_enable: 'NO'
 freebsd_postinstall_mountd_flags: '-r'
 freebsd_postinstall_rpc_lockd_enable: 'NO'
 freebsd_postinstall_rpc_statd_enable: 'NO'
-freebsd_postinstall_nfsd_exports: []
+freebsd_postinstall_nfsd_exports: {}
 
 # ----------------------------------------------------------------------
 # ntpd
@@ -235,17 +235,17 @@ freebsd_postinstall_procmail_pmdir: "$HOME/.procmail"
 freebsd_postinstall_procmail_logfile: "$PMDIR/pm.log"
 freebsd_postinstall_procmail_lockfile: "$PMDIR/.lockfile"
 freebsd_postinstall_procmail_sendmail: "/usr/sbin/sendmail"
-freebsd_postinstall_procmail_forwarders: []
-freebsd_postinstall_procmail_includerc: []
+freebsd_postinstall_procmail_forwarders: {}
+freebsd_postinstall_procmail_includerc: {}
 
 # ----------------------------------------------------------------------
 # motd
-freebsd_postinstall_motd: []
+freebsd_postinstall_motd: ""
 freebsd_postinstall_update_motd: "YES"
 
 # ----------------------------------------------------------------------
 # sysctl
-freebsd_postinstall_sysctl: []
+freebsd_postinstall_sysctl: {}
 
 # ----------------------------------------------------------------------
 # groupwrappers
@@ -263,7 +263,7 @@ freebsd_postinstall_group_mod: "/usr/sbin/pw groupmod"
 freebsd_postinstall_gitserver_install: "NO"
 freebsd_postinstall_gitserver_owner: "gitserver"
 freebsd_postinstall_gitserver_group: "gitusers"
-freebsd_postinstall_gitserver_dir: "/home/{{freebsd_postinstall_gitserver_owner}}"
+freebsd_postinstall_gitserver_dir: "/home/{{ freebsd_postinstall_gitserver_owner }}"
 freebsd_postinstall_gitserver_dir_mode: "0770"
 
 # ----------------------------------------------------------------------
@@ -272,7 +272,7 @@ freebsd_postinstall_sudoers_conf: "/usr/local/etc/sudoers"
 freebsd_postinstall_sudoers_conf_owner: "root"
 freebsd_postinstall_sudoers_conf_group: "wheel"
 freebsd_postinstall_sudoers_conf_mode: "0440"
-freebsd_postinstall_sudoers: []
+freebsd_postinstall_sudoers: {}
 
 # EOF
 ...
