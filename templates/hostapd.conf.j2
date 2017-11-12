@@ -1,31 +1,31 @@
-# {{ansible_managed}}
-ssid={{freebsd_postinstall_hostapd_ssid}}
-interface={{freebsd_postinstall_hostapd_interface}}
-driver={{freebsd_postinstall_hostapd_driver}}
-ctrl_interface={{freebsd_postinstall_hostapd_ctrl_interface}}
-ctrl_interface_group={{freebsd_postinstall_hostapd_ctrl_interface_group}}
-hw_mode={{freebsd_postinstall_hostapd_hw_mode}}
-channel={{freebsd_postinstall_hostapd_channel}}
-beacon_int={{freebsd_postinstall_hostapd_beacon_int}}
-dtim_period={{freebsd_postinstall_hostapd_dtim_period}}
-max_num_sta={{freebsd_postinstall_hostapd_max_num_sta}}
-rts_threshold={{freebsd_postinstall_hostapd_rts_threshold}}
-fragm_threshold={{freebsd_postinstall_hostapd_fragm_threshold}}
-auth_algs={{freebsd_postinstall_hostapd_auth_algs}}
-ignore_broadcast_ssid={{freebsd_postinstall_hostapd_ignore_broadcast_ssid}}
+# {{ ansible_managed }}
+ssid={{ freebsd_postinstall_hostapd_ssid }}
+interface={{ freebsd_postinstall_hostapd_interface }}
+driver={{ freebsd_postinstall_hostapd_driver }}
+ctrl_interface={{ freebsd_postinstall_hostapd_ctrl_interface }}
+ctrl_interface_group={{ freebsd_postinstall_hostapd_ctrl_interface_group }}
+hw_mode={{ freebsd_postinstall_hostapd_hw_mode }}
+channel={{ freebsd_postinstall_hostapd_channel }}
+beacon_int={{ freebsd_postinstall_hostapd_beacon_int }}
+dtim_period={{ freebsd_postinstall_hostapd_dtim_period }}
+max_num_sta={{ freebsd_postinstall_hostapd_max_num_sta }}
+rts_threshold={{ freebsd_postinstall_hostapd_rts_threshold }}
+fragm_threshold={{ freebsd_postinstall_hostapd_fragm_threshold }}
+auth_algs={{ freebsd_postinstall_hostapd_auth_algs }}
+ignore_broadcast_ssid={{ freebsd_postinstall_hostapd_ignore_broadcast_ssid }}
 #
-wpa={{freebsd_postinstall_hostapd_wpa}}
-wpa_pairwise={{freebsd_postinstall_hostapd_wpa_pairwise}}
-wpa_key_mgmt={{freebsd_postinstall_hostapd_wpa_key_mgmt}}
-wpa_passphrase={{freebsd_postinstall_hostapd_wpa_passphrase}}
+wpa={{ freebsd_postinstall_hostapd_wpa }}
+wpa_pairwise={{ freebsd_postinstall_hostapd_wpa_pairwise }}
+wpa_key_mgmt={{ freebsd_postinstall_hostapd_wpa_key_mgmt }}
+wpa_passphrase={{ freebsd_postinstall_hostapd_wpa_passphrase }}
 #
-logger_syslog={{freebsd_postinstall_hostapd_logger_syslog}}
-logger_syslog_level={{freebsd_postinstall_hostapd_logger_syslog_level}}
-logger_stdout={{freebsd_postinstall_hostapd_logger_stdout}}
-logger_stdout_level={{freebsd_postinstall_hostapd_logger_stdout_level}}
+logger_syslog={{ freebsd_postinstall_hostapd_logger_syslog }}
+logger_syslog_level={{ freebsd_postinstall_hostapd_logger_syslog_level }}
+logger_stdout={{ freebsd_postinstall_hostapd_logger_stdout }}
+logger_stdout_level={{ freebsd_postinstall_hostapd_logger_stdout_level }}
 #
 ##### Integrated EAP server
-eap_server={{freebsd_postinstall_hostapd_eap_server}}
+eap_server={{ freebsd_postinstall_hostapd_eap_server }}
 #eap_user_file=/etc/hostapd.eap_user
 #ca_cert=/etc/hostapd.ca.pem
 #server_cert=/etc/hostapd.server.pem

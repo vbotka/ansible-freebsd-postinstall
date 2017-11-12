@@ -3,4 +3,4 @@
 * !^Subject:.*Re:
 * !^FROM_DAEMON
 * ^Subject:.*get certificate
-| (/usr/local/bin/formail -r -A "From: {{item.par1}}"; {{item.par2}}) | $SENDMAIL -oi -t
+| (/usr/local/bin/formail -r -A "From: {{ item.par1 }}"; {{ item.par2 }}) | $SENDMAIL -oi -t

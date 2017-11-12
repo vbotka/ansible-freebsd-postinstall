@@ -1,9 +1,11 @@
 ---
-# handlers for freebsd-postinstall
+# handlers for vbotka.freebsd-postinstall
 
+# ntpdate
 - name: set hostname
-  command: hostname "{{rc_conf_hostname}}"
+  command: hostname "{{ rc_conf_hostname }}"
 
+# ntpdate
 - name: enable ntpdate
   service: name="ntpdate" enabled="yes"
 - name: disable ntpdate
@@ -96,7 +98,6 @@
 # swap
 - name: create and mount swap
   shell: sh -c 'dd if=/dev/zero of={{freebsd_postinstall_swap_file}} bs=1m count={{freebsd_postinstall_swap_size}}; chmod 0600 {{freebsd_postinstall_swap_file}}; swapon -aL'
-
 - name: change and mount swap
   shell: sh -c 'swapoff /dev/{{freebsd_postinstall_swap_md}}; mdconfig -du {{freebsd_postinstall_swap_md}}; dd if=/dev/zero of={{freebsd_postinstall_swap_file}} bs=1m count={{freebsd_postinstall_swap_size}}; chmod 0600 {{freebsd_postinstall_swap_file}}; swapon -aL'
 # TODO: swap is created and mounted, but handler failed.

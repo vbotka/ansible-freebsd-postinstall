@@ -18,4 +18,4 @@
 * !^Subject:.*Re:
 * !^FROM_DAEMON
 * ^Subject:.*get message
-| (/usr/local/bin/formail -r -A "From: {{item.par1}}"; cat {{item.par2}} ) | $SENDMAIL -oi -t
+| (/usr/local/bin/formail -r -A "From: {{ item.par1 }}"; cat {{ item.par2 }} ) | $SENDMAIL -oi -t
