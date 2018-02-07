@@ -113,6 +113,7 @@ References
 - [git - Getting Git on a Server](https://git-scm.com/book/ch4-2.html)
 - [make.conf - FreeBSD forum: Prioritizing SSL/TLS in make.conf](https://forums.freebsd.org/threads/62930/)
 - [make.conf - FreeBSD wiki: Design for Flavors and Sub Packages](https://wiki.freebsd.org/Ports/FlavorsAndSubPackages)
+- [make.conf - GNU emacs flavours in FreeBSD](https://ximalas.info/2018/02/02/gnu-emacs-flavours-in-freebsd/)
 - [nfs - FreeBSD handbook: Network File System (NFS)](https://www.freebsd.org/doc/handbook/network-nfs.html)
 - [ntp - FreeBSD handbook: Clock Synchronization with NTP](http://www.freebsd.org/doc/handbook/network-ntp.html)
 - [ntp - FreeBSD forum: Testing NTP](https://forums.freebsd.org/threads/41874/)
