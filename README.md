@@ -112,6 +112,7 @@ References
 - [git - How to setup a Git repository](https://forums.freebsd.org/threads/10810/)
 - [git - Getting Git on a Server](https://git-scm.com/book/ch4-2.html)
 - [make.conf - Prioritizing SSL/TLS in make.conf](https://forums.freebsd.org/threads/62930/)
+- [make.conf - Design for Flavors and Sub Packages](https://wiki.freebsd.org/Ports/FlavorsAndSubPackages)
 - [nfs - FreeBSD handbook: Network File System (NFS)](https://www.freebsd.org/doc/handbook/network-nfs.html)
 - [ntp - Testing NTP](https://forums.freebsd.org/threads/41874/)
 - [ports - Upgrading Ports Using Portmaster](https://www.freebsd.org/doc/handbook/ports-using.html)

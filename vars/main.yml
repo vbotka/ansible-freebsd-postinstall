@@ -17,6 +17,7 @@
 #make_conf_mode: "u=rw,g=r,o=r"
 #make_conf:
 #  - { key: "DEFAULT_VERSIONS", value: "+=ssl=openssl" }
+#  - { key: "DEFAULT_VERSIONS", value: "+=emacs=nox" }
 
 # ----------------------------------------------------------------------
 # Packages/Ports
@@ -26,7 +27,7 @@
 #freebsd_use_packages: "yes"
 #freebsd_postinstall_packages:
 #  - shells/bash
-#  - editors/emacs-nox11
+#  - editors/emacs
 #  - devel/git
 #  - archivers/gtar
 #  - ports-mgmt/pkg
