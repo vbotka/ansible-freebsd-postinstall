@@ -123,6 +123,17 @@
 # ----------------------------------------------------------------------
 # ntpd
 #freebsd_postinstall_ntp_service_enable: 'YES'
+#freebsd_postinstall_ntp_config_server:
+# The following three servers will give you a random set of three NTP servers geographically close to you.
+# http://blog.up-link.ro/how-to-configure-ntp-service-in-freebsd/
+#  - '0.freebsd.pool.ntp.org iburst'
+#  - '1.freebsd.pool.ntp.org iburst'
+#  - '2.freebsd.pool.ntp.org iburst'
+# The 0, 1, 2 and 3.pool.ntp.org names point to a random set of servers that will change every hour.
+#  - '0.pool.ntp.org iburst'
+#  - '1.pool.ntp.org iburst'
+#  - '2.pool.ntp.org iburst'
+#  - '3.pool.ntp.org iburst'
 
 # ----------------------------------------------------------------------
 # procmail
