@@ -17,6 +17,7 @@
   when: freebsd_install_method|lower == "ports"
   tags: fp_ports
 
+# smartmontools
 - name: Install smartmontools package
   pkgng: >
     name="smartmontools"
@@ -36,6 +37,7 @@
     - freebsd_postinstall_smartd_install|lower == "yes"
   tags: fp_ports_smartmontools
 
+# hostapd
 - name: Install hostapd package
   pkgng: >
     name="hostapd"
@@ -55,6 +57,7 @@
     - freebsd_postinstall_hostapd_install|lower == "yes"
   tags: fp_ports_hostapd
 
+# procmail
 - name: Install procmail package
   pkgng: >
     name="procmail"
@@ -74,6 +77,17 @@
     - freebsd_postinstall_procmail_install|lower == "yes"
   tags: fp_ports_procmail
 
+# apcupsd
+- name: Install sysutils/apcupsd  package
+  pkgng: >
+    name="sysutils/apcupsd"
+    state="present"
+    use_packages="{{ freebsd_use_packages }}"
+  when:
+    - freebsd_install_method|lower == "packages"
+    - freebsd_postinstall_apcupsd_service_enabled|lower == "yes"
+  tags: fp_packages_apcupsd
+
 - name: Install sysutils/apcupsd  port
   portinstall: >
     name="sysutils/apcupsd"
@@ -84,6 +98,7 @@
     - freebsd_postinstall_apcupsd_service_enabled|lower == "yes"
   tags: fp_ports_apcupsd
 
+# links
 - name: Create symbolic links
   file: >
     src="{{ item.target }}"
