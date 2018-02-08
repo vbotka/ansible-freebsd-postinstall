@@ -1,6 +1,9 @@
 ---
 # tasks for vbotka.freebsd-postinstall
 
+- debug: msg="{{ ansible_distribution }} {{ ansible_distribution_major_version }}"
+  when: freebsd_postinstall_debug
+
 - include: config_sysctl.yml
   tags:
     - fp_sysctl
