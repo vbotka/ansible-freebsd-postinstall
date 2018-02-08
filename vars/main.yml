@@ -12,12 +12,12 @@
 
 # ----------------------------------------------------------------------
 # /etc/make.conf
-#make_conf_owner: "root"
-#make_conf_group: "wheel"
-#make_conf_mode: "u=rw,g=r,o=r"
-#make_conf:
-#  - { key: "DEFAULT_VERSIONS", value: "+=ssl=openssl" }
-#  - { key: "DEFAULT_VERSIONS", value: "+=emacs=nox" }
+#fp_make_conf_owner: "root"
+#fp_make_conf_group: "wheel"
+#fp_make_conf_mode: "u=rw,g=r,o=r"
+#fp_make_conf:
+#  - "DEFAULT_VERSIONS+=ssl=openssl"
+#  - "DEFAULT_VERSIONS+=emacs=nox"
 
 # ----------------------------------------------------------------------
 # Packages/Ports

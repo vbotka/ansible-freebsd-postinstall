@@ -15,10 +15,10 @@ digitalocean: "no"
 
 # ----------------------------------------------------------------------
 # /etc/make.conf
-make_conf_owner: "root"
-make_conf_group: "wheel"
-make_conf_mode: "u=rw,g=r,o=r"
-make_conf: []
+fp_make_conf_owner: "root"
+fp_make_conf_group: "wheel"
+fp_make_conf_mode: "u=rw,g=r,o=r"
+fp_make_conf: []
 
 # ----------------------------------------------------------------------
 # Packages
