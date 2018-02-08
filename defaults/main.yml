@@ -22,7 +22,7 @@ fp_make_conf: []
 
 # ----------------------------------------------------------------------
 # Packages
-freebsd_postinstall_packages: []
+freebsd_ports: []
 freebsd_postinstall_links: []
 
 # hosts

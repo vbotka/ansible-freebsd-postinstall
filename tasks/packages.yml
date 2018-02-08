@@ -4,7 +4,7 @@
   pkgng: >
     name="{{ item }}"
     state="present"
-  with_items: "{{ freebsd_postinstall_packages }}"
+  with_items: "{{ freebsd_ports }}"
   when: freebsd_install_method|lower == "packages"
   tags: fp_packages
 
@@ -13,7 +13,7 @@
     name="{{ item }}"
     state="present"
     use_packages="{{ freebsd_use_packages }}"
-  with_items: "{{ freebsd_postinstall_packages }}"
+  with_items: "{{ freebsd_ports }}"
   when: freebsd_install_method|lower == "ports"
   tags: fp_ports
 
