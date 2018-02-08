@@ -20,7 +20,7 @@
 # smartmontools
 - name: Install smartmontools package
   pkgng: >
-    name="smartmontools"
+    name="sysutils/smartmontools"
     state="present"
   when:
     - freebsd_install_method|lower == "packages"
@@ -29,7 +29,7 @@
 
 - name: Install smartmontools port
   portinstall: >
-    name="smartmontools"
+    name="sysutils/smartmontools"
     state="present"
     use_packages="{{ freebsd_use_packages }}"
   when:
@@ -40,7 +40,7 @@
 # hostapd
 - name: Install hostapd package
   pkgng: >
-    name="hostapd"
+    name="net/hostapd"
     state="present"
   when:
     - freebsd_install_method|lower == "packages"
@@ -49,7 +49,7 @@
 
 - name: Install hostapd port
   portinstall: >
-    name="hostapd"
+    name="net/hostapd"
     state="present"
     use_packages="{{ freebsd_use_packages }}"
   when:
@@ -60,7 +60,7 @@
 # procmail
 - name: Install procmail package
   pkgng: >
-    name="procmail"
+    name="mail/procmail"
     state="present"
   when:
     - freebsd_install_method|lower == "packages"
@@ -69,7 +69,7 @@
 
 - name: Install procmail port
   portinstall: >
-    name="procmail"
+    name="mail/procmail"
     state="present"
     use_packages="{{ freebsd_use_packages }}"
   when:
