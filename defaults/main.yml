@@ -35,6 +35,9 @@ freebsd_postinstall_copy_dir: "copy"
 fp_unarchive_keep_newer: "no"
 fp_synchronize_default: "no"
 fp_synchronize_optional: "no"
+# DANGEROUS! fp_synchronize_delete="yes" can delete the system dest="/"
+# Review tasks/copy.yml before enabling fp_synchronize_delete
+fp_synchronize_delete: "no"
 
 # ----------------------------------------------------------------------
 # swap

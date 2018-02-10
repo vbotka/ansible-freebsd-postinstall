@@ -28,6 +28,7 @@
     perms="no"
     owner="no"
     group="no"
+    delete="{{ fp_synchronize_delete }}"
   when:
     - default_copy.stat.exists
     - fp_synchronize_default|lower == "yes"
@@ -59,6 +60,7 @@
     perms="no"
     owner="no"
     group="no"
+    delete="{{ fp_synchronize_delete }}"
   when:
     - optional_copy.stat.exists
     - fp_synchronize_optional|lower == "yes"
