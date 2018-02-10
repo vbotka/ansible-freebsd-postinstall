@@ -25,11 +25,11 @@ function sync {
 		if LOG=$($SSH $REMOTEUSER@$i "[ -d $j ]" 2>&1); then
 	            (($VERBOSE)) && printf "exists. "
 		    if [ ! -e "$COPYDIR/$i/$j" ]; then
-			mkdir -p $COPYDIR/$i/$j
+			mkdir -p $COPYDIR/$i$j
 		    fi
-		    cd $COPYDIR/$i/$j
+		    cd $COPYDIR/$i$j
 		    if LOG=$($RSYNC $DRYRUN -$RSYNCPARAM -e "ssh" --progress --rsync-path="sudo rsync" $REMOTEUSER@$i:$j . 2>&1); then
-			(($VERBOSE)) && printf "rsync [OK]\n"
+			(($VERBOSE)) && printf "rsync to $COPYDIR/$i$j [OK]\n"
 		    else
 			printf "rsync [ERR] log: $LOG\n"
 		    fi
