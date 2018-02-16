@@ -8,7 +8,6 @@
     group="{{ fp_make_conf_group }}"
     mode="{{ fp_make_conf_mode }}"
     backup="yes"
-  tags: fp_make_conf
 
 # EOF
 ...

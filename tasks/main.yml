@@ -4,129 +4,129 @@
 - debug: msg="{{ ansible_distribution }} {{ ansible_distribution_major_version }}"
   when: freebsd_postinstall_debug
 
-- include: config_sysctl.yml
+- include_tasks: config_sysctl.yml
   tags:
     - fp_sysctl
     - fp_all
 
-- include: config_make.yml
+- include_tasks: config_make.yml
   tags:
     - bsd_packages
     - bsd_ports
     - fp_make
     - fp_all
 
-- include: config_swap.yml
+- include_tasks: config_swap.yml
   tags:
     - fp_swap
     - fp_all
   when: freebsd_postinstall_swap|lower == "yes"
 
-- include: config_fstab.yml
+- include_tasks: config_fstab.yml
   tags:
     - fp_fstab
     - fp_all
 
-- include: packages.yml
+- include_tasks: packages.yml
   tags:
     - bsd_packages
     - bsd_ports
     - fp_packages
     - fp_all
 
-- include: copy.yml
+- include_tasks: copy.yml
   tags:
     - copy
     - fp_copy
     - fp_all
 
-- include: config_libmap.yml
+- include_tasks: config_libmap.yml
   tags:
     - fp_config_libmap
     - fp_all
 
-- include: config_users.yml
+- include_tasks: config_users.yml
   tags:
     - fp_users
     - fp_all
 
-- include: groupwrappers.yml
+- include_tasks: groupwrappers.yml
   tags:
     - fp_groupwrappers
     - fp_users
     - fp_all
   when: freebsd_postinstall_groupwrappers_install|lower  == "yes"
 
-- include: config_hostname.yml
+- include_tasks: config_hostname.yml
   tags:
     - fp_hostname
     - fp_all
 
-- include: config_hosts.yml
+- include_tasks: config_hosts.yml
   tags:
     - fp_hosts
     - fp_all
 
-- include: config_ssh.yml
+- include_tasks: config_ssh.yml
   tags:
     - fp_ssh
     - fp_all
 
-- include: config_authorized_key.yml
+- include_tasks: config_authorized_key.yml
   tags:
   - fp_authorized_key
   - fp_all
 
-- include: config_timezone.yml
+- include_tasks: config_timezone.yml
   tags:
     - fp_timezone
     - fp_all
 
-- include: config_ntpd.yml
+- include_tasks: config_ntpd.yml
   tags:
     - fp_ntpd
     - fp_all
 
-- include: config_ntpdate.yml
+- include_tasks: config_ntpdate.yml
   tags:
   - fp_ntpdate
   - fp_all
 
-- include: config_nfs.yml
+- include_tasks: config_nfs.yml
   tags:
     - fp_nfs
     - fp_all
 
-- include: config_nfsd.yml
+- include_tasks: config_nfsd.yml
   tags:
     - fp_nfsd
     - fp_all
 
-- include: config_smartd.yml
+- include_tasks: config_smartd.yml
   tags:
     - fp_smartd
     - fp_all
   when: freebsd_postinstall_smartd_install|lower == "yes"
 
-- include: config_apcupsd.yml
+- include_tasks: config_apcupsd.yml
   tags:
     - fp_apcupsd
     - fp_all
   when: freebsd_postinstall_apcupsd_service_enabled|lower == "yes"
 
-- include: config_hostapd.yml
+- include_tasks: config_hostapd.yml
   tags:
     - fp_hostapd
     - fp_all
   when: freebsd_postinstall_hostapd_install|lower == "yes"
 
-- include: config_procmail.yml
+- include_tasks: config_procmail.yml
   tags:
     - fp_procmail
     - fp_all
   when: freebsd_postinstall_procmail_install|lower == "yes"
 
-- include: config_motd.yml
+- include_tasks: config_motd.yml
   tags:
     - fp_motd
     - fp_all
@@ -137,13 +137,13 @@
    - fp_all
   when: freebsd_postinstall_debug|bool == true
 
-- include: config_gitserver.yml
+- include_tasks: config_gitserver.yml
   tags:
     - fp_gitserver
     - fp_all
   when: freebsd_postinstall_gitserver_install|lower == "yes"
 
-- include: config_sudoers.yml
+- include_tasks: config_sudoers.yml
   tags:
     - fp_sudoers
     - fp_all
