@@ -1,8 +1,7 @@
 ---
 
 - debug: msg="fp_synchronize_default = {{ fp_synchronize_default }}"
-  when:
-    - freebsd_postinstall_debug
+  when: fp_debug|lower == "yes"
   tags: fp_synchronize_default
 
 - name: Check existence of {{ role_path }}/{{ freebsd_postinstall_copy_dir }}/default
@@ -15,7 +14,7 @@
 
 - debug: msg="Directory default exists."
   when:
-    - freebsd_postinstall_debug
+    - fp_debug|lower == "yes"
     - default_copy.stat.isdir is defined and default_copy.stat.isdir
   tags: fp_synchronize_default
 
@@ -35,8 +34,7 @@
   tags: fp_synchronize_default
 
 - debug: msg="fp_synchronize_optional = {{ fp_synchronize_optional }}"
-  when:
-    - freebsd_postinstall_debug
+  when: fp_debug|lower == "yes"
   tags: fp_synchronize_optional
 
 - name: Check existence of {{ role_path }}/{{ freebsd_postinstall_copy_dir }}/{{ rc_conf_hostname }}
@@ -47,7 +45,7 @@
 
 - debug: msg="Directory {{ rc_conf_hostname }} exists."
   when:
-    - freebsd_postinstall_debug
+    - fp_debug|lower == "yes"
     - optional_copy.stat.isdir is defined and optional_copy.stat.isdir
   tags: fp_synchronize_optional
 

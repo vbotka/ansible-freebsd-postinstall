@@ -1,18 +1,14 @@
 ---
 
-- name: Create timezone {{ freebsd_postinstall_zoneinfo }}
-  shell: if [ ! -e /etc/localtime ]; then tzsetup {{ freebsd_postinstall_zoneinfo }}; printf "changed"; fi
-  register: command_result
-  changed_when: command_result.stdout == "changed"
-  notify: adjust CMOS
-  tags: fp_create_timezone
+- debug: msg="fp_zoneinfo [ {{ fp_zoneinfo }} ]"
+  when: fp_debug|lower == "yes"
+  tags: fp_timezone
 
-- name: Change timezone to {{ freebsd_postinstall_zoneinfo }}
-  shell: if ( ! diff /usr/share/zoneinfo/{{ freebsd_postinstall_zoneinfo }} /etc/localtime ); then tzsetup {{ freebsd_postinstall_zoneinfo }}; fi
-  register: command_result
-  changed_when: command_result.stdout | search("differ")
+- name: set timezone to {{ fp_zoneinfo }}
+  timezone: >
+    name="{{ fp_zoneinfo }}"
   notify: adjust CMOS
-  tags: fp_change_timezone
+  tags: fp_timezone
 
 # EOF
 ...

@@ -6,9 +6,9 @@
 #digitalocean: "no"
 
 # ----------------------------------------------------------------------
-#freebsd_postinstall_zoneinfo: "UTC"
-#freebsd_postinstall_zoneinfo: "Europe/London"
-#freebsd_postinstall_zoneinfo_path: "/usr/share/zoneinfo"
+#fp_zoneinfo: "UTC"
+#fp_zoneinfo: "Europe/London"
+#fp_zoneinfo_path: "/usr/share/zoneinfo"
 
 # ----------------------------------------------------------------------
 # /etc/make.conf
@@ -165,14 +165,13 @@
 # ----------------------------------------------------------------------
 # gitserver
 #freebsd_postinstall_gitserver_install: "YES"
-freebsd_postinstall_gitserver_owner: "git"
-freebsd_postinstall_gitserver_owner_uid: "9418"
-freebsd_postinstall_gitserver_owner_shell: "/usr/local/libexec/git-core/git-shell"
-freebsd_postinstall_gitserver_owner_home: "/git"
-freebsd_postinstall_gitserver_group: "git"
-freebsd_postinstall_gitserver_group_gid: "9418"
-
-freebsd_postinstall_gitserver_dir_mode: "0770"
+fp_gitserver_owner: "git"
+fp_gitserver_owner_uid: "9418"
+fp_gitserver_owner_shell: "/usr/local/libexec/git-core/git-shell"
+fp_gitserver_owner_home: "/git"
+fp_gitserver_group: "git"
+fp_gitserver_group_gid: "9418"
+fp_gitserver_dir_mode: "0770"
 
 # ----------------------------------------------------------------------
 # sudoers

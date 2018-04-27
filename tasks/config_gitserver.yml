@@ -1,32 +1,32 @@
 ---
 
-- name: Add {{ freebsd_postinstall_gitserver_group }} group
+- name: Add {{ fp_gitserver_group }} group
   group: >
-    name="{{ freebsd_postinstall_gitserver_group }}"
-    gid="{{ freebsd_postinstall_gitserver_group_gid }}"
-  tags: freebsd_postinstall_gitserver_group
+    name="{{ fp_gitserver_group }}"
+    gid="{{ fp_gitserver_group_gid }}"
+  tags: fp_gitserver_group
 
-- name: Add {{freebsd_postinstall_gitserver_owner}} user
+- name: Add {{fp_gitserver_owner}} user
   user: >
-    name="{{ freebsd_postinstall_gitserver_owner }}"
-    uid="{ freebsd_postinstall_gitserver_owner_uid }}"
-    shell="{{ freebsd_postinstall_gitserver_owner_shell }}"
-    home="{{ freebsd_postinstall_gitserver_owner_home }}"
-  tags: freebsd_postinstall_gitserver_owner
+    name="{{ fp_gitserver_owner }}"
+    uid="{ fp_gitserver_owner_uid }}"
+    shell="{{ fp_gitserver_owner_shell }}"
+    home="{{ fp_gitserver_owner_home }}"
+  tags: fp_gitserver_owner
 
-- name: Add user {{freebsd_postinstall_gitserver_owner}} to {{freebsd_postinstall_gitserver_group}} group
+- name: Add user {{ fp_gitserver_owner }} to {{ fp_gitserver_group }} group
   user: >
-    name="{{freebsd_postinstall_gitserver_owner}}"
-    groups="{{freebsd_postinstall_gitserver_group}}"
+    name="{{ fp_gitserver_owner }}"
+    groups="{{ fp_gitserver_group }}"
     append="yes"
-  tags: freebsd_postinstall_groups
+  tags: fp_groups
 
-- name: Set ownership and permissions of {{freebsd_postinstall_gitserver_dir}}
+- name: Set ownership and permissions of {{ fp_gitserver_dir }}
   file: >
-    path="{{freebsd_postinstall_gitserver_dir}}"
-    owner="{{freebsd_postinstall_gitserver_owner}}"
-    group="{{freebsd_postinstall_gitserver_group}}"
-    mode="{{freebsd_postinstall_gitserver_dir_mode}}"
+    path="{{ fp_gitserver_dir }}"
+    owner="{{ fp_gitserver_owner }}"
+    group="{{ fp_gitserver_group }}"
+    mode="{{ fp_gitserver_dir_mode }}"
 
 # EOF
 ...

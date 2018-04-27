@@ -5,7 +5,7 @@ freebsd_install_method: "packages"
 #freebsd_install_method: "ports"
 #freebsd_use_packages: "yes"
 
-freebsd_postinstall_debug: false
+fp_debug: "no"
 
 # ----------------------------------------------------------------------
 # Hostname
@@ -64,9 +64,9 @@ freebsd_postinstall_libmap_entries: {}
 # ----------------------------------------------------------------------
 # Timezone
 # details about zoneinfo in man tzsetup
-freebsd_postinstall_zoneinfo: "UTC"
+fp_zoneinfo: "UTC"
 #freebsd_postinstall_zoneinfo: "Europe/London"
-freebsd_postinstall_zoneinfo_path: "/usr/share/zoneinfo"
+fp_zoneinfo_path: "/usr/share/zoneinfo"
 
 # ----------------------------------------------------------------------
 # ntpdate
@@ -263,11 +263,11 @@ freebsd_postinstall_group_mod: "/usr/sbin/pw groupmod"
 
 # ----------------------------------------------------------------------
 # gitserver
-freebsd_postinstall_gitserver_install: "NO"
-freebsd_postinstall_gitserver_owner: "gitserver"
-freebsd_postinstall_gitserver_group: "gitusers"
-freebsd_postinstall_gitserver_dir: "/home/{{ freebsd_postinstall_gitserver_owner }}"
-freebsd_postinstall_gitserver_dir_mode: "0770"
+fp_gitserver_install: "NO"
+fp_gitserver_owner: "gitserver"
+fp_gitserver_group: "gitusers"
+fp_gitserver_dir: "/home/{{ fp_gitserver_owner }}"
+fp_gitserver_dir_mode: "0770"
 
 # ----------------------------------------------------------------------
 # sudoers

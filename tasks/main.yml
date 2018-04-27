@@ -2,7 +2,38 @@
 # tasks for vbotka.freebsd-postinstall
 
 - debug: msg="{{ ansible_distribution }} {{ ansible_distribution_major_version }}"
-  when: freebsd_postinstall_debug
+  when: fp_debug|lower == "yes"
+  tags:
+   - fp_vars
+   - fp_all
+
+- name: Print install variables
+  vars:
+    msg: |
+         fp_gitserver_install [ {{ fp_gitserver_install }} ]
+         freebsd_postinstall_swap [ {{ freebsd_postinstall_swap }} ]
+         freebsd_postinstall_groupwrappers_install [ {{ freebsd_postinstall_groupwrappers_install }} ]
+         freebsd_postinstall_smartd_instal install [ {{ freebsd_postinstall_smartd_install }} ]
+         freebsd_postinstall_apcupsd_service_enabled [ {{ freebsd_postinstall_apcupsd_service_enabled }} ]
+         freebsd_postinstall_hostapd_install [ {{ freebsd_postinstall_hostapd_install }} ]
+         freebsd_postinstall_procmail_install [ {{ freebsd_postinstall_procmail_install }} ]
+  debug:
+    msg: "{{ msg.split('\n') }}"
+  when: fp_debug|lower == "yes"
+  tags:
+   - fp_vars
+   - fp_all
+
+- name: Print other variables
+  vars:
+    msg: |
+         fp_zoneinfo [ {{ fp_zoneinfo }} ]
+  debug:
+    msg: "{{ msg.split('\n') }}"
+  when: fp_debug|lower == "yes"
+  tags:
+   - fp_vars
+   - fp_all
 
 - include_tasks: config_sysctl.yml
   tags:
@@ -131,17 +162,11 @@
     - fp_motd
     - fp_all
 
-- debug: msg="{{ freebsd_postinstall_gitserver_install }}"
-  tags:
-   - fp_gitserver
-   - fp_all
-  when: freebsd_postinstall_debug|bool == true
-
 - include_tasks: config_gitserver.yml
   tags:
     - fp_gitserver
     - fp_all
-  when: freebsd_postinstall_gitserver_install|lower == "yes"
+  when: fp_gitserver_install|lower == "yes"
 
 - include_tasks: config_sudoers.yml
   tags:
