@@ -3,30 +3,11 @@ freebsd-postinstall
 
 [![Build Status](https://travis-ci.org/vbotka/ansible-freebsd-postinstall.svg?branch=master)](https://travis-ci.org/vbotka/ansible-freebsd-postinstall)
 
-[Ansible role](https://galaxy.ansible.com/vbotka/freebsd-postinstall/). Post-install configuration of FreeBSD
-- configure apcupsd
-- configure fstab
-- configure gitserver
-- configure hostapd
-- configure hostname
-- configure hosts
-- configure libmap
-- configure make.conf
-- configure motd
-- configure nfsd
-- configure ntpd
-- configure ntpdate
-- configure procmail
-- configure smartd
-- configure sudoers
-- configure ssh
-- configure swap
-- configure sysctl
-- configure timezone
-- configure users
-- copy authorized_keys
-- install packages and/or ports
-- copy overlays
+[Ansible role](https://galaxy.ansible.com/vbotka/freebsd-postinstall/).
+Post-install configuration of FreeBSD: apcupsd, fstab, gitserver,
+hostapd, hostname, hosts, libmap, make.conf, motd, nfsd, ntpd,
+ntpdate, procmail, smartd, sudoers, ssh, swap, sysctl, timezone,
+users, authorized keys, packages and ports, overlays, wip ...
 
 Tested with FreeBSD 10.3 and 11.1
 
