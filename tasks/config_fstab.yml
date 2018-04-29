@@ -7,6 +7,9 @@
          opts="{{ item.opts }}"
          state="present"
   with_items: "{{ freebsd_postinstall_fstab_entries }}"
+  tags:
+    - fp_fstab
+    - fp_all
 
 # EOF
 ...

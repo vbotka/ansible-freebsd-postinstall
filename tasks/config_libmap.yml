@@ -8,6 +8,9 @@
     backup="yes"
   with_items: "{{ freebsd_postinstall_libmap_entries }}"
   when: freebsd_postinstall_libmap_entries > 0
+  tags:
+    - fp_libmap
+    - fp_all
 
 # EOF
 ...

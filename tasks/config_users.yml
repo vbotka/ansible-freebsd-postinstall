@@ -7,7 +7,9 @@
     password="{{ item.password }}"
     update_password="{{ item.update_password }}"
   with_items: "{{ freebsd_users }}"
-  tags: fp_users
+  tags:
+    - fp_users
+    - fp_all
 
 - name: Add users to additional groups
   user: >
@@ -15,7 +17,9 @@
     groups="{{ item.groups }}"
     append="yes"
   with_items: "{{ freebsd_users_groups }}"
-  tags: fp_groups
+  tags:
+    - fp_groups
+    - fp_all
 
 # EOF
 ...

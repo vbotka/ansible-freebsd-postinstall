@@ -6,7 +6,10 @@
     state="present"
   with_items: "{{ freebsd_ports }}"
   when: freebsd_install_method|lower == "packages"
-  tags: fp_packages
+  tags:
+    - fp_packages_install
+    - fp_packages
+    - fp_all
 
 - name: Install ports
   portinstall: >
@@ -15,7 +18,10 @@
     use_packages="{{ freebsd_use_packages }}"
   with_items: "{{ freebsd_ports }}"
   when: freebsd_install_method|lower == "ports"
-  tags: fp_ports
+  tags:
+    - fp_packages_install_ports
+    - fp_packages
+    - fp_all
 
 # smartmontools
 - name: Install smartmontools package
@@ -25,7 +31,10 @@
   when:
     - freebsd_install_method|lower == "packages"
     - freebsd_postinstall_smartd_install|lower == "yes"
-  tags: fp_packages_smartmontools
+  tags:
+    - fp_packages_smartmontools
+    - fp_packages
+    - fp_all
 
 - name: Install smartmontools port
   portinstall: >
@@ -35,7 +44,10 @@
   when:
     - freebsd_install_method|lower == "ports"
     - freebsd_postinstall_smartd_install|lower == "yes"
-  tags: fp_ports_smartmontools
+  tags:
+    - fp_packages_smartmontools_port
+    - fp_packages
+    - fp_all
 
 # hostapd
 - name: Install hostapd package
@@ -45,7 +57,10 @@
   when:
     - freebsd_install_method|lower == "packages"
     - freebsd_postinstall_hostapd_install|lower == "yes"
-  tags: fp_packages_hostapd
+  tags:
+    - fp_packages_hostapd
+    - fp_packages
+    - fp_all
 
 - name: Install hostapd port
   portinstall: >
@@ -55,7 +70,10 @@
   when:
     - freebsd_install_method|lower == "ports"
     - freebsd_postinstall_hostapd_install|lower == "yes"
-  tags: fp_ports_hostapd
+  tags:
+    - fp_ports_hostapd
+    - fp_packages
+    - fp_all
 
 # procmail
 - name: Install procmail package
@@ -65,7 +83,10 @@
   when:
     - freebsd_install_method|lower == "packages"
     - freebsd_postinstall_procmail_install|lower == "yes"
-  tags: fp_packages_procmail
+  tags:
+    - fp_packages_procmail
+    - fp_packages
+    - fp_all
 
 - name: Install procmail port
   portinstall: >
@@ -75,7 +96,10 @@
   when:
     - freebsd_install_method|lower == "ports"
     - freebsd_postinstall_procmail_install|lower == "yes"
-  tags: fp_ports_procmail
+  tags:
+    - fp_packages_procmail_port
+    - fp_packages
+    - fp_all
 
 # apcupsd
 - name: Install sysutils/apcupsd  package
@@ -86,7 +110,10 @@
   when:
     - freebsd_install_method|lower == "packages"
     - freebsd_postinstall_apcupsd_service_enabled|lower == "yes"
-  tags: fp_packages_apcupsd
+  tags:
+    - fp_packages_apcupsd
+    - fp_packages
+    - fp_all
 
 - name: Install sysutils/apcupsd  port
   portinstall: >
@@ -96,7 +123,10 @@
   when:
     - freebsd_install_method|lower == "ports"
     - freebsd_postinstall_apcupsd_service_enabled|lower == "yes"
-  tags: fp_ports_apcupsd
+  tags:
+    - fp_packages_apcupsd_port
+    - fp_packages
+    - fp_all
 
 # links
 - name: Create symbolic links
@@ -106,7 +136,10 @@
     state="link"
     force="yes"
   with_items: "{{ freebsd_postinstall_links }}"
-  tags: fp_links
+  tags:
+    - fp_packages_links
+    - fp_packages
+    - fp_all
 
 # EOF
 ...

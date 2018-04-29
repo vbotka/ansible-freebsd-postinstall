@@ -8,7 +8,10 @@
     backup="yes"
   when: freebsd_postinstall_apcupsd_service_enabled|lower == "yes"
   notify: enable and start apcupsd
-  tags: fp_rc_conf_apcupsd
+  tags:
+    - fp_apcupsd_rcconf
+    - fp_apcupsd
+    - fp_all
 
 - name: Disable and stop apcupsd
   lineinfile: >
@@ -18,13 +21,19 @@
     backup="yes"
   when: freebsd_postinstall_apcupsd_service_enabled|lower == "no"
   notify: disable and stop apcupsd
-  tags: fp_rc_conf_apcupsd
+  tags:
+    - fp_apcupsd_rcconf
+    - fp_apcupsd
+    - fp_all
 
 - name: Create directory {{ freebsd_postinstall_apcupsd_conf_dir }}
   file: >
     state="directory"
     path="{{ freebsd_postinstall_apcupsd_conf_dir }}"
-  tags: fp_apcupsd_conf
+  tags:
+    - fp_apcupsd_conf
+    - fp_apcupsd
+    - fp_all
 
 - name: Configure apcupsd.conf
   template: >
@@ -36,7 +45,10 @@
     backup="yes"
   when: freebsd_postinstall_apcupsd_service_enabled|lower == "yes"
   notify: restart apcupsd
-  tags: fp_apcupsd_conf
+  tags:
+    - fp_apcupsd_conf
+    - fp_apcupsd
+    - fp_all
 
 # EOF
 ...

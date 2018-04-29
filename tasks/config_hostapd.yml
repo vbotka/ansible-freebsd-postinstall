@@ -10,7 +10,10 @@
     - freebsd_postinstall_hostapd_enabled|lower == "yes"
     - freebsd_postinstall_hostapd_install|lower == "yes"
   notify: enable and start hostapd
-  tags: rc_conf_hostapd
+  tags:
+    - fp_hostapd_rcconf
+    - fp_hostapd
+    - fp_all
 
 - name: Disable and stop hostapd
   lineinfile: >
@@ -22,7 +25,10 @@
     - freebsd_postinstall_hostapd_enabled|lower == "no"
     - freebsd_postinstall_hostapd_install|lower == "yes"
   notify: disable and stop hostapd
-  tags: rc_conf_hostapd
+  tags:
+    - fp_hostapd_rcconf
+    - fp_hostapd
+    - fp_all
 
 - name: Configure interface for hostapd
   lineinfile: >
@@ -39,7 +45,10 @@
         line: "ifconfig_{{ freebsd_postinstall_hostapd_interface }}=\"inet {{ freebsd_postinstall_hostapd_inet }} netmask {{ freebsd_postinstall_hostapd_netmask }}\"" }
   when: freebsd_postinstall_hostapd_enabled|lower == "yes"
   notify: restart hostapd
-  tags: rc_conf_hostapd
+  tags:
+    - fp_hostapd_rcconf
+    - fp_hostapd
+    - fp_all
   
 - name: Configure /etc/hostapd.conf template file
   template: >
@@ -48,7 +57,10 @@
     backup="yes"
   when: freebsd_postinstall_hostapd_enabled|lower == "yes"
   notify: restart hostapd
-  tags: freebsd_postinstall_hostapd_conf
+  tags:
+    - fp_hostapd_conf
+    - fp_hostapd
+    - fp_all
 
 # EOF
 ...

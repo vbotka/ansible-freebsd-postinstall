@@ -15,7 +15,9 @@
     insertafter="EOF"
     backup="yes"
   with_items: "{{ freebsd_postinstall_sudoers }}"
-  tags: fp_sudoers
+  tags:
+    - fp_sudoers
+    - fp_all
 
 # EOF
 ...

@@ -73,7 +73,7 @@
 
 - include_tasks: config_libmap.yml
   tags:
-    - fp_config_libmap
+    - fp_libmap
     - fp_all
 
 - include_tasks: config_users.yml

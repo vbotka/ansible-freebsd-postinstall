@@ -8,7 +8,10 @@
     backup="yes"
   notify: enable and start sshd
   when: sshd_enable|lower == "yes"
-  tags: fp_rc_conf_ssh
+  tags:
+    - fp_ssh_rcconf
+    - fp_ssh
+    - fp_all
 
 - name: Disable and stop sshd
   lineinfile: >
@@ -18,7 +21,10 @@
     backup="yes"
   notify: disable and stop sshd
   when: sshd_enable|lower == "no"
-  tags: fp_rc_conf_ssh
+  tags:
+    - fp_ssh_rcconf
+    - fp_ssh
+    - fp_all
 
 - name: Configure /etc/ssh/ssh_config
   lineinfile: >
@@ -28,7 +34,10 @@
     line="{{ item.key }} {{ item.value }}"
     backup="yes"
   with_items: "{{ ssh_config }}"
-  tags: fp_ssh_config
+  tags:
+    - fp_ssh_config
+    - fp_ssh
+    - fp_all
 
 - name: Configure /etc/ssh/sshd_config
   lineinfile: >
@@ -39,7 +48,10 @@
     backup="yes"
   with_items: "{{ sshd_config }}"
   notify: reload sshd
-  tags: fp_sshd_config
+  tags:
+    - fp_ssh_sshd_config
+    - fp_ssh
+    - fp_all
 
 # EOF
 ...

@@ -6,7 +6,10 @@
   changed_when: command_result.stdout == "create"
   notify: create and mount swap
   when: freebsd_postinstall_swap|lower == "yes"
-  tags: fp_create_mount_swap_file
+  tags:
+    - fp_swap_create_mount_file
+    - fp_swap
+    - fp_all
 
 - name: Change swapfile {{ freebsd_postinstall_swap_file }}
   shell: sh -c 'if [ -e {{ freebsd_postinstall_swap_file }} ] && [ "`stat -f %z {{ freebsd_postinstall_swap_file }}`" -ne "{{ freebsd_postinstall_swap_stsize }}" ]; then printf "change"; fi'
@@ -14,7 +17,10 @@
   changed_when: command_result.stdout == "change"
   notify: change and mount swap
   when: freebsd_postinstall_swap|lower == "yes"
-  tags: fp_change_mount_swap_file
+  tags:
+    - fp_swap_change_mount_file
+    - fp_swap
+    - fp_all
   
 - name: Create swap entry in /etc/fstab
   lineinfile: >
@@ -24,7 +30,10 @@
     backup="yes"
   notify: create and mount swap
   when: freebsd_postinstall_swap|lower == "yes"
-  tags: fp_mount_swap_file
+  tags:
+    - fp_swap_mount_file
+    - fp_swap
+    - fp_all
 
 - name: Remove swap entry from /etc/fstab
   lineinfile: >
@@ -35,7 +44,10 @@
     state="absent"
 # notify: umount swap
   when: freebsd_postinstall_swap|lower == "no"
-  tags: fp_umount_swap_file
+  tags:
+    - fp_swap_umount_file
+    - fp_swap
+    - fp_all
 
 # EOF
 ...

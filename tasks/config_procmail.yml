@@ -4,7 +4,10 @@
   command: sh -c "if [ ! -e /home/{{ item.user }}/.forward ]; then touch /home/{{ item.user }}/.forward; chown '{{ item.user }}' /home/{{ item.user }}/.forward; chmod 0644 /home/{{ item.user }}/.forward; fi"
   with_items: "{{ freebsd_postinstall_procmail_forwarders }}"
   changed_when: false
-  tags: fp_create_forward
+  tags:
+    - fp_procmail_forward
+    - fp_procmail
+    - fp_all
 
 - name: Configure forwarders
   blockinfile:
@@ -16,13 +19,19 @@
       "{{ item.forward }}"
   with_items: "{{ freebsd_postinstall_procmail_forwarders }}"
   when: freebsd_postinstall_procmail_install|lower == "yes"
-  tags: fp_config_forwarders
+  tags:
+    - fp_procmail_forwarders
+    - fp_procmail
+    - fp_all
 
 - name: Create .procmailrc files
   command: sh -c "if [ ! -e /home/{{ item.user }}/.procmailrc ]; then touch /home/{{ item.user }}/.procmailrc; chown '{{ item.user }}' /home/{{ item.user }}/.procmailrc; chmod 0644 /home/{{ item.user }}/.procmailrc; fi"
   with_items: "{{ freebsd_postinstall_procmail_forwarders }}"
   changed_when: false
-  tags: fp_create_procmailrc
+  tags:
+    - fp_procmail_procmailrc
+    - fp_procmail
+    - fp_all
 
 - name: Configure .procmailrc
   blockinfile:
@@ -41,7 +50,10 @@
       LOCKFILE=$PMDIR/.lockfile
       SENDMAIL=/usr/sbin/sendmail
   with_items: "{{ freebsd_postinstall_procmail_forwarders }}"
-  tags: fp_config_procmailrc
+  tags:
+    - fp_procmail_procmailrc
+    - fp_procmail
+    - fp_all
 
 - name: Create .procmail directory
   file: >
@@ -49,7 +61,10 @@
     state="directory"
     owner="{{ item.user }}"
   with_items: "{{ freebsd_postinstall_procmail_forwarders }}"
-  tags: fp_create_procmail_dir
+  tags:
+    - fp_procmail_dir
+    - fp_procmail
+    - fp_all
 
 - name: Create includerc files
   template: >
@@ -57,7 +72,10 @@
     dest="/home/{{ item.user }}/.procmail/{{ item.template }}.rc"
     backup="yes"
   with_items: "{{ freebsd_postinstall_procmail_includerc }}"
-  tags: fp_create_includerc
+  tags:
+    - fp_procmail_includerc
+    - fp_procmail
+    - fp_all
 
 - name: Include rc files in .procmailrc
   lineinfile: >
@@ -66,7 +84,10 @@
     insertafter="EOF"
     backup="yes"
   with_items: "{{ freebsd_postinstall_procmail_includerc }}"
-  tags: fp_includerc_in_procmailrc
+  tags:
+    - fp_procmail_includerc
+    - fp_procmail
+    - fp_all
 
 # EOF
 ...

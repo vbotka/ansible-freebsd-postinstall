@@ -8,6 +8,10 @@
     src="motd.j2"
     dest="/etc/motd"
     backup="yes"
+  tags:
+    - fp_motd_create
+    - fp_motd
+    - fp_all
 
 - name: Set update_motd YES
   lineinfile: >
@@ -16,7 +20,10 @@
     line="update_motd=\"YES\""
     backup="yes"
   when: freebsd_postinstall_update_motd|lower == "yes"
-  tags: fp_rc_conf_update_motd
+  tags:
+    - fp_motd_rcconf
+    - fp_motd
+    - fp_all
 
 - name: Set update_motd NO
   lineinfile: >
@@ -25,7 +32,10 @@
     line="update_motd=\"NO\""
     backup="yes"
   when: freebsd_postinstall_update_motd|lower == "no"
-  tags: fp_rc_conf_update_motd
+  tags:
+    - fp_motd_rcconf
+    - fp_motd
+    - fp_all
 
 # EOF
 ...

@@ -10,6 +10,9 @@
     create="yes"
   with_items: "{{ freebsd_postinstall_sysctl }}"
   notify: reload sysctl
+  tags:
+    - fp_sysctl
+    - fp_all
 
 # EOF
 ...

@@ -7,7 +7,10 @@
     - { regexp: "^nfs_client_enable", line: "nfs_client_enable=\"YES\""}
   when: freebsd_postinstall_nfs_service_enable|lower == "yes"
   notify: enable and start nfs client
-  tags: fp_enable_nfsclient
+  tags:
+    - fp_nfs_enable_nfsclient
+    - fp_nfs
+    - fp_all
 
 - name: Disable and stop nfs client
   lineinfile: dest="/etc/rc.conf" regexp="{{ item.regexp }}" line="{{ item.line }}" backup="yes"
@@ -15,7 +18,10 @@
     - { regexp: "^nfs_client_enable", line: "nfs_client_enable=\"NO\""}
   when: freebsd_postinstall_nfs_service_enable|lower == "no"
   notify: disable and stop nfs client
-  tags: fp_disable_nfsclient
+  tags:
+    - fp_nfs_disable_nfsclient
+    - fp_nfs
+    - fp_all
 
 - name: Enable and start lockd
   lineinfile: dest="/etc/rc.conf" regexp="{{ item.regexp }}" line="{{ item.line }}" backup="yes"
@@ -23,7 +29,10 @@
     - { regexp: "^rpc_lockd_enable", line: "rpc_lockd_enable=\"YES\""}
   when: freebsd_postinstall_rpc_lockd_enable|lower == "yes"
   notify: enable and start lockd
-  tags: fp_enable_lockd
+  tags:
+    - fp_nfs_enable_lockd
+    - fp_nfs
+    - fp_all
   
 - name: Disable and stop lockd
   lineinfile: dest="/etc/rc.conf" regexp="{{ item.regexp }}" line="{{ item.line }}" backup="yes"
@@ -31,7 +40,10 @@
     - { regexp: "^rpc_lockd_enable", line: "rpc_lockd_enable=\"NO\""}
   when: freebsd_postinstall_rpc_lockd_enable|lower == "no"
   notify: disable and stop lockd
-  tags: fp_disable_lockd
+  tags:
+    - fp_nfs_disable_lockd
+    - fp_nfs
+    - fp_all
   
 - name: Enable and start statd
   lineinfile: dest="/etc/rc.conf" regexp="{{ item.regexp }}" line="{{ item.line }}" backup="yes"
@@ -39,7 +51,10 @@
     - { regexp: "^rpc_statd_enable", line: "rpc_statd_enable=\"YES\""}
   when: freebsd_postinstall_rpc_statd_enable|lower == "yes"
   notify: enable and start statd
-  tags: fp_enable_statd
+  tags:
+    - fp_nfs_enable_statd
+    - fp_nfs
+    - fp_all
   
 - name: Disable and stop statd
   lineinfile: dest="/etc/rc.conf" regexp="{{ item.regexp }}" line="{{ item.line }}" backup="yes"
@@ -47,7 +62,10 @@
     - { regexp: "^rpc_statd_enable", line: "rpc_statd_enable=\"NO\""}
   when: freebsd_postinstall_rpc_statd_enable|lower == "no"
   notify: disable and stop statd
-  tags: fp_disable_statd
+  tags:
+    - fp_nfs_disable_statd
+    - fp_nfs
+    - fp_all
 
 # EOF
 ...

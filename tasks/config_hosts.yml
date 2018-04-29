@@ -9,6 +9,9 @@
     mode="0644"
     backup="yes"
   when: freebsd_postinstall_hosts > 0
+  tags:
+    - fp_hosts
+    - fp_all
   
 # EOF
 ...

@@ -6,6 +6,9 @@
     key="{{ item.key }}"
     manage_dir="yes"
   with_items: "{{ freebsd_postinstall_authorized_key }}"
+  tags:
+    - fp_authorized_key
+    - fp_all
 
 # EOF
 ...

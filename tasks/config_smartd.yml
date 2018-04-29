@@ -10,7 +10,10 @@
     - freebsd_postinstall_smartd_service_enabled|lower == "yes"
     - freebsd_postinstall_smartd_install|lower == "yes"
   notify: enable and start smartd
-  tags: fp_rc_conf_smartd
+  tags:
+    - fp_smartd_rcconf
+    - fp_smartd
+    - fp_all
 
 - name: Disable and stop smartd
   lineinfile: >
@@ -22,7 +25,10 @@
     - freebsd_postinstall_smartd_service_enabled|lower == "no"
     - freebsd_postinstall_smartd_install|lower == "yes"
   notify: disable and stop smartd
-  tags: fp_rc_conf_smartd
+  tags:
+    - fp_smartd_rcconf
+    - fp_smartd
+    - fp_all
 
 - name: Configure smartd.conf
   lineinfile: >
@@ -31,7 +37,10 @@
     state="absent"
     backup="yes"
   notify: reload smartd
-  tags: fp_smartd_conf
+  tags:
+    - fp_smartd_conf
+    - fp_smartd
+    - fp_all
 
 - name: Configure devices in {{ freebsd_postinstall_smartd_conf_file }}
   lineinfile: >
@@ -45,7 +54,10 @@
     backup="yes"
   with_items: "{{ freebsd_postinstall_smartd_devices }}"
   notify: reload smartd
-  tags: fp_smartd_conf
+  tags:
+    - fp_smartd_conf
+    - fp_smartd
+    - fp_all
 
 # EOF
 ...

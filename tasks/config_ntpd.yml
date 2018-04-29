@@ -12,7 +12,10 @@
     backup="yes"
   when: freebsd_postinstall_ntp_service_enable|lower == "yes"
   notify: enable and start ntpd
-  tags: fp_rc_conf_ntpd
+  tags:
+    - fp_ntpd_rcconf
+    - fp_ntpd
+    - fp_all
 
 - name: Disable and stop ntpd
   lineinfile: >
@@ -22,7 +25,10 @@
     backup="yes"
   when: freebsd_postinstall_ntp_service_enable|lower == "no"
   notify: disable and stop ntpd
-  tags: fp_rc_conf_ntpd
+  tags:
+    - fp_ntpd_rcconf
+    - fp_ntpd
+    - fp_all
 
 - name: Copy ntp.conf template file
   template: >
@@ -30,7 +36,10 @@
     dest="/etc/ntp.conf"
     backup="yes"
   notify: restart ntpd
-  tags: fp_ntp_conf
+  tags:
+    - fp_ntpd_ntp_conf
+    - fp_ntpd
+    - fp_all
 
 # EOF
 ...

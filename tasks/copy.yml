@@ -2,13 +2,19 @@
 
 - debug: msg="fp_synchronize_default = {{ fp_synchronize_default }}"
   when: fp_debug|lower == "yes"
-  tags: fp_synchronize_default
+  tags:
+    - fp_copy_sync_default
+    - fp_copy
+    - fp_all
 
 - name: Check existence of {{ role_path }}/{{ freebsd_postinstall_copy_dir }}/default
   local_action: >
     stat path="{{ role_path }}/{{ freebsd_postinstall_copy_dir }}/default"
   register: default_copy
-  tags: fp_synchronize_default
+  tags:
+    - fp_copy_sync_default
+    - fp_copy
+    - fp_all
   # NOTE: playbooks directory IS NOT local_action modules current
   # working directory. Absolute path role_path is needed.
 
@@ -16,7 +22,10 @@
   when:
     - fp_debug|lower == "yes"
     - default_copy.stat.isdir is defined and default_copy.stat.isdir
-  tags: fp_synchronize_default
+  tags:
+    - fp_copy_sync_default
+    - fp_copy
+    - fp_all
 
 - name: Synchronize default files {{ freebsd_postinstall_copy_dir }}/default (relative to playbooks directory)
   synchronize: >
@@ -31,23 +40,35 @@
   when:
     - default_copy.stat.exists
     - fp_synchronize_default|lower == "yes"
-  tags: fp_synchronize_default
+  tags:
+    - fp_copy_sync_default
+    - fp_copy
+    - fp_all
 
 - debug: msg="fp_synchronize_optional = {{ fp_synchronize_optional }}"
   when: fp_debug|lower == "yes"
-  tags: fp_synchronize_optional
+  tags:
+    - fp_copy_sync_optional
+    - fp_copy
+    - fp_all
 
 - name: Check existence of {{ role_path }}/{{ freebsd_postinstall_copy_dir }}/{{ rc_conf_hostname }}
   local_action: >
     stat path="{{ role_path }}/{{ freebsd_postinstall_copy_dir }}/{{ rc_conf_hostname }}"
   register: optional_copy
-  tags: fp_synchronize_optional
+  tags:
+    - fp_copy_sync_optional
+    - fp_copy
+    - fp_all
 
 - debug: msg="Directory {{ rc_conf_hostname }} exists."
   when:
     - fp_debug|lower == "yes"
     - optional_copy.stat.isdir is defined and optional_copy.stat.isdir
-  tags: fp_synchronize_optional
+  tags:
+    - fp_copy_sync_optional
+    - fp_copy
+    - fp_all
 
 - name: Synchronize host specific files {{ freebsd_postinstall_copy_dir }}/{{ rc_conf_hostname }} (relative to playbooks directory)
   synchronize: >
@@ -62,13 +83,19 @@
   when:
     - optional_copy.stat.exists
     - fp_synchronize_optional|lower == "yes"
-  tags: fp_synchronize_optional
+  tags:
+    - fp_copy_sync_optional
+    - fp_copy
+    - fp_all
 
 - name: Check existence of {{ role_path }}/{{ freebsd_postinstall_copy_dir }}/default.tar
   local_action: >
     stat path="{{ role_path }}/{{ freebsd_postinstall_copy_dir }}/default.tar"
   register: default_copy
-  tags: fp_unarchive_default
+  tags:
+    - fp_copy_unarch_default
+    - fp_copy
+    - fp_all
 
 - name: Untar default files {{ freebsd_postinstall_copy_dir }}/default.tar (relative to playbooks directory)
   unarchive: >
@@ -78,13 +105,19 @@
   when:
     - default_copy.stat.exists
     - fp_synchronize_default|lower == "yes"
-  tags: fp_unarchive_default
+  tags:
+    - fp_copy_unarch_default
+    - fp_copy
+    - fp_all
 
 - name: Check existence of {{ role_path }}/{{ freebsd_postinstall_copy_dir }}/{{ rc_conf_hostname }}.tar
   local_action: >
     stat path="{{ role_path }}/{{ freebsd_postinstall_copy_dir }}/{{ rc_conf_hostname }}.tar"
   register: optional_copy
-  tags: fp_unarchive_optional
+  tags:
+    - fp_copy_unarch_optional
+    - fp_copy
+    - fp_all
 
 - name: Untar host specific files {{ freebsd_postinstall_copy_dir }}/{{ rc_conf_hostname }}.tar (relative to playbooks directory)
   unarchive: >
@@ -94,7 +127,10 @@
   when:
     - optional_copy.stat.exists
     - fp_synchronize_optional|lower == "yes"
-  tags: fp_unarchive_optional
+  tags:
+    - fp_copy_unarch_optional
+    - fp_copy
+    - fp_all
 
 # EOF
 ...
