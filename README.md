@@ -92,6 +92,7 @@ References
 - [apcupsd - FreeBSD diary: Configuring a UPS daemon](http://www.freebsddiary.org/apcupsd.php)
 - [git - FreeBSD forum: How to setup a Git repository](https://forums.freebsd.org/threads/10810/)
 - [git - Getting Git on a Server](https://git-scm.com/book/ch4-2.html)
+- [hostapd - Atheros wireless driver support](https://wiki.freebsd.org/dev/ath%284%29)
 - [make.conf - FreeBSD forum: Prioritizing SSL/TLS in make.conf](https://forums.freebsd.org/threads/62930/)
 - [make.conf - FreeBSD wiki: Design for Flavors and Sub Packages](https://wiki.freebsd.org/Ports/FlavorsAndSubPackages)
 - [make.conf - GNU emacs flavours in FreeBSD](https://ximalas.info/2018/02/02/gnu-emacs-flavours-in-freebsd/)
