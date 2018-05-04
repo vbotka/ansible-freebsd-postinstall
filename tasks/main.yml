@@ -173,5 +173,10 @@
     - fp_sudoers
     - fp_all
 
+- include_tasks: config_loader.yml
+  tags:
+    - fp_loader
+    - fp_all
+
 # EOF
 ...

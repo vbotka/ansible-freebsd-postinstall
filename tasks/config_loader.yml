@@ -1,0 +1,17 @@
+---
+
+- name: Configure /boot/loader.conf
+  template: >
+    src="loader.conf.j2"
+    dest="/boot/loader.conf"
+    owner="root"
+    group="wheel"
+    mode="0644"
+    backup="yes"
+  when: fp_loader_conf > 0
+  tags:
+    - fp_loader
+    - fp_all
+  
+# EOF
+...

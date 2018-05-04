@@ -179,6 +179,10 @@ fp_gitserver_dir_mode: "0770"
 #freebsd_postinstall_sudoers:
 #  - { key: admin, value: "ALL=NOPASSWD: ALL" }
 
+# ----------------------------------------------------------------------
+# loader.conf
+#fp_loader_conf:
+#  - geom_eli_load="YES"
 
 # EOF
 ...

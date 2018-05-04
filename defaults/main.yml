@@ -277,5 +277,9 @@ freebsd_postinstall_sudoers_conf_group: "wheel"
 freebsd_postinstall_sudoers_conf_mode: "0440"
 freebsd_postinstall_sudoers: {}
 
+# ----------------------------------------------------------------------
+# loader.conf
+fp_loader_conf: []
+
 # EOF
 ...
