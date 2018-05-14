@@ -1,15 +1,53 @@
 ---
 
+- name: Debug
+  vars:
+    msg: |
+         freebsd_postinstall_swap [ {{ freebsd_postinstall_swap }} ]
+         freebsd_postinstall_swap_file [ {{ freebsd_postinstall_swap_file }} ]
+         freebsd_postinstall_swap_md [ {{ freebsd_postinstall_swap_md }} ]
+         freebsd_postinstall_swap_size [ {{ freebsd_postinstall_swap_size }} ]
+  debug:
+    msg: "{{ msg.split('\n') }}"
+  when: fp_debug|lower == "yes"
+  tags:
+    - fp_swap
+    - fp_all
+
 - name: Create swapfile {{ freebsd_postinstall_swap_file }}
   shell: sh -c 'if [ ! -e {{ freebsd_postinstall_swap_file }} ]; then printf "create"; fi'
   register: command_result
   changed_when: command_result.stdout == "create"
-  notify: create and mount swap
+  notify: create swap
   when: freebsd_postinstall_swap|lower == "yes"
   tags:
-    - fp_swap_create_mount_file
     - fp_swap
     - fp_all
+
+- name: Create swap entry in /etc/fstab
+  lineinfile: >
+    path="/etc/fstab"
+    regexp="^{{ freebsd_postinstall_swap_md }}"
+    line="{{ freebsd_postinstall_swap_md }} none swap sw,file={{ freebsd_postinstall_swap_file }},late 0 0"
+    backup="yes"
+  notify: mount swap
+  when: freebsd_postinstall_swap|lower == "yes"
+  tags:
+    - fp_swap
+    - fp_all
+#  mount: >
+#    name="none"
+#    src="{{ freebsd_postinstall_swap_md }}"
+#    fstype="swap"
+#    opts="sw,file={{ freebsd_postinstall_swap_file }},late"
+#    passno="0"
+#    dump="0"
+#    state="present"
+#    backup="yes"
+#
+# Note: mount module fstype swap does not work with FreeBSD as
+# expected. Instead of adding the src all swap mount points present in
+# the fstab are replaced with src.
 
 - name: Change swapfile {{ freebsd_postinstall_swap_file }}
   shell: sh -c 'if [ -e {{ freebsd_postinstall_swap_file }} ] && [ "`stat -f %z {{ freebsd_postinstall_swap_file }}`" -ne "{{ freebsd_postinstall_swap_stsize }}" ]; then printf "change"; fi'
@@ -18,34 +56,23 @@
   notify: change and mount swap
   when: freebsd_postinstall_swap|lower == "yes"
   tags:
-    - fp_swap_change_mount_file
     - fp_swap
     - fp_all
   
-- name: Create swap entry in /etc/fstab
+- name: Remove swap entry from /etc/fstab
   lineinfile: >
-    dest="/etc/fstab"
-    regexp="{{ freebsd_postinstall_swap_file }}"
-    line="{{ freebsd_postinstall_swap_md }} none swap sw,file={{ freebsd_postinstall_swap_file }},late 0 0"
+    path="/etc/fstab"
+    regexp="^{{ freebsd_postinstall_swap_md }}"
+    state="absent"
     backup="yes"
-  notify: create and mount swap
-  when: freebsd_postinstall_swap|lower == "yes"
+  notify: umount and delete swap
+  when: freebsd_postinstall_swap|lower == "no"
   tags:
-    - fp_swap_mount_file
     - fp_swap
     - fp_all
 
-- name: Remove swap entry from /etc/fstab
-  lineinfile: >
-    dest="/etc/fstab"
-    regexp="{{ freebsd_postinstall_swap_file }}"
-    line="{{ freebsd_postinstall_swap_md }} none swap sw,file={{ freebsd_postinstall_swap_file }},late 0 0"
-    backup="yes"
-    state="absent"
-# notify: umount swap
-  when: freebsd_postinstall_swap|lower == "no"
+- meta: flush_handlers
   tags:
-    - fp_swap_umount_file
     - fp_swap
     - fp_all
 

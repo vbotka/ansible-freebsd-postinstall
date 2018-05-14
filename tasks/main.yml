@@ -51,7 +51,6 @@
   tags:
     - fp_swap
     - fp_all
-  when: freebsd_postinstall_swap|lower == "yes"
 
 - include_tasks: config_fstab.yml
   tags:

@@ -41,7 +41,7 @@ fp_synchronize_delete: "no"
 
 # ----------------------------------------------------------------------
 # swap
-freebsd_postinstall_swap: "NO"
+freebsd_postinstall_swap: "no"
 freebsd_postinstall_swap_file: "/usr/swap0"
 freebsd_postinstall_swap_md: "md99"
 #freebsd_postinstall_swap_size: "4096"
