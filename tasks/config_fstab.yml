@@ -5,7 +5,7 @@
          src="{{ item.src }}"
          fstype="{{ item.fstype }}"
          opts="{{ item.opts }}"
-         state="present"
+         state="mounted"
   with_items: "{{ freebsd_postinstall_fstab_entries }}"
   tags:
     - fp_fstab
