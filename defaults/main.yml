@@ -56,6 +56,7 @@ freebsd_postinstall_swap_stsize: "1610612736"
 freebsd_postinstall_fstab_entries:
   - { name: "/proc", src: "proc", fstype: "procfs", opts: "rw" }
   - { name: "/dev/fd", src: "fdesc", fstype: "fdescfs", opts: "rw" }
+# Note: Configure swap with separate task swap
 
 # ----------------------------------------------------------------------
 # libmap
