@@ -4,9 +4,10 @@
   vars:
     msg: |
          freebsd_postinstall_swap [ {{ freebsd_postinstall_swap }} ]
-         freebsd_postinstall_swap_file [ {{ freebsd_postinstall_swap_file }} ]
-         freebsd_postinstall_swap_md [ {{ freebsd_postinstall_swap_md }} ]
-         freebsd_postinstall_swap_size [ {{ freebsd_postinstall_swap_size }} ]
+         freebsd_postinstall_swap_file [ {{ freebsd_postinstall_swap_file|default("NOT-DEFINED") }} ]
+         freebsd_postinstall_swap_md [ {{ freebsd_postinstall_swap_md|default("NOT-DEFINED") }} ]
+         freebsd_postinstall_swap_size [ {{ freebsd_postinstall_swap_size|default("NOT-DEFINED") }} ]
+         freebsd_postinstall_swap_stsize [ {{ freebsd_postinstall_swap_stsize|default("NOT-DEFINED") }} ]
   debug:
     msg: "{{ msg.split('\n') }}"
   when: fp_debug|lower == "yes"
@@ -66,7 +67,9 @@
     state="absent"
     backup="yes"
   notify: umount and delete swap
-  when: freebsd_postinstall_swap|lower == "no"
+  when:
+    - freebsd_postinstall_swap|lower == "no"
+    - freebsd_postinstall_swap_md is defined
   tags:
     - fp_swap
     - fp_all
