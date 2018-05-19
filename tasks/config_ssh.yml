@@ -1,5 +1,33 @@
 ---
 
+- name: Configure {{ ssh_config_path }}
+  lineinfile: >
+    dest="{{ ssh_config_path }}"
+    regexp="^{{ item.key }}"
+    insertbefore="^{{'#'}}{{ item.key }}"
+    line="{{ item.key }} {{ item.value }}"
+    backup="yes"
+  with_items: "{{ ssh_config }}"
+  tags:
+    - fp_ssh_config
+    - fp_ssh
+    - fp_all
+
+- name: Configure {{ sshd_config_path }}
+  lineinfile: >
+    dest="{{ sshd_config_path }}"
+    regexp="^{{ item.key }}"
+    insertbefore="^{{'#'}}{{ item.key }}"
+    line="{{ item.key }} {{ item.value }}"
+    backup="yes"
+    validate="{{ sshd_path }} -t -f %s"
+  with_items: "{{ sshd_config }}"
+  notify: reload sshd
+  tags:
+    - fp_ssh_sshd_config
+    - fp_ssh
+    - fp_all
+
 - name: Enable and start sshd
   lineinfile: >
     dest="/etc/rc.conf"
@@ -23,33 +51,6 @@
   when: sshd_enable|lower == "no"
   tags:
     - fp_ssh_rcconf
-    - fp_ssh
-    - fp_all
-
-- name: Configure /etc/ssh/ssh_config
-  lineinfile: >
-    dest="/etc/ssh/ssh_config"
-    regexp="^{{ item.key }}"
-    insertbefore="^{{'#'}}{{ item.key }}"
-    line="{{ item.key }} {{ item.value }}"
-    backup="yes"
-  with_items: "{{ ssh_config }}"
-  tags:
-    - fp_ssh_config
-    - fp_ssh
-    - fp_all
-
-- name: Configure /etc/ssh/sshd_config
-  lineinfile: >
-    dest="/etc/ssh/sshd_config"
-    regexp="^{{ item.key }}"
-    insertbefore="^{{'#'}}{{ item.key }}"
-    line="{{ item.key }} {{ item.value }}"
-    backup="yes"
-  with_items: "{{ sshd_config }}"
-  notify: reload sshd
-  tags:
-    - fp_ssh_sshd_config
     - fp_ssh
     - fp_all
 
