@@ -177,5 +177,10 @@
     - fp_loader
     - fp_all
 
+- include_tasks: config_cron.yml
+  tags:
+    - fp_cron
+    - fp_all
+
 # EOF
 ...

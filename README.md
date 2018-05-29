@@ -4,10 +4,11 @@ freebsd-postinstall
 [![Build Status](https://travis-ci.org/vbotka/ansible-freebsd-postinstall.svg?branch=master)](https://travis-ci.org/vbotka/ansible-freebsd-postinstall)
 
 [Ansible role](https://galaxy.ansible.com/vbotka/freebsd-postinstall/).
-Post-install configuration of FreeBSD: apcupsd, fstab, gitserver,
-hostapd, hostname, hosts, libmap, loader.conf, make.conf, motd, nfsd,
-ntpd, ntpdate, procmail, smartd, sudoers, ssh, swap, sysctl, timezone,
-users, authorized keys, packages and ports, overlays, wip ...
+Post-install configuration of FreeBSD: apcupsd, cron, fstab,
+gitserver, hostapd, hostname, hosts, libmap, loader.conf, make.conf,
+motd, nfsd, ntpd, ntpdate, procmail, smartd, sudoers, ssh, swap,
+sysctl, timezone, users, authorized keys, packages and ports,
+overlays, wip ...
 
 Tested with FreeBSD 10.3 and 11.1
 
@@ -89,6 +90,7 @@ References
 ----------
 - [FreeBSD handbook: Post-Installation](https://www.freebsd.org/doc/handbook/bsdinstall-post.html)
 - [apcupsd - FreeBSD diary: Configuring a UPS daemon](http://www.freebsddiary.org/apcupsd.php)
+- [cron - FreeBSD handbook: Configuring cron](https://www.freebsd.org/doc/handbook/configtuning-cron.html)
 - [git - FreeBSD forum: How to setup a Git repository](https://forums.freebsd.org/threads/10810/)
 - [git - Getting Git on a Server](https://git-scm.com/book/ch4-2.html)
 - [hostapd - Atheros wireless driver support](https://wiki.freebsd.org/dev/ath%284%29)

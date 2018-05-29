@@ -287,5 +287,10 @@ freebsd_postinstall_sudoers: {}
 # loader.conf
 fp_loader_conf: []
 
+# ----------------------------------------------------------------------
+# cron
+fp_cron_tab: {}
+fp_cron_var: {}
+
 # EOF
 ...
