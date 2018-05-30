@@ -10,7 +10,5 @@ galaxy_info:
       versions:
         - 10.3
         - 11.0
-  galaxy_tags:
-    - installer
-    - freebsd
+  galaxy_tags: [ freebsd, apcupsd, cron, fstab, gitserver, hostapd, hostname, hosts, libmap, loader, make, motd, nfsd, ntpd, ntpdate, procmail, smartd, sudoers, ssh, swap, sysctl, timezone, users, authorized keys, packages, ports ]
 dependencies: []
