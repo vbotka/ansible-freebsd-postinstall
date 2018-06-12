@@ -1,0 +1,46 @@
+---
+
+- name: "apcupsd: Enable and start apcupsd"
+  lineinfile:
+    dest: "/etc/rc.conf"
+    regexp: "^apcupsd_enable"
+    line: "apcupsd_enable=\"YES\""
+    backup: yes
+  when:
+    - fp_apcupsd_service_enabled
+    - fp_apcupsd_install
+  notify: enable and start apcupsd
+  tags: fp_apcupsd_rcconf
+
+- name: "apcupsd: Disable and stop apcupsd"
+  lineinfile:
+    dest: "/etc/rc.conf"
+    regexp: "^apcupsd_enable"
+    line: "apcupsd_enable=\"NO\""
+    backup: yes
+  when:
+    - not fp_apcupsd_service_enabled
+    - fp_apcupsd_install
+  notify: disable and stop apcupsd
+  tags: fp_apcupsd_rcconf
+
+- name: "apcupsd: Create directory {{ fp_apcupsd_conf_dir }}"
+  file:
+    state: "directory"
+    path: "{{ fp_apcupsd_conf_dir }}"
+  tags: fp_apcupsd_conf
+
+- name: "apcupsd: Configure apcupsd.conf"
+  template:
+    src: "apcupsd.conf.j2"
+    dest: "{{ fp_apcupsd_conf_file }}"
+    owner: "{{ fp_apcupsd_conf_owner }}"
+    group: "{{ fp_apcupsd_conf_group }}"
+    mode: "{{ fp_apcupsd_conf_mode }}"
+    backup: yes
+  when: fp_apcupsd_service_enabled
+  notify: restart apcupsd
+  tags: fp_apcupsd_conf
+
+# EOF
+...

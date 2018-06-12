@@ -1,0 +1,26 @@
+---
+
+- name: "cron: Configure cron variables"
+  cronvar:
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
+    user: "{{ item.user }}"
+  with_items: "{{ fp_cron_var }}"
+  tags: fp_cron_var
+
+- name: "cron: Configure cron"
+  cron:
+    state: "{{ item.state }}"
+    user: "{{ item.user }}"
+    name: "{{ item.name }}"
+    minute: "{{ item.minute }}"
+    hour: "{{ item.hour }}"
+    day: "{{ item.day }}"
+    month: "{{ item.month }}"
+    weekday: "{{ item.weekday }}"
+    job: "{{ item.command }}"
+  with_items: "{{ fp_cron_tab }}"
+  tags: fp_cron_tab
+
+# EOF
+...

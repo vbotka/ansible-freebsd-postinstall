@@ -1,145 +1,102 @@
 ---
 
-- name: Install packages
-  pkgng: >
-    name="{{ item }}"
-    state="present"
-  with_items: "{{ freebsd_ports }}"
+- name: "packages: Install packages"
+  pkgng:
+    name: "{{ item }}"
+  with_items: "{{ fp_ports }}"
   when: freebsd_install_method|lower == "packages"
-  tags:
-    - fp_packages_install
-    - fp_packages
-    - fp_all
+  tags: fp_packages_install
 
-- name: Install ports
-  portinstall: >
-    name="{{ item }}"
-    state="present"
-    use_packages="{{ freebsd_use_packages }}"
-  with_items: "{{ freebsd_ports }}"
+- name: "packages: Install ports"
+  portinstall:
+    name: "{{ item }}"
+    use_packages: "{{ freebsd_use_packages }}"
+  with_items: "{{ fp_ports }}"
   when: freebsd_install_method|lower == "ports"
-  tags:
-    - fp_packages_install_ports
-    - fp_packages
-    - fp_all
+  tags: fp_packages_install
 
 # smartmontools
-- name: Install smartmontools package
-  pkgng: >
-    name="sysutils/smartmontools"
-    state="present"
+- name: "packages: Install smartmontools package"
+  pkgng:
+    name: "sysutils/smartmontools"
   when:
     - freebsd_install_method|lower == "packages"
-    - freebsd_postinstall_smartd_install|lower == "yes"
-  tags:
-    - fp_packages_smartmontools
-    - fp_packages
-    - fp_all
+    - fp_smartd_install
+  tags: fp_packages_smartmontools
 
-- name: Install smartmontools port
-  portinstall: >
-    name="sysutils/smartmontools"
-    state="present"
-    use_packages="{{ freebsd_use_packages }}"
+- name: "packages: Install smartmontools port"
+  portinstall:
+    name: "sysutils/smartmontools"
+    use_packages: "{{ freebsd_use_packages }}"
   when:
     - freebsd_install_method|lower == "ports"
-    - freebsd_postinstall_smartd_install|lower == "yes"
-  tags:
-    - fp_packages_smartmontools_port
-    - fp_packages
-    - fp_all
+    - fp_smartd_install
+  tags: fp_packages_smartmontools
 
 # hostapd
-- name: Install hostapd package
-  pkgng: >
-    name="net/hostapd"
-    state="present"
+- name: "packages: Install hostapd package"
+  pkgng:
+    name: "net/hostapd"
   when:
     - freebsd_install_method|lower == "packages"
-    - freebsd_postinstall_hostapd_install|lower == "yes"
-  tags:
-    - fp_packages_hostapd
-    - fp_packages
-    - fp_all
+    - fp_hostapd_install
+  tags: fp_packages_hostapd
 
-- name: Install hostapd port
-  portinstall: >
-    name="net/hostapd"
-    state="present"
-    use_packages="{{ freebsd_use_packages }}"
+- name: "packages: Install hostapd port"
+  portinstall:
+    name: "net/hostapd"
+    use_packages: "{{ freebsd_use_packages }}"
   when:
     - freebsd_install_method|lower == "ports"
-    - freebsd_postinstall_hostapd_install|lower == "yes"
-  tags:
-    - fp_ports_hostapd
-    - fp_packages
-    - fp_all
+    - fp_hostapd_install
+  tags: fp_packages_hostapd
 
 # procmail
-- name: Install procmail package
-  pkgng: >
-    name="mail/procmail"
-    state="present"
+- name: "packages: Install procmail package"
+  pkgng:
+    name: "mail/procmail"
   when:
     - freebsd_install_method|lower == "packages"
-    - freebsd_postinstall_procmail_install|lower == "yes"
-  tags:
-    - fp_packages_procmail
-    - fp_packages
-    - fp_all
+    - fp_procmail_install
+  tags: fp_packages_procmail
 
-- name: Install procmail port
-  portinstall: >
-    name="mail/procmail"
-    state="present"
-    use_packages="{{ freebsd_use_packages }}"
+- name: "packages: Install procmail port"
+  portinstall:
+    name: "mail/procmail"
+    use_packages: "{{ freebsd_use_packages }}"
   when:
     - freebsd_install_method|lower == "ports"
-    - freebsd_postinstall_procmail_install|lower == "yes"
-  tags:
-    - fp_packages_procmail_port
-    - fp_packages
-    - fp_all
+    - fp_procmail_install
+  tags: fp_packages_procmail
 
 # apcupsd
-- name: Install sysutils/apcupsd  package
-  pkgng: >
-    name="sysutils/apcupsd"
-    state="present"
-    use_packages="{{ freebsd_use_packages }}"
+- name: "packages: Install sysutils/apcupsd  package"
+  pkgng:
+    name: "sysutils/apcupsd"
+    use_packages: "{{ freebsd_use_packages }}"
   when:
     - freebsd_install_method|lower == "packages"
-    - freebsd_postinstall_apcupsd_service_enabled|lower == "yes"
-  tags:
-    - fp_packages_apcupsd
-    - fp_packages
-    - fp_all
+    - fp_apcupsd_install
+  tags: fp_packages_apcupsd
 
-- name: Install sysutils/apcupsd  port
-  portinstall: >
-    name="sysutils/apcupsd"
-    state="present"
-    use_packages="{{ freebsd_use_packages }}"
+- name: "packages: Install sysutils/apcupsd  port"
+  portinstall:
+    name: "sysutils/apcupsd"
+    use_packages: "{{ freebsd_use_packages }}"
   when:
     - freebsd_install_method|lower == "ports"
-    - freebsd_postinstall_apcupsd_service_enabled|lower == "yes"
-  tags:
-    - fp_packages_apcupsd_port
-    - fp_packages
-    - fp_all
+    - fp_apcupsd_install
+  tags: fp_packages_apcupsd
 
 # links
-- name: Create symbolic links
-  file: >
-    src="{{ item.target }}"
-    dest="{{ item.link }}"
-    state="link"
-    force="yes"
-  with_items: "{{ freebsd_postinstall_links }}"
-  tags:
-    - fp_packages_links
-    - fp_packages
-    - fp_all
+- name: "packages: Create symbolic links"
+  file:
+    src: "{{ item.target }}"
+    dest: "{{ item.link }}"
+    state: "link"
+    force: yes
+  with_items: "{{ fp_links }}"
+  tags: fp_packages_links
 
 # EOF
 ...

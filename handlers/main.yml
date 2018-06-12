@@ -49,7 +49,7 @@
   service: name="rpcbind" state="stopped" enabled="no"
 - name: reload mountd
   service: name="mountd" state="reloaded"
-  when: freebsd_postinstall_nfsd_service_enable|lower == "yes"
+  when: fp_nfsd_service_enable
 
 # ntpd
 - name: enable and start ntpd
@@ -97,17 +97,17 @@
 
 # swap
 - name: create swap
-  shell: sh -c 'dd if=/dev/zero of={{freebsd_postinstall_swap_file}} bs=1m count={{freebsd_postinstall_swap_size}} && chmod 0600 {{freebsd_postinstall_swap_file}}'
+  shell: sh -c 'dd if=/dev/zero of={{fp_swap_file}} bs=1m count={{fp_swap_size}} && chmod 0600 {{fp_swap_file}}'
 
 # NOTE: swapon creates /dev/mdXX
 - name: mount swap
   shell: sh -c 'swapon -aL'
 
 - name: change and mount swap
-  shell: sh -c 'swapoff /dev/{{freebsd_postinstall_swap_md}} && mdconfig -d -u {{freebsd_postinstall_swap_md }} && dd if=/dev/zero of={{freebsd_postinstall_swap_file}} bs=1m count={{freebsd_postinstall_swap_size}} && chmod 0600 {{freebsd_postinstall_swap_file}} && swapon -aL'
+  shell: sh -c 'swapoff /dev/{{fp_swap_md}} && mdconfig -d -u {{fp_swap_md }} && dd if=/dev/zero of={{fp_swap_file}} bs=1m count={{fp_swap_size}} && chmod 0600 {{fp_swap_file}} && swapon -aL'
 
 - name: umount and delete swap
-  shell: sh -c 'swapoff /dev/{{freebsd_postinstall_swap_md}} && mdconfig -d -u {{freebsd_postinstall_swap_md}} && rm {{freebsd_postinstall_swap_file}}'
+  shell: sh -c 'swapoff /dev/{{fp_swap_md}} && mdconfig -d -u {{fp_swap_md}} && rm {{fp_swap_file}}'
 
 # EOF
 ...

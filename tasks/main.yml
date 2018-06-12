@@ -1,186 +1,130 @@
 ---
 # tasks for vbotka.freebsd-postinstall
 
-- debug: msg="{{ ansible_distribution }} {{ ansible_distribution_major_version }}"
-  when: fp_debug|lower == "yes"
-  tags:
-   - fp_vars
-   - fp_all
-
-- name: Print install variables
+- name: Debug
   vars:
     msg: |
-         fp_gitserver_install [ {{ fp_gitserver_install }} ]
-         freebsd_postinstall_swap [ {{ freebsd_postinstall_swap }} ]
-         freebsd_postinstall_groupwrappers_install [ {{ freebsd_postinstall_groupwrappers_install }} ]
-         freebsd_postinstall_smartd_instal install [ {{ freebsd_postinstall_smartd_install }} ]
-         freebsd_postinstall_apcupsd_service_enabled [ {{ freebsd_postinstall_apcupsd_service_enabled }} ]
-         freebsd_postinstall_hostapd_install [ {{ freebsd_postinstall_hostapd_install }} ]
-         freebsd_postinstall_procmail_install [ {{ freebsd_postinstall_procmail_install }} ]
-  debug:
-    msg: "{{ msg.split('\n') }}"
-  when: fp_debug|lower == "yes"
-  tags:
-   - fp_vars
-   - fp_all
+         ansible_architecture [ {{ ansible_architecture }} ]
+         ansible_os_family [ {{ ansible_os_family }} ]
+         ansible_distribution [ {{ ansible_distribution }} ]
+         ansible_distribution_major_version [ {{ ansible_distribution_major_version }} ]
+         ansible_distribution_version [ {{ ansible_distribution_version }} ]
+         ansible_distribution_release [ {{ ansible_distribution_release }} ]
 
-- name: Print other variables
-  vars:
-    msg: |
+         rc_conf_hostname [ {{ rc_conf_hostname }} ]
+         fp_domain [ {{ fp_domain }} ]
          fp_zoneinfo [ {{ fp_zoneinfo }} ]
+         digitalocean [ {{ digitalocean }} ]
+         fp_swap [ {{ fp_swap }} ]
+         fp_synchronize_default [ {{ fp_synchronize_default }} ]
+         fp_synchronize_optional [ {{ fp_synchronize_optional }} ]
+         sshd_enable [ {{ sshd_enable }} ]
+         fp_smartd_install [ {{ fp_smartd_install }} ]
+         fp_smartd_service_enabled [ {{ fp_smartd_service_enabled }} ]
+         fp_apcupsd_install [ {{ fp_apcupsd_install }} ]
+         fp_apcupsd_service_enabled [ {{ fp_apcupsd_service_enabled }} ]
+         fp_hostapd_install [ {{ fp_hostapd_install }} ]
+         fp_hostapd_enabled [ {{ fp_hostapd_enabled }} ]
+         fp_nfs_service_enable [ {{ fp_nfs_service_enable }} ]
+         fp_nfsd_service_enable [ {{ fp_nfsd_service_enable }} ]
+         fp_rpcbind_enable [ {{ fp_rpcbind_enable }} ]
+         fp_rpc_lockd_enable [ {{ fp_rpc_lockd_enable }} ]
+         fp_rpc_statd_enable [ {{ fp_rpc_statd_enable }} ]
+         fp_ntp_service_enable [ {{ fp_ntp_service_enable }} ]
+         fp_procmail_install [ {{ fp_procmail_install }} ]
+         fp_update_motd [ {{ fp_update_motd }} ]
+         fp_groupwrappers_install [ {{ fp_groupwrappers_install }} ]
+         fp_gitserver_install [ {{ fp_gitserver_install }} ]
   debug:
     msg: "{{ msg.split('\n') }}"
-  when: fp_debug|lower == "yes"
-  tags:
-   - fp_vars
-   - fp_all
+  when: fp_debug
+  tags: fp_vars
 
-- include_tasks: config_sysctl.yml
-  tags:
-    - fp_sysctl
-    - fp_all
+- include_tasks: sysctl.yml
+  tags: fp_sysctl
 
-- include_tasks: config_make.yml
-  tags:
-    - bsd_packages
-    - bsd_ports
-    - fp_make
-    - fp_all
+- include_tasks: make.yml
+  tags: fp_make
 
-- include_tasks: config_swap.yml
-  tags:
-    - fp_swap
-    - fp_all
+- include_tasks: swap.yml
+  tags: fp_swap
 
-- include_tasks: config_fstab.yml
-  tags:
-    - fp_fstab
-    - fp_all
+- include_tasks: fstab.yml
+  tags: fp_fstab
 
 - include_tasks: packages.yml
-  tags:
-    - bsd_packages
-    - bsd_ports
-    - fp_packages
-    - fp_all
+  tags: fp_packages
 
 - include_tasks: copy.yml
-  tags:
-    - copy
-    - fp_copy
-    - fp_all
+  tags: fp_copy
 
-- include_tasks: config_libmap.yml
-  tags:
-    - fp_libmap
-    - fp_all
+- include_tasks: libmap.yml
+  tags: fp_libmap
 
-- include_tasks: config_users.yml
-  tags:
-    - fp_users
-    - fp_all
+- include_tasks: users.yml
+  tags: fp_users
 
 - include_tasks: groupwrappers.yml
-  tags:
-    - fp_groupwrappers
-    - fp_users
-    - fp_all
-  when: freebsd_postinstall_groupwrappers_install|lower  == "yes"
+  tags: fp_groupwrappers
+  when: fp_groupwrappers_install
 
-- include_tasks: config_hostname.yml
-  tags:
-    - fp_hostname
-    - fp_all
+- include_tasks: hostname.yml
+  tags: fp_hostname
 
-- include_tasks: config_hosts.yml
-  tags:
-    - fp_hosts
-    - fp_all
+- include_tasks: hosts.yml
+  tags: fp_hosts
 
-- include_tasks: config_ssh.yml
-  tags:
-    - fp_ssh
-    - fp_all
+- include_tasks: ssh.yml
+  tags: fp_ssh
 
-- include_tasks: config_authorized_key.yml
-  tags:
-  - fp_authorized_key
-  - fp_all
+- include_tasks: authorized_key.yml
+  tags: fp_authorized_key
 
-- include_tasks: config_timezone.yml
-  tags:
-    - fp_timezone
-    - fp_all
+- include_tasks: timezone.yml
+  tags: fp_timezone
 
-- include_tasks: config_ntpd.yml
-  tags:
-    - fp_ntpd
-    - fp_all
+- include_tasks: ntpd.yml
+  tags: fp_ntpd
 
-- include_tasks: config_ntpdate.yml
-  tags:
-  - fp_ntpdate
-  - fp_all
+- include_tasks: ntpdate.yml
+  tags: fp_ntpdate
 
-- include_tasks: config_nfs.yml
-  tags:
-    - fp_nfs
-    - fp_all
+- include_tasks: nfs.yml
+  tags: fp_nfs
 
-- include_tasks: config_nfsd.yml
-  tags:
-    - fp_nfsd
-    - fp_all
+- include_tasks: nfsd.yml
+  tags: fp_nfsd
 
-- include_tasks: config_smartd.yml
-  tags:
-    - fp_smartd
-    - fp_all
-  when: freebsd_postinstall_smartd_install|lower == "yes"
+- include_tasks: smartd.yml
+  tags: fp_smartd
+  when: fp_smartd_install
 
-- include_tasks: config_apcupsd.yml
-  tags:
-    - fp_apcupsd
-    - fp_all
-  when: freebsd_postinstall_apcupsd_service_enabled|lower == "yes"
+- include_tasks: apcupsd.yml
+  tags: fp_apcupsd
 
-- include_tasks: config_hostapd.yml
-  tags:
-    - fp_hostapd
-    - fp_all
-  when: freebsd_postinstall_hostapd_install|lower == "yes"
+- include_tasks: hostapd.yml
+  tags: fp_hostapd
+  when: fp_hostapd_install
 
-- include_tasks: config_procmail.yml
-  tags:
-    - fp_procmail
-    - fp_all
-  when: freebsd_postinstall_procmail_install|lower == "yes"
+- include_tasks: procmail.yml
+  tags: fp_procmail
+  when: fp_procmail_install
 
-- include_tasks: config_motd.yml
-  tags:
-    - fp_motd
-    - fp_all
+- include_tasks: motd.yml
+  tags: fp_motd
 
-- include_tasks: config_gitserver.yml
-  tags:
-    - fp_gitserver
-    - fp_all
-  when: fp_gitserver_install|lower == "yes"
+- include_tasks: gitserver.yml
+  tags: fp_gitserver
+  when: fp_gitserver_install
 
-- include_tasks: config_sudoers.yml
-  tags:
-    - fp_sudoers
-    - fp_all
+- include_tasks: sudoers.yml
+  tags: fp_sudoers
 
-- include_tasks: config_loader.yml
-  tags:
-    - fp_loader
-    - fp_all
+- include_tasks: loader.yml
+  tags: fp_loader
 
-- include_tasks: config_cron.yml
-  tags:
-    - fp_cron
-    - fp_all
+- include_tasks: cron.yml
+  tags: fp_cron
 
 # EOF
 ...

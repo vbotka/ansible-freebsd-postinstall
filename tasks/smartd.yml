@@ -1,0 +1,51 @@
+---
+
+- name: "smartd: Enable and start smartd"
+  lineinfile:
+    dest: "/etc/rc.conf"
+    regexp: "^smartd_enable"
+    line: "smartd_enable=\"YES\""
+    backup: yes
+  when:
+    - fp_smartd_service_enabled
+    - fp_smartd_install
+  notify: enable and start smartd
+  tags: fp_smartd_rcconf
+
+- name: "smartd: Disable and stop smartd"
+  lineinfile:
+    dest: "/etc/rc.conf"
+    regexp: "^smartd_enable"
+    line: "smartd_enable=\"NO\""
+    backup: yes
+  when:
+    - not fp_smartd_service_enabled
+    - fp_smartd_install
+  notify: disable and stop smartd
+  tags: fp_smartd_rcconf
+
+- name: "smartd: Configure smartd.conf"
+  lineinfile:
+    dest: "{{ fp_smartd_conf_file }}"
+    regexp: "^DEVICESCAN"
+    state: "absent"
+    backup: yes
+  notify: reload smartd
+  tags: fp_smartd_conf
+
+- name: "smartd: Configure devices in {{ fp_smartd_conf_file }}"
+  lineinfile:
+    dest: "{{ fp_smartd_conf_file }}"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    owner: "{{ fp_smartd_conf_owner }}"
+    group: "{{ fp_smartd_conf_group }}"
+    mode: "{{ fp_smartd_conf_mode }}"
+    create: yes
+    backup: yes
+  with_items: "{{ fp_smartd_devices }}"
+  notify: reload smartd
+  tags: fp_smartd_conf
+
+# EOF
+...

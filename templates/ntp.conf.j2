@@ -1,52 +1,52 @@
 # {{ansible_managed}}
-{% if freebsd_postinstall_ntp_config_tinker_panic_enabled %}
+{% if fp_ntp_config_tinker_panic_enabled %}
 tinker panic 0
 {% endif %}
-{% if freebsd_postinstall_ntp_config_driftfile %}
-driftfile {{ freebsd_postinstall_ntp_config_driftfile }}
+{% if fp_ntp_config_driftfile %}
+driftfile {{ fp_ntp_config_driftfile }}
 {% endif %}
-{% for server in freebsd_postinstall_ntp_config_server %}
+{% for server in fp_ntp_config_server %}
 server {{ server }}
 {% endfor %}
-{% if freebsd_postinstall_ntp_config_statistics %}
-statistics {{ freebsd_postinstall_ntp_config_statistics }}
+{% if fp_ntp_config_statistics %}
+statistics {{ fp_ntp_config_statistics }}
 {% endif %}
-{% for filegen in freebsd_postinstall_ntp_config_filegen %}
+{% for filegen in fp_ntp_config_filegen %}
 filegen {{ filegen }}
 {% endfor %}
-{% for listen in freebsd_postinstall_ntp_config_listen %}
+{% for listen in fp_ntp_config_listen %}
 interface listen {{ listen }}
 {% endfor %}
-{% for restrict in freebsd_postinstall_ntp_config_restrict %}
+{% for restrict in fp_ntp_config_restrict %}
 restrict {{ restrict }}
 {% endfor %}
-{% if freebsd_postinstall_ntp_config_crypto %}
+{% if fp_ntp_config_crypto %}
 crypto
 {% endif %}
-{% if freebsd_postinstall_ntp_config_includefile %}
-includefile  {{ freebsd_postinstall_ntp_config_includefile }}
+{% if fp_ntp_config_includefile %}
+includefile  {{ fp_ntp_config_includefile }}
 {% endif %}
-{% if freebsd_postinstall_ntp_config_keys %}
-keys {{ freebsd_postinstall_ntp_config_keys }}
+{% if fp_ntp_config_keys %}
+keys {{ fp_ntp_config_keys }}
 {% endif %}
-{% if freebsd_postinstall_ntp_config_trustedkey %}
-trustedkey {{ freebsd_postinstall_ntp_config_trustedkey }}
+{% if fp_ntp_config_trustedkey %}
+trustedkey {{ fp_ntp_config_trustedkey }}
 {% endif %}
-{% if freebsd_postinstall_ntp_config_requestkey %}
-requestkey  {{ freebsd_postinstall_ntp_config_requestkey }}
+{% if fp_ntp_config_requestkey %}
+requestkey  {{ fp_ntp_config_requestkey }}
 {% endif %}
-{% if freebsd_postinstall_ntp_config_controlkey %}
-controlkey {{ freebsd_postinstall_ntp_config_controlkey }}
+{% if fp_ntp_config_controlkey %}
+controlkey {{ fp_ntp_config_controlkey }}
 {% endif %}
-{% if freebsd_postinstall_ntp_config_broadcast %}
-broadcast {{ freebsd_postinstall_ntp_config_broadcast }}
+{% if fp_ntp_config_broadcast %}
+broadcast {{ fp_ntp_config_broadcast }}
 {% endif %}
-{% if freebsd_postinstall_ntp_config_broadcastclient %}
+{% if fp_ntp_config_broadcastclient %}
 broadcastclient
 {% endif %}
-{% if freebsd_postinstall_ntp_config_multicastclient %}
-multicastclient {{ freebsd_postinstall_ntp_config_multicastclient }}
+{% if fp_ntp_config_multicastclient %}
+multicastclient {{ fp_ntp_config_multicastclient }}
 {% endif %}
-{% if freebsd_postinstall_ntp_config_leapfile %}
-leapfile {{ freebsd_postinstall_ntp_config_leapfile }}
+{% if fp_ntp_config_leapfile %}
+leapfile {{ fp_ntp_config_leapfile }}
 {% endif %}

@@ -1,0 +1,13 @@
+---
+
+- name: "make: Configure /etc/make.conf"
+  template:
+    src: "make.conf.j2"
+    dest: "/etc/make.conf"
+    owner: "{{ fp_make_conf_owner }}"
+    group: "{{ fp_make_conf_group }}"
+    mode: "{{ fp_make_conf_mode }}"
+    backup: yes
+
+# EOF
+...

@@ -1,0 +1,20 @@
+---
+
+# TODO:
+# (1) configure /usr/local/etc/sudoers.d
+# (2) configure /usr/local/etc/sudoers.dist
+
+- name: "sudoers: Configure {{ fp_sudoers_conf }}"
+  lineinfile:
+    dest: "{{ fp_sudoers_conf }}"
+    owner: "{{ fp_sudoers_conf_owner }}"
+    group: "{{ fp_sudoers_conf_group }}"
+    mode: "{{ fp_sudoers_conf_mode }}"
+    regexp: "^{{ item.key }}"
+    line: "{{ item.key }} {{ item.value }}"
+    insertafter: "EOF"
+    backup: yes
+  with_items: "{{ fp_sudoers }}"
+
+# EOF
+...

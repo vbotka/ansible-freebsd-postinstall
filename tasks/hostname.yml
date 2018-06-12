@@ -1,0 +1,29 @@
+---
+
+- name: "hostname: Configure hostname in /etc/rc.conf"
+  lineinfile:
+    dest: "/etc/rc.conf"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    backup: yes
+  with_items:
+    - { regexp: "^hostname",  line: "hostname=\"{{ rc_conf_hostname }}\""}
+  notify: set hostname
+  tags: fp_hostname_rcconf
+
+# DO overwrites hostname from rc.conf
+- name: "hostname: Configure hostname in /etc/rc.digitalocean.d/droplet.conf"
+  lineinfile:
+    dest: "/etc/rc.digitalocean.d/droplet.conf"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    backup: yes
+  with_items:
+    - { regexp: "^hostname",  line: "hostname=\"{{ rc_conf_hostname }}\""}
+  when:
+    - digitalocean
+    - ansible_distribution_major_version < '11'
+  tags: fp_hostname_rcconf_digitalocean
+
+# EOF
+...

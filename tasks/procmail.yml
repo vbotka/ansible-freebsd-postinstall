@@ -1,0 +1,72 @@
+---
+
+- name: "procmail: Create .forward files"
+  command: sh -c "if [ ! -e /home/{{ item.user }}/.forward ]; then touch /home/{{ item.user }}/.forward; chown '{{ item.user }}' /home/{{ item.user }}/.forward; chmod 0644 /home/{{ item.user }}/.forward; fi"
+  with_items: "{{ fp_procmail_forwarders }}"
+  changed_when: False
+  tags: fp_procmail_forward
+
+- name: "procmail: Configure forwarders"
+  blockinfile:
+    dest: "/home/{{ item.user }}/.forward"
+    marker: "# {mark} ANSIBLE MANAGED BLOCK"
+    backup: yes
+    create: yes
+    block: |
+      "{{ item.forward }}"
+  with_items: "{{ fp_procmail_forwarders }}"
+  when: fp_procmail_install
+  tags: fp_procmail_forwarders
+
+- name: "procmail: Create .procmailrc files"
+  command: sh -c "if [ ! -e /home/{{ item.user }}/.procmailrc ]; then touch /home/{{ item.user }}/.procmailrc; chown '{{ item.user }}' /home/{{ item.user }}/.procmailrc; chmod 0644 /home/{{ item.user }}/.procmailrc; fi"
+  with_items: "{{ fp_procmail_forwarders }}"
+  changed_when: False
+  tags: fp_procmail_procmailrc
+
+- name: "procmail: Configure .procmailrc"
+  blockinfile:
+    dest: "/home/{{ item.user }}/.procmailrc"
+    marker: "# {mark} ANSIBLE MANAGED BLOCK"
+    backup: yes
+    create: yes
+    block: |
+      SHELL={{ fp_procmail_shell }}
+      VERBOSE={{ fp_procmail_verbose }}
+      PATH={{ fp_procmail_path }}
+      MAILDIR={{ fp_procmail_maildir }}
+      DEFAULT=/var/mail/{{ item.user }}
+      PMDIR={{ fp_procmail_pmdir }}
+      LOGFILE=$PMDIR/pm.log
+      LOCKFILE=$PMDIR/.lockfile
+      SENDMAIL=/usr/sbin/sendmail
+  with_items: "{{ fp_procmail_forwarders }}"
+  tags: fp_procmail_procmailrc
+
+- name: "procamil: Create .procmail directory"
+  file:
+    path: "/home/{{ item.user }}/.procmail"
+    state: "directory"
+    owner: "{{ item.user }}"
+  with_items: "{{ fp_procmail_forwarders }}"
+  tags: fp_procmail_dir
+
+- name: "procmail: Create includerc files"
+  template:
+    src: "procmailrc-includerc-{{ item.template }}.j2"
+    dest: "/home/{{ item.user }}/.procmail/{{ item.template }}.rc"
+    backup: yes
+  with_items: "{{ fp_procmail_includerc }}"
+  tags: fp_procmail_includerc
+
+- name: "procmail: Include rc files in .procmailrc"
+  lineinfile:
+    dest: "/home/{{ item.user }}/.procmailrc"
+    line: "INCLUDERC=$PMDIR/{{ item.template }}.rc"
+    insertafter: "EOF"
+    backup: yes
+  with_items: "{{ fp_procmail_includerc }}"
+  tags: fp_procmail_includerc
+
+# EOF
+...

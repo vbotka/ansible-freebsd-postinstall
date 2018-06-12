@@ -1,0 +1,77 @@
+---
+# https://www.freebsd.org/doc/handbook/network-nfs.html
+
+- name: "nfs: Enable and start nfs client"
+  lineinfile:
+    dest: "/etc/rc.conf"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    backup: yes
+  with_items:
+    - { regexp: "^nfs_client_enable", line: "nfs_client_enable=\"YES\""}
+  when: fp_nfs_service_enable
+  notify: enable and start nfs client
+  tags: fp_nfs_enable_nfsclient
+
+- name: Disable and stop nfs client
+  lineinfile:
+    dest: "/etc/rc.conf"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    backup: yes
+  with_items:
+    - { regexp: "^nfs_client_enable", line: "nfs_client_enable=\"NO\""}
+  when: not fp_nfs_service_enable
+  notify: disable and stop nfs client
+  tags: fp_nfs_disable_nfsclient
+
+- name: Enable and start lockd
+  lineinfile:
+    dest: "/etc/rc.conf"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    backup: yes
+  with_items:
+    - { regexp: "^rpc_lockd_enable", line: "rpc_lockd_enable=\"YES\""}
+  when: fp_rpc_lockd_enable
+  notify: enable and start lockd
+  tags: fp_nfs_enable_lockd
+  
+- name: "nfs: Disable and stop lockd"
+  lineinfile:
+    dest: "/etc/rc.conf"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    backup: yes
+  with_items:
+    - { regexp: "^rpc_lockd_enable", line: "rpc_lockd_enable=\"NO\""}
+  when: not fp_rpc_lockd_enable
+  notify: disable and stop lockd
+  tags: fp_nfs_disable_lockd
+  
+- name: "nfs: Enable and start statd"
+  lineinfile:
+    dest: "/etc/rc.conf"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    backup: yes
+  with_items:
+    - { regexp: "^rpc_statd_enable", line: "rpc_statd_enable=\"YES\""}
+  when: fp_rpc_statd_enable
+  notify: enable and start statd
+  tags: fp_nfs_enable_statd
+  
+- name: Disable and stop statd
+  lineinfile:
+    dest: "/etc/rc.conf"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    backup: yes
+  with_items:
+    - { regexp: "^rpc_statd_enable", line: "rpc_statd_enable=\"NO\""}
+  when: not fp_rpc_statd_enable
+  notify: disable and stop statd
+  tags: fp_nfs_disable_statd
+
+# EOF
+...

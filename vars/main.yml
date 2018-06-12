@@ -25,7 +25,7 @@
 #freebsd_install_method: "packages"
 #freebsd_install_method: "ports"
 #freebsd_use_packages: "yes"
-#freebsd_ports:
+#fp_ports:
 #  - shells/bash
 #  - editors/emacs
 #  - devel/git
@@ -62,7 +62,7 @@
 # groups must not comprise primary group
 
 # ----------------------------------------------------------------------
-#freebsd_postinstall_authorized_key:
+#fp_authorized_key:
 #  - { user: "admin", key: "{{ lookup('file', '/home/admin/.ssh/id_rsa.pub') }}" }
 
 # ----------------------------------------------------------------------
@@ -84,7 +84,7 @@
 #  - { key: Tunnel, value: "{{ ssh_Tunnel }}" }
 #  - { key: ServerAliveInterval, value: "{{ ssh_ServerAliveInterval }}" }
 
-#sshd_enable: "YES"
+#sshd_enable: True
 #sshd_PasswordAuthentication: "no"
 #sshd_ChallengeResponseAuthentication: "no"
 #sshd_PermitRootLogin: "no"
@@ -100,30 +100,31 @@
 #  - { key: X11Forwarding, value: "{{ sshd_X11Forwarding }}" }
 
 # ----------------------------------------------------------------------
-#freebsd_postinstall_libmap_entries:
+#fp_libmap_entries:
 #  - { origin: "libxml2.so", target: "libxml2.so.2.9.4" }
 
 # ----------------------------------------------------------------------
-#freebsd_postinstall_smartd_service_enabled: 'YES'
-#freebsd_postinstall_smartd_service_name: 'smartd'
-#freebsd_postinstall_smartd_service_state: 'started'
-#freebsd_postinstall_smartd_devices:
+#fp_smartd_install: True
+#fp_smartd_service_enabled: True
+#fp_smartd_service_name: 'smartd'
+#fp_smartd_service_state: 'started'
+#fp_smartd_devices:
 #  - { regexp: "^/dev/ada0", line: "/dev/ada0 -a -o on -S on -s (S/../.././02|L/../../6/03) -m admin"}
 
 # ----------------------------------------------------------------------
 # nfsd
-#freebsd_postinstall_nfsd_service_enable: 'YES'
-#freebsd_postinstall_rpcbind_enable: 'YES'
-#freebsd_postinstall_rpc_lockd_enable: 'YES'
-#freebsd_postinstall_rpc_statd_enable: 'YES'
-#freebsd_postinstall_nfsd_exports:
+#fp_nfsd_service_enable: True
+#fp_rpcbind_enable: True
+#fp_rpc_lockd_enable: True
+#fp_rpc_statd_enable: True
+#fp_nfsd_exports:
 #  - { mount_point: '/export', flags: '-alldirs -network 10.1.0.0 -mask 255.255.255.0' }
 #  - { mount_point: '/export2', flags: '-alldirs -network 10.1.0.0 -mask 255.255.255.0' }
 
 # ----------------------------------------------------------------------
 # ntpd
-#freebsd_postinstall_ntp_service_enable: 'YES'
-#freebsd_postinstall_ntp_config_server:
+#fp_ntp_service_enable: True
+#fp_ntp_config_server:
 # The following three servers will give you a random set of three NTP servers geographically close to you.
 # http://blog.up-link.ro/how-to-configure-ntp-service-in-freebsd/
 #  - '0.freebsd.pool.ntp.org iburst'
@@ -137,46 +138,46 @@
 
 # ----------------------------------------------------------------------
 # procmail
-#freebsd_postinstall_procmail_install: "YES"
-#freebsd_postinstall_procmail_verbose: "off"
-#freebsd_postinstall_procmail_forwarders:
-#  - { user: "responder", forward: "|exec {{freebsd_postinstall_procmail_bin}}" }
-#freebsd_postinstall_procmail_includerc:
+#fp_procmail_install: True
+#fp_procmail_verbose: "off"
+#fp_procmail_forwarders:
+#  - { user: "responder", forward: "|exec {{fp_procmail_bin}}" }
+#fp_procmail_includerc:
 #  - { user: "responder", template: "duplicates", par1: "", par2: "" }
-#  - { user: "responder", template: "capability", par1: "responder@{{rc_conf_hostname}}", par2: "{{freebsd_postinstall_procmail_pmdir}}" }
+#  - { user: "responder", template: "capability", par1: "responder@{{rc_conf_hostname}}", par2: "{{fp_procmail_pmdir}}" }
 #  - { user: "responder", template: "get-message", par1: "responder@{{rc_conf_hostname}}", par2: "/home/responder/MESSAGE.procmail" }
 #  - { user: "responder", template: "get-fingerprint", par1: "responder@{{rc_conf_hostname}}", par2: "/etc/ssh/ssh_host_ecdsa_key.pub" }
 #  - { user: "responder", template: "get-certificate", par1: "responder@{{rc_conf_hostname}}", par2: "cat /usr/local/etc/letsencrypt/FINGERPRINT" }
 
 # ----------------------------------------------------------------------
 # motd
-#freebsd_postinstall_motd: "To get capabilities of the responder send email TO: responder@{{rc_conf_hostname}} SUBJECT: capability"
+#fp_motd: "To get capabilities of the responder send email TO: responder@{{rc_conf_hostname}} SUBJECT: capability"
 
 # ----------------------------------------------------------------------
 # sysctl
-#freebsd_postinstall_sysctl:
+#fp_sysctl:
 #    - { regexp: "^net.inet.ip.forwarding=", line: "net.inet.ip.forwarding=1" }
 
 # ----------------------------------------------------------------------
 # hosts
-#freebsd_postinstall_hosts: []
+#fp_hosts: []
 #  - { ip: "10.1.0.10", fqdn: "srv.example.com", hostname: "srv" }
 
 # ----------------------------------------------------------------------
 # gitserver
-#freebsd_postinstall_gitserver_install: "YES"
-fp_gitserver_owner: "git"
-fp_gitserver_owner_uid: "9418"
-fp_gitserver_owner_shell: "/usr/local/libexec/git-core/git-shell"
-fp_gitserver_owner_home: "/git"
-fp_gitserver_group: "git"
-fp_gitserver_group_gid: "9418"
-fp_gitserver_dir_mode: "0770"
+#fp_gitserver_install: True
+#fp_gitserver_owner: "git"
+#fp_gitserver_owner_uid: "9418"
+#fp_gitserver_owner_shell: "/usr/local/libexec/git-core/git-shell"
+#fp_gitserver_owner_home: "/git"
+#fp_gitserver_group: "git"
+#fp_gitserver_group_gid: "9418"
+#fp_gitserver_dir_mode: "0770"
 
 # ----------------------------------------------------------------------
 # sudoers
-#freebsd_postinstall_sudoers_conf: "/usr/local/etc/sudoers"
-#freebsd_postinstall_sudoers:
+#fp_sudoers_conf: "/usr/local/etc/sudoers"
+#fp_sudoers:
 #  - { key: admin, value: "ALL=NOPASSWD: ALL" }
 
 # ----------------------------------------------------------------------

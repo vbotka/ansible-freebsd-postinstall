@@ -1,4 +1,4 @@
 # {{ ansible_managed }}
-{% for item in freebsd_postinstall_nfsd_exports %}
+{% for item in fp_nfsd_exports %}
 {{ item.mount_point }} {{ item.flags }}
 {% endfor %}

@@ -1,0 +1,54 @@
+---
+
+- name: "hostapd: Enable and start hostapd"
+  lineinfile:
+    dest: "/etc/rc.conf"
+    regexp: "^hostapd_enable"
+    line: "hostapd_enable=\"YES\""
+    backup: yes
+  when:
+    - fp_hostapd_enabled
+    - fp_hostapd_install
+  notify: enable and start hostapd
+  tags: fp_hostapd_rcconf
+
+- name: "hostapd: Disable and stop hostapd"
+  lineinfile:
+    dest: "/etc/rc.conf"
+    regexp: "^hostapd_enable"
+    line: "hostapd_enable=\"NO\""
+    backup: yes
+  when:
+    - not fp_hostapd_enabled
+    - fp_hostapd_install
+  notify: disable and stop hostapd
+  tags: fp_hostapd_rcconf
+
+- name: "hostapd: Configure interface for hostapd"
+  lineinfile:
+    dest: "/etc/rc.conf"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    backup: yes
+  with_items:
+    - { regexp: "^create_args_{{ fp_hostapd_interface }}",
+        line: "create_args_{{ fp_hostapd_interface }}=\"wlanmode hostap country {{ fp_hostapd_country }}\"" }
+    - { regexp: "^wlans_{{ fp_hostapd_device }}",
+        line: "wlans_{{ fp_hostapd_device }}=\"{{ fp_hostapd_interface }}\"" }
+    - { regexp: "^ifconfig_{{ fp_hostapd_interface }}",
+        line: "ifconfig_{{ fp_hostapd_interface }}=\"inet {{ fp_hostapd_inet }} netmask {{ fp_hostapd_netmask }}\"" }
+  when: fp_hostapd_enabled
+  notify: restart hostapd
+  tags: fp_hostapd_rcconf
+  
+- name: "hostapd: Configure /etc/hostapd.conf template file"
+  template:
+    src: "hostapd.conf.j2"
+    dest: "/etc/hostapd.conf"
+    backup: yes
+  when: fp_hostapd_enabled
+  notify: restart hostapd
+  tags: fp_hostapd_conf
+
+# EOF
+...

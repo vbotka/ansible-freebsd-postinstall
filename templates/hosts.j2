@@ -1,8 +1,8 @@
 # {{ ansible_managed }}
-::1		localhost	localhost.{{ freebsd_postinstall_domain }}
-127.0.0.1	localhost	localhost.{{ freebsd_postinstall_domain }}
+::1		localhost	localhost.{{ fp_domain }}
+127.0.0.1	localhost	localhost.{{ fp_domain }}
 
-{% for item in freebsd_postinstall_hosts %}
+{% for item in fp_hosts %}
 {{ item.ip }}	{{ item.hostname }}	 {{ item.fqdn }}
 {% endfor %}
 

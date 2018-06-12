@@ -1,0 +1,33 @@
+---
+
+- name: "gitserver: Add {{ fp_gitserver_group }} group"
+  group:
+    name: "{{ fp_gitserver_group }}"
+    gid: "{{ fp_gitserver_group_gid }}"
+  tags: fp_gitserver_group
+
+- name: "gitserver: Add {{fp_gitserver_owner}} user"
+  user:
+    name: "{{ fp_gitserver_owner }}"
+    uid: "{ fp_gitserver_owner_uid }}"
+    shell: "{{ fp_gitserver_owner_shell }}"
+    home: "{{ fp_gitserver_owner_home }}"
+  tags: fp_gitserver_owner
+
+- name: "gitserver: Add user {{ fp_gitserver_owner }} to {{ fp_gitserver_group }} group"
+  user:
+    name: "{{ fp_gitserver_owner }}"
+    groups: "{{ fp_gitserver_group }}"
+    append: yes
+  tags: fp_gitserver_group
+
+- name: "gitserver: Set ownership and permissions of {{ fp_gitserver_dir }}"
+  file:
+    path: "{{ fp_gitserver_dir }}"
+    owner: "{{ fp_gitserver_owner }}"
+    group: "{{ fp_gitserver_group }}"
+    mode: "{{ fp_gitserver_dir_mode }}"
+  tags: fp_gitserver_permissions
+
+# EOF
+...

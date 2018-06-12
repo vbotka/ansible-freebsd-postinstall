@@ -1,0 +1,36 @@
+---
+
+# TODO:
+# 1) Leapseconds file expired
+# https://forums.freebsd.org/threads/56645/
+
+- name: "ntpd: Enable and start ntpd"
+  lineinfile:
+    dest: "/etc/rc.conf"
+    regexp: "^ntpd_enable"
+    line: "ntpd_enable=\"YES\""
+    backup: yes
+  when: fp_ntp_service_enable
+  notify: enable and start ntpd
+  tags: fp_ntpd_rcconf
+
+- name: "ntpd: Disable and stop ntpd"
+  lineinfile:
+    dest: "/etc/rc.conf"
+    regexp: "^ntpd_enable"
+    line: "ntpd_enable=\"NO\""
+    backup: yes
+  when: not fp_ntp_service_enable
+  notify: disable and stop ntpd
+  tags: fp_ntpd_rcconf
+
+- name: "ntpd: Copy ntp.conf template file"
+  template:
+    src: "ntp.conf.j2"
+    dest: "/etc/ntp.conf"
+    backup: yes
+  notify: restart ntpd
+  tags: fp_ntpd_ntp_conf
+
+# EOF
+...

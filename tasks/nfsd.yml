@@ -1,0 +1,91 @@
+---
+# https://www.freebsd.org/doc/handbook/network-nfs.html
+
+- name: "nfsd: Enable and start nfs server"
+  lineinfile:
+    dest: "/etc/rc.conf"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    backup: yes
+  with_items:
+    - { regexp: "^nfs_server_enable", line: "nfs_server_enable=\"YES\""}
+    - { regexp: "^rpcbind_enable", line: "rpcbind_enable=\"YES\""}
+    - { regexp: "^mountd_flags", line: "mountd_flags=\"{{ fp_mountd_flags }}\""}
+  when: fp_nfsd_service_enable
+  notify: enable and start nfs server
+
+- name: "nfsd: Disable and stop nfs server"
+  lineinfile:
+    dest: "/etc/rc.conf"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    backup: yes
+  with_items:
+    - { regexp: "^nfs_server_enable", line: "nfs_server_enable=\"NO\""}
+  when: not fp_nfsd_service_enable
+  notify: disable and stop nfs server
+
+- name: "nfsd: Enable and start lockd"
+  lineinfile:
+    dest: "/etc/rc.conf"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    backup: yes
+  with_items:
+    - { regexp: "^rpc_lockd_enable", line: "rpc_lockd_enable=\"YES\""}
+  when: fp_rpc_lockd_enable
+  notify: enable and start lockd
+  
+- name: "nfsd: Disable and stop lockd"
+  lineinfile:
+    dest: "/etc/rc.conf"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    backup: yes
+  with_items:
+    - { regexp: "^rpc_lockd_enable", line: "rpc_lockd_enable=\"NO\""}
+  when: not fp_rpc_lockd_enable
+  notify: disable and stop lockd
+  
+- name: "nfsd: Enable and start statd"
+  lineinfile:
+    dest: "/etc/rc.conf"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    backup: yes
+  with_items:
+    - { regexp: "^rpc_statd_enable", line: "rpc_statd_enable=\"YES\""}
+  when: fp_rpc_statd_enable
+  notify: enable and start statd
+  
+- name: "nfsd: Disable and stop statd"
+  lineinfile:
+    dest: "/etc/rc.conf"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    backup: yes
+  with_items:
+    - { regexp: "^rpc_statd_enable", line: "rpc_statd_enable=\"NO\""}
+  when: not fp_rpc_statd_enable
+  notify: disable and stop statd
+  
+- name: "nfsd: Disable and stop rpcbind"
+  lineinfile:
+    dest: "/etc/rc.conf"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    backup: yes
+  with_items:
+    - { regexp: "^rpcbind_enable", line: "rpcbind_enable=\"NO\""}
+  when: not fp_rpcbind_enable
+  notify: disable and stop rpcbind
+  
+- name: "nfsd: Configure /etc/exports"
+  template:
+    src: "exports.j2"
+    dest: "/etc/exports"
+    backup: yes
+  notify: reload mountd
+
+# EOF
+...

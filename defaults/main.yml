@@ -5,13 +5,13 @@ freebsd_install_method: "packages"
 #freebsd_install_method: "ports"
 #freebsd_use_packages: "yes"
 
-fp_debug: "no"
+fp_debug: False
 
 # ----------------------------------------------------------------------
 # Hostname
 rc_conf_hostname: "srv.my.domain"
-freebsd_postinstall_domain: "my.domain"
-digitalocean: "no"
+fp_domain: "my.domain"
+digitalocean: False
 
 # ----------------------------------------------------------------------
 # /etc/make.conf
@@ -22,52 +22,52 @@ fp_make_conf: []
 
 # ----------------------------------------------------------------------
 # Packages
-freebsd_ports: []
-freebsd_postinstall_links: []
+fp_ports: []
+fp_links: []
 
 # hosts
-freebsd_postinstall_hosts: []
+fp_hosts: []
 
 # ----------------------------------------------------------------------
 # Copy
 # directory is relative to the playbooks directory
-freebsd_postinstall_copy_dir: "copy"
+fp_copy_dir: "copy"
+fp_synchronize_default: False
+fp_synchronize_optional: False
 fp_unarchive_keep_newer: "no"
-fp_synchronize_default: "no"
-fp_synchronize_optional: "no"
 # DANGEROUS! fp_synchronize_delete="yes" can delete the system dest="/"
 # Review tasks/copy.yml before enabling fp_synchronize_delete
 fp_synchronize_delete: "no"
 
 # ----------------------------------------------------------------------
 # swap
-freebsd_postinstall_swap: "no"
-#freebsd_postinstall_swap_file: "/usr/swap0"
-#freebsd_postinstall_swap_md: "md99"
-#freebsd_postinstall_swap_size: 4096
-#freebsd_postinstall_swap_size: 2048
-#freebsd_postinstall_swap_size:  1536
-#freebsd_postinstall_swap_stsize: "{{ freebsd_postinstall_swap_size * 1024 * 1024 }}"
-#freebsd_postinstall_swap_stsize: "4294967296"
-#freebsd_postinstall_swap_stsize: "2147483648"
-#freebsd_postinstall_swap_stsize: "1610612736"
+fp_swap: False
+#fp_swap_file: "/usr/swap0"
+#fp_swap_md: "md99"
+#fp_swap_size: 4096
+#fp_swap_size: 2048
+#fp_swap_size:  1536
+#fp_swap_stsize: "{{ fp_swap_size * 1024 * 1024 }}"
+#fp_swap_stsize: "4294967296"
+#fp_swap_stsize: "2147483648"
+#fp_swap_stsize: "1610612736"
 
 # ----------------------------------------------------------------------
 # fstab
-freebsd_postinstall_fstab_entries:
+fp_fstab_entries:
   - { name: "/proc", src: "proc", fstype: "procfs", opts: "rw" }
   - { name: "/dev/fd", src: "fdesc", fstype: "fdescfs", opts: "rw" }
 # Note: Configure swap with separate task swap
 
 # ----------------------------------------------------------------------
 # libmap
-freebsd_postinstall_libmap_entries: {}
+fp_libmap_entries: {}
 
 # ----------------------------------------------------------------------
 # Timezone
 # details about zoneinfo in man tzsetup
 fp_zoneinfo: "UTC"
-#freebsd_postinstall_zoneinfo: "Europe/London"
+#fp_zoneinfo: "Europe/London"
 fp_zoneinfo_path: "/usr/share/zoneinfo"
 
 # ----------------------------------------------------------------------
@@ -79,7 +79,7 @@ ntpdate_enable: "NO"
 # option should be used when called from a startup file at boot time.
 ntpdate_flags: "-b"
 # Sync time on ntpd startup
-ntpd_sync_on_start: "NO"
+ntpd_sync_on_start: "YES"
 
 # ----------------------------------------------------------------------
 # SSH
@@ -88,7 +88,7 @@ ssh_config_path: "/etc/ssh/ssh_config"
 ssh_config:
   - { key: Protocol, value: "{{ ssh_Protocol }}" }
 # SSHD
-sshd_enable: "YES"
+sshd_enable: True
 sshd_path: "/usr/sbin/sshd"
 sshd_config_path: "/etc/ssh/sshd_config"
 sshd_PasswordAuthentication: "no"
@@ -104,172 +104,173 @@ freebsd_users_groups: {}
 
 # ----------------------------------------------------------------------
 # authorized_key
-freebsd_postinstall_authorized_key: {}
+fp_authorized_key: []
 
 # ----------------------------------------------------------------------
 # smartd
-freebsd_postinstall_smartd_install: "NO"
-freebsd_postinstall_smartd_service_name: "smartd"
-freebsd_postinstall_smartd_service_state: "stopped"
-freebsd_postinstall_smartd_service_enabled: "NO"
-freebsd_postinstall_smartd_conf_file: "/usr/local/etc/smartd.conf"
-freebsd_postinstall_smartd_conf_owner: "root"
-freebsd_postinstall_smartd_conf_group: "wheel"
-freebsd_postinstall_smartd_conf_mode: "644"
-freebsd_postinstall_smartd_devices: {}
+fp_smartd_install: False
+fp_smartd_service_enabled: False
+fp_smartd_service_name: "smartd"
+fp_smartd_service_state: "stopped"
+fp_smartd_conf_file: "/usr/local/etc/smartd.conf"
+fp_smartd_conf_owner: "root"
+fp_smartd_conf_group: "wheel"
+fp_smartd_conf_mode: "644"
+fp_smartd_devices: {}
 
 # ----------------------------------------------------------------------
 # apcupsd
-freebsd_postinstall_apcupsd_service_enabled: "NO"
-freebsd_postinstall_apcupsd_service_name: "apcupsd"
-freebsd_postinstall_apcupsd_conf_dir: "/usr/local/etc/apcupsd"
-freebsd_postinstall_apcupsd_conf_file: "{{ freebsd_postinstall_apcupsd_conf_dir }}/apcupsd.conf"
-freebsd_postinstall_apcupsd_conf_owner: "root"
-freebsd_postinstall_apcupsd_conf_group: "wheel"
-freebsd_postinstall_apcupsd_conf_mode: "644"
-#freebsd_postinstall_apcupsd_devices: []
-freebsd_postinstall_apcupsd_UPSNAME: "UPS01"
-freebsd_postinstall_apcupsd_UPSCABLE: "usb"
-freebsd_postinstall_apcupsd_UPSTYPE: "usb"
-freebsd_postinstall_apcupsd_LOCKFILE: "/var/spool/lock"
-freebsd_postinstall_apcupsd_SCRIPTDIR: "/usr/local/etc/apcupsd"
-freebsd_postinstall_apcupsd_PWRFAILDIR: "/var/run"
-freebsd_postinstall_apcupsd_NOLOGINDIR: "/var/run"
-freebsd_postinstall_apcupsd_ONBATTERYDELAY: "6"
-freebsd_postinstall_apcupsd_BATTERYLEVEL: "5"
-freebsd_postinstall_apcupsd_MINUTES: "3"
-freebsd_postinstall_apcupsd_TIMEOUT: "0"
-freebsd_postinstall_apcupsd_ANNOY: "300"
-freebsd_postinstall_apcupsd_ANNOYDELAY: "60"
-freebsd_postinstall_apcupsd_NOLOGON: "disable"
-freebsd_postinstall_apcupsd_KILLDELAY: "0"
-freebsd_postinstall_apcupsd_NETSERVER: "on"
-freebsd_postinstall_apcupsd_NISIP: "0.0.0.0"
-freebsd_postinstall_apcupsd_NISPORT: "3551"
-freebsd_postinstall_apcupsd_EVENTSFILE: "/var/log/apcupsd.events"
-freebsd_postinstall_apcupsd_EVENTSFILEMAX: "10"
-freebsd_postinstall_apcupsd_UPSCLASS: "standalone"
-freebsd_postinstall_apcupsd_UPSMODE: "disable"
-freebsd_postinstall_apcupsd_STATTIME: "0"
-freebsd_postinstall_apcupsd_STATFILE: "/var/log/apcupsd.status"
-freebsd_postinstall_apcupsd_LOGSTATS: "off"
-freebsd_postinstall_apcupsd_DATATIME: "0"
+fp_apcupsd_install: False
+fp_apcupsd_service_enabled: False
+fp_apcupsd_service_name: "apcupsd"
+fp_apcupsd_conf_dir: "/usr/local/etc/apcupsd"
+fp_apcupsd_conf_file: "{{ fp_apcupsd_conf_dir }}/apcupsd.conf"
+fp_apcupsd_conf_owner: "root"
+fp_apcupsd_conf_group: "wheel"
+fp_apcupsd_conf_mode: "644"
+#fp_apcupsd_devices: []
+fp_apcupsd_UPSNAME: "UPS01"
+fp_apcupsd_UPSCABLE: "usb"
+fp_apcupsd_UPSTYPE: "usb"
+fp_apcupsd_LOCKFILE: "/var/spool/lock"
+fp_apcupsd_SCRIPTDIR: "/usr/local/etc/apcupsd"
+fp_apcupsd_PWRFAILDIR: "/var/run"
+fp_apcupsd_NOLOGINDIR: "/var/run"
+fp_apcupsd_ONBATTERYDELAY: "6"
+fp_apcupsd_BATTERYLEVEL: "5"
+fp_apcupsd_MINUTES: "3"
+fp_apcupsd_TIMEOUT: "0"
+fp_apcupsd_ANNOY: "300"
+fp_apcupsd_ANNOYDELAY: "60"
+fp_apcupsd_NOLOGON: "disable"
+fp_apcupsd_KILLDELAY: "0"
+fp_apcupsd_NETSERVER: "on"
+fp_apcupsd_NISIP: "0.0.0.0"
+fp_apcupsd_NISPORT: "3551"
+fp_apcupsd_EVENTSFILE: "/var/log/apcupsd.events"
+fp_apcupsd_EVENTSFILEMAX: "10"
+fp_apcupsd_UPSCLASS: "standalone"
+fp_apcupsd_UPSMODE: "disable"
+fp_apcupsd_STATTIME: "0"
+fp_apcupsd_STATFILE: "/var/log/apcupsd.status"
+fp_apcupsd_LOGSTATS: "off"
+fp_apcupsd_DATATIME: "0"
 
 # ----------------------------------------------------------------------
 # hostapd
-freebsd_postinstall_hostapd_install: 'NO'
-freebsd_postinstall_hostapd_name: 'hostapd'
-freebsd_postinstall_hostapd_state: 'stopped'
-freebsd_postinstall_hostapd_enabled: 'NO'
-freebsd_postinstall_hostapd_ssid: "MY-SSID"
-freebsd_postinstall_hostapd_wpa_passphrase: "MY-PASSPHRASE"
-freebsd_postinstall_hostapd_device: "ath0"
-freebsd_postinstall_hostapd_interface: "wlan0"
-freebsd_postinstall_hostapd_country: "US"
-freebsd_postinstall_hostapd_inet: "192.168.1.1"
-freebsd_postinstall_hostapd_netmask: "255.255.255.0"
-freebsd_postinstall_hostapd_driver: "bsd"
-freebsd_postinstall_hostapd_ctrl_interface: "/var/run/hostapdd"
-freebsd_postinstall_hostapd_ctrl_interface_group: "wheel"
-freebsd_postinstall_hostapd_hw_mode: "g"
-freebsd_postinstall_hostapd_channel: "8"
-freebsd_postinstall_hostapd_beacon_int: "100"
-freebsd_postinstall_hostapd_dtim_period: "2"
-freebsd_postinstall_hostapd_max_num_sta: "255"
-freebsd_postinstall_hostapd_rts_threshold: "2347"
-freebsd_postinstall_hostapd_fragm_threshold: "2346"
-freebsd_postinstall_hostapd_auth_algs: "3"
-freebsd_postinstall_hostapd_ignore_broadcast_ssid: "2"
-freebsd_postinstall_hostapd_wpa: "2"
-freebsd_postinstall_hostapd_wpa_pairwise: "TKIP CCMP"
-freebsd_postinstall_hostapd_wpa_key_mgmt: "WPA-PSK"
-freebsd_postinstall_hostapd_logger_syslog: "-1"
-freebsd_postinstall_hostapd_logger_syslog_level: "0"
-freebsd_postinstall_hostapd_logger_stdout: "-1"
-freebsd_postinstall_hostapd_logger_stdout_level: "0"
-freebsd_postinstall_hostapd_eap_server: "0"
+fp_hostapd_install: False
+fp_hostapd_enabled: False
+fp_hostapd_name: 'hostapd'
+fp_hostapd_state: 'stopped'
+fp_hostapd_ssid: "MY-SSID"
+fp_hostapd_wpa_passphrase: "MY-PASSPHRASE"
+fp_hostapd_device: "ath0"
+fp_hostapd_interface: "wlan0"
+fp_hostapd_country: "US"
+fp_hostapd_inet: "192.168.1.1"
+fp_hostapd_netmask: "255.255.255.0"
+fp_hostapd_driver: "bsd"
+fp_hostapd_ctrl_interface: "/var/run/hostapdd"
+fp_hostapd_ctrl_interface_group: "wheel"
+fp_hostapd_hw_mode: "g"
+fp_hostapd_channel: "8"
+fp_hostapd_beacon_int: "100"
+fp_hostapd_dtim_period: "2"
+fp_hostapd_max_num_sta: "255"
+fp_hostapd_rts_threshold: "2347"
+fp_hostapd_fragm_threshold: "2346"
+fp_hostapd_auth_algs: "3"
+fp_hostapd_ignore_broadcast_ssid: "2"
+fp_hostapd_wpa: "2"
+fp_hostapd_wpa_pairwise: "TKIP CCMP"
+fp_hostapd_wpa_key_mgmt: "WPA-PSK"
+fp_hostapd_logger_syslog: "-1"
+fp_hostapd_logger_syslog_level: "0"
+fp_hostapd_logger_stdout: "-1"
+fp_hostapd_logger_stdout_level: "0"
+fp_hostapd_eap_server: "0"
 
 # ----------------------------------------------------------------------
 # nfs client / nfsd server
-freebsd_postinstall_nfs_service_enable: "NO"
-freebsd_postinstall_nfsd_service_enable: 'NO'
-freebsd_postinstall_nfsd_service_state: 'started'
-freebsd_postinstall_rpcbind_enable: 'NO'
-freebsd_postinstall_mountd_flags: '-r'
-freebsd_postinstall_rpc_lockd_enable: 'NO'
-freebsd_postinstall_rpc_statd_enable: 'NO'
-freebsd_postinstall_nfsd_exports: {}
+fp_nfs_service_enable: False
+fp_nfsd_service_enable: False
+fp_rpcbind_enable: False
+fp_rpc_lockd_enable: False
+fp_rpc_statd_enable: False
+fp_nfsd_service_state: 'started'
+fp_mountd_flags: '-r'
+fp_nfsd_exports: {}
 
 # ----------------------------------------------------------------------
 # ntpd
-freebsd_postinstall_ntp_service_enable: 'NO'
-freebsd_postinstall_ntp_service_name: 'ntpd'
-freebsd_postinstall_ntp_service_state: 'started'
-freebsd_postinstall_ntp_config_server:
+fp_ntp_service_enable: False
+fp_ntp_service_name: 'ntpd'
+fp_ntp_service_state: 'started'
+fp_ntp_config_server:
   - '0.freebsd.pool.ntp.org iburst'
   - '1.freebsd.pool.ntp.org iburst'
   - '2.freebsd.pool.ntp.org iburst'
-freebsd_postinstall_ntp_config_restrict:
+fp_ntp_config_restrict:
   - 'default limited kod nomodify notrap nopeer noquery'
   - '-6 default limited kod nomodify notrap nopeer noquery'
   - '127.0.0.1'
   - '-6 ::1'
   - '127.127.1.0'
-freebsd_postinstall_ntp_config_driftfile: ''
-freebsd_postinstall_ntp_config_leapfile: '/var/db/ntpd.leap-seconds.list'
-freebsd_postinstall_ntp_config_listen: []
-freebsd_postinstall_ntp_config_filegen: []
-freebsd_postinstall_ntp_config_statistics: ''
-freebsd_postinstall_ntp_config_crypto: ''
-freebsd_postinstall_ntp_config_includefile: ''
-freebsd_postinstall_ntp_config_keys: ''
-freebsd_postinstall_ntp_config_trustedkey: ''
-freebsd_postinstall_ntp_config_requestkey: ''
-freebsd_postinstall_ntp_config_controlkey: ''
-freebsd_postinstall_ntp_config_broadcast: ''
-freebsd_postinstall_ntp_config_broadcastclient: ''
-freebsd_postinstall_ntp_config_multicastclient: ''
-freebsd_postinstall_ntp_config_tinker_panic_enabled: ''
+fp_ntp_config_driftfile: ''
+fp_ntp_config_leapfile: '/var/db/ntpd.leap-seconds.list'
+fp_ntp_config_listen: []
+fp_ntp_config_filegen: []
+fp_ntp_config_statistics: ''
+fp_ntp_config_crypto: ''
+fp_ntp_config_includefile: ''
+fp_ntp_config_keys: ''
+fp_ntp_config_trustedkey: ''
+fp_ntp_config_requestkey: ''
+fp_ntp_config_controlkey: ''
+fp_ntp_config_broadcast: ''
+fp_ntp_config_broadcastclient: ''
+fp_ntp_config_multicastclient: ''
+fp_ntp_config_tinker_panic_enabled: ''
 
 # ----------------------------------------------------------------------
 # procmail
-freebsd_postinstall_procmail_install: "NO"
-freebsd_postinstall_procmail_bin: "/usr/local/bin/procmail"
-freebsd_postinstall_procmail_responder: "responder"
-freebsd_postinstall_procmail_shell: "/bin/sh"
-freebsd_postinstall_procmail_verbose: "off"
-freebsd_postinstall_procmail_path: "$HOME/bin:/bin:/usr/bin:/usr/local/bin:."
-freebsd_postinstall_procmail_maildir: "$HOME/Mail"
-freebsd_postinstall_procmail_pmdir: "$HOME/.procmail"
-freebsd_postinstall_procmail_logfile: "$PMDIR/pm.log"
-freebsd_postinstall_procmail_lockfile: "$PMDIR/.lockfile"
-freebsd_postinstall_procmail_sendmail: "/usr/sbin/sendmail"
-freebsd_postinstall_procmail_forwarders: {}
-freebsd_postinstall_procmail_includerc: {}
+fp_procmail_install: False
+fp_procmail_bin: "/usr/local/bin/procmail"
+fp_procmail_responder: "responder"
+fp_procmail_shell: "/bin/sh"
+fp_procmail_verbose: "off"
+fp_procmail_path: "$HOME/bin:/bin:/usr/bin:/usr/local/bin:."
+fp_procmail_maildir: "$HOME/Mail"
+fp_procmail_pmdir: "$HOME/.procmail"
+fp_procmail_logfile: "$PMDIR/pm.log"
+fp_procmail_lockfile: "$PMDIR/.lockfile"
+fp_procmail_sendmail: "/usr/sbin/sendmail"
+fp_procmail_forwarders: {}
+fp_procmail_includerc: {}
 
 # ----------------------------------------------------------------------
 # motd
-freebsd_postinstall_motd: ""
-freebsd_postinstall_update_motd: "YES"
+fp_update_motd: True
+fp_motd: ""
 
 # ----------------------------------------------------------------------
 # sysctl
-freebsd_postinstall_sysctl: {}
+fp_sysctl: {}
 
 # ----------------------------------------------------------------------
 # groupwrappers
-freebsd_postinstall_groupwrappers_install: "NO"
-freebsd_postinstall_groupwrappers_dir: "/root/bin"
-freebsd_postinstall_groupwrappers_owner: "root"
-freebsd_postinstall_groupwrappers_group: "wheel"
-freebsd_postinstall_groupwrappers_mode: "0774"
-freebsd_postinstall_group_add: "/usr/sbin/pw groupadd"
-freebsd_postinstall_group_del: "/usr/sbin/pw groupdel"
-freebsd_postinstall_group_mod: "/usr/sbin/pw groupmod"
+fp_groupwrappers_install: False
+fp_groupwrappers_dir: "/root/bin"
+fp_groupwrappers_owner: "root"
+fp_groupwrappers_group: "wheel"
+fp_groupwrappers_mode: "0774"
+fp_group_add: "/usr/sbin/pw groupadd"
+fp_group_del: "/usr/sbin/pw groupdel"
+fp_group_mod: "/usr/sbin/pw groupmod"
 
 # ----------------------------------------------------------------------
 # gitserver
-fp_gitserver_install: "NO"
+fp_gitserver_install: False
 fp_gitserver_owner: "gitserver"
 fp_gitserver_group: "gitusers"
 fp_gitserver_dir: "/home/{{ fp_gitserver_owner }}"
@@ -277,11 +278,11 @@ fp_gitserver_dir_mode: "0770"
 
 # ----------------------------------------------------------------------
 # sudoers
-freebsd_postinstall_sudoers_conf: "/usr/local/etc/sudoers"
-freebsd_postinstall_sudoers_conf_owner: "root"
-freebsd_postinstall_sudoers_conf_group: "wheel"
-freebsd_postinstall_sudoers_conf_mode: "0440"
-freebsd_postinstall_sudoers: {}
+fp_sudoers_conf: "/usr/local/etc/sudoers"
+fp_sudoers_conf_owner: "root"
+fp_sudoers_conf_group: "wheel"
+fp_sudoers_conf_mode: "0440"
+fp_sudoers: {}
 
 # ----------------------------------------------------------------------
 # loader.conf
