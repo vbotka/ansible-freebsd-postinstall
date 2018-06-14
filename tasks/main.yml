@@ -40,90 +40,90 @@
   when: fp_debug
   tags: fp_debug
 
-- include_tasks: sysctl.yml
+- import_tasks: sysctl.yml
   tags: fp_sysctl
 
-- include_tasks: make.yml
+- import_tasks: make.yml
   tags: fp_make
 
-- include_tasks: swap.yml
+- import_tasks: swap.yml
   tags: fp_swap
 
-- include_tasks: fstab.yml
+- import_tasks: fstab.yml
   tags: fp_fstab
 
-- include_tasks: packages.yml
+- import_tasks: packages.yml
   tags: fp_packages
 
-- include_tasks: copy.yml
+- import_tasks: copy.yml
   tags: fp_copy
 
-- include_tasks: libmap.yml
+- import_tasks: libmap.yml
   tags: fp_libmap
 
-- include_tasks: users.yml
+- import_tasks: users.yml
   tags: fp_users
 
-- include_tasks: groupwrappers.yml
+- import_tasks: groupwrappers.yml
   tags: fp_groupwrappers
   when: fp_groupwrappers_install
 
-- include_tasks: hostname.yml
+- import_tasks: hostname.yml
   tags: fp_hostname
 
-- include_tasks: hosts.yml
+- import_tasks: hosts.yml
   tags: fp_hosts
 
-- include_tasks: ssh.yml
+- import_tasks: ssh.yml
   tags: fp_ssh
 
-- include_tasks: authorized_key.yml
+- import_tasks: authorized_key.yml
   tags: fp_authorized_key
 
-- include_tasks: timezone.yml
+- import_tasks: timezone.yml
   tags: fp_timezone
 
-- include_tasks: ntpd.yml
+- import_tasks: ntpd.yml
   tags: fp_ntpd
 
-- include_tasks: ntpdate.yml
+- import_tasks: ntpdate.yml
   tags: fp_ntpdate
 
-- include_tasks: nfs.yml
+- import_tasks: nfs.yml
   tags: fp_nfs
 
-- include_tasks: nfsd.yml
+- import_tasks: nfsd.yml
   tags: fp_nfsd
 
-- include_tasks: smartd.yml
+- import_tasks: smartd.yml
   tags: fp_smartd
   when: fp_smartd_install
 
-- include_tasks: apcupsd.yml
+- import_tasks: apcupsd.yml
   tags: fp_apcupsd
 
-- include_tasks: hostapd.yml
+- import_tasks: hostapd.yml
   tags: fp_hostapd
   when: fp_hostapd_install
 
-- include_tasks: procmail.yml
+- import_tasks: procmail.yml
   tags: fp_procmail
   when: fp_procmail_install
 
-- include_tasks: motd.yml
+- import_tasks: motd.yml
   tags: fp_motd
 
-- include_tasks: gitserver.yml
+- import_tasks: gitserver.yml
   tags: fp_gitserver
   when: fp_gitserver_install
 
-- include_tasks: sudoers.yml
+- import_tasks: sudoers.yml
   tags: fp_sudoers
 
-- include_tasks: loader.yml
+- import_tasks: loader.yml
   tags: fp_loader
 
-- include_tasks: cron.yml
+- import_tasks: cron.yml
   tags: fp_cron
 
 # EOF
