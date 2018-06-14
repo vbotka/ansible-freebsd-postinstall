@@ -8,12 +8,10 @@
          {{ ssh_config | to_yaml }} ]
          sshd_config_path [ {{ sshd_config_path }} ]
          sshd_config [
-         {{ sshd_config | to_yaml }}
-         ]
+         {{ sshd_config | to_yaml }} ]
   debug:
     msg: "{{ msg.split('\n') }}"
   when: fp_debug
-  tags: fp_debug
 
 - name: "ssh: Configure {{ ssh_config_path }}"
   template:
