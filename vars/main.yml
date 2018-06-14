@@ -75,14 +75,16 @@
 #ssh_Tunnel: "no"
 #ssh_ServerAliveInterval: "420"
 #ssh_config:
-#  - { key: Protocol, value: "{{ ssh_Protocol }}" }
-#  - { key: ForwardAgent, value: "{{ ssh_ForwardAgent }}" }
-#  - { key: ForwardX11, value: "{{ ssh_ForwardX11 }}" }
-#  - { key: HostbasedAuthentication, value: "{{ ssh_HostbasedAuthentication }}" }
-#  - { key: StrictHostKeyChecking, value: "{{ ssh_StrictHostKeyChecking }}" }
-#  - { key: Ciphers, value: "{{ ssh_Ciphers }}" }
-#  - { key: Tunnel, value: "{{ ssh_Tunnel }}" }
-#  - { key: ServerAliveInterval, value: "{{ ssh_ServerAliveInterval }}" }
+#  - host: "*"
+#    conf:
+#     - { key: Protocol, val: "{{ ssh_Protocol }}" }
+#     - { key: ForwardAgent, val: "{{ ssh_ForwardAgent }}" }
+#     - { key: ForwardX11, val: "{{ ssh_ForwardX11 }}" }
+#     - { key: HostbasedAuthentication, val: "{{ ssh_HostbasedAuthentication }}" }
+#     - { key: StrictHostKeyChecking, val: "{{ ssh_StrictHostKeyChecking }}" }
+#     - { key: Ciphers, val: "{{ ssh_Ciphers }}" }
+#     - { key: Tunnel, val: "{{ ssh_Tunnel }}" }
+#     - { key: ServerAliveInterval, val: "{{ ssh_ServerAliveInterval }}" }
 
 #sshd_enable: True
 #sshd_PasswordAuthentication: "no"

@@ -83,10 +83,8 @@ ntpd_sync_on_start: "YES"
 
 # ----------------------------------------------------------------------
 # SSH
-ssh_Protocol: "2"
 ssh_config_path: "/etc/ssh/ssh_config"
-ssh_config:
-  - { key: Protocol, value: "{{ ssh_Protocol }}" }
+ssh_config: {}
 # SSHD
 sshd_enable: True
 sshd_path: "/usr/sbin/sshd"

@@ -38,7 +38,7 @@
   debug:
     msg: "{{ msg.split('\n') }}"
   when: fp_debug
-  tags: fp_vars
+  tags: fp_debug
 
 - include_tasks: sysctl.yml
   tags: fp_sysctl
