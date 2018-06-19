@@ -1,0 +1,41 @@
+---
+
+- name: "FreeBSD postinstall Debug"
+  vars:
+    msg: |
+         ansible_architecture [ {{ ansible_architecture }} ]
+         ansible_os_family [ {{ ansible_os_family }} ]
+         ansible_distribution [ {{ ansible_distribution }} ]
+         ansible_distribution_major_version [ {{ ansible_distribution_major_version }} ]
+         ansible_distribution_version [ {{ ansible_distribution_version }} ]
+         ansible_distribution_release [ {{ ansible_distribution_release }} ]
+
+         rc_conf_hostname [ {{ rc_conf_hostname }} ]
+         fp_domain [ {{ fp_domain }} ]
+         fp_zoneinfo [ {{ fp_zoneinfo }} ]
+         digitalocean [ {{ digitalocean }} ]
+         fp_swap [ {{ fp_swap }} ]
+         fp_synchronize_default [ {{ fp_synchronize_default }} ]
+         fp_synchronize_optional [ {{ fp_synchronize_optional }} ]
+         sshd_enable [ {{ sshd_enable }} ]
+         fp_smartd_install [ {{ fp_smartd_install }} ]
+         fp_smartd_service_enabled [ {{ fp_smartd_service_enabled }} ]
+         fp_apcupsd_install [ {{ fp_apcupsd_install }} ]
+         fp_apcupsd_service_enabled [ {{ fp_apcupsd_service_enabled }} ]
+         fp_hostapd_install [ {{ fp_hostapd_install }} ]
+         fp_hostapd_enabled [ {{ fp_hostapd_enabled }} ]
+         fp_nfs_service_enable [ {{ fp_nfs_service_enable }} ]
+         fp_nfsd_service_enable [ {{ fp_nfsd_service_enable }} ]
+         fp_rpcbind_enable [ {{ fp_rpcbind_enable }} ]
+         fp_rpc_lockd_enable [ {{ fp_rpc_lockd_enable }} ]
+         fp_rpc_statd_enable [ {{ fp_rpc_statd_enable }} ]
+         fp_ntp_service_enable [ {{ fp_ntp_service_enable }} ]
+         fp_procmail_install [ {{ fp_procmail_install }} ]
+         fp_update_motd [ {{ fp_update_motd }} ]
+         fp_groupwrappers_install [ {{ fp_groupwrappers_install }} ]
+         fp_gitserver_install [ {{ fp_gitserver_install }} ]
+  debug:
+    msg: "{{ msg.split('\n') }}"
+
+# EOF
+...
