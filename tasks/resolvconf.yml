@@ -1,0 +1,29 @@
+---
+
+- name: "resolvconf: Absent lines in {{ fp_resolvconf_conf }}"
+  lineinfile:
+    state: absent
+    dest: "{{ fp_resolvconf_conf }}"
+    owner: "{{ fp_resolvconf_conf_owner }}"
+    group: "{{ fp_resolvconf_conf_group }}"
+    mode: "{{ fp_resolvconf_conf_mode }}"
+    regexp: "^{{ item }}"
+    backup: yes
+  loop: "{{ fp_resolvconf_absent }}"
+  notify: resolvconf apply
+
+- name: "resolvconf: Present lines in {{ fp_resolvconf_conf }}"
+  lineinfile:
+    dest: "{{ fp_resolvconf_conf }}"
+    owner: "{{ fp_resolvconf_conf_owner }}"
+    group: "{{ fp_resolvconf_conf_group }}"
+    mode: "{{ fp_resolvconf_conf_mode }}"
+    regexp: "^{{ item.key }}"
+    line: "{{ item.key }}=\"{{ item.val }}\""
+    create: yes
+    backup: yes
+  loop: "{{ fp_resolvconf }}"
+  notify: resolvconf apply
+
+# EOF
+...

@@ -291,5 +291,14 @@ fp_loader_conf: []
 fp_cron_tab: {}
 fp_cron_var: {}
 
+# ----------------------------------------------------------------------
+# resolvconf
+fp_resolvconf_conf: "/etc/resolvconf.conf"
+fp_resolvconf_conf_owner: "root"
+fp_resolvconf_conf_group: "wheel"
+fp_resolvconf_conf_mode: "0644"
+fp_resolvconf: []
+fp_resolvconf_absent: []
+
 # EOF
 ...

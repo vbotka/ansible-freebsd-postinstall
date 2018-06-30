@@ -109,5 +109,9 @@
 - name: umount and delete swap
   shell: sh -c 'swapoff /dev/{{fp_swap_md}} && mdconfig -d -u {{fp_swap_md}} && rm {{fp_swap_file}}'
 
+# resolvconf
+- name: resolvconf apply
+  command: resolvconf -u
+
 # EOF
 ...

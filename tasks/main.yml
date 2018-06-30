@@ -91,5 +91,8 @@
 - import_tasks: cron.yml
   tags: fp_cron
 
+- import_tasks: resolvconf.yml
+  tags: fp_resolvconf
+
 # EOF
 ...
