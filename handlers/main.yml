@@ -102,10 +102,10 @@
 - name: mount swap
   shell: sh -c 'swapon -aL'
   register: command_result
-  failed_when: "'adding' not in command_result.stderr"
+  failed_when: "'adding' not in command_result.stdout"
 # NOTE 1: swapon creates /dev/mdXX
 # NOTE 2: Successful mount returns exit code 1
-# FreeBSD 11.1. Ansible 2.5
+# FreeBSD 11.1. Ansible 2.5 command_result:
 #RUNNING HANDLER [vbotka.freebsd-postinstall : mount swap] ***
 #fatal: [aaa.bbb.ccc.ddd]: FAILED! => changed=true 
 #  cmd: sh -c 'swapon -aL'
