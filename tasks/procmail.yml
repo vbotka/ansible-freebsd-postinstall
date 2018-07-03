@@ -65,6 +65,7 @@
     line: "INCLUDERC=$PMDIR/{{ item.template }}.rc"
     insertafter: "EOF"
     backup: yes
+    create: yes
   with_items: "{{ fp_procmail_includerc }}"
   tags: fp_procmail_includerc
 
