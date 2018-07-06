@@ -8,7 +8,12 @@
     group: "wheel"
     mode: "0644"
     backup: yes
-  when: fp_loader_conf > 0
-  
+
+- name: "loader: Load modules"
+  command: "bash -c 'if kldstat -q -m {{ item }}; then kldload -n {{ item }}; fi'"
+  loop: "{{ fp_loader_conf_modules }}"
+  changed_when: False
+  when: fp_loader_load_modules
+
 # EOF
 ...

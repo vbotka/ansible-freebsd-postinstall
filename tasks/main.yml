@@ -5,6 +5,9 @@
   when: fp_debug
   tags: fp_debug
 
+- import_tasks: loader.yml
+  tags: fp_loader
+
 - import_tasks: sysctl.yml
   tags: fp_sysctl
 
@@ -84,9 +87,6 @@
 
 - import_tasks: sudoers.yml
   tags: fp_sudoers
-
-- import_tasks: loader.yml
-  tags: fp_loader
 
 - import_tasks: cron.yml
   tags: fp_cron
