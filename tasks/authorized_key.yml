@@ -3,8 +3,8 @@
 - name: "authorized_key: Debug"
   vars:
     msg: |
-         fp_authorized_key [
-         {{ fp_authorized_key | to_nice_yaml }} ]
+         fp_authorized_key
+         {{ fp_authorized_key | to_nice_yaml }}
   debug:
     msg: "{{ msg.split('\n') }}"
   when: fp_debug
@@ -14,7 +14,7 @@
     user: "{{ item.user }}"
     key: "{{ item.key }}"
     manage_dir: yes
-  with_items: "{{ fp_authorized_key }}"
+  loop: "{{ fp_authorized_key }}"
 
 # EOF
 ...

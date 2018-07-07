@@ -6,8 +6,7 @@
     regexp: "^{{ item.origin }} "
     line: "{{ item.origin }} {{ item.target }}"
     backup: yes
-  with_items: "{{ fp_libmap_entries }}"
-  when: fp_libmap_entries > 0
+  loop: "{{ fp_libmap_entries }}"
 
 # EOF
 ...

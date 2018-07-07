@@ -14,7 +14,7 @@
     line: "{{ item.key }} {{ item.value }}"
     insertafter: "EOF"
     backup: yes
-  with_items: "{{ fp_sudoers }}"
+  loop: "{{ fp_sudoers }}"
 
 # EOF
 ...

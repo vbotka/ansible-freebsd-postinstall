@@ -7,7 +7,7 @@
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
     backup: yes
-  with_items:
+  loop:
     - { regexp: "^nfs_client_enable", line: "nfs_client_enable=\"YES\""}
   when: fp_nfs_service_enable
   notify: enable and start nfs client
@@ -19,7 +19,7 @@
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
     backup: yes
-  with_items:
+  loop:
     - { regexp: "^nfs_client_enable", line: "nfs_client_enable=\"NO\""}
   when: not fp_nfs_service_enable
   notify: disable and stop nfs client
@@ -31,7 +31,7 @@
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
     backup: yes
-  with_items:
+  loop:
     - { regexp: "^rpc_lockd_enable", line: "rpc_lockd_enable=\"YES\""}
   when: fp_rpc_lockd_enable
   notify: enable and start lockd
@@ -43,7 +43,7 @@
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
     backup: yes
-  with_items:
+  loop:
     - { regexp: "^rpc_lockd_enable", line: "rpc_lockd_enable=\"NO\""}
   when: not fp_rpc_lockd_enable
   notify: disable and stop lockd
@@ -55,7 +55,7 @@
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
     backup: yes
-  with_items:
+  loop:
     - { regexp: "^rpc_statd_enable", line: "rpc_statd_enable=\"YES\""}
   when: fp_rpc_statd_enable
   notify: enable and start statd
@@ -67,7 +67,7 @@
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
     backup: yes
-  with_items:
+  loop:
     - { regexp: "^rpc_statd_enable", line: "rpc_statd_enable=\"NO\""}
   when: not fp_rpc_statd_enable
   notify: disable and stop statd

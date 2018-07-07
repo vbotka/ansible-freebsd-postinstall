@@ -4,11 +4,11 @@
   vars:
     msg: |
          ssh_config_path [ {{ ssh_config_path }} ]
-         ssh_config [
-         {{ ssh_config | to_yaml }} ]
+         ssh_config
+         {{ ssh_config | to_yaml }}
          sshd_config_path [ {{ sshd_config_path }} ]
-         sshd_config [
-         {{ sshd_config | to_yaml }} ]
+         sshd_config
+         {{ sshd_config | to_yaml }}
   debug:
     msg: "{{ msg.split('\n') }}"
   when: fp_debug
@@ -28,7 +28,7 @@
     line: "{{ item.key }} {{ item.value }}"
     backup: yes
     validate: "{{ sshd_path }} -t -f %s"
-  with_items: "{{ sshd_config }}"
+  loop: "{{ sshd_config }}"
   notify: reload sshd
   tags: fp_ssh_sshd_config
 

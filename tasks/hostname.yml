@@ -6,7 +6,7 @@
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
     backup: yes
-  with_items:
+  loop:
     - { regexp: "^hostname",  line: "hostname=\"{{ rc_conf_hostname }}\""}
   notify: set hostname
   tags: fp_hostname_rcconf
@@ -18,7 +18,7 @@
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
     backup: yes
-  with_items:
+  loop:
     - { regexp: "^hostname",  line: "hostname=\"{{ rc_conf_hostname }}\""}
   when:
     - digitalocean

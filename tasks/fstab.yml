@@ -7,7 +7,7 @@
     fstype: "{{ item.fstype }}"
     opts: "{{ item.opts }}"
     state: "mounted"
-  with_items: "{{ fp_fstab_entries }}"
+  loop: "{{ fp_fstab_entries }}"
 
 # EOF
 ...

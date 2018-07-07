@@ -7,7 +7,7 @@
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
     backup: yes
-  with_items:
+  loop:
     - { regexp: "^nfs_server_enable", line: "nfs_server_enable=\"YES\""}
     - { regexp: "^rpcbind_enable", line: "rpcbind_enable=\"YES\""}
     - { regexp: "^mountd_flags", line: "mountd_flags=\"{{ fp_mountd_flags }}\""}
@@ -20,7 +20,7 @@
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
     backup: yes
-  with_items:
+  loop:
     - { regexp: "^nfs_server_enable", line: "nfs_server_enable=\"NO\""}
   when: not fp_nfsd_service_enable
   notify: disable and stop nfs server
@@ -31,7 +31,7 @@
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
     backup: yes
-  with_items:
+  loop:
     - { regexp: "^rpc_lockd_enable", line: "rpc_lockd_enable=\"YES\""}
   when: fp_rpc_lockd_enable
   notify: enable and start lockd
@@ -42,7 +42,7 @@
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
     backup: yes
-  with_items:
+  loop:
     - { regexp: "^rpc_lockd_enable", line: "rpc_lockd_enable=\"NO\""}
   when: not fp_rpc_lockd_enable
   notify: disable and stop lockd
@@ -53,7 +53,7 @@
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
     backup: yes
-  with_items:
+  loop:
     - { regexp: "^rpc_statd_enable", line: "rpc_statd_enable=\"YES\""}
   when: fp_rpc_statd_enable
   notify: enable and start statd
@@ -64,7 +64,7 @@
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
     backup: yes
-  with_items:
+  loop:
     - { regexp: "^rpc_statd_enable", line: "rpc_statd_enable=\"NO\""}
   when: not fp_rpc_statd_enable
   notify: disable and stop statd
@@ -75,7 +75,7 @@
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
     backup: yes
-  with_items:
+  loop:
     - { regexp: "^rpcbind_enable", line: "rpcbind_enable=\"NO\""}
   when: not fp_rpcbind_enable
   notify: disable and stop rpcbind

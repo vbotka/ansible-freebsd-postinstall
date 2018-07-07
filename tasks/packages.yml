@@ -3,7 +3,7 @@
 - name: "packages: Install packages"
   pkgng:
     name: "{{ item }}"
-  with_items: "{{ fp_ports }}"
+  loop: "{{ fp_ports }}"
   when: freebsd_install_method|lower == "packages"
   tags: fp_packages_install
 
@@ -11,7 +11,7 @@
   portinstall:
     name: "{{ item }}"
     use_packages: "{{ freebsd_use_packages }}"
-  with_items: "{{ fp_ports }}"
+  loop: "{{ fp_ports }}"
   when: freebsd_install_method|lower == "ports"
   tags: fp_packages_install
 
@@ -95,7 +95,7 @@
     dest: "{{ item.link }}"
     state: "link"
     force: yes
-  with_items: "{{ fp_links }}"
+  loop: "{{ fp_links }}"
   tags: fp_packages_links
 
 # EOF

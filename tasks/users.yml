@@ -28,14 +28,14 @@
     state: "{{ item.state | default(omit) }}"
     system: "{{ item.system | default(omit) }}"
     uid: "{{ item.uid | default(omit) }}"
-  with_items: "{{ freebsd_users }}"
+  loop: "{{ freebsd_users }}"
 
 - name: "users: Add users to additional groups"
   user:
     name: "{{ item.name }}"
     groups: "{{ item.groups }}"
     append: yes
-  with_items: "{{ freebsd_users_groups }}"
+  loop: "{{ freebsd_users_groups }}"
 
 # EOF
 ...

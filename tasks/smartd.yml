@@ -43,7 +43,7 @@
     mode: "{{ fp_smartd_conf_mode }}"
     create: yes
     backup: yes
-  with_items: "{{ fp_smartd_devices }}"
+  loop: "{{ fp_smartd_devices }}"
   notify: reload smartd
   tags: fp_smartd_conf
 

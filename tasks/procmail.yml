@@ -1,8 +1,8 @@
 ---
 
 - name: "procmail: Create .forward files"
-  command: sh -c "if [ ! -e /home/{{ item.user }}/.forward ]; then touch /home/{{ item.user }}/.forward; chown '{{ item.user }}' /home/{{ item.user }}/.forward; chmod 0644 /home/{{ item.user }}/.forward; fi"
-  with_items: "{{ fp_procmail_forwarders }}"
+  command: sh -c "forward=/home/{{ item.user }}/.forward; if [ ! -e $forward  ]; then touch $forward; chown '{{ item.user }}' $forward; chmod 0644 $forward; fi"
+  loop: "{{ fp_procmail_forwarders }}"
   changed_when: False
   tags: fp_procmail_forward
 
@@ -14,13 +14,13 @@
     create: yes
     block: |
       "{{ item.forward }}"
-  with_items: "{{ fp_procmail_forwarders }}"
+  loop: "{{ fp_procmail_forwarders }}"
   when: fp_procmail_install
   tags: fp_procmail_forwarders
 
 - name: "procmail: Create .procmailrc files"
-  command: sh -c "if [ ! -e /home/{{ item.user }}/.procmailrc ]; then touch /home/{{ item.user }}/.procmailrc; chown '{{ item.user }}' /home/{{ item.user }}/.procmailrc; chmod 0644 /home/{{ item.user }}/.procmailrc; fi"
-  with_items: "{{ fp_procmail_forwarders }}"
+  command: sh -c "procmailrc=/home/{{ item.user }}/.procmailrc; if [ ! -e $procmailrc ]; then touch $procmailrc; chown '{{ item.user }}' $procmailrc; chmod 0644 $procmailrc; fi"
+  loop: "{{ fp_procmail_forwarders }}"
   changed_when: False
   tags: fp_procmail_procmailrc
 
@@ -40,15 +40,15 @@
       LOGFILE=$PMDIR/pm.log
       LOCKFILE=$PMDIR/.lockfile
       SENDMAIL=/usr/sbin/sendmail
-  with_items: "{{ fp_procmail_forwarders }}"
+  loop: "{{ fp_procmail_forwarders }}"
   tags: fp_procmail_procmailrc
 
-- name: "procamil: Create .procmail directory"
+- name: "procmail: Create .procmail directory"
   file:
+    state: directory
     path: "/home/{{ item.user }}/.procmail"
-    state: "directory"
     owner: "{{ item.user }}"
-  with_items: "{{ fp_procmail_forwarders }}"
+  loop: "{{ fp_procmail_forwarders }}"
   tags: fp_procmail_dir
 
 - name: "procmail: Create includerc files"
@@ -56,7 +56,7 @@
     src: "procmailrc-includerc-{{ item.template }}.j2"
     dest: "/home/{{ item.user }}/.procmail/{{ item.template }}.rc"
     backup: yes
-  with_items: "{{ fp_procmail_includerc }}"
+  loop: "{{ fp_procmail_includerc }}"
   tags: fp_procmail_includerc
 
 - name: "procmail: Include rc files in .procmailrc"
@@ -66,7 +66,7 @@
     insertafter: "EOF"
     backup: yes
     create: yes
-  with_items: "{{ fp_procmail_includerc }}"
+  loop: "{{ fp_procmail_includerc }}"
   tags: fp_procmail_includerc
 
 # EOF

@@ -61,7 +61,7 @@ fp_fstab_entries:
 
 # ----------------------------------------------------------------------
 # libmap
-fp_libmap_entries: {}
+fp_libmap_entries: []
 
 # ----------------------------------------------------------------------
 # Timezone
@@ -84,7 +84,7 @@ ntpd_sync_on_start: "YES"
 # ----------------------------------------------------------------------
 # SSH
 ssh_config_path: "/etc/ssh/ssh_config"
-ssh_config: {}
+ssh_config: []
 # SSHD
 sshd_enable: True
 sshd_path: "/usr/sbin/sshd"
@@ -97,8 +97,8 @@ sshd_config:
 
 # ----------------------------------------------------------------------
 # users and groups
-freebsd_users: {}
-freebsd_users_groups: {}
+freebsd_users: []
+freebsd_users_groups: []
 
 # ----------------------------------------------------------------------
 # authorized_key
@@ -114,7 +114,7 @@ fp_smartd_conf_file: "/usr/local/etc/smartd.conf"
 fp_smartd_conf_owner: "root"
 fp_smartd_conf_group: "wheel"
 fp_smartd_conf_mode: "644"
-fp_smartd_devices: {}
+fp_smartd_devices: []
 
 # ----------------------------------------------------------------------
 # apcupsd
@@ -197,7 +197,7 @@ fp_rpc_lockd_enable: False
 fp_rpc_statd_enable: False
 fp_nfsd_service_state: 'started'
 fp_mountd_flags: '-r'
-fp_nfsd_exports: {}
+fp_nfsd_exports: []
 
 # ----------------------------------------------------------------------
 # ntpd
@@ -243,8 +243,8 @@ fp_procmail_pmdir: "$HOME/.procmail"
 fp_procmail_logfile: "$PMDIR/pm.log"
 fp_procmail_lockfile: "$PMDIR/.lockfile"
 fp_procmail_sendmail: "/usr/sbin/sendmail"
-fp_procmail_forwarders: {}
-fp_procmail_includerc: {}
+fp_procmail_forwarders: []
+fp_procmail_includerc: []
 
 # ----------------------------------------------------------------------
 # motd
@@ -253,7 +253,7 @@ fp_motd: ""
 
 # ----------------------------------------------------------------------
 # sysctl
-fp_sysctl: {}
+fp_sysctl: []
 
 # ----------------------------------------------------------------------
 # groupwrappers
@@ -280,7 +280,7 @@ fp_sudoers_conf: "/usr/local/etc/sudoers"
 fp_sudoers_conf_owner: "root"
 fp_sudoers_conf_group: "wheel"
 fp_sudoers_conf_mode: "0440"
-fp_sudoers: {}
+fp_sudoers: []
 
 # ----------------------------------------------------------------------
 # loader.conf
@@ -290,8 +290,8 @@ fp_loader_load_modules: False
 
 # ----------------------------------------------------------------------
 # cron
-fp_cron_tab: {}
-fp_cron_var: {}
+fp_cron_tab: []
+fp_cron_var: []
 
 # ----------------------------------------------------------------------
 # resolvconf

@@ -30,7 +30,7 @@
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
     backup: yes
-  with_items:
+  loop:
     - { regexp: "^create_args_{{ fp_hostapd_interface }}",
         line: "create_args_{{ fp_hostapd_interface }}=\"wlanmode hostap country {{ fp_hostapd_country }}\"" }
     - { regexp: "^wlans_{{ fp_hostapd_device }}",
