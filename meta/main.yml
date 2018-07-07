@@ -1,6 +1,6 @@
 galaxy_info:
   author: Vladimir Botka
-  description: Postinstallation configuration of FreeBSD
+  description: Postinstallation configuration of FreeBSD.
   company: https://botka.link
   license: BSD
   github_branch: master
@@ -8,7 +8,7 @@ galaxy_info:
   platforms:
     - name: FreeBSD
       versions:
-        - 10.3
-        - 11.0
-  galaxy_tags: [ freebsd, apcupsd, cron, fstab, gitserver, hostapd, hostname, hosts, libmap, loader, make, motd, nfsd, ntpd, ntpdate, procmail, smartd, sudoers, ssh, swap, sysctl, timezone, users, authorized keys, packages, ports ]
+        - 10.4
+        - 11.2
+  galaxy_tags: [ freebsd, apcupsd, cron, fstab, gitserver, hostapd, hostname, hosts, libmap, loader, make, motd, nfsd, ntpd, ntpdate, procmail, smartd, sudoers, ssh, swap, sysctl, timezone, users, packages, ports ]
 dependencies: []
