@@ -1,11 +1,13 @@
 # {{ ansible_managed }}
 
-{% for item in fp_loader_conf_modules %}
-{{ item }}_load="YES"
-{% endfor %}
-
+# fp_loader_conf
 {% for item in fp_loader_conf %}
 {{ item }}
+{% endfor %}
+
+# fp_loader_conf_modules
+{% for item in fp_loader_conf_modules %}
+{{ item }}_load="YES"
 {% endfor %}
 
 # EOF
