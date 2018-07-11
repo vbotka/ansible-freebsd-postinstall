@@ -69,7 +69,7 @@ editor vbotka.freebsd-postinstall/vars/main.yml
 
 ```
 cat freebsd-postinstall.yml
-- hosts: example.com
+- hosts: host
   roles:
     - role: vbotka.ansible-freebsd-postinstall
 ```
