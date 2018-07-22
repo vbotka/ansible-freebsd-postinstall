@@ -1,0 +1,14 @@
+---
+
+# TODO: /etc/periodic.conf
+# impelement together with /etc/crontab
+# https://www.freebsd.org/cgi/man.cgi?query=periodic.conf
+# 13.10. Monitoring Third Party Security Issues
+# https://www.freebsd.org/doc/handbook/security-pkg.html
+# Not Getting Security Reports
+# https://forums.freebsd.org/threads/not-getting-security-reports.21841/
+# Daily security scripts: best practice for jails?
+# https://forums.freebsd.org/threads/daily-security-scripts-best-practice-for-jails.55868/
+
+# EOF
+...
