@@ -22,5 +22,11 @@
   loop: "{{ fp_cron_tab }}"
   tags: fp_cron_tab
 
+# TODO: Configure /etc/crontab
+# /etc/crontab or crontab -e as root
+# https://forums.freebsd.org/threads/etc-crontab-or-crontab-e-as-root.4107/
+# 11.3. Configuring cron(8)
+# https://www.freebsd.org/doc/handbook/configtuning-cron.html
+
 # EOF
 ...
