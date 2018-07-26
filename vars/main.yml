@@ -207,5 +207,11 @@
 #fp_resolvconf_absent:
 #  - "resolvconf"
 
+# ----------------------------------------------------------------------
+#fp_aliases:
+#  - { alias: "firstname", user: "user1" }
+#  - { alias: "firstname.lastname",  user: "user1" }
+#  - { alias: "flastname", user: "user1" }
+
 # EOF
 ...

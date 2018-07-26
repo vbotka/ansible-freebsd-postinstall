@@ -129,5 +129,8 @@
 - name: resolvconf apply
   command: resolvconf -u
 
+- name: newaliases
+  command: "/usr/bin/newaliases"
+
 # EOF
 ...

@@ -302,5 +302,9 @@ fp_resolvconf_conf_mode: "0644"
 fp_resolvconf: []
 fp_resolvconf_absent: []
 
+# ----------------------------------------------------------------------
+# aliases
+fp_aliases: []
+
 # EOF
 ...

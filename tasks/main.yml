@@ -94,5 +94,8 @@
 - import_tasks: resolvconf.yml
   tags: fp_resolvconf
 
+- import_tasks: aliases.yml
+  tags: fp_aliases
+
 # EOF
 ...
