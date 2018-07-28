@@ -1,9 +1,9 @@
-freebsd-postinstall
+freebsd_postinstall
 ===================
 
 [![Build Status](https://travis-ci.org/vbotka/ansible-freebsd-postinstall.svg?branch=master)](https://travis-ci.org/vbotka/ansible-freebsd-postinstall)
 
-[Ansible role.](https://galaxy.ansible.com/vbotka/freebsd-postinstall/) FreeBSD. Post-install configuration: aliases, apcupsd, authorized keys, cron, fstab, gitserver, hostapd, hostname, hosts, libmap, loader.conf, make.conf, motd, nfsd, ntpd, ntpdate, procmail, resolvconf.conf, smartd, sudoers, ssh, swap, sysctl, timezone, users, packages and ports, overlays, wip ...
+[Ansible role.](https://galaxy.ansible.com/vbotka/freebsd_postinstall/) FreeBSD. Post-install configuration: aliases, apcupsd, authorized keys, cron, fstab, gitserver, hostapd, hostname, hosts, libmap, loader.conf, make.conf, motd, nfsd, ntpd, ntpdate, procmail, resolvconf.conf, smartd, sudoers, ssh, swap, sysctl, timezone, users, packages and ports, overlays, wip ...
 
 
 Requirements
@@ -20,8 +20,7 @@ Review defaults and examples in vars.
 freebsd_install_method
 ----------------------
 
-By default *freebsd_install_method* is set to install packages. Installation is faster. But, later, after having upgraded
-from the ports (*portmaster -a*) switch the method to *ports*.
+By default *freebsd_install_method* is set to install packages. Installation is faster. But, later, after having upgraded from the ports (*portmaster -a*) switch the method to *ports*.
 
 ```
 freebsd_install_method: "packages"
@@ -29,13 +28,13 @@ freebsd_install_method: "packages"
 #freebsd_use_packages: "yes"
 ```
 
-Optionaly the packages can be built by [freebsd-poudriere](https://galaxy.ansible.com/vbotka/freebsd-poudriere) and installed by [freebsd-packages](https://galaxy.ansible.com/vbotka/freebsd-packages)
+Optionaly the packages can be built by [freebsd_poudriere](https://galaxy.ansible.com/vbotka/freebsd_poudriere) and installed by [freebsd_packages](https://galaxy.ansible.com/vbotka/freebsd_packages)
 
 
 freebsd_use_packages
 --------------------
 
-Role [freebsd-ports](https://galaxy.ansible.com/vbotka/freebsd-ports) will install packages if this option is set.
+Role [freebsd_ports](https://galaxy.ansible.com/vbotka/freebsd_ports) will install packages if this option is set.
 
 ```
 #freebsd_install_method: "packages"
@@ -56,13 +55,13 @@ ansible host -e 'ansible_shell_type=csh ansible_shell_executable=/bin/csh' -a 's
 2) Install role.
 
 ```
-ansible-galaxy install vbotka.freebsd-postinstall
+ansible-galaxy install vbotka.freebsd_postinstall
 ```
 
 3) Fit variables.
 
 ```
-editor vbotka.freebsd-postinstall/vars/main.yml
+editor vbotka.freebsd_postinstall/vars/main.yml
 ```
 
 4) Create playbook.
@@ -71,7 +70,7 @@ editor vbotka.freebsd-postinstall/vars/main.yml
 cat freebsd-postinstall.yml
 - hosts: host
   roles:
-    - role: vbotka.ansible-freebsd-postinstall
+    - vbotka.ansible-freebsd_postinstall
 ```
 
 5) Configure the system.
