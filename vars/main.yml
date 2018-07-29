@@ -213,5 +213,13 @@
 #  - { alias: "firstname.lastname",  user: "user1" }
 #  - { alias: "flastname", user: "user1" }
 
+# ----------------------------------------------------------------------
+# /etc/periodic.conf.local
+#fp_periodic_conf_local:
+#  - { regexp: "daily_sa_enable=", value: "\"NO\"" }
+#  - { regexp: "daily_sa_compile=", value: "\"NO\"" }
+#  - { regexp: "daily_sa_compile_nice=", value: "\"NO\"" }
+#  - { regexp: "daily_sa_restart_spamd=", value: "\"NO\"" }
+
 # EOF
 ...

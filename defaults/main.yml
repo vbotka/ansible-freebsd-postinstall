@@ -306,5 +306,9 @@ fp_resolvconf_absent: []
 # aliases
 fp_aliases: []
 
+# ----------------------------------------------------------------------
+# /etc/periodic.conf.local
+fp_periodic_conf_local: []
+
 # EOF
 ...
