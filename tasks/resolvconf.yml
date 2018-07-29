@@ -8,7 +8,7 @@
     group: "{{ fp_resolvconf_conf_group }}"
     mode: "{{ fp_resolvconf_conf_mode }}"
     regexp: "^{{ item }}"
-    backup: yes
+    backup: "{{ fp_backup_conf }}"
   loop: "{{ fp_resolvconf_absent }}"
   notify: resolvconf apply
 
@@ -21,7 +21,7 @@
     regexp: "^{{ item.key }}"
     line: "{{ item.key }}=\"{{ item.val }}\""
     create: yes
-    backup: yes
+    backup: "{{ fp_backup_conf }}"
   loop: "{{ fp_resolvconf }}"
   notify: resolvconf apply
 

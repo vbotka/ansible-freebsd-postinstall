@@ -7,7 +7,7 @@
   template:
     src: "motd.j2"
     dest: "/etc/motd"
-    backup: yes
+    backup: "{{ fp_backup_conf }}"
   tags: fp_motd_create
 
 - name: "motd: Set update_motd YES"
@@ -15,7 +15,7 @@
     dest: "/etc/rc.conf"
     regexp: "^update_motd"
     line: "update_motd=\"YES\""
-    backup: yes
+    backup: "{{ fp_backup_conf }}"
   when: fp_update_motd
   tags: fp_motd_rcconf
 
@@ -24,7 +24,7 @@
     dest: "/etc/rc.conf"
     regexp: "^update_motd"
     line: "update_motd=\"NO\""
-    backup: yes
+    backup: "{{ fp_backup_conf }}"
   when: not fp_update_motd
   tags: fp_motd_rcconf
 

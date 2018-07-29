@@ -15,7 +15,7 @@
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
     insertafter: "EOF"
-    backup: yes
+    backup: "{{ fp_backup_conf }}"
     create: yes
   loop: "{{ fp_sysctl }}"
   notify: reload sysctl

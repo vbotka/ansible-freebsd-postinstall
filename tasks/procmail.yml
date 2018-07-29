@@ -10,7 +10,7 @@
   blockinfile:
     dest: "/home/{{ item.user }}/.forward"
     marker: "# {mark} ANSIBLE MANAGED BLOCK"
-    backup: yes
+    backup: "{{ fp_backup_conf }}"
     create: yes
     block: |
       "{{ item.forward }}"
@@ -28,7 +28,7 @@
   blockinfile:
     dest: "/home/{{ item.user }}/.procmailrc"
     marker: "# {mark} ANSIBLE MANAGED BLOCK"
-    backup: yes
+    backup: "{{ fp_backup_conf }}"
     create: yes
     block: |
       SHELL={{ fp_procmail_shell }}
@@ -55,7 +55,7 @@
   template:
     src: "procmailrc-includerc-{{ item.template }}.j2"
     dest: "/home/{{ item.user }}/.procmail/{{ item.template }}.rc"
-    backup: yes
+    backup: "{{ fp_backup_conf }}"
   loop: "{{ fp_procmail_includerc }}"
   tags: fp_procmail_includerc
 
@@ -64,7 +64,7 @@
     dest: "/home/{{ item.user }}/.procmailrc"
     line: "INCLUDERC=$PMDIR/{{ item.template }}.rc"
     insertafter: "EOF"
-    backup: yes
+    backup: "{{ fp_backup_conf }}"
     create: yes
   loop: "{{ fp_procmail_includerc }}"
   tags: fp_procmail_includerc

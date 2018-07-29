@@ -5,7 +5,7 @@
     dest: "/etc/rc.conf"
     regexp: "^smartd_enable"
     line: "smartd_enable=\"YES\""
-    backup: yes
+    backup: "{{ fp_backup_conf }}"
   when:
     - fp_smartd_service_enabled
     - fp_smartd_install
@@ -17,7 +17,7 @@
     dest: "/etc/rc.conf"
     regexp: "^smartd_enable"
     line: "smartd_enable=\"NO\""
-    backup: yes
+    backup: "{{ fp_backup_conf }}"
   when:
     - not fp_smartd_service_enabled
     - fp_smartd_install
@@ -29,7 +29,7 @@
     dest: "{{ fp_smartd_conf_file }}"
     regexp: "^DEVICESCAN"
     state: "absent"
-    backup: yes
+    backup: "{{ fp_backup_conf }}"
   notify: reload smartd
   tags: fp_smartd_conf
 
@@ -42,7 +42,7 @@
     group: "{{ fp_smartd_conf_group }}"
     mode: "{{ fp_smartd_conf_mode }}"
     create: yes
-    backup: yes
+    backup: "{{ fp_backup_conf }}"
   loop: "{{ fp_smartd_devices }}"
   notify: reload smartd
   tags: fp_smartd_conf

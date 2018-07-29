@@ -13,7 +13,7 @@
     regexp: "^{{ item.key }}"
     line: "{{ item.key }} {{ item.value }}"
     insertafter: "EOF"
-    backup: yes
+    backup: "{{ fp_backup_conf }}"
   loop: "{{ fp_sudoers }}"
 
 # EOF

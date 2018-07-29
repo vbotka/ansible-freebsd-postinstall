@@ -9,7 +9,7 @@
     dest: "/etc/rc.conf"
     regexp: "^ntpd_enable"
     line: "ntpd_enable=\"YES\""
-    backup: yes
+    backup: "{{ fp_backup_conf }}"
   when: fp_ntp_service_enable
   notify: enable and start ntpd
   tags: fp_ntpd_rcconf
@@ -19,7 +19,7 @@
     dest: "/etc/rc.conf"
     regexp: "^ntpd_enable"
     line: "ntpd_enable=\"NO\""
-    backup: yes
+    backup: "{{ fp_backup_conf }}"
   when: not fp_ntp_service_enable
   notify: disable and stop ntpd
   tags: fp_ntpd_rcconf
@@ -28,7 +28,7 @@
   template:
     src: "ntp.conf.j2"
     dest: "/etc/ntp.conf"
-    backup: yes
+    backup: "{{ fp_backup_conf }}"
   notify: restart ntpd
   tags: fp_ntpd_ntp_conf
 

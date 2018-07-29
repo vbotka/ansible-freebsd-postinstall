@@ -5,7 +5,7 @@
     dest: /etc/aliases
     regexp: "^{{ item.alias }}{{':'}}"
     line: "{{ item.alias }}{{':'}} {{ item.user }}"
-    backup: yes
+    backup: "{{ fp_backup_conf }}"
   loop: "{{ fp_aliases }}"
   notify: newaliases
 

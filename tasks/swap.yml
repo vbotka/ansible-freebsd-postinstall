@@ -24,7 +24,7 @@
     path: "/etc/fstab"
     regexp: "^{{ fp_swap_md }}"
     line: "{{ fp_swap_md }} none swap sw,file={{ fp_swap_file }},late 0 0"
-    backup: yes
+    backup: "{{ fp_backup_conf }}"
   notify: mount swap
   when: fp_swap
 #  mount:
@@ -52,7 +52,7 @@
     path: "/etc/fstab"
     regexp: "^{{ fp_swap_md }}"
     state: "absent"
-    backup: yes
+    backup: "{{ fp_backup_conf }}"
   notify: umount and delete swap
   when:
     - not fp_swap

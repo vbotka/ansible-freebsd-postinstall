@@ -5,7 +5,7 @@
     dest: "/etc/rc.conf"
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
-    backup: yes
+    backup: "{{ fp_backup_conf }}"
   loop:
     - { regexp: "^hostname",  line: "hostname=\"{{ rc_conf_hostname }}\""}
   notify: set hostname
@@ -17,7 +17,7 @@
     dest: "/etc/rc.digitalocean.d/droplet.conf"
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
-    backup: yes
+    backup: "{{ fp_backup_conf }}"
   loop:
     - { regexp: "^hostname",  line: "hostname=\"{{ rc_conf_hostname }}\""}
   when:

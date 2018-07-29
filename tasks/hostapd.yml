@@ -5,7 +5,7 @@
     dest: "/etc/rc.conf"
     regexp: "^hostapd_enable"
     line: "hostapd_enable=\"YES\""
-    backup: yes
+    backup: "{{ fp_backup_conf }}"
   when:
     - fp_hostapd_enabled
     - fp_hostapd_install
@@ -17,7 +17,7 @@
     dest: "/etc/rc.conf"
     regexp: "^hostapd_enable"
     line: "hostapd_enable=\"NO\""
-    backup: yes
+    backup: "{{ fp_backup_conf }}"
   when:
     - not fp_hostapd_enabled
     - fp_hostapd_install
@@ -29,7 +29,7 @@
     dest: "/etc/rc.conf"
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
-    backup: yes
+    backup: "{{ fp_backup_conf }}"
   loop:
     - { regexp: "^create_args_{{ fp_hostapd_interface }}",
         line: "create_args_{{ fp_hostapd_interface }}=\"wlanmode hostap country {{ fp_hostapd_country }}\"" }
@@ -45,7 +45,7 @@
   template:
     src: "hostapd.conf.j2"
     dest: "/etc/hostapd.conf"
-    backup: yes
+    backup: "{{ fp_backup_conf }}"
   when: fp_hostapd_enabled
   notify: restart hostapd
   tags: fp_hostapd_conf

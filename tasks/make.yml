@@ -7,7 +7,7 @@
     owner: "{{ fp_make_conf_owner }}"
     group: "{{ fp_make_conf_group }}"
     mode: "{{ fp_make_conf_mode }}"
-    backup: yes
+    backup: "{{ fp_backup_conf }}"
 
 # EOF
 ...

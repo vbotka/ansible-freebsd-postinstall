@@ -7,7 +7,7 @@
     owner: "root"
     group: "wheel"
     mode: "0644"
-    backup: yes
+    backup: "{{ fp_backup_conf }}"
 
 - name: "loader: Load modules"
   command: "bash -c 'if kldstat -q -m {{ item }}; then kldload -n {{ item }}; fi'"

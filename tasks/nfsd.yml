@@ -6,7 +6,7 @@
     dest: "/etc/rc.conf"
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
-    backup: yes
+    backup: "{{ fp_backup_conf }}"
   loop:
     - { regexp: "^nfs_server_enable", line: "nfs_server_enable=\"YES\""}
     - { regexp: "^rpcbind_enable", line: "rpcbind_enable=\"YES\""}
@@ -19,7 +19,7 @@
     dest: "/etc/rc.conf"
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
-    backup: yes
+    backup: "{{ fp_backup_conf }}"
   loop:
     - { regexp: "^nfs_server_enable", line: "nfs_server_enable=\"NO\""}
   when: not fp_nfsd_service_enable
@@ -30,7 +30,7 @@
     dest: "/etc/rc.conf"
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
-    backup: yes
+    backup: "{{ fp_backup_conf }}"
   loop:
     - { regexp: "^rpc_lockd_enable", line: "rpc_lockd_enable=\"YES\""}
   when: fp_rpc_lockd_enable
@@ -41,7 +41,7 @@
     dest: "/etc/rc.conf"
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
-    backup: yes
+    backup: "{{ fp_backup_conf }}"
   loop:
     - { regexp: "^rpc_lockd_enable", line: "rpc_lockd_enable=\"NO\""}
   when: not fp_rpc_lockd_enable
@@ -52,7 +52,7 @@
     dest: "/etc/rc.conf"
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
-    backup: yes
+    backup: "{{ fp_backup_conf }}"
   loop:
     - { regexp: "^rpc_statd_enable", line: "rpc_statd_enable=\"YES\""}
   when: fp_rpc_statd_enable
@@ -63,7 +63,7 @@
     dest: "/etc/rc.conf"
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
-    backup: yes
+    backup: "{{ fp_backup_conf }}"
   loop:
     - { regexp: "^rpc_statd_enable", line: "rpc_statd_enable=\"NO\""}
   when: not fp_rpc_statd_enable
@@ -74,7 +74,7 @@
     dest: "/etc/rc.conf"
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
-    backup: yes
+    backup: "{{ fp_backup_conf }}"
   loop:
     - { regexp: "^rpcbind_enable", line: "rpcbind_enable=\"NO\""}
   when: not fp_rpcbind_enable
@@ -84,7 +84,7 @@
   template:
     src: "exports.j2"
     dest: "/etc/exports"
-    backup: yes
+    backup: "{{ fp_backup_conf }}"
   notify: reload mountd
 
 # EOF

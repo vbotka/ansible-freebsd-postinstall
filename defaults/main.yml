@@ -6,6 +6,7 @@ freebsd_install_method: "packages"
 #freebsd_use_packages: "yes"
 
 fp_debug: False
+fp_backup_conf: no
 
 # ----------------------------------------------------------------------
 # Hostname

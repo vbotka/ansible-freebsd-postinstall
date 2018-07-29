@@ -5,7 +5,7 @@
     dest: "/etc/libmap.conf"
     regexp: "^{{ item.origin }} "
     line: "{{ item.origin }} {{ item.target }}"
-    backup: yes
+    backup: "{{ fp_backup_conf }}"
   loop: "{{ fp_libmap_entries }}"
 
 # EOF

@@ -5,7 +5,7 @@
     dest: "/etc/rc.conf"
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
-    backup: yes
+    backup: "{{ fp_backup_conf }}"
   loop:
     - { regexp: "^ntpdate_enable",  line: "ntpdate_enable=\"{{ ntpdate_enable }}\""}
     - { regexp: "^ntpdate_flags",  line: "ntpdate_flags=\"{{ ntpdate_flags }}\""}

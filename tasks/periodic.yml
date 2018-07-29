@@ -14,7 +14,7 @@
     dest: "/etc/periodic.conf.local"
     regexp: "^{{ item.regexp }}"
     line: "{{ item.regexp }}{{ item.value }}"
-    backup: yes
+    backup: "{{ fp_backup_conf }}"
     create: yes
   loop: "{{ fp_periodic_conf_local }}"
 
