@@ -3,7 +3,7 @@
 - name: "periodic: Debug"
   vars:
     msg: |
-         fp_periodic_conf
+         fp_periodic_conf_local
          {{ fp_periodic_conf_local | to_yaml }}
   debug:
     msg: "{{ msg.split('\n') }}"
