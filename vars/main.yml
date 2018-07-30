@@ -184,8 +184,10 @@
 
 # ----------------------------------------------------------------------
 # loader.conf
-#fp_loader_conf:
-#  - geom_eli_load="YES"
+#fp_loader_conf: []
+#fp_loader_load_modules: True
+#fp_loader_conf_modules:
+#  - geom_eli
 
 # ----------------------------------------------------------------------
 # cron
