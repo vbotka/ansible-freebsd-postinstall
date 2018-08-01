@@ -3,24 +3,31 @@
 - name: "sysctl: Debug"
   vars:
     msg: |
-         fp_sysctl
-         {{ fp_sysctl | to_nice_yaml }}
+      fp_sysctl_file [ {{ fp_sysctl_file }} ]
+      fp_sysctl_ignoreerrors [ {{ fp_sysctl_ignoreerrors }} ]
+      fp_sysctl
+      {{ fp_sysctl | to_yaml }}
   debug:
     msg: "{{ msg.split('\n') }}"
   when: fp_debug
 
-- name: "sysctl: Configure /etc/sysctl.conf"
-  lineinfile:
-    dest: "/etc/sysctl.conf"
-    regexp: "{{ item.regexp }}"
-    line: "{{ item.line }}"
-    insertafter: "EOF"
-    backup: "{{ fp_backup_conf }}"
-    create: yes
+- name: "sysctl: Configure {{ fp_sysctl_file }}"
+  sysctl:
+    sysctl_file: "{{ fp_sysctl_file }}"
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
+    state: "{{ item.state | default('present') }}"
+    reload: "{{ item.reload | default('yes') }}"
+    sysctl_set: "{{ item.set | default('no') }}"
+    ignoreerrors: "{{ fp_sysctl_ignoreerrors }}"
   loop: "{{ fp_sysctl }}"
-  notify: reload sysctl
 
-- meta: flush_handlers
+# NOTE.
+# 1) As of v.2.6 module sysctl 'optionally performs a /sbin/sysctl -p'
+# http://ansible-manual.readthedocs.io/en/latest/sysctl_module.html
+# 2) freebsd doesn't support -p, so reload the sysctl service
+# rc,out,err = self.module.run_command('/etc/rc.d/sysctl reload')
+# https://github.com/ansible/ansible-modules-core/blob/devel/system/sysctl.py
 
 # EOF
 ...

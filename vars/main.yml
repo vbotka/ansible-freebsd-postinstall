@@ -158,7 +158,7 @@
 # ----------------------------------------------------------------------
 # sysctl
 #fp_sysctl:
-#    - { regexp: "^net.inet.ip.forwarding=", line: "net.inet.ip.forwarding=1" }
+#    - { name: "net.inet.ip.forwarding", value: "1" }
 
 # ----------------------------------------------------------------------
 # hosts
