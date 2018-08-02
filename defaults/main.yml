@@ -257,6 +257,7 @@ fp_motd: ""
 fp_sysctl_file: "/etc/sysctl.conf"
 fp_sysctl_ignoreerrors: "no"
 fp_sysctl: []
+fp_sysctl_loader_conf: []
 
 # ----------------------------------------------------------------------
 # groupwrappers

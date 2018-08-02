@@ -94,8 +94,10 @@ Author Information
 References
 ----------
 - [FreeBSD handbook: Post-Installation](https://www.freebsd.org/doc/handbook/bsdinstall-post.html)
+- [aliases - FreeBSD handbook: 28.3. Sendmail Configuration Files](http://www.freebsd.org/doc/handbook/sendmail.html)
 - [apcupsd - FreeBSD diary: Configuring a UPS daemon](http://www.freebsddiary.org/apcupsd.php)
-- [cron - FreeBSD handbook: Configuring cron](https://www.freebsd.org/doc/handbook/configtuning-cron.html)
+- [cron - FreeBSD handbook: 11.3. Configuring cron](https://www.freebsd.org/doc/handbook/configtuning-cron.html)
+- [fstab - FreeBSD handbook: 3.7. Mounting and Unmounting File Systems](http://www.freebsd.org/doc/handbook/mount-unmount.html)
 - [git - FreeBSD forum: How to setup a Git repository](https://forums.freebsd.org/threads/10810/)
 - [git - Getting Git on a Server](https://git-scm.com/book/ch4-2.html)
 - [hostapd - Atheros wireless driver support](https://wiki.freebsd.org/dev/ath%284%29)
@@ -111,5 +113,11 @@ References
 - [periodic.conf - FreeBSD forum: periodic and cron doubt](https://forums.freebsd.org/threads/periodic-and-cron-doubt.27471/)
 - [ports - FreeBSD handbook: Upgrading Ports Using Portmaster](https://www.freebsd.org/doc/handbook/ports-using.html)
 - [procmail - Documentation Project](http://pm-doc.sourceforge.net/)
+- [resolv.conf - FreeBSD handbook: 11.8. Configuration Files](http://www.freebsd.org/doc/handbook/configtuning-configfiles.html)
+- [smartd - FreeBSD forum: camcontrol hdd smart status](https://forums.freebsd.org/threads/camcontrol-hdd-smart-status.65306/)
+- [ssh - FreeBSD handbook: 13.8. OpenSSH](http://www.freebsd.cz/doc/handbook/openssh.html)
 - [sudo - FreeBSD handbook: Shared Administration with Sudo](https://www.freebsd.org/doc/handbook/security-sudo.html)
 - [swap - FreeBSD handbook: Adding Swap Space](http://www.freebsd.org/doc/handbook/adding-swap-space.html)
+- [sysctl - FreeBSD handbook: 11.9. Tuning with sysctl](http://www.freebsd.org/doc/handbook/configtuning-sysctl.html)
+- [timezone - How to set up FreeBSD for my region?](https://unix.stackexchange.com/questions/34567/how-to-set-up-freebsd-for-my-region)
+- [users - FreeBSD handbook: 6.27. Adding Users and Groups](https://www.freebsd.org/doc/en/books/porters-handbook/users-and-groups.html)

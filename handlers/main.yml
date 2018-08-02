@@ -132,5 +132,9 @@
 - name: newaliases
   command: "/usr/bin/newaliases"
 
+# MESSAGES -------------------------------------------------------------
+- name: loader message reboot
+  debug: msg="[MESSAGE] Reboot to activate configuration in /boot/loader.conf"
+
 # EOF
 ...

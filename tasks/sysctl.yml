@@ -21,13 +21,51 @@
     sysctl_set: "{{ item.set | default('no') }}"
     ignoreerrors: "{{ fp_sysctl_ignoreerrors }}"
   loop: "{{ fp_sysctl }}"
+  # NOTES
+  # 1) As of v2.6 module sysctl 'optionally performs a /sbin/sysctl -p'
+  # http://ansible-manual.readthedocs.io/en/latest/sysctl_module.html
+  # 2) freebsd doesn't support -p, so reload the sysctl service
+  # rc,out,err = self.module.run_command('/etc/rc.d/sysctl reload')
+  # https://github.com/ansible/ansible-modules-core/blob/devel/system/sysctl.py
 
-# NOTE.
-# 1) As of v.2.6 module sysctl 'optionally performs a /sbin/sysctl -p'
-# http://ansible-manual.readthedocs.io/en/latest/sysctl_module.html
-# 2) freebsd doesn't support -p, so reload the sysctl service
-# rc,out,err = self.module.run_command('/etc/rc.d/sysctl reload')
-# https://github.com/ansible/ansible-modules-core/blob/devel/system/sysctl.py
+- name: "sysctl: Register variables that are settable via loader"
+  command: "sysctl -aNT"
+  register: tmp_loader_vars
+  changed_when: False
+
+#- name: "sysctl: Debug tmp_loader_vars"
+#  debug:
+#    var: tmp_loader_vars.stdout
+#  when:
+#    - fp_debug
+#    - not ansible_check_mode
+
+- name: "sysctl: Init fp_sysctl_loader_conf"
+  set_fact:
+    fp_sysctl_loader_conf: []
+
+- name: "sysctl: Create fp_sysctl_loader_conf"
+  set_fact:
+    fp_sysctl_loader_conf: "{{ fp_sysctl_loader_conf + [item.name + '=' + item.value, ] }}"
+  loop: "{{ fp_sysctl }}"
+  when:
+    - not ansible_check_mode
+    - tmp_loader_vars.stdout is search( item.name|regex_escape() )
+
+- name: "sysctl: Debug fp_sysctl_loader_conf"
+  debug:
+    var: fp_sysctl_loader_conf
+  when: fp_debug
+
+- name: "sysctl: Configure /boot/loader.conf"
+  template:
+    src: "loader.conf.j2"
+    dest: "/boot/loader.conf"
+    owner: "root"
+    group: "wheel"
+    mode: "0644"
+    backup: "{{ fp_backup_conf }}"
+  notify: loader message reboot
 
 # EOF
 ...

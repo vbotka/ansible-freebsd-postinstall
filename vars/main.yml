@@ -157,8 +157,15 @@
 
 # ----------------------------------------------------------------------
 # sysctl
+# NOTE: fp_sysctl configuration is stored in /etc/sysctl.conf.
+# Set state=absent to remove the item from /etc/sysctl.conf before
+# removing it from the list fp_sysctl.
 #fp_sysctl:
+#    - { name: "vfs.zfs.prefetch_disable", value: "0" }
 #    - { name: "net.inet.ip.forwarding", value: "1" }
+#    - { name: "security.jail.set_hostname_allowed", value: "1" }
+#    - { name: "security.jail.param.path", value: "1024" }
+# NOTE: fp_sysctl_loader_conf is created by the sysctl.yml tasks.
 
 # ----------------------------------------------------------------------
 # hosts
