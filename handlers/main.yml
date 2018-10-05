@@ -132,6 +132,10 @@
 - name: newaliases
   command: "/usr/bin/newaliases"
 
+# wpasupplicant
+- name: restart netif
+  service: name="netif" state="restarted"
+
 # MESSAGES -------------------------------------------------------------
 - name: loader message reboot
   debug: msg="[MESSAGE] Reboot to activate configuration in /boot/loader.conf"

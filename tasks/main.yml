@@ -100,5 +100,9 @@
 - import_tasks: periodic.yml
   tags: fp_periodic
 
+- import_tasks: wpasupplicant.yml
+  when: fp_wpasupplicant_install
+  tags: fp_wpasupplicant
+
 # EOF
 ...

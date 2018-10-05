@@ -7,7 +7,7 @@
     line: "{{ item.line }}"
     backup: "{{ fp_backup_conf }}"
   loop:
-    - { regexp: "^hostname",  line: "hostname=\"{{ rc_conf_hostname }}\""}
+    - { regexp: "^hostname",  line: "hostname=\"{{ rc_conf_hostname }}\"" }
   notify: set hostname
   tags: fp_hostname_rcconf
 
@@ -19,7 +19,7 @@
     line: "{{ item.line }}"
     backup: "{{ fp_backup_conf }}"
   loop:
-    - { regexp: "^hostname",  line: "hostname=\"{{ rc_conf_hostname }}\""}
+    - { regexp: "^hostname",  line: "hostname=\"{{ rc_conf_hostname }}\"" }
   when:
     - digitalocean
     - ansible_distribution_major_version < '11'

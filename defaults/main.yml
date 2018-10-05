@@ -314,5 +314,29 @@ fp_aliases: []
 # /etc/periodic.conf.local
 fp_periodic_conf_local: []
 
+# ----------------------------------------------------------------------
+# wpa_supplicant
+fp_wpasupplicant_install: false
+fp_wpasupplicant_debug: false
+fp_wpasupplicant_backup: no
+fp_wpasupplicant_packages:
+  - security/wpa_supplicant
+fp_wpasupplicant_conf_file_link: ""
+fp_wpasupplicant_conf_owner: "root"
+fp_wpasupplicant_conf_group: "wheel"
+fp_wpasupplicant_conf_mode: "0640"
+fp_wpasupplicant_conf_dir: "/etc"
+fp_wpasupplicant_conf_file: "{{ fp_wpasupplicant_conf_dir }}/wpa_supplicant.conf"
+fp_wpasupplicant_program: "/usr/sbin/wpa_supplicant"
+fp_wpasupplicant_flags: "-s"
+fp_wpasupplicant_rcconf:
+  - { key: "wpa_supplicant_program", value: "{{ fp_wpasupplicant_program }}" }
+  - { key: "wpa_supplicant_flags", value: "{{ fp_wpasupplicant_flags }}" }
+  - { key: "wpa_supplicant_conf_file", value: "{{ fp_wpasupplicant_conf_file }}" }
+fp_wpasupplicant_conf_ctrl_interface: "/var/run/wpa_supplicant"
+fp_wpasupplicant_conf_global:
+  - { key: "ctrl_interface", value: "{{ fp_wpasupplicant_conf_ctrl_interface }}" }
+fp_wpasupplicant_conf: {}
+
 # EOF
 ...

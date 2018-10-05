@@ -35,6 +35,7 @@
          fp_update_motd [ {{ fp_update_motd }} ]
          fp_groupwrappers_install [ {{ fp_groupwrappers_install }} ]
          fp_gitserver_install [ {{ fp_gitserver_install }} ]
+         fp_wpasupplicant_install [ {{ fp_wpasupplicant_install }} ]
   debug:
     msg: "{{ msg.split('\n') }}"
 

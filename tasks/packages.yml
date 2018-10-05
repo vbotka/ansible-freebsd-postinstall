@@ -70,16 +70,15 @@
   tags: fp_packages_procmail
 
 # apcupsd
-- name: "packages: Install sysutils/apcupsd  package"
+- name: "packages: Install sysutils/apcupsd package"
   pkgng:
     name: "sysutils/apcupsd"
-    use_packages: "{{ freebsd_use_packages }}"
   when:
     - freebsd_install_method|lower == "packages"
     - fp_apcupsd_install
   tags: fp_packages_apcupsd
 
-- name: "packages: Install sysutils/apcupsd  port"
+- name: "packages: Install sysutils/apcupsd port"
   portinstall:
     name: "sysutils/apcupsd"
     use_packages: "{{ freebsd_use_packages }}"
@@ -87,6 +86,26 @@
     - freebsd_install_method|lower == "ports"
     - fp_apcupsd_install
   tags: fp_packages_apcupsd
+
+# wpa_supplicant
+- name: "packages: Install security/wpa_supplicant package"
+  pkgng:
+    name: "{{ item }}"
+  loop: "{{ fp_wpasupplicant_packages }}"
+  when:
+    - freebsd_install_method|lower == "packages"
+    - fp_wpasupplicant_install
+  tags: fp_packages_wpasupplicant
+
+- name: "packages: Install security/wpa_supplicant port"
+  portinstall:
+    name: "{{ item }}"
+    use_packages: "{{ freebsd_use_packages }}"
+  loop: "{{ fp_wpasupplicant_packages }}"
+  when:
+    - freebsd_install_method|lower == "ports"
+    - fp_wpasupplicant_install
+  tags: fp_packages_wpasupplicant
 
 # links
 - name: "packages: Create symbolic links"

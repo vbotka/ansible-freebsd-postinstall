@@ -1,0 +1,76 @@
+---
+
+- name: "wpasupplicant: Debug"
+  vars:
+    msg: |
+      fp_wpasupplicant_conf_dir [ {{ fp_wpasupplicant_conf_dir }} ]
+      fp_wpasupplicant_conf_file [ {{ fp_wpasupplicant_conf_file }} ]
+      fp_wpasupplicant_conf_file_link [ {{ fp_wpasupplicant_conf_file_link }} ]
+      fp_wpasupplicant_conf_owner [ {{ fp_wpasupplicant_conf_owner }} ]
+      fp_wpasupplicant_conf_group [ {{ fp_wpasupplicant_conf_group }} ]
+      fp_wpasupplicant_conf_mode [ {{ fp_wpasupplicant_conf_mode }} ]
+      fp_wpasupplicant_packages
+      {{ fp_wpasupplicant_packages | to_yaml }}
+      fp_wpasupplicant_rcconf
+      {{ fp_wpasupplicant_rcconf | to_yaml }}
+      fp_wpasupplicant_conf_ctrl_interface [ {{ fp_wpasupplicant_conf_ctrl_interface }} ]
+      fp_wpasupplicant_conf_global
+      {{ fp_wpasupplicant_conf_global | to_yaml }}
+      fp_wpasupplicant_conf
+      {{ fp_wpasupplicant_conf | to_yaml }}
+  debug:
+    msg: "{{ msg.split('\n') }}"
+  when: fp_wpasupplicant_debug
+
+- name: "wpasupplicant: Configure /etc/rc.conf"
+  lineinfile:
+    dest: "/etc/rc.conf"
+    regexp: "^{{ item.key }}"
+    line: "{{ item.key }}=\"{{ item.value }}\""
+    backup: "{{ fp_wpasupplicant_backup }}"
+  loop: "{{ fp_wpasupplicant_rcconf }}"
+  notify: restart netif
+  tags: fp_wpasupplicant_rcconf
+
+- name: "wpasupplicant: Configure {{ fp_wpasupplicant_conf_file }}.DEV"
+  template:
+    src: "wpa_supplicant.conf.j2"
+    dest: "{{ fp_wpasupplicant_conf_file }}.{{ item.dev }}"
+    owner: "{{ fp_wpasupplicant_conf_owner }}"
+    group: "{{ fp_wpasupplicant_conf_group }}"
+    mode: "{{ fp_wpasupplicant_conf_mode }}"
+    backup: "{{ fp_wpasupplicant_backup }}"
+  register: wpa_supplicant_conf
+  loop: "{{ fp_wpasupplicant_conf }}"
+  tags: fp_wpasupplicant_conf
+
+- name: "wpasupplicant: Debug: registered to wpa_supplicant_conf"
+  debug: msg="{{ wpa_supplicant_conf }}"
+  when: fp_wpasupplicant_debug
+
+- name: "wpasupplicant: Link {{ fp_wpasupplicant_conf_file }}"
+  file:
+    state: link
+    src: "{{ fp_wpasupplicant_conf_file }}.{{ fp_wpasupplicant_conf_file_link }}"
+    dest: "{{ fp_wpasupplicant_conf_file }}"
+    force: yes
+  when: fp_wpasupplicant_conf_file_link != ""
+  tags: fp_wpasupplicant_conf_file_link
+
+- name: "wpasupplicant: Debug: wpa_cli reconfigure commands"
+  debug:
+    msg: 'sh -c "[ -S {{ fp_wpasupplicant_conf_ctrl_interface }}/{{ item.item.dev }} ] && wpa_cli -p {{ fp_wpasupplicant_conf_ctrl_interface }} -i {{ item.item.dev }} reconfigure"'
+  loop: "{{ wpa_supplicant_conf.results }}"
+  when:
+    - item.changed
+    - fp_wpasupplicant_debug
+
+- name: "wpasupplicant: Reconfigure wpa_supplicant"
+  shell: "[ -S {{ fp_wpasupplicant_conf_ctrl_interface }}/{{ item.item.dev }} ] && wpa_cli -p {{ fp_wpasupplicant_conf_ctrl_interface }} -i {{ item.item.dev }} reconfigure  || exit 0"
+  when: item.changed
+  loop: "{{ wpa_supplicant_conf.results }}"
+  tags: fp_wpasupplicant_handler
+  # TODO: Wait for OK result. Error: 'RECONFIGURE' command timed out.
+
+# EOF
+...
