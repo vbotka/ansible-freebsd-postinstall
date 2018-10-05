@@ -336,7 +336,7 @@ fp_wpasupplicant_rcconf:
 fp_wpasupplicant_conf_ctrl_interface: "/var/run/wpa_supplicant"
 fp_wpasupplicant_conf_global:
   - { key: "ctrl_interface", value: "{{ fp_wpasupplicant_conf_ctrl_interface }}" }
-fp_wpasupplicant_conf: {}
+fp_wpasupplicant_conf: []
 
 # EOF
 ...
