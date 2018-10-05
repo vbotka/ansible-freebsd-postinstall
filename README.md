@@ -3,7 +3,7 @@ freebsd_postinstall
 
 [![Build Status](https://travis-ci.org/vbotka/ansible-freebsd-postinstall.svg?branch=master)](https://travis-ci.org/vbotka/ansible-freebsd-postinstall)
 
-[Ansible role.](https://galaxy.ansible.com/vbotka/freebsd_postinstall/) FreeBSD. Post-install configuration: aliases, apcupsd, authorized keys, cron, fstab, gitserver, hostapd, hostname, hosts, libmap, loader.conf, make.conf, motd, nfsd, ntpd, ntpdate, procmail, resolvconf.conf, smartd, sudoers, ssh, swap, sysctl, timezone, users, packages and ports, periodic.conf,  overlays, wip ...
+[Ansible role.](https://galaxy.ansible.com/vbotka/freebsd_postinstall/) FreeBSD. Post-install configuration: aliases, apcupsd, authorized keys, cron, fstab, gitserver, hostapd, hostname, hosts, libmap, loader.conf, make.conf, motd, nfsd, ntpd, ntpdate, procmail, resolvconf.conf, smartd, sudoers, ssh, swap, sysctl, timezone, users, packages and ports, periodic.conf,  overlays, wpa_supplicant, wip ...
 
 
 Requirements
@@ -121,3 +121,5 @@ References
 - [sysctl - FreeBSD handbook: 11.9. Tuning with sysctl](http://www.freebsd.org/doc/handbook/configtuning-sysctl.html)
 - [timezone - How to set up FreeBSD for my region?](https://unix.stackexchange.com/questions/34567/how-to-set-up-freebsd-for-my-region)
 - [users - FreeBSD handbook: 6.27. Adding Users and Groups](https://www.freebsd.org/doc/en/books/porters-handbook/users-and-groups.html)
+- [wpa_supplicant](https://w1.fi/wpa_supplicant/)
+- [wpa_supplicant - 31.3. Wireless Networking](https://www.freebsd.org/doc/handbook/network-wireless.html)
