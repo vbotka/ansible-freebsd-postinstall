@@ -97,7 +97,9 @@
 
 # swap
 - name: create swap
-  shell: sh -c 'dd if=/dev/zero of={{fp_swap_file}} bs=1m count={{fp_swap_size}} && chmod 0600 {{fp_swap_file}}'
+  command: >
+    sh -c 'dd if=/dev/zero of={{ fp_swap_file }} bs=1m count={{ fp_swap_size }} &&
+    chmod 0600 {{ fp_swap_file }}'
 
 - name: mount swap
   command: sh -c 'swapon -aL'
@@ -120,10 +122,18 @@
 #  stdout_lines: <omitted>
 
 - name: change and mount swap
-  shell: sh -c 'swapoff /dev/{{fp_swap_md}} && mdconfig -d -u {{fp_swap_md }} && dd if=/dev/zero of={{fp_swap_file}} bs=1m count={{fp_swap_size}} && chmod 0600 {{fp_swap_file}} && swapon -aL'
+  command: >
+    sh -c 'swapoff /dev/{{ fp_swap_md }} &&
+    mdconfig -d -u {{ fp_swap_md }} &&
+    dd if=/dev/zero of={{ fp_swap_file }} bs=1m count={{ fp_swap_size }} &&
+    chmod 0600 {{ fp_swap_file }} &&
+    swapon -aL'
 
 - name: umount and delete swap
-  shell: sh -c 'swapoff /dev/{{fp_swap_md}} && mdconfig -d -u {{fp_swap_md}} && rm {{fp_swap_file}}'
+  command: >
+    sh -c 'swapoff /dev/{{ fp_swap_md }} &&
+    mdconfig -d -u {{ fp_swap_md }} &&
+    rm {{ fp_swap_file }}'
 
 # resolvconf
 - name: resolvconf apply

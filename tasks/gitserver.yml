@@ -6,7 +6,7 @@
     gid: "{{ fp_gitserver_group_gid }}"
   tags: fp_gitserver_group
 
-- name: "gitserver: Add {{fp_gitserver_owner}} user"
+- name: "gitserver: Add {{ fp_gitserver_owner }} user"
   user:
     name: "{{ fp_gitserver_owner }}"
     uid: "{ fp_gitserver_owner_uid }}"

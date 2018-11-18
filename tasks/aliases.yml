@@ -3,8 +3,8 @@
 - name: "aliases: Configure /etc/aliases"
   lineinfile:
     dest: /etc/aliases
-    regexp: "^{{ item.alias }}{{':'}}"
-    line: "{{ item.alias }}{{':'}} {{ item.user }}"
+    regexp: "^{{ item.alias }}{{ ':' }}"
+    line: "{{ item.alias }}{{ ':' }} {{ item.user }}"
     backup: "{{ fp_backup_conf }}"
   loop: "{{ fp_aliases }}"
   notify: newaliases

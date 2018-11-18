@@ -24,7 +24,7 @@
   lineinfile:
     dest: "{{ sshd_config_path }}"
     regexp: "^{{ item.key }}"
-    insertbefore: "^{{'#'}}{{ item.key }}"
+    insertbefore: "^{{ '#' }}{{ item.key }}"
     line: "{{ item.key }} {{ item.value }}"
     backup: "{{ fp_backup_conf }}"
     validate: "{{ sshd_path }} -t -f %s"
