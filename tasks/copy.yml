@@ -6,10 +6,10 @@
 
 # Sync default
 - name: "copy: Check existence of {{ role_path }}/{{ fp_copy_dir }}/default"
-  local_action:
-    module: stat
+  stat:
     path: "{{ role_path }}/{{ fp_copy_dir }}/default"
   register: default_copy
+  delegate_to: localhost
   tags: fp_copy_sync_default
   # NOTE: playbooks directory IS NOT local_action modules current
   # working directory. Absolute path role_path is needed.
@@ -41,10 +41,10 @@
   tags: fp_copy_sync_optional
 
 - name: "copy: Check existence of {{ playbook_dir }}/{{ fp_copy_dir }}/{{ rc_conf_hostname }}"
-  local_action:
-    module: stat
+  stat:
     path: "{{ playbook_dir }}/{{ fp_copy_dir }}/{{ rc_conf_hostname }}"
   register: optional_copy
+  delegate_to: localhost
   tags: fp_copy_sync_optional
 
 - debug: msg="Directory {{ rc_conf_hostname }} exists."
@@ -72,10 +72,10 @@
 
 # Unarch default
 - name: "copy: Check existence of {{ playbook_dir }}/{{ fp_copy_dir }}/default.tar"
-  local_action:
-    module: stat
+  stat:
     path: "{{ playbook_dir }}/{{ fp_copy_dir }}/default.tar"
   register: default_copy
+  delegate_to: localhost
   tags: fp_copy_unarch_default
 
 - name: "copy: Untar default files {{ fp_copy_dir }}/default.tar (relative to playbooks directory)"
@@ -90,10 +90,10 @@
 
 # Unarch optional
 - name: "copy: Check existence of {{ playbook_dir }}/{{ fp_copy_dir }}/{{ rc_conf_hostname }}.tar"
-  local_action:
-    module: stat
+  stat:
     path: "{{ playbook_dir }}/{{ fp_copy_dir }}/{{ rc_conf_hostname }}.tar"
   register: optional_copy
+  delegate_to: localhost
   tags: fp_copy_unarch_optional
 
 - name: >
