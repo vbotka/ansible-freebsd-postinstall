@@ -46,7 +46,7 @@
   changed_when: command_result.stdout == "change"
   notify: change and mount swap
   when: fp_swap
-  
+
 - name: Remove swap entry from /etc/fstab
   lineinfile:
     path: "/etc/fstab"

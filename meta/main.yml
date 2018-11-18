@@ -5,11 +5,10 @@ galaxy_info:
   company: https://botka.link
   license: BSD
   github_branch: master
-  min_ansible_version: 2.5
+  min_ansible_version: 2.7
   platforms:
     - name: FreeBSD
       versions:
-        - 10.4
         - 11.2
   galaxy_tags: [ freebsd, ups, cron, fstab, hostapd, hosts, libmap, loader, make, nfs, ntp, procmail, smart, sudo, ssh, swap, sysctl, timezone, users, packages ]
 dependencies: []

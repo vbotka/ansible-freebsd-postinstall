@@ -40,7 +40,7 @@
   when: fp_hostapd_enabled
   notify: restart hostapd
   tags: fp_hostapd_rcconf
-  
+
 - name: "hostapd: Configure /etc/hostapd.conf template file"
   template:
     src: "hostapd.conf.j2"

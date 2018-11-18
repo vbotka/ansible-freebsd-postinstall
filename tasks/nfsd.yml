@@ -35,7 +35,7 @@
     - { regexp: "^rpc_lockd_enable", line: "rpc_lockd_enable=\"YES\""}
   when: fp_rpc_lockd_enable
   notify: enable and start lockd
-  
+
 - name: "nfsd: Disable and stop lockd"
   lineinfile:
     dest: "/etc/rc.conf"
@@ -46,7 +46,7 @@
     - { regexp: "^rpc_lockd_enable", line: "rpc_lockd_enable=\"NO\""}
   when: not fp_rpc_lockd_enable
   notify: disable and stop lockd
-  
+
 - name: "nfsd: Enable and start statd"
   lineinfile:
     dest: "/etc/rc.conf"
@@ -57,7 +57,7 @@
     - { regexp: "^rpc_statd_enable", line: "rpc_statd_enable=\"YES\""}
   when: fp_rpc_statd_enable
   notify: enable and start statd
-  
+
 - name: "nfsd: Disable and stop statd"
   lineinfile:
     dest: "/etc/rc.conf"
@@ -68,7 +68,7 @@
     - { regexp: "^rpc_statd_enable", line: "rpc_statd_enable=\"NO\""}
   when: not fp_rpc_statd_enable
   notify: disable and stop statd
-  
+
 - name: "nfsd: Disable and stop rpcbind"
   lineinfile:
     dest: "/etc/rc.conf"
@@ -79,7 +79,7 @@
     - { regexp: "^rpcbind_enable", line: "rpcbind_enable=\"NO\""}
   when: not fp_rpcbind_enable
   notify: disable and stop rpcbind
-  
+
 - name: "nfsd: Configure /etc/exports"
   template:
     src: "exports.j2"

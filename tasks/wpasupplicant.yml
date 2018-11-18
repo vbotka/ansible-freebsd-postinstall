@@ -40,12 +40,12 @@
     group: "{{ fp_wpasupplicant_conf_group }}"
     mode: "{{ fp_wpasupplicant_conf_mode }}"
     backup: "{{ fp_wpasupplicant_backup }}"
-  register: wpa_supplicant_conf
+  register: fp_wpa_supplicant_conf_changes
   loop: "{{ fp_wpasupplicant_conf }}"
   tags: fp_wpasupplicant_conf
 
-- name: "wpasupplicant: Debug: registered to wpa_supplicant_conf"
-  debug: msg="{{ wpa_supplicant_conf }}"
+- name: "wpasupplicant: Debug: registered to fp_wpa_supplicant_conf_changes"
+  debug: msg="{{ fp_wpa_supplicant_conf_changes }}"
   when: fp_wpasupplicant_debug
 
 - name: "wpasupplicant: Link {{ fp_wpasupplicant_conf_file }}"
@@ -54,23 +54,8 @@
     src: "{{ fp_wpasupplicant_conf_file }}.{{ fp_wpasupplicant_conf_file_link }}"
     dest: "{{ fp_wpasupplicant_conf_file }}"
     force: yes
-  when: fp_wpasupplicant_conf_file_link != ""
+  when: fp_wpasupplicant_conf_file_link | length > 0
   tags: fp_wpasupplicant_conf_file_link
-
-- name: "wpasupplicant: Debug: wpa_cli reconfigure commands"
-  debug:
-    msg: 'sh -c "[ -S {{ fp_wpasupplicant_conf_ctrl_interface }}/{{ item.item.dev }} ] && wpa_cli -p {{ fp_wpasupplicant_conf_ctrl_interface }} -i {{ item.item.dev }} reconfigure"'
-  loop: "{{ wpa_supplicant_conf.results }}"
-  when:
-    - item.changed
-    - fp_wpasupplicant_debug
-
-- name: "wpasupplicant: Reconfigure wpa_supplicant"
-  shell: "[ -S {{ fp_wpasupplicant_conf_ctrl_interface }}/{{ item.item.dev }} ] && wpa_cli -p {{ fp_wpasupplicant_conf_ctrl_interface }} -i {{ item.item.dev }} reconfigure  || exit 0"
-  when: item.changed
-  loop: "{{ wpa_supplicant_conf.results }}"
-  tags: fp_wpasupplicant_handler
-  # TODO: Wait for OK result. Error: 'RECONFIGURE' command timed out.
 
 # EOF
 ...

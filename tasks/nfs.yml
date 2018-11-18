@@ -36,7 +36,7 @@
   when: fp_rpc_lockd_enable
   notify: enable and start lockd
   tags: fp_nfs_enable_lockd
-  
+
 - name: "nfs: Disable and stop lockd"
   lineinfile:
     dest: "/etc/rc.conf"
@@ -48,7 +48,7 @@
   when: not fp_rpc_lockd_enable
   notify: disable and stop lockd
   tags: fp_nfs_disable_lockd
-  
+
 - name: "nfs: Enable and start statd"
   lineinfile:
     dest: "/etc/rc.conf"
@@ -60,7 +60,7 @@
   when: fp_rpc_statd_enable
   notify: enable and start statd
   tags: fp_nfs_enable_statd
-  
+
 - name: Disable and stop statd
   lineinfile:
     dest: "/etc/rc.conf"
