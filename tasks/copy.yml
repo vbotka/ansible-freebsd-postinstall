@@ -11,8 +11,6 @@
   register: default_copy
   delegate_to: localhost
   tags: fp_copy_sync_default
-  # NOTE: playbooks directory IS NOT local_action modules current
-  # working directory. Absolute path role_path is needed.
 
 - debug: msg="Directory default exists."
   when:
