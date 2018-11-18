@@ -3,4 +3,7 @@
 * !^Subject:.*Re:
 * !^FROM_DAEMON
 * ^Subject:.*get fingerprint
-| (/usr/local/bin/formail -r -A "From: {{ item.par1 }}"; ssh-keygen -l -f {{ item.par2 }}; ssh-keygen -l -E MD5 -f {{ item.par2 }}) | $SENDMAIL -oi -t
+| (/usr/local/bin/formail -r -A "From: {{ item.par1 }}"; \
+  ssh-keygen -l -f {{ item.par2 }}; \
+  ssh-keygen -l -E MD5 -f {{ item.par2 }}) \
+  | $SENDMAIL -oi -t

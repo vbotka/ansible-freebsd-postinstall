@@ -10,5 +10,7 @@ galaxy_info:
     - name: FreeBSD
       versions:
         - 11.2
-  galaxy_tags: [ freebsd, ups, cron, fstab, hostapd, hosts, libmap, loader, make, nfs, ntp, procmail, smart, sudo, ssh, swap, sysctl, timezone, users, packages ]
+  galaxy_tags: >
+    [ freebsd, ups, cron, fstab, hostapd, hosts, libmap, loader, make, nfs,
+    ntp, procmail, smart, sudo, ssh, swap, sysctl, timezone, users, packages ]
 dependencies: []

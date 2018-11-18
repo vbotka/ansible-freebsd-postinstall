@@ -4,8 +4,8 @@
 # Data can be used with Ansible role freebsd-postinstall.
 # Example:
 # ansible-playbook -e 'fp_synchronize_optional=yes' \
-# ~/.ansible/playbooks/srv.example.com-freebsd-postinstall.yml \
-# -t fp_synchronize_optional
+    # ~/.ansible/playbooks/srv.example.com-freebsd-postinstall.yml \
+    # -t fp_synchronize_optional
 
 RSYNC="/usr/bin/rsync"
 RSYNCPARAM="avzl"
@@ -28,7 +28,8 @@ function sync {
 			mkdir -p $COPYDIR/$i$j
 		    fi
 		    cd $COPYDIR/$i$j
-		    if LOG=$($RSYNC $DRYRUN -$RSYNCPARAM -e "ssh" --progress --rsync-path="sudo rsync" $REMOTEUSER@$i:$j . 2>&1); then
+		    if LOG=$($RSYNC $DRYRUN -$RSYNCPARAM -e "ssh" --progress --rsync-path="sudo rsync" \
+				    $REMOTEUSER@$i:$j . 2>&1); then
 			(($VERBOSE)) && printf "rsync to $COPYDIR/$i$j [OK]\n"
 		    else
 			printf "rsync [ERR] log: $LOG\n"

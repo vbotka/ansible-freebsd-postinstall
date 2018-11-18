@@ -53,7 +53,9 @@
     - optional_copy.stat.isdir is defined and optional_copy.stat.isdir
   tags: fp_copy_sync_optional
 
-- name: "copy: Synchronize host specific files {{ fp_copy_dir }}/{{ rc_conf_hostname }} (relative to playbooks directory)"
+- name: >
+    copy: Synchronize host specific files {{ fp_copy_dir }}/{{ rc_conf_hostname }}
+    (relative to playbooks directory)
   synchronize:
     src: "{{ fp_copy_dir }}/{{ rc_conf_hostname }}/"
     dest: "/"
@@ -94,7 +96,9 @@
   register: optional_copy
   tags: fp_copy_unarch_optional
 
-- name: "copy: Untar host specific files {{ fp_copy_dir }}/{{ rc_conf_hostname }}.tar (relative to playbooks directory)"
+- name: >
+    copy: Untar host specific files {{ fp_copy_dir }}/{{ rc_conf_hostname }}.tar
+    (relative to playbooks directory)
   unarchive:
     src: "{{ fp_copy_dir }}/{{ rc_conf_hostname }}.tar"
     dest: "/"

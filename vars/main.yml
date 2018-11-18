@@ -145,11 +145,26 @@
 #fp_procmail_forwarders:
 #  - { user: "responder", forward: "|exec {{ fp_procmail_bin }}" }
 #fp_procmail_includerc:
-#  - { user: "responder", template: "duplicates", par1: "", par2: "" }
-#  - { user: "responder", template: "capability", par1: "responder@{{ rc_conf_hostname }}", par2: "{{ fp_procmail_pmdir }}" }
-#  - { user: "responder", template: "get-message", par1: "responder@{{ rc_conf_hostname }}", par2: "/home/responder/MESSAGE.procmail" }
-#  - { user: "responder", template: "get-fingerprint", par1: "responder@{{ rc_conf_hostname }}", par2: "/etc/ssh/ssh_host_ecdsa_key.pub" }
-#  - { user: "responder", template: "get-certificate", par1: "responder@{{ rc_conf_hostname }}", par2: "cat /usr/local/etc/letsencrypt/FINGERPRINT" }
+#  - user: "responder"
+#    template: "duplicates"
+#    par1: ""
+#    par2: ""
+#  - user: "responder"
+#    template: "capability"
+#    par1: "responder@{{ rc_conf_hostname }}"
+#    par2: "{{ fp_procmail_pmdir }}"
+#  - user: "responder"
+#    template: "get-message"
+#    par1: "responder@{{ rc_conf_hostname }}"
+#    par2: "/home/responder/MESSAGE.procmail"
+#  - user: "responder"
+#    template: "get-fingerprint"
+#    par1: "responder@{{ rc_conf_hostname }}"
+#    par2: "/etc/ssh/ssh_host_ecdsa_key.pub"
+#  - user: "responder"
+#    template: "get-certificate"
+#    par1: "responder@{{ rc_conf_hostname }}"
+#    par2: "cat /usr/local/etc/letsencrypt/FINGERPRINT"
 
 # ----------------------------------------------------------------------
 # motd

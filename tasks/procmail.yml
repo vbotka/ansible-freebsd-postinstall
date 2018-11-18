@@ -1,7 +1,13 @@
 ---
 
 - name: "procmail: Create .forward files"
-  command: sh -c "forward=/home/{{ item.user }}/.forward; if [ ! -e $forward  ]; then touch $forward; chown '{{ item.user }}' $forward; chmod 0644 $forward; fi"
+  command: >
+    sh -c "forward=/home/{{ item.user }}/.forward;
+    if [ ! -e $forward  ]; then
+    touch $forward;
+    chown '{{ item.user }}' $forward;
+    chmod 0644 $forward;
+    fi"
   loop: "{{ fp_procmail_forwarders }}"
   changed_when: False
   tags: fp_procmail_forward
@@ -19,7 +25,13 @@
   tags: fp_procmail_forwarders
 
 - name: "procmail: Create .procmailrc files"
-  command: sh -c "procmailrc=/home/{{ item.user }}/.procmailrc; if [ ! -e $procmailrc ]; then touch $procmailrc; chown '{{ item.user }}' $procmailrc; chmod 0644 $procmailrc; fi"
+  command: >
+    sh -c "procmailrc=/home/{{ item.user }}/.procmailrc;
+    if [ ! -e $procmailrc ]; then
+    touch $procmailrc;
+    chown '{{ item.user }}' $procmailrc;
+    chmod 0644 $procmailrc;
+    fi"
   loop: "{{ fp_procmail_forwarders }}"
   changed_when: False
   tags: fp_procmail_procmailrc

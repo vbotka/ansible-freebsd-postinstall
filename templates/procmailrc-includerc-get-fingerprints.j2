@@ -3,4 +3,10 @@
 * !^Subject:.*Re:
 * !^FROM_DAEMON
 * ^Subject:.*get fingerprints
-| (/usr/local/bin/formail -r -A "From: {{ item.par1 }}"; for i in /etc/ssh/*.pub; do printf "$i\n"; ssh-keygen -l -f $i; ssh-keygen -l -E MD5 -f $i; printf "\n"; done) | $SENDMAIL -oi -t
+| (/usr/local/bin/formail -r -A "From: {{ item.par1 }}"; \
+  for i in /etc/ssh/*.pub; \
+  do printf "$i\n"; \
+  ssh-keygen -l -f $i; \
+  ssh-keygen -l -E MD5 -f $i; \
+  printf "\n"; done) \
+  | $SENDMAIL -oi -t
