@@ -4,6 +4,10 @@
   pkgng:
     name: "{{ item }}"
   loop: "{{ fp_ports }}"
+  register: result
+  retries: "{{ freebsd_install_retries }}"
+  until: result is succeeded
+  delay: "{{ freebsd_install_delay }}"
   when: freebsd_install_method|lower == "packages"
   tags: fp_packages_install
 
@@ -12,6 +16,10 @@
     name: "{{ item }}"
     use_packages: "{{ freebsd_use_packages }}"
   loop: "{{ fp_ports }}"
+  register: result
+  retries: "{{ freebsd_install_retries }}"
+  until: result is succeeded
+  delay: "{{ freebsd_install_delay }}"
   when: freebsd_install_method|lower == "ports"
   tags: fp_packages_install
 
@@ -19,6 +27,10 @@
 - name: "packages: Install smartmontools package"
   pkgng:
     name: "sysutils/smartmontools"
+  register: result
+  retries: "{{ freebsd_install_retries }}"
+  until: result is succeeded
+  delay: "{{ freebsd_install_delay }}"
   when:
     - freebsd_install_method|lower == "packages"
     - fp_smartd_install
@@ -28,6 +40,10 @@
   portinstall:
     name: "sysutils/smartmontools"
     use_packages: "{{ freebsd_use_packages }}"
+  register: result
+  retries: "{{ freebsd_install_retries }}"
+  until: result is succeeded
+  delay: "{{ freebsd_install_delay }}"
   when:
     - freebsd_install_method|lower == "ports"
     - fp_smartd_install
@@ -37,6 +53,10 @@
 - name: "packages: Install hostapd package"
   pkgng:
     name: "net/hostapd"
+  register: result
+  retries: "{{ freebsd_install_retries }}"
+  until: result is succeeded
+  delay: "{{ freebsd_install_delay }}"
   when:
     - freebsd_install_method|lower == "packages"
     - fp_hostapd_install
@@ -46,6 +66,10 @@
   portinstall:
     name: "net/hostapd"
     use_packages: "{{ freebsd_use_packages }}"
+  register: result
+  retries: "{{ freebsd_install_retries }}"
+  until: result is succeeded
+  delay: "{{ freebsd_install_delay }}"
   when:
     - freebsd_install_method|lower == "ports"
     - fp_hostapd_install
@@ -55,6 +79,10 @@
 - name: "packages: Install procmail package"
   pkgng:
     name: "mail/procmail"
+  register: result
+  retries: "{{ freebsd_install_retries }}"
+  until: result is succeeded
+  delay: "{{ freebsd_install_delay }}"
   when:
     - freebsd_install_method|lower == "packages"
     - fp_procmail_install
@@ -64,6 +92,10 @@
   portinstall:
     name: "mail/procmail"
     use_packages: "{{ freebsd_use_packages }}"
+  register: result
+  retries: "{{ freebsd_install_retries }}"
+  until: result is succeeded
+  delay: "{{ freebsd_install_delay }}"
   when:
     - freebsd_install_method|lower == "ports"
     - fp_procmail_install
@@ -73,6 +105,10 @@
 - name: "packages: Install sysutils/apcupsd package"
   pkgng:
     name: "sysutils/apcupsd"
+  register: result
+  retries: "{{ freebsd_install_retries }}"
+  until: result is succeeded
+  delay: "{{ freebsd_install_delay }}"
   when:
     - freebsd_install_method|lower == "packages"
     - fp_apcupsd_install
@@ -82,6 +118,10 @@
   portinstall:
     name: "sysutils/apcupsd"
     use_packages: "{{ freebsd_use_packages }}"
+  register: result
+  retries: "{{ freebsd_install_retries }}"
+  until: result is succeeded
+  delay: "{{ freebsd_install_delay }}"
   when:
     - freebsd_install_method|lower == "ports"
     - fp_apcupsd_install
@@ -92,6 +132,10 @@
   pkgng:
     name: "{{ item }}"
   loop: "{{ fp_wpasupplicant_packages }}"
+  register: result
+  retries: "{{ freebsd_install_retries }}"
+  until: result is succeeded
+  delay: "{{ freebsd_install_delay }}"
   when:
     - freebsd_install_method|lower == "packages"
     - fp_wpasupplicant_install
@@ -102,6 +146,10 @@
     name: "{{ item }}"
     use_packages: "{{ freebsd_use_packages }}"
   loop: "{{ fp_wpasupplicant_packages }}"
+  register: result
+  retries: "{{ freebsd_install_retries }}"
+  until: result is succeeded
+  delay: "{{ freebsd_install_delay }}"
   when:
     - freebsd_install_method|lower == "ports"
     - fp_wpasupplicant_install
