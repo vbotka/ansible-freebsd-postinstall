@@ -25,16 +25,46 @@
 #freebsd_install_method: "packages"
 #freebsd_install_method: "ports"
 #freebsd_use_packages: "yes"
-#fp_ports:
-#  - shells/bash
-#  - editors/emacs
-#  - devel/git
-#  - archivers/gtar
-#  - ports-mgmt/pkg
-#  - ports-mgmt/portmaster
-#  - ports-mgmt/portupgrade
-#  - security/py-certbot
-#  - net/rsync
+#fp_packages:
+#  - { list: postinstall, enabled: True }
+#  - { list: smart, enabled: "{{ fp_smartd_install }}" }
+#  - { list: hostap, enabled: "{{ fp_hostapd_install }}" }
+#  - { list: procmail, enabled: "{{ fp_procmail_install }}" }
+#  - { list: apcups, enabled: "{{ fp_apcupsd_install }}" }
+#  - { list: wpa_supplicant, enabled: "{{ fp_wpasupplicant_install }}" }
+#bsd_linux_version: "c6"
+#pkg_dict_i386:
+#  - pkglist: postinstall
+#    packages:
+#      - shells/bash
+#      - editors/emacs
+#      - devel/git
+#      - archivers/gtar
+#      - ports-mgmt/pkg
+#      - ports-mgmt/portmaster
+#      - ports-mgmt/portupgrade
+#      - security/py-certbot
+#      - net/rsync
+#  - pkglist: smart
+#    packages:
+#      - sysutils/smartmontools
+#  - pkglist: hostap
+#    packages:
+#      - net/hostapd
+#  - pkglist: procmail
+#    packages:
+#      - mail/procmail
+#  - pkglist: apcups
+#    packages:
+#      - sysutils/apcupsd
+#  - pkglist: wpa_supplicant
+#    packages:
+#      - security/wpa_supplicant
+#  - pkglist: linux
+#    packages:
+#      - emulators/linux_base-{{ bsd_linux_version }}
+#
+# NOTES
 # * gtar: Ansible module unarchive needs gtar. Ansible make use of the
 #   tar argument --diff. OpenBSD and FreeBSD doesn't have an --diff,
 #   -d, --compare option for tar. Without gtar unarchive always

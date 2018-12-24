@@ -66,8 +66,10 @@
   service: name="smartd" state="stopped" enabled="no"
 - name: restart smartd
   service: name="smartd" state="restarted"
+  when: fp_smartd_service_enabled
 - name: reload smartd
   service: name="smartd" state="reloaded"
+  when: fp_smartd_service_enabled
 
 # apcupsd
 - name: enable and start apcupsd

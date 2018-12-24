@@ -1,0 +1,35 @@
+---
+
+- name: "packages-install: Get list of packagegs for {{ item.list }}"
+  set_fact:
+    local_pkg_list: "{{ lookup('vars', 'pkg_dict_' + ansible_architecture) | json_query(query) }}"
+  vars:
+    query: "[?pkglist=='{{ item.list }}'].packages"
+
+- name: "packages-install: Install packages"
+  pkgng:
+    name: "{{ local_pkg }}"
+  loop: "{{ local_pkg_list }}"
+  loop_control:
+    loop_var: local_pkg
+  register: result
+  retries: "{{ freebsd_install_retries }}"
+  until: result is succeeded
+  delay: "{{ freebsd_install_delay }}"
+  when: freebsd_install_method|lower == "packages"
+
+- name: "packages-install: Install ports"
+  portinstall:
+    name: "{{ local_pkg }}"
+    use_packages: "{{ freebsd_use_packages }}"
+  loop: "{{ local_pkg_list }}"
+  loop_control:
+    loop_var: local_pkg
+  register: result
+  retries: "{{ freebsd_install_retries }}"
+  until: result is succeeded
+  delay: "{{ freebsd_install_delay }}"
+  when: freebsd_install_method|lower == "ports"
+
+# EOF
+...

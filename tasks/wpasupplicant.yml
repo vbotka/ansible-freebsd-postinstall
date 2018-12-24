@@ -9,8 +9,6 @@
       fp_wpasupplicant_conf_owner [ {{ fp_wpasupplicant_conf_owner }} ]
       fp_wpasupplicant_conf_group [ {{ fp_wpasupplicant_conf_group }} ]
       fp_wpasupplicant_conf_mode [ {{ fp_wpasupplicant_conf_mode }} ]
-      fp_wpasupplicant_packages
-      {{ fp_wpasupplicant_packages | to_yaml }}
       fp_wpasupplicant_rcconf
       {{ fp_wpasupplicant_rcconf | to_yaml }}
       fp_wpasupplicant_conf_ctrl_interface [ {{ fp_wpasupplicant_conf_ctrl_interface }} ]
