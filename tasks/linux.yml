@@ -1,0 +1,72 @@
+---
+
+- name: "linux: Debug"
+  vars:
+    msg: |
+      fp_linux_enable [ {{ fp_linux_enable }} ]
+      fp_linux_fstab
+      {{ fp_linux_fstab | to_yaml }}
+      fp_linux_lib_dir [ {{ fp_linux_lib_dir }} ]
+      fp_linux_lib
+      {{ fp_linux_lib | to_yaml }}
+  debug:
+    msg: "{{ msg.split('\n') }}"
+  when: fp_linux_debug
+  tags: [fp_linux_debug, always]
+
+- name: "linux: Configure fstab"
+  mount:
+    name: "{{ item.name }}"
+    src: "{{ item.src }}"
+    fstype: "{{ item.fstype }}"
+    opts: "{{ item.opts }}"
+    state: "mounted"
+  loop: "{{ fp_linux_fstab }}"
+  tags: fp_linux_fstab
+
+- name: "linux: Create dirs for libraries"
+  file:
+    state: directory
+    path: "{{ '/compat/linux' + item.src|dirname }}"
+  loop: "{{ fp_linux_lib }}"
+  tags: fp_linux_lib_dir
+
+- name: "linux: Copy libraries"
+  copy:
+    src: "{{ playbook_dir + '/' + fp_linux_lib_dir + item.src }}"
+    dest: "{{ '/compat/linux' + item.src }}"
+  loop: "{{ fp_linux_lib }}"
+  tags: fp_linux_lib_copy
+
+- name: "linux: Link libraries"
+  file:
+    state: link
+    src: "{{ '/compat/linux' + item.src }}"
+    dest: "{{ '/compat/linux' + item.link }}"
+  loop: "{{ fp_linux_lib }}"
+  tags: fp_linux_lib_link
+
+- name: "linux: Enable linux"
+  lineinfile:
+    dest: "/etc/rc.conf"
+    regexp: "^linux_enable"
+    line: "linux_enable=\"YES\""
+    backup: "{{ fp_backup_conf }}"
+  when:
+    - fp_linux_enable
+    - fp_linux_install
+  tags: fp_linux_rcconf
+
+- name: "linux: Disable linux"
+  lineinfile:
+    dest: "/etc/rc.conf"
+    regexp: "^linux_enable"
+    line: "linux_enable=\"NO\""
+    backup: "{{ fp_backup_conf }}"
+  when:
+    - not fp_linux_enable
+    - fp_linux_install
+  tags: fp_linux_rcconf
+
+# EOF
+...

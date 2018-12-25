@@ -104,5 +104,9 @@
   when: fp_wpasupplicant_install
   tags: fp_wpasupplicant
 
+- import_tasks: linux.yml
+  when: fp_linux_install
+  tags: fp_linux
+
 # EOF
 ...
