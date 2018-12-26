@@ -3,7 +3,7 @@
 
 - import_tasks: debug.yml
   when: fp_debug
-  tags: always
+  tags: [fp_debug, always]
 
 - import_tasks: loader.yml
   tags: fp_loader

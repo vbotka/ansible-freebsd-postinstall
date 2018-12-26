@@ -22,6 +22,13 @@
 # ----------------------------------------------------------------------
 # Packages/Ports
 #
+#fp_pkg_autoremove: no
+#fp_pkg_cached: no
+#fp_pkg_state: present
+#fp_pkg_chroot:
+#fp_pkg_jail:
+#fp_pkg_site:
+#fp_pkg_rootdir:
 #freebsd_install_method: "packages"
 #freebsd_install_method: "ports"
 #freebsd_use_packages: "yes"

@@ -1,5 +1,23 @@
 ---
 
+- name: "FreeBSD postinstall packages Debug"
+  vars:
+    msg: |
+         fp_pkg_autoremove [ {{ fp_pkg_autoremove | default('NOT DEFINED') }} ]
+         fp_pkg_cached [ {{ fp_pkg_cached | default('NOT DEFINED') }} ]
+         fp_pkg_chroot [ {{ fp_pkg_chroot | default('NOT DEFINED') }} ]
+         fp_pkg_jail [ {{ fp_pkg_jail | default('NOT DEFINED') }} ]
+         fp_pkg_pkgsite [ {{ fp_pkg_pkgsite | default('NOT DEFINED') }} ]
+         fp_pkg_rootdir [ {{ fp_pkg_rootdir | default('NOT DEFINED') }} ]
+         fp_pkg_state [ {{ fp_pkg_state | default('NOT DEFINED') }} ]
+         fp_packages
+         {{ fp_packages | to_yaml }}
+         fp_links
+         {{ fp_links | to_yaml }}
+  debug:
+    msg: "{{ msg.split('\n') }}"
+  when: fp_debug
+
 - name: "packages: Install packages"
   include_tasks: packages-install.yml
   loop: "{{ fp_packages }}"
