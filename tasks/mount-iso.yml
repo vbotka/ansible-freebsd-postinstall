@@ -2,17 +2,21 @@
 
 - name: "mount-iso: Get mounted iso"
   block:
-    - command: "mount -t cd9660"
+    - name: "mount-iso: Get iso mount points"
+      command: "mount -t cd9660"
       args:
         warn: False
       register: result
       changed_when: False
-    - set_fact:
+    - name: "mount-iso: Set empty mounted_iso_list"
+      set_fact:
         mounted_iso_list: []
-    - set_fact:
+    - name: "mount-iso: Add entries to mounted_iso_list"
+      set_fact:
         mounted_iso_list: "{{ mounted_iso_list + [ item.split(' ')[2] ] }}"
       loop: "{{ result.stdout_lines|default([]) }}"
-    - debug:
+    - name: "mount-iso: Debug"
+      debug:
         var: mounted_iso_list
       when: fp_debug
 
@@ -34,8 +38,7 @@
     - item.state|default("present") == "present"
 
 - name: "mount-iso: Mount iso entries"
-  shell: |
-    mount -t cd9660 /dev/`mdconfig -f {{ item.iso }}` {{ item.mount }}
+  shell: "mount -t cd9660 /dev/$(mdconfig -f {{ item.iso }}) {{ item.mount }}"
   args:
     warn: False
   loop: "{{ fp_mount_iso_entries }}"
