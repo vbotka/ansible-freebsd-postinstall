@@ -314,5 +314,15 @@
 #  - { src: "/lib/x86_64-linux-gnu/libpthread.so.0", link: "libpthread.so.0" }
 #  - { src: "/lib/x86_64-linux-gnu/libc.so.6", link: "libc.so.6" }
 
+# ----------------------------------------------------------------------
+# mount-iso
+#fp_mount_iso_entries:
+#  - iso: "/export/images/FreeBSD-12.0-RELEASE-i386-disc1.iso"
+#    mount: "/export/distro/FreeBSD-12.0-RELEASE-i386-disc1.iso"
+#    state: "present"
+#  - iso: "/export/images/FreeBSD-12.0-RELEASE-amd64-disc1.iso"
+#    mount: "/export/distro/FreeBSD-12.0-RELEASE-amd64-disc1.iso"
+#    state: "present"
+
 # EOF
 ...

@@ -64,6 +64,10 @@ fp_fstab_entries:
 # Note: Configure swap with separate task swap
 
 # ----------------------------------------------------------------------
+# mount-iso
+fp_mount_iso_entries: []
+
+# ----------------------------------------------------------------------
 # libmap
 fp_libmap_entries: []
 

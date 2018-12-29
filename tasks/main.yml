@@ -20,6 +20,9 @@
 - import_tasks: fstab.yml
   tags: fp_fstab
 
+- import_tasks: mount-iso.yml
+  tags: fp_mountiso
+
 - import_tasks: packages.yml
   tags: fp_packages
 

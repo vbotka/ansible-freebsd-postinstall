@@ -107,6 +107,7 @@ References
 - [make.conf - FreeBSD forum: Prioritizing SSL/TLS in make.conf](https://forums.freebsd.org/threads/62930/)
 - [make.conf - FreeBSD wiki: Design for Flavors and Sub Packages](https://wiki.freebsd.org/Ports/FlavorsAndSubPackages)
 - [make.conf - GNU emacs flavours in FreeBSD](https://ximalas.info/2018/02/02/gnu-emacs-flavours-in-freebsd/)
+- [mount - FreeBSD handbook: 3.7. Mounting and Unmounting File Systems](https://www.freebsd.org/doc/handbook/mount-unmount.html)
 - [nfs - FreeBSD handbook: Network File System (NFS)](https://www.freebsd.org/doc/handbook/network-nfs.html)
 - [ntp - FreeBSD handbook: Clock Synchronization with NTP](http://www.freebsd.org/doc/handbook/network-ntp.html)
 - [ntp - FreeBSD forum: Testing NTP](https://forums.freebsd.org/threads/41874/)

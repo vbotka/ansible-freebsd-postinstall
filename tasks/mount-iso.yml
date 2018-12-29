@@ -1,0 +1,49 @@
+---
+
+- name: "mount-iso: Get mounted iso"
+  block:
+    - command: "mount -t cd9660"
+      args:
+        warn: False
+      register: result
+      changed_when: False
+    - set_fact:
+        mounted_iso_list: []
+    - set_fact:
+        mounted_iso_list: "{{ mounted_iso_list + [ item.split(' ')[2] ] }}"
+      loop: "{{ result.stdout_lines|default([]) }}"
+    - debug:
+        var: mounted_iso_list
+      when: fp_debug
+
+- name: "mount-iso: Create mount points"
+  file:
+    state: directory
+    path: "{{ item.mount }}"
+  loop: "{{ fp_mount_iso_entries }}"
+  when: item.state|default("present") == "present"
+
+- name: "mount-iso: Debug mount commands"
+  debug:
+    msg: |
+      mount -t cd9660 /dev/`mdconfig -f {{ item.iso }}` {{ item.mount }}
+  loop: "{{ fp_mount_iso_entries }}"
+  when:
+    - fp_debug
+    - item.mount not in mounted_iso_list
+    - item.state|default("present") == "present"
+
+- name: "mount-iso: Mount iso entries"
+  shell: |
+    mount -t cd9660 /dev/`mdconfig -f {{ item.iso }}` {{ item.mount }}
+  args:
+    warn: False
+  loop: "{{ fp_mount_iso_entries }}"
+  when:
+    - item.mount not in mounted_iso_list
+    - item.state|default("present") == "present"
+
+# TODO: umount entries and delete nodes  when state: absent
+
+# EOF
+...
