@@ -8,6 +8,14 @@ freebsd_postinstall
 Commnted Quality Score Details
 ------------------------------
 
+ansible-lint reports:
+```
+E301:  Commands should not change things if nothing needs doing
+vbotka.freebsd_postinstall/tasks/mount-iso.yml:78
+```
+comment:
+There is no reason for a Warning (severity:High!) . The command is executed only if there are items in the list.
+[Bug 336 commnted](https://github.com/ansible/ansible-lint/issues/336#issuecomment-450552031)
 
 Requirements
 ------------
