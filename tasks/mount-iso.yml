@@ -13,7 +13,7 @@
         mounted_iso_list: []
     - name: "mount-iso: Add entries to mounted_iso_list"
       set_fact:
-        mounted_iso_list: "{{ mounted_iso_list + [ item.split(' ')[2] ] }}"
+        mounted_iso_list: "{{ mounted_iso_list + [ {'mount_point': item.split(' ')[2], 'device': item.split(' ')[0]|basename} ] }}"
       loop: "{{ result.stdout_lines|default([]) }}"
     - name: "mount-iso: Debug"
       debug:
@@ -25,7 +25,12 @@
     state: directory
     path: "{{ item.mount }}"
   loop: "{{ fp_mount_iso_entries }}"
-  when: item.state|default("present") == "present"
+  when: item.state|default("mounted") == "mounted"
+
+- name: "mount-iso: Debug list mounted iso"
+  debug:
+    msg: "{{ mounted_iso_list|json_query('[].mount_point') }}"
+  when: fp_debug
 
 - name: "mount-iso: Debug mount commands"
   debug:
@@ -34,8 +39,8 @@
   loop: "{{ fp_mount_iso_entries }}"
   when:
     - fp_debug
-    - item.mount not in mounted_iso_list
-    - item.state|default("present") == "present"
+    - item.mount not in mounted_iso_list|json_query('[].mount_point')
+    - item.state|default("mounted") == "mounted"
 
 - name: "mount-iso: Mount iso entries"
   shell: "mount -t cd9660 /dev/$(mdconfig -f {{ item.iso }}) {{ item.mount }}"
@@ -43,10 +48,36 @@
     warn: False
   loop: "{{ fp_mount_iso_entries }}"
   when:
-    - item.mount not in mounted_iso_list
-    - item.state|default("present") == "present"
+    - item.mount not in mounted_iso_list|json_query('[].mount_point')
+    - item.state|default("mounted") == "mounted"
 
-# TODO: umount entries and delete nodes  when state: absent
+- name: "mount-iso: Umount iso entries"
+  mount:
+    state: unmounted
+    path: "{{ item.mount }}"
+  loop: "{{ fp_mount_iso_entries }}"
+  when:
+    - item.mount in mounted_iso_list|json_query('[].mount_point')
+    - item.state|default("mounted") == "unmounted"
+
+- name: "mount-iso: Set list of nodes to be deleted"
+  set_fact:
+    local_node_list: "{{ local_node_list|default([]) }} + {{ mounted_iso_list | json_query(local_query) }}"
+  vars:
+    local_query: "[?mount_point=='{{ item.mount }}'].device"
+  loop: "{{ fp_mount_iso_entries }}"
+  when:
+    - item.mount in mounted_iso_list|json_query('[].mount_point')
+    - item.state|default("mounted") == "unmounted"
+
+- name: "mount-iso: Debug list nodes to be deleted"
+  debug:
+    var: local_node_list
+  when: fp_debug
+
+- name: "mount-iso: Delete nodes"
+  shell: "mdconfig -d -u {{ item }}"
+  loop: "{{ local_node_list|default([]) }}"
 
 # EOF
 ...
