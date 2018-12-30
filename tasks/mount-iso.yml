@@ -13,7 +13,11 @@
         mounted_iso_list: []
     - name: "mount-iso: Add entries to mounted_iso_list"
       set_fact:
-        mounted_iso_list: "{{ mounted_iso_list + [ {'mount_point': item.split(' ')[2], 'device': item.split(' ')[0]|basename} ] }}"
+        mounted_iso_list: >-
+          {{ mounted_iso_list + [ {
+          'mount_point': item.split(' ')[2],
+          'device': item.split(' ')[0]|basename } ]
+          }}
       loop: "{{ result.stdout_lines|default([]) }}"
     - name: "mount-iso: Debug"
       debug:
@@ -76,7 +80,7 @@
   when: fp_debug
 
 - name: "mount-iso: Delete nodes"
-  shell: "mdconfig -d -u {{ item }}"
+  command: "mdconfig -d -u {{ item }}"
   loop: "{{ local_node_list|default([]) }}"
 
 # EOF
