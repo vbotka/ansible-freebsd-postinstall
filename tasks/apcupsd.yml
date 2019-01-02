@@ -6,9 +6,7 @@
     regexp: "^apcupsd_enable"
     line: "apcupsd_enable=\"YES\""
     backup: "{{ fp_backup_conf }}"
-  when:
-    - fp_apcupsd_service_enabled
-    - fp_apcupsd_install
+  when: fp_apcupsd_service_enabled
   notify: enable and start apcupsd
   tags: fp_apcupsd_rcconf
 
@@ -18,15 +16,13 @@
     regexp: "^apcupsd_enable"
     line: "apcupsd_enable=\"NO\""
     backup: "{{ fp_backup_conf }}"
-  when:
-    - not fp_apcupsd_service_enabled
-    - fp_apcupsd_install
+  when: not fp_apcupsd_service_enabled
   notify: disable and stop apcupsd
   tags: fp_apcupsd_rcconf
 
 - name: "apcupsd: Create directory {{ fp_apcupsd_conf_dir }}"
   file:
-    state: "directory"
+    state: directory
     path: "{{ fp_apcupsd_conf_dir }}"
   tags: fp_apcupsd_conf
 

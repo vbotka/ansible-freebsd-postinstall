@@ -72,6 +72,7 @@
 
 - import_tasks: apcupsd.yml
   tags: fp_apcupsd
+  when: fp_apcupsd_install
 
 - import_tasks: hostapd.yml
   tags: fp_hostapd
