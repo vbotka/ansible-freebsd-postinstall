@@ -5,17 +5,6 @@ freebsd_postinstall
 
 [Ansible role.](https://galaxy.ansible.com/vbotka/freebsd_postinstall/) FreeBSD. Post-install configuration: aliases, apcupsd, authorized keys, cron, fstab, gitserver, hostapd, hostname, hosts, libmap, linux compatibility, loader.conf, make.conf, motd, nfsd, ntpd, ntpdate, procmail, resolvconf.conf, smartd, sudoers, ssh, swap, sysctl, timezone, users, packages and ports, periodic.conf,  overlays, wpa_supplicant, wip ...
 
-Commnted Quality Score Details
-------------------------------
-
-ansible-lint reports:
-```
-E301:  Commands should not change things if nothing needs doing
-vbotka.freebsd_postinstall/tasks/mount-iso.yml:78
-```
-comment:
-There is no reason for a Warning (severity:High!) . The command is executed only if there are items in the list.
-[Bug 336 commnted](https://github.com/ansible/ansible-lint/issues/336#issuecomment-450552031)
 
 Requirements
 ------------
