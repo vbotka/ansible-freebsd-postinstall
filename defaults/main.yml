@@ -323,8 +323,9 @@ fp_periodic_conf_local: []
 
 # ----------------------------------------------------------------------
 # wpa_supplicant
-fp_wpasupplicant_install: False
-fp_wpasupplicant_debug: False
+fp_wpasupplicant_install: false
+fp_wpasupplicant_debug: false
+fp_wpasupplicant_conf_rc: false
 fp_wpasupplicant_backup: no
 fp_wpasupplicant_conf_file_link: ""
 fp_wpasupplicant_conf_owner: "root"
