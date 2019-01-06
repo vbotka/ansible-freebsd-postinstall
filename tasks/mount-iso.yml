@@ -82,6 +82,7 @@
 - name: "mount-iso: Delete nodes"
   command: "mdconfig -d -u {{ item }}"
   loop: "{{ local_node_list|default([]) }}"
+  changed_when: local_node_list | default([]) | length > 0
 
 # EOF
 ...
