@@ -1,0 +1,21 @@
+# {{ ansible_managed }}
+
+# system classes
+{% for item in fp_login_conf %}
+{{ item.class }}:\
+{% for citem in item.conf %}
+{{ '\t' }}:{{ citem }}:{% if not loop.last %}\{% endif %}
+
+{% endfor %}
+{% endfor %}
+
+# extra classes
+{% for item in fp_login_conf_extra %}
+{{ item.class }}:\
+{% for citem in item.conf %}
+{{ '\t' }}:{{ citem }}:{% if not loop.last %}\{% endif %}
+
+{% endfor %}
+{% endfor %}
+
+# EOF

@@ -36,6 +36,8 @@
          fp_groupwrappers_install [ {{ fp_groupwrappers_install }} ]
          fp_gitserver_install [ {{ fp_gitserver_install }} ]
          fp_wpasupplicant_install [ {{ fp_wpasupplicant_install }} ]
+
+         pf_backup_conf [ {{ pf_backup_conf }} ]
   debug:
     msg: "{{ msg.split('\n') }}"
 

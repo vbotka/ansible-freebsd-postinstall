@@ -324,5 +324,36 @@
 #    mount: "/export/distro/FreeBSD-12.0-RELEASE-amd64-disc1.iso"
 #    state: "mounted"
 
+# ----------------------------------------------------------------------
+# login.conf
+#
+# FreeBSD handbook: 15.7.1. Create an Insecure User Class
+# https://www.freebsd.org/doc/handbook/mac-implementing.html
+#fp_login_conf_extra:
+#  - class: 'insecure'
+#    conf:
+#      - copyright=/etc/COPYRIGHT
+#      - welcome=/etc/motd
+#      - setenv=MAIL=/var/mail/$,BLOCKSIZE=K
+#      - path=~/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin
+#      - manpath=/usr/share/man /usr/local/man
+#      - nologin=/usr/sbin/nologin
+#      - cputime=1h30m
+#      - datasize=8M
+#      - vmemoryuse=100M
+#      - stacksize=2M
+#      - memorylocked=4M
+#      - memoryuse=8M
+#      - filesize=8M
+#      - coredumpsize=8M
+#      - openfiles=24
+#      - maxproc=32
+#      - priority=0
+#      - requirehome
+#      - passwordtime=91d
+#      - umask=022
+#      - ignoretime@
+#      - label=biba/10(10-10)
+
 # EOF
 ...

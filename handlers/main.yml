@@ -157,6 +157,10 @@
   loop: "{{ fp_wpa_supplicant_conf_changes }}"
   # TODO: Wait for OK result. Error: 'RECONFIGURE' command timed out.
 
+# login.conf
+- name: rebuild login_conf
+  command: "/usr/bin/cap_mkdb /etc/login.conf"
+
 # MESSAGES -------------------------------------------------------------
 - name: loader message reboot
   debug: msg="[MESSAGE] Reboot to activate configuration in /boot/loader.conf"

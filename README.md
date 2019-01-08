@@ -3,7 +3,7 @@ freebsd_postinstall
 
 [![Build Status](https://travis-ci.org/vbotka/ansible-freebsd-postinstall.svg?branch=master)](https://travis-ci.org/vbotka/ansible-freebsd-postinstall)
 
-[Ansible role.](https://galaxy.ansible.com/vbotka/freebsd_postinstall/) FreeBSD. Post-install configuration: aliases, apcupsd, authorized keys, cron, fstab, gitserver, hostapd, hostname, hosts, libmap, linux compatibility, loader.conf, make.conf, motd, nfsd, ntpd, ntpdate, procmail, resolvconf.conf, smartd, sudoers, ssh, swap, sysctl, timezone, users, packages and ports, periodic.conf,  overlays, wpa_supplicant, wip ...
+[Ansible role.](https://galaxy.ansible.com/vbotka/freebsd_postinstall/) FreeBSD. Post-install configuration: aliases, apcupsd, authorized keys, cron, fstab, gitserver, hostapd, hostname, hosts, libmap, linux compatibility, login.conf, loader.conf, make.conf, motd, nfsd, ntpd, ntpdate, procmail, resolvconf.conf, smartd, sudoers, ssh, swap, sysctl, timezone, users, packages and ports, periodic.conf,  overlays, wpa_supplicant, wip ...
 
 
 Requirements
@@ -101,6 +101,7 @@ References
 - [git - FreeBSD forum: How to setup a Git repository](https://forums.freebsd.org/threads/10810/)
 - [git - Getting Git on a Server](https://git-scm.com/book/ch4-2.html)
 - [hostapd - Atheros wireless driver support](https://wiki.freebsd.org/dev/ath%284%29)
+- [login.conf - FreeBSD nadbook: 13.13. Resource Limits](https://www.freebsd.org/doc/handbook/security-resourcelimits.html)
 - [linux - FreeBSD handbook: 10. Linux Binary Compatibility](https://www.freebsd.org/doc/handbook/linuxemu.html)
 - [linprocfs - FreeBSD man](https://www.freebsd.org/cgi/man.cgi?linprocfs(5))
 - [loader.conf - FreeBSD handbook: FreeBSD Boot Process](https://www.freebsd.org/doc/handbook/boot-introduction.html)

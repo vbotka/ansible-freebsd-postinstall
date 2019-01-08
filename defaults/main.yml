@@ -354,5 +354,65 @@ fp_linux_fstab:
 fp_linux_lib_dir: "copy/linux-compat-lib"
 fp_linux_lib: []
 
+# ----------------------------------------------------------------------
+# login.conf
+fp_login_conf_extra: []
+fp_login_conf:
+  - class: 'default'
+    conf:
+      - passwd_format=sha512
+      - copyright=/etc/COPYRIGHT
+      - welcome=/etc/motd
+      - setenv=MAIL=/var/mail/$,BLOCKSIZE=K
+      - path=/sbin /bin /usr/sbin /usr/bin /usr/local/sbin /usr/local/bin ~/bin
+      - nologin=/var/run/nologin
+      - cputime=unlimited
+      - datasize=unlimited
+      - stacksize=unlimited
+      - memorylocked=64K
+      - memoryuse=unlimited
+      - filesize=unlimited
+      - coredumpsize=unlimited
+      - openfiles=unlimited
+      - maxproc=unlimited
+      - sbsize=unlimited
+      - vmemoryuse=unlimited
+      - swapuse=unlimited
+      - pseudoterminals=unlimited
+      - kqueues=unlimited
+      - umtxp=unlimited
+      - priority=0
+      - ignoretime@
+      - umask=022
+  - class: 'standard'
+    conf:
+      - tc=default
+  - class: 'xuser'
+    conf:
+      - tc=default
+  - class: 'staff'
+    conf:
+      - tc=default
+  - class: 'daemon'
+    conf:
+      - memorylocked=128M
+      - tc=default
+  - class: 'news'
+    conf:
+      - tc=default
+  - class: 'dialer'
+    conf:
+      - tc=default
+  - class: 'root'
+    conf:
+      - ignorenologin
+      - memorylocked=unlimited
+      - tc=default
+  - class: 'russian|Russian Users Account'
+    conf:
+      - charset=UTF-8
+      - lang=ru_RU.UTF-8
+      - tc=default
+
 # EOF
 ...
