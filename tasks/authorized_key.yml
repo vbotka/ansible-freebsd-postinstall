@@ -1,10 +1,16 @@
 ---
+- name: "authorized_key: Get list of users"
+  getent:
+    database: passwd
 
 - name: "authorized_key: Debug"
   vars:
     msg: |
+         fp_authorized_key_fail [ {{ fp_authorized_key_fail }} ]
          fp_authorized_key
          {{ fp_authorized_key | to_nice_yaml }}
+         getent_passwd keys
+         {{ getent_passwd.keys() | to_yaml }}
   debug:
     msg: "{{ msg.split('\n') }}"
   when: fp_debug
@@ -15,6 +21,8 @@
     key: "{{ item.key }}"
     manage_dir: yes
   loop: "{{ fp_authorized_key }}"
+  when: fp_authorized_key_fail
+        or item.user in getent_passwd.keys()
 
 # EOF
 ...

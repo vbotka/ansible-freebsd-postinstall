@@ -111,6 +111,8 @@ freebsd_users_groups: []
 # ----------------------------------------------------------------------
 # authorized_key
 fp_authorized_key: []
+# If user does not exist this will make the task fail if True
+fp_authorized_key_fail: True
 
 # ----------------------------------------------------------------------
 # smartd
