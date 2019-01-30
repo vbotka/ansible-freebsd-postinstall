@@ -1,7 +1,7 @@
 ---
 
 - debug: msg="fp_synchronize_default = {{ fp_synchronize_default }}"
-  when: fp_debug
+  when: fp_debug|bool
   tags: fp_copy_sync_default
 
 # Sync default
@@ -14,8 +14,8 @@
 
 - debug: msg="Directory default exists."
   when:
-    - fp_debug
-    - default_copy.stat.isdir is defined and default_copy.stat.isdir
+    - fp_debug|bool
+    - (default_copy.stat.isdir is defined) and default_copy.stat.isdir
   tags: fp_copy_sync_default
 
 - name: "copy: Synchronize default files {{ fp_copy_dir }}/default (relative to playbooks directory)"
@@ -30,12 +30,12 @@
     checksum: yes
   when:
     - default_copy.stat.exists
-    - fp_synchronize_default
+    - fp_synchronize_default|bool
   tags: fp_copy_sync_default
 
 # Sync optional
 - debug: msg="fp_synchronize_optional = {{ fp_synchronize_optional }}"
-  when: fp_debug
+  when: fp_debug|bool
   tags: fp_copy_sync_optional
 
 - name: "copy: Check existence of {{ playbook_dir }}/{{ fp_copy_dir }}/{{ rc_conf_hostname }}"
@@ -47,8 +47,8 @@
 
 - debug: msg="Directory {{ rc_conf_hostname }} exists."
   when:
-    - fp_debug
-    - optional_copy.stat.isdir is defined and optional_copy.stat.isdir
+    - fp_debug|bool
+    - (optional_copy.stat.isdir is defined) and optional_copy.stat.isdir
   tags: fp_copy_sync_optional
 
 - name: >
@@ -65,7 +65,7 @@
     checksum: yes
   when:
     - optional_copy.stat.exists
-    - fp_synchronize_optional
+    - fp_synchronize_optional|bool
   tags: fp_copy_sync_optional
 
 # Unarch default
@@ -83,7 +83,7 @@
     keep_newer: "{{ fp_unarchive_keep_newer }}"
   when:
     - default_copy.stat.exists
-    - fp_synchronize_default
+    - fp_synchronize_default|bool
   tags: fp_copy_unarch_default
 
 # Unarch optional
@@ -103,7 +103,7 @@
     keep_newer: "{{ fp_unarchive_keep_newer }}"
   when:
     - optional_copy.stat.exists
-    - fp_synchronize_optional
+    - fp_synchronize_optional|bool
   tags: fp_copy_unarch_optional
 
 # EOF
