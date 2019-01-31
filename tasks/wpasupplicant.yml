@@ -18,7 +18,7 @@
       {{ fp_wpasupplicant_conf | to_yaml }}
   debug:
     msg: "{{ msg.split('\n') }}"
-  when: fp_wpasupplicant_debug
+  when: fp_wpasupplicant_debug|bool
 
 - name: "wpasupplicant: Configure /etc/rc.conf"
   lineinfile:
@@ -44,7 +44,7 @@
 
 - name: "wpasupplicant: Debug: registered to fp_wpa_supplicant_conf_changes"
   debug: msg="{{ fp_wpa_supplicant_conf_changes }}"
-  when: fp_wpasupplicant_debug
+  when: fp_wpasupplicant_debug|bool
 
 - name: "wpasupplicant: Link {{ fp_wpasupplicant_conf_file }}"
   file:
@@ -55,7 +55,7 @@
   when: fp_wpasupplicant_conf_file_link | length > 0
   tags: fp_wpasupplicant_conf_file_link
 
-# Use device specific sonfiguration. Example:
+# Use device specific configuration. Example:
 # /usr/local/sbin/wpa_supplicant -s -B -i wlan1 -c /etc/wpa_supplicant.conf.wlan1
 - name: "wpasupplicant: Configure /etc/rc.d/wpa_supplicant"
   lineinfile:
@@ -65,7 +65,7 @@
     backup: "{{ fp_wpasupplicant_backup }}"
   loop:
     - { key: "conf_file", value: "${wpa_supplicant_conf_file}.${ifn}" }
-  when: fp_wpasupplicant_conf_rc
+  when: fp_wpasupplicant_conf_rc|bool
   tags: fp_wpasupplicant_conf_rc
 
 # EOF

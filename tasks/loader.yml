@@ -13,7 +13,7 @@
   shell: "kldstat -q -n {{ item }} || kldload -n {{ item }}"
   loop: "{{ fp_loader_conf_modules }}"
   changed_when: False
-  when: fp_loader_load_modules
+  when: fp_loader_load_modules|bool
 
 # EOF
 ...

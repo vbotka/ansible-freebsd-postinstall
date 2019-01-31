@@ -1,7 +1,7 @@
 ---
 
 - debug: msg="fp_synchronize_default = {{ fp_synchronize_default }}"
-  when: fp_debug|bool
+  when: fp_debug|bool|bool
   tags: fp_copy_sync_default
 
 # Sync default
@@ -35,7 +35,7 @@
 
 # Sync optional
 - debug: msg="fp_synchronize_optional = {{ fp_synchronize_optional }}"
-  when: fp_debug|bool
+  when: fp_debug|bool|bool
   tags: fp_copy_sync_optional
 
 - name: "copy: Check existence of {{ playbook_dir }}/{{ fp_copy_dir }}/{{ rc_conf_hostname }}"

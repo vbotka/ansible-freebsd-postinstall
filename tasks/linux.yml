@@ -11,7 +11,7 @@
       {{ fp_linux_lib | to_yaml }}
   debug:
     msg: "{{ msg.split('\n') }}"
-  when: fp_linux_debug
+  when: fp_linux_debug|bool
   tags: [fp_linux_debug, always]
 
 - name: "linux: Configure fstab"
@@ -53,8 +53,8 @@
     line: "linux_enable=\"YES\""
     backup: "{{ fp_backup_conf }}"
   when:
-    - fp_linux_enable
-    - fp_linux_install
+    - fp_linux_enable|bool
+    - fp_linux_install|bool
   tags: fp_linux_rcconf
 
 - name: "linux: Disable linux"
@@ -64,8 +64,8 @@
     line: "linux_enable=\"NO\""
     backup: "{{ fp_backup_conf }}"
   when:
-    - not fp_linux_enable
-    - fp_linux_install
+    - not fp_linux_enable|bool
+    - fp_linux_install|bool
   tags: fp_linux_rcconf
 
 # EOF

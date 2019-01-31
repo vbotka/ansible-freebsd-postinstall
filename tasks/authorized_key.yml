@@ -13,7 +13,7 @@
          {{ getent_passwd.keys() | to_yaml }}
   debug:
     msg: "{{ msg.split('\n') }}"
-  when: fp_debug
+  when: fp_debug|bool
 
 - name: "authorized_key: Configure authorized keys"
   authorized_key:
@@ -21,7 +21,7 @@
     key: "{{ item.key }}"
     manage_dir: yes
   loop: "{{ fp_authorized_key }}"
-  when: fp_authorized_key_fail
+  when: fp_authorized_key_fail|bool
         or item.user in getent_passwd.keys()
 
 # EOF

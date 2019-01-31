@@ -2,7 +2,7 @@
 # tasks for vbotka.freebsd-postinstall
 
 - import_tasks: debug.yml
-  when: fp_debug
+  when: fp_debug|bool
   tags: [fp_debug, always]
 
 - import_tasks: loader.yml
@@ -36,8 +36,8 @@
   tags: fp_users
 
 - import_tasks: groupwrappers.yml
+  when: fp_groupwrappers_install|bool
   tags: fp_groupwrappers
-  when: fp_groupwrappers_install
 
 - import_tasks: hostname.yml
   tags: fp_hostname
@@ -67,27 +67,27 @@
   tags: fp_nfsd
 
 - import_tasks: smartd.yml
+  when: fp_smartd_install|bool
   tags: fp_smartd
-  when: fp_smartd_install
 
 - import_tasks: apcupsd.yml
+  when: fp_apcupsd_install|bool
   tags: fp_apcupsd
-  when: fp_apcupsd_install
 
 - import_tasks: hostapd.yml
+  when: fp_hostapd_install|bool
   tags: fp_hostapd
-  when: fp_hostapd_install
 
 - import_tasks: procmail.yml
+  when: fp_procmail_install|bool
   tags: fp_procmail
-  when: fp_procmail_install
 
 - import_tasks: motd.yml
   tags: fp_motd
 
 - import_tasks: gitserver.yml
+  when: fp_gitserver_install|bool
   tags: fp_gitserver
-  when: fp_gitserver_install
 
 - import_tasks: sudoers.yml
   tags: fp_sudoers
@@ -105,11 +105,11 @@
   tags: fp_periodic
 
 - import_tasks: wpasupplicant.yml
-  when: fp_wpasupplicant_install
+  when: fp_wpasupplicant_install|bool
   tags: fp_wpasupplicant
 
 - import_tasks: linux.yml
-  when: fp_linux_install
+  when: fp_linux_install|bool
   tags: fp_linux
 
 - import_tasks: login-conf.yml

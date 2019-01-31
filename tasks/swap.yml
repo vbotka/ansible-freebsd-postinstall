@@ -10,14 +10,14 @@
          fp_swap_stsize [ {{ fp_swap_stsize|default("NOT-DEFINED") }} ]
   debug:
     msg: "{{ msg.split('\n') }}"
-  when: fp_debug
+  when: fp_debug|bool
 
 - name: "swap: Create swapfile {{ fp_swap_file }}"
   shell: sh -c 'if [ ! -e {{ fp_swap_file }} ]; then printf "create"; fi'
   register: command_result
   changed_when: command_result.stdout == "create"
   notify: create swap
-  when: fp_swap
+  when: fp_swap|bool
 
 - name: "swap: Create swap entry in /etc/fstab"
   lineinfile:
@@ -26,7 +26,7 @@
     line: "{{ fp_swap_md }} none swap sw,file={{ fp_swap_file }},late 0 0"
     backup: "{{ fp_backup_conf }}"
   notify: mount swap
-  when: fp_swap
+  when: fp_swap|bool
 #  mount:
 #    name="none"
 #    src="{{ fp_swap_md }}"
@@ -49,7 +49,7 @@
   register: command_result
   changed_when: command_result.stdout == "change"
   notify: change and mount swap
-  when: fp_swap
+  when: fp_swap|bool
 
 - name: Remove swap entry from /etc/fstab
   lineinfile:
@@ -59,7 +59,7 @@
     backup: "{{ fp_backup_conf }}"
   notify: umount and delete swap
   when:
-    - not fp_swap
+    - not fp_swap|bool
     - fp_swap_md is defined
 
 - meta: flush_handlers

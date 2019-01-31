@@ -21,7 +21,7 @@
     block: |
       "{{ item.forward }}"
   loop: "{{ fp_procmail_forwarders }}"
-  when: fp_procmail_install
+  when: fp_procmail_install|bool
   tags: fp_procmail_forwarders
 
 - name: "procmail: Create .procmailrc files"

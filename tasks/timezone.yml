@@ -1,7 +1,7 @@
 ---
 
 - debug: msg="fp_zoneinfo [ {{ fp_zoneinfo }} ]"
-  when: fp_debug
+  when: fp_debug|bool
 
 - name: "timezone: set timezone to {{ fp_zoneinfo }}"
   timezone:

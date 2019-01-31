@@ -7,8 +7,8 @@
     line: "hostapd_enable=\"YES\""
     backup: "{{ fp_backup_conf }}"
   when:
-    - fp_hostapd_enabled
-    - fp_hostapd_install
+    - fp_hostapd_enabled|bool
+    - fp_hostapd_install|bool
   notify: enable and start hostapd
   tags: fp_hostapd_rcconf
 
@@ -19,8 +19,8 @@
     line: "hostapd_enable=\"NO\""
     backup: "{{ fp_backup_conf }}"
   when:
-    - not fp_hostapd_enabled
-    - fp_hostapd_install
+    - not fp_hostapd_enabled|bool
+    - fp_hostapd_install|bool
   notify: disable and stop hostapd
   tags: fp_hostapd_rcconf
 
@@ -37,7 +37,7 @@
         line: "wlans_{{ fp_hostapd_device }}=\"{{ fp_hostapd_interface }}\"" }
     - { regexp: "^ifconfig_{{ fp_hostapd_interface }}",
         line: "ifconfig_{{ fp_hostapd_interface }}=\"inet {{ fp_hostapd_inet }} netmask {{ fp_hostapd_netmask }}\"" }
-  when: fp_hostapd_enabled
+  when: fp_hostapd_enabled|bool
   notify: restart hostapd
   tags: fp_hostapd_rcconf
 
@@ -46,7 +46,7 @@
     src: "hostapd.conf.j2"
     dest: "/etc/hostapd.conf"
     backup: "{{ fp_backup_conf }}"
-  when: fp_hostapd_enabled
+  when: fp_hostapd_enabled|bool
   notify: restart hostapd
   tags: fp_hostapd_conf
 

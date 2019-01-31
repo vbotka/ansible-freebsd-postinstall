@@ -16,7 +16,7 @@
     regexp: "^update_motd"
     line: "update_motd=\"YES\""
     backup: "{{ fp_backup_conf }}"
-  when: fp_update_motd
+  when: fp_update_motd|bool
   tags: fp_motd_rcconf
 
 - name: "motd: Set update_motd NO"
@@ -25,7 +25,7 @@
     regexp: "^update_motd"
     line: "update_motd=\"NO\""
     backup: "{{ fp_backup_conf }}"
-  when: not fp_update_motd
+  when: not fp_update_motd|bool
   tags: fp_motd_rcconf
 
 # EOF

@@ -7,8 +7,8 @@
     line: "smartd_enable=\"YES\""
     backup: "{{ fp_backup_conf }}"
   when:
-    - fp_smartd_service_enabled
-    - fp_smartd_install
+    - fp_smartd_service_enabled|bool
+    - fp_smartd_install|bool
   notify: enable and start smartd
   tags: fp_smartd_rcconf
 
@@ -19,8 +19,8 @@
     line: "smartd_enable=\"NO\""
     backup: "{{ fp_backup_conf }}"
   when:
-    - not fp_smartd_service_enabled
-    - fp_smartd_install
+    - not fp_smartd_service_enabled|bool
+    - fp_smartd_install|bool
   notify: disable and stop smartd
   tags: fp_smartd_rcconf
 

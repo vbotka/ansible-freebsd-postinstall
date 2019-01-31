@@ -7,7 +7,7 @@
          {{ fp_periodic_conf_local | to_yaml }}
   debug:
     msg: "{{ msg.split('\n') }}"
-  when: fp_debug
+  when: fp_debug|bool
 
 - name: "periodic_conf: Configure /etc/periodic.conf.local"
   lineinfile:

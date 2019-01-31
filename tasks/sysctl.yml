@@ -9,7 +9,7 @@
       {{ fp_sysctl | to_yaml }}
   debug:
     msg: "{{ msg.split('\n') }}"
-  when: fp_debug
+  when: fp_debug|bool
 
 - name: "sysctl: Configure {{ fp_sysctl_file }}"
   sysctl:
@@ -55,7 +55,7 @@
 - name: "sysctl: Debug fp_sysctl_loader_conf"
   debug:
     var: fp_sysctl_loader_conf
-  when: fp_debug
+  when: fp_debug|bool
 
 - name: "sysctl: Configure /boot/loader.conf"
   template:

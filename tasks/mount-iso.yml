@@ -22,7 +22,7 @@
     - name: "mount-iso: Debug"
       debug:
         var: mounted_iso_list
-      when: fp_debug
+      when: fp_debug|bool
 
 - name: "mount-iso: Create mount points"
   file:
@@ -34,7 +34,7 @@
 - name: "mount-iso: Debug list mounted iso"
   debug:
     msg: "{{ mounted_iso_list|json_query('[].mount_point') }}"
-  when: fp_debug
+  when: fp_debug|bool
 
 - name: "mount-iso: Debug mount commands"
   debug:
@@ -42,7 +42,7 @@
       mount -t cd9660 /dev/`mdconfig -f {{ item.iso }}` {{ item.mount }}
   loop: "{{ fp_mount_iso_entries }}"
   when:
-    - fp_debug
+    - fp_debug|bool
     - item.mount not in mounted_iso_list|json_query('[].mount_point')
     - item.state|default("mounted") == "mounted"
 
@@ -77,7 +77,7 @@
 - name: "mount-iso: Debug list nodes to be deleted"
   debug:
     var: local_node_list
-  when: fp_debug
+  when: fp_debug|bool
 
 - name: "mount-iso: Delete nodes"
   command: "mdconfig -d -u {{ item }}"

@@ -11,7 +11,7 @@
          {{ sshd_config | to_yaml }}
   debug:
     msg: "{{ msg.split('\n') }}"
-  when: fp_debug
+  when: fp_debug|bool
 
 - name: "ssh: Configure {{ ssh_config_path }}"
   template:
@@ -39,7 +39,7 @@
     line: "sshd_enable=\"YES\""
     backup: "{{ fp_backup_conf }}"
   notify: enable and start sshd
-  when: sshd_enable
+  when: sshd_enable|bool
   tags: fp_ssh_rcconf
 
 - name: "ssh: Disable and stop sshd"
@@ -49,7 +49,7 @@
     line: "sshd_enable=\"NO\""
     backup: "{{ fp_backup_conf }}"
   notify: disable and stop sshd
-  when: not sshd_enable
+  when: not sshd_enable|bool
   tags: fp_ssh_rcconf
 
 # EOF

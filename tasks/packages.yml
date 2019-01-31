@@ -16,7 +16,7 @@
          {{ fp_links | to_yaml }}
   debug:
     msg: "{{ msg.split('\n') }}"
-  when: fp_debug
+  when: fp_debug|bool
 
 - name: "packages: Install packages"
   include_tasks: packages-install.yml
