@@ -1,10 +1,12 @@
 ---
 
-- debug: msg="fp_synchronize_default = {{ fp_synchronize_default }}"
-  when: fp_debug|bool|bool
+# Sync default
+- name: "copy: Debug fp_synchronize_default"
+  debug:
+    var: fp_synchronize_default
+  when: fp_debug|bool
   tags: fp_copy_sync_default
 
-# Sync default
 - name: "copy: Check existence of {{ role_path }}/{{ fp_copy_dir }}/default"
   stat:
     path: "{{ role_path }}/{{ fp_copy_dir }}/default"
@@ -12,13 +14,16 @@
   delegate_to: localhost
   tags: fp_copy_sync_default
 
-- debug: msg="Directory default exists."
+- name: "copy: Debug directory default exists"
+  debug:
+    msg: "Directory default exists."
   when:
     - fp_debug|bool
-    - (default_copy.stat.isdir is defined) and default_copy.stat.isdir
+    - default_copy.stat.isdir|default(false)
   tags: fp_copy_sync_default
 
-- name: "copy: Synchronize default files {{ fp_copy_dir }}/default (relative to playbooks directory)"
+- name: "copy: Synchronize default files {{ fp_copy_dir }}/default
+         (relative to playbooks directory)"
   synchronize:
     src: "{{ fp_copy_dir }}/default/"
     dest: "/"
@@ -29,31 +34,36 @@
     delete: "{{ fp_synchronize_delete }}"
     checksum: yes
   when:
-    - default_copy.stat.exists
+    - default_copy.stat.isdir|default(false)
     - fp_synchronize_default|bool
   tags: fp_copy_sync_default
 
 # Sync optional
-- debug: msg="fp_synchronize_optional = {{ fp_synchronize_optional }}"
-  when: fp_debug|bool|bool
+- name: "copy: Debug fp_synchronize_optional"
+  debug:
+    var: fp_synchronize_optional
+  when: fp_debug|bool
   tags: fp_copy_sync_optional
 
-- name: "copy: Check existence of {{ playbook_dir }}/{{ fp_copy_dir }}/{{ rc_conf_hostname }}"
+- name: "copy: Check existence of
+         {{ playbook_dir }}/{{ fp_copy_dir }}/{{ rc_conf_hostname }}"
   stat:
     path: "{{ playbook_dir }}/{{ fp_copy_dir }}/{{ rc_conf_hostname }}"
   register: optional_copy
   delegate_to: localhost
   tags: fp_copy_sync_optional
 
-- debug: msg="Directory {{ rc_conf_hostname }} exists."
+- name: "copy: Debug directory {{ rc_conf_hostname }} exists"
+  debug:
+    msg: "Directory {{ rc_conf_hostname }} exists."
   when:
     - fp_debug|bool
-    - (optional_copy.stat.isdir is defined) and optional_copy.stat.isdir
+    - optional_copy.stat.isdir|default(false)
   tags: fp_copy_sync_optional
 
-- name: >
-    copy: Synchronize host specific files {{ fp_copy_dir }}/{{ rc_conf_hostname }}
-    (relative to playbooks directory)
+- name: "copy: Synchronize host specific files
+         {{ fp_copy_dir }}/{{ rc_conf_hostname }}
+        (relative to playbooks directory)"
   synchronize:
     src: "{{ fp_copy_dir }}/{{ rc_conf_hostname }}/"
     dest: "/"
@@ -64,19 +74,21 @@
     delete: "{{ fp_synchronize_delete }}"
     checksum: yes
   when:
-    - optional_copy.stat.exists
+    - optional_copy.stat.isdir|default(false)
     - fp_synchronize_optional|bool
   tags: fp_copy_sync_optional
 
 # Unarch default
-- name: "copy: Check existence of {{ playbook_dir }}/{{ fp_copy_dir }}/default.tar"
+- name: "copy: Check existence of
+         {{ playbook_dir }}/{{ fp_copy_dir }}/default.tar"
   stat:
     path: "{{ playbook_dir }}/{{ fp_copy_dir }}/default.tar"
   register: default_copy
   delegate_to: localhost
   tags: fp_copy_unarch_default
 
-- name: "copy: Untar default files {{ fp_copy_dir }}/default.tar (relative to playbooks directory)"
+- name: "copy: Untar default files {{ fp_copy_dir }}/default.tar
+         (relative to playbooks directory)"
   unarchive:
     src: "{{ fp_copy_dir }}/default.tar"
     dest: "/"
@@ -87,16 +99,17 @@
   tags: fp_copy_unarch_default
 
 # Unarch optional
-- name: "copy: Check existence of {{ playbook_dir }}/{{ fp_copy_dir }}/{{ rc_conf_hostname }}.tar"
+- name: "copy: Check existence of
+         {{ playbook_dir }}/{{ fp_copy_dir }}/{{ rc_conf_hostname }}.tar"
   stat:
     path: "{{ playbook_dir }}/{{ fp_copy_dir }}/{{ rc_conf_hostname }}.tar"
   register: optional_copy
   delegate_to: localhost
   tags: fp_copy_unarch_optional
 
-- name: >
-    copy: Untar host specific files {{ fp_copy_dir }}/{{ rc_conf_hostname }}.tar
-    (relative to playbooks directory)
+- name: "copy: Untar host specific files
+         {{ fp_copy_dir }}/{{ rc_conf_hostname }}.tar
+         (relative to playbooks directory)"
   unarchive:
     src: "{{ fp_copy_dir }}/{{ rc_conf_hostname }}.tar"
     dest: "/"
