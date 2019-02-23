@@ -1,0 +1,20 @@
+---
+
+# Unarch default
+- name: "copy:unarch-default: Check existence of
+         {{ playbook_dir }}/{{ fp_copy_dir }}/default.tar"
+  stat:
+    path: "{{ playbook_dir }}/{{ fp_copy_dir }}/default.tar"
+  register: default_copy
+  delegate_to: localhost
+
+- name: "copy:unarch-default: Untar default files {{ fp_copy_dir }}/default.tar
+         (relative to playbooks directory)"
+  unarchive:
+    src: "{{ fp_copy_dir }}/default.tar"
+    dest: "/"
+    keep_newer: "{{ fp_unarchive_keep_newer }}"
+  when: default_copy.stat.exists
+
+# EOF
+...

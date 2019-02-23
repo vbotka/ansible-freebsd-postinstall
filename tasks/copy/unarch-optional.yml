@@ -1,0 +1,21 @@
+---
+
+# Unarch optional
+- name: "copy:unarch-optional: Check existence of
+         {{ playbook_dir }}/{{ fp_copy_dir }}/{{ rc_conf_hostname }}.tar"
+  stat:
+    path: "{{ playbook_dir }}/{{ fp_copy_dir }}/{{ rc_conf_hostname }}.tar"
+  register: optional_copy
+  delegate_to: localhost
+
+- name: "copy:unarch-optional: Untar host specific files
+         {{ fp_copy_dir }}/{{ rc_conf_hostname }}.tar
+         (relative to playbooks directory)"
+  unarchive:
+    src: "{{ fp_copy_dir }}/{{ rc_conf_hostname }}.tar"
+    dest: "/"
+    keep_newer: "{{ fp_unarchive_keep_newer }}"
+  when: optional_copy.stat.exists
+
+# EOF
+...

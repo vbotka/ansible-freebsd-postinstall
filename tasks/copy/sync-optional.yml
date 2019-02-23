@@ -1,0 +1,34 @@
+---
+
+# Sync optional
+- name: "copy:sync-optional: Check existence of
+         {{ playbook_dir }}/{{ fp_copy_dir }}/{{ rc_conf_hostname }}"
+  stat:
+    path: "{{ playbook_dir }}/{{ fp_copy_dir }}/{{ rc_conf_hostname }}"
+  register: optional_copy
+  delegate_to: localhost
+
+- name: "copy:sync-optional: Debug directory {{ rc_conf_hostname }} exists"
+  debug:
+    msg: "Directory {{ rc_conf_hostname }} exists."
+  when: fp_debug|bool and
+        optional_copy.stat.isdir|default(false)
+
+- name: "copy:sync-optional: Synchronize host specific files
+         {{ fp_copy_dir }}/{{ rc_conf_hostname }}
+         (relative to playbooks directory)"
+  synchronize:
+    src: "{{ fp_copy_dir }}/{{ rc_conf_hostname }}/"
+    dest: "/"
+    archive: "{{ fp_synchronize_archive }}"
+    checksum: "{{ fp_synchronize_checksum }}"
+    compress: "{{ fp_synchronize_compress }}"
+    delete: "{{ fp_synchronize_delete }}" 
+    group: "{{ fp_synchronize_group }}"
+    owner: "{{ fp_synchronize_owner }}"
+    perms: "{{ fp_synchronize_perms }}"
+    times: "{{ fp_synchronize_times }}"
+  when: optional_copy.stat.isdir|default(false)
+ 
+# EOF
+...
