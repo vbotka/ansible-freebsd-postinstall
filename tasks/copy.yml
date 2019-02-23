@@ -1,122 +1,44 @@
 ---
 
-# Sync default
-- name: "copy: Debug fp_synchronize_default"
+- name: "copy: Debug"
+  vars:
+    msg: |
+         fp_synchronize_default [ {{ fp_synchronize_default }} ]
+         fp_synchronize_optional [ {{ fp_synchronize_optional }} ]
   debug:
-    var: fp_synchronize_default
+    msg: "{{ msg.split('\n') }}"
   when: fp_debug|bool
-  tags: fp_copy_sync_default
 
-- name: "copy: Check existence of {{ role_path }}/{{ fp_copy_dir }}/default"
-  stat:
-    path: "{{ role_path }}/{{ fp_copy_dir }}/default"
-  register: default_copy
-  delegate_to: localhost
-  tags: fp_copy_sync_default
-
-- name: "copy: Debug directory default exists"
-  debug:
-    msg: "Directory default exists."
-  when:
-    - fp_debug|bool
-    - default_copy.stat.isdir|default(false)
-  tags: fp_copy_sync_default
-
-- name: "copy: Synchronize default files {{ fp_copy_dir }}/default
+# Sync default
+- name: "copy: Synchronize default files
+         {{ fp_copy_dir }}/default
          (relative to playbooks directory)"
-  synchronize:
-    src: "{{ fp_copy_dir }}/default/"
-    dest: "/"
-    times: "no"
-    perms: "no"
-    owner: "no"
-    group: "no"
-    delete: "{{ fp_synchronize_delete }}"
-    checksum: yes
-  when:
-    - default_copy.stat.isdir|default(false)
-    - fp_synchronize_default|bool
+  import_tasks: copy/sync-default.yml
+  when: fp_synchronize_default|bool
   tags: fp_copy_sync_default
 
 # Sync optional
-- name: "copy: Debug fp_synchronize_optional"
-  debug:
-    var: fp_synchronize_optional
-  when: fp_debug|bool
-  tags: fp_copy_sync_optional
-
-- name: "copy: Check existence of
-         {{ playbook_dir }}/{{ fp_copy_dir }}/{{ rc_conf_hostname }}"
-  stat:
-    path: "{{ playbook_dir }}/{{ fp_copy_dir }}/{{ rc_conf_hostname }}"
-  register: optional_copy
-  delegate_to: localhost
-  tags: fp_copy_sync_optional
-
-- name: "copy: Debug directory {{ rc_conf_hostname }} exists"
-  debug:
-    msg: "Directory {{ rc_conf_hostname }} exists."
-  when:
-    - fp_debug|bool
-    - optional_copy.stat.isdir|default(false)
-  tags: fp_copy_sync_optional
-
 - name: "copy: Synchronize host specific files
          {{ fp_copy_dir }}/{{ rc_conf_hostname }}
-        (relative to playbooks directory)"
-  synchronize:
-    src: "{{ fp_copy_dir }}/{{ rc_conf_hostname }}/"
-    dest: "/"
-    times: "no"
-    perms: "no"
-    owner: "no"
-    group: "no"
-    delete: "{{ fp_synchronize_delete }}"
-    checksum: yes
-  when:
-    - optional_copy.stat.isdir|default(false)
-    - fp_synchronize_optional|bool
+         (relative to playbooks directory)"
+  import_tasks: copy/sync-optional.yml
+  when: fp_synchronize_optional|bool
   tags: fp_copy_sync_optional
 
 # Unarch default
-- name: "copy: Check existence of
-         {{ playbook_dir }}/{{ fp_copy_dir }}/default.tar"
-  stat:
-    path: "{{ playbook_dir }}/{{ fp_copy_dir }}/default.tar"
-  register: default_copy
-  delegate_to: localhost
-  tags: fp_copy_unarch_default
-
-- name: "copy: Untar default files {{ fp_copy_dir }}/default.tar
+- name: "copy: Untar default files
+         {{ fp_copy_dir }}/default.tar
          (relative to playbooks directory)"
-  unarchive:
-    src: "{{ fp_copy_dir }}/default.tar"
-    dest: "/"
-    keep_newer: "{{ fp_unarchive_keep_newer }}"
-  when:
-    - default_copy.stat.exists
-    - fp_synchronize_default|bool
+  import_tasks: copy/unarch-default.yml
+  when: fp_synchronize_default|bool
   tags: fp_copy_unarch_default
 
 # Unarch optional
-- name: "copy: Check existence of
-         {{ playbook_dir }}/{{ fp_copy_dir }}/{{ rc_conf_hostname }}.tar"
-  stat:
-    path: "{{ playbook_dir }}/{{ fp_copy_dir }}/{{ rc_conf_hostname }}.tar"
-  register: optional_copy
-  delegate_to: localhost
-  tags: fp_copy_unarch_optional
-
 - name: "copy: Untar host specific files
          {{ fp_copy_dir }}/{{ rc_conf_hostname }}.tar
          (relative to playbooks directory)"
-  unarchive:
-    src: "{{ fp_copy_dir }}/{{ rc_conf_hostname }}.tar"
-    dest: "/"
-    keep_newer: "{{ fp_unarchive_keep_newer }}"
-  when:
-    - optional_copy.stat.exists
-    - fp_synchronize_optional|bool
+  import_tasks: copy/unarch-optional.yml
+  when: fp_synchronize_optional|bool
   tags: fp_copy_unarch_optional
 
 # EOF

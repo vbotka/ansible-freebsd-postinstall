@@ -39,9 +39,18 @@ fp_copy_dir: "copy"
 fp_synchronize_default: False
 fp_synchronize_optional: False
 fp_unarchive_keep_newer: "no"
-# DANGEROUS! fp_synchronize_delete="yes" can delete the system dest="/"
-# Review tasks/copy.yml before enabling fp_synchronize_delete
-fp_synchronize_delete: "no"
+# -------------------------
+# DANGEROUS! fp_synchronize_delete=true can delete the system dest="/"
+# Review tasks imported in copy.yml before enabling fp_synchronize_delete
+fp_synchronize_delete: false
+# -------------------------
+fp_synchronize_archive: true
+fp_synchronize_checksum: false
+fp_synchronize_compress: true
+fp_synchronize_group: false
+fp_synchronize_owner: false
+fp_synchronize_perms: false
+fp_synchronize_times: false
 
 # ----------------------------------------------------------------------
 # swap
