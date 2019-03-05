@@ -19,7 +19,14 @@
   authorized_key:
     user: "{{ item.user }}"
     key: "{{ item.key }}"
-    manage_dir: yes
+    exclusive: "{{ item.exclusive|default(omit) }}"
+    comment: "{{ item.comment|default(omit) }}"
+    follow: "{{ item.follow|default(omit) }}"
+    key_options: "{{ item.key_iptions|default(omit) }}"
+    manage_dir: "{{ item.manage_dir|default(omit) }}"
+    path: "{{ item.path|default(omit) }}"
+    state: "{{ item.state|default(omit) }}"
+    validate_certs: "{{ item.validate_certs|default(omit) }}"
   loop: "{{ fp_authorized_key }}"
   when: fp_authorized_key_fail|bool
         or item.user in getent_passwd.keys()
