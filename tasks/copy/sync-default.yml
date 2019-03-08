@@ -21,7 +21,7 @@
     archive: "{{ fp_synchronize_archive }}"
     checksum: "{{ fp_synchronize_checksum }}"
     compress: "{{ fp_synchronize_compress }}"
-    delete: "{{ fp_synchronize_delete }}" 
+    delete: "{{ fp_synchronize_delete }}"
     group: "{{ fp_synchronize_group }}"
     owner: "{{ fp_synchronize_owner }}"
     perms: "{{ fp_synchronize_perms }}"
