@@ -3,7 +3,7 @@
 127.0.0.1	localhost	localhost.{{ fp_domain }}
 
 {% for item in fp_hosts %}
-{{ item.ip }}	{{ item.hostname }}	 {{ item.fqdn }}
+{{ item.ip }}     {{ item.fqdn }} {{ item.hostname|default('') }}
 {% endfor %}
 
 # EOF
