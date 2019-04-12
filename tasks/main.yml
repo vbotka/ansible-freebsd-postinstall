@@ -8,6 +8,10 @@
 - import_tasks: loader.yml
   tags: fp_loader
 
+- import_tasks: tmpmfs.yml
+  when: fp_tmpmfs_configure|bool
+  tags: fp_tmpmfs
+
 - import_tasks: sysctl.yml
   tags: fp_sysctl
 

@@ -36,6 +36,7 @@
          fp_groupwrappers_install [ {{ fp_groupwrappers_install }} ]
          fp_gitserver_install [ {{ fp_gitserver_install }} ]
          fp_wpasupplicant_install [ {{ fp_wpasupplicant_install }} ]
+         fp_tmpmfs_configure [ {{ fp_tmpmfs_configure }} ]
 
          fp_backup_conf [ {{ fp_backup_conf }} ]
   debug:

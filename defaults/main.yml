@@ -68,8 +68,8 @@ fp_swap: False
 # ----------------------------------------------------------------------
 # fstab
 fp_fstab_entries:
-  - { name: "/proc", src: "proc", fstype: "procfs", opts: "rw" }
-  - { name: "/dev/fd", src: "fdesc", fstype: "fdescfs", opts: "rw" }
+  - {name: "/proc", src: "proc", fstype: "procfs", opts: "rw"}
+  - {name: "/dev/fd", src: "fdesc", fstype: "fdescfs", opts: "rw"}
 # Note: Configure swap with separate task swap
 
 # ----------------------------------------------------------------------
@@ -109,8 +109,8 @@ sshd_config_path: "/etc/ssh/sshd_config"
 sshd_PasswordAuthentication: "no"
 sshd_ChallengeResponseAuthentication: "no"
 sshd_config:
-  - { key: PasswordAuthentication, value: "{{ sshd_PasswordAuthentication }}" }
-  - { key: ChallengeResponseAuthentication, value: "{{ sshd_ChallengeResponseAuthentication }}" }
+  - {key: PasswordAuthentication, value: "{{ sshd_PasswordAuthentication }}"}
+  - {key: ChallengeResponseAuthentication, value: "{{ sshd_ChallengeResponseAuthentication }}"}
 
 # ----------------------------------------------------------------------
 # users and groups
@@ -359,12 +359,12 @@ fp_wpasupplicant_conf_file: "{{ fp_wpasupplicant_conf_dir }}/wpa_supplicant.conf
 fp_wpasupplicant_program: "/usr/sbin/wpa_supplicant"
 fp_wpasupplicant_flags: "-s"
 fp_wpasupplicant_rcconf:
-  - { key: "wpa_supplicant_program", value: "{{ fp_wpasupplicant_program }}" }
-  - { key: "wpa_supplicant_flags", value: "{{ fp_wpasupplicant_flags }}" }
-  - { key: "wpa_supplicant_conf_file", value: "{{ fp_wpasupplicant_conf_file }}" }
+  - {key: "wpa_supplicant_program", value: "{{ fp_wpasupplicant_program }}"}
+  - {key: "wpa_supplicant_flags", value: "{{ fp_wpasupplicant_flags }}"}
+  - {key: "wpa_supplicant_conf_file", value: "{{ fp_wpasupplicant_conf_file }}"}
 fp_wpasupplicant_conf_ctrl_interface: "/var/run/wpa_supplicant"
 fp_wpasupplicant_conf_global:
-  - { key: "ctrl_interface", value: "{{ fp_wpasupplicant_conf_ctrl_interface }}" }
+  - {key: "ctrl_interface", value: "{{ fp_wpasupplicant_conf_ctrl_interface }}"}
 fp_wpasupplicant_conf: []
 
 # ----------------------------------------------------------------------
@@ -373,7 +373,7 @@ fp_linux_enable: False
 fp_linux_install: False
 fp_linux_debug: False
 fp_linux_fstab:
-  - { name: "/compat/linux/proc", src: "linproc", fstype: "linprocfs", opts: "rw" }
+  - {name: "/compat/linux/proc", src: "linproc", fstype: "linprocfs", opts: "rw"}
 fp_linux_lib_dir: "copy/linux-compat-lib"
 fp_linux_lib: []
 
@@ -436,6 +436,18 @@ fp_login_conf:
       - charset=UTF-8
       - lang=ru_RU.UTF-8
       - tc=default
+
+# ----------------------------------------------------------------------
+# tmpmfs
+
+fp_tmpmfs_configure: False
+fp_tmpmfs: "AUTO"
+fp_tmpmfs_tmpsize: "100m"
+fp_tmpmfs_flags: "-S"
+fp_tmpmfs_rcconf:
+  - {key: "tmpmfs", value: "{{ fp_tmpmfs }}"}
+  - {key: "tmpsize", value: "{{ fp_tmpmfs_tmpsize }}"}
+  - {key: "tmpmfs_flags", value: "{{ fp_tmpmfs_flags }}"}
 
 # EOF
 ...
