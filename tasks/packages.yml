@@ -19,6 +19,10 @@
          {{ fp_packages | to_yaml }}
          fp_links
          {{ fp_links | to_yaml }}
+
+         ansible_architecture [ {{ ansible_architecture }} ]
+         pkg_dict_{{ ansible_architecture }}
+         {{ lookup('vars', 'pkg_dict_' + ansible_architecture)| to_yaml }}
   debug:
     msg: "{{ msg.split('\n') }}"
   when: fp_debug|bool
