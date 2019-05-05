@@ -1,9 +1,9 @@
 # {{ ansible_managed }}
-::1		localhost	localhost.{{ fp_domain }}
-127.0.0.1	localhost	localhost.{{ fp_domain }}
+{{ fp_hosts_localhost_IPv6 }}	localhost localhost.{{ fp_domain }}
+{{ fp_hosts_localhost_IPv4 }}	localhost localhost.{{ fp_domain }}
 
 {% for item in fp_hosts %}
-{{ item.ip }}     {{ item.fqdn }} {{ item.hostname|default('') }}
+{{ item.ip }}    {{ item.fqdn }} {{ item.hostname|default('') }}
 {% endfor %}
 
 # EOF
