@@ -5,8 +5,8 @@ fp_debug: False
 fp_backup_conf: no
 
 freebsd_install_method: "packages"
-#freebsd_install_method: "ports"
-#freebsd_use_packages: "yes"
+# freebsd_install_method: "ports"
+# freebsd_use_packages: "yes"
 freebsd_install_retries: 10
 freebsd_install_delay: 5
 
@@ -57,15 +57,15 @@ fp_synchronize_times: false
 # ----------------------------------------------------------------------
 # swap
 fp_swap: False
-#fp_swap_file: "/usr/swap0"
-#fp_swap_md: "md99"
-#fp_swap_size: 4096
-#fp_swap_size: 2048
-#fp_swap_size:  1536
-#fp_swap_stsize: "{{ fp_swap_size * 1024 * 1024 }}"
-#fp_swap_stsize: "4294967296"
-#fp_swap_stsize: "2147483648"
-#fp_swap_stsize: "1610612736"
+# fp_swap_file: "/usr/swap0"
+# fp_swap_md: "md99"
+# fp_swap_size: 4096
+# fp_swap_size: 2048
+# fp_swap_size:  1536
+# fp_swap_stsize: "{{ fp_swap_size * 1024 * 1024 }}"
+# fp_swap_stsize: "4294967296"
+# fp_swap_stsize: "2147483648"
+# fp_swap_stsize: "1610612736"
 
 # ----------------------------------------------------------------------
 # fstab
@@ -86,7 +86,7 @@ fp_libmap_entries: []
 # Timezone
 # details about zoneinfo in man tzsetup
 fp_zoneinfo: "UTC"
-#fp_zoneinfo: "Europe/London"
+# fp_zoneinfo: "Europe/London"
 fp_zoneinfo_path: "/usr/share/zoneinfo"
 
 # ----------------------------------------------------------------------
@@ -129,12 +129,12 @@ fp_authorized_key_install_individually: True
 # If fp_authorized_key_install_individually: False,
 # use the following parameters
 fp_authorized_key_install_exclusive: no
-#fp_authorized_key_comment: ""
+# fp_authorized_key_comment: ""
 fp_authorized_key_follow: no
 # fp_authorized_key_key_options: ""
 fp_authorized_key_manage_dir: yes
-#fp_authorized_key_path: ""
-#fp_authorized_key_state: present
+# fp_authorized_key_path: ""
+# fp_authorized_key_state: present
 fp_authorized_key_validate_certs: yes
 
 # ----------------------------------------------------------------------
@@ -159,7 +159,7 @@ fp_apcupsd_conf_file: "{{ fp_apcupsd_conf_dir }}/apcupsd.conf"
 fp_apcupsd_conf_owner: "root"
 fp_apcupsd_conf_group: "wheel"
 fp_apcupsd_conf_mode: "644"
-#fp_apcupsd_devices: []
+# fp_apcupsd_devices: []
 fp_apcupsd_UPSNAME: "UPS01"
 fp_apcupsd_UPSCABLE: "usb"
 fp_apcupsd_UPSTYPE: "usb"

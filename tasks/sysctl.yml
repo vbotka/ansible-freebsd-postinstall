@@ -33,12 +33,12 @@
   register: tmp_loader_vars
   changed_when: False
 
-#- name: "sysctl: Debug tmp_loader_vars"
-#  debug:
-#    var: tmp_loader_vars.stdout
-#  when:
-#    - fp_debug
-#    - not ansible_check_mode
+# - name: "sysctl: Debug tmp_loader_vars"
+#   debug:
+#     var: tmp_loader_vars.stdout
+#   when:
+#     - fp_debug
+#     - not ansible_check_mode
 
 - name: "sysctl: Init fp_sysctl_loader_conf"
   set_fact:

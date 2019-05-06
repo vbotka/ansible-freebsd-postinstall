@@ -7,9 +7,9 @@
     line: "{{ item.line }}"
     backup: "{{ fp_backup_conf }}"
   loop:
-    - { regexp: "^ntpdate_enable",  line: "ntpdate_enable=\"{{ ntpdate_enable }}\""}
-    - { regexp: "^ntpdate_flags",  line: "ntpdate_flags=\"{{ ntpdate_flags }}\""}
-    - { regexp: "^ntpd_sync_on_start",  line: "ntpd_sync_on_start=\"{{ ntpd_sync_on_start }}\""}
+    - {regexp: "^ntpdate_enable", line: "ntpdate_enable=\"{{ ntpdate_enable }}\""}
+    - {regexp: "^ntpdate_flags", line: "ntpdate_flags=\"{{ ntpdate_flags }}\""}
+    - {regexp: "^ntpd_sync_on_start", line: "ntpd_sync_on_start=\"{{ ntpd_sync_on_start }}\""}
 
 # EOF
 ...

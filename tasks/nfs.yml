@@ -9,7 +9,7 @@
     line: "{{ item.line }}"
     backup: "{{ fp_backup_conf }}"
   loop:
-    - { regexp: "^\\s*nfs_client_enable\\s*=", line: "nfs_client_enable=\"YES\""}
+    - {regexp: "^\\s*nfs_client_enable\\s*=", line: "nfs_client_enable=\"YES\""}
   notify: enable and start nfs client
   tags: fp_nfs_enable_nfsclient
 
@@ -21,7 +21,7 @@
     line: "{{ item.line }}"
     backup: "{{ fp_backup_conf }}"
   loop:
-    - { regexp: "^\\s*nfs_client_enable\\s*=", line: "nfs_client_enable=\"NO\""}
+    - {regexp: "^\\s*nfs_client_enable\\s*=", line: "nfs_client_enable=\"NO\""}
   notify: disable and stop nfs client
   tags: fp_nfs_disable_nfsclient
 
@@ -33,7 +33,7 @@
     line: "{{ item.line }}"
     backup: "{{ fp_backup_conf }}"
   loop:
-    - { regexp: "^\\s*rpc_lockd_enable\\s*=", line: "rpc_lockd_enable=\"YES\""}
+    - {regexp: "^\\s*rpc_lockd_enable\\s*=", line: "rpc_lockd_enable=\"YES\""}
   notify: enable and start lockd
   tags: fp_nfs_enable_lockd
 
@@ -45,7 +45,7 @@
     line: "{{ item.line }}"
     backup: "{{ fp_backup_conf }}"
   loop:
-    - { regexp: "^\\s*rpc_lockd_enable\\s*=", line: "rpc_lockd_enable=\"NO\""}
+    - {regexp: "^\\s*rpc_lockd_enable\\s*=", line: "rpc_lockd_enable=\"NO\""}
   notify: disable and stop lockd
   tags: fp_nfs_disable_lockd
 
@@ -57,7 +57,7 @@
     line: "{{ item.line }}"
     backup: "{{ fp_backup_conf }}"
   loop:
-    - { regexp: "^\\s*rpc_statd_enable\\s*=", line: "rpc_statd_enable=\"YES\""}
+    - {regexp: "^\\s*rpc_statd_enable\\s*=", line: "rpc_statd_enable=\"YES\""}
   notify: enable and start statd
   tags: fp_nfs_enable_statd
 
@@ -69,7 +69,7 @@
     line: "{{ item.line }}"
     backup: "{{ fp_backup_conf }}"
   loop:
-    - { regexp: "^\\s*rpc_statd_enable\\s*=", line: "rpc_statd_enable=\"NO\""}
+    - {regexp: "^\\s*rpc_statd_enable\\s*=", line: "rpc_statd_enable=\"NO\""}
   notify: disable and stop statd
   tags: fp_nfs_disable_statd
 

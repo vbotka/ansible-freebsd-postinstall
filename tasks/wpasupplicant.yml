@@ -64,7 +64,7 @@
     line: "{{ item.key }}={{ item.value }}"
     backup: "{{ fp_wpasupplicant_backup }}"
   loop:
-    - { key: "conf_file", value: "${wpa_supplicant_conf_file}.${ifn}" }
+    - {key: "conf_file", value: "${wpa_supplicant_conf_file}.${ifn}"}
   when: fp_wpasupplicant_conf_rc|bool
   tags: fp_wpasupplicant_conf_rc
 

@@ -2,74 +2,74 @@
 # vars for freebsd-postinstall
 
 # ----------------------------------------------------------------------
-#rc_conf_hostname: "srv.example.com"
-#digitalocean: "no"
+# rc_conf_hostname: "srv.example.com"
+# digitalocean: "no"
 
 # ----------------------------------------------------------------------
-#fp_zoneinfo: "UTC"
-#fp_zoneinfo: "Europe/London"
-#fp_zoneinfo_path: "/usr/share/zoneinfo"
+# fp_zoneinfo: "UTC"
+# fp_zoneinfo: "Europe/London"
+# fp_zoneinfo_path: "/usr/share/zoneinfo"
 
 # ----------------------------------------------------------------------
 # /etc/make.conf
-#fp_make_conf_owner: "root"
-#fp_make_conf_group: "wheel"
-#fp_make_conf_mode: "u=rw,g=r,o=r"
-#fp_make_conf:
-#  - "DEFAULT_VERSIONS+=ssl=openssl"
-#  - "DEFAULT_VERSIONS+=emacs=nox"
+# fp_make_conf_owner: "root"
+# fp_make_conf_group: "wheel"
+# fp_make_conf_mode: "u=rw,g=r,o=r"
+# fp_make_conf:
+#   - "DEFAULT_VERSIONS+=ssl=openssl"
+#   - "DEFAULT_VERSIONS+=emacs=nox"
 
 # ----------------------------------------------------------------------
 # Packages/Ports
 #
-#fp_pkg_autoremove: no
-#fp_pkg_cached: no
-#fp_pkg_state: present
-#fp_pkg_chroot:
-#fp_pkg_jail:
-#fp_pkg_site:
-#fp_pkg_rootdir:
-#freebsd_install_method: "packages"
-#freebsd_install_method: "ports"
-#freebsd_use_packages: "yes"
-#fp_packages:
-#  - { list: postinstall, enabled: True }
-#  - { list: smart, enabled: "{{ fp_smartd_install }}" }
-#  - { list: hostap, enabled: "{{ fp_hostapd_install }}" }
-#  - { list: procmail, enabled: "{{ fp_procmail_install }}" }
-#  - { list: apcups, enabled: "{{ fp_apcupsd_install }}" }
-#  - { list: wpa_supplicant, enabled: "{{ fp_wpasupplicant_install }}" }
-#bsd_linux_version: "c6"
-#pkg_dict_i386:
-#  - pkglist: postinstall
-#    packages:
-#      - shells/bash
-#      - editors/emacs
-#      - devel/git
-#      - archivers/gtar
-#      - ports-mgmt/pkg
-#      - ports-mgmt/portmaster
-#      - ports-mgmt/portupgrade
-#      - security/py-certbot
-#      - net/rsync
-#  - pkglist: smart
-#    packages:
-#      - sysutils/smartmontools
-#  - pkglist: hostap
-#    packages:
-#      - net/hostapd
-#  - pkglist: procmail
-#    packages:
-#      - mail/procmail
-#  - pkglist: apcups
-#    packages:
-#      - sysutils/apcupsd
-#  - pkglist: wpa_supplicant
-#    packages:
-#      - security/wpa_supplicant
-#  - pkglist: linux
-#    packages:
-#      - emulators/linux_base-{{ bsd_linux_version }}
+# fp_pkg_autoremove: no
+# fp_pkg_cached: no
+# fp_pkg_state: present
+# fp_pkg_chroot:
+# fp_pkg_jail:
+# fp_pkg_site:
+# fp_pkg_rootdir:
+# freebsd_install_method: "packages"
+# freebsd_install_method: "ports"
+# freebsd_use_packages: "yes"
+# fp_packages:
+#   - { list: postinstall, enabled: True }
+#   - { list: smart, enabled: "{{ fp_smartd_install }}" }
+#   - { list: hostap, enabled: "{{ fp_hostapd_install }}" }
+#   - { list: procmail, enabled: "{{ fp_procmail_install }}" }
+#   - { list: apcups, enabled: "{{ fp_apcupsd_install }}" }
+#   - { list: wpa_supplicant, enabled: "{{ fp_wpasupplicant_install }}" }
+# bsd_linux_version: "c6"
+# pkg_dict_i386:
+#   - pkglist: postinstall
+#     packages:
+#       - shells/bash
+#       - editors/emacs
+#       - devel/git
+#       - archivers/gtar
+#       - ports-mgmt/pkg
+#       - ports-mgmt/portmaster
+#       - ports-mgmt/portupgrade
+#       - security/py-certbot
+#       - net/rsync
+#   - pkglist: smart
+#     packages:
+#       - sysutils/smartmontools
+#   - pkglist: hostap
+#     packages:
+#       - net/hostapd
+#   - pkglist: procmail
+#     packages:
+#       - mail/procmail
+#   - pkglist: apcups
+#     packages:
+#       - sysutils/apcupsd
+#   - pkglist: wpa_supplicant
+#     packages:
+#       - security/wpa_supplicant
+#   - pkglist: linux
+#     packages:
+#       - emulators/linux_base-{{ bsd_linux_version }}
 #
 # NOTES
 # * gtar: Ansible module unarchive needs gtar. Ansible make use of the
@@ -78,92 +78,92 @@
 #   extracts and reports as changed.
 
 # ----------------------------------------------------------------------
-#ntpdate_enable: "YES"
-#ntpdate_flags: "-b"
-#ntpd_sync_on_start: "NO"
+# ntpdate_enable: "YES"
+# ntpdate_flags: "-b"
+# ntpd_sync_on_start: "NO"
 
 # ----------------------------------------------------------------------
-#freebsd_users:
-#  - { name: "admin"
-#      shell: "/usr/local/bin/bash"
-#      password: ""
-#      update_password: "on_create"
-#      }
+# freebsd_users:
+#   - { name: "admin"
+#       shell: "/usr/local/bin/bash"
+#       password: ""
+#       update_password: "on_create"
+#       }
 # SEE: How do I generate crypted passwords for the user module?
 # http://docs.ansible.com/ansible/faq.html#how-do-i-generate-crypted-passwords-for-the-user-module
 # example: mkpasswd --method=SHA-512 PASSWORD -s SALT
 # SALT can be created with: pwgen -s 16 1
 #
-#freebsd_users_groups:
+# freebsd_users_groups:
 #  - { name: "admin", groups: "wheel" }
 # groups must not comprise primary group
 
 # ----------------------------------------------------------------------
-#fp_authorized_key:
-#  - { user: "admin", key: "{{ lookup('file', '/home/admin/.ssh/id_rsa.pub') }}" }
+# fp_authorized_key:
+#   - { user: "admin", key: "{{ lookup('file', '/home/admin/.ssh/id_rsa.pub') }}" }
 
 # ----------------------------------------------------------------------
-#ssh_Protocol: "2"
-#ssh_ForwardAgent: "no"
-#ssh_ForwardX11: "no"
-#ssh_HostbasedAuthentication: "no"
-#ssh_StrictHostKeyChecking: "no"
-#ssh_Ciphers: " aes128-ctr,aes192-ctr,aes256-ctr,arcfour256,arcfour128,aes128-cbc,3des-cbc"
-#ssh_Tunnel: "no"
-#ssh_ServerAliveInterval: "420"
-#ssh_config:
-#  - host: "*"
-#    conf:
-#     - { key: Protocol, val: "{{ ssh_Protocol }}" }
-#     - { key: ForwardAgent, val: "{{ ssh_ForwardAgent }}" }
-#     - { key: ForwardX11, val: "{{ ssh_ForwardX11 }}" }
-#     - { key: HostbasedAuthentication, val: "{{ ssh_HostbasedAuthentication }}" }
-#     - { key: StrictHostKeyChecking, val: "{{ ssh_StrictHostKeyChecking }}" }
-#     - { key: Ciphers, val: "{{ ssh_Ciphers }}" }
-#     - { key: Tunnel, val: "{{ ssh_Tunnel }}" }
-#     - { key: ServerAliveInterval, val: "{{ ssh_ServerAliveInterval }}" }
+# ssh_Protocol: "2"
+# ssh_ForwardAgent: "no"
+# ssh_ForwardX11: "no"
+# ssh_HostbasedAuthentication: "no"
+# ssh_StrictHostKeyChecking: "no"
+# ssh_Ciphers: " aes128-ctr,aes192-ctr,aes256-ctr,arcfour256,arcfour128,aes128-cbc,3des-cbc"
+# ssh_Tunnel: "no"
+# ssh_ServerAliveInterval: "420"
+# ssh_config:
+#   - host: "*"
+#     conf:
+#      - { key: Protocol, val: "{{ ssh_Protocol }}" }
+#      - { key: ForwardAgent, val: "{{ ssh_ForwardAgent }}" }
+#      - { key: ForwardX11, val: "{{ ssh_ForwardX11 }}" }
+#      - { key: HostbasedAuthentication, val: "{{ ssh_HostbasedAuthentication }}" }
+#      - { key: StrictHostKeyChecking, val: "{{ ssh_StrictHostKeyChecking }}" }
+#      - { key: Ciphers, val: "{{ ssh_Ciphers }}" }
+#      - { key: Tunnel, val: "{{ ssh_Tunnel }}" }
+#      - { key: ServerAliveInterval, val: "{{ ssh_ServerAliveInterval }}" }
 
-#sshd_enable: True
-#sshd_PasswordAuthentication: "no"
-#sshd_ChallengeResponseAuthentication: "no"
-#sshd_PermitRootLogin: "no"
-#sshd_PermitTunnel: "no"
-#sshd_AllowTcpForwarding: "yes"
-#sshd_X11Forwarding: "no"
-#sshd_config:
-#  - { key: PasswordAuthentication, value: "{{ sshd_PasswordAuthentication }}" }
-#  - { key: ChallengeResponseAuthentication, value: "{{ sshd_ChallengeResponseAuthentication }}" }
-#  - { key: PermitRootLogin, value: "{{ sshd_PermitRootLogin }}" }
-#  - { key: PermitTunnel, value: "{{ sshd_PermitTunnel }}" }
-#  - { key: AllowTcpForwarding, value: "{{ sshd_AllowTcpForwarding }}" }
-#  - { key: X11Forwarding, value: "{{ sshd_X11Forwarding }}" }
-
-# ----------------------------------------------------------------------
-#fp_libmap_entries:
-#  - { origin: "libxml2.so", target: "libxml2.so.2.9.4" }
+# sshd_enable: True
+# sshd_PasswordAuthentication: "no"
+# sshd_ChallengeResponseAuthentication: "no"
+# sshd_PermitRootLogin: "no"
+# sshd_PermitTunnel: "no"
+# sshd_AllowTcpForwarding: "yes"
+# sshd_X11Forwarding: "no"
+# sshd_config:
+#   - { key: PasswordAuthentication, value: "{{ sshd_PasswordAuthentication }}" }
+#   - { key: ChallengeResponseAuthentication, value: "{{ sshd_ChallengeResponseAuthentication }}" }
+#   - { key: PermitRootLogin, value: "{{ sshd_PermitRootLogin }}" }
+#   - { key: PermitTunnel, value: "{{ sshd_PermitTunnel }}" }
+#   - { key: AllowTcpForwarding, value: "{{ sshd_AllowTcpForwarding }}" }
+#   - { key: X11Forwarding, value: "{{ sshd_X11Forwarding }}" }
 
 # ----------------------------------------------------------------------
-#fp_smartd_install: True
-#fp_smartd_service_enabled: True
-#fp_smartd_service_name: 'smartd'
-#fp_smartd_service_state: 'started'
-#fp_smartd_devices:
-#  - { regexp: "^/dev/ada0", line: "/dev/ada0 -a -o on -S on -s (S/../.././02|L/../../6/03) -m admin"}
+# fp_libmap_entries:
+#   - { origin: "libxml2.so", target: "libxml2.so.2.9.4" }
+
+# ----------------------------------------------------------------------
+# fp_smartd_install: True
+# fp_smartd_service_enabled: True
+# fp_smartd_service_name: 'smartd'
+# fp_smartd_service_state: 'started'
+# fp_smartd_devices:
+#   - { regexp: "^/dev/ada0", line: "/dev/ada0 -a -o on -S on -s (S/../.././02|L/../../6/03) -m admin"}
 
 # ----------------------------------------------------------------------
 # nfsd
-#fp_nfsd_service_enable: True
-#fp_rpcbind_enable: True
-#fp_rpc_lockd_enable: True
-#fp_rpc_statd_enable: True
-#fp_nfsd_exports:
-#  - { mount_point: '/export', flags: '-alldirs -network 10.1.0.0 -mask 255.255.255.0' }
-#  - { mount_point: '/export2', flags: '-alldirs -network 10.1.0.0 -mask 255.255.255.0' }
+# fp_nfsd_service_enable: True
+# fp_rpcbind_enable: True
+# fp_rpc_lockd_enable: True
+# fp_rpc_statd_enable: True
+# fp_nfsd_exports:
+#   - { mount_point: '/export', flags: '-alldirs -network 10.1.0.0 -mask 255.255.255.0' }
+#   - { mount_point: '/export2', flags: '-alldirs -network 10.1.0.0 -mask 255.255.255.0' }
 
 # ----------------------------------------------------------------------
 # ntpd
-#fp_ntp_service_enable: True
-#fp_ntp_config_server:
+# fp_ntp_service_enable: True
+# fp_ntp_config_server:
 # The following three servers will give you a random set of three NTP servers geographically close to you.
 # http://blog.up-link.ro/how-to-configure-ntp-service-in-freebsd/
 #  - '0.freebsd.pool.ntp.org iburst'
@@ -177,183 +177,183 @@
 
 # ----------------------------------------------------------------------
 # procmail
-#fp_procmail_install: True
-#fp_procmail_verbose: "off"
-#fp_procmail_forwarders:
-#  - { user: "responder", forward: "|exec {{ fp_procmail_bin }}" }
-#fp_procmail_includerc:
-#  - user: "responder"
-#    template: "duplicates"
-#    par1: ""
-#    par2: ""
-#  - user: "responder"
-#    template: "capability"
-#    par1: "responder@{{ rc_conf_hostname }}"
-#    par2: "{{ fp_procmail_pmdir }}"
-#  - user: "responder"
-#    template: "get-message"
-#    par1: "responder@{{ rc_conf_hostname }}"
-#    par2: "/home/responder/MESSAGE.procmail"
-#  - user: "responder"
-#    template: "get-fingerprint"
-#    par1: "responder@{{ rc_conf_hostname }}"
-#    par2: "/etc/ssh/ssh_host_ecdsa_key.pub"
-#  - user: "responder"
-#    template: "get-certificate"
-#    par1: "responder@{{ rc_conf_hostname }}"
-#    par2: "cat /usr/local/etc/letsencrypt/FINGERPRINT"
+# fp_procmail_install: True
+# fp_procmail_verbose: "off"
+# fp_procmail_forwarders:
+#   - { user: "responder", forward: "|exec {{ fp_procmail_bin }}" }
+# fp_procmail_includerc:
+#   - user: "responder"
+#     template: "duplicates"
+#     par1: ""
+#     par2: ""
+#   - user: "responder"
+#     template: "capability"
+#     par1: "responder@{{ rc_conf_hostname }}"
+#     par2: "{{ fp_procmail_pmdir }}"
+#   - user: "responder"
+#     template: "get-message"
+#     par1: "responder@{{ rc_conf_hostname }}"
+#     par2: "/home/responder/MESSAGE.procmail"
+#   - user: "responder"
+#     template: "get-fingerprint"
+#     par1: "responder@{{ rc_conf_hostname }}"
+#     par2: "/etc/ssh/ssh_host_ecdsa_key.pub"
+#   - user: "responder"
+#     template: "get-certificate"
+#     par1: "responder@{{ rc_conf_hostname }}"
+#     par2: "cat /usr/local/etc/letsencrypt/FINGERPRINT"
 
 # ----------------------------------------------------------------------
 # motd
-#fp_motd: "To get capabilities of the responder send email TO: responder@{{ rc_conf_hostname }} SUBJECT: capability"
+# fp_motd: "To get capabilities of the responder send email TO: responder@{{ rc_conf_hostname }} SUBJECT: capability"
 
 # ----------------------------------------------------------------------
 # sysctl
 # NOTE: fp_sysctl configuration is stored in /etc/sysctl.conf.
 # Set state=absent to remove the item from /etc/sysctl.conf before
 # removing it from the list fp_sysctl.
-#fp_sysctl:
-#    - { name: "vfs.zfs.prefetch_disable", value: "0" }
-#    - { name: "net.inet.ip.forwarding", value: "1" }
-#    - { name: "security.jail.set_hostname_allowed", value: "1" }
-#    - { name: "security.jail.param.path", value: "1024" }
+# fp_sysctl:
+#     - { name: "vfs.zfs.prefetch_disable", value: "0" }
+#     - { name: "net.inet.ip.forwarding", value: "1" }
+#     - { name: "security.jail.set_hostname_allowed", value: "1" }
+#     - { name: "security.jail.param.path", value: "1024" }
 # NOTE: fp_sysctl_loader_conf is created by the sysctl.yml tasks.
 
 # ----------------------------------------------------------------------
 # hosts
-#fp_hosts: []
-#  - { ip: "10.1.0.10", fqdn: "srv.example.com", hostname: "srv" }
+# fp_hosts: []
+#   - { ip: "10.1.0.10", fqdn: "srv.example.com", hostname: "srv" }
 
 # ----------------------------------------------------------------------
 # gitserver
-#fp_gitserver_install: True
-#fp_gitserver_owner: "git"
-#fp_gitserver_owner_uid: "9418"
-#fp_gitserver_owner_shell: "/usr/local/libexec/git-core/git-shell"
-#fp_gitserver_owner_home: "/git"
-#fp_gitserver_group: "git"
-#fp_gitserver_group_gid: "9418"
-#fp_gitserver_dir_mode: "0770"
+# fp_gitserver_install: True
+# fp_gitserver_owner: "git"
+# fp_gitserver_owner_uid: "9418"
+# fp_gitserver_owner_shell: "/usr/local/libexec/git-core/git-shell"
+# fp_gitserver_owner_home: "/git"
+# fp_gitserver_group: "git"
+# fp_gitserver_group_gid: "9418"
+# fp_gitserver_dir_mode: "0770"
 
 # ----------------------------------------------------------------------
 # sudoers
-#fp_sudoers_conf: "/usr/local/etc/sudoers"
-#fp_sudoers:
-#  - { key: admin, value: "ALL=NOPASSWD: ALL" }
+# fp_sudoers_conf: "/usr/local/etc/sudoers"
+# fp_sudoers:
+#   - { key: admin, value: "ALL=NOPASSWD: ALL" }
 
 # ----------------------------------------------------------------------
 # loader.conf
-#fp_loader_conf: []
-#fp_loader_load_modules: True
-#fp_loader_conf_modules:
-#  - geom_eli
+# fp_loader_conf: []
+# fp_loader_load_modules: True
+# fp_loader_conf_modules:
+#   - geom_eli
 
 # ----------------------------------------------------------------------
 # cron
-#fp_cron_var:
-#  - { user: "admin", name: "MAILTO", value: "admin@example.com" }
-#fp_cron_tab:
-#  - { state: "absent",
-#       user: "admin",
-#       name: "Run some command",
-#       minute: "01", hour: "04", day: "*", month: "*", weekday: "*",
-#       command: "/usr/bin/somedirectory/somecommand" }
+# fp_cron_var:
+#   - { user: "admin", name: "MAILTO", value: "admin@example.com" }
+# fp_cron_tab:
+#   - { state: "absent",
+#        user: "admin",
+#        name: "Run some command",
+#        minute: "01", hour: "04", day: "*", month: "*", weekday: "*",
+#        command: "/usr/bin/somedirectory/somecommand" }
 
 # ----------------------------------------------------------------------
 # resolvconf
-#fp_resolvconf_conf: "/etc/resolvconf.conf"
-#fp_resolvconf:
-#  - { key: "resolvconf", val: "YES" }
-#  - { key: "name_servers", val: "208.67.222.222 208.67.220.220" }
-#fp_resolvconf_absent:
-#  - "resolvconf"
+# fp_resolvconf_conf: "/etc/resolvconf.conf"
+# fp_resolvconf:
+#   - { key: "resolvconf", val: "YES" }
+#   - { key: "name_servers", val: "208.67.222.222 208.67.220.220" }
+# fp_resolvconf_absent:
+#   - "resolvconf"
 
 # ----------------------------------------------------------------------
-#fp_aliases:
-#  - { alias: "firstname", user: "user1" }
-#  - { alias: "firstname.lastname",  user: "user1" }
-#  - { alias: "flastname", user: "user1" }
+# fp_aliases:
+#   - { alias: "firstname", user: "user1" }
+#   - { alias: "firstname.lastname",  user: "user1" }
+#   - { alias: "flastname", user: "user1" }
 
 # ----------------------------------------------------------------------
 # /etc/periodic.conf.local
-#fp_periodic_conf_local:
-#  - { regexp: "daily_sa_enable=", value: "\"NO\"" }
-#  - { regexp: "daily_sa_compile=", value: "\"NO\"" }
-#  - { regexp: "daily_sa_compile_nice=", value: "\"NO\"" }
-#  - { regexp: "daily_sa_restart_spamd=", value: "\"NO\"" }
+# fp_periodic_conf_local:
+#   - { regexp: "daily_sa_enable=", value: "\"NO\"" }
+#   - { regexp: "daily_sa_compile=", value: "\"NO\"" }
+#   - { regexp: "daily_sa_compile_nice=", value: "\"NO\"" }
+#   - { regexp: "daily_sa_restart_spamd=", value: "\"NO\"" }
 
 # ----------------------------------------------------------------------
 # wpa_supplicant
-#fp_wpasupplicant_install: true
-#fp_wpasupplicant_debug: true
-#fp_wpasupplicant_backup: yes
-#fp_wpasupplicant_conf_file_link: "wlan0"
-#fp_wpasupplicant_program: "/usr/local/sbin/wpa_supplicant"
-#fp_wpasupplicant_conf_global:
-#  - { key: "ctrl_interface", value: "{{ fp_wpasupplicant_conf_ctrl_interface }}" }
-#  - { key: "ctrl_interface_group", value: "wheel" }
-#  - { key: "fast_reauth", value: "1" }
-#fp_wpasupplicant_conf:
-#  - dev: "wlan0"
-#    network:
-#      - conf:
-#        - { key: "ssid", value: "\"SSID-OF-MY-AP\"" }
-#        - { key: "key_mgmt", value: "WPA-PSK" }
-#        - { key: "pairwise", value: "CCMP" }
-#        - { key: "psk", value: "\"my-ap-password\"" }
+# fp_wpasupplicant_install: true
+# fp_wpasupplicant_debug: true
+# fp_wpasupplicant_backup: yes
+# fp_wpasupplicant_conf_file_link: "wlan0"
+# fp_wpasupplicant_program: "/usr/local/sbin/wpa_supplicant"
+# fp_wpasupplicant_conf_global:
+#   - { key: "ctrl_interface", value: "{{ fp_wpasupplicant_conf_ctrl_interface }}" }
+#   - { key: "ctrl_interface_group", value: "wheel" }
+#   - { key: "fast_reauth", value: "1" }
+# fp_wpasupplicant_conf:
+#   - dev: "wlan0"
+#     network:
+#       - conf:
+#         - { key: "ssid", value: "\"SSID-OF-MY-AP\"" }
+#         - { key: "key_mgmt", value: "WPA-PSK" }
+#         - { key: "pairwise", value: "CCMP" }
+#         - { key: "psk", value: "\"my-ap-password\"" }
 
 # ----------------------------------------------------------------------
 # linux
-#fp_linux_enable: True
-#fp_linux_install: True
-#fp_linux_debug: True
-#fp_linux_fstab:
-#  - { name: "/compat/linux/proc", src: "linproc", fstype: "linprocfs", opts: "rw" }
-#fp_linux_lib_dir: "copy/linux-compat-lib"
-#fp_linux_lib:
-#  - { src: "/lib/x86_64-linux-gnu/libpthread.so.0", link: "libpthread.so.0" }
-#  - { src: "/lib/x86_64-linux-gnu/libc.so.6", link: "libc.so.6" }
+# fp_linux_enable: True
+# fp_linux_install: True
+# fp_linux_debug: True
+# fp_linux_fstab:
+#   - { name: "/compat/linux/proc", src: "linproc", fstype: "linprocfs", opts: "rw" }
+# fp_linux_lib_dir: "copy/linux-compat-lib"
+# fp_linux_lib:
+#   - { src: "/lib/x86_64-linux-gnu/libpthread.so.0", link: "libpthread.so.0" }
+#   - { src: "/lib/x86_64-linux-gnu/libc.so.6", link: "libc.so.6" }
 
 # ----------------------------------------------------------------------
 # mount-iso
-#fp_mount_iso_entries:
-#  - iso: "/export/images/FreeBSD-12.0-RELEASE-i386-disc1.iso"
-#    mount: "/export/distro/FreeBSD-12.0-RELEASE-i386-disc1.iso"
-#    state: "mounted"
-#  - iso: "/export/images/FreeBSD-12.0-RELEASE-amd64-disc1.iso"
-#    mount: "/export/distro/FreeBSD-12.0-RELEASE-amd64-disc1.iso"
-#    state: "mounted"
+# fp_mount_iso_entries:
+#   - iso: "/export/images/FreeBSD-12.0-RELEASE-i386-disc1.iso"
+#     mount: "/export/distro/FreeBSD-12.0-RELEASE-i386-disc1.iso"
+#     state: "mounted"
+#   - iso: "/export/images/FreeBSD-12.0-RELEASE-amd64-disc1.iso"
+#     mount: "/export/distro/FreeBSD-12.0-RELEASE-amd64-disc1.iso"
+#     state: "mounted"
 
 # ----------------------------------------------------------------------
 # login.conf
 #
 # FreeBSD handbook: 15.7.1. Create an Insecure User Class
 # https://www.freebsd.org/doc/handbook/mac-implementing.html
-#fp_login_conf_extra:
-#  - class: 'insecure'
-#    conf:
-#      - copyright=/etc/COPYRIGHT
-#      - welcome=/etc/motd
-#      - setenv=MAIL=/var/mail/$,BLOCKSIZE=K
-#      - path=~/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin
-#      - manpath=/usr/share/man /usr/local/man
-#      - nologin=/usr/sbin/nologin
-#      - cputime=1h30m
-#      - datasize=8M
-#      - vmemoryuse=100M
-#      - stacksize=2M
-#      - memorylocked=4M
-#      - memoryuse=8M
-#      - filesize=8M
-#      - coredumpsize=8M
-#      - openfiles=24
-#      - maxproc=32
-#      - priority=0
-#      - requirehome
-#      - passwordtime=91d
-#      - umask=022
-#      - ignoretime@
-#      - label=biba/10(10-10)
+# fp_login_conf_extra:
+#   - class: 'insecure'
+#     conf:
+#       - copyright=/etc/COPYRIGHT
+#       - welcome=/etc/motd
+#       - setenv=MAIL=/var/mail/$,BLOCKSIZE=K
+#       - path=~/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin
+#       - manpath=/usr/share/man /usr/local/man
+#       - nologin=/usr/sbin/nologin
+#       - cputime=1h30m
+#       - datasize=8M
+#       - vmemoryuse=100M
+#       - stacksize=2M
+#       - memorylocked=4M
+#       - memoryuse=8M
+#       - filesize=8M
+#       - coredumpsize=8M
+#       - openfiles=24
+#       - maxproc=32
+#       - priority=0
+#       - requirehome
+#       - passwordtime=91d
+#       - umask=022
+#       - ignoretime@
+#       - label=biba/10(10-10)
 
 # EOF
 ...

@@ -8,9 +8,9 @@
     line: "{{ item.line }}"
     backup: "{{ fp_backup_conf }}"
   loop:
-    - { regexp: "^nfs_server_enable", line: "nfs_server_enable=\"YES\""}
-    - { regexp: "^rpcbind_enable", line: "rpcbind_enable=\"YES\""}
-    - { regexp: "^mountd_flags", line: "mountd_flags=\"{{ fp_mountd_flags }}\""}
+    - {regexp: "^nfs_server_enable", line: "nfs_server_enable=\"YES\""}
+    - {regexp: "^rpcbind_enable", line: "rpcbind_enable=\"YES\""}
+    - {regexp: "^mountd_flags", line: "mountd_flags=\"{{ fp_mountd_flags }}\""}
   when: fp_nfsd_service_enable|bool
   notify: enable and start nfs server
 
@@ -21,7 +21,7 @@
     line: "{{ item.line }}"
     backup: "{{ fp_backup_conf }}"
   loop:
-    - { regexp: "^nfs_server_enable", line: "nfs_server_enable=\"NO\""}
+    - {regexp: "^nfs_server_enable", line: "nfs_server_enable=\"NO\""}
   when: not fp_nfsd_service_enable|bool
   notify: disable and stop nfs server
 
@@ -32,7 +32,7 @@
     line: "{{ item.line }}"
     backup: "{{ fp_backup_conf }}"
   loop:
-    - { regexp: "^rpc_lockd_enable", line: "rpc_lockd_enable=\"YES\""}
+    - {regexp: "^rpc_lockd_enable", line: "rpc_lockd_enable=\"YES\""}
   when: fp_rpc_lockd_enable|bool
   notify: enable and start lockd
 
@@ -43,7 +43,7 @@
     line: "{{ item.line }}"
     backup: "{{ fp_backup_conf }}"
   loop:
-    - { regexp: "^rpc_lockd_enable", line: "rpc_lockd_enable=\"NO\""}
+    - {regexp: "^rpc_lockd_enable", line: "rpc_lockd_enable=\"NO\""}
   when: not fp_rpc_lockd_enable|bool
   notify: disable and stop lockd
 
@@ -54,7 +54,7 @@
     line: "{{ item.line }}"
     backup: "{{ fp_backup_conf }}"
   loop:
-    - { regexp: "^rpc_statd_enable", line: "rpc_statd_enable=\"YES\""}
+    - {regexp: "^rpc_statd_enable", line: "rpc_statd_enable=\"YES\""}
   when: fp_rpc_statd_enable|bool
   notify: enable and start statd
 
@@ -65,7 +65,7 @@
     line: "{{ item.line }}"
     backup: "{{ fp_backup_conf }}"
   loop:
-    - { regexp: "^rpc_statd_enable", line: "rpc_statd_enable=\"NO\""}
+    - {regexp: "^rpc_statd_enable", line: "rpc_statd_enable=\"NO\""}
   when: not fp_rpc_statd_enable|bool
   notify: disable and stop statd
 
@@ -76,7 +76,7 @@
     line: "{{ item.line }}"
     backup: "{{ fp_backup_conf }}"
   loop:
-    - { regexp: "^rpcbind_enable", line: "rpcbind_enable=\"NO\""}
+    - {regexp: "^rpcbind_enable", line: "rpcbind_enable=\"NO\""}
   when: not fp_rpcbind_enable|bool
   notify: disable and stop rpcbind
 

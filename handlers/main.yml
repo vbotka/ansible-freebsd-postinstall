@@ -90,7 +90,7 @@
   service: name="hostapd" state="reloaded"
 
 # fstab
-#- name: mount all
+# - name: mount all
 #  command: mount -a
 
 # sysctl
@@ -110,8 +110,8 @@
 # NOTE 1: swapon creates /dev/mdXX
 # NOTE 2: Successful mount returns exit code 1
 # FreeBSD 11.1. Ansible 2.5 command_result:
-#RUNNING HANDLER [vbotka.freebsd-postinstall : mount swap] ***
-#fatal: [aaa.bbb.ccc.ddd]: FAILED! => changed=true
+# RUNNING HANDLER [vbotka.freebsd-postinstall : mount swap] ***
+# fatal: [aaa.bbb.ccc.ddd]: FAILED! => changed=true
 #  cmd: sh -c 'swapon -aL'
 #  delta: '0:00:00.025491'
 #  end: '2018-07-01 05:47:56.905803'
