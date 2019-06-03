@@ -8,11 +8,13 @@
     chown '{{ item.user }}' $forward;
     chmod 0644 $forward;
     fi"
+  args:
+    creates: "/home/{{ item.user }}/.forward"
   loop: "{{ fp_procmail_forwarders }}"
-  changed_when: False
   tags: fp_procmail_forward
 
 - name: "procmail: Configure forwarders"
+  when: fp_procmail_install|bool
   blockinfile:
     dest: "/home/{{ item.user }}/.forward"
     marker: "# {mark} ANSIBLE MANAGED BLOCK"
@@ -21,7 +23,6 @@
     block: |
       "{{ item.forward }}"
   loop: "{{ fp_procmail_forwarders }}"
-  when: fp_procmail_install|bool
   tags: fp_procmail_forwarders
 
 - name: "procmail: Create .procmailrc files"
@@ -32,8 +33,9 @@
     chown '{{ item.user }}' $procmailrc;
     chmod 0644 $procmailrc;
     fi"
+  args:
+    creates: "/home/{{ item.user }}/.procmailrc"
   loop: "{{ fp_procmail_forwarders }}"
-  changed_when: False
   tags: fp_procmail_procmailrc
 
 - name: "procmail: Configure .procmailrc"
