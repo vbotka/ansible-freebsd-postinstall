@@ -1,26 +1,32 @@
-freebsd_postinstall
-===================
+# freebsd_postinstall
 
 [![Build Status](https://travis-ci.org/vbotka/ansible-freebsd-postinstall.svg?branch=master)](https://travis-ci.org/vbotka/ansible-freebsd-postinstall)
 
-[Ansible role.](https://galaxy.ansible.com/vbotka/freebsd_postinstall/) FreeBSD. Post-install configuration: aliases, apcupsd, authorized keys, cron, fstab, gitserver, hostapd, hostname, hosts, libmap, linux compatibility, login.conf, loader.conf, make.conf, motd, nfsd, ntpd, ntpdate, procmail, resolvconf.conf, smartd, sudoers, ssh, swap, sysctl, timezone, tmpmfs, users, packages and ports, periodic.conf,  overlays, wpa_supplicant, wip ...
+[Ansible
+role.](https://galaxy.ansible.com/vbotka/freebsd_postinstall/)
+FreeBSD. Post-install configuration: aliases, apcupsd, authorized
+keys, cron, fstab, gitserver, hostapd, hostname, hosts, libmap, linux
+compatibility, login.conf, loader.conf, make.conf, motd, nfsd, ntpd,
+ntpdate, procmail, resolvconf.conf, smartd, sudoers, ssh, swap,
+sysctl, timezone, tmpmfs, users, packages and ports, periodic.conf,
+overlays, wpa_supplicant, wip ...
 
 
-Requirements
-------------
+## Requirements
 
 None.
 
 
-Variables
----------
+## Variables
 
 Review defaults and examples in vars.
 
-freebsd_install_method
-----------------------
 
-By default *freebsd_install_method* is set to install packages. Installation is faster. But, later, after having upgraded from the ports (*portmaster -a*) switch the method to *ports*.
+## freebsd_install_method
+
+By default *freebsd_install_method* is set to install
+packages. Installation is faster. But, later, after having upgraded
+from the ports (*portmaster -a*) switch the method to *ports*.
 
 ```
 freebsd_install_method: "packages"
@@ -28,13 +34,16 @@ freebsd_install_method: "packages"
 #freebsd_use_packages: "yes"
 ```
 
-Optionaly the packages can be built by [freebsd_poudriere](https://galaxy.ansible.com/vbotka/freebsd_poudriere) and installed by [freebsd_packages](https://galaxy.ansible.com/vbotka/freebsd_packages)
+Optionaly the packages can be built by
+[freebsd_poudriere](https://galaxy.ansible.com/vbotka/freebsd_poudriere)
+and installed by
+[freebsd_packages](https://galaxy.ansible.com/vbotka/freebsd_packages)
 
 
-freebsd_use_packages
---------------------
+## freebsd_use_packages
 
-Role [freebsd_ports](https://galaxy.ansible.com/vbotka/freebsd_ports) will install packages if this option is set.
+Role [freebsd_ports](https://galaxy.ansible.com/vbotka/freebsd_ports)
+will install packages if this option is set.
 
 ```
 #freebsd_install_method: "packages"
@@ -43,28 +52,27 @@ freebsd_use_packages: "yes"
 ```
 
 
-Workflow
---------
+## Workflow
 
-1) Change shell to /bin/sh.
+1) Change shell to /bin/sh
 
 ```
 ansible host -e 'ansible_shell_type=csh ansible_shell_executable=/bin/csh' -a 'sudo pw usermod user -s /bin/sh'
 ```
 
-2) Install role.
+2) Install role
 
 ```
 ansible-galaxy install vbotka.freebsd_postinstall
 ```
 
-3) Fit variables.
+3) Fit variables
 
 ```
 editor vbotka.freebsd_postinstall/vars/main.yml
 ```
 
-4) Create playbook.
+4) Create playbook
 
 ```
 cat freebsd-postinstall.yml
@@ -73,26 +81,24 @@ cat freebsd-postinstall.yml
     - vbotka.ansible-freebsd_postinstall
 ```
 
-5) Configure the system.
+5) Configure the system
 
 ```
 ansible-playbook freebsd-postinstall.yml
 ```
 
-License
--------
+## License
 
 [![license](https://img.shields.io/badge/license-BSD-red.svg)](https://www.freebsd.org/doc/en/articles/bsdl-gpl/article.html)
 
 
-Author Information
-------------------
+## Author Information
 
 [Vladimir Botka](https://botka.link)
 
 
-References
-----------
+## References
+
 - [FreeBSD handbook: Post-Installation](https://www.freebsd.org/doc/handbook/bsdinstall-post.html)
 - [aliases - FreeBSD handbook: 28.3. Sendmail Configuration Files](http://www.freebsd.org/doc/handbook/sendmail.html)
 - [apcupsd - FreeBSD diary: Configuring a UPS daemon](http://www.freebsddiary.org/apcupsd.php)
@@ -129,6 +135,6 @@ References
 - [wpa_supplicant](https://w1.fi/wpa_supplicant/)
 - [wpa_supplicant - 31.3. Wireless Networking](https://www.freebsd.org/doc/handbook/network-wireless.html)
 
-Cloud providers
+## Cloud providers
 
 - [DigitalOcean - Some pre-defined services in /etc/rc.conf](https://www.digitalocean.com/community/questions/some-pre-defined-services-in-etc-rc-conf-i-want-to-remove-in-freebsd)
