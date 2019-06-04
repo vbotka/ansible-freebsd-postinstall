@@ -1,0 +1,37 @@
+---
+
+- name: "digitalocean: Debug"
+  when: fp_do_debug
+  vars:
+    msg: |
+      fp_do_default_user [ {{ fp_do_default_user }} ]
+      fp_do_default_user_remove [ {{ fp_do_default_user_remove }} ]
+      fp_do_default_user_remove_home [ {{ fp_do_default_user_remove_home }} ]
+      fp_do_rcconf_cloudinit_enable [ {{ fp_do_rcconf_cloudinit_enable }} ]
+      fp_do_rcconf_digitaloceanpre_enable [ {{ fp_do_rcconf_digitaloceanpre_enable }} ]
+      fp_do_rcconf_digitalocean_enable [ {{ fp_do_rcconf_digitalocean_enable }} ]
+      fp_do_rcconf
+      {{ fp_do_rcconf|to_yaml }}
+  debug:
+    msg: "{{ msg.split('\n') }}"
+  tags: fp_do_debug
+
+- name: "digitalocean: Configure /etc/rc.conf"
+  lineinfile:
+    dest: "/etc/rc.conf"
+    regexp: "^\\s*{{ item.key }}\\s*="
+    line: "{{ item.key }}=\"{{ item.value }}\""
+    backup: "{{ fp_backup_conf }}"
+  loop: "{{ fp_do_rcconf }}"
+  tags: fp_do_rcconf
+
+- name: "digitalocean: Remove default user"
+  when: fp_do_default_user_remove
+  user:
+    name: "{{ fp_do_default_user }}"
+    state: absent
+    remove: "{{ fp_do_default_user_remove_home }}"
+  tags: fp_do_removedefaultuser
+
+# EOF
+...

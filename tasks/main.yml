@@ -5,6 +5,9 @@
   when: fp_debug|bool
   tags: [fp_debug, always]
 
+- import_tasks: cloud-providers.yml
+  tags: fp_cloud_proividers
+
 - import_tasks: loader.yml
   tags: fp_loader
 

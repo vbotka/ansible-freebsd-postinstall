@@ -1,9 +1,8 @@
 ---
 # defaults for vbotka.freebsd-postinstall
 
-fp_debug: False
-fp_backup_conf: no
-
+# ----------------------------------------------------------------------
+# FreeBSD install packages
 freebsd_install_method: "packages"
 # freebsd_install_method: "ports"
 # freebsd_use_packages: "yes"
@@ -11,10 +10,14 @@ freebsd_install_retries: 10
 freebsd_install_delay: 5
 
 # ----------------------------------------------------------------------
+# FreeBSD postinstall
+fp_debug: False
+fp_backup_conf: no
+
+# ----------------------------------------------------------------------
 # Hostname
 rc_conf_hostname: "srv.my.domain"
 fp_domain: "my.domain"
-digitalocean: False
 
 # ----------------------------------------------------------------------
 # /etc/make.conf
@@ -441,7 +444,6 @@ fp_login_conf:
 
 # ----------------------------------------------------------------------
 # tmpmfs
-
 fp_tmpmfs_configure: False
 fp_tmpmfs: "AUTO"
 fp_tmpmfs_tmpsize: "100m"
@@ -450,6 +452,26 @@ fp_tmpmfs_rcconf:
   - {key: "tmpmfs", value: "{{ fp_tmpmfs }}"}
   - {key: "tmpsize", value: "{{ fp_tmpmfs_tmpsize }}"}
   - {key: "tmpmfs_flags", value: "{{ fp_tmpmfs_flags }}"}
+
+# ----------------------------------------------------------------------
+# Cloud providers
+aws: False
+digitalocean: False
+gcp: False
+
+# ----------------------------------------------------------------------
+# Digitalocean
+fp_do_debug: False
+fp_do_default_user: "freebsd"
+fp_do_default_user_remove: False
+fp_do_default_user_remove_home: False
+fp_do_rcconf_cloudinit_enable: "YES"
+fp_do_rcconf_digitaloceanpre_enable: "YES"
+fp_do_rcconf_digitalocean_enable: "YES"
+fp_do_rcconf:
+  - {key: "cloudinit_enable", value: "{{ fp_do_rcconf_cloudinit_enable }}"}
+  - {key: "digitaloceanpre", value: "{{ fp_do_rcconf_digitaloceanpre_enable }}"}
+  - {key: "digitalocean", value: "{{ fp_do_rcconf_digitalocean_enable }}"}
 
 # EOF
 ...

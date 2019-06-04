@@ -128,3 +128,7 @@ References
 - [users - FreeBSD handbook: 6.27. Adding Users and Groups](https://www.freebsd.org/doc/en/books/porters-handbook/users-and-groups.html)
 - [wpa_supplicant](https://w1.fi/wpa_supplicant/)
 - [wpa_supplicant - 31.3. Wireless Networking](https://www.freebsd.org/doc/handbook/network-wireless.html)
+
+Cloud providers
+
+- [DigitalOcean - Some pre-defined services in /etc/rc.conf](https://www.digitalocean.com/community/questions/some-pre-defined-services-in-etc-rc-conf-i-want-to-remove-in-freebsd)
