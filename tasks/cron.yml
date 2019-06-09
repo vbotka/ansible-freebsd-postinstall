@@ -1,5 +1,52 @@
 ---
 
+- name: "cron: Debug"
+  when: fp_cron_debug|bool
+  vars:
+    msg: |
+      fp_cron_dir [ {{ fp_cron_dir }} ]
+      fp_cron_var
+      {{ fp_cron_var|to_yaml }}
+      fp_cron_tab
+      {{ fp_cron_tab|to_nice_yaml }}
+      fp_cron_file_system [ {{ fp_cron_file_system }} ]
+      fp_cron_var_system
+      {{ fp_cron_var_system|to_yaml }}
+      fp_cron_tab_system
+      {{ fp_cron_tab_system|to_nice_yaml }}
+  debug:
+    msg: "{{ msg.split('\n') }}"
+  tags: [fp_cron_debug, always]
+
+# Note on "cron – Manage cron.d and crontab entries"
+# https://docs.ansible.com/ansible/latest/modules/cron_module.html
+# Quoting from Synopsis: "When crontab jobs are managed: the module
+# includes one line with the description of the crontab entry
+# "#Ansible: <name>" corresponding to the “name” passed to the module,
+# which is used by future ansible/module calls to find/check the
+# state. The “name” parameter should be unique, and changing the
+# “name” value will result in a new cron task being created (or a
+# different one being removed).
+
+# If "# <name>" entry is present change it to "#Ansible: <name>" to
+# avoid double-entries
+- name: "cron: Rename present crontab entries"
+  replace:
+    path: "{{ fp_cron_dir }}/{{ item.user }}"
+    regexp: "^\\s*#\\s*{{ item.name }}$"
+    replace: "#Ansible: {{ item.name }}"
+    backup: "{{ fp_backup_conf }}"
+  loop: "{{ fp_cron_tab }}"
+  tags: fp_cron_rename_entries
+- name: "cron: Rename present crontab entries system"
+  replace:
+    path: "{{ fp_cron_file_system }}"
+    regexp: "^\\s*#\\s*{{ item.name }}$"
+    replace: "#Ansible: {{ item.name }}"
+    backup: "{{ fp_backup_conf }}"
+  loop: "{{ fp_cron_tab }}"
+  tags: fp_cron_rename_entries_system
+
 - name: "cron: Configure cron variables"
   cronvar:
     name: "{{ item.name }}"
@@ -8,7 +55,7 @@
   loop: "{{ fp_cron_var }}"
   tags: fp_cron_var
 
-- name: "cron: Configure cron"
+- name: "cron: Configure crontab entries"
   cron:
     state: "{{ item.state }}"
     user: "{{ item.user }}"
@@ -22,11 +69,32 @@
   loop: "{{ fp_cron_tab }}"
   tags: fp_cron_tab
 
-# TODO: Configure /etc/crontab
-# /etc/crontab or crontab -e as root
-# https://forums.freebsd.org/threads/etc-crontab-or-crontab-e-as-root.4107/
-# 11.3. Configuring cron(8)
-# https://www.freebsd.org/doc/handbook/configtuning-cron.html
+- name: "cron: Configure cron variables system"
+  cronvar:
+    cron_file: "{{ fp_cron_file_system }}"
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
+  loop: "{{ fp_cron_var_system }}"
+  tags: fp_cron_var_system
+
+- name: "cron: Configure crontab entries system"
+  cron:
+    cron_file: "{{ fp_cron_file_system }}"
+    state: "{{ item.state }}"
+    user: "{{ item.user }}"
+    name: "{{ item.name }}"
+    minute: "{{ item.minute }}"
+    hour: "{{ item.hour }}"
+    day: "{{ item.day }}"
+    month: "{{ item.month }}"
+    weekday: "{{ item.weekday }}"
+    job: "{{ item.command }}"
+  loop: "{{ fp_cron_tab_system }}"
+  tags: fp_cron_tab_system
+
+# TODO:
+# /etc/cron.d
+# /usr/local/etc/cron.d
 
 # EOF
 ...

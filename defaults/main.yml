@@ -329,6 +329,11 @@ fp_loader_load_modules: False
 
 # ----------------------------------------------------------------------
 # cron
+fp_cron_debug: False
+fp_cron_file_system: "/etc/crontab"
+fp_cron_tab_system: []
+fp_cron_var_system: []
+fp_cron_dir: "/var/cron/tabs"
 fp_cron_tab: []
 fp_cron_var: []
 

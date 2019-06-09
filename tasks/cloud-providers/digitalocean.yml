@@ -14,7 +14,7 @@
       {{ fp_do_rcconf|to_yaml }}
   debug:
     msg: "{{ msg.split('\n') }}"
-  tags: [fp_do_debug,always]
+  tags: [fp_do_debug, always]
 
 - name: "digitalocean: Configure /etc/rc.conf"
   lineinfile:

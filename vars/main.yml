@@ -250,14 +250,28 @@
 
 # ----------------------------------------------------------------------
 # cron
+# fp_cron_debug: True
 # fp_cron_var:
-#   - { user: "admin", name: "MAILTO", value: "admin@example.com" }
+#   - {user: "admin", name: "MAILTO", value: "admin@example.com"}
 # fp_cron_tab:
-#   - { state: "absent",
-#        user: "admin",
-#        name: "Run some command",
-#        minute: "01", hour: "04", day: "*", month: "*", weekday: "*",
-#        command: "/usr/bin/somedirectory/somecommand" }
+#   - {state: "absent",
+#      user: "admin",
+#      name: "Run some command",
+#      minute: "01", hour: "04", day: "*", month: "*", weekday: "*",
+#      command: "/usr/bin/somedirectory/somecommand"}
+# fp_cron_var_system:
+#   - {name: "SHELL", value: "/bin/sh"}
+#   - {name: "PATH", value: "/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin"}
+# fp_cron_tab_system:
+#   - state: "present"
+#     user: "root"
+#     name: "Rotate log files every hour, if necessary."
+#     minute: "0"
+#     hour: "*"
+#     day: "*"
+#     month: "*"
+#     weekday: "*"
+#     command: "newsyslog"
 
 # ----------------------------------------------------------------------
 # resolvconf
