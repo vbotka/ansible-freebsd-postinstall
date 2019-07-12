@@ -1,0 +1,10 @@
+# TODO
+
+# * [devfs rules - FreeBSD Wiki](https://forums.freebsd.org/threads/devfs-rules.56172/)
+# * [devfs.conf - man](https://www.freebsd.org/cgi/man.cgi?devfs.conf)
+# * [devfs.rules - man 5](https://www.freebsd.org/cgi/man.cgi?query=devfs.rules&sektion=5&n=1)
+# * [devfs - man 5](https://www.freebsd.org/cgi/man.cgi?query=devfs&sektion=5)
+# * [devfs - man 8](https://www.freebsd.org/cgi/man.cgi?query=devfs&sektion=8)
+# * [devfs rules not applied by default for jails - FreeBSD-SA-14:07.devfs](https://www.freebsd.org/security/advisories/FreeBSD-SA-14:07.devfs.asc)
+
+# EOF
