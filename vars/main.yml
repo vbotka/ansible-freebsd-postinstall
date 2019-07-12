@@ -369,5 +369,13 @@
 #       - ignoretime@
 #       - label=biba/10(10-10)
 
+# ----------------------------------------------------------------------
+# mount-iso
+# fp_fstab_entries:
+#   - name: /tmpfs
+#     src: tmpfs
+#     fstype: tmpfs
+#     opts: rw,mode=1777
+
 # EOF
 ...

@@ -6,6 +6,8 @@
     src: "{{ item.src }}"
     fstype: "{{ item.fstype }}"
     opts: "{{ item.opts }}"
+    dump: "{{ item.dump|default('0') }}"
+    passno: "{{ item.passno|default('0') }}"
     state: "{{ item.state|default('mounted') }}"
     backup: "{{ fp_backup_conf }}"
   loop: "{{ fp_fstab_entries }}"
