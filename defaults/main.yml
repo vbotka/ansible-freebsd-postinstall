@@ -448,6 +448,26 @@ fp_login_conf:
       - tc=default
 
 # ----------------------------------------------------------------------
+# devfs
+fp_devfs_debug: False
+fp_devfs_configure: False
+fp_devfs_enabled: True
+fp_devfs_owner: root
+fp_devfs_group: wheel
+fp_devfs_load_rulesets: "{{ fp_devfs_enabled }}"
+fp_devfs_system_ruleset: ""
+fp_devfs_rulesets: "/etc/defaults/devfs.rules /etc/devfs.rules"
+fp_devfs_set_rulesets: ""
+fp_devfs_rcconf:
+  - {key: "devfs_system_rulesets", value: "{{ fp_devfs_system_ruleset }}"}
+  - {key: "devfs_rulesets", value: "{{ fp_devfs_rulesets }}"}
+  - {key: "devfs_set_rulesets", value: "{{ fp_devfs_set_rulesets }}"}
+fp_devfs_conf_path: "/etc/devfs.conf"
+fp_devfs_conf: []
+fp_devfs_rules_path: "/etc/devfs.rules"
+fp_devfs_rules: []
+
+# ----------------------------------------------------------------------
 # tmpmfs
 fp_tmpmfs_configure: False
 fp_tmpmfs: "AUTO"

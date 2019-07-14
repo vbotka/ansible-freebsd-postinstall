@@ -87,6 +87,32 @@ cat freebsd-postinstall.yml
 ansible-playbook freebsd-postinstall.yml
 ```
 
+## Notes
+
+# devfs
+
+"/etc/rc.d/devfs rcvar" returns no variable. As a result module "system" fails
+
+```
+fatal: [srv.example.com]: FAILED! => changed=false
+  msg: unable to determine rcvar
+```
+
+To solve this problem apply the path below
+
+```
+--- devfs.orig	2019-07-13 20:31:04.688022000 +0200
++++ devfs	2019-07-13 20:34:49.347159000 +0200
+@@ -11,6 +11,7 @@
+ . /etc/rc.subr
+
+ name="devfs"
++rcvar="devfs_load_rulesets"
+ desc="Device filesystem"
+ start_cmd='devfs_start'
+ stop_cmd=':'
+```
+
 ## License
 
 [![license](https://img.shields.io/badge/license-BSD-red.svg)](https://www.freebsd.org/doc/en/articles/bsdl-gpl/article.html)
@@ -103,6 +129,12 @@ ansible-playbook freebsd-postinstall.yml
 - [aliases - FreeBSD handbook: 28.3. Sendmail Configuration Files](http://www.freebsd.org/doc/handbook/sendmail.html)
 - [apcupsd - FreeBSD diary: Configuring a UPS daemon](http://www.freebsddiary.org/apcupsd.php)
 - [cron - FreeBSD handbook: 11.3. Configuring cron](https://www.freebsd.org/doc/handbook/configtuning-cron.html)
+- [devfs - man 5](https://www.freebsd.org/cgi/man.cgi?query=devfs&sektion=5)
+- [devfs - man 8](https://www.freebsd.org/cgi/man.cgi?query=devfs&sektion=8)
+- [devfs.conf - man](https://www.freebsd.org/cgi/man.cgi?devfs.conf)
+- [devfs.rules - man](https://www.freebsd.org/cgi/man.cgi?query=devfs.rules&sektion=5&n=1)
+- [devfs rules - FreeBSD Wiki](https://forums.freebsd.org/threads/devfs-rules.56172/)
+- [devfs rules not applied by default for jails - FreeBSD-SA-14:07.devfs](https://www.freebsd.org/security/advisories/FreeBSD-SA-14:07.devfs.asc)
 - [fstab - FreeBSD handbook: 3.7. Mounting and Unmounting File Systems](http://www.freebsd.org/doc/handbook/mount-unmount.html)
 - [git - FreeBSD forum: How to setup a Git repository](https://forums.freebsd.org/threads/10810/)
 - [git - Getting Git on a Server](https://git-scm.com/book/ch4-2.html)
@@ -131,6 +163,7 @@ ansible-playbook freebsd-postinstall.yml
 - [sysctl - FreeBSD handbook: 11.9. Tuning with sysctl](http://www.freebsd.org/doc/handbook/configtuning-sysctl.html)
 - [timezone - How to set up FreeBSD for my region?](https://unix.stackexchange.com/questions/34567/how-to-set-up-freebsd-for-my-region)
 - [tmpmfs - FreeBSD forum: Questions about ramdisk in FreeBSD](https://forums.freebsd.org/threads/questions-about-ramdisk-in-freebsd.20345/)
+- [tmpfs - FreeBSD forum: /dev/shm | md questions](https://forums.freebsd.org/threads/tmpfs-dev-shm-md-questions.45210/)
 - [users - FreeBSD handbook: 6.27. Adding Users and Groups](https://www.freebsd.org/doc/en/books/porters-handbook/users-and-groups.html)
 - [wpa_supplicant](https://w1.fi/wpa_supplicant/)
 - [wpa_supplicant - 31.3. Wireless Networking](https://www.freebsd.org/doc/handbook/network-wireless.html)

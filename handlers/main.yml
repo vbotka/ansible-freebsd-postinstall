@@ -16,6 +16,15 @@
 - name: adjust CMOS
   command: adjkerntz -a
 
+# devfs
+- name: enable and start devfs
+  service: name="devfs" state="started" enabled="yes"
+- name: disable and stop devfs
+  service: name="devfs" state="stopped" enabled="no"
+- name: restart devfs
+  service: name="devfs" state="restarted"
+  when: fp_devfs_enabled
+
 # sshd
 - name: enable and start sshd
   service: name="sshd" state="started" enabled="yes"

@@ -1,10 +1,110 @@
-# TODO
+---
 
-# * [devfs rules - FreeBSD Wiki](https://forums.freebsd.org/threads/devfs-rules.56172/)
-# * [devfs.conf - man](https://www.freebsd.org/cgi/man.cgi?devfs.conf)
-# * [devfs.rules - man 5](https://www.freebsd.org/cgi/man.cgi?query=devfs.rules&sektion=5&n=1)
-# * [devfs - man 5](https://www.freebsd.org/cgi/man.cgi?query=devfs&sektion=5)
-# * [devfs - man 8](https://www.freebsd.org/cgi/man.cgi?query=devfs&sektion=8)
-# * [devfs rules not applied by default for jails - FreeBSD-SA-14:07.devfs](https://www.freebsd.org/security/advisories/FreeBSD-SA-14:07.devfs.asc)
+- name: "devfs: Debug"
+  vars:
+    msg: |
+         fp_devfs_enabled [ {{ fp_devfs_enabled }} ]
+         fp_devfs_load_rulesets [ {{ fp_devfs_load_rulesets }} ]
+         fp_devfs_system_ruleset [ {{ fp_devfs_system_ruleset }} ]
+         fp_devfs_rulesets [ {{ fp_devfs_rulesets }} ]
+         fp_devfs_set_rulesets [ {{ fp_devfs_set_rulesets }} ]
+         fp_devfs_rcconf
+         {{ fp_devfs_rcconf|to_yaml }}
+         fp_devfs_conf_path [ {{ fp_devfs_conf_path }} ]
+         fp_devfs_conf
+         {{ fp_devfs_conf|to_yaml }}
+         fp_devfs_rules_path [ {{ fp_devfs_rules_path }} ]
+         fp_devfs_rules
+         {{ fp_devfs_rules|to_yaml }}
+  debug:
+    msg: "{{ msg.split('\n') }}"
+  when: fp_devfs_debug|bool
+  tags: [fp_devfs_debug, always]
+
+- name: "devfs: Shell: /etc/rc.d/devfs rcvar | grep ^devfs*"
+  shell: '/etc/rc.d/devfs rcvar | grep ^devfs*'
+  register: result
+  changed_when: false
+  ignore_errors: true
+  tags: fp_devfs_rcvar
+
+- name: "devfs: Block: Test rcvar for system module"
+  block:
+    - name: "devfs: Block: ERROR no rcvar"
+      debug:
+        msg: |
+             [ERROR] unable to determine rcvar. End of play.
+             Variable rcvar is missing in the file /etc/rc.d/devfs
+             Put the following line into the file /etc/rc.d/devfs
+             rcvar="devfs_load_rulesets"
+    - name: "devfs: Block: End of play."
+      meta: end_play
+  when:
+    - result is failed
+    - not ansible_check_mode
+  tags: fp_devfs_rcvar
+
+- name: "devfs: Debug print rcvar"
+  debug:
+    var: result.stdout_lines|default('not defined')
+  when: fp_devfs_debug|bool
+  tags: fp_devfs_rcvar
+
+- name: "devfs: Configure devfs in /etc/rc.conf"
+  lineinfile:
+    dest: "/etc/rc.conf"
+    regexp: "^\\s*{{ item.key }}\\s*="
+    line: "{{ item.key }}=\"{{ item.value }}\""
+    backup: "{{ fp_backup_conf }}"
+  loop: "{{ fp_devfs_rcconf }}"
+  notify: restart devfs
+  tags: fp_devfs_rcconf
+
+- name: "devfs: Configure {{ fp_devfs_conf_path }}"
+  lineinfile:
+    dest: "{{ fp_devfs_conf_path }}"
+    regexp: "^\\s*{{ item.action }}\\s+{{ item.devname }}\\s+{{ item.arg }}"
+    line: "{{ item.action }} {{ item.devname }} {{ item.arg }}"
+    backup: "{{ fp_backup_conf }}"
+  loop: "{{ fp_devfs_conf }}"
+  notify: restart devfs
+  tags: fp_devfs_conf
+
+- name: "devfs: Configure {{ fp_devfs_rules_path }}"
+  ini_file:
+    path: "{{ fp_devfs_rules_path }}"
+    create: true
+    allow_no_value: true
+    owner: "{{ fp_devfs_owner }}"
+    group: "{{ fp_devfs_group }}"
+    section: "{{ item.section }}"
+    option: "{{ item.option }}"
+    value: "{{ item.value|default(omit) }}"
+    state: "{{ item.state|(default('present') }}"
+    backup: "{{ fp_backup_conf }}"
+  loop: "{{ fp_devfs_rules }}"
+  notify: restart devfs
+  tags: fp_devfs_rules
+
+- name: "devfs: Enable and start devfs"
+  lineinfile:
+    dest: "/etc/rc.conf"
+    regexp: "^\\s*devfs_load_rulesets\\s*="
+    line: "devfs_load_rulesets=\"YES\""
+    backup: "{{ fp_backup_conf }}"
+  notify: enable and start devfs
+  when: fp_devfs_enabled|bool
+  tags: fp_devfs_rcconf
+
+- name: "devfs: Disable and stop devfs"
+  lineinfile:
+    dest: "/etc/rc.conf"
+    regexp: "^\\s*devfs_load_rulesets\\s*="
+    line: "devfs_load_rulesets=\"NO\""
+    backup: "{{ fp_backup_conf }}"
+  notify: disable and stop devfs
+  when: not fp_devfs_enabled|bool
+  tags: fp_devfs_rcconf
 
 # EOF
+...

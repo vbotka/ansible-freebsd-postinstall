@@ -22,6 +22,7 @@
          fp_swap [ {{ fp_swap }} ]
          fp_synchronize_default [ {{ fp_synchronize_default }} ]
          fp_synchronize_optional [ {{ fp_synchronize_optional }} ]
+         fp_devfs_configure [ {{ fp_devfs_configure }} ]
          fp_smartd_install [ {{ fp_smartd_install }} ]
          fp_smartd_service_enabled [ {{ fp_smartd_service_enabled }} ]
          fp_apcupsd_install [ {{ fp_apcupsd_install }} ]

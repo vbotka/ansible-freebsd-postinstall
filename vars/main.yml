@@ -377,5 +377,10 @@
 #     fstype: tmpfs
 #     opts: rw,mode=1777
 
+# ----------------------------------------------------------------------
+# devfs
+# fp_devfs_conf:
+#   - {action: "link", devname: "/tmpfs", arg: "shm"}
+
 # EOF
 ...
