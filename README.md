@@ -170,4 +170,5 @@ To solve this problem apply the path below
 
 ## Cloud providers
 
+- [DigitalOcean - Ansible community](https://www.digitalocean.com/community/tags/ansible)
 - [DigitalOcean - Some pre-defined services in /etc/rc.conf](https://www.digitalocean.com/community/questions/some-pre-defined-services-in-etc-rc-conf-i-want-to-remove-in-freebsd)
