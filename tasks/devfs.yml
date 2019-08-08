@@ -1,6 +1,7 @@
 ---
 
 - name: "devfs: Debug"
+  when: fp_devfs_debug|bool
   vars:
     msg: |
          fp_devfs_enabled [ {{ fp_devfs_enabled }} ]
@@ -18,7 +19,6 @@
          {{ fp_devfs_rules|to_yaml }}
   debug:
     msg: "{{ msg.split('\n') }}"
-  when: fp_devfs_debug|bool
   tags: [fp_devfs_debug, always]
 
 - name: "devfs: Shell: /etc/rc.d/devfs rcvar | grep ^devfs*"
@@ -33,15 +33,15 @@
     - name: "devfs: Block: ERROR no rcvar"
       debug:
         msg: |
-             [ERROR] unable to determine rcvar. End of play.
-             Variable rcvar is missing in the file /etc/rc.d/devfs
-             Put the following line into the file /etc/rc.d/devfs
-             rcvar="devfs_load_rulesets"
+          [ERROR] unable to determine rcvar. End of play.
+          Variable rcvar is missing in the file /etc/rc.d/devfs
+          Put the following line into the file /etc/rc.d/devfs
+          rcvar="devfs_load_rulesets"
     - name: "devfs: Block: End of play."
       meta: end_play
   when:
-    - result is failed
     - not ansible_check_mode
+    - result|default({}) is failed
   tags: fp_devfs_rcvar
 
 - name: "devfs: Debug print rcvar"

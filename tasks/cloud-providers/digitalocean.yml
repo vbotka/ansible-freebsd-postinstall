@@ -1,7 +1,7 @@
 ---
 
 - name: "digitalocean: Debug"
-  when: fp_do_debug
+  when: fp_do_debug|bool
   vars:
     msg: |
       fp_do_default_user [ {{ fp_do_default_user }} ]
