@@ -126,5 +126,9 @@
 - import_tasks: login-conf.yml
   tags: fp_login_conf
 
+- import_tasks: snmpd.yml
+  when: fp_snmpd_install|bool
+  tags: fp_snmpd
+
 # EOF
 ...

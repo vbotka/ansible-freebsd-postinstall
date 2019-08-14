@@ -170,6 +170,15 @@
 - name: rebuild login_conf
   command: "/usr/bin/cap_mkdb /etc/login.conf"
 
+# snmpd
+- name: enable and start snmpd
+  service: name="{{ fp_snmpd_service }}" state="started" enabled="yes"
+- name: disable and stop snmpd
+  service: name="{{ fp_snmpd_service }}" state="stopped" enabled="no"
+- name: restart snmpd
+  service: name="{{ fp_snmpd_service }}" state="restarted"
+  when: fp_snmpd_enabled
+
 # MESSAGES -------------------------------------------------------------
 - name: loader message reboot
   debug: msg="[MESSAGE] Reboot to activate configuration in /boot/loader.conf"

@@ -157,6 +157,8 @@ To solve this problem apply the path below
 - [procmail - Documentation Project](http://pm-doc.sourceforge.net/)
 - [resolv.conf - FreeBSD handbook: 11.8. Configuration Files](http://www.freebsd.org/doc/handbook/configtuning-configfiles.html)
 - [smartd - FreeBSD forum: camcontrol hdd smart status](https://forums.freebsd.org/threads/camcontrol-hdd-smart-status.65306/)
+- [snmp - Install and configure snmp in Freebsd](http://blog.up-link.ro/freebsd-how-to-install-and-configure-snmp-in-freebsd/)
+- [snmp - Simple Network Management Protocol (SNMP)](http://www.net-snmp.org/)
 - [ssh - FreeBSD handbook: 13.8. OpenSSH](http://www.freebsd.cz/doc/handbook/openssh.html)
 - [sudo - FreeBSD handbook: Shared Administration with Sudo](https://www.freebsd.org/doc/handbook/security-sudo.html)
 - [swap - FreeBSD handbook: Adding Swap Space](http://www.freebsd.org/doc/handbook/adding-swap-space.html)

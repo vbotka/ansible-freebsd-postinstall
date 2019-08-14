@@ -479,6 +479,15 @@ fp_tmpmfs_rcconf:
   - {key: "tmpmfs_flags", value: "{{ fp_tmpmfs_flags }}"}
 
 # ----------------------------------------------------------------------
+# snmpd
+fp_snmpd_install: False
+fp_snmpd_enabled: False
+fp_snmpd_service: 'snmpd'
+fp_snmpd_rcconf:
+  - {key: "snmpd_conffile", value: "/usr/local/etc/snmpd.conf"}
+fp_snmpd_conf: []
+
+# ----------------------------------------------------------------------
 # Cloud providers
 aws: False
 digitalocean: False

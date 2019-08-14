@@ -1,0 +1,55 @@
+---
+
+- name: "snmpd: Enable and start snmpd"
+  when: fp_snmpd_enabled|bool
+  lineinfile:
+    dest: "/etc/rc.conf"
+    regexp: "^snmpd_enable"
+    line: "snmpd_enable=\"YES\""
+    backup: "{{ fp_backup_conf }}"
+  notify: enable and start snmpd
+  tags: fp_snmpd_rcconf
+
+- name: "snmpd: Disable and stop snmpd"
+  when: not fp_snmpd_enabled|bool
+  lineinfile:
+    dest: "/etc/rc.conf"
+    regexp: "^snmpd_enable"
+    line: "snmpd_enable=\"NO\""
+    backup: "{{ fp_backup_conf }}"
+  notify: disable and stop snmpd
+  tags: fp_snmpd_rcconf
+
+- name: "snmpd: Configure /etc/rc.conf"
+  lineinfile:
+    dest: "/etc/rc.conf"
+    regexp: "^\\s*{{ item.key }}"
+    line: "{{ item.key }}=\"{{ item.value }}\""
+    backup: "{{ fp_backup_conf }}"
+  loop: "{{ fp_snmpd_rcconf }}"
+  notify: restart snmpd
+  tags: fp_snmpd_rcconf
+
+- name: "snmpd: Copy snmpd.conf.example to snmpd.conf if not exist"
+  copy:
+    force: false
+    remote_src: true
+    src: "/usr/local/share/snmp/snmpd.conf.example"
+    dest: "/usr/local/etc/snmpd.conf"
+    owner: "root"
+    group: "wheel"
+    mode: "0644"
+  tags: fp_snmpd_conf_copy
+
+- name: "snmpd: Configure /usr/local/etc/snmpd.conf"
+  lineinfile:
+    path: "/usr/local/etc/snmpd.conf"
+    regexp: "^\\s*{{ item.key }}"
+    line: "{{ item.key }} {{ item.value }}"
+    backup: "{{ fp_backup_conf }}"
+  loop: "{{ fp_snmpd_conf }}"
+  notify: restart snmpd
+  tags: fp_snmpd_conf
+
+# EOF
+...

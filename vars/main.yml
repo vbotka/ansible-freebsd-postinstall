@@ -382,5 +382,12 @@
 # fp_devfs_conf:
 #   - {action: "link", devname: "/tmpfs", arg: "shm"}
 
+# ----------------------------------------------------------------------
+# snmpd
+# fp_snmpd_install: True
+# fp_snmpd_enabled: True
+# fp_snmpd_conf:
+#   - {key: "agentAddress", value: "udp:127.0.0.1:161,udp:10.1.0.12:161"}
+
 # EOF
 ...
