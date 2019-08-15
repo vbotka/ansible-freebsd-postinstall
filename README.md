@@ -5,11 +5,11 @@
 [Ansible
 role.](https://galaxy.ansible.com/vbotka/freebsd_postinstall/)
 FreeBSD. Post-install configuration: aliases, apcupsd, authorized
-keys, cron, fstab, gitserver, hostapd, hostname, hosts, libmap, linux
+keys, cron, devfs, fstab, gitserver, hostapd, hostname, hosts, libmap, linux
 compatibility, login.conf, loader.conf, make.conf, motd, nfsd, ntpd,
-ntpdate, procmail, resolvconf.conf, smartd, sudoers, ssh, swap,
+ntpdate, procmail, resolvconf.conf, smartd, snmpd, sudoers, ssh, swap,
 sysctl, timezone, tmpmfs, users, packages and ports, periodic.conf,
-overlays, wpa_supplicant, wip ...
+overlays, wpa_supplicant, (wip) ...
 
 
 ## Requirements
