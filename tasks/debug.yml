@@ -16,6 +16,8 @@
          aws [ {{ aws }} ]
          gcp [ {{ gcp }} ]
 
+         fp_backup_conf [ {{ fp_backup_conf }} ]
+
          fp_apcupsd_install [ {{ fp_apcupsd_install }} ]
          fp_apcupsd_service_enabled [ {{ fp_apcupsd_service_enabled }} ]
          fp_backup_conf [ {{ fp_backup_conf }} ]
