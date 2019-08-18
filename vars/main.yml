@@ -243,9 +243,11 @@
 
 # ----------------------------------------------------------------------
 # loader.conf
-# fp_loader_conf: []
 # fp_loader_load_modules: True
+# fp_loader_conf:
+#   - legal.realtek.license_ack=1
 # fp_loader_conf_modules:
+#   - if_rtwn_usb
 #   - geom_eli
 
 # ----------------------------------------------------------------------
