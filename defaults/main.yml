@@ -223,6 +223,10 @@ fp_hostapd_logger_syslog_level: "0"
 fp_hostapd_logger_stdout: "-1"
 fp_hostapd_logger_stdout_level: "0"
 fp_hostapd_eap_server: "0"
+fp_hostapd_conf_file: "/etc/hostapd.conf"
+fp_hostapd_conf_owner: "root"
+fp_hostapd_conf_group: "wheel"
+fp_hostapd_conf_mode: "0640"
 
 # ----------------------------------------------------------------------
 # nfs client / nfsd server

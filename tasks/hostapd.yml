@@ -45,7 +45,10 @@
   when: fp_hostapd_enabled|bool
   template:
     src: "hostapd.conf.j2"
-    dest: "/etc/hostapd.conf"
+    dest: "{{ fp_hostapd_conf_file }}"
+    owner: "{{ fp_hostapd_conf_owner }}"
+    group: "{{ fp_hostapd_conf_group }}"
+    mode: "{{ fp_hostapd_conf_mode }}"
     backup: "{{ fp_backup_conf }}"
   notify: restart hostapd
   tags: fp_hostapd_conf
