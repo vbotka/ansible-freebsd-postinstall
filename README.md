@@ -11,6 +11,7 @@ ntpdate, procmail, resolvconf.conf, smartd, snmpd, sudoers, ssh, swap,
 sysctl, timezone, tmpmfs, users, packages and ports, periodic.conf,
 overlays, wpa_supplicant, (wip) ...
 
+Please feel free to [share your feedback and report issues](https://github.com/vbotka/ansible-freebsd-postinstall/issues).
 
 ## Requirements
 
