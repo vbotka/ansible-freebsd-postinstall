@@ -3,10 +3,10 @@
 - name: "sysctl: Debug"
   vars:
     msg: |
-      fp_sysctl_file [ {{ fp_sysctl_file }} ]
-      fp_sysctl_ignoreerrors [ {{ fp_sysctl_ignoreerrors }} ]
+      fp_sysctl_file [{{ fp_sysctl_file }}]
+      fp_sysctl_ignoreerrors [{{ fp_sysctl_ignoreerrors }}]
       fp_sysctl
-      {{ fp_sysctl | to_yaml }}
+      {{ fp_sysctl|to_yaml }}
   debug:
     msg: "{{ msg.split('\n') }}"
   when: fp_debug|bool
@@ -16,9 +16,9 @@
     sysctl_file: "{{ fp_sysctl_file }}"
     name: "{{ item.name }}"
     value: "{{ item.value }}"
-    state: "{{ item.state | default('present') }}"
-    reload: "{{ item.reload | default('yes') }}"
-    sysctl_set: "{{ item.set | default('no') }}"
+    state: "{{ item.state|default('present') }}"
+    reload: "{{ item.reload|default('yes') }}"
+    sysctl_set: "{{ item.set|default('no') }}"
     ignoreerrors: "{{ fp_sysctl_ignoreerrors }}"
   loop: "{{ fp_sysctl }}"
   # NOTES
@@ -31,7 +31,7 @@
 - name: "sysctl: Register variables that are settable via loader"
   command: "sysctl -aNT"
   register: tmp_loader_vars
-  changed_when: False
+  changed_when: false
 
 # - name: "sysctl: Debug tmp_loader_vars"
 #   debug:

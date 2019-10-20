@@ -17,8 +17,7 @@
 - name: "gitserver: Add user {{ fp_gitserver_owner }} to {{ fp_gitserver_group }} group"
   user:
     name: "{{ fp_gitserver_owner }}"
-    groups: "{{ fp_gitserver_group }}"
-    append: yes
+    group: "{{ fp_gitserver_group }}"
   tags: fp_gitserver_group
 
 - name: "gitserver: Set ownership and permissions of {{ fp_gitserver_dir }}"

@@ -5,9 +5,9 @@
     - name: "mount-iso: Get iso mount points"
       command: "mount -t cd9660"
       args:
-        warn: False
+        warn: false
       register: result
-      changed_when: False
+      changed_when: false
     - name: "mount-iso: Set empty mounted_iso_list"
       set_fact:
         mounted_iso_list: []
@@ -49,7 +49,7 @@
 - name: "mount-iso: Mount iso entries"
   shell: "mount -t cd9660 /dev/$(mdconfig -f {{ item.iso }}) {{ item.mount }}"
   args:
-    warn: False
+    warn: false
   loop: "{{ fp_mount_iso_entries }}"
   when:
     - item.mount not in mounted_iso_list|json_query('[].mount_point')
@@ -66,7 +66,7 @@
 
 - name: "mount-iso: Set list of nodes to be deleted"
   set_fact:
-    local_node_list: "{{ local_node_list|default([]) }} + {{ mounted_iso_list | json_query(local_query) }}"
+    local_node_list: "{{ local_node_list|default([]) }} + {{ mounted_iso_list|json_query(local_query) }}"
   vars:
     local_query: "[?mount_point=='{{ item.mount }}'].device"
   loop: "{{ fp_mount_iso_entries }}"
@@ -82,7 +82,7 @@
 - name: "mount-iso: Delete nodes"
   command: "mdconfig -d -u {{ item }}"
   loop: "{{ local_node_list|default([]) }}"
-  changed_when: local_node_list | default([]) | length > 0
+  changed_when: local_node_list|default([])|length > 0
 # changed_when fixed the warning. Otherwise ansible-lint reports:
 # E301: Commands should not change things if nothing needs doing
 # vbotka.freebsd_postinstall/tasks/mount-iso.yml:78

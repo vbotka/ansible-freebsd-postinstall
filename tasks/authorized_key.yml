@@ -1,24 +1,24 @@
 ---
 - name: "authorized_key: Get list of users"
   getent:
-    database: passwd
+    database: "passwd"
 
 - name: "authorized_key: Debug"
   vars:
     msg: |
-         fp_authorized_key_fail [ {{ fp_authorized_key_fail }} ]
-         fp_authorized_key_install_individually [ {{ fp_authorized_key_install_individually }} ]
-         fp_authorized_key_install_exclusive [ {{ fp_authorized_key_install_exclusive }} ]
-         fp_authorized_key_follow [ {{ fp_authorized_key_follow }} ]
-         fp_authorized_key_key_options [ {{ fp_authorized_key_key_options|default('ABSENT')  }} ]
-         fp_authorized_key_manage_dir [ {{ fp_authorized_key_manage_dir }} ]
-         fp_authorized_key_path [ {{ fp_authorized_key_path|default('homedir + /.ssh/authorized_keys') }} ]
-         fp_authorized_key_state [ {{ fp_authorized_key_state|default('present') }} ]
-         fp_authorized_key_validate_certs [ {{ fp_authorized_key_validate_certs }} ]
+         fp_authorized_key_fail [{{ fp_authorized_key_fail }}]
+         fp_authorized_key_install_individually [{{ fp_authorized_key_install_individually }}]
+         fp_authorized_key_install_exclusive [{{ fp_authorized_key_install_exclusive|bool }}]
+         fp_authorized_key_follow [{{ fp_authorized_key_follow|bool }}]
+         fp_authorized_key_key_options [{{ fp_authorized_key_key_options|default('UNDEFINED') }}]
+         fp_authorized_key_manage_dir [{{ fp_authorized_key_manage_dir|bool }}]
+         fp_authorized_key_path [{{ fp_authorized_key_path|default('homedir + /.ssh/authorized_keys') }}]
+         fp_authorized_key_state [{{ fp_authorized_key_state|default('present') }}]
+         fp_authorized_key_validate_certs [{{ fp_authorized_key_validate_certs|bool }}]
          fp_authorized_key
-         {{ fp_authorized_key | to_nice_yaml }}
+         {{ fp_authorized_key|to_nice_yaml }}
          getent_passwd keys
-         {{ getent_passwd.keys() | to_yaml }}
+         {{ getent_passwd.keys()|to_yaml }}
   debug:
     msg: "{{ msg.split('\n') }}"
   when: fp_debug|bool
@@ -51,7 +51,7 @@
       when: fp_debug|bool
     - name: "authorized_key: Debug show joined keys"
       debug:
-        msg: "{{ fp_authorized_key|json_query(my_query)| join('\n') }}"
+        msg: "{{ fp_authorized_key|json_query(my_query)|join('\n') }}"
       loop: "{{ local_list_users }}"
       vars:
         my_query: "[?user=='{{ item }}'].key"
@@ -59,15 +59,15 @@
     - name: "authorized_key: Configure joined authorized keys"
       authorized_key:
         user: "{{ item }}"
-        key: "{{ fp_authorized_key|json_query(my_query)| join('\n') }}"
-        exclusive: "{{ fp_authorized_key_install_exclusive }}"
+        key: "{{ fp_authorized_key|json_query(my_query)|join('\n') }}"
+        exclusive: "{{ fp_authorized_key_install_exclusive|bool }}"
         comment: "{{ fp_authorized_key_comment|default(omit) }}"
-        follow: "{{ fp_authorized_key_follow }}"
+        follow: "{{ fp_authorized_key_follow|bool }}"
         key_options: "{{ fp_authorized_key_key_options|default(omit) }}"
-        manage_dir: "{{ fp_authorized_key_manage_dir }}"
+        manage_dir: "{{ fp_authorized_key_manage_dir|bool }}"
         path: "{{ fp_authorized_key_path|default(omit) }}"
         state: "{{ fp_authorized_key_state|default(omit) }}"
-        validate_certs: "{{ fp_authorized_key_validate_certs }}"
+        validate_certs: "{{ fp_authorized_key_validate_certs|bool }}"
       loop: "{{ local_list_users }}"
       vars:
         my_query: "[?user=='{{ item }}'].key"

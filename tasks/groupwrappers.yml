@@ -18,7 +18,7 @@
     owner: "{{ fp_groupwrappers_owner }}"
     group: "{{ fp_groupwrappers_group }}"
     mode: "{{ fp_groupwrappers_mode }}"
-    backup: no
+    backup: "{{ fp_backup_conf }}"
   tags: fp_groupwrappers_groupadd
 
 - name: "groupwrappers: Create groupdel wrapper in {{ fp_groupwrappers_dir }}"
@@ -28,7 +28,7 @@
     owner: "{{ fp_groupwrappers_owner }}"
     group: "{{ fp_groupwrappers_group }}"
     mode: "{{ fp_groupwrappers_mode }}"
-    backup: no
+    backup: "{{ fp_backup_conf }}"
   tags: fp_groupwrappers_groupdel
 
 - name: "groupwrappers: Create groupmod wrapper in {{ fp_groupwrappers_dir }}"
@@ -38,7 +38,7 @@
     owner: "{{ fp_groupwrappers_owner }}"
     group: "{{ fp_groupwrappers_group }}"
     mode: "{{ fp_groupwrappers_mode }}"
-    backup: no
+    backup: "{{ fp_backup_conf }}"
   tags: fp_groupwrappers_groupmod
 
 # EOF

@@ -12,7 +12,7 @@
 - name: "loader: Load modules"
   shell: "kldstat -q -n {{ item }} || kldload -n {{ item }}"
   loop: "{{ fp_loader_conf_modules }}"
-  changed_when: False
+  changed_when: false
   when: fp_loader_load_modules|bool
 
 # EOF

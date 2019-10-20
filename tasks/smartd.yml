@@ -41,7 +41,7 @@
     owner: "{{ fp_smartd_conf_owner }}"
     group: "{{ fp_smartd_conf_group }}"
     mode: "{{ fp_smartd_conf_mode }}"
-    create: yes
+    create: true
     backup: "{{ fp_backup_conf }}"
   loop: "{{ fp_smartd_devices }}"
   notify: reload smartd

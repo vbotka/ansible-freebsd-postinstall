@@ -2,7 +2,7 @@
 
 - name: "aliases: Configure /etc/aliases"
   lineinfile:
-    dest: /etc/aliases
+    dest: "/etc/aliases"
     regexp: "^{{ item.alias }}{{ ':' }}"
     line: "{{ item.alias }}{{ ':' }} {{ item.user }}"
     backup: "{{ fp_backup_conf }}"

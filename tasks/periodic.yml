@@ -4,7 +4,7 @@
   vars:
     msg: |
          fp_periodic_conf_local
-         {{ fp_periodic_conf_local | to_yaml }}
+         {{ fp_periodic_conf_local|to_yaml }}
   debug:
     msg: "{{ msg.split('\n') }}"
   when: fp_debug|bool
@@ -15,7 +15,7 @@
     regexp: "^{{ item.regexp }}"
     line: "{{ item.regexp }}{{ item.value }}"
     backup: "{{ fp_backup_conf }}"
-    create: yes
+    create: true
   loop: "{{ fp_periodic_conf_local }}"
 
 # NOTES:

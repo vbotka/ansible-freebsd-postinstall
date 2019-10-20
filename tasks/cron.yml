@@ -4,12 +4,12 @@
   when: fp_cron_debug|bool
   vars:
     msg: |
-      fp_cron_dir [ {{ fp_cron_dir }} ]
+      fp_cron_dir [{{ fp_cron_dir }}]
       fp_cron_var
       {{ fp_cron_var|to_yaml }}
       fp_cron_tab
       {{ fp_cron_tab|to_nice_yaml }}
-      fp_cron_file_system [ {{ fp_cron_file_system }} ]
+      fp_cron_file_system [{{ fp_cron_file_system }}]
       fp_cron_var_system
       {{ fp_cron_var_system|to_yaml }}
       fp_cron_tab_system

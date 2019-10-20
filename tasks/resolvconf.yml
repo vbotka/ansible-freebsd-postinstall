@@ -2,7 +2,7 @@
 
 - name: "resolvconf: Absent lines in {{ fp_resolvconf_conf }}"
   lineinfile:
-    state: absent
+    state: "absent"
     dest: "{{ fp_resolvconf_conf }}"
     owner: "{{ fp_resolvconf_conf_owner }}"
     group: "{{ fp_resolvconf_conf_group }}"
@@ -20,7 +20,7 @@
     mode: "{{ fp_resolvconf_conf_mode }}"
     regexp: "^{{ item.key }}"
     line: "{{ item.key }}=\"{{ item.val }}\""
-    create: yes
+    create: true
     backup: "{{ fp_backup_conf }}"
   loop: "{{ fp_resolvconf }}"
   notify: resolvconf apply

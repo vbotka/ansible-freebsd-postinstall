@@ -11,8 +11,8 @@ freebsd_install_delay: 5
 
 # ----------------------------------------------------------------------
 # FreeBSD postinstall
-fp_debug: False
-fp_backup_conf: no
+fp_debug: false
+fp_backup_conf: false
 
 # ----------------------------------------------------------------------
 # Hostname
@@ -41,9 +41,9 @@ fp_hosts: []
 # Copy
 # directory is relative to the playbooks directory
 fp_copy_dir: "copy"
-fp_synchronize_default: False
-fp_synchronize_optional: False
-fp_unarchive_keep_newer: "no"
+fp_synchronize_default: false
+fp_synchronize_optional: false
+fp_unarchive_keep_newer: false
 # -------------------------
 # DANGEROUS! fp_synchronize_delete=true can delete the system dest="/"
 # Review tasks imported in copy.yml before enabling fp_synchronize_delete
@@ -59,7 +59,7 @@ fp_synchronize_times: false
 
 # ----------------------------------------------------------------------
 # swap
-fp_swap: False
+fp_swap: false
 # fp_swap_file: "/usr/swap0"
 # fp_swap_md: "md99"
 # fp_swap_size: 4096
@@ -108,7 +108,7 @@ ntpd_sync_on_start: "YES"
 ssh_config_path: "/etc/ssh/ssh_config"
 ssh_config: []
 # SSHD
-sshd_enable: True
+sshd_enable: true
 sshd_path: "/usr/sbin/sshd"
 sshd_config_path: "/etc/ssh/sshd_config"
 sshd_PasswordAuthentication: "no"
@@ -126,24 +126,24 @@ freebsd_users_groups: []
 # authorized_key
 fp_authorized_key: []
 # If user does not exist this will make the task fail if True
-fp_authorized_key_fail: True
+fp_authorized_key_fail: true
 # If False, group keys by user and install string of keys
-fp_authorized_key_install_individually: True
+fp_authorized_key_install_individually: true
 # If fp_authorized_key_install_individually: False,
 # use the following parameters
-fp_authorized_key_install_exclusive: no
+fp_authorized_key_install_exclusive: false
 # fp_authorized_key_comment: ""
-fp_authorized_key_follow: no
+fp_authorized_key_follow: false
 # fp_authorized_key_key_options: ""
-fp_authorized_key_manage_dir: yes
+fp_authorized_key_manage_dir: true
 # fp_authorized_key_path: ""
 # fp_authorized_key_state: present
-fp_authorized_key_validate_certs: yes
+fp_authorized_key_validate_certs: true
 
 # ----------------------------------------------------------------------
 # smartd
-fp_smartd_install: False
-fp_smartd_service_enabled: False
+fp_smartd_install: false
+fp_smartd_service_enabled: false
 fp_smartd_service_name: "smartd"
 fp_smartd_service_state: "stopped"
 fp_smartd_conf_file: "/usr/local/etc/smartd.conf"
@@ -154,8 +154,8 @@ fp_smartd_devices: []
 
 # ----------------------------------------------------------------------
 # apcupsd
-fp_apcupsd_install: False
-fp_apcupsd_service_enabled: False
+fp_apcupsd_install: false
+fp_apcupsd_service_enabled: false
 fp_apcupsd_service_name: "apcupsd"
 fp_apcupsd_conf_dir: "/usr/local/etc/apcupsd"
 fp_apcupsd_conf_file: "{{ fp_apcupsd_conf_dir }}/apcupsd.conf"
@@ -192,8 +192,8 @@ fp_apcupsd_DATATIME: "0"
 
 # ----------------------------------------------------------------------
 # hostapd
-fp_hostapd_install: False
-fp_hostapd_enabled: False
+fp_hostapd_install: false
+fp_hostapd_enabled: false
 fp_hostapd_name: 'hostapd'
 fp_hostapd_state: 'stopped'
 fp_hostapd_ssid: "MY-SSID"
@@ -230,18 +230,18 @@ fp_hostapd_conf_mode: "0640"
 
 # ----------------------------------------------------------------------
 # nfs client / nfsd server
-fp_nfs_service_enable: False
-fp_nfsd_service_enable: False
-fp_rpcbind_enable: False
-fp_rpc_lockd_enable: False
-fp_rpc_statd_enable: False
+fp_nfs_service_enable: false
+fp_nfsd_service_enable: false
+fp_rpcbind_enable: false
+fp_rpc_lockd_enable: false
+fp_rpc_statd_enable: false
 fp_nfsd_service_state: 'started'
 fp_mountd_flags: '-r'
 fp_nfsd_exports: []
 
 # ----------------------------------------------------------------------
 # ntpd
-fp_ntp_service_enable: False
+fp_ntp_service_enable: false
 fp_ntp_service_name: 'ntpd'
 fp_ntp_service_state: 'started'
 fp_ntp_config_server:
@@ -272,7 +272,7 @@ fp_ntp_config_tinker_panic_enabled: ''
 
 # ----------------------------------------------------------------------
 # procmail
-fp_procmail_install: False
+fp_procmail_install: false
 fp_procmail_bin: "/usr/local/bin/procmail"
 fp_procmail_responder: "responder"
 fp_procmail_shell: "/bin/sh"
@@ -288,7 +288,7 @@ fp_procmail_includerc: []
 
 # ----------------------------------------------------------------------
 # motd
-fp_update_motd: True
+fp_update_motd: true
 fp_motd: ""
 
 # ----------------------------------------------------------------------
@@ -300,7 +300,7 @@ fp_sysctl_loader_conf: []
 
 # ----------------------------------------------------------------------
 # groupwrappers
-fp_groupwrappers_install: False
+fp_groupwrappers_install: false
 fp_groupwrappers_dir: "/root/bin"
 fp_groupwrappers_owner: "root"
 fp_groupwrappers_group: "wheel"
@@ -311,7 +311,7 @@ fp_group_mod: "/usr/sbin/pw groupmod"
 
 # ----------------------------------------------------------------------
 # gitserver
-fp_gitserver_install: False
+fp_gitserver_install: false
 fp_gitserver_owner: "gitserver"
 fp_gitserver_group: "gitusers"
 fp_gitserver_dir: "/home/{{ fp_gitserver_owner }}"
@@ -329,11 +329,11 @@ fp_sudoers: []
 # loader.conf
 fp_loader_conf: []
 fp_loader_conf_modules: []
-fp_loader_load_modules: False
+fp_loader_load_modules: false
 
 # ----------------------------------------------------------------------
 # cron
-fp_cron_debug: False
+fp_cron_debug: false
 fp_cron_file_system: "/etc/crontab"
 fp_cron_tab_system: []
 fp_cron_var_system: []
@@ -362,8 +362,9 @@ fp_periodic_conf_local: []
 # wpa_supplicant
 fp_wpasupplicant_install: false
 fp_wpasupplicant_debug: false
+fp_wpasupplicant_debug_classified: false
+fp_wpasupplicant_backup: false
 fp_wpasupplicant_conf_rc: false
-fp_wpasupplicant_backup: no
 fp_wpasupplicant_conf_file_link: ""
 fp_wpasupplicant_conf_owner: "root"
 fp_wpasupplicant_conf_group: "wheel"
@@ -383,9 +384,9 @@ fp_wpasupplicant_conf: []
 
 # ----------------------------------------------------------------------
 # linux
-fp_linux_enable: False
-fp_linux_install: False
-fp_linux_debug: False
+fp_linux_enable: false
+fp_linux_install: false
+fp_linux_debug: false
 fp_linux_fstab:
   - {name: "/compat/linux/proc", src: "linproc", fstype: "linprocfs", opts: "rw"}
 fp_linux_lib_dir: "copy/linux-compat-lib"
@@ -453,11 +454,11 @@ fp_login_conf:
 
 # ----------------------------------------------------------------------
 # devfs
-fp_devfs_debug: False
-fp_devfs_configure: False
-fp_devfs_enabled: True
-fp_devfs_owner: root
-fp_devfs_group: wheel
+fp_devfs_debug: false
+fp_devfs_configure: false
+fp_devfs_enabled: true
+fp_devfs_owner: "root"
+fp_devfs_group: "wheel"
 fp_devfs_load_rulesets: "{{ fp_devfs_enabled }}"
 fp_devfs_system_ruleset: ""
 fp_devfs_rulesets: "/etc/defaults/devfs.rules /etc/devfs.rules"
@@ -473,7 +474,7 @@ fp_devfs_rules: []
 
 # ----------------------------------------------------------------------
 # tmpmfs
-fp_tmpmfs_configure: False
+fp_tmpmfs_configure: false
 fp_tmpmfs: "AUTO"
 fp_tmpmfs_tmpsize: "100m"
 fp_tmpmfs_flags: "-S"
@@ -484,8 +485,8 @@ fp_tmpmfs_rcconf:
 
 # ----------------------------------------------------------------------
 # snmpd
-fp_snmpd_install: False
-fp_snmpd_enabled: False
+fp_snmpd_install: false
+fp_snmpd_enabled: false
 fp_snmpd_service: 'snmpd'
 fp_snmpd_rcconf:
   - {key: "snmpd_conffile", value: "/usr/local/etc/snmpd.conf"}
@@ -493,16 +494,16 @@ fp_snmpd_conf: []
 
 # ----------------------------------------------------------------------
 # Cloud providers
-aws: False
-digitalocean: False
-gcp: False
+aws: false
+digitalocean: false
+gcp: false
 
 # ----------------------------------------------------------------------
 # Digitalocean
-fp_do_debug: False
+fp_do_debug: false
 fp_do_default_user: "freebsd"
-fp_do_default_user_remove: False
-fp_do_default_user_remove_home: False
+fp_do_default_user_remove: false
+fp_do_default_user_remove_home: false
 fp_do_rcconf_cloudinit_enable: "YES"
 fp_do_rcconf_digitaloceanpre_enable: "YES"
 fp_do_rcconf_digitalocean_enable: "YES"

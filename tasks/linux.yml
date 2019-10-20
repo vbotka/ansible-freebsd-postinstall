@@ -3,12 +3,12 @@
 - name: "linux: Debug"
   vars:
     msg: |
-      fp_linux_enable [ {{ fp_linux_enable }} ]
+      fp_linux_enable [{{ fp_linux_enable }}]
       fp_linux_fstab
-      {{ fp_linux_fstab | to_yaml }}
-      fp_linux_lib_dir [ {{ fp_linux_lib_dir }} ]
+      {{ fp_linux_fstab|to_yaml }}
+      fp_linux_lib_dir [{{ fp_linux_lib_dir }}]
       fp_linux_lib
-      {{ fp_linux_lib | to_yaml }}
+      {{ fp_linux_lib|to_yaml }}
   debug:
     msg: "{{ msg.split('\n') }}"
   when: fp_linux_debug|bool

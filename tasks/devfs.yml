@@ -4,17 +4,17 @@
   when: fp_devfs_debug|bool
   vars:
     msg: |
-         fp_devfs_enabled [ {{ fp_devfs_enabled }} ]
-         fp_devfs_load_rulesets [ {{ fp_devfs_load_rulesets }} ]
-         fp_devfs_system_ruleset [ {{ fp_devfs_system_ruleset }} ]
-         fp_devfs_rulesets [ {{ fp_devfs_rulesets }} ]
-         fp_devfs_set_rulesets [ {{ fp_devfs_set_rulesets }} ]
+         fp_devfs_enabled [{{ fp_devfs_enabled }}]
+         fp_devfs_load_rulesets [{{ fp_devfs_load_rulesets }}]
+         fp_devfs_system_ruleset [{{ fp_devfs_system_ruleset }}]
+         fp_devfs_rulesets [{{ fp_devfs_rulesets }}]
+         fp_devfs_set_rulesets [{{ fp_devfs_set_rulesets }}]
          fp_devfs_rcconf
          {{ fp_devfs_rcconf|to_yaml }}
-         fp_devfs_conf_path [ {{ fp_devfs_conf_path }} ]
+         fp_devfs_conf_path [{{ fp_devfs_conf_path }}]
          fp_devfs_conf
          {{ fp_devfs_conf|to_yaml }}
-         fp_devfs_rules_path [ {{ fp_devfs_rules_path }} ]
+         fp_devfs_rules_path [{{ fp_devfs_rules_path }}]
          fp_devfs_rules
          {{ fp_devfs_rules|to_yaml }}
   debug:

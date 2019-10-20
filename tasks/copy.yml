@@ -3,8 +3,8 @@
 - name: "copy: Debug"
   vars:
     msg: |
-         fp_synchronize_default [ {{ fp_synchronize_default }} ]
-         fp_synchronize_optional [ {{ fp_synchronize_optional }} ]
+         fp_synchronize_default [{{ fp_synchronize_default }}]
+         fp_synchronize_optional [{{ fp_synchronize_optional }}]
   debug:
     msg: "{{ msg.split('\n') }}"
   when: fp_debug|bool
