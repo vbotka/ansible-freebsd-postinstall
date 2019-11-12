@@ -31,13 +31,10 @@
 # If "# <name>" entry is present change it to "#Ansible: <name>" to
 # avoid double-entries
 - name: "cron: Rename present crontab entries"
-  replace:
-    path: "{{ fp_cron_dir }}/{{ item.user }}"
-    regexp: "^\\s*#\\s*{{ item.name }}$"
-    replace: "#Ansible: {{ item.name }}"
-    backup: "{{ fp_backup_conf }}"
+  include_tasks: fn/cron-rename-entry.yml
   loop: "{{ fp_cron_tab }}"
   tags: fp_cron_rename_entries
+
 - name: "cron: Rename present crontab entries system"
   replace:
     path: "{{ fp_cron_file_system }}"
