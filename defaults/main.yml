@@ -329,6 +329,7 @@ fp_sudoers: []
 # loader.conf
 fp_loader_conf: []
 fp_loader_conf_modules: []
+fp_loader_template_conf: false
 fp_loader_load_modules: false
 
 # ----------------------------------------------------------------------

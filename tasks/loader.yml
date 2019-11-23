@@ -8,6 +8,8 @@
     group: "wheel"
     mode: "0644"
     backup: "{{ fp_backup_conf }}"
+  when: fp_loader_template_conf|bool
+  notify: loader message reboot
 
 - name: "loader: Load modules"
   shell: "kldstat -q -n {{ item }} || kldload -n {{ item }}"
