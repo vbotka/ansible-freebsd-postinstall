@@ -9,10 +9,16 @@
     backup: "{{ fp_backup_conf }}"
   loop:
     - {regexp: "^nfs_server_enable", line: "nfs_server_enable=\"YES\""}
+    - {regexp: "^nfs_server_flags", line: "nfs_server_flags=\"{{ fp_nfs_server_flags }}\""}
+    - {regexp: "^nfsv4_server_enable", line: "nfsv4_server_enable=\"{{ fp_nfsv4_server_enable }}\""}
     - {regexp: "^rpcbind_enable", line: "rpcbind_enable=\"YES\""}
+    - {regexp: "^mountd_enable", line: "mountd_enable=\"YES\""}
     - {regexp: "^mountd_flags", line: "mountd_flags=\"{{ fp_mountd_flags }}\""}
   when: fp_nfsd_service_enable|bool
-  notify: enable and start nfs server
+  notify:
+    - enable and start nfs server
+    - enable and start rpcbind
+    - enable and start mountd
 
 - name: "nfsd: Disable and stop nfs server"
   lineinfile:
@@ -79,6 +85,17 @@
     - {regexp: "^rpcbind_enable", line: "rpcbind_enable=\"NO\""}
   when: not fp_rpcbind_enable|bool
   notify: disable and stop rpcbind
+
+- name: "nfsd: Disable and stop mountd"
+  lineinfile:
+    dest: "/etc/rc.conf"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    backup: "{{ fp_backup_conf }}"
+  loop:
+    - {regexp: "^mountd_enable", line: "mountd_enable=\"NO\""}
+  when: not fp_mountd_enable|bool
+  notify: disable and stop mountd
 
 - name: "nfsd: Configure /etc/exports"
   template:

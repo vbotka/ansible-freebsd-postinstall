@@ -1,3 +1,5 @@
+---
+
 - name: "cron-rename-entry: Stat {{ fp_cron_dir }}/{{ item.user }}"
   stat:
     path: "{{ fp_cron_dir }}/{{ item.user }}"
@@ -10,3 +12,6 @@
     replace: "#Ansible: {{ item.name }}"
     backup: "{{ fp_backup_conf }}"
   when: result.stat.exists
+
+# EOF
+...

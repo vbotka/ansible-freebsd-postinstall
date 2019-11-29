@@ -232,12 +232,13 @@ fp_hostapd_conf_mode: "0640"
 # nfs client / nfsd server
 fp_nfs_service_enable: false
 fp_nfsd_service_enable: false
+fp_nfsd_exports: []
+
+fp_mountd_enable: false
+fp_mountd_flags: '-r'
 fp_rpcbind_enable: false
 fp_rpc_lockd_enable: false
 fp_rpc_statd_enable: false
-fp_nfsd_service_state: 'started'
-fp_mountd_flags: '-r'
-fp_nfsd_exports: []
 
 # ----------------------------------------------------------------------
 # ntpd

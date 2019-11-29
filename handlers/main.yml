@@ -46,6 +46,8 @@
   service: name="nfsd" state="started" enabled="yes"
 - name: disable and stop nfs server
   service: name="nfsd" state="stopped" enabled="no"
+- name: restart nfs server
+  service: name="nfsd" state="restarted"
 - name: enable and start lockd
   service: name="lockd" state="started" enabled="yes"
 - name: disable and stop lockd
@@ -54,11 +56,17 @@
   service: name="statd" state="started" enabled="yes"
 - name: disable and stop statd
   service: name="statd" state="stopped" enabled="no"
+- name: enable and start rpcbind
+  service: name="rpcbind" state="started" enabled="yes"
 - name: disable and stop rpcbind
   service: name="rpcbind" state="stopped" enabled="no"
+- name: enable and start mountd
+  service: name="mountd" state="started" enabled="yes"
+- name: disable and stop mountd
+  service: name="mountd" state="stopped" enabled="no"
 - name: reload mountd
   service: name="mountd" state="reloaded"
-  when: fp_nfsd_service_enable
+  when: fp_mountd_enable
 
 # ntpd
 - name: enable and start ntpd
