@@ -232,6 +232,8 @@ fp_hostapd_conf_mode: "0640"
 # nfs client / nfsd server
 fp_nfs_service_enable: false
 fp_nfsd_service_enable: false
+fp_nfs_server_flags: '-u -t -n 4'
+fp_nfsv4_server_enable: 'YES'
 fp_nfsd_exports: []
 
 fp_mountd_enable: false

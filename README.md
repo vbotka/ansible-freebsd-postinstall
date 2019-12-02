@@ -150,6 +150,7 @@ To solve this problem apply the path below
 - [make.conf - GNU emacs flavours in FreeBSD](https://ximalas.info/2018/02/02/gnu-emacs-flavours-in-freebsd/)
 - [mount - FreeBSD handbook: 3.7. Mounting and Unmounting File Systems](https://www.freebsd.org/doc/handbook/mount-unmount.html)
 - [nfs - FreeBSD handbook: Network File System (NFS)](https://www.freebsd.org/doc/handbook/network-nfs.html)
+- [nfsd- FreeBSD forum: NFSv4 without Kerberos](https://forums.freebsd.org/threads/nfsv4-without-kerberos.71899/)
 - [ntp - FreeBSD handbook: Clock Synchronization with NTP](http://www.freebsd.org/doc/handbook/network-ntp.html)
 - [ntp - FreeBSD forum: Testing NTP](https://forums.freebsd.org/threads/41874/)
 - [ntp - NTP Support Wiki](http://support.ntp.org/bin/view/Main/WebHome)
