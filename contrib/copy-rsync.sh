@@ -4,8 +4,8 @@
 # Data can be used with Ansible role freebsd-postinstall.
 # Example:
 # ansible-playbook -e 'fp_synchronize_optional=yes' \
-    # ~/.ansible/playbooks/srv.example.com-freebsd-postinstall.yml \
-    # -t fp_synchronize_optional
+# ~/.ansible/playbooks/srv.example.com-freebsd-postinstall.yml \
+# -t fp_synchronize_optional
 
 RSYNC="/usr/bin/rsync"
 RSYNCPARAM="avzl"
