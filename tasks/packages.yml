@@ -15,14 +15,15 @@
          fp_pkg_pkgsite [{{ fp_pkg_pkgsite|default('NOT DEFINED') }}]
          fp_pkg_rootdir [{{ fp_pkg_rootdir|default('NOT DEFINED') }}]
          fp_pkg_state [{{ fp_pkg_state|default('NOT DEFINED') }}]
+
          fp_packages
-         {{ fp_packages|to_yaml }}
+         {{ fp_packages|sort|to_yaml }}
          fp_links
          {{ fp_links|to_yaml }}
 
          ansible_architecture [{{ ansible_architecture }}]
          pkg_dict_{{ ansible_architecture }}
-         {{ lookup('vars', 'pkg_dict_' + ansible_architecture)|to_yaml }}
+         {{ lookup('vars', 'pkg_dict_' + ansible_architecture)|sort|to_yaml }}
   debug:
     msg: "{{ msg.split('\n') }}"
   when: fp_debug|bool
