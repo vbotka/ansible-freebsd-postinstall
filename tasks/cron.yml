@@ -42,6 +42,8 @@
     replace: "#Ansible: {{ item.name }}"
     backup: "{{ fp_backup_conf }}"
   loop: "{{ fp_cron_tab }}"
+  loop_control:
+    label: "{{ item.name }}"
   tags: fp_cron_rename_entries_system
 
 - name: "cron: Configure cron variables"
@@ -64,6 +66,8 @@
     weekday: "{{ item.weekday }}"
     job: "{{ item.command }}"
   loop: "{{ fp_cron_tab }}"
+  loop_control:
+    label: "{{ item.name }}"
   tags: fp_cron_tab
 
 - name: "cron: Configure cron variables system"
@@ -87,6 +91,8 @@
     weekday: "{{ item.weekday }}"
     job: "{{ item.command }}"
   loop: "{{ fp_cron_tab_system }}"
+  loop_control:
+    label: "{{ item.name }}"
   tags: fp_cron_tab_system
 
 # TODO:

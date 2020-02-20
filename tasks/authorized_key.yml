@@ -36,6 +36,8 @@
     state: "{{ item.state|default(omit) }}"
     validate_certs: "{{ item.validate_certs|default(omit) }}"
   loop: "{{ fp_authorized_key }}"
+  loop_control:
+    label: "{{ item.user }}"
   when: fp_authorized_key_install_individually|bool and
         (fp_authorized_key_fail|bool or
          item.user in getent_passwd.keys())
@@ -51,10 +53,11 @@
       when: fp_debug|bool
     - name: "authorized_key: Debug show joined keys"
       debug:
-        msg: "{{ fp_authorized_key|json_query(my_query)|join('\n') }}"
+        msg: "{{ msg.split('\n') }}"
       loop: "{{ local_list_users }}"
       vars:
         my_query: "[?user=='{{ item }}'].key"
+        msg: "{{ fp_authorized_key|json_query(my_query)|join('\n') }}"
       when: fp_debug|bool
     - name: "authorized_key: Configure joined authorized keys"
       authorized_key:

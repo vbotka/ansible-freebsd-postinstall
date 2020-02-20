@@ -29,6 +29,8 @@
     system: "{{ item.system|default(omit) }}"
     uid: "{{ item.uid|default(omit) }}"
   loop: "{{ freebsd_users }}"
+  loop_control:
+    label: "{{ item.name }}"
 
 - name: "users: Add users to additional groups"
   user:
