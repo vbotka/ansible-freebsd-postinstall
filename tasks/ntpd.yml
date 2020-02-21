@@ -1,9 +1,5 @@
 ---
 
-# TODO:
-# 1) Leapseconds file expired
-# https://forums.freebsd.org/threads/56645/
-
 - name: "ntpd: Enable and start ntpd"
   lineinfile:
     dest: "/etc/rc.conf"

@@ -247,10 +247,14 @@ fp_rpc_statd_enable: false
 fp_ntp_service_enable: false
 fp_ntp_service_name: 'ntpd'
 fp_ntp_service_state: 'started'
-fp_ntp_config_server:
+fp_ntp_config_options:
+  - 'tos minclock 3 maxclock 6'
+fp_ntp_config_pool:
   - '0.freebsd.pool.ntp.org iburst'
   - '1.freebsd.pool.ntp.org iburst'
   - '2.freebsd.pool.ntp.org iburst'
+fp_ntp_config_server: []
+fp_ntp_config_peer: []
 fp_ntp_config_restrict:
   - 'default limited kod nomodify notrap nopeer noquery'
   - '-6 default limited kod nomodify notrap nopeer noquery'
@@ -271,7 +275,7 @@ fp_ntp_config_controlkey: ''
 fp_ntp_config_broadcast: ''
 fp_ntp_config_broadcastclient: ''
 fp_ntp_config_multicastclient: ''
-fp_ntp_config_tinker_panic_enabled: ''
+fp_ntp_config_tinker_panic_enabled: false
 
 # ----------------------------------------------------------------------
 # procmail

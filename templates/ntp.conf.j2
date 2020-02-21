@@ -5,8 +5,17 @@ tinker panic 0
 {% if fp_ntp_config_driftfile %}
 driftfile {{ fp_ntp_config_driftfile }}
 {% endif %}
+{% for option in fp_ntp_config_options %}
+{{ option }}
+{% endfor %}
+{% for pool in fp_ntp_config_pool %}
+pool {{ pool }}
+{% endfor %}
 {% for server in fp_ntp_config_server %}
 server {{ server }}
+{% endfor %}
+{% for peer in fp_ntp_config_peer %}
+peer {{ peer }}
 {% endfor %}
 {% if fp_ntp_config_statistics %}
 statistics {{ fp_ntp_config_statistics }}
