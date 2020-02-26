@@ -1,5 +1,18 @@
 ---
 
+- name: "make: Debug"
+  vars:
+    msg: |
+      fp_make_conf_owner [{{ fp_make_conf_owner }}]
+      fp_make_conf_group [{{ fp_make_conf_group }}]
+      fp_make_conf_mode [{{ fp_make_conf_mode }}]
+      fp_make_conf
+      {{ fp_make_conf|to_nice_yaml }}
+  debug:
+    msg: "{{ msg.split('\n') }}"
+  when: fp_make_debug|bool
+  tags: [fp_make_debug, always]
+
 - name: "make: Configure /etc/make.conf"
   template:
     src: "make.conf.j2"
@@ -8,6 +21,7 @@
     group: "{{ fp_make_conf_group }}"
     mode: "{{ fp_make_conf_mode }}"
     backup: "{{ fp_backup_conf }}"
+  tags: fp_make_conf
 
 # EOF
 ...

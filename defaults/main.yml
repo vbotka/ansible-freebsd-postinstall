@@ -21,6 +21,7 @@ fp_domain: "my.domain"
 
 # ----------------------------------------------------------------------
 # /etc/make.conf
+fp_make_debug: false
 fp_make_conf_owner: "root"
 fp_make_conf_group: "wheel"
 fp_make_conf_mode: "u=rw,g=r,o=r"
