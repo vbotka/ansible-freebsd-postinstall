@@ -1,32 +1,45 @@
 ---
-
 # Sync default
-- name: "copy:sync-default: Check existence of {{ role_path }}/{{ fp_copy_dir }}/default"
-  stat:
-    path: "{{ role_path }}/{{ fp_copy_dir }}/default"
-  register: default_copy
-  delegate_to: localhost
 
-- name: "copy:sync-default: Debug directory default exists"
+- name: "copy:sync-default: Debug default directory exists"
   debug:
-    msg: "Directory default exists."
-  when: fp_debug|bool and
-        default_copy.stat.isdir|default(false)
+    msg: "Directory {{ mypath }} exists: {{ mystat }}"
+  vars:
+    mypath: "{{ fp_copy_dir }}/{{ fp_copy_dir_default }}"
+    mystat: "{{ mypath is exists }}"
+  when: fp_debug|bool
 
-- name: "copy:sync-default: Synchronize default files {{ fp_copy_dir }}/default
-         (relative to playbooks directory)"
+- name: "copy:sync-default: Synchronize default files
+         {{ fp_copy_dir }}/{{ fp_copy_dir_default }}"
   synchronize:
-    src: "{{ fp_copy_dir }}/default/"
-    dest: "/"
-    archive: "{{ fp_synchronize_archive }}"
-    checksum: "{{ fp_synchronize_checksum }}"
-    compress: "{{ fp_synchronize_compress }}"
-    delete: "{{ fp_synchronize_delete }}"
-    group: "{{ fp_synchronize_group }}"
-    owner: "{{ fp_synchronize_owner }}"
-    perms: "{{ fp_synchronize_perms }}"
-    times: "{{ fp_synchronize_times }}"
-  when: default_copy.stat.isdir|default(false)
+    src: "{{ mypath_src }}"
+    dest: "{{ item.dest }}"
+    archive: "{{ item.archive|default(fp_synchronize_archive) }}"
+    checksum: "{{ item.checksum|default(fp_synchronize_checksum) }}"
+    compress: "{{ item.compress|default(fp_synchronize_compress) }}"
+    copy_links: "{{ item.copy_links|default(fp_synchronize_copy_links) }}"
+    delete: "{{ item.delete|default(fp_synchronize_delete) }}"
+    dirs: "{{ item.dirs|default(fp_synchronize_dirs) }}"
+    existing_only: "{{ item.existing_only|default(fp_synchronize_existing_only) }}"
+    mode: "{{ item.mode|default(fp_synchronize_mode) }}"
+    group: "{{ item.group|default(omit) }}"
+    owner: "{{ item.owner|default(omit) }}"
+    perms: "{{ item.synchronize_perms|default(omit) }}"
+    times: "{{ item.synchronize_times|default(omit) }}"
+    recursive: "{{ item.recursive|default(omit) }}"
+    verify_host: "{{ item.verify_host|default(fp_synchronize_verify_host) }}"
+  register: result
+  loop: "{{ fp_synchronize_default }}"
+  loop_control:
+    label: "{{ item.dest }}"
+  vars:
+    mypath: "{{ fp_copy_dir }}/{{ fp_copy_dir_default }}/{{ item.src }}"
+  when: mypath is exists
+
+- name: "copy:sync-optional: Debug synchronize default files result"
+  debug:
+    var: result
+  when: fp_debug|bool
 
 # EOF
 ...

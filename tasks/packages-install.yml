@@ -19,6 +19,7 @@
   loop: "{{ local_pkg_list }}"
   loop_control:
     loop_var: local_pkg
+    label: "{{ local_pkg }}"
   register: result
   retries: "{{ freebsd_install_retries }}"
   until: result is succeeded

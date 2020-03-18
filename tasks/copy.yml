@@ -1,44 +1,68 @@
 ---
 
 - name: "copy: Debug"
+  when: fp_copy_debug|bool
   vars:
     msg: |
-         fp_synchronize_default [{{ fp_synchronize_default }}]
-         fp_synchronize_optional [{{ fp_synchronize_optional }}]
+         fp_unarch_default [{{ fp_unarch_default }}]
+         fp_unarch_optional [{{ fp_unarch_optional }}]
+
+         fp_synchronize_default
+         {{ fp_synchronize_default|to_nice_yaml }}
+         fp_synchronize_optional
+         {{ fp_synchronize_optional|to_nice_yaml }}
+
+         fp_copy_dir [{{ fp_copy_dir }}]
+         fp_copy_dir_default [{{ fp_copy_dir_default }}]
+         fp_copy_arch_defaul [{{ fp_copy_arch_default }}]
+         fp_copy_dir_optional [{{ fp_copy_dir_optional }}]
+         fp_copy_arch_optional [{{ fp_copy_arch_optional }}]
+
+         fp_unarchive_keep_newer [{{ fp_unarchive_keep_newer }}]
+
+         fp_synchronize_delete [{{ fp_synchronize_delete }}]
+         fp_synchronize_archive [{{ fp_synchronize_archive }}]
+         fp_synchronize_checksum [{{ fp_synchronize_checksum }}]
+         fp_synchronize_compress [{{ fp_synchronize_compress }}]
+         fp_synchronize_copy_links [{{ fp_synchronize_copy_links }}]
+         fp_synchronize_dirs [{{ fp_synchronize_dirs }}]
+         fp_synchronize_existing_only [{{ fp_synchronize_existing_only }}]
+         fp_synchronize_group [{{ fp_synchronize_group }}]
+         fp_synchronize_mode [{{ fp_synchronize_mode }}]
+         fp_synchronize_owner [{{ fp_synchronize_owner }}]
+         fp_synchronize_perms [{{ fp_synchronize_perms }}]
+         fp_synchronize_times [{{ fp_synchronize_times }}]
+         fp_synchronize_verify_host [{{ fp_synchronize_verify_host }}]
   debug:
     msg: "{{ msg.split('\n') }}"
-  when: fp_debug|bool
+  tags: [fp_copy_debug, always]
 
 # Sync default
 - name: "copy: Synchronize default files
-         {{ fp_copy_dir }}/default
-         (relative to playbooks directory)"
+         {{ fp_copy_dir }}/{{ fp_copy_dir_default }}/"
   import_tasks: copy/sync-default.yml
-  when: fp_synchronize_default|bool
+  when: fp_synchronize_default|length > 0
   tags: fp_copy_sync_default
 
 # Sync optional
-- name: "copy: Synchronize host specific files
-         {{ fp_copy_dir }}/{{ rc_conf_hostname }}
-         (relative to playbooks directory)"
+- name: "copy: Synchronize optional files
+         {{ fp_copy_dir }}/{{ fp_copy_dir_optional }}/"
   import_tasks: copy/sync-optional.yml
-  when: fp_synchronize_optional|bool
+  when: fp_synchronize_optional|length > 0
   tags: fp_copy_sync_optional
 
 # Unarch default
-- name: "copy: Untar default files
-         {{ fp_copy_dir }}/default.tar
-         (relative to playbooks directory)"
+- name: "copy: Extract default files
+         {{ fp_copy_dir }}/{{ fp_copy_arch_defaul }}"
   import_tasks: copy/unarch-default.yml
-  when: fp_synchronize_default|bool
+  when: fp_unarch_default|bool
   tags: fp_copy_unarch_default
 
 # Unarch optional
-- name: "copy: Untar host specific files
-         {{ fp_copy_dir }}/{{ rc_conf_hostname }}.tar
-         (relative to playbooks directory)"
+- name: "copy: Extract optional files
+         {{ fp_copy_dir }}/{{ fp_copy_arch_optional }}"
   import_tasks: copy/unarch-optional.yml
-  when: fp_synchronize_optional|bool
+  when: fp_unarch_optional|bool
   tags: fp_copy_unarch_optional
 
 # EOF

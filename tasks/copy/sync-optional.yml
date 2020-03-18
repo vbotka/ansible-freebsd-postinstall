@@ -1,34 +1,45 @@
 ---
-
 # Sync optional
-- name: "copy:sync-optional: Check existence of
-         {{ playbook_dir }}/{{ fp_copy_dir }}/{{ rc_conf_hostname }}"
-  stat:
-    path: "{{ playbook_dir }}/{{ fp_copy_dir }}/{{ rc_conf_hostname }}"
-  register: optional_copy
-  delegate_to: localhost
 
-- name: "copy:sync-optional: Debug directory {{ rc_conf_hostname }} exists"
+- name: "copy:sync-optional: Debug optional directory exists"
   debug:
-    msg: "Directory {{ rc_conf_hostname }} exists."
-  when: fp_debug|bool and
-        optional_copy.stat.isdir|default(false)
+    msg: "Directory {{ mypath }} exists: {{ mystat }}"
+  vars:
+    mypath: "{{ fp_copy_dir }}/{{ fp_copy_dir_optional }}"
+    mystat: "{{ mypath is exists }}"
+  when: fp_debug|bool
 
-- name: "copy:sync-optional: Synchronize host specific files
-         {{ fp_copy_dir }}/{{ rc_conf_hostname }}
-         (relative to playbooks directory)"
+- name: "copy:sync-optional: Synchronize optional files
+         {{ fp_copy_dir }}/{{ fp_copy_dir_optional }}"
   synchronize:
-    src: "{{ fp_copy_dir }}/{{ rc_conf_hostname }}/"
-    dest: "/"
-    archive: "{{ fp_synchronize_archive }}"
-    checksum: "{{ fp_synchronize_checksum }}"
-    compress: "{{ fp_synchronize_compress }}"
-    delete: "{{ fp_synchronize_delete }}"
-    group: "{{ fp_synchronize_group }}"
-    owner: "{{ fp_synchronize_owner }}"
-    perms: "{{ fp_synchronize_perms }}"
-    times: "{{ fp_synchronize_times }}"
-  when: optional_copy.stat.isdir|default(false)
+    src: "{{ mypath }}"
+    dest: "{{ item.dest }}"
+    archive: "{{ item.archive|default(fp_synchronize_archive) }}"
+    checksum: "{{ item.checksum|default(fp_synchronize_checksum) }}"
+    compress: "{{ item.compress|default(fp_synchronize_compress) }}"
+    copy_links: "{{ item.copy_links|default(fp_synchronize_copy_links) }}"
+    delete: "{{ item.delete|default(fp_synchronize_delete) }}"
+    dirs: "{{ item.dirs|default(fp_synchronize_dirs) }}"
+    existing_only: "{{ item.existing_only|default(fp_synchronize_existing_only) }}"
+    mode: "{{ item.mode|default(fp_synchronize_mode) }}"
+    group: "{{ item.group|default(omit) }}"
+    owner: "{{ item.owner|default(omit) }}"
+    perms: "{{ item.synchronize_perms|default(omit) }}"
+    times: "{{ item.synchronize_times|default(omit) }}"
+    recursive: "{{ item.recursive|default(omit) }}"
+    verify_host: "{{ item.verify_host|default(fp_synchronize_verify_host) }}"
+  register: result
+  loop: "{{ fp_synchronize_optional }}"
+  loop_control:
+    label: "{{ item.dest }}"
+  vars:
+    mypath: "{{ fp_copy_dir }}/{{ fp_copy_dir_optional }}/{{ item.src }}"
+  when: mypath is exists
+
+- name: "copy:sync-optional: Debug synchronize optional files result"
+  debug:
+    var: result
+  when: fp_debug|bool
 
 # EOF
 ...

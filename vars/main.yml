@@ -391,5 +391,23 @@
 # fp_snmpd_conf:
 #   - {key: "agentAddress", value: "udp:127.0.0.1:161,udp:10.1.0.12:161"}
 
+# ----------------------------------------------------------------------
+# copy
+# fp_copy_dir: "{{ playbook_dir }}/copy"
+fp_copy_debug: true
+fp_unarch_default: true
+fp_unarch_optional: false
+
+fp_synchronize_default: []
+fp_synchronize_optional:
+  - src: var/db/ports
+    dest: /var/db
+    owner: false
+    group: false
+  - src: usr/local/etc/letsencrypt
+    dest: /usr/local/etc
+    owner: false
+    group: false
+
 # EOF
 ...
