@@ -2,7 +2,7 @@
 
 - name: "packages-install: Get list of packages for {{ item.list }}"
   set_fact:
-    local_pkg_list: "{{ lookup('vars', 'pkg_dict_' + ansible_architecture)|json_query(query) }}"
+    local_pkg_list: "{{ lookup('vars', 'pkg_dict_' ~ ansible_architecture)|json_query(query) }}"
   vars:
     query: "[?pkglist=='{{ item.list }}'].packages"
 

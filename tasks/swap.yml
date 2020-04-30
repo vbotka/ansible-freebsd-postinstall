@@ -4,10 +4,10 @@
   vars:
     msg: |
          fp_swap [{{ fp_swap }}]
-         fp_swap_file [{{ fp_swap_file|default("NOT-DEFINED") }}]
-         fp_swap_md [{{ fp_swap_md|default("NOT-DEFINED") }}]
-         fp_swap_size [{{ fp_swap_size|default("NOT-DEFINED") }}]
-         fp_swap_stsize [{{ fp_swap_stsize|default("NOT-DEFINED") }}]
+         fp_swap_file [{{ fp_swap_file|default("UNDEFINED") }}]
+         fp_swap_md [{{ fp_swap_md|default("UNDEFINED") }}]
+         fp_swap_size [{{ fp_swap_size|default("UNDEFINED") }}]
+         fp_swap_stsize [{{ fp_swap_stsize|default("UNDEFINED") }}]
   debug:
     msg: "{{ msg.split('\n') }}"
   when: fp_debug|bool

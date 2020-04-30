@@ -1,6 +1,8 @@
 ---
 
 - name: "FreeBSD postinstall packages Debug"
+  debug:
+    msg: "{{ msg.split('\n') }}"
   vars:
     msg: |
          freebsd_install_method [{{ freebsd_install_method }}]
@@ -8,24 +10,23 @@
          freebsd_install_retries [{{ freebsd_install_retries }}]
          freebsd_install_delay [{{ freebsd_install_delay }}]
 
-         fp_pkg_autoremove [{{ fp_pkg_autoremove|default('NOT DEFINED') }}]
-         fp_pkg_cached [{{ fp_pkg_cached|default('NOT DEFINED') }}]
-         fp_pkg_chroot [{{ fp_pkg_chroot|default('NOT DEFINED') }}]
-         fp_pkg_jail [{{ fp_pkg_jail|default('NOT DEFINED') }}]
-         fp_pkg_pkgsite [{{ fp_pkg_pkgsite|default('NOT DEFINED') }}]
-         fp_pkg_rootdir [{{ fp_pkg_rootdir|default('NOT DEFINED') }}]
-         fp_pkg_state [{{ fp_pkg_state|default('NOT DEFINED') }}]
+         fp_pkg_autoremove [{{ fp_pkg_autoremove|default('UNDEFINED') }}]
+         fp_pkg_cached [{{ fp_pkg_cached|default('UNDEFINED') }}]
+         fp_pkg_chroot [{{ fp_pkg_chroot|default('UNDEFINED') }}]
+         fp_pkg_jail [{{ fp_pkg_jail|default('UNDEFINED') }}]
+         fp_pkg_pkgsite [{{ fp_pkg_pkgsite|default('UNDEFINED') }}]
+         fp_pkg_rootdir [{{ fp_pkg_rootdir|default('UNDEFINED') }}]
+         fp_pkg_state [{{ fp_pkg_state|default('UNDEFINED') }}]
 
          fp_packages
-         {{ fp_packages|sort|to_yaml }}
+         {{ fp_packages|sort(attribute='list')|to_yaml }}
          fp_links
          {{ fp_links|to_yaml }}
 
          ansible_architecture [{{ ansible_architecture }}]
          pkg_dict_{{ ansible_architecture }}
-         {{ lookup('vars', 'pkg_dict_' + ansible_architecture)|sort|to_yaml }}
-  debug:
-    msg: "{{ msg.split('\n') }}"
+         {{ lookup('vars', 'pkg_dict_' ~ ansible_architecture)|
+            sort(attribute='pkglist')|to_yaml }}
   when: fp_debug|bool
 
 - name: "packages: Install packages"

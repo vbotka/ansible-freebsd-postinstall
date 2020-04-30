@@ -18,7 +18,7 @@
          fp_authorized_key
          {{ fp_authorized_key|to_nice_yaml }}
          getent_passwd keys
-         {{ getent_passwd.keys()|to_yaml }}
+         {{ getent_passwd.keys()|list|sort|to_yaml }}
   debug:
     msg: "{{ msg.split('\n') }}"
   when: fp_debug|bool
