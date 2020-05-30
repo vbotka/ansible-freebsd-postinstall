@@ -1,5 +1,16 @@
 ---
 
+- name: "users: Debug"
+  vars:
+    msg: |
+      freebsd_users
+      {{ freebsd_users|to_nice_yaml }}
+      freebsd_users_groups
+      {{ freebsd_users_groups|to_nice_yaml }}
+  debug:
+    msg: "{{ msg.split('\n') }}"
+  when: fp_debug|bool
+
 - name: "users: Manage user accounts"
   user:
     name: "{{ item.name }}"
