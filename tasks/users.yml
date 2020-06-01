@@ -4,9 +4,9 @@
   vars:
     msg: |
       freebsd_users
-      {{ freebsd_users|to_nice_yaml }}
+      {{ freebsd_users|default(['UNDEFINED'])|to_nice_yaml }}
       freebsd_users_groups
-      {{ freebsd_users_groups|to_nice_yaml }}
+      {{ freebsd_users_groups|default(['UNDEFINED'])|to_nice_yaml }}
   debug:
     msg: "{{ msg.split('\n') }}"
   when: fp_debug|bool
@@ -39,7 +39,7 @@
     state: "{{ item.state|default(omit) }}"
     system: "{{ item.system|default(omit) }}"
     uid: "{{ item.uid|default(omit) }}"
-  loop: "{{ freebsd_users }}"
+  loop: "{{ freebsd_users|default([]) }}"
   loop_control:
     label: "{{ item.name }}"
 
@@ -48,7 +48,7 @@
     name: "{{ item.name }}"
     groups: "{{ item.groups }}"
     append: "{{ item.append|default(true) }}"
-  loop: "{{ freebsd_users_groups }}"
+  loop: "{{ freebsd_users_groups|default([]) }}"
 
 # EOF
 ...
