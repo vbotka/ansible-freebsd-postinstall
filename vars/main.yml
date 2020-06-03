@@ -394,20 +394,20 @@
 # ----------------------------------------------------------------------
 # copy
 # fp_copy_dir: "{{ playbook_dir }}/copy"
-fp_copy_debug: true
-fp_unarch_default: true
-fp_unarch_optional: false
-
-fp_synchronize_default: []
-fp_synchronize_optional:
-  - src: var/db/ports
-    dest: /var/db
-    owner: false
-    group: false
-  - src: usr/local/etc/letsencrypt
-    dest: /usr/local/etc
-    owner: false
-    group: false
+# fp_copy_debug: true
+# fp_unarch_default: true
+# fp_unarch_optional: false
+#
+# fp_synchronize_default: []
+# fp_synchronize_optional:
+#   - src: var/db/ports
+#     dest: /var/db
+#     owner: false
+#     group: false
+#   - src: usr/local/etc/letsencrypt
+#     dest: /usr/local/etc
+#     owner: false
+#     group: false
 
 # EOF
 ...
