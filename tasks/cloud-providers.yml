@@ -2,7 +2,7 @@
 
 - import_tasks: cloud-providers/digitalocean.yml
   when: digitalocean|bool
-  tags: fp_digitalocean
+  tags: fp_do
 
 # EOF
 ...

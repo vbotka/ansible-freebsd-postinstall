@@ -13,12 +13,12 @@
       fp_do_rcconf
       {{ fp_do_rcconf|to_yaml }}
   debug:
-    msg: "{{ msg.split('\n') }}"
+    msg: "{{ msg.split('\n')[:-1] }}"
   tags: [fp_do_debug, always]
 
 - name: "digitalocean: Configure /etc/rc.conf"
   lineinfile:
-    dest: "/etc/rc.conf"
+    dest: /etc/rc.conf
     regexp: "^\\s*{{ item.key }}\\s*="
     line: "{{ item.key }}=\"{{ item.value }}\""
     backup: "{{ fp_backup_conf }}"
