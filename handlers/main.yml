@@ -103,8 +103,10 @@
   service: name="hostapd" state="stopped" enabled="no"
 - name: restart hostapd
   service: name="hostapd" state="restarted"
+  when: fp_hostapd_enabled|bool
 - name: reload hostapd
   service: name="hostapd" state="reloaded"
+  when: fp_hostapd_enabled|bool
 
 # fstab
 # - name: mount all

@@ -1,31 +1,26 @@
 ---
 
 - name: "hostapd: Enable and start hostapd"
-  when:
-    - fp_hostapd_enabled|bool
-    - fp_hostapd_install|bool
   lineinfile:
     dest: "/etc/rc.conf"
     regexp: "^hostapd_enable"
     line: "hostapd_enable=\"YES\""
     backup: "{{ fp_backup_conf }}"
   notify: enable and start hostapd
+  when: fp_hostapd_enabled|bool
   tags: fp_hostapd_rcconf
 
 - name: "hostapd: Disable and stop hostapd"
-  when:
-    - not fp_hostapd_enabled|bool
-    - fp_hostapd_install|bool
   lineinfile:
     dest: "/etc/rc.conf"
     regexp: "^hostapd_enable"
     line: "hostapd_enable=\"NO\""
     backup: "{{ fp_backup_conf }}"
   notify: disable and stop hostapd
+  when: not fp_hostapd_enabled|bool
   tags: fp_hostapd_rcconf
 
 - name: "hostapd: Configure interface for hostapd"
-  when: fp_hostapd_enabled|bool
   lineinfile:
     dest: "/etc/rc.conf"
     regexp: "{{ item.regexp }}"
@@ -42,7 +37,6 @@
   tags: fp_hostapd_rcconf
 
 - name: "hostapd: Configure /etc/hostapd.conf template file"
-  when: fp_hostapd_enabled|bool
   template:
     src: "hostapd.conf.j2"
     dest: "{{ fp_hostapd_conf_file }}"
