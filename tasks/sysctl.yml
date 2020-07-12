@@ -8,7 +8,7 @@
       fp_sysctl
       {{ fp_sysctl|to_yaml }}
   debug:
-    msg: "{{ msg.split('\n') }}"
+    msg: "{{ msg.split('\n')[:-1] }}"
   when: fp_debug|bool
 
 - name: "sysctl: Configure {{ fp_sysctl_file }}"
@@ -50,7 +50,7 @@
   loop: "{{ fp_sysctl }}"
   when:
     - not ansible_check_mode
-    - tmp_loader_vars.stdout is search( item.name|regex_escape() )
+    - tmp_loader_vars.stdout is search(item.name|regex_escape())
 
 - name: "sysctl: Debug fp_sysctl_loader_conf"
   debug:
@@ -59,10 +59,10 @@
 
 - name: "sysctl: Configure /boot/loader.conf"
   template:
-    src: "loader.conf.j2"
-    dest: "/boot/loader.conf"
-    owner: "root"
-    group: "wheel"
+    src: loader.conf.j2
+    dest: /boot/loader.conf
+    owner: root
+    group: wheel
     mode: "0644"
     backup: "{{ fp_backup_conf }}"
   when: fp_loader_template_conf|bool
