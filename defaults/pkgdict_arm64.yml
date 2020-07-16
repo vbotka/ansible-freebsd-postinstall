@@ -95,11 +95,11 @@ pkg_dict_arm64:
     packages:
       - security/pecl-mcrypt
 #     - security/{{ php_mcrypt }}
-  - pkglist:  mysql
+  - pkglist: mysql
     packages:
       - databases/mysql{{ bsd_mysql_version }}-client
       - databases/mysql{{ bsd_mysql_version }}-server
-  - pkglist:  mysql_extra
+  - pkglist: mysql_extra
     packages:
       - databases/py-pymysql
       - databases/py-mysql-connector-python
