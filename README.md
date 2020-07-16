@@ -2,17 +2,16 @@
 
 [![Build Status](https://travis-ci.org/vbotka/ansible-freebsd-postinstall.svg?branch=master)](https://travis-ci.org/vbotka/ansible-freebsd-postinstall)
 
-[Ansible
-role.](https://galaxy.ansible.com/vbotka/freebsd_postinstall/)
-
-FreeBSD post-install configuration: aliases, apcupsd, authorized
-keys, cron, devfs, fstab, gitserver, hostapd, hostname, hosts, libmap, linux
+[Ansible role.](https://galaxy.ansible.com/vbotka/freebsd_postinstall/) FreeBSD
+post-install configuration: aliases, apcupsd, authorized keys, cron,
+devfs, fstab, gitserver, hostapd, hostname, hosts, libmap, linux
 compatibility, login.conf, loader.conf, make.conf, motd, nfsd, ntpd,
 ntpdate, procmail, resolvconf.conf, smartd, snmpd, sudoers, ssh, swap,
 sysctl, timezone, tmpmfs, users, packages and ports, periodic.conf,
 overlays, wpa_supplicant, (wip) ...
 
-Please feel free to [share your feedback and report issues](https://github.com/vbotka/ansible-freebsd-postinstall/issues).
+Feel free to [share your feedback and report issues](https://github.com/vbotka/ansible-freebsd-postinstall/issues).
+
 
 ## Requirements
 
@@ -31,9 +30,9 @@ packages. Installation is faster. But, later, after having upgraded
 from the ports (*portmaster -a*) switch the method to *ports*.
 
 ```
-freebsd_install_method: "packages"
-#freebsd_install_method: "ports"
-#freebsd_use_packages: "yes"
+freebsd_install_method: packages
+#freebsd_install_method: ports
+#freebsd_use_packages: true
 ```
 
 Optionaly the packages can be built by
@@ -48,9 +47,9 @@ Role [freebsd_ports](https://galaxy.ansible.com/vbotka/freebsd_ports)
 will install packages if this option is set.
 
 ```
-#freebsd_install_method: "packages"
-freebsd_install_method: "ports"
-freebsd_use_packages: "yes"
+#freebsd_install_method: packages
+freebsd_install_method: ports
+freebsd_use_packages: true
 ```
 
 

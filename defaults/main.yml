@@ -155,7 +155,7 @@ fp_authorized_key_validate_certs: true
 
 # ----------------------------------------------------------------------
 # smartd
-fp_smartd_install: false
+fp_smartd_install: false  # list of packages: smart
 fp_smartd_service_enabled: false
 fp_smartd_service_name: "smartd"
 fp_smartd_service_state: "stopped"
@@ -167,7 +167,7 @@ fp_smartd_devices: []
 
 # ----------------------------------------------------------------------
 # apcupsd
-fp_apcupsd_install: false
+fp_apcupsd_install: false  # list of packages: apcups
 fp_apcupsd_service_enabled: false
 fp_apcupsd_service_name: "apcupsd"
 fp_apcupsd_conf_dir: "/usr/local/etc/apcupsd"
@@ -205,7 +205,7 @@ fp_apcupsd_DATATIME: "0"
 
 # ----------------------------------------------------------------------
 # hostapd
-fp_hostapd_install: false
+fp_hostapd_install: false  # list of packages: hostap
 fp_hostapd_enabled: false
 fp_hostapd_name: 'hostapd'
 fp_hostapd_state: 'stopped'
@@ -292,7 +292,7 @@ fp_ntp_config_tinker_panic_enabled: false
 
 # ----------------------------------------------------------------------
 # procmail
-fp_procmail_install: false
+fp_procmail_install: false  # list of packages: procmail
 fp_procmail_bin: "/usr/local/bin/procmail"
 fp_procmail_responder: "responder"
 fp_procmail_shell: "/bin/sh"
@@ -320,7 +320,7 @@ fp_sysctl_loader_conf: []
 
 # ----------------------------------------------------------------------
 # groupwrappers
-fp_groupwrappers_install: false
+fp_groupwrappers_install: false  # list of packages: none
 fp_groupwrappers_dir: "/root/bin"
 fp_groupwrappers_owner: "root"
 fp_groupwrappers_group: "wheel"
@@ -331,7 +331,7 @@ fp_group_mod: "/usr/sbin/pw groupmod"
 
 # ----------------------------------------------------------------------
 # gitserver
-fp_gitserver_install: false
+fp_gitserver_install: false  # list of packages: none
 fp_gitserver_owner: "gitserver"
 fp_gitserver_group: "gitusers"
 fp_gitserver_dir: "/home/{{ fp_gitserver_owner }}"
@@ -381,7 +381,7 @@ fp_periodic_conf_local: []
 
 # ----------------------------------------------------------------------
 # wpa_supplicant
-fp_wpasupplicant_install: false
+fp_wpasupplicant_install: false  # list of packages: wpa_supplicant
 fp_wpasupplicant_debug: false
 fp_wpasupplicant_debug_classified: false
 fp_wpasupplicant_backup: false
@@ -405,7 +405,7 @@ fp_wpasupplicant_conf: []
 
 # ----------------------------------------------------------------------
 # linux
-fp_linux_enable: false
+fp_linux_enable: false  #  list of packages: linux
 fp_linux_install: false
 fp_linux_debug: false
 fp_linux_fstab:
@@ -506,7 +506,7 @@ fp_tmpmfs_rcconf:
 
 # ----------------------------------------------------------------------
 # snmpd
-fp_snmpd_install: false
+fp_snmpd_install: false  # list of packages: snmpd
 fp_snmpd_enabled: false
 fp_snmpd_service: 'snmpd'
 fp_snmpd_rcconf:
