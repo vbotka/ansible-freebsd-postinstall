@@ -3,9 +3,9 @@
 
 # ----------------------------------------------------------------------
 # FreeBSD install packages
-freebsd_install_method: "packages"
-# freebsd_install_method: "ports"
-# freebsd_use_packages: "yes"
+freebsd_install_method: packages
+# freebsd_install_method: ports
+# freebsd_use_packages: true
 freebsd_install_retries: 10
 freebsd_install_delay: 5
 
@@ -16,14 +16,14 @@ fp_backup_conf: false
 
 # ----------------------------------------------------------------------
 # Hostname
-rc_conf_hostname: "srv.my.domain"
-fp_domain: "my.domain"
+rc_conf_hostname: srv.my.domain
+fp_domain: my.domain
 
 # ----------------------------------------------------------------------
 # /etc/make.conf
 fp_make_debug: false
-fp_make_conf_owner: "root"
-fp_make_conf_group: "wheel"
+fp_make_conf_owner: root
+fp_make_conf_group: wheel
 fp_make_conf_mode: "u=rw,g=r,o=r"
 fp_make_conf: []
 
@@ -34,8 +34,11 @@ fp_links: []
 
 # ----------------------------------------------------------------------
 # hosts
+fp_hosts_debug: false
+fp_hosts_sanity: true
 fp_hosts_localhost_IPv4: "127.0.0.1"
 fp_hosts_localhost_IPv6: "::1"
+fp_hosts_template: hosts.j2
 fp_hosts: []
 
 # ----------------------------------------------------------------------
