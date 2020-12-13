@@ -43,6 +43,9 @@
 - import_tasks: libmap.yml
   tags: fp_libmap
 
+- import_tasks: groups.yml
+  tags: fp_groups
+
 - import_tasks: users.yml
   tags: fp_users
 

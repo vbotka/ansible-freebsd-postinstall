@@ -1,0 +1,21 @@
+---
+
+- name: "groups: Debug"
+  vars:
+    msg: |
+      freebsd_groups
+      {{ freebsd_groups|to_nice_yaml }}
+  debug:
+    msg: "{{ msg.split('\n')[:-1] }}"
+  when: fp_debug|bool
+
+- name: "groups: Manage groups"
+  group:
+    name: "{{ item.name }}"
+    gid: "{{ item.gid|default(omit) }}"
+    state: "{{ item.state|default(omit) }}"
+    system: "{{ item.system|default(omit) }}"
+  loop: "{{ freebsd_groups }}"
+
+# EOF
+...
