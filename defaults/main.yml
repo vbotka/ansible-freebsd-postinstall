@@ -267,9 +267,10 @@ fp_ntp_service_state: 'started'
 fp_ntp_config_options:
   - 'tos minclock 3 maxclock 6'
 fp_ntp_config_pool:
-  - '0.freebsd.pool.ntp.org iburst'
-  - '1.freebsd.pool.ntp.org iburst'
-  - '2.freebsd.pool.ntp.org iburst'
+  - '0.pool.ntp.org iburst'
+  - '1.pool.ntp.org iburst'
+  - '2.pool.ntp.org iburst'
+  - '3.pool.ntp.org iburst'
 fp_ntp_config_server: []
 fp_ntp_config_peer: []
 fp_ntp_config_restrict:
