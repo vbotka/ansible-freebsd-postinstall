@@ -16,6 +16,7 @@
          aws [{{ aws }}]
          gcp [{{ gcp }}]
 
+         fp_install [{{ fp_backup_conf }}]
          fp_backup_conf [{{ fp_backup_conf }}]
 
          fp_apcupsd_install [{{ fp_apcupsd_install }}]

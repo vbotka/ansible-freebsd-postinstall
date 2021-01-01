@@ -35,6 +35,7 @@
   tags: fp_mountiso
 
 - import_tasks: packages.yml
+  when: fp_install|bool
   tags: fp_packages
 
 - import_tasks: copy.yml

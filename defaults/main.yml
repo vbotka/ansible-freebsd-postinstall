@@ -29,6 +29,7 @@ fp_make_conf: []
 
 # ----------------------------------------------------------------------
 # Packages
+fp_install: true
 fp_packages: []
 fp_links: []
 
