@@ -2,20 +2,20 @@
 
 [![Build Status](https://travis-ci.org/vbotka/ansible-freebsd-postinstall.svg?branch=master)](https://travis-ci.org/vbotka/ansible-freebsd-postinstall)
 
-[Ansible role.](https://galaxy.ansible.com/vbotka/freebsd_postinstall/) FreeBSD
-post-install configuration: aliases, apcupsd, authorized keys, cron,
-devfs, fstab, gitserver, groups, hostapd, hostname, hosts, libmap, linux
-compatibility, login.conf, loader.conf, make.conf, motd, nfsd, ntpd,
-ntpdate, procmail, resolvconf.conf, smartd, snmpd, sudoers, ssh, swap,
-sysctl, timezone, tmpmfs, users, packages and ports, periodic.conf,
-overlays, wpa_supplicant, (wip) ...
+[Ansible role.](https://galaxy.ansible.com/vbotka/freebsd_postinstall/) FreeBSD post-install
+configuration: aliases, apcupsd, authorized keys, cron, devfs, fstab, gitserver, groups, hostapd,
+hostname, hosts, libmap, linux compatibility, login.conf, loader.conf, make.conf, motd, nfsd, ntpd,
+ntpdate, procmail, resolvconf.conf, smartd, snmpd, sudoers, ssh, swap, sysctl, timezone, tmpmfs,
+users, packages and ports, periodic.conf, overlays, wpa_supplicant, (wip) ...
 
-Feel free to [share your feedback and report issues](https://github.com/vbotka/ansible-freebsd-postinstall/issues).
+Feel free to [share your feedback and report
+issues](https://github.com/vbotka/ansible-freebsd-postinstall/issues). [Contributions are
+welcome](https://github.com/firstcontributions/first-contributions).
 
 
 ## Requirements
 
-None.
+* Ansible role [vbotka.ansible_lib](https://galaxy.ansible.com/vbotka/ansible_lib)
 
 
 ## Variables

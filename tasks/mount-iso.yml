@@ -1,95 +1,91 @@
 ---
 
-- name: "mount-iso: Get mounted iso"
-  block:
-    - name: "mount-iso: Get iso mount points"
-      command: "mount -t cd9660"
-      args:
-        warn: false
-      register: result
-      changed_when: false
-    - name: "mount-iso: Set empty mounted_iso_list"
-      set_fact:
-        mounted_iso_list: []
-    - name: "mount-iso: Add entries to mounted_iso_list"
-      set_fact:
-        mounted_iso_list: >-
-          {{ mounted_iso_list + [ {
-          'mount_point': item.split(' ')[2],
-          'device': item.split(' ')[0]|basename } ]
-          }}
-      loop: "{{ result.stdout_lines|default([]) }}"
-    - name: "mount-iso: Debug"
-      debug:
-        var: mounted_iso_list
-      when: fp_debug|bool
+- name: "mount-iso: Debug"
+  vars:
+    msg: |
+      fp_mount_iso_points_create [{{ fp_mount_iso_points_create }}]
+      fp_mount_iso_entries
+      {{ fp_mount_iso_entries|to_nice_yaml }}
+  debug:
+    msg: "{{ msg.split('\n')[:-1] }}"
+  when: fp_mount_iso_debug|bool
 
+  # mounted - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 - name: "mount-iso: Create mount points"
   file:
     state: directory
     path: "{{ item.mount }}"
   loop: "{{ fp_mount_iso_entries }}"
+  when:
+    - fp_mount_iso_points_create|bool  # Note 2.
+    - item.state|default("mounted") == "mounted"
+
+- name: "mount-iso: Attach memory disks"
+  include_tasks: fn/mdconfig-attach-disk.yml
+  loop: "{{ fp_mount_iso_entries }}"
   when: item.state|default("mounted") == "mounted"
 
-- name: "mount-iso: Debug list mounted iso"
+- name: "mount-iso: Debug attach memory disks"
   debug:
-    msg: "{{ mounted_iso_list|json_query('[].mount_point') }}"
-  when: fp_debug|bool
+    var: al_mdconfig_devs
+  when: fp_mount_iso_debug|bool
 
-- name: "mount-iso: Debug mount commands"
-  debug:
-    msg: |
-      mount -t cd9660 /dev/`mdconfig -f {{ item.iso }}` {{ item.mount }}
-  loop: "{{ fp_mount_iso_entries }}"
-  when:
-    - fp_debug|bool
-    - item.mount not in mounted_iso_list|json_query('[].mount_point')
-    - item.state|default("mounted") == "mounted"
-
-- name: "mount-iso: Mount iso entries"
-  shell: "mount -t cd9660 /dev/$(mdconfig -f {{ item.iso }}) {{ item.mount }}"
-  args:
-    warn: false
-  loop: "{{ fp_mount_iso_entries }}"
-  when:
-    - item.mount not in mounted_iso_list|json_query('[].mount_point')
-    - item.state|default("mounted") == "mounted"
-
-- name: "mount-iso: Umount iso entries"
+- name: "mount-iso: Mount"
   mount:
-    state: unmounted
-    path: "{{ item.mount }}"
+    src: "/dev/md{{ al_mdconfig_devs[item.iso]['unit'] }}{{ item.partition|default('') }}"
+    path: "{{ item.mount }}"  # Note 2.
+    fstype: "{{ item.fstype|default('cd9660') }}"
+    state: mounted
+    fstab: /tmp/tmp.fstab  # Note 1.
   loop: "{{ fp_mount_iso_entries }}"
-  when:
-    - item.mount in mounted_iso_list|json_query('[].mount_point')
-    - item.state|default("mounted") == "unmounted"
+  register: result
+  when: item.state|default("mounted") == "mounted"
 
-- name: "mount-iso: Set list of nodes to be deleted"
-  set_fact:
-    local_node_list: "{{ local_node_list|default([]) }} + {{ mounted_iso_list|json_query(local_query) }}"
-  vars:
-    local_query: "[?mount_point=='{{ item.mount }}'].device"
-  loop: "{{ fp_mount_iso_entries }}"
-  when:
-    - item.mount in mounted_iso_list|json_query('[].mount_point')
-    - item.state|default("mounted") == "unmounted"
-
-- name: "mount-iso: Debug list nodes to be deleted"
+- name: "mount-iso: Debug mount"
   debug:
-    var: local_node_list
-  when: fp_debug|bool
+    var: result
+  when: fp_mount_iso_debug|bool
 
-- name: "mount-iso: Delete nodes"
-  command: "mdconfig -d -u {{ item }}"
-  loop: "{{ local_node_list|default([]) }}"
-  changed_when: local_node_list|default([])|length > 0
-# changed_when fixed the warning. Otherwise ansible-lint reports:
-# E301: Commands should not change things if nothing needs doing
-# vbotka.freebsd_postinstall/tasks/mount-iso.yml:78
-# Comment: There is no reason for a Warning (severity:High!) . The
-# command is executed only if there are items in the list.
-# Bug 336
-# (https://github.com/ansible/ansible-lint/issues/336#issuecomment-450552031)
+  # unmounted - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- name: "mount-iso: Unmount"
+  mount:
+    path: "{{ item.mount }}"  # Note 2.
+    state: unmounted
+    fstab: /tmp/tmp.fstab  # Note 1.
+  loop: "{{ fp_mount_iso_entries }}"
+  register: result
+  when: item.state|default("mounted") == "unmounted"
+
+- name: "mount-iso: Debug unmount"
+  debug:
+    var: result
+  when: fp_mount_iso_debug|bool
+
+- name: "mount-iso: Detach memory disks"
+  include_tasks: fn/mdconfig-detach-disk.yml
+  loop: "{{ fp_mount_iso_entries }}"
+  when: item.state|default("mounted") == "unmounted"
+
+- name: "mount-iso: Debug detach memory disks"
+  debug:
+    var: al_mdconfig_devs
+  when: fp_mount_iso_debug|bool
+
+# Notes
+#
+# Note 1: It's not possible to mount a device without touching fstab. Temporary fstab is a
+# workaround.
+# https://github.com/ansible-collections/ansible.posix/issues/84#issuecomment-742420345
+#
+# Note 2: Ansible module *mount* will create/remove non-existent mountpoint
+
+# TODO:
+#
+# 1) Permanent mount entry in fstab
+# state: present, absent (See ansible.posix.mount parameter *state*)
+# See /etc/rc.d/mdconfig2
+# Ex: mdconfig_md0="-t vnode -f /usr/local/data/vdisks/devltd.net"
+# https://forums.freebsd.org/threads/mounting-vnode-backed-memory-disks-at-startup.21002/
 
 # EOF
 ...

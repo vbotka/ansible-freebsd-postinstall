@@ -1,0 +1,6 @@
+- name: "mdconfig-attach-disk: Attach memory disk"
+  include_role:
+    name: vbotka.ansible_lib
+    tasks_from: al_mdconfig.yml
+  vars:
+    al_mdconfig_file: "{{ item.iso }}"
