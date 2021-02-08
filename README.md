@@ -1,6 +1,6 @@
 # freebsd_postinstall
 
-[![Build Status](https://travis-ci.org/vbotka/ansible-freebsd-postinstall.svg?branch=master)](https://travis-ci.org/vbotka/ansible-freebsd-postinstall)
+[![quality](https://img.shields.io/ansible/quality/27910)](https://galaxy.ansible.com/vbotka/linux_postinstall)[![Build Status](https://travis-ci.org/vbotka/ansible-freebsd-postinstall.svg?branch=master)](https://travis-ci.org/vbotka/ansible-freebsd-postinstall)
 
 [Ansible role.](https://galaxy.ansible.com/vbotka/freebsd_postinstall/) FreeBSD post-install
 configuration: aliases, apcupsd, authorized keys, cron, devfs, fstab, gitserver, groups, hostapd,
