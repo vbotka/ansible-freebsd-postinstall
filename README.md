@@ -90,7 +90,7 @@ ansible-playbook freebsd-postinstall.yml
 
 ## Notes
 
-# devfs
+1) devfs
 
 "/etc/rc.d/devfs rcvar" returns no variable. As a result module "system" fails
 
