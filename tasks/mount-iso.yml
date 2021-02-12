@@ -30,6 +30,8 @@
     var: al_mdconfig_devs
   when: fp_mount_iso_debug|bool
 
+  # TODO: Sanity al_mdconfig_devs[item.iso] is defined; not in check-mode
+
 - name: "mount-iso: Mount"
   mount:
     src: "/dev/md{{ al_mdconfig_devs[item.iso]['unit'] }}{{ item.partition|default('') }}"
@@ -39,7 +41,9 @@
     fstab: /tmp/tmp.fstab  # Note 1.
   loop: "{{ fp_mount_iso_entries }}"
   register: result
-  when: item.state|default("mounted") == "mounted"
+  when:
+    - al_mdconfig_devs[item.iso] is defined
+    - item.state|default("mounted") == "mounted"
 
 - name: "mount-iso: Debug mount"
   debug:

@@ -10,7 +10,7 @@
       fp_linux_lib
       {{ fp_linux_lib|to_yaml }}
   debug:
-    msg: "{{ msg.split('\n') }}"
+    msg: "{{ msg.split('\n')[:-1] }}"
   when: fp_linux_debug|bool
   tags: [fp_linux_debug, always]
 
@@ -20,7 +20,7 @@
     src: "{{ item.src }}"
     fstype: "{{ item.fstype }}"
     opts: "{{ item.opts }}"
-    state: "mounted"
+    state: mounted
   loop: "{{ fp_linux_fstab }}"
   tags: fp_linux_fstab
 
@@ -48,24 +48,20 @@
 
 - name: "linux: Enable linux"
   lineinfile:
-    dest: "/etc/rc.conf"
-    regexp: "^linux_enable"
-    line: "linux_enable=\"YES\""
+    dest: /etc/rc.conf
+    regexp: '^\s*linux_enable\s*=(.*)$'
+    line: 'linux_enable="YES"'
     backup: "{{ fp_backup_conf }}"
-  when:
-    - fp_linux_enable|bool
-    - fp_linux_install|bool
+  when: fp_linux_enable|bool
   tags: fp_linux_rcconf
 
 - name: "linux: Disable linux"
   lineinfile:
-    dest: "/etc/rc.conf"
-    regexp: "^linux_enable"
-    line: "linux_enable=\"NO\""
+    dest: /etc/rc.conf
+    regexp: '^\s*linux_enable\s*=(.*)$'
+    line: 'linux_enable="NO"'
     backup: "{{ fp_backup_conf }}"
-  when:
-    - not fp_linux_enable|bool
-    - fp_linux_install|bool
+  when: not fp_linux_enable|bool
   tags: fp_linux_rcconf
 
 # EOF

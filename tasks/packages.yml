@@ -1,8 +1,8 @@
 ---
 
-- name: "FreeBSD postinstall packages Debug"
+- name: "packages: Debug"
   debug:
-    msg: "{{ msg.split('\n') }}"
+    msg: "{{ msg.split('\n')[:-1] }}"
   vars:
     msg: |
          freebsd_install_method [{{ freebsd_install_method }}]
@@ -41,7 +41,7 @@
   file:
     src: "{{ item.target }}"
     dest: "{{ item.link }}"
-    state: "link"
+    state: link
     force: true
   loop: "{{ fp_links }}"
   tags: fp_packages_links

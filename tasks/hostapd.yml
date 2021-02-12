@@ -2,9 +2,9 @@
 
 - name: "hostapd: Enable and start hostapd"
   lineinfile:
-    dest: "/etc/rc.conf"
-    regexp: "^hostapd_enable"
-    line: "hostapd_enable=\"YES\""
+    dest: /etc/rc.conf
+    regexp: '^\s*hostapd_enable\s*=(.*)$'
+    line: 'hostapd_enable="YES"'
     backup: "{{ fp_backup_conf }}"
   notify: enable and start hostapd
   when: fp_hostapd_enabled|bool
@@ -12,9 +12,9 @@
 
 - name: "hostapd: Disable and stop hostapd"
   lineinfile:
-    dest: "/etc/rc.conf"
-    regexp: "^hostapd_enable"
-    line: "hostapd_enable=\"NO\""
+    dest: /etc/rc.conf
+    regexp: '^\s*hostapd_enable\s*=(.*)$'
+    line: 'hostapd_enable="NO"'
     backup: "{{ fp_backup_conf }}"
   notify: disable and stop hostapd
   when: not fp_hostapd_enabled|bool
@@ -22,23 +22,23 @@
 
 - name: "hostapd: Configure interface for hostapd"
   lineinfile:
-    dest: "/etc/rc.conf"
+    dest: /etc/rc.conf
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
     backup: "{{ fp_backup_conf }}"
   loop:
-    - regexp: "^create_args_{{ fp_hostapd_interface }}"
-      line: "create_args_{{ fp_hostapd_interface }}=\"wlanmode hostap country {{ fp_hostapd_country }}\""
-    - regexp: "^wlans_{{ fp_hostapd_device }}"
-      line: "wlans_{{ fp_hostapd_device }}=\"{{ fp_hostapd_interface }}\""
-    - regexp: "^ifconfig_{{ fp_hostapd_interface }}"
-      line: "ifconfig_{{ fp_hostapd_interface }}=\"inet {{ fp_hostapd_inet }} netmask {{ fp_hostapd_netmask }}\""
+    - regexp: '^\s*create_args_{{ fp_hostapd_interface }}\s*=(.*)$'
+      line: 'create_args_{{ fp_hostapd_interface }}="wlanmode hostap country {{ fp_hostapd_country }}"'
+    - regexp: '^\s*wlans_{{ fp_hostapd_device }}\s*=(.*)$'
+      line: 'wlans_{{ fp_hostapd_device }}="{{ fp_hostapd_interface }}"'
+    - regexp: '^\s*ifconfig_{{ fp_hostapd_interface }}\s*=(.*)$'
+      line: 'ifconfig_{{ fp_hostapd_interface }}="inet {{ fp_hostapd_inet }} netmask {{ fp_hostapd_netmask }}"'
   notify: restart hostapd
   tags: fp_hostapd_rcconf
 
 - name: "hostapd: Configure /etc/hostapd.conf template file"
   template:
-    src: "hostapd.conf.j2"
+    src: hostapd.conf.j2
     dest: "{{ fp_hostapd_conf_file }}"
     owner: "{{ fp_hostapd_conf_owner }}"
     group: "{{ fp_hostapd_conf_group }}"

@@ -2,9 +2,9 @@
 
 - name: "apcupsd: Enable and start apcupsd"
   lineinfile:
-    dest: "/etc/rc.conf"
-    regexp: "^apcupsd_enable"
-    line: "apcupsd_enable=\"YES\""
+    dest: /etc/rc.conf
+    regexp: '^\s*apcupsd_enable\s*=(.*)$'
+    line: 'apcupsd_enable="YES"'
     backup: "{{ fp_backup_conf }}"
   when: fp_apcupsd_service_enabled|bool
   notify: enable and start apcupsd
@@ -12,9 +12,9 @@
 
 - name: "apcupsd: Disable and stop apcupsd"
   lineinfile:
-    dest: "/etc/rc.conf"
-    regexp: "^apcupsd_enable"
-    line: "apcupsd_enable=\"NO\""
+    dest: /etc/rc.conf
+    regexp: '^\s*apcupsd_enable\s*=(.*)$'
+    line: 'apcupsd_enable="NO"'
     backup: "{{ fp_backup_conf }}"
   when: not fp_apcupsd_service_enabled|bool
   notify: disable and stop apcupsd
@@ -28,7 +28,7 @@
 
 - name: "apcupsd: Configure apcupsd.conf"
   template:
-    src: "apcupsd.conf.j2"
+    src: apcupsd.conf.j2
     dest: "{{ fp_apcupsd_conf_file }}"
     owner: "{{ fp_apcupsd_conf_owner }}"
     group: "{{ fp_apcupsd_conf_group }}"

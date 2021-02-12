@@ -33,9 +33,9 @@
 
 - name: "wpasupplicant: Configure /etc/rc.conf"
   lineinfile:
-    dest: "/etc/rc.conf"
-    regexp: "^{{ item.key }}"
-    line: "{{ item.key }}=\"{{ item.value }}\""
+    dest: /etc/rc.conf
+    regexp: '^\s*{{ item.key }}\s*=(.*)$'
+    line: '{{ item.key }}="{{ item.value }}"'
     backup: "{{ fp_wpasupplicant_backup }}"
   loop: "{{ fp_wpasupplicant_rcconf }}"
   notify: restart netif
@@ -73,9 +73,9 @@
 # /usr/local/sbin/wpa_supplicant -s -B -i wlan1 -c /etc/wpa_supplicant.conf.wlan1
 - name: "wpasupplicant: Configure /etc/rc.d/wpa_supplicant"
   lineinfile:
-    dest: "/etc/rc.d/wpa_supplicant"
-    regexp: "^{{ item.key }}"
-    line: "{{ item.key }}={{ item.value }}"
+    dest: /etc/rc.d/wpa_supplicant
+    regexp: '^\s*{{ item.key }}\s*=(.*)$'
+    line: '{{ item.key }}={{ item.value }}'
     backup: "{{ fp_wpasupplicant_backup }}"
   loop:
     - {key: "conf_file", value: "${wpa_supplicant_conf_file}.${ifn}"}

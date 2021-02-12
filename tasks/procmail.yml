@@ -14,7 +14,6 @@
   tags: fp_procmail_forward
 
 - name: "procmail: Configure forwarders"
-  when: fp_procmail_install|bool
   blockinfile:
     dest: "/home/{{ item.user }}/.forward"
     marker: "# {mark} ANSIBLE MANAGED BLOCK"
@@ -77,7 +76,7 @@
   lineinfile:
     dest: "/home/{{ item.user }}/.procmailrc"
     line: "INCLUDERC=$PMDIR/{{ item.template }}.rc"
-    insertafter: "EOF"
+    insertafter: EOF
     backup: "{{ fp_backup_conf }}"
     create: true
   loop: "{{ fp_procmail_includerc }}"
