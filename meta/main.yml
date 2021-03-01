@@ -4,7 +4,7 @@ galaxy_info:
   author: Vladimir Botka
   description: Postinstallation configuration of FreeBSD.
   company: https://botka.link
-  github_branch: master
+  github_branch: stable-2.0
   license: BSD
   min_ansible_version: 2.9
   platforms:
