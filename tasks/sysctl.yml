@@ -3,70 +3,81 @@
 - name: "sysctl: Debug"
   vars:
     msg: |
-      fp_sysctl_file [{{ fp_sysctl_file }}]
+      fp_sysctl_warning_loader_needed [{{ fp_sysctl_warning_loader_needed }}]
+      fp_sysctl_conf_file [{{ fp_sysctl_conf_file }}]
       fp_sysctl_ignoreerrors [{{ fp_sysctl_ignoreerrors }}]
-      fp_sysctl
-      {{ fp_sysctl|to_yaml }}
+      fp_sysctl_conf
+      {{ fp_sysctl_conf|to_yaml }}
   debug:
     msg: "{{ msg.split('\n')[:-1] }}"
-  when: fp_debug|bool
+  when: fp_sysctl_debug|bool
 
-- name: "sysctl: Configure {{ fp_sysctl_file }}"
-  sysctl:
-    sysctl_file: "{{ fp_sysctl_file }}"
-    name: "{{ item.name }}"
-    value: "{{ item.value }}"
-    state: "{{ item.state|default('present') }}"
-    reload: "{{ item.reload|default('yes') }}"
-    sysctl_set: "{{ item.set|default('no') }}"
-    ignoreerrors: "{{ fp_sysctl_ignoreerrors }}"
-  loop: "{{ fp_sysctl }}"
-  # NOTES
-  # 1) As of v2.6 module sysctl 'optionally performs a /sbin/sysctl -p'
-  # http://ansible-manual.readthedocs.io/en/latest/sysctl_module.html
-  # 2) freebsd doesn't support -p, so reload the sysctl service
-  # rc,out,err = self.module.run_command('/etc/rc.d/sysctl reload')
-  # https://github.com/ansible/ansible-modules-core/blob/devel/system/sysctl.py
-
-- name: "sysctl: Register variables that are settable via loader"
+- name: "sysctl: Register sysctl variables that are settable via loader"
   command: "sysctl -aNT"
   register: tmp_loader_vars
   changed_when: false
 
-# - name: "sysctl: Debug tmp_loader_vars"
-#   debug:
-#     var: tmp_loader_vars.stdout
-#   when:
-#     - fp_debug
-#     - not ansible_check_mode
-
-- name: "sysctl: Init fp_sysctl_loader_conf"
+- name: "sysctl: Create empty list fp_sysctl_noloader_conf"
   set_fact:
-    fp_sysctl_loader_conf: []
+    fp_sysctl_noloader_conf: []
 
-- name: "sysctl: Create fp_sysctl_loader_conf"
-  set_fact:
-    fp_sysctl_loader_conf: "{{ fp_sysctl_loader_conf + [item.name + '=' + item.value, ] }}"
-  loop: "{{ fp_sysctl }}"
-  when:
-    - not ansible_check_mode
-    - tmp_loader_vars.stdout is search(item.name|regex_escape())
-
-- name: "sysctl: Debug fp_sysctl_loader_conf"
+- name: "sysctl: [WARNING] Does not report changes in check mode because of empty tmp_loader_vars"
   debug:
-    var: fp_sysctl_loader_conf
-  when: fp_debug|bool
+    msg: "[WARNING] Next task does not report changes in check mode because of empty tmp_loader_vars"
+  when:
+    - ansible_check_mode|bool
+    - fp_sysctl_debug|bool
 
-- name: "sysctl: Configure /boot/loader.conf"
-  template:
-    src: loader.conf.j2
-    dest: /boot/loader.conf
-    owner: root
-    group: wheel
-    mode: "0644"
-    backup: "{{ fp_backup_conf }}"
-  when: fp_loader_template_conf|bool
-  notify: loader message reboot
+- name: "sysctl: Add items to fp_sysctl_noloader_conf"
+  set_fact:
+    fp_sysctl_noloader_conf: "{{ fp_sysctl_noloader_conf + [item] }}"
+  loop: "{{ fp_sysctl_conf }}"
+  when:
+    - tmp_loader_vars.stdout_lines|default([])|length > 0
+    - item.name not in tmp_loader_vars.stdout_lines
+
+- name: "sysctl: Debug fp_sysctl_noloader_conf"
+  debug:
+    var: fp_sysctl_noloader_conf|to_yaml
+  when: fp_sysctl_debug|bool
+
+- name: "sysctl: [WARNING] Does not report changes in check mode because of empty fp_sysctl_noloader_conf"
+  debug:
+    msg: "[WARNING] Next task does not report changes in check mode because of empty fp_sysctl_noloader_conf"
+  when:
+    - ansible_check_mode|bool
+    - fp_sysctl_debug|bool
+
+- name: "sysctl: Configure {{ fp_sysctl_conf_file }}"
+  sysctl:
+    sysctl_file: "{{ fp_sysctl_conf_file }}"
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
+    state: "{{ item.state|default(omit) }}"
+    reload: "{{ item.reload|default(omit) }}"
+    sysctl_set: "{{ item.set|default(omit) }}"
+    ignoreerrors: "{{ fp_sysctl_ignoreerrors|default(omit) }}"
+  loop: "{{ fp_sysctl_noloader_conf }}"
+
+
+- name: "sysctl: [WARNING] Tuneables present in fp_sysctl_conf but fp_loader not enabled"
+  debug:
+    msg: "[WARNING] Tuneables present in fp_sysctl_conf but fp_loader not enabled"
+  when:
+    - not ansible_check_mode|bool
+    - fp_sysctl_debug|bool
+    - fp_sysctl_warning_loader_needed|bool
+    - fp_sysctl_conf|length > fp_sysctl_noloader_conf|length
+    - not fp_loader|bool
+
+# NOTES
+# 1) As of v2.6 module sysctl 'optionally performs a /sbin/sysctl -p'
+# http://ansible-manual.readthedocs.io/en/latest/sysctl_module.html
+# 2) freebsd doesn't support -p, so reload the sysctl service
+# rc,out,err = self.module.run_command('/etc/rc.d/sysctl reload')
+# https://github.com/ansible/ansible-modules-core/blob/devel/system/sysctl.py
+# 3) See loader.yml how tuneables are settable via loader.
+# https://forums.freebsd.org/threads/reload-loader-conf.72010/
 
 # EOF
 ...

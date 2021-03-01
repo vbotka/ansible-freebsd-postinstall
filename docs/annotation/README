@@ -1,0 +1,22 @@
+
+Manage source/annotation-*.rst by Ansible
+=========================================
+
+1) Create lists of files: <types>-list.txt
+   where <types> is : tasks, handlers, templates
+   Do not include *main.yml* in the files. Both *tasks/main.yml* and
+   *handlers/main.yml* are included in the templates by default.
+
+2) Create vars:
+   <type>_<file.0>_synopsis
+   <type>_<file.0>_description
+   <type>_<file.0>_lines
+   <type>_<file.0>_seealso
+   <type>_<file.0>_note
+   <type>_<file.0>_warning
+
+   where <type> is : tasks, handler, template
+   (see annotation-<type>.yml.j2)
+
+3) Create annotation-<types>.yml
+   shell> ansible-playbook pb-annotations.yml

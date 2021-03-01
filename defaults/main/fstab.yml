@@ -1,0 +1,6 @@
+---
+fp_fstab: false
+fp_fstab_entries:
+  - {name: /proc, src: proc, fstype: procfs, opts: rw}
+  - {name: /dev/fd, src: fdesc, fstype: fdescfs, opts: rw}
+# Note: Configure swap in separate task swap.yml

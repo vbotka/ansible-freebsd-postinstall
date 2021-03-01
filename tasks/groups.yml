@@ -3,19 +3,22 @@
 - name: "groups: Debug"
   vars:
     msg: |
-      freebsd_groups
-      {{ freebsd_groups|to_nice_yaml }}
+      fp_groups_conf
+      {{ fp_groups_conf|to_nice_yaml }}
   debug:
     msg: "{{ msg.split('\n')[:-1] }}"
-  when: fp_debug|bool
+  when: fp_groups_debug|bool
+  tags: [fp_groups_debug, always]
 
 - name: "groups: Manage groups"
   group:
     name: "{{ item.name }}"
     gid: "{{ item.gid|default(omit) }}"
+    local: "{{ item.local|default(omit) }}"
     state: "{{ item.state|default(omit) }}"
     system: "{{ item.system|default(omit) }}"
-  loop: "{{ freebsd_groups }}"
+  loop: "{{ fp_groups_conf }}"
+  tags: fp_groups_conf
 
 # EOF
 ...

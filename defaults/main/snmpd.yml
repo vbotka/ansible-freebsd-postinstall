@@ -1,0 +1,7 @@
+---
+fp_snmpd: false
+fp_snmpd_install: false  # list of packages: snmpd
+fp_snmpd_enabled: false
+fp_snmpd_rcconf:
+  - {key: snmpd_conffile, value: /usr/local/etc/snmpd.conf}
+fp_snmpd_conf: []

@@ -1,77 +1,73 @@
 ---
-# https://www.freebsd.org/doc/handbook/network-nfs.html
 
+# nfs
 - name: "nfs: Enable and start nfs client"
-  when: fp_nfs_service_enable|bool
+  when: fp_nfs_enable|bool
   lineinfile:
-    dest: "/etc/rc.conf"
-    regexp: "{{ item.regexp }}"
-    line: "{{ item.line }}"
-    backup: "{{ fp_backup_conf }}"
-  loop:
-    - {regexp: "^\\s*nfs_client_enable\\s*=", line: "nfs_client_enable=\"YES\""}
+    dest: /etc/rc.conf
+    regexp: '^\s*{{ item.key }}\s*=(.*)$'
+    line: '{{ item.key }}="{{ item.value }}"'
+    backup: "{{ fp_backup }}"
+  loop: "{{ fp_nfs_enable_rcconf }}"
   notify: enable and start nfs client
-  tags: fp_nfs_enable_nfsclient
+  tags: fp_nfs_rcconf
 
 - name: "nfs: Disable and stop nfs client"
-  when: not fp_nfs_service_enable|bool
+  when: not fp_nfs_enable|bool
   lineinfile:
-    dest: "/etc/rc.conf"
-    regexp: "{{ item.regexp }}"
-    line: "{{ item.line }}"
-    backup: "{{ fp_backup_conf }}"
-  loop:
-    - {regexp: "^\\s*nfs_client_enable\\s*=", line: "nfs_client_enable=\"NO\""}
+    dest: /etc/rc.conf
+    regexp: '^\s*{{ item.key }}\s*=(.*)$'
+    line: '{{ item.key }}="{{ item.value }}"'
+    backup: "{{ fp_backup }}"
+  loop: "{{ fp_nfs_disable_rcconf }}"
   notify: disable and stop nfs client
-  tags: fp_nfs_disable_nfsclient
+  tags: fp_nfs_rcconf
 
+# lockd
 - name: "nfs: Enable and start lockd"
   when: fp_rpc_lockd_enable|bool
   lineinfile:
-    dest: "/etc/rc.conf"
-    regexp: "{{ item.regexp }}"
-    line: "{{ item.line }}"
-    backup: "{{ fp_backup_conf }}"
-  loop:
-    - {regexp: "^\\s*rpc_lockd_enable\\s*=", line: "rpc_lockd_enable=\"YES\""}
+    dest: /etc/rc.conf
+    regexp: '^\s*{{ item.key }}\s*=(.*)$'
+    line: '{{ item.key }}="{{ item.value }}"'
+    backup: "{{ fp_backup }}"
+  loop: "{{ fp_rpc_lockd_enable_rcconf }}"
   notify: enable and start lockd
-  tags: fp_nfs_enable_lockd
+  tags: fp_nfs_lockd_rcconf
 
 - name: "nfs: Disable and stop lockd"
   when: not fp_rpc_lockd_enable|bool
   lineinfile:
-    dest: "/etc/rc.conf"
-    regexp: "{{ item.regexp }}"
-    line: "{{ item.line }}"
-    backup: "{{ fp_backup_conf }}"
-  loop:
-    - {regexp: "^\\s*rpc_lockd_enable\\s*=", line: "rpc_lockd_enable=\"NO\""}
+    dest: /etc/rc.conf
+    regexp: '^\s*{{ item.key }}\s*=(.*)$'
+    line: '{{ item.key }}="{{ item.value }}"'
+    backup: "{{ fp_backup }}"
+  loop: "{{ fp_rpc_lockd_disable_rcconf }}"
   notify: disable and stop lockd
-  tags: fp_nfs_disable_lockd
+  tags: fp_nfs_lockd_rcconf
 
+# statd
 - name: "nfs: Enable and start statd"
   when: fp_rpc_statd_enable|bool
   lineinfile:
-    dest: "/etc/rc.conf"
-    regexp: "{{ item.regexp }}"
-    line: "{{ item.line }}"
-    backup: "{{ fp_backup_conf }}"
-  loop:
-    - {regexp: "^\\s*rpc_statd_enable\\s*=", line: "rpc_statd_enable=\"YES\""}
+    dest: /etc/rc.conf
+    regexp: '^\s*{{ item.key }}\s*=(.*)$'
+    line: '{{ item.key }}="{{ item.value }}"'
+    backup: "{{ fp_backup }}"
+  loop: "{{ fp_rpc_statd_enable_rcconf }}"
   notify: enable and start statd
-  tags: fp_nfs_enable_statd
+  tags: fp_nfs_statd_rcconf
 
 - name: "nfs: Disable and stop statd"
   when: not fp_rpc_statd_enable|bool
   lineinfile:
-    dest: "/etc/rc.conf"
-    regexp: "{{ item.regexp }}"
-    line: "{{ item.line }}"
-    backup: "{{ fp_backup_conf }}"
-  loop:
-    - {regexp: "^\\s*rpc_statd_enable\\s*=", line: "rpc_statd_enable=\"NO\""}
+    dest: /etc/rc.conf
+    regexp: '^\s*{{ item.key }}\s*=(.*)$'
+    line: '{{ item.key }}="{{ item.value }}"'
+    backup: "{{ fp_backup }}"
+  loop: "{{ fp_rpc_statd_disable_rcconf }}"
   notify: disable and stop statd
-  tags: fp_nfs_disable_statd
+  tags: fp_nfs_statd_rcconf
 
 # EOF
 ...

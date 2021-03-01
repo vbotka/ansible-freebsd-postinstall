@@ -2,7 +2,7 @@
 {{ fp_hosts_localhost_IPv6 }}	localhost localhost.{{ fp_domain }}
 {{ fp_hosts_localhost_IPv4 }}	localhost localhost.{{ fp_domain }}
 
-{% for item in fp_hosts %}
+{% for item in fp_hosts_conf %}
 {{ item.ip }}    {{ item.fqdn }} {{ item.hostname|default('') }}
 {% endfor %}
 

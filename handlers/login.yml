@@ -1,0 +1,4 @@
+---
+# login.conf
+- name: rebuild login_conf
+  command: "/usr/bin/cap_mkdb /etc/login.conf"

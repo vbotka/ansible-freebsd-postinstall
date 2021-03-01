@@ -1,0 +1,10 @@
+---
+fp_tmpmfs: false
+fp_tmpmfs_debug: false
+fp_tmpmfs_enable: "NO"  # fp_tmpmfs: "YES/NO/AUTO"
+fp_tmpmfs_tmpsize: "100m"
+fp_tmpmfs_flags: "-S"
+fp_tmpmfs_rcconf:
+  - {key: tmpmfs, value: "{{ fp_tmpmfs_enable }}"}
+  - {key: tmpsize, value: "{{ fp_tmpmfs_tmpsize }}"}
+  - {key: tmpmfs_flags, value: "{{ fp_tmpmfs_flags }}"}

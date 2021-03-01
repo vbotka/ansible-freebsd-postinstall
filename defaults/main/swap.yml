@@ -1,0 +1,13 @@
+---
+fp_swap: false
+fp_swap_debug: false
+fp_swap_enable: false
+# fp_swap_file: "/usr/swap0"
+# fp_swap_md: "md99"
+# fp_swap_size: 4096
+# fp_swap_size: 2048
+# fp_swap_size:  1536
+# fp_swap_stsize: "{{ fp_swap_size * 1024 * 1024 }}"
+# fp_swap_stsize: "4294967296"
+# fp_swap_stsize: "2147483648"
+# fp_swap_stsize: "1610612736"

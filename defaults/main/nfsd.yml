@@ -1,0 +1,39 @@
+---
+fp_nfsd: false
+fp_nfsd_enable: false
+fp_nfs_server_flags: "-u -t -n 4"
+fp_nfsv4_server_enable: "YES"
+fp_mountd_flags: '-r'
+fp_nfsd_enable_rcconf:
+  - {key: nfs_server_enable, value: "YES"}
+  - {key: nfs_server_flags, value: "{{ fp_nfs_server_flags }}"}
+  - {key: nfsv4_server_enable, value: "{{ fp_nfsv4_server_enable }}"}
+  - {key: rpcbind_enable, value: "YES"}
+  - {key: mountd_enable, value: "YES"}
+  - {key: mountd_flags, value: "{{ fp_mountd_flags }}"}
+fp_nfsd_disable_rcconf:
+  - {key: nfs_server_enable, value: "NO"}
+
+# rpc_lockd
+fp_rpc_lockd_enable: false
+fp_rpc_lockd_enable_rcconf:
+  - {key: rpc_lockd_enable, value: "YES"}
+fp_rpc_lockd_disable_rcconf:
+  - {key: rpc_lockd_enable, value: "NO"}
+
+# rpc_statd
+fp_rpc_statd_enable: false
+fp_rpc_statd_enable_rcconf:
+  - {key: rpc_statd_enable, value: "YES"}
+fp_rpc_statd_disable_rcconf:
+  - {key: rpc_statd_enable, value: "NO"}
+
+# rpcbind
+fp_rpcbind_enable: false
+fp_rpcbind_disable_rcconf:
+  - {key: rpcbind_enable, value: "NO"}
+
+# mountd
+fp_mountd_enable: false
+fp_mountd_disable_rconf:
+  - {key: mountd_enable, value: "NO"}

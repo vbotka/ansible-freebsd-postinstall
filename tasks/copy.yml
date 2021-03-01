@@ -34,33 +34,29 @@
          fp_synchronize_times [{{ fp_synchronize_times }}]
          fp_synchronize_verify_host [{{ fp_synchronize_verify_host }}]
   debug:
-    msg: "{{ msg.split('\n') }}"
+    msg: "{{ msg.split('\n')[:-1] }}"
   tags: [fp_copy_debug, always]
 
 # Sync default
-- name: "copy: Synchronize default files
-         {{ fp_copy_dir }}/{{ fp_copy_dir_default }}/"
+- name: "copy: Synchronize default files {{ fp_copy_dir }}/{{ fp_copy_dir_default }}"
   import_tasks: copy/sync-default.yml
   when: fp_synchronize_default|length > 0
   tags: fp_copy_sync_default
 
 # Sync optional
-- name: "copy: Synchronize optional files
-         {{ fp_copy_dir }}/{{ fp_copy_dir_optional }}/"
+- name: "copy: Synchronize optional files {{ fp_copy_dir }}/{{ fp_copy_dir_optional }}"
   import_tasks: copy/sync-optional.yml
   when: fp_synchronize_optional|length > 0
   tags: fp_copy_sync_optional
 
 # Unarch default
-- name: "copy: Extract default files
-         {{ fp_copy_dir }}/{{ fp_copy_arch_defaul }}"
+- name: "copy: Extract default files {{ fp_copy_dir }}/{{ fp_copy_arch_defaul }}"
   import_tasks: copy/unarch-default.yml
   when: fp_unarch_default|bool
   tags: fp_copy_unarch_default
 
 # Unarch optional
-- name: "copy: Extract optional files
-         {{ fp_copy_dir }}/{{ fp_copy_arch_optional }}"
+- name: "copy: Extract optional files {{ fp_copy_dir }}/{{ fp_copy_arch_optional }}"
   import_tasks: copy/unarch-optional.yml
   when: fp_unarch_optional|bool
   tags: fp_copy_unarch_optional

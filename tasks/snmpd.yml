@@ -5,7 +5,7 @@
     dest: /etc/rc.conf
     regexp: '^\s*snmpd_enable\s*=(.*)$'
     line: 'snmpd_enable="YES"'
-    backup: "{{ fp_backup_conf }}"
+    backup: "{{ fp_backup }}"
   when: fp_snmpd_enabled|bool
   notify: enable and start snmpd
   tags: fp_snmpd_rcconf
@@ -15,7 +15,7 @@
     dest: /etc/rc.conf
     regexp: '^\s*snmpd_enable\s*=(.*)$'
     line: 'snmpd_enable="NO"'
-    backup: "{{ fp_backup_conf }}"
+    backup: "{{ fp_backup }}"
   when: not fp_snmpd_enabled|bool
   notify: disable and stop snmpd
   tags: fp_snmpd_rcconf
@@ -25,7 +25,7 @@
     dest: /etc/rc.conf
     regexp: '^\s*{{ item.key }}\s*=(.*)$'
     line: '{{ item.key }}="{{ item.value }}"'
-    backup: "{{ fp_backup_conf }}"
+    backup: "{{ fp_backup }}"
   loop: "{{ fp_snmpd_rcconf }}"
   notify: restart snmpd
   tags: fp_snmpd_rcconf
@@ -39,14 +39,16 @@
     owner: root
     group: wheel
     mode: "0644"
+  notify: restart snmpd
   tags: fp_snmpd_conf_copy
 
 - name: "snmpd: Configure /usr/local/etc/snmpd.conf"
   lineinfile:
     path: /usr/local/etc/snmpd.conf
     regexp: '^\s*{{ item.key }}\s*=(.*)$'
-    line: '{{ item.key }} {{ item.value }}'
-    backup: "{{ fp_backup_conf }}"
+    line: "{{ item.key }} {{ item.value }}"
+    state: "{{ item.state|default(omit) }}"
+    backup: "{{ fp_backup }}"
   loop: "{{ fp_snmpd_conf }}"
   notify: restart snmpd
   tags: fp_snmpd_conf

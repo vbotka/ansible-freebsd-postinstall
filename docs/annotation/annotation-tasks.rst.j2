@@ -1,0 +1,57 @@
+Tasks
+=====
+
+{% for i in mytasks %}
+.. _as_{{ i.link }}:
+
+{{ i.file }}
+{{ '-' * i.file|length }}
+
+Synopsis: {{ i.synopsis }}
+
+{{ i.description }}
+
+[`{{ i.path }} <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/{{ i.path }}>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../{{ i.path }}
+    :language: Yaml
+    :emphasize-lines: {{ i.lines }}
+    :linenos:
+
+{% if i.seealso|default([])|length > 0 %}
+.. seealso::
+{% for ii in i.seealso['handlers']|default([]) %}
+   * Handlers :ref:`as_handlers_{{ ii }}.yml`
+{% endfor %}
+{% for ii in i.seealso.templates|default([]) %}
+   * Template :ref:`as_template_{{ ii }}`
+{% endfor %}
+{% for ii in i.seealso.others|default([]) %}
+   * {{ ii }}
+{% endfor %}
+{% endif %}
+
+{% if i.notes|default([])|length > 0 %}
+.. note::
+{% for note in i.notes %}
+   * {{ ii }}
+{% endfor %}
+{% endif %}
+
+{% if i.hints|default([])|length > 0 %}
+.. hint::
+{% for ii in i.hints %}
+   * {{ ii }}
+{% endfor %}
+{% endif %}
+
+{% if i.warnings|default([])|length > 0 %}
+.. warning::
+{% for ii in i.warnings %}
+   * {{ ii }}
+{% endfor %}
+{% endif %}
+
+{% endfor %}

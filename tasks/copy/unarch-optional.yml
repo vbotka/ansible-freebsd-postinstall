@@ -9,8 +9,7 @@
     mystat: "{{ mypath is exists }}"
   when: fp_debug|bool
 
-- name: "copy:unarch-optional: Extract optional archive
-         {{ fp_copy_dir }}/{{ fp_copy_arch_optional }}"
+- name: "copy:unarch-optional: Extract optional archive {{ fp_copy_dir }}/{{ fp_copy_arch_optional }}"
   unarchive:
     src: "{{ fp_copy_dir }}/{{ fp_copy_arch_optional }}"
     dest: "/"

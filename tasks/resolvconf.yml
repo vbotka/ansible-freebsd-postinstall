@@ -1,29 +1,60 @@
 ---
 
-- name: "resolvconf: Absent lines in {{ fp_resolvconf_conf }}"
+# resolv.conf
+- name: "resolvconf: Absent lines in {{ fp_resolv_conf_file }}"
   lineinfile:
-    state: "absent"
-    dest: "{{ fp_resolvconf_conf }}"
-    owner: "{{ fp_resolvconf_conf_owner }}"
-    group: "{{ fp_resolvconf_conf_group }}"
-    mode: "{{ fp_resolvconf_conf_mode }}"
-    regexp: "^{{ item }}"
-    backup: "{{ fp_backup_conf }}"
-  loop: "{{ fp_resolvconf_absent }}"
-  notify: resolvconf apply
-
-- name: "resolvconf: Present lines in {{ fp_resolvconf_conf }}"
-  lineinfile:
-    dest: "{{ fp_resolvconf_conf }}"
-    owner: "{{ fp_resolvconf_conf_owner }}"
-    group: "{{ fp_resolvconf_conf_group }}"
-    mode: "{{ fp_resolvconf_conf_mode }}"
-    regexp: "^{{ item.key }}"
-    line: "{{ item.key }}=\"{{ item.val }}\""
     create: true
-    backup: "{{ fp_backup_conf }}"
-  loop: "{{ fp_resolvconf }}"
+    state: absent
+    dest: "{{ fp_resolv_conf_file }}"
+    owner: "{{ fp_resolv_conf_owner }}"
+    group: "{{ fp_resolv_conf_group }}"
+    mode: "{{ fp_resolv_conf_mode }}"
+    regexp: '^\s*{{ item }}\s*$'
+    backup: "{{ fp_backup }}"
+  loop: "{{ fp_resolv_conf_absent }}"
+  tags: fp_resolv_conf_absent
+
+- name: "resolvconf: Present lines in {{ fp_resolv_conf_file }}"
+  lineinfile:
+    create: true
+    dest: "{{ fp_resolv_conf_file }}"
+    owner: "{{ fp_resolv_conf_owner }}"
+    group: "{{ fp_resolv_conf_group }}"
+    mode: "{{ fp_resolv_conf_mode }}"
+    regexp: '^\s*{{ item.key }}(.*)$'
+    line: '{{ item.key }} {{ item.value }}'
+    backup: "{{ fp_backup }}"
+  loop: "{{ fp_resolv_conf }}"
+  tags: fp_resolvconf_conf
+
+# resolvconf.conf
+- name: "resolvconf: Absent lines in {{ fp_resolvconf_conf_file }}"
+  lineinfile:
+    create: true
+    state: absent
+    dest: "{{ fp_resolvconf_conf_file }}"
+    owner: "{{ fp_resolvconf_conf_owner }}"
+    group: "{{ fp_resolvconf_conf_group }}"
+    mode: "{{ fp_resolvconf_conf_mode }}"
+    regexp: '^\s*{{ item }}\s*$'
+    backup: "{{ fp_backup }}"
+  loop: "{{ fp_resolvconf_conf_absent }}"
   notify: resolvconf apply
+  tags: fp_resolvconf_absent
+
+- name: "resolvconf: Present lines in {{ fp_resolvconf_conf_file }}"
+  lineinfile:
+    create: true
+    dest: "{{ fp_resolvconf_conf_file }}"
+    owner: "{{ fp_resolvconf_conf_owner }}"
+    group: "{{ fp_resolvconf_conf_group }}"
+    mode: "{{ fp_resolvconf_conf_mode }}"
+    regexp: '^\s*{{ item.key }}\s*=(.*)$'
+    line: '{{ item.key }}="{{ item.value }}"'
+    backup: "{{ fp_backup }}"
+  loop: "{{ fp_resolvconf_conf }}"
+  notify: resolvconf apply
+  tags: fp_resolvconf_conf
 
 # EOF
 ...

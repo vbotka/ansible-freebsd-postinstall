@@ -1,0 +1,4 @@
+---
+# sysctl
+- name: reload sysctl
+  service: name="sysctl" state="reloaded"

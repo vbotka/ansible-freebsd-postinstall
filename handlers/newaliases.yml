@@ -1,0 +1,4 @@
+---
+# newaliases
+- name: newaliases
+  command: "/usr/bin/newaliases"

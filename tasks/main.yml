@@ -1,5 +1,5 @@
 ---
-# tasks for vbotka.freebsd-postinstall
+# tasks for freebsd_postinstall
 
 - import_tasks: debug.yml
   when: fp_debug|bool
@@ -9,129 +9,165 @@
   tags: fp_cloud_proividers
 
 - import_tasks: loader.yml
+  when: fp_loader|bool
   tags: fp_loader
 
+- import_tasks: sysctl.yml
+  when: fp_sysctl|bool
+  tags: fp_sysctl
+
 - import_tasks: tmpmfs.yml
-  when: fp_tmpmfs_configure|bool
+  when: fp_tmpmfs|bool
   tags: fp_tmpmfs
 
 - import_tasks: devfs.yml
-  when: fp_devfs_configure|bool
+  when: fp_devfs|bool
   tags: fp_devfs
 
-- import_tasks: sysctl.yml
-  tags: fp_sysctl
-
 - import_tasks: make.yml
+  when: fp_make|bool
   tags: fp_make
 
 - import_tasks: swap.yml
+  when: fp_swap|bool
   tags: fp_swap
 
+- meta: flush_handlers
+
 - import_tasks: fstab.yml
+  when: fp_fstab|bool
   tags: fp_fstab
 
 - import_tasks: mount-iso.yml
-  tags: fp_mountiso
+  when: fp_mount_iso|bool
+  tags: fp_mount_iso
 
 - import_tasks: packages.yml
   when: fp_install|bool
   tags: fp_packages
 
 - import_tasks: copy.yml
+  when: fp_copy|bool
   tags: fp_copy
 
 - import_tasks: libmap.yml
+  when: fp_libmap|bool
   tags: fp_libmap
 
 - import_tasks: groups.yml
+  when: fp_groups|bool
   tags: fp_groups
 
 - import_tasks: users.yml
+  when: fp_users|bool
   tags: fp_users
 
+- import_tasks: passwords.yml
+  when: fp_passwords|bool
+  tags: fp_passwords
+
 - import_tasks: groupwrappers.yml
-  when: fp_groupwrappers_install|bool
+  when: fp_groupwrappers|bool
   tags: fp_groupwrappers
 
 - import_tasks: hostname.yml
+  when: fp_hostname|bool
   tags: fp_hostname
 
 - import_tasks: hosts.yml
+  when: fp_hosts|bool
   tags: fp_hosts
 
 - import_tasks: ssh.yml
+  when: fp_ssh|bool
   tags: fp_ssh
 
-- import_tasks: authorized_key.yml
+- import_tasks: sshd.yml
+  when: fp_sshd|bool
+  tags: fp_sshd
+
+- import_tasks: authorized-key.yml
+  when: fp_authorized_key|bool
   tags: fp_authorized_key
 
 - import_tasks: timezone.yml
+  when: fp_timezone|bool
   tags: fp_timezone
 
-- import_tasks: ntpd.yml
-  tags: fp_ntpd
+- import_tasks: ntp.yml
+  when: fp_ntp|bool
+  tags: fp_ntp
 
 - import_tasks: ntpdate.yml
+  when: fp_ntpdate|bool
   tags: fp_ntpdate
 
 - import_tasks: nfs.yml
+  when: fp_nfs|bool
   tags: fp_nfs
 
 - import_tasks: nfsd.yml
+  when: fp_nfsd|bool
   tags: fp_nfsd
 
 - import_tasks: smartd.yml
-  when: fp_smartd_install|bool
+  when: fp_smartd|bool
   tags: fp_smartd
 
 - import_tasks: apcupsd.yml
-  when: fp_apcupsd_install|bool
+  when: fp_apcupsd|bool
   tags: fp_apcupsd
 
 - import_tasks: hostapd.yml
-  when: fp_hostapd_install|bool
+  when: fp_hostapd|bool
   tags: fp_hostapd
 
 - import_tasks: procmail.yml
-  when: fp_procmail_install|bool
+  when: fp_procmail|bool
   tags: fp_procmail
 
 - import_tasks: motd.yml
+  when: fp_motd|bool
   tags: fp_motd
 
 - import_tasks: gitserver.yml
-  when: fp_gitserver_install|bool
+  when: fp_gitserver|bool
   tags: fp_gitserver
 
 - import_tasks: sudoers.yml
+  when: fp_sudoers|bool
   tags: fp_sudoers
 
 - import_tasks: cron.yml
+  when: fp_cron|bool
   tags: fp_cron
 
 - import_tasks: resolvconf.yml
+  when: fp_resolvconf|bool
   tags: fp_resolvconf
 
 - import_tasks: aliases.yml
+  when: fp_aliases|bool
   tags: fp_aliases
 
 - import_tasks: periodic.yml
+  when: fp_periodic|bool
   tags: fp_periodic
 
 - import_tasks: wpasupplicant.yml
-  when: fp_wpasupplicant_install|bool
+  when: fp_wpasupplicant|bool
   tags: fp_wpasupplicant
 
 - import_tasks: linux.yml
-  when: fp_linux_install|bool
+  when: fp_linux|bool
   tags: fp_linux
 
-- import_tasks: login-conf.yml
-  tags: fp_login_conf
+- import_tasks: login.yml
+  when: fp_login|bool
+  tags: fp_login
 
 - import_tasks: snmpd.yml
-  when: fp_snmpd_install|bool
+  when: fp_snmpd|bool
   tags: fp_snmpd
 
 # EOF

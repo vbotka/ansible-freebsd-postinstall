@@ -1,0 +1,10 @@
+---
+fp_groupwrappers: false
+fp_groupwrappers_install: false  # list of packages: none
+fp_groupwrappers_dir: /root/bin
+fp_groupwrappers_owner: root
+fp_groupwrappers_group: wheel
+fp_groupwrappers_mode: "0774"
+fp_group_add: /usr/sbin/pw groupadd
+fp_group_del: /usr/sbin/pw groupdel
+fp_group_mod: /usr/sbin/pw groupmod

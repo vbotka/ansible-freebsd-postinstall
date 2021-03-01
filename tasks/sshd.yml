@@ -1,0 +1,48 @@
+---
+
+- name: "sshd: Debug"
+  vars:
+    msg: |
+         fp_sshd_bin [{{ fp_sshd_bin }}]
+         fp_sshd_conf_file [{{ fp_sshd_conf_file }}]
+         fp_sshd_conf
+         {{ fp_sshd_conf|to_yaml }}
+  debug:
+    msg: "{{ msg.split('\n')[:-1] }}"
+  when: fp_sshd_debug|bool
+  tags: [fp_sshd_debug, always]
+
+- name: "sshd: Enable and start sshd"
+  lineinfile:
+    dest: /etc/rc.conf
+    regexp: '^\s*sshd_enable\s*=(.*)$'
+    line: 'sshd_enable="YES"'
+    backup: "{{ fp_backup }}"
+  notify: enable and start sshd
+  when: fp_sshd_enable|bool
+  tags: fp_sshd_rcconf
+
+- name: "sshd: Disable and stop sshd"
+  lineinfile:
+    dest: /etc/rc.conf
+    regexp: '^\s*sshd_enable\s*=(.*)$'
+    line: 'sshd_enable="NO"'
+    backup: "{{ fp_backup }}"
+  notify: disable and stop sshd
+  when: not fp_sshd_enable|bool
+  tags: fp_sshd_rcconf
+
+- name: "sshd: Configure {{ fp_sshd_conf_file }}"
+  lineinfile:
+    dest: "{{ fp_sshd_conf_file }}"
+    regexp: '^\s*{{ item.key }}\s+(.*)$'
+    insertbefore: '^\s*#\s*{{ item.key }}'
+    line: "{{ item.key }} {{ item.value }}"
+    backup: "{{ fp_backup }}"
+    validate: "{{ fp_sshd_bin }} -t -f %s"
+  loop: "{{ fp_sshd_conf }}"
+  notify: reload sshd
+  tags: fp_sshd_config
+
+# EOF
+...

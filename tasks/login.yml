@@ -1,0 +1,14 @@
+---
+
+- name: "login: Create {{ fp_login_conf_file }}"
+  template:
+    src: "{{ fp_login_conf_template }}"
+    dest: "{{ fp_login_conf_file }}"
+    owner: root
+    group: wheel
+    mode: "0644"
+    backup: "{{ fp_backup }}"
+  notify: rebuild login_conf
+
+# EOF
+...

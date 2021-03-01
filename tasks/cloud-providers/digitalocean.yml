@@ -4,12 +4,13 @@
   when: fp_do_debug|bool
   vars:
     msg: |
-      fp_do_default_user [ {{ fp_do_default_user }} ]
-      fp_do_default_user_remove [ {{ fp_do_default_user_remove }} ]
-      fp_do_default_user_remove_home [ {{ fp_do_default_user_remove_home }} ]
-      fp_do_rcconf_cloudinit_enable [ {{ fp_do_rcconf_cloudinit_enable }} ]
-      fp_do_rcconf_digitaloceanpre_enable [ {{ fp_do_rcconf_digitaloceanpre_enable }} ]
-      fp_do_rcconf_digitalocean_enable [ {{ fp_do_rcconf_digitalocean_enable }} ]
+      ansible_distribution_major_version [{{ ansible_distribution_major_version }}]
+      fp_do_default_user [{{ fp_do_default_user }}]
+      fp_do_default_user_remove [{{ fp_do_default_user_remove }}]
+      fp_do_default_user_remove_home [{{ fp_do_default_user_remove_home }}]
+      fp_do_rcconf_cloudinit_enable [{{ fp_do_rcconf_cloudinit_enable }}]
+      fp_do_rcconf_digitaloceanpre_enable [{{ fp_do_rcconf_digitaloceanpre_enable }}]
+      fp_do_rcconf_digitalocean_enable [{{ fp_do_rcconf_digitalocean_enable }}]
       fp_do_rcconf
       {{ fp_do_rcconf|to_yaml }}
   debug:
@@ -19,19 +20,30 @@
 - name: "digitalocean: Configure /etc/rc.conf"
   lineinfile:
     dest: /etc/rc.conf
-    regexp: "^\\s*{{ item.key }}\\s*="
-    line: "{{ item.key }}=\"{{ item.value }}\""
-    backup: "{{ fp_backup_conf }}"
+    regexp: '^\s*{{ item.key }}\s*=(.*)$'
+    line: '{{ item.key }}="{{ item.value }}"'
+    backup: "{{ fp_backup }}"
   loop: "{{ fp_do_rcconf }}"
   tags: fp_do_rcconf
 
 - name: "digitalocean: Remove default user"
-  when: fp_do_default_user_remove
+  when: fp_do_default_user_remove|bool
   user:
     name: "{{ fp_do_default_user }}"
     state: absent
     remove: "{{ fp_do_default_user_remove_home }}"
-  tags: fp_do_removedefaultuser
+  tags: fp_do_defaul_user_remove
+
+# DO overwrites hostname from rc.conf
+- name: "hostname: Configure hostname in /etc/rc.digitalocean.d/droplet.conf"
+  lineinfile:
+    dest: /etc/rc.digitalocean.d/droplet.conf
+    regexp: '^\s*{{ item.key }}\s*=(.*)$'
+    line: '{{ item.key }}="{{ item.value }}"'
+    backup: "{{ fp_backup }}"
+  loop: "{{ fp_do_legacy_rcconf }}"
+  when: ansible_distribution_major_version|int < 11
+  tags: fp_do_hostname_rcconf
 
 # EOF
 ...

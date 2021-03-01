@@ -1,20 +1,13 @@
 ---
-# https://www.freebsd.org/doc/handbook/network-nfs.html
 
 - name: "nfsd: Enable and start nfs server"
   lineinfile:
-    dest: "/etc/rc.conf"
-    regexp: "{{ item.regexp }}"
-    line: "{{ item.line }}"
-    backup: "{{ fp_backup_conf }}"
-  loop:
-    - {regexp: "^nfs_server_enable", line: "nfs_server_enable=\"YES\""}
-    - {regexp: "^nfs_server_flags", line: "nfs_server_flags=\"{{ fp_nfs_server_flags }}\""}
-    - {regexp: "^nfsv4_server_enable", line: "nfsv4_server_enable=\"{{ fp_nfsv4_server_enable }}\""}
-    - {regexp: "^rpcbind_enable", line: "rpcbind_enable=\"YES\""}
-    - {regexp: "^mountd_enable", line: "mountd_enable=\"YES\""}
-    - {regexp: "^mountd_flags", line: "mountd_flags=\"{{ fp_mountd_flags }}\""}
-  when: fp_nfsd_service_enable|bool
+    dest: /etc/rc.conf
+    regexp: '^\s*{{ item.key }}\s*=(.*)$'
+    line: '{{ item.key }}="{{ item.value }}"'
+    backup: "{{ fp_backup }}"
+  loop: "{{ fp_nfsd_enable_rcconf }}"
+  when: fp_nfsd_enable|bool
   notify:
     - enable and start nfs server
     - enable and start rpcbind
@@ -22,86 +15,79 @@
 
 - name: "nfsd: Disable and stop nfs server"
   lineinfile:
-    dest: "/etc/rc.conf"
-    regexp: "{{ item.regexp }}"
-    line: "{{ item.line }}"
-    backup: "{{ fp_backup_conf }}"
-  loop:
-    - {regexp: "^nfs_server_enable", line: "nfs_server_enable=\"NO\""}
-  when: not fp_nfsd_service_enable|bool
+    dest: /etc/rc.conf
+    regexp: '^\s*{{ item.key }}\s*=(.*)$'
+    line: '{{ item.key }}="{{ item.value }}"'
+    backup: "{{ fp_backup }}"
+  loop: "{{ fp_nfsd_disable_rcconf }}"
+  when: not fp_nfsd_enable|bool
   notify: disable and stop nfs server
 
 - name: "nfsd: Enable and start lockd"
   lineinfile:
-    dest: "/etc/rc.conf"
-    regexp: "{{ item.regexp }}"
-    line: "{{ item.line }}"
-    backup: "{{ fp_backup_conf }}"
-  loop:
-    - {regexp: "^rpc_lockd_enable", line: "rpc_lockd_enable=\"YES\""}
+    dest: /etc/rc.conf
+    regexp: '^\s*{{ item.key }}\s*=(.*)$'
+    line: '{{ item.key }}="{{ item.value }}"'
+    backup: "{{ fp_backup }}"
+  loop: "{{ fp_rpc_lockd_enable_rcconf }}"
   when: fp_rpc_lockd_enable|bool
   notify: enable and start lockd
 
 - name: "nfsd: Disable and stop lockd"
   lineinfile:
-    dest: "/etc/rc.conf"
-    regexp: "{{ item.regexp }}"
-    line: "{{ item.line }}"
-    backup: "{{ fp_backup_conf }}"
-  loop:
-    - {regexp: "^rpc_lockd_enable", line: "rpc_lockd_enable=\"NO\""}
+    dest: /etc/rc.conf
+    regexp: '^\s*{{ item.key }}\s*=(.*)$'
+    line: '{{ item.key }}="{{ item.value }}"'
+    backup: "{{ fp_backup }}"
+  loop: "{{ fp_rpc_lockd_disable_rcconf }}"
   when: not fp_rpc_lockd_enable|bool
   notify: disable and stop lockd
 
 - name: "nfsd: Enable and start statd"
   lineinfile:
-    dest: "/etc/rc.conf"
-    regexp: "{{ item.regexp }}"
-    line: "{{ item.line }}"
-    backup: "{{ fp_backup_conf }}"
-  loop:
-    - {regexp: "^rpc_statd_enable", line: "rpc_statd_enable=\"YES\""}
+    dest: /etc/rc.conf
+    regexp: '^\s*{{ item.key }}\s*=(.*)$'
+    line: '{{ item.key }}="{{ item.value }}"'
+    backup: "{{ fp_backup }}"
+  loop: "{{ fp_rpc_statd_enable_rcconf }}"
   when: fp_rpc_statd_enable|bool
   notify: enable and start statd
 
 - name: "nfsd: Disable and stop statd"
   lineinfile:
-    dest: "/etc/rc.conf"
-    regexp: "{{ item.regexp }}"
-    line: "{{ item.line }}"
-    backup: "{{ fp_backup_conf }}"
-  loop:
-    - {regexp: "^rpc_statd_enable", line: "rpc_statd_enable=\"NO\""}
+    dest: /etc/rc.conf
+    regexp: '^\s*{{ item.key }}\s*=(.*)$'
+    line: '{{ item.key }}="{{ item.value }}"'
+    backup: "{{ fp_backup }}"
+  loop: "{{ fp_rpc_statd_disable_rcconf }}"
   when: not fp_rpc_statd_enable|bool
   notify: disable and stop statd
 
 - name: "nfsd: Disable and stop rpcbind"
   lineinfile:
-    dest: "/etc/rc.conf"
-    regexp: "{{ item.regexp }}"
-    line: "{{ item.line }}"
-    backup: "{{ fp_backup_conf }}"
-  loop:
-    - {regexp: "^rpcbind_enable", line: "rpcbind_enable=\"NO\""}
+    dest: /etc/rc.conf
+    regexp: '^\s*{{ item.key }}\s*=(.*)$'
+    line: '{{ item.key }}="{{ item.value }}"'
+    backup: "{{ fp_backup }}"
+  loop: "{{ fp_rpcbind_disable_rcconf }}"
   when: not fp_rpcbind_enable|bool
   notify: disable and stop rpcbind
 
 - name: "nfsd: Disable and stop mountd"
   lineinfile:
-    dest: "/etc/rc.conf"
-    regexp: "{{ item.regexp }}"
-    line: "{{ item.line }}"
-    backup: "{{ fp_backup_conf }}"
-  loop:
-    - {regexp: "^mountd_enable", line: "mountd_enable=\"NO\""}
+    dest: /etc/rc.conf
+    regexp: '^\s*{{ item.key }}\s*=(.*)$'
+    line: '{{ item.key }}="{{ item.value }}"'
+    backup: "{{ fp_backup }}"
+  loop: "{{ fp_mountd_disable_rconf }}"
   when: not fp_mountd_enable|bool
   notify: disable and stop mountd
 
 - name: "nfsd: Configure /etc/exports"
   template:
-    src: "exports.j2"
-    dest: "/etc/exports"
-    backup: "{{ fp_backup_conf }}"
+    src: exports.j2
+    dest: /etc/exports
+    backup: "{{ fp_backup }}"
   notify: reload mountd
 
 # EOF

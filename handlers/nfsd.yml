@@ -1,0 +1,32 @@
+---
+# nfsd
+- name: enable and start nfs server
+  service: name="nfsd" state="started" enabled=true
+- name: disable and stop nfs server
+  service: name="nfsd" state="stopped" enabled=false
+- name: restart nfs server
+  service: name="nfsd" state="restarted"
+  when: fp_nfsd_enable|bool
+# lockd
+- name: enable and start lockd
+  service: name="lockd" state="started" enabled=true
+- name: disable and stop lockd
+  service: name="lockd" state="stopped" enabled=false
+# statd
+- name: enable and start statd
+  service: name="statd" state="started" enabled=true
+- name: disable and stop statd
+  service: name="statd" state="stopped" enabled=false
+# rpcbind
+- name: enable and start rpcbind
+  service: name="rpcbind" state="started" enabled=true
+- name: disable and stop rpcbind
+  service: name="rpcbind" state="stopped" enabled=false
+# mountd
+- name: enable and start mountd
+  service: name="mountd" state="started" enabled=true
+- name: disable and stop mountd
+  service: name="mountd" state="stopped" enabled=false
+- name: reload mountd
+  service: name="mountd" state="reloaded"
+  when: fp_mountd_enable|bool
