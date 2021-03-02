@@ -1,3 +1,5 @@
+---
+
 - name: "mdconfig-detach-disk: Detach memory disk"
   include_role:
     name: vbotka.ansible_lib
@@ -5,3 +7,6 @@
   vars:
     al_mdconfig_file: "{{ item.iso }}"
     al_mdconfig_state: absent
+
+# EOF
+...

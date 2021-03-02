@@ -1,5 +1,5 @@
 # {{ ansible_managed }}
-{% for item  in ssh_config %}
+{% for item  in fp_ssh_conf %}
 Host {{ item.host }}
 {% for conf  in item.conf %}
     {{ conf.key }} {{ conf.val }}

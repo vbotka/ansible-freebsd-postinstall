@@ -1,0 +1,678 @@
+---
+mytasks:
+  - file: main.yml
+    link: main.yml
+    path: tasks/main.yml
+    synopsis: |
+      Main task.
+    description: |
+      Import tasks if enabled.
+    lines: 1,2
+    seealso: []
+    note: []
+    warning: []
+
+  - file: aliases.yml
+    link: aliases.yml
+    path: tasks/aliases.yml
+    synopsis: |
+      Configure aliases.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: apcupsd.yml
+    link: apcupsd.yml
+    path: tasks/apcupsd.yml
+    synopsis: |
+      Configure apcupsd.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: authorized-key.yml
+    link: authorized-key.yml
+    path: tasks/authorized-key.yml
+    synopsis: |
+      Configure authorized-key.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: cloud-providers.yml
+    link: cloud-providers.yml
+    path: tasks/cloud-providers.yml
+    synopsis: |
+      Configure cloud-providers.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: copy.yml
+    link: copy.yml
+    path: tasks/copy.yml
+    synopsis: |
+      Configure copy.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: cron.yml
+    link: cron.yml
+    path: tasks/cron.yml
+    synopsis: |
+      Configure cron.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: debug.yml
+    link: debug.yml
+    path: tasks/debug.yml
+    synopsis: |
+      Configure debug.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: devfs.yml
+    link: devfs.yml
+    path: tasks/devfs.yml
+    synopsis: |
+      Configure devfs.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: fstab.yml
+    link: fstab.yml
+    path: tasks/fstab.yml
+    synopsis: |
+      Configure fstab.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: gitserver.yml
+    link: gitserver.yml
+    path: tasks/gitserver.yml
+    synopsis: |
+      Configure gitserver.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: groups.yml
+    link: groups.yml
+    path: tasks/groups.yml
+    synopsis: |
+      Configure groups.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: groupwrappers.yml
+    link: groupwrappers.yml
+    path: tasks/groupwrappers.yml
+    synopsis: |
+      Configure groupwrappers.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: hostapd.yml
+    link: hostapd.yml
+    path: tasks/hostapd.yml
+    synopsis: |
+      Configure hostapd.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: hostname.yml
+    link: hostname.yml
+    path: tasks/hostname.yml
+    synopsis: |
+      Configure hostname.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: hosts.yml
+    link: hosts.yml
+    path: tasks/hosts.yml
+    synopsis: |
+      Configure hosts.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: libmap.yml
+    link: libmap.yml
+    path: tasks/libmap.yml
+    synopsis: |
+      Configure libmap.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: linux.yml
+    link: linux.yml
+    path: tasks/linux.yml
+    synopsis: |
+      Configure linux.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: loader.yml
+    link: loader.yml
+    path: tasks/loader.yml
+    synopsis: |
+      Configure loader.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: login.yml
+    link: login.yml
+    path: tasks/login.yml
+    synopsis: |
+      Configure login.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: make.yml
+    link: make.yml
+    path: tasks/make.yml
+    synopsis: |
+      Configure make.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: motd.yml
+    link: motd.yml
+    path: tasks/motd.yml
+    synopsis: |
+      Configure motd.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: mount-iso.yml
+    link: mount-iso.yml
+    path: tasks/mount-iso.yml
+    synopsis: |
+      Configure mount-iso.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: nfsd.yml
+    link: nfsd.yml
+    path: tasks/nfsd.yml
+    synopsis: |
+      Configure nfsd.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: nfs.yml
+    link: nfs.yml
+    path: tasks/nfs.yml
+    synopsis: |
+      Configure nfs.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: ntpdate.yml
+    link: ntpdate.yml
+    path: tasks/ntpdate.yml
+    synopsis: |
+      Configure ntpdate.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: ntp.yml
+    link: ntp.yml
+    path: tasks/ntp.yml
+    synopsis: |
+      Configure ntp.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: packages-install.yml
+    link: packages-install.yml
+    path: tasks/packages-install.yml
+    synopsis: |
+      Configure packages-install.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: packages.yml
+    link: packages.yml
+    path: tasks/packages.yml
+    synopsis: |
+      Configure packages.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: passwords.yml
+    link: passwords.yml
+    path: tasks/passwords.yml
+    synopsis: |
+      Configure passwords.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: periodic.yml
+    link: periodic.yml
+    path: tasks/periodic.yml
+    synopsis: |
+      Configure periodic.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: procmail.yml
+    link: procmail.yml
+    path: tasks/procmail.yml
+    synopsis: |
+      Configure procmail.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: resolvconf.yml
+    link: resolvconf.yml
+    path: tasks/resolvconf.yml
+    synopsis: |
+      Configure resolvconf.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: smartd.yml
+    link: smartd.yml
+    path: tasks/smartd.yml
+    synopsis: |
+      Configure smartd.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: snmpd.yml
+    link: snmpd.yml
+    path: tasks/snmpd.yml
+    synopsis: |
+      Configure snmpd.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: sshd.yml
+    link: sshd.yml
+    path: tasks/sshd.yml
+    synopsis: |
+      Configure sshd.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: ssh.yml
+    link: ssh.yml
+    path: tasks/ssh.yml
+    synopsis: |
+      Configure ssh.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: sudoers.yml
+    link: sudoers.yml
+    path: tasks/sudoers.yml
+    synopsis: |
+      Configure sudoers.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: swap.yml
+    link: swap.yml
+    path: tasks/swap.yml
+    synopsis: |
+      Configure swap.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: sysctl.yml
+    link: sysctl.yml
+    path: tasks/sysctl.yml
+    synopsis: |
+      Configure sysctl.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: timezone.yml
+    link: timezone.yml
+    path: tasks/timezone.yml
+    synopsis: |
+      Configure timezone.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: tmpmfs.yml
+    link: tmpmfs.yml
+    path: tasks/tmpmfs.yml
+    synopsis: |
+      Configure tmpmfs.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: users.yml
+    link: users.yml
+    path: tasks/users.yml
+    synopsis: |
+      Configure users.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: wpasupplicant.yml
+    link: wpasupplicant.yml
+    path: tasks/wpasupplicant.yml
+    synopsis: |
+      Configure wpasupplicant.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: digitalocean.yml
+    link: digitalocean.yml
+    path: tasks/cloud-providers/digitalocean.yml
+    synopsis: |
+      Configure digitalocean.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: sync-default.yml
+    link: sync-default.yml
+    path: tasks/copy/sync-default.yml
+    synopsis: |
+      Configure sync-default.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: sync-optional.yml
+    link: sync-optional.yml
+    path: tasks/copy/sync-optional.yml
+    synopsis: |
+      Configure sync-optional.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: unarch-default.yml
+    link: unarch-default.yml
+    path: tasks/copy/unarch-default.yml
+    synopsis: |
+      Configure unarch-default.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: unarch-optional.yml
+    link: unarch-optional.yml
+    path: tasks/copy/unarch-optional.yml
+    synopsis: |
+      Configure unarch-optional.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: cron-rename-entry.yml
+    link: cron-rename-entry.yml
+    path: tasks/fn/cron-rename-entry.yml
+    synopsis: |
+      Configure cron-rename-entry.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: mdconfig-attach-disk.yml
+    link: mdconfig-attach-disk.yml
+    path: tasks/fn/mdconfig-attach-disk.yml
+    synopsis: |
+      Configure mdconfig-attach-disk.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: mdconfig-detach-disk.yml
+    link: mdconfig-detach-disk.yml
+    path: tasks/fn/mdconfig-detach-disk.yml
+    synopsis: |
+      Configure mdconfig-detach-disk.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+...

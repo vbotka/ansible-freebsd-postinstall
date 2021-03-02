@@ -1,7 +1,10 @@
 ---
 
-- debug: msg="fp_zoneinfo [{{ fp_zoneinfo }}]"
-  when: fp_debug|bool
+- name: "timezone: Debug"
+  debug:
+    msg: "fp_zoneinfo [{{ fp_zoneinfo }}]"
+  when: fp_timezone_debug|bool
+  tags: [fp_timezone_debug, always]
 
 - name: "timezone: set timezone to {{ fp_zoneinfo }}"
   timezone:

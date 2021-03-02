@@ -1,12 +1,14 @@
 ---
 
-- name: "libmap: Configure /etc/libmap.conf"
+- name: "libmap: Configure {{ fp_libmap_conf_file }}"
   lineinfile:
-    dest: "/etc/libmap.conf"
-    regexp: "^{{ item.origin }} "
+    dest: "{{ fp_libmap_conf_file }}"
+    regexp: '^\s*{{ item.origin }}\s+(.*)$'
     line: "{{ item.origin }} {{ item.target }}"
-    backup: "{{ fp_backup_conf }}"
+    backup: "{{ fp_backup }}"
   loop: "{{ fp_libmap_entries }}"
+
+# TODO: includedir /usr/local/etc/libmap.d
 
 # EOF
 ...

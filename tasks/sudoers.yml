@@ -1,20 +1,21 @@
 ---
 
-# TODO:
-# (1) configure /usr/local/etc/sudoers.d
-# (2) configure /usr/local/etc/sudoers.dist
-
-- name: "sudoers: Configure {{ fp_sudoers_conf }}"
+- name: "sudoers: Configure {{ fp_sudoers_conf_file }}"
   lineinfile:
-    dest: "{{ fp_sudoers_conf }}"
+    dest: "{{ fp_sudoers_conf_file }}"
+    regexp: '^\s*{{ item.key }}\s+(.*)$'
+    line: "{{ item.key }} {{ item.value }}"
+    state: "{{ item.state|default(omit) }}"
+    insertafter: EOF
     owner: "{{ fp_sudoers_conf_owner }}"
     group: "{{ fp_sudoers_conf_group }}"
     mode: "{{ fp_sudoers_conf_mode }}"
-    regexp: "^{{ item.key }}"
-    line: "{{ item.key }} {{ item.value }}"
-    insertafter: "EOF"
-    backup: "{{ fp_backup_conf }}"
-  loop: "{{ fp_sudoers }}"
+    backup: "{{ fp_backup }}"
+  loop: "{{ fp_sudoers_conf }}"
+
+# TODO:
+# (1) configure /usr/local/etc/sudoers.d
+# (2) configure /usr/local/etc/sudoers.dist
 
 # EOF
 ...

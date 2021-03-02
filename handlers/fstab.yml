@@ -1,0 +1,5 @@
+---
+# fstab
+# - name: mount all
+#  command: mount -a
+- meta: noop

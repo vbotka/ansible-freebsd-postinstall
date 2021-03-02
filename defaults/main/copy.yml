@@ -1,0 +1,31 @@
+---
+fp_copy: false
+fp_copy_debug: false
+fp_copy_dir: copy
+fp_copy_dir_default: default
+fp_copy_arch_default: default.tar
+fp_copy_dir_optional: "{{ rc_conf_hostname }}"
+fp_copy_arch_optional: "{{ rc_conf_hostname }}.tar"
+fp_synchronize_default: []
+fp_synchronize_optional: []
+fp_unarch_default: false
+fp_unarch_optional: false
+fp_unarchive_keep_newer: false
+# Note: relative dirs are relative to the playbooks directory
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# DANGER! fp_synchronize_delete=true can delete the system dest="/"
+# Review tasks imported in copy.yml before enabling fp_synchronize_delete
+fp_synchronize_delete: false
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+fp_synchronize_archive: true
+fp_synchronize_checksum: false
+fp_synchronize_compress: true
+fp_synchronize_copy_links: false
+fp_synchronize_dirs: false
+fp_synchronize_existing_only: false
+fp_synchronize_mode: push
+fp_synchronize_group: true  # defaults to the value of the archive option
+fp_synchronize_owner: true  # defaults to the value of the archive option
+fp_synchronize_perms: true  # defaults to the value of the archive option
+fp_synchronize_times: true  # defaults to the value of the archive option
+fp_synchronize_verify_host: false

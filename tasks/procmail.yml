@@ -15,10 +15,10 @@
 
 - name: "procmail: Configure forwarders"
   blockinfile:
+    create: true
     dest: "/home/{{ item.user }}/.forward"
     marker: "# {mark} ANSIBLE MANAGED BLOCK"
-    backup: "{{ fp_backup_conf }}"
-    create: true
+    backup: "{{ fp_backup }}"
     block: |
       "{{ item.forward }}"
   loop: "{{ fp_procmail_forwarders }}"
@@ -39,10 +39,10 @@
 
 - name: "procmail: Configure .procmailrc"
   blockinfile:
+    create: true
     dest: "/home/{{ item.user }}/.procmailrc"
     marker: "# {mark} ANSIBLE MANAGED BLOCK"
-    backup: "{{ fp_backup_conf }}"
-    create: true
+    backup: "{{ fp_backup }}"
     block: |
       SHELL={{ fp_procmail_shell }}
       VERBOSE={{ fp_procmail_verbose }}
@@ -68,17 +68,17 @@
   template:
     src: "procmailrc-includerc-{{ item.template }}.j2"
     dest: "/home/{{ item.user }}/.procmail/{{ item.template }}.rc"
-    backup: "{{ fp_backup_conf }}"
+    backup: "{{ fp_backup }}"
   loop: "{{ fp_procmail_includerc }}"
   tags: fp_procmail_includerc
 
 - name: "procmail: Include rc files in .procmailrc"
   lineinfile:
+    create: true
     dest: "/home/{{ item.user }}/.procmailrc"
     line: "INCLUDERC=$PMDIR/{{ item.template }}.rc"
     insertafter: EOF
-    backup: "{{ fp_backup_conf }}"
-    create: true
+    backup: "{{ fp_backup }}"
   loop: "{{ fp_procmail_includerc }}"
   tags: fp_procmail_includerc
 

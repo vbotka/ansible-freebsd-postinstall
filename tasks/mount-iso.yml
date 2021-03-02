@@ -9,8 +9,9 @@
   debug:
     msg: "{{ msg.split('\n')[:-1] }}"
   when: fp_mount_iso_debug|bool
+  tags: [fp_mount_iso_debug, always]
 
-  # mounted - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# mounted - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 - name: "mount-iso: Create mount points"
   file:
     state: directory
@@ -30,7 +31,7 @@
     var: al_mdconfig_devs
   when: fp_mount_iso_debug|bool
 
-  # TODO: Sanity al_mdconfig_devs[item.iso] is defined; not in check-mode
+# TODO: Sanity al_mdconfig_devs[item.iso] is defined; not in check-mode
 
 - name: "mount-iso: Mount"
   mount:
@@ -50,7 +51,7 @@
     var: result
   when: fp_mount_iso_debug|bool
 
-  # unmounted - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# unmounted - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 - name: "mount-iso: Unmount"
   mount:
     path: "{{ item.mount }}"  # Note 2.
@@ -75,17 +76,13 @@
     var: al_mdconfig_devs
   when: fp_mount_iso_debug|bool
 
-# Notes
-#
+# NOTES
 # Note 1: It's not possible to mount a device without touching fstab. Temporary fstab is a
 # workaround.
 # https://github.com/ansible-collections/ansible.posix/issues/84#issuecomment-742420345
-#
 # Note 2: Ansible module *mount* will create/remove non-existent mountpoint
 
-# TODO:
-#
-# 1) Permanent mount entry in fstab
+# TODO: Permanent mount entry in fstab
 # state: present, absent (See ansible.posix.mount parameter *state*)
 # See /etc/rc.d/mdconfig2
 # Ex: mdconfig_md0="-t vnode -f /usr/local/data/vdisks/devltd.net"

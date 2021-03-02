@@ -29,7 +29,8 @@
          pkg_dict_{{ ansible_architecture }}
          {{ lookup('vars', 'pkg_dict_' ~ ansible_architecture)|
             sort(attribute='pkglist')|to_yaml }}
-  when: fp_debug|bool
+  when: fp_packages_debug|bool
+  tags: [fp_packages_debug, always]
 
 - name: "packages: Install packages"
   include_tasks: packages-install.yml

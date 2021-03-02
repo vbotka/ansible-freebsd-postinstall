@@ -7,10 +7,9 @@
   vars:
     mypath: "{{ fp_copy_dir }}/{{ fp_copy_dir_optional }}"
     mystat: "{{ mypath is exists }}"
-  when: fp_debug|bool
+  when: fp_copy_debug|bool
 
-- name: "copy:sync-optional: Synchronize optional files
-         {{ fp_copy_dir }}/{{ fp_copy_dir_optional }}"
+- name: "copy:sync-optional: Synchronize optional files {{ fp_copy_dir }}/{{ fp_copy_dir_optional }}"
   synchronize:
     src: "{{ mypath }}"
     dest: "{{ item.dest }}"
@@ -39,7 +38,7 @@
 - name: "copy:sync-optional: Debug synchronize optional files result"
   debug:
     var: result
-  when: fp_debug|bool
+  when: fp_copy_debug|bool
 
 # EOF
 ...

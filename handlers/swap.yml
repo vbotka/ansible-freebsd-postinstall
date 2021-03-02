@@ -1,0 +1,40 @@
+---
+# swap
+- name: create swap
+  command: >
+    sh -c 'dd if=/dev/zero of={{ fp_swap_file }} bs=1m count={{ fp_swap_size }} &&
+    chmod 0600 {{ fp_swap_file }}'
+
+- name: mount swap
+  command: sh -c 'swapon -aL'
+  register: command_result
+  failed_when: "'adding' not in command_result.stdout"
+# NOTE 1: swapon creates /dev/mdXX
+# NOTE 2: Successful mount returns exit code 1
+# FreeBSD 11.1. Ansible 2.5 command_result:
+# RUNNING HANDLER [vbotka.freebsd-postinstall : mount swap] ***
+# fatal: [aaa.bbb.ccc.ddd]: FAILED! => changed=true
+#  cmd: sh -c 'swapon -aL'
+#  delta: '0:00:00.025491'
+#  end: '2018-07-01 05:47:56.905803'
+#  msg: non-zero return code
+#  rc: 1
+#  start: '2018-07-01 05:47:56.880312'
+#  stderr: ''
+#  stderr_lines: []
+#  stdout: 'swapon: adding /dev/md99 as swap device'
+#  stdout_lines: <omitted>
+
+- name: change and mount swap
+  command: >
+    sh -c 'swapoff /dev/{{ fp_swap_md }} &&
+    mdconfig -d -u {{ fp_swap_md }} &&
+    dd if=/dev/zero of={{ fp_swap_file }} bs=1m count={{ fp_swap_size }} &&
+    chmod 0600 {{ fp_swap_file }} &&
+    swapon -aL'
+
+- name: umount and delete swap
+  command: >
+    sh -c 'swapoff /dev/{{ fp_swap_md }} &&
+    mdconfig -d -u {{ fp_swap_md }} &&
+    rm {{ fp_swap_file }}'

@@ -2,14 +2,11 @@
 
 - name: "ntpdate: Configure ntpdate in /etc/rc.conf"
   lineinfile:
-    dest: "/etc/rc.conf"
-    regexp: "{{ item.regexp }}"
-    line: "{{ item.line }}"
-    backup: "{{ fp_backup_conf }}"
-  loop:
-    - {regexp: "^ntpdate_enable", line: "ntpdate_enable=\"{{ ntpdate_enable }}\""}
-    - {regexp: "^ntpdate_flags", line: "ntpdate_flags=\"{{ ntpdate_flags }}\""}
-    - {regexp: "^ntpd_sync_on_start", line: "ntpd_sync_on_start=\"{{ ntpd_sync_on_start }}\""}
+    dest: /etc/rc.conf
+    regexp: '^\s*{{ item.key }}\s*=(.*)$'
+    line: '{{ item.key }}="{{ item.value }}"'
+    backup: "{{ fp_backup }}"
+  loop: "{{ fp_ntpdate_rcconf }}"
 
 # EOF
 ...

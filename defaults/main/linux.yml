@@ -1,0 +1,9 @@
+---
+fp_linux: false
+fp_linux_enable: false  #  list of packages: linux
+fp_linux_install: false
+fp_linux_debug: false
+fp_linux_fstab:
+  - {name: "/compat/linux/proc", src: "linproc", fstype: "linprocfs", opts: "rw"}
+fp_linux_lib_dir: "{{ playbook_dir }}/copy/linux-compat-lib"
+fp_linux_lib: []

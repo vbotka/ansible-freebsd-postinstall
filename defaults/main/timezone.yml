@@ -1,0 +1,6 @@
+---
+fp_timezone: false
+fp_timezone_debug: false
+fp_zoneinfo: UTC
+# fp_zoneinfo: "Europe/London"  # man tzsetup
+fp_zoneinfo_path: /usr/share/zoneinfo

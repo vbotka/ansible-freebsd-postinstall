@@ -1,0 +1,11 @@
+---
+freebsd_install_method: packages
+# freebsd_install_method: ports
+# freebsd_use_packages: true
+freebsd_install_retries: 10
+freebsd_install_delay: 5
+
+fp_install: false
+fp_packages_debug: false
+fp_packages: []
+fp_links: []

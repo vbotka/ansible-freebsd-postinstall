@@ -7,10 +7,9 @@
   vars:
     mypath: "{{ fp_copy_dir }}/{{ fp_copy_arch_default }}"
     mystat: "{{ mypath is exists }}"
-  when: fp_debug|bool
+  when: fp_copy_debug|bool
 
-- name: "copy:unarch-default: Extract default archive
-         {{ fp_copy_dir }}/{{ fp_copy_arch_default }}"
+- name: "copy:unarch-default: Extract default archive {{ fp_copy_dir }}/{{ fp_copy_arch_default }}"
   unarchive:
     src: "{{ fp_copy_dir }}/{{ fp_copy_arch_default }}"
     dest: "/"

@@ -1,0 +1,35 @@
+Templates
+=========
+
+{% for i in mytemplates %}
+.. _as_template_{{ i.link }}:
+
+{{ i.file }}
+{{ '-' * i.file|length }}
+
+Synopsis: {{ i.synopsis }}
+
+{{ i.description }}
+
+[`{{ i.path }} <https://github.com/vbotka/ansible-freebsd-postinstall/blob/stable-2.0/{{ i.path }}>`_]
+
+.. highlight:: jinja
+    :linenothreshold: 5
+.. literalinclude:: ../../{{ i.path }}
+    :language: jinja
+    :emphasize-lines: {{ i.lines }}
+    :linenos:
+
+{% if i.seealso|length > 0 %}
+.. seealso:: 
+
+{% endif %}
+{% if i.note|length > 0 %}
+.. note::
+
+{% endif %}
+{% if i.warning|length > 0 %}
+.. warning::
+
+{% endif %}
+{% endfor %}

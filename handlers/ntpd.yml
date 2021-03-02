@@ -1,0 +1,9 @@
+---
+# ntpd
+- name: enable and start ntpd
+  service: name="ntpd" state="started" enabled=true
+- name: disable and stop ntpd
+  service: name="ntpd" state="stopped" enabled=false
+- name: restart ntpd
+  service: name="ntpd" state="restarted"
+  when: fp_ntp_enable|bool

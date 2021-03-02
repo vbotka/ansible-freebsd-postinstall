@@ -1,197 +1,26 @@
 ---
-# handlers for vbotka.freebsd-postinstall
+# handlers for freebsd_postinstall
 
-# ntpdate
-- name: set hostname
-  command: hostname "{{ rc_conf_hostname }}"
-
-# ntpdate
-- name: enable ntpdate
-  service: name="ntpdate" enabled="yes"
-- name: disable ntpdate
-  service: name="ntpdate" enabled="no"
-
-# update the local time CMOS clock and kernel machdep.adjkerntz
-# variable when timezone changes occur
-- name: adjust CMOS
-  command: adjkerntz -a
-
-# devfs
-- name: enable and start devfs
-  service: name="devfs" state="started" enabled="yes"
-- name: disable and stop devfs
-  service: name="devfs" state="stopped" enabled="no"
-- name: restart devfs
-  service: name="devfs" state="restarted"
-  when: fp_devfs_enabled
-
-# sshd
-- name: enable and start sshd
-  service: name="sshd" state="started" enabled="yes"
-- name: disable and stop sshd
-  service: name="sshd" state="stopped" enabled="no"
-- name: restart sshd
-  service: name="sshd" state="restarted"
-- name: reload sshd
-  service: name="sshd" state="reloaded"
-
-# nfs
-- name: enable and start nfs client
-  service: name="nfsclient" state="started" enabled="yes"
-- name: disable and stop nfs client
-  service: name="nfsclient" state="stopped" enabled="no"
-
-# nfsd
-- name: enable and start nfs server
-  service: name="nfsd" state="started" enabled="yes"
-- name: disable and stop nfs server
-  service: name="nfsd" state="stopped" enabled="no"
-- name: restart nfs server
-  service: name="nfsd" state="restarted"
-- name: enable and start lockd
-  service: name="lockd" state="started" enabled="yes"
-- name: disable and stop lockd
-  service: name="lockd" state="stopped" enabled="no"
-- name: enable and start statd
-  service: name="statd" state="started" enabled="yes"
-- name: disable and stop statd
-  service: name="statd" state="stopped" enabled="no"
-- name: enable and start rpcbind
-  service: name="rpcbind" state="started" enabled="yes"
-- name: disable and stop rpcbind
-  service: name="rpcbind" state="stopped" enabled="no"
-- name: enable and start mountd
-  service: name="mountd" state="started" enabled="yes"
-- name: disable and stop mountd
-  service: name="mountd" state="stopped" enabled="no"
-- name: reload mountd
-  service: name="mountd" state="reloaded"
-  when: fp_mountd_enable
-
-# ntpd
-- name: enable and start ntpd
-  service: name="ntpd" state="started" enabled="yes"
-- name: disable and stop ntpd
-  service: name="ntpd" state="stopped" enabled="no"
-- name: restart ntpd
-  service: name="ntpd" state="restarted"
-
-# smartd
-- name: enable and start smartd
-  service: name="smartd" state="started" enabled="yes"
-- name: disable and stop smartd
-  service: name="smartd" state="stopped" enabled="no"
-- name: restart smartd
-  service: name="smartd" state="restarted"
-  when: fp_smartd_service_enabled
-- name: reload smartd
-  service: name="smartd" state="reloaded"
-  when: fp_smartd_service_enabled
-
-# apcupsd
-- name: enable and start apcupsd
-  service: name="apcupsd" state="started" enabled="yes"
-- name: disable and stop apcupsd
-  service: name="apcupsd" state="stopped" enabled="no"
-- name: restart apcupsd
-  service: name="apcupsd" state="restarted"
-
-# hostapd
-- name: enable and start hostapd
-  service: name="hostapd" state="started" enabled="yes"
-- name: disable and stop hostapd
-  service: name="hostapd" state="stopped" enabled="no"
-- name: restart hostapd
-  service: name="hostapd" state="restarted"
-  when: fp_hostapd_enabled|bool
-- name: reload hostapd
-  service: name="hostapd" state="reloaded"
-  when: fp_hostapd_enabled|bool
-
-# fstab
-# - name: mount all
-#  command: mount -a
-
-# sysctl
-- name: reload sysctl
-  service: name="sysctl" state="reloaded"
-
-# swap
-- name: create swap
-  command: >
-    sh -c 'dd if=/dev/zero of={{ fp_swap_file }} bs=1m count={{ fp_swap_size }} &&
-    chmod 0600 {{ fp_swap_file }}'
-
-- name: mount swap
-  command: sh -c 'swapon -aL'
-  register: command_result
-  failed_when: "'adding' not in command_result.stdout"
-# NOTE 1: swapon creates /dev/mdXX
-# NOTE 2: Successful mount returns exit code 1
-# FreeBSD 11.1. Ansible 2.5 command_result:
-# RUNNING HANDLER [vbotka.freebsd-postinstall : mount swap] ***
-# fatal: [aaa.bbb.ccc.ddd]: FAILED! => changed=true
-#  cmd: sh -c 'swapon -aL'
-#  delta: '0:00:00.025491'
-#  end: '2018-07-01 05:47:56.905803'
-#  msg: non-zero return code
-#  rc: 1
-#  start: '2018-07-01 05:47:56.880312'
-#  stderr: ''
-#  stderr_lines: []
-#  stdout: 'swapon: adding /dev/md99 as swap device'
-#  stdout_lines: <omitted>
-
-- name: change and mount swap
-  command: >
-    sh -c 'swapoff /dev/{{ fp_swap_md }} &&
-    mdconfig -d -u {{ fp_swap_md }} &&
-    dd if=/dev/zero of={{ fp_swap_file }} bs=1m count={{ fp_swap_size }} &&
-    chmod 0600 {{ fp_swap_file }} &&
-    swapon -aL'
-
-- name: umount and delete swap
-  command: >
-    sh -c 'swapoff /dev/{{ fp_swap_md }} &&
-    mdconfig -d -u {{ fp_swap_md }} &&
-    rm {{ fp_swap_file }}'
-
-# resolvconf
-- name: resolvconf apply
-  command: resolvconf -u
-
-- name: newaliases
-  command: "/usr/bin/newaliases"
-
-# wpasupplicant
-- name: restart netif
-  service: name="netif" state="restarted"
-
-- name: reconfigure wpa_supplicant
-  shell: >
-    [ -S {{ fp_wpasupplicant_conf_ctrl_interface }}/{{ item.item.dev }} ] &&
-    wpa_cli -p {{ fp_wpasupplicant_conf_ctrl_interface }} -i {{ item.item.dev }} reconfigure  ||
-    exit 0
-  when: item.changed
-  loop: "{{ fp_wpa_supplicant_conf_changes }}"
-  # TODO: Wait for OK result. Error: 'RECONFIGURE' command timed out.
-
-# login.conf
-- name: rebuild login_conf
-  command: "/usr/bin/cap_mkdb /etc/login.conf"
-
-# snmpd
-- name: enable and start snmpd
-  service: name="{{ fp_snmpd_service }}" state="started" enabled="yes"
-- name: disable and stop snmpd
-  service: name="{{ fp_snmpd_service }}" state="stopped" enabled="no"
-- name: restart snmpd
-  service: name="{{ fp_snmpd_service }}" state="restarted"
-  when: fp_snmpd_enabled
-
-# MESSAGES -------------------------------------------------------------
-- name: loader message reboot
-  debug: msg="[MESSAGE] Reboot to activate configuration in /boot/loader.conf"
+- import_tasks: adjkerntz.yml
+- import_tasks: apcupsd.yml
+- import_tasks: devfs.yml
+- import_tasks: fstab.yml
+- import_tasks: hostapd.yml
+- import_tasks: hostname.yml
+- import_tasks: login.yml
+- import_tasks: messages.yml
+- import_tasks: newaliases.yml
+- import_tasks: nfsd.yml
+- import_tasks: nfs.yml
+- import_tasks: ntpdate.yml
+- import_tasks: ntpd.yml
+- import_tasks: resolvconf.yml
+- import_tasks: smartd.yml
+- import_tasks: snmpd.yml
+- import_tasks: sshd.yml
+- import_tasks: swap.yml
+- import_tasks: sysctl.yml
+- import_tasks: wpasupplicant.yml
 
 # EOF
 ...

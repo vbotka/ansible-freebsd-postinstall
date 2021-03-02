@@ -3,22 +3,25 @@
 - name: "periodic: Debug"
   vars:
     msg: |
-         fp_periodic_conf_local
-         {{ fp_periodic_conf_local|to_yaml }}
+      fp_periodic_conf_local_file [{{ fp_periodic_conf_local_file }}]
+      fp_periodic_conf_local
+      {{ fp_periodic_conf_local|to_yaml }}
   debug:
-    msg: "{{ msg.split('\n') }}"
-  when: fp_debug|bool
+    msg: "{{ msg.split('\n')[:-1] }}"
+  when: fp_periodic_debug|bool
+  tags: [fp_periodic_debug, always]
 
-- name: "periodic_conf: Configure /etc/periodic.conf.local"
+- name: "periodic: Configure {{ fp_periodic_conf_local_file }}"
   lineinfile:
-    dest: "/etc/periodic.conf.local"
-    regexp: "^{{ item.regexp }}"
-    line: "{{ item.regexp }}{{ item.value }}"
-    backup: "{{ fp_backup_conf }}"
     create: true
+    dest: "{{ fp_periodic_conf_local_file }}"
+    regexp: '^\s*{{ item.key }}\s*=(.*)$'
+    line: '{{ item.key }}="{{ item.value }}"'
+    backup: "{{ fp_backup }}"
   loop: "{{ fp_periodic_conf_local }}"
+  tags: fp_periodic_conf_local
 
-# NOTES:
+# NOTES
 #
 # 13.10. Monitoring Third Party Security Issues
 # https://www.freebsd.org/doc/handbook/security-pkg.html

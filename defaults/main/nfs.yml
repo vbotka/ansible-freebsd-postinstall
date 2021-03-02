@@ -1,0 +1,7 @@
+---
+fp_nfs: false
+fp_nfs_enable: false
+fp_nfs_enable_rcconf:
+  - {key: nfs_client_enable, value: "YES"}
+fp_nfs_disable_rcconf:
+  - {key: nfs_client_enable, value: "NO"}

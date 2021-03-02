@@ -1,0 +1,36 @@
+---
+fp_apcupsd: false
+fp_apcupsd_install: false  # list of packages: apcups
+fp_apcupsd_enabled: false
+fp_apcupsd_conf_dir: /usr/local/etc/apcupsd
+fp_apcupsd_conf_file: "{{ fp_apcupsd_conf_dir }}/apcupsd.conf"
+fp_apcupsd_conf_owner: root
+fp_apcupsd_conf_group: wheel
+fp_apcupsd_conf_mode: "0644"
+# fp_apcupsd_devices: []
+fp_apcupsd_UPSNAME: "UPS01"
+fp_apcupsd_UPSCABLE: "usb"
+fp_apcupsd_UPSTYPE: "usb"
+fp_apcupsd_LOCKFILE: "/var/spool/lock"
+fp_apcupsd_SCRIPTDIR: "/usr/local/etc/apcupsd"
+fp_apcupsd_PWRFAILDIR: "/var/run"
+fp_apcupsd_NOLOGINDIR: "/var/run"
+fp_apcupsd_ONBATTERYDELAY: "6"
+fp_apcupsd_BATTERYLEVEL: "5"
+fp_apcupsd_MINUTES: "3"
+fp_apcupsd_TIMEOUT: "0"
+fp_apcupsd_ANNOY: "300"
+fp_apcupsd_ANNOYDELAY: "60"
+fp_apcupsd_NOLOGON: "disable"
+fp_apcupsd_KILLDELAY: "0"
+fp_apcupsd_NETSERVER: "on"
+fp_apcupsd_NISIP: "0.0.0.0"
+fp_apcupsd_NISPORT: "3551"
+fp_apcupsd_EVENTSFILE: "/var/log/apcupsd.events"
+fp_apcupsd_EVENTSFILEMAX: "10"
+fp_apcupsd_UPSCLASS: "standalone"
+fp_apcupsd_UPSMODE: "disable"
+fp_apcupsd_STATTIME: "0"
+fp_apcupsd_STATFILE: "/var/log/apcupsd.status"
+fp_apcupsd_LOGSTATS: "off"
+fp_apcupsd_DATATIME: "0"

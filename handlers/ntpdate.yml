@@ -1,0 +1,6 @@
+---
+# ntpdate
+- name: enable ntpdate
+  service: name="ntpdate" enabled=true
+- name: disable ntpdate
+  service: name="ntpdate" enabled=false

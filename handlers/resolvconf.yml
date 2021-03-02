@@ -1,0 +1,4 @@
+---
+# resolvconf
+- name: resolvconf apply
+  command: resolvconf -u

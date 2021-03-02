@@ -1,0 +1,4 @@
+---
+# hostname
+- name: set hostname
+  command: hostname "{{ rc_conf_hostname }}"

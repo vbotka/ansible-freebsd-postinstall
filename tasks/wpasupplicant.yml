@@ -17,6 +17,7 @@
       fp_wpasupplicant_conf_mode [{{ fp_wpasupplicant_conf_mode }}]
       fp_wpasupplicant_conf_dir [{{ fp_wpasupplicant_conf_dir }}]
       fp_wpasupplicant_conf_file [{{ fp_wpasupplicant_conf_file }}]
+      fp_wpasupplicant_conf_template [{{ fp_wpasupplicant_conf_template }}]
 
       fp_wpasupplicant_conf_ctrl_interface [{{ fp_wpasupplicant_conf_ctrl_interface }}]
       fp_wpasupplicant_conf_global
@@ -43,7 +44,7 @@
 
 - name: "wpasupplicant: Configure {{ fp_wpasupplicant_conf_file }}.DEV"
   template:
-    src: "wpa_supplicant.conf.j2"
+    src: "{{ fp_wpasupplicant_conf_template }}"
     dest: "{{ fp_wpasupplicant_conf_file }}.{{ item.dev }}"
     owner: "{{ fp_wpasupplicant_conf_owner }}"
     group: "{{ fp_wpasupplicant_conf_group }}"

@@ -3,54 +3,23 @@
 - name: "ssh: Debug"
   vars:
     msg: |
-         ssh_config_path [{{ ssh_config_path }}]
-         ssh_config
-         {{ ssh_config|to_yaml }}
-         sshd_config_path [{{ sshd_config_path }}]
-         sshd_config
-         {{ sshd_config|to_yaml }}
+      fp_ssh_conf_file [{{ fp_ssh_conf_file }}]
+      fp_ssh_conf
+      {{ fp_ssh_conf|to_yaml }}
   debug:
-    msg: "{{ msg.split('\n') }}"
-  when: fp_debug|bool
+    msg: "{{ msg.split('\n')[:-1] }}"
+  when: fp_ssh_debug|bool
+  tags: [fp_ssh_debug, always]
 
-- name: "ssh: Configure {{ ssh_config_path }}"
+- name: "ssh: Configure {{ fp_ssh_conf_file }}"
   template:
-    src: "ssh_config.j2"
-    dest: "{{ ssh_config_path }}"
-    backup: "{{ fp_backup_conf }}"
+    src: "{{ fp_ssh_conf_template }}"
+    dest: "{{ fp_ssh_conf_file }}"
+    owner: "{{ fp_ssh_conf_owner }}"
+    group: "{{ fp_ssh_conf_group }}"
+    mode: "{{ fp_ssh_conf_mode }}"
+    backup: "{{ fp_backup }}"
   tags: fp_ssh_config
-
-- name: "ssh: Configure {{ sshd_config_path }}"
-  lineinfile:
-    dest: "{{ sshd_config_path }}"
-    regexp: "^{{ item.key }}"
-    insertbefore: "^{{ '#' }}{{ item.key }}"
-    line: "{{ item.key }} {{ item.value }}"
-    backup: "{{ fp_backup_conf }}"
-    validate: "{{ sshd_path }} -t -f %s"
-  loop: "{{ sshd_config }}"
-  notify: reload sshd
-  tags: fp_ssh_sshd_config
-
-- name: "ssh: Enable and start sshd"
-  lineinfile:
-    dest: "/etc/rc.conf"
-    regexp: "^sshd_enable"
-    line: "sshd_enable=\"YES\""
-    backup: "{{ fp_backup_conf }}"
-  notify: enable and start sshd
-  when: sshd_enable|bool
-  tags: fp_ssh_rcconf
-
-- name: "ssh: Disable and stop sshd"
-  lineinfile:
-    dest: "/etc/rc.conf"
-    regexp: "^sshd_enable"
-    line: "sshd_enable=\"NO\""
-    backup: "{{ fp_backup_conf }}"
-  notify: disable and stop sshd
-  when: not sshd_enable|bool
-  tags: fp_ssh_rcconf
 
 # EOF
 ...
