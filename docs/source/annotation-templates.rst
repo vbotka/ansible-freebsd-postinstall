@@ -12,7 +12,7 @@ Synopsis: Template apcupsd.conf.
 Description of the template.
 
 
-[`templates/apcupsd.conf.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/stable-2.0/templates/apcupsd.conf.j2>`_]
+[`templates/apcupsd.conf.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/templates/apcupsd.conf.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -32,7 +32,7 @@ Synopsis: Template exports.
 Description of the template.
 
 
-[`templates/exports.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/stable-2.0/templates/exports.j2>`_]
+[`templates/exports.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/templates/exports.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -52,7 +52,7 @@ Synopsis: Template groupadd.
 Description of the template.
 
 
-[`templates/groupadd.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/stable-2.0/templates/groupadd.j2>`_]
+[`templates/groupadd.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/templates/groupadd.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -72,7 +72,7 @@ Synopsis: Template groupdel.
 Description of the template.
 
 
-[`templates/groupdel.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/stable-2.0/templates/groupdel.j2>`_]
+[`templates/groupdel.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/templates/groupdel.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -92,7 +92,7 @@ Synopsis: Template groupmod.
 Description of the template.
 
 
-[`templates/groupmod.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/stable-2.0/templates/groupmod.j2>`_]
+[`templates/groupmod.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/templates/groupmod.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -112,7 +112,7 @@ Synopsis: Template hostapd.conf.
 Description of the template.
 
 
-[`templates/hostapd.conf.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/stable-2.0/templates/hostapd.conf.j2>`_]
+[`templates/hostapd.conf.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/templates/hostapd.conf.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -132,7 +132,7 @@ Synopsis: Template hosts.
 Description of the template.
 
 
-[`templates/hosts.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/stable-2.0/templates/hosts.j2>`_]
+[`templates/hosts.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/templates/hosts.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -152,7 +152,7 @@ Synopsis: Template loader.conf.
 Description of the template.
 
 
-[`templates/loader.conf.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/stable-2.0/templates/loader.conf.j2>`_]
+[`templates/loader.conf.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/templates/loader.conf.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -172,7 +172,7 @@ Synopsis: Template login.conf.
 Description of the template.
 
 
-[`templates/login.conf.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/stable-2.0/templates/login.conf.j2>`_]
+[`templates/login.conf.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/templates/login.conf.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -192,7 +192,7 @@ Synopsis: Template make.conf.
 Description of the template.
 
 
-[`templates/make.conf.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/stable-2.0/templates/make.conf.j2>`_]
+[`templates/make.conf.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/templates/make.conf.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -212,7 +212,7 @@ Synopsis: Template motd.
 Description of the template.
 
 
-[`templates/motd.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/stable-2.0/templates/motd.j2>`_]
+[`templates/motd.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/templates/motd.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -232,7 +232,7 @@ Synopsis: Template ntp.conf.
 Description of the template.
 
 
-[`templates/ntp.conf.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/stable-2.0/templates/ntp.conf.j2>`_]
+[`templates/ntp.conf.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/templates/ntp.conf.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -252,7 +252,7 @@ Synopsis: Template procmailrc-includerc-capability.
 Description of the template.
 
 
-[`templates/procmailrc-includerc-capability.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/stable-2.0/templates/procmailrc-includerc-capability.j2>`_]
+[`templates/procmailrc-includerc-capability.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/templates/procmailrc-includerc-capability.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -272,7 +272,7 @@ Synopsis: Template procmailrc-includerc-duplicates.
 Description of the template.
 
 
-[`templates/procmailrc-includerc-duplicates.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/stable-2.0/templates/procmailrc-includerc-duplicates.j2>`_]
+[`templates/procmailrc-includerc-duplicates.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/templates/procmailrc-includerc-duplicates.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -292,7 +292,7 @@ Synopsis: Template procmailrc-includerc-get-certificate.
 Description of the template.
 
 
-[`templates/procmailrc-includerc-get-certificate.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/stable-2.0/templates/procmailrc-includerc-get-certificate.j2>`_]
+[`templates/procmailrc-includerc-get-certificate.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/templates/procmailrc-includerc-get-certificate.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -312,7 +312,7 @@ Synopsis: Template procmailrc-includerc-get-fingerprint.
 Description of the template.
 
 
-[`templates/procmailrc-includerc-get-fingerprint.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/stable-2.0/templates/procmailrc-includerc-get-fingerprint.j2>`_]
+[`templates/procmailrc-includerc-get-fingerprint.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/templates/procmailrc-includerc-get-fingerprint.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -332,7 +332,7 @@ Synopsis: Template procmailrc-includerc-get-fingerprints.
 Description of the template.
 
 
-[`templates/procmailrc-includerc-get-fingerprints.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/stable-2.0/templates/procmailrc-includerc-get-fingerprints.j2>`_]
+[`templates/procmailrc-includerc-get-fingerprints.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/templates/procmailrc-includerc-get-fingerprints.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -352,7 +352,7 @@ Synopsis: Template procmailrc-includerc-get-message.
 Description of the template.
 
 
-[`templates/procmailrc-includerc-get-message.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/stable-2.0/templates/procmailrc-includerc-get-message.j2>`_]
+[`templates/procmailrc-includerc-get-message.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/templates/procmailrc-includerc-get-message.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -372,7 +372,7 @@ Synopsis: Template ssh_config.
 Description of the template.
 
 
-[`templates/ssh_config.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/stable-2.0/templates/ssh_config.j2>`_]
+[`templates/ssh_config.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/templates/ssh_config.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -392,7 +392,7 @@ Synopsis: Template wpa_supplicant.conf.
 Description of the template.
 
 
-[`templates/wpa_supplicant.conf.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/stable-2.0/templates/wpa_supplicant.conf.j2>`_]
+[`templates/wpa_supplicant.conf.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/templates/wpa_supplicant.conf.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
