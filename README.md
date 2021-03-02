@@ -10,6 +10,10 @@ This role and the documentation is work in progress. If the documentation of a t
 
 Feel free to [share your feedback and report issues](https://github.com/vbotka/ansible-freebsd-postinstall/issues). [Contributions are welcome](https://github.com/firstcontributions/first-contributions).
 
+## Supported Releases
+
+* Production: 2.0, 1.23
+* Upcomming: 3.0
 
 ## Supported platforms
 
