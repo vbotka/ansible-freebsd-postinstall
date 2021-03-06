@@ -23,6 +23,7 @@
 
          fp_install [{{ fp_install }}]
          fp_backup [{{ fp_backup }}]
+         fp_sanity [{{ fp_sanity }}] fp_sanity_tags_fatal [{{ fp_sanity_tags_fatal }}]
 
          fp_aliases [{{ fp_aliases }}]
          fp_apcupsd [{{ fp_apcupsd }}] fp_apcupsd_install [{{ fp_apcupsd_install }}] fp_apcupsd_enabled [{{ fp_apcupsd_enabled }}]

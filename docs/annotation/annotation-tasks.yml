@@ -441,6 +441,19 @@ mytasks:
     hints: []
     warnings: []
 
+  - file: sanity.yml
+    link: sanity.yml
+    path: tasks/sanity.yml
+    synopsis: |
+      Configure sanity.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
   - file: snmpd.yml
     link: snmpd.yml
     path: tasks/snmpd.yml

@@ -1,0 +1,36 @@
+---
+
+- name: "sanity: Debug"
+  debug:
+    msg: |
+      ansible_run_tags
+      {{ ansible_run_tags|to_yaml }}
+      ansible_skip_tags
+      {{ ansible_skip_tags|to_yaml }}
+      fp_sanity_tags
+      {{ fp_sanity_tags|to_yaml }}
+  when: fp_sanity_debug|bool
+  tags: fp_sanity_debug
+
+- name: "sanity: Unknown run tags"
+  fail:
+    msg: "[ERROR] Unknown run tag(s): {{ _tags_unknown }}"
+  vars:
+    _tags_unknown: "{{ ansible_run_tags|difference(fp_sanity_tags) }}"
+  when:
+    - fp_sanity_tags_fatal|bool
+    - ansible_run_tags|length > 0
+    - _tags_unknown|length > 0
+
+- name: "sanity: Unknown skip tags"
+  fail:
+    msg: "[ERROR] Unknown skip tag(s): {{ _tags_unknown }}"
+  vars:
+    _tags_unknown: "{{ ansible_skip_tags|difference(fp_sanity_tags) }}"
+  when:
+    - fp_sanity_tags_fatal|bool
+    - ansible_run_tags|length > 0
+    - _tags_unknown|length > 0
+
+# EOF
+...

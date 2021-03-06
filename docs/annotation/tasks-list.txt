@@ -31,6 +31,7 @@ periodic.yml
 procmail.yml
 resolvconf.yml
 smartd.yml
+sanity.yml
 snmpd.yml
 sshd.yml
 ssh.yml

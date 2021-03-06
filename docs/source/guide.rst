@@ -173,6 +173,20 @@ available or not
    * `Python Debugging With Pdb <https://realpython.com/python-debugging-pdb/>`_
 
 
+.. _ug_sanity:
+
+******
+Sanity
+******
+
+By default the checking of sanity is turned on ::
+
+  fp_sanity: true
+  fp_sanity_tags_fatal: true
+
+<TODO>
+
+
 .. _ug_tasks:
 
 *****

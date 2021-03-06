@@ -817,6 +817,30 @@ Description of the task.
 
 
 
+.. _as_sanity.yml:
+
+sanity.yml
+----------
+
+Synopsis: Configure sanity.
+
+
+Description of the task.
+
+
+[`tasks/sanity.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/tasks/sanity.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../tasks/sanity.yml
+    :language: Yaml
+    :emphasize-lines: 1,2
+    :linenos:
+
+
+
+
+
 .. _as_snmpd.yml:
 
 snmpd.yml
