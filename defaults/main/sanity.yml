@@ -4,7 +4,7 @@ fp_sanity: true
 fp_sanity_debug: false
 
 fp_sanity_tags_fatal: true
-fp_sanity_tags: [always,
+fp_sanity_tags: [all, always,
 fp_aliases, fp_apcupsd, fp_apcupsd_conf, fp_apcupsd_rcconf,
 fp_authorized_key, fp_authorized_key_debug, fp_cloud_proividers,
 fp_copy, fp_copy_debug, fp_copy_sync_default, fp_copy_sync_optional,

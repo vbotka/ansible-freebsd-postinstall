@@ -29,7 +29,7 @@
     _tags_unknown: "{{ ansible_skip_tags|difference(fp_sanity_tags) }}"
   when:
     - fp_sanity_tags_fatal|bool
-    - ansible_run_tags|length > 0
+    - ansible_skip_tags|length > 0
     - _tags_unknown|length > 0
 
 # EOF
