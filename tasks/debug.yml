@@ -38,7 +38,7 @@
          fp_hostapd [{{ fp_hostapd }}] fp_hostapd_install [{{ fp_hostapd_install }}] fp_hostapd_enabled [{{ fp_hostapd_enabled }}]
          fp_hostname [{{ fp_hostname }}]
          fp_linux [{{ fp_linux }}] fp_linux_install [{{ fp_linux_install }}] fp_linux_enable [{{ fp_linux_enable }}]
-         fp_loader [{{ fp_loader }}]
+         fp_loader [{{ fp_loader }}] fp_loader_warning [{{ fp_loader_warning }}]
          fp_login [{{ fp_login }}]
          fp_make [{{ fp_make }}]
          fp_motd [{{ fp_motd }}]
