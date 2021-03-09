@@ -85,6 +85,18 @@ mytemplates:
     note: []
     warning: []
 
+  - file: hosts-aliases-list.j2
+    link: template_hosts-aliases-list.j2
+    path: templates/hosts-aliases-list.j2
+    synopsis: |
+      Template hosts-aliases-list.
+    description: |
+      Description of the template.
+    lines: 1
+    seealso: []
+    note: []
+    warning: []
+
   - file: loader.conf.j2
     link: template_loader.conf.j2
     path: templates/loader.conf.j2

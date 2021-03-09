@@ -141,6 +141,26 @@ Description of the template.
     :emphasize-lines: 1
     :linenos:
 
+.. _as_template_template_hosts-aliases-list.j2:
+
+hosts-aliases-list.j2
+---------------------
+
+Synopsis: Template hosts-aliases-list.
+
+
+Description of the template.
+
+
+[`templates/hosts-aliases-list.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/templates/hosts-aliases-list.j2>`_]
+
+.. highlight:: jinja
+    :linenothreshold: 5
+.. literalinclude:: ../../templates/hosts-aliases-list.j2
+    :language: jinja
+    :emphasize-lines: 1
+    :linenos:
+
 .. _as_template_template_loader.conf.j2:
 
 loader.conf.j2
