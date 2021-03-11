@@ -268,7 +268,7 @@ Configure sshd and sudo
    :emphasize-lines: 1
    :linenos:
 
-   shell> ansible-playbook freebsd-postinstall.yml -t fp_sshd
+   shell> ansible-playbook playbook.yml -t fp_sshd
 
    PLAY [test_14.example.com] *******************************************************************
 
@@ -305,7 +305,7 @@ Configure sshd and sudo
    :emphasize-lines: 1
    :linenos:
 
-   shell> ansible-playbook freebsd-postinstall.yml -t fp_sudoers
+   shell> ansible-playbook playbook.yml -t fp_sudoers
 
    PLAY [test_14.example.com] *******************************************************************
 
