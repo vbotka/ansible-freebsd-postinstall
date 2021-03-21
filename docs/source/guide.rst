@@ -240,8 +240,11 @@ configuration is :index:`idempotent`
    shell> ansible-playbook playbook.yml -t <tag>
    
 
-.. _ug_task_task1:
-.. include:: task-task1.rst
+.. _ug_task_passwords:
+.. include:: task-passwords.rst
+.. _ug_task_users:
+.. include:: task-users.rst
+
 
 Examples
 --------
