@@ -105,8 +105,8 @@ Create simple playbook that calls this role (10) at a single host test_14.exampl
 Tags
 ****
 
-The :index:`tags` provide the user with a very useful tool to run selected groups of tasks. To see
-what tags are available list the tags of the role with the command
+The :index:`tags` provide the user with a very useful tool to run selected groups of tasks. Use the
+command below to display available tags
 
 .. include:: tags-list.rst
 

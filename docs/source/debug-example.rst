@@ -19,8 +19,8 @@
        - ansible_distribution_version [12.1]
        - ansible_distribution_release [12.1-RELEASE]
        - ''
-       - rc_conf_hostname [plane.g2.netng.org]
-       - fp_domain [netng.org]
+       - rc_conf_hostname [test_14.example.com]
+       - fp_domain [example.com]
        - aws [False]
        - digitalocean [False]
        - gcp [False]
