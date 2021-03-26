@@ -174,5 +174,9 @@
   when: fp_snmpd|bool
   tags: fp_snmpd
 
+- import_tasks: qemu.yml
+  when: fp_qemu|bool
+  tags: fp_qemu
+
 # EOF
 ...

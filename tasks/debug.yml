@@ -2,7 +2,10 @@
 
 - name: "FreeBSD postinstall Debug"
   vars:
-    msg: |
+    _fp_qemu_install_varnames: "{{ query('varnames', '^fp_qemu_(.*)install$') }}"
+    _fp_qemu_install_values: "{{ _fp_qemu_install_varnames|map('extract', vars)|list }}"
+    _fp_qemu_install_dict: "{{ dict(_fp_qemu_install_varnames|zip(_fp_qemu_install_values)) }}"
+    msg: |-
          ansible_architecture [{{ ansible_architecture }}]
          ansible_os_family [{{ ansible_os_family }}]
          ansible_distribution [{{ ansible_distribution }}]
@@ -50,6 +53,8 @@
          fp_passwords [{{ fp_passwords }}]
          fp_periodic [{{ fp_periodic }}]
          fp_procmail [{{ fp_procmail }}] fp_procmail_install [{{ fp_procmail_install }}]
+         fp_qemu [{{ fp_qemu }}] fp_qemu_enabled [{{ fp_qemu_enabled }}]{% for k,v in _fp_qemu_install_dict.items() %} [{{ k }}: {{ v }}]{% endfor %}
+
          fp_resolvconf [{{ fp_resolvconf }}]
          fp_smartd [{{ fp_smartd }}] fp_smartd_install [{{ fp_smartd_install }}] fp_smartd_enabled [{{ fp_smartd_enabled }}]
          fp_snmpd [{{ fp_snmpd }}] fp_snmpd_install [{{ fp_snmpd_install }}] fp_snmpd_enabled [{{ fp_snmpd_enabled }}]
@@ -68,7 +73,7 @@
          fp_rpc_lockd_enable [{{ fp_rpc_lockd_enable }}]
          fp_rpc_statd_enable [{{ fp_rpc_statd_enable }}]
   debug:
-    msg: "{{ msg.split('\n')[:-1] }}"
+    msg: "{{ msg.split('\n') }}"
 
 # EOF
 ...

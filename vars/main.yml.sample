@@ -160,6 +160,8 @@
 #   - {list: smart, enabled: "{{ fp_smartd_install }}"}
 #   - {list: snmpd, enabled: "{{ fp_snmpd_install }}"}
 #   - {list: wpa_supplicant, enabled: "{{ fp_wpasupplicant_install }}"}
+#   - {list: qemu, enabled: "{{ fp_qemu_install }}"}
+#   - {list: qemu_user_static, enabled: "{{ fp_qemu_user_static_install }}"}
 #   - {list: apache, enabled: true}
 #   - {list: bind, enabled: false}
 #   - {list: devel, enabled: false}
@@ -346,6 +348,12 @@
 #         - {key: psk, value: '"MY-AP1-PSK"'}
 #         - {key: key_mgmt, value: WPA-PSK}
 #         - {key: pairwise, value: CCMP}
+
+# fp_qemu: true
+# fp_qemu_enabled: true
+# fp_qemu_install: false              # list of packages: qemu
+# fp_qemu_user_static_install: true   # list of packages: qemu_user_static
+# fp_qemu_rcvar: qemu_user_static
 
 # NOTES
 #
