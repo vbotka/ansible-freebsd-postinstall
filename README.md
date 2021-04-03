@@ -2,7 +2,7 @@
 
 [![quality](https://img.shields.io/ansible/quality/27910)](https://galaxy.ansible.com/vbotka/freebsd_postinstall)[![Build Status](https://travis-ci.org/vbotka/ansible-freebsd-postinstall.svg?branch=master)](https://travis-ci.org/vbotka/ansible-freebsd-postinstall)[![Documentation Status](https://readthedocs.org/projects/docs/badge/?version=latest)](https://ansible-freebsd-postinstall.readthedocs.io/en/latest/)
 
-[Ansible role.](https://galaxy.ansible.com/vbotka/freebsd_postinstall/) FreeBSD post-install configuration: aliases, apcupsd, authorized keys, cron, devfs, fstab, groups, hostapd, hostname, hosts, libmap, linux compatibility, login.conf, loader.conf, make.conf, motd, nfsd, ntpd, ntpdate, procmail, resolvconf.conf, smartd, snmpd, sudoers, ssh, sshd, swap, sysctl, timezone, tmpmfs, users, packages and ports, periodic.conf, overlays, wpa_supplicant, (wip) ...
+[Ansible role.](https://galaxy.ansible.com/vbotka/freebsd_postinstall/) FreeBSD post-install configuration: aliases, apcupsd, authorized keys, cron, devfs, fstab, groups, hostapd, hostname, hosts, libmap, linux compatibility, login.conf, loader.conf, make.conf, motd, nfsd, ntpd, ntpdate, procmail, qemu, resolvconf.conf, smartd, snmpd, sudoers, ssh, sshd, swap, sysctl, timezone, tmpmfs, users, packages and ports, periodic.conf, overlays, wpa_supplicant, (wip) ...
 
 [Documentation at readthedocs.io](https://ansible-freebsd-postinstall.readthedocs.io)
 
@@ -157,6 +157,8 @@ To solve this problem apply the path below
 - [periodic.conf - FreeBSD forum: periodic and cron doubt](https://forums.freebsd.org/threads/periodic-and-cron-doubt.27471/)
 - [ports - FreeBSD handbook: Upgrading Ports Using Portmaster](https://www.freebsd.org/doc/handbook/ports-using.html)
 - [procmail - Documentation Project](http://pm-doc.sourceforge.net/)
+- [qemu - FreeBSD Wiki: Qemu on FreeBSD as host](https://wiki.freebsd.org/qemu)
+- [qemu- QEMU Wiki: Hosts/BSD](https://wiki.qemu.org/Hosts/BSD)
 - [resolv.conf - FreeBSD handbook: 11.8. Configuration Files](http://www.freebsd.org/doc/handbook/configtuning-configfiles.html)
 - [smartd - FreeBSD forum: camcontrol hdd smart status](https://forums.freebsd.org/threads/camcontrol-hdd-smart-status.65306/)
 - [snmp - Install and configure snmp in Freebsd](http://blog.up-link.ro/freebsd-how-to-install-and-configure-snmp-in-freebsd/)
