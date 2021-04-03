@@ -29,7 +29,11 @@ If all seems to be right mount the images ::
 
    shell> ansible-playbook playbook.yml -t fp_mount_iso
 
-Log to the remote host, list memory disks (2) and related mount points (5) ::
+Log to the remote host, list memory disks (2) and related mount points (5)
+
+.. code-block:: sh
+   :emphasize-lines: 2,5
+   :linenos:
 
    shell> mdconfig -l -v
    md0 vnode 3072M /export/img/FreeBSD-12.2-RELEASE-arm-armv7-CUBOX-HUMMINGBOARD.img
