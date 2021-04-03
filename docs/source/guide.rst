@@ -240,6 +240,8 @@ configuration is :index:`idempotent`
    shell> ansible-playbook playbook.yml -t <tag>
    
 
+.. _ug_task_mount_iso:
+.. include:: task-mount-iso.rst
 .. _ug_task_passwords:
 .. include:: task-passwords.rst
 .. _ug_task_users:
@@ -247,7 +249,7 @@ configuration is :index:`idempotent`
 
 
 Examples
---------
+========
 .. toctree::
    :name: task1_toc
 
