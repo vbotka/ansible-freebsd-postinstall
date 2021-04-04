@@ -240,6 +240,8 @@ configuration is :index:`idempotent`
    shell> ansible-playbook playbook.yml -t <tag>
    
 
+.. _ug_task_mount_img:
+.. include:: task-mount-img.rst
 .. _ug_task_mount_iso:
 .. include:: task-mount-iso.rst
 .. _ug_task_passwords:

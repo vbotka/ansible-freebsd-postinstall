@@ -285,11 +285,37 @@ mytasks:
     hints: []
     warnings: []
 
+  - file: mount-img.yml
+    link: mount-img.yml
+    path: tasks/mount-img.yml
+    synopsis: |
+      Configure mount-img.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
   - file: mount-iso.yml
     link: mount-iso.yml
     path: tasks/mount-iso.yml
     synopsis: |
       Configure mount-iso.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: mount-vnode.yml
+    link: mount-vnode.yml
+    path: tasks/mount-vnode.yml
+    synopsis: |
+      Configure mount-vnode.
     description: |
       Description of the task.
     lines: 1,2

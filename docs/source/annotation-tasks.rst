@@ -529,6 +529,30 @@ Description of the task.
 
 
 
+.. _as_mount-img.yml:
+
+mount-img.yml
+-------------
+
+Synopsis: Configure mount-img.
+
+
+Description of the task.
+
+
+[`tasks/mount-img.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/tasks/mount-img.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../tasks/mount-img.yml
+    :language: Yaml
+    :emphasize-lines: 1,2
+    :linenos:
+
+
+
+
+
 .. _as_mount-iso.yml:
 
 mount-iso.yml
@@ -545,6 +569,30 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/mount-iso.yml
+    :language: Yaml
+    :emphasize-lines: 1,2
+    :linenos:
+
+
+
+
+
+.. _as_mount-vnode.yml:
+
+mount-vnode.yml
+---------------
+
+Synopsis: Configure mount-vnode.
+
+
+Description of the task.
+
+
+[`tasks/mount-vnode.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/tasks/mount-vnode.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../tasks/mount-vnode.yml
     :language: Yaml
     :emphasize-lines: 1,2
     :linenos:

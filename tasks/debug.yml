@@ -45,6 +45,7 @@
          fp_login [{{ fp_login }}]
          fp_make [{{ fp_make }}]
          fp_motd [{{ fp_motd }}]
+         fp_mount_img [{{ fp_mount_img }}]
          fp_mount_iso [{{ fp_mount_iso }}]
          fp_nfs [{{ fp_nfs }}] fp_nfs_enable [{{ fp_nfs_enable }}]
          fp_nfsd [{{ fp_nfsd }}] fp_nfsd_enable [{{ fp_nfsd_enable }}]

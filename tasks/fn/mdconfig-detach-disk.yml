@@ -5,7 +5,7 @@
     name: vbotka.ansible_lib
     tasks_from: al_mdconfig.yml
   vars:
-    al_mdconfig_file: "{{ item.iso }}"
+    al_mdconfig_file: "{{ item[_fp_mount_task] }}"
     al_mdconfig_state: absent
 
 # EOF

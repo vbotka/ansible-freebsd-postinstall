@@ -7,86 +7,20 @@
       fp_mount_iso_entries
       {{ fp_mount_iso_entries|to_nice_yaml }}
   debug:
-    msg: "{{ msg.split('\n')[:-1] }}"
+    msg: "{{ msg.split('\n') }}"
   when: fp_mount_iso_debug|bool
   tags: [fp_mount_iso_debug, always]
 
-# mounted - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-- name: "mount-iso: Create mount points"
-  file:
-    state: directory
-    path: "{{ item.mount }}"
-  loop: "{{ fp_mount_iso_entries }}"
-  when:
-    - fp_mount_iso_points_create|bool  # Note 2.
-    - item.state|default("mounted") == "mounted"
+- name: "mount-iso: Set variables"
+  set_fact:
+    _fp_mount_task: iso
+    _fp_mount_fstype_default: cd9660
+    _fp_mount_points_create: "{{ fp_mount_iso_points_create }}"
+    _fp_mount_entries: "{{ fp_mount_iso_entries }}"
+    _fp_mount_debug: "{{ fp_mount_iso_debug }}"
 
-- name: "mount-iso: Attach memory disks"
-  include_tasks: fn/mdconfig-attach-disk.yml
-  loop: "{{ fp_mount_iso_entries }}"
-  when: item.state|default("mounted") == "mounted"
-
-- name: "mount-iso: Debug attach memory disks"
-  debug:
-    var: al_mdconfig_devs
-  when: fp_mount_iso_debug|bool
-
-# TODO: Sanity al_mdconfig_devs[item.iso] is defined; not in check-mode
-
-- name: "mount-iso: Mount"
-  mount:
-    src: "/dev/md{{ al_mdconfig_devs[item.iso]['unit'] }}{{ item.partition|default('') }}"
-    path: "{{ item.mount }}"  # Note 2.
-    fstype: "{{ item.fstype|default('cd9660') }}"
-    state: mounted
-    fstab: /tmp/tmp.fstab  # Note 1.
-  loop: "{{ fp_mount_iso_entries }}"
-  register: result
-  when:
-    - al_mdconfig_devs[item.iso] is defined
-    - item.state|default("mounted") == "mounted"
-
-- name: "mount-iso: Debug mount"
-  debug:
-    var: result
-  when: fp_mount_iso_debug|bool
-
-# unmounted - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-- name: "mount-iso: Unmount"
-  mount:
-    path: "{{ item.mount }}"  # Note 2.
-    state: unmounted
-    fstab: /tmp/tmp.fstab  # Note 1.
-  loop: "{{ fp_mount_iso_entries }}"
-  register: result
-  when: item.state|default("mounted") == "unmounted"
-
-- name: "mount-iso: Debug unmount"
-  debug:
-    var: result
-  when: fp_mount_iso_debug|bool
-
-- name: "mount-iso: Detach memory disks"
-  include_tasks: fn/mdconfig-detach-disk.yml
-  loop: "{{ fp_mount_iso_entries }}"
-  when: item.state|default("mounted") == "unmounted"
-
-- name: "mount-iso: Debug detach memory disks"
-  debug:
-    var: al_mdconfig_devs
-  when: fp_mount_iso_debug|bool
-
-# NOTES
-# Note 1: It's not possible to mount a device without touching fstab. Temporary fstab is a
-# workaround.
-# https://github.com/ansible-collections/ansible.posix/issues/84#issuecomment-742420345
-# Note 2: Ansible module *mount* will create/remove non-existent mountpoint
-
-# TODO: Permanent mount entry in fstab
-# state: present, absent (See ansible.posix.mount parameter *state*)
-# See /etc/rc.d/mdconfig2
-# Ex: mdconfig_md0="-t vnode -f /usr/local/data/vdisks/devltd.net"
-# https://forums.freebsd.org/threads/mounting-vnode-backed-memory-disks-at-startup.21002/
+- name: "mount-iso: Import mount-vnode.yml"
+  import_tasks: mount-vnode.yml
 
 # EOF
 ...

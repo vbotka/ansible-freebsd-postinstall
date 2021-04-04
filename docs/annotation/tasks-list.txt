@@ -19,7 +19,9 @@ loader.yml
 login.yml
 make.yml
 motd.yml
+mount-img.yml
 mount-iso.yml
+mount-vnode.yml
 nfsd.yml
 nfs.yml
 ntpdate.yml
