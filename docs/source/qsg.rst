@@ -5,27 +5,33 @@ Quick start guide
 
 For the users who want to try the role quickly, this guide provides an example of how to
 
-* Configure Ansible and install the role
-* Create inventory and playbook
-* Set hostname and timezone
-* Install packages
-* Create users and update authorized SSH keys
-* Configure sshd and sudo.
+.. hlist::
+   :columns: 1
+
+   * Configure Ansible and install the role
+   * Create inventory and playbook
+   * Set hostname and timezone
+   * Install packages
+   * Create users and update authorized SSH keys
+   * Configure sshd and sudo.
 
 Requirements on the remote host
 
-* Password-less ssh by *admin*
-* Login shell for *admin* is /bin/sh
-* User *admin* is granted unlimited sudo
-* Python and Perl are installed.
+.. hlist::
+   :columns: 1
+
+   * Password-less ssh by *admin*
+   * Login shell for *admin* is /bin/sh
+   * User *admin* is granted unlimited sudo
+   * Python and Perl are installed.
 
 
 Installation
 ============
 
-* Configure Ansible. Fit the paths to the inventory (3) and to the roles (4) to your needs. Let's
-  disable *retry_files* (5). Don't' display *ok* and *skipped* hosts (6-8). Pipelining (12) should
-  speedup the execution of the playbook
+Configure Ansible. Fit the paths to the inventory (3) and to the roles (4) to your needs. Let's
+disable *retry_files* (5). Don't' display *ok* and *skipped* hosts (6-8). Pipelining (12) should
+speedup the execution of the playbook
 
 .. code-block:: bash
    :emphasize-lines: 1
@@ -44,11 +50,11 @@ Installation
    [ssh_connection]
    pipelining = true
 
-* Install the role ``vbotka.freebsd_postinstall`` ::
+Install the role ``vbotka.freebsd_postinstall`` ::
 
     shell> ansible-galaxy install vbotka.freebsd_postinstall
 
-* Review the role
+Review the role
 
 .. code-block:: bash
    :emphasize-lines: 1
@@ -62,7 +68,7 @@ Installation
 Inventory and playbook
 ======================
 
-* Create inventory ``hosts``
+Create the inventory ``hosts``
 
 .. code-block:: bash
    :emphasize-lines: 1
@@ -78,7 +84,7 @@ Inventory and playbook
    ansible_python_interpreter=/usr/local/bin/python3.6
    ansible_perl_interpreter=/usr/local/bin/perl
 
-* Create the playbook ``playbook.yml`` for single host test_14.example.com
+Create the playbook ``playbook.yml`` for single host test_14.example.com
 
 .. code-block:: bash
    :emphasize-lines: 1
@@ -95,7 +101,7 @@ Inventory and playbook
      roles:
        - vbotka.freebsd_postinstall
 
-* Test syntax of the playbook
+Test syntax of the playbook
 
 .. code-block:: bash
    :emphasize-lines: 1
@@ -109,8 +115,8 @@ Inventory and playbook
 Set hostname and timezone
 =========================
 
-* Create ``host_vars`` with customized variables. Enable *hostname* (2) and *timezone* (5). Disable
-  debug output (7) and backup of changed files (8)
+Create ``host_vars`` with customized variables. Enable *hostname* (2) and *timezone* (5). Disable
+debug output (7) and backup of changed files (8)
 
 .. code-block:: bash
    :emphasize-lines: 1
@@ -125,7 +131,7 @@ Set hostname and timezone
    fp_debug: false
    fp_backup_conf: false
 
-* Set ``hostname`` and ``timezone``
+Set ``hostname`` and ``timezone``
 
 .. code-block:: bash
    :emphasize-lines: 1
@@ -150,8 +156,8 @@ UTC is the default timezone. Therefore, no changes were reported.
 Install packages
 ================
 
-* Enable the installation of packages (2) and pick the *lists* to be installed (3). See available
-  *lists* in ``defaults/main/pkgdict_*.yml``
+Enable the installation of packages (2) and pick the *lists* to be installed (3). See available
+*lists* in ``defaults/main/pkgdict_*.yml``
 
 .. code-block:: bash
    :emphasize-lines: 1
@@ -162,7 +168,7 @@ Install packages
    fp_packages:
      - {list: minimal, enabled: true}
 
-* Install packages
+Install packages
 
 .. code-block:: bash
    :emphasize-lines: 1
@@ -175,7 +181,7 @@ Install packages
 Create users and update authorized SSH keys
 ===========================================
 
-* Enable the management of users (2) and create the configuration data (3). Delete default user (7)
+Enable the management of users (2) and create the configuration data (3). Delete default user (7)
 
 .. code-block:: bash
    :emphasize-lines: 1
@@ -189,7 +195,7 @@ Create users and update authorized SSH keys
      - {name: responder, shell: /usr/sbin/nologin}
      - {name: freebsd, state: absent}
 
-* Manage users
+Manage users
 
 .. code-block:: bash
    :emphasize-lines: 1
@@ -207,8 +213,8 @@ Create users and update authorized SSH keys
    PLAY RECAP ***********************************************************************************
    test_14.example.com: ok=2 changed=1 unreachable=0 failed=0 skipped=22 rescued=0 ignored=0
 
-* Enable the installation of authorized keys (2). Remove other keys if already configured
-  (3). Install the keys in batches (4). Create the list of the public keys to be installed (5)
+Enable the installation of authorized keys (2). Remove other keys if already configured (3). Install
+the keys in batches (4). Create the list of the public keys to be installed (5)
 
 .. code-block:: bash
    :emphasize-lines: 1
@@ -224,7 +230,7 @@ Create users and update authorized SSH keys
      - user: admin
        key: "{{ lookup('file', '~/.ansible/ssh-pub-keys/devel-srv2/id_rsa.pub') }}"
 
-* Update authorized keys
+Update authorized keys
 
 .. code-block:: bash
    :emphasize-lines: 1
@@ -237,8 +243,8 @@ Create users and update authorized SSH keys
 Configure sshd and sudo
 =======================
 
-* Enable the configuration of *sshd* (2), enable *sshd* service, and create the configuration data
-  (10)
+Enable the configuration of *sshd* (2), enable *sshd* service, and create the configuration
+data (10)
 
 .. code-block:: bash
    :emphasize-lines: 1
@@ -262,7 +268,7 @@ Configure sshd and sudo
      - {key: X11Forwarding, value: "{{ sshd_X11Forwarding }}"}
      - {key: UseBlacklist, value: "yes"}
 
-* Configure *sshd*
+Configure *sshd*
 
 .. code-block:: bash
    :emphasize-lines: 1
@@ -287,7 +293,7 @@ Configure sshd and sudo
    PLAY RECAP ***********************************************************************************
    test_14.example.com: ok=4 changed=2 unreachable=0 failed=0 skipped=23 rescued=0 ignored=0
 
-* Enable the configuration of *sudoers* (2) and create the configuration data (3)
+Enable the configuration of *sudoers* (2) and create the configuration data (3)
 
 .. code-block:: bash
    :emphasize-lines: 1
@@ -299,7 +305,7 @@ Configure sshd and sudo
      - {key: admin, value: "ALL=(ALL) NOPASSWD: ALL"}
      - {key: devel, value: "ALL=(ALL) NOPASSWD: ALL"}
 
-* Configure *sudoers*
+Configure *sudoers*
 
 .. code-block:: bash
    :emphasize-lines: 1
@@ -315,12 +321,12 @@ Configure sshd and sudo
    PLAY RECAP ***********************************************************************************
    test_14.example.com: ok=2 changed=1 unreachable=0 failed=0 skipped=22 rescued=0 ignored=0
 
-admin has already been enabled. Otherwise the Ansible escalation ``become: true`` wouldn't
-work. Therefore, only user *devel* reported changes.
+The user admin has already been enabled. Otherwise the Ansible escalation ``become: true`` wouldn't
+work. Therefore, only the user *devel* reported changes.
 
-* To show the functionality of the role, the tasks (fp_hostname, fp_timezone, fp_packages, fp_users,
-  fp_authorized_key, fp_sshd, fp_sudoers) in the previous examples were run separately. You can
-  create the data and run the tasks all in one play
+To show the functionality of the role, the tasks (fp_hostname, fp_timezone, fp_packages, fp_users,
+fp_authorized_key, fp_sshd, fp_sudoers) in the previous examples were run separately. You can create
+the data and run the tasks all in one play
 
 .. code-block:: bash
    :emphasize-lines: 1
@@ -342,7 +348,7 @@ work. Therefore, only user *devel* reported changes.
    
    2 directories, 9 files
 
-* Run all enabled tasks in the playbook again. Disable installation to speedup the execution
+Run all enabled tasks in the playbook again. Disable installation to speedup the execution
 
 .. code-block:: bash
    :emphasize-lines: 1
@@ -355,5 +361,4 @@ work. Therefore, only user *devel* reported changes.
    PLAY RECAP ***********************************************************************************
    test_14.example.com: ok=10 changed=0 unreachable=0 failed=0 skipped=172 rescued=0 ignored=0
 
-.. warning:: The host has not been secured by this playbook and should
-             be used for testing only.
+.. warning:: The host has not been secured by this playbook and should be used for testing only.
