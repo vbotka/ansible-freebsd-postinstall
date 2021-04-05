@@ -3,8 +3,11 @@
 ############
 User's guide
 ############
+
 .. contents:: Table of Contents
    :depth: 4
+   :local:
+   :backlinks: entry
 
 
 .. _ug_introduction:
