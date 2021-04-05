@@ -5,24 +5,26 @@ Quick start guide
 
 For the users who want to try the role quickly, this guide provides an example of how to
 
-.. hlist::
-   :columns: 1
-
    * Configure Ansible and install the role
+
    * Create inventory and playbook
+
    * Set hostname and timezone
+
    * Install packages
+
    * Create users and update authorized SSH keys
+
    * Configure sshd and sudo.
 
 Requirements on the remote host
 
-.. hlist::
-   :columns: 1
-
    * Password-less ssh by *admin*
+
    * Login shell for *admin* is /bin/sh
+
    * User *admin* is granted unlimited sudo
+
    * Python and Perl are installed.
 
 
