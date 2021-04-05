@@ -1,8 +1,7 @@
 .. _ug:
 
-############
 User's guide
-############
+************
 
 .. contents:: Table of Contents
    :depth: 4
@@ -12,9 +11,8 @@ User's guide
 
 .. _ug_introduction:
 
-************
 Introduction
-************
+============
 
 The role is a collection of independent sets of tasks, grouped in separate files, that configure
 particular functionality of the system (cron, hostname, sshd, ...). By default all tasks are
@@ -39,9 +37,8 @@ recommended to review the code and notes in the section ``Annotated source code`
 
 .. _ug_installation:
 
-************
 Installation
-************
+============
 
 The most convenient way how to install an Ansible role is to use :index:`Ansible Galaxy` CLI
 ``ansible-galaxy``. The utility comes with the standard Ansible package and provides the user with a
@@ -74,9 +71,8 @@ Install the requirements
 
 .. _ug_playbook:
 
-********
 Playbook
-********
+========
 
 Create simple playbook that calls this role (10) at a single host test_14.example.com (2)
 
@@ -104,9 +100,8 @@ Create simple playbook that calls this role (10) at a single host test_14.exampl
 
 .. _ug_tags:
 
-****
 Tags
-****
+====
 
 The :index:`tags` provide the user with a very useful tool to run selected groups of tasks. Use the
 command below to display available tags
@@ -139,9 +134,8 @@ For example,
 
 .. _ug_debug:
 
-*****
 Debug
-*****
+=====
 
 To display some facts (11-16) and values of the control variables, run select the task *fp_debug*
 and enable the debug output. By default all control variables are disabled. The example below shows
@@ -178,9 +172,8 @@ available or not
 
 .. _ug_sanity:
 
-******
 Sanity
-******
+======
 
 By default the checking of sanity is turned on ::
 
@@ -192,9 +185,8 @@ By default the checking of sanity is turned on ::
 
 .. _ug_tasks:
 
-*****
 Tasks
-*****
+=====
 
 The description of the tasks is not complete. The `role <https://galaxy.ansible.com/vbotka/freebsd_postinstall/>`_ and the documentation is work in progress. Feel free to `share your feedback and report issues <https://github.com/vbotka/ansible-freebsd-postinstall/issues>`_.
 
@@ -205,7 +197,7 @@ The description of the tasks is not complete. The `role <https://galaxy.ansible.
 
 
 Development and testing
-=======================
+-----------------------
 
 In order to deliver an Ansible project it's necessary to test the code and configuration. The tags
 provide the administrators with a tool to test groups of tasks. For example, to test a group of
@@ -264,9 +256,8 @@ Examples
 
 .. _ug_vars:
 
-*********
 Variables
-*********
+=========
 
 .. seealso::
    * `Ansible variable precedence: Where should I put a variable?
@@ -278,9 +269,8 @@ Variables
 
 .. _ug_bp:
 
-*************
 Best practice
-*************
+=============
 
 Test syntax
 

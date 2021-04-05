@@ -178,8 +178,8 @@ Install packages
    <TODO>
 
 
-Create users and update authorized SSH keys
-===========================================
+Create users
+============
 
 Enable the management of users (2) and create the configuration data (3). Delete default user (7)
 
@@ -213,6 +213,10 @@ Manage users
    PLAY RECAP ***********************************************************************************
    test_14.example.com: ok=2 changed=1 unreachable=0 failed=0 skipped=22 rescued=0 ignored=0
 
+
+Update authorized SSH keys
+==========================
+
 Enable the installation of authorized keys (2). Remove other keys if already configured (3). Install
 the keys in batches (4). Create the list of the public keys to be installed (5)
 
@@ -240,8 +244,8 @@ Update authorized keys
    <TODO>
 
 
-Configure sshd and sudo
-=======================
+Configure sshd
+==============
 
 Enable the configuration of *sshd* (2), enable *sshd* service, and create the configuration
 data (10)
@@ -293,6 +297,10 @@ Configure *sshd*
    PLAY RECAP ***********************************************************************************
    test_14.example.com: ok=4 changed=2 unreachable=0 failed=0 skipped=23 rescued=0 ignored=0
 
+
+Configure sudo
+==============
+
 Enable the configuration of *sudoers* (2) and create the configuration data (3)
 
 .. code-block:: bash
@@ -324,8 +332,12 @@ Configure *sudoers*
 The user admin has already been enabled. Otherwise the Ansible escalation ``become: true`` wouldn't
 work. Therefore, only the user *devel* reported changes.
 
-To show the functionality of the role, the tasks (fp_hostname, fp_timezone, fp_packages, fp_users,
-fp_authorized_key, fp_sshd, fp_sudoers) in the previous examples were run separately. You can create
+
+Complete role
+=============
+
+To show the functionality of the role, the tasks in the previous examples (fp_hostname, fp_timezone,
+fp_packages, fp_users, fp_authorized_key, fp_sshd, fp_sudoers) were run separately. You can create
 the data and run the tasks all in one play
 
 .. code-block:: bash
@@ -348,7 +360,8 @@ the data and run the tasks all in one play
    
    2 directories, 9 files
 
-Run all enabled tasks in the playbook again. Disable installation to speedup the execution
+Run all enabled tasks in the playbook again. Optionally, disable installation to speedup the
+execution
 
 .. code-block:: bash
    :emphasize-lines: 1

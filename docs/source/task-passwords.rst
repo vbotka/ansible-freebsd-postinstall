@@ -1,11 +1,11 @@
 passwords
-=========
+---------
 
 Manage users' passwords. At the moment only ``passwordstore`` *Unix password manager* is
 implemented.
 
 Passwordstore
--------------
+^^^^^^^^^^^^^
 
 Create passwords in ``passwordstore`` and enable access for the user who is running the
 playbook. For example ::
