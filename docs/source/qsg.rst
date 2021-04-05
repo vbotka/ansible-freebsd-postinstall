@@ -14,9 +14,9 @@ For the users who want to try the role quickly, this guide provides an example o
 
 Requirements on the remote host
 
-* password-less ssh by *admin*
-* login shell for *admin* is /bin/sh
-* *admin* is granted unlimited sudo
+* Password-less ssh by *admin*
+* Login shell for *admin* is /bin/sh
+* User *admin* is granted unlimited sudo
 * Python and Perl are installed.
 
 
