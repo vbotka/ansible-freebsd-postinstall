@@ -606,10 +606,24 @@ Description of the task.
 nfsd.yml
 --------
 
-Synopsis: Configure nfsd.
+Synopsis: Configure NFS server.
 
 
-Description of the task.
+To display variables (3) enable ``fp_nfsd_debug=true`` (51). Collect
+status of the services (55) stored in the list
+``fp_nfsd_service_paths``. The module ``service_facts`` doesn't work
+in FreeBSD. Instead, use the task ``al_bsd_service_facts`` (58) from
+the library (57). This task doesn't support the check mode. This
+task will return the dictionary
+``al_ansible_facts_services``. Display this dictionary (66). This
+dictionary is used to select the handlers in the dictionary
+``fp_nfsd_handlers``.  Display the dictionary ``fp_nfsd_handlers``
+(72). The defaults are used in check mode because of empty
+dictionary ``al_ansible_facts_services``. Configure ``/etc/exports``
+(78) and notify handler ``reload mountd``. Configure and enable
+(86), or disable (114) services. If the configuration of a service
+changes the service will be reloaded or restarted when already
+running.
 
 
 [`tasks/nfsd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/tasks/nfsd.yml>`_]
@@ -618,12 +632,22 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/nfsd.yml
     :language: Yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 3,55,66,72,78,86,114
     :linenos:
 
+.. seealso::
+   * Handler :ref:`as_handler_nfsd.yml`
+   * Template :ref:`as_template_exports.j2`
+   * Seealso others for nfsd
 
+.. note::
+   * <TBD>
 
+.. hint::
+   * <TBD>
 
+.. warning::
+   * <TBD>
 
 .. _as_nfs.yml:
 
@@ -1313,6 +1337,30 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/fn/mdconfig-detach-disk.yml
+    :language: Yaml
+    :emphasize-lines: 1,2
+    :linenos:
+
+
+
+
+
+.. _as_rcconf-item.yml:
+
+rcconf-item.yml
+---------------
+
+Synopsis: Configure rcconf-item.
+
+
+Description of the task.
+
+
+[`tasks/fn/rcconf-item.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/tasks/fn/rcconf-item.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../tasks/fn/rcconf-item.yml
     :language: Yaml
     :emphasize-lines: 1,2
     :linenos:

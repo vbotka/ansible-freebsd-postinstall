@@ -1,7 +1,7 @@
 Templates
 =========
 
-.. _as_template_template_apcupsd.conf.j2:
+.. _as_template_apcupsd.conf.j2:
 
 apcupsd.conf.j2
 ---------------
@@ -21,7 +21,7 @@ Description of the template.
     :emphasize-lines: 1
     :linenos:
 
-.. _as_template_template_exports.j2:
+.. _as_template_exports.j2:
 
 exports.j2
 ----------
@@ -41,7 +41,7 @@ Description of the template.
     :emphasize-lines: 1
     :linenos:
 
-.. _as_template_template_groupadd.j2:
+.. _as_template_groupadd.j2:
 
 groupadd.j2
 -----------
@@ -61,7 +61,7 @@ Description of the template.
     :emphasize-lines: 1
     :linenos:
 
-.. _as_template_template_groupdel.j2:
+.. _as_template_groupdel.j2:
 
 groupdel.j2
 -----------
@@ -81,7 +81,7 @@ Description of the template.
     :emphasize-lines: 1
     :linenos:
 
-.. _as_template_template_groupmod.j2:
+.. _as_template_groupmod.j2:
 
 groupmod.j2
 -----------
@@ -101,7 +101,7 @@ Description of the template.
     :emphasize-lines: 1
     :linenos:
 
-.. _as_template_template_hostapd.conf.j2:
+.. _as_template_hostapd.conf.j2:
 
 hostapd.conf.j2
 ---------------
@@ -121,7 +121,7 @@ Description of the template.
     :emphasize-lines: 1
     :linenos:
 
-.. _as_template_template_hosts.j2:
+.. _as_template_hosts.j2:
 
 hosts.j2
 --------
@@ -141,7 +141,7 @@ Description of the template.
     :emphasize-lines: 1
     :linenos:
 
-.. _as_template_template_hosts-aliases-list.j2:
+.. _as_template_hosts-aliases-list.j2:
 
 hosts-aliases-list.j2
 ---------------------
@@ -161,7 +161,7 @@ Description of the template.
     :emphasize-lines: 1
     :linenos:
 
-.. _as_template_template_loader.conf.j2:
+.. _as_template_loader.conf.j2:
 
 loader.conf.j2
 --------------
@@ -181,7 +181,7 @@ Description of the template.
     :emphasize-lines: 1
     :linenos:
 
-.. _as_template_template_login.conf.j2:
+.. _as_template_login.conf.j2:
 
 login.conf.j2
 -------------
@@ -201,7 +201,7 @@ Description of the template.
     :emphasize-lines: 1
     :linenos:
 
-.. _as_template_template_make.conf.j2:
+.. _as_template_make.conf.j2:
 
 make.conf.j2
 ------------
@@ -221,7 +221,7 @@ Description of the template.
     :emphasize-lines: 1
     :linenos:
 
-.. _as_template_template_motd.j2:
+.. _as_template_motd.j2:
 
 motd.j2
 -------
@@ -241,7 +241,7 @@ Description of the template.
     :emphasize-lines: 1
     :linenos:
 
-.. _as_template_template_ntp.conf.j2:
+.. _as_template_ntp.conf.j2:
 
 ntp.conf.j2
 -----------
@@ -261,7 +261,7 @@ Description of the template.
     :emphasize-lines: 1
     :linenos:
 
-.. _as_template_template_procmailrc-includerc-capability.j2:
+.. _as_template_procmailrc-includerc-capability.j2:
 
 procmailrc-includerc-capability.j2
 ----------------------------------
@@ -281,7 +281,7 @@ Description of the template.
     :emphasize-lines: 1
     :linenos:
 
-.. _as_template_template_procmailrc-includerc-duplicates.j2:
+.. _as_template_procmailrc-includerc-duplicates.j2:
 
 procmailrc-includerc-duplicates.j2
 ----------------------------------
@@ -301,7 +301,7 @@ Description of the template.
     :emphasize-lines: 1
     :linenos:
 
-.. _as_template_template_procmailrc-includerc-get-certificate.j2:
+.. _as_template_procmailrc-includerc-get-certificate.j2:
 
 procmailrc-includerc-get-certificate.j2
 ---------------------------------------
@@ -321,7 +321,7 @@ Description of the template.
     :emphasize-lines: 1
     :linenos:
 
-.. _as_template_template_procmailrc-includerc-get-fingerprint.j2:
+.. _as_template_procmailrc-includerc-get-fingerprint.j2:
 
 procmailrc-includerc-get-fingerprint.j2
 ---------------------------------------
@@ -341,7 +341,7 @@ Description of the template.
     :emphasize-lines: 1
     :linenos:
 
-.. _as_template_template_procmailrc-includerc-get-fingerprints.j2:
+.. _as_template_procmailrc-includerc-get-fingerprints.j2:
 
 procmailrc-includerc-get-fingerprints.j2
 ----------------------------------------
@@ -361,7 +361,7 @@ Description of the template.
     :emphasize-lines: 1
     :linenos:
 
-.. _as_template_template_procmailrc-includerc-get-message.j2:
+.. _as_template_procmailrc-includerc-get-message.j2:
 
 procmailrc-includerc-get-message.j2
 -----------------------------------
@@ -381,7 +381,7 @@ Description of the template.
     :emphasize-lines: 1
     :linenos:
 
-.. _as_template_template_ssh_config.j2:
+.. _as_template_ssh_config.j2:
 
 ssh_config.j2
 -------------
@@ -401,7 +401,7 @@ Description of the template.
     :emphasize-lines: 1
     :linenos:
 
-.. _as_template_template_wpa_supplicant.conf.j2:
+.. _as_template_wpa_supplicant.conf.j2:
 
 wpa_supplicant.conf.j2
 ----------------------

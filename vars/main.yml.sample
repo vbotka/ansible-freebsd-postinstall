@@ -126,7 +126,7 @@
 # fp_nfs_enable: true
 
 # fp_nfsd: true
-# fp_nfsd_enable: false
+# fp_nfsd_enable: true
 # fp_nfsd_exports:
 #   - {mount_point: '/usr/ports/packages', flags: '10.132.0.3 10.132.0.4'}
 # fp_nfs_server_flags: '-u -t -n 4'
