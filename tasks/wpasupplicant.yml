@@ -2,7 +2,7 @@
 
 - name: "wpasupplicant: Debug"
   vars:
-    msg: |
+    msg: |-
       fp_wpasupplicant_backup [{{ fp_wpasupplicant_backup }}]
 
       fp_wpasupplicant_program [{{ fp_wpasupplicant_program }}]
@@ -28,7 +28,7 @@
       {{ fp_wpasupplicant_conf|to_yaml }}
       {% endif %}
   debug:
-    msg: "{{ msg.split('\n')[:-1] }}"
+    msg: "{{ msg.split('\n') }}"
   when: fp_wpasupplicant_debug|bool
   tags: [fp_wpasupplicant_debug, always]
 
@@ -52,6 +52,8 @@
     backup: "{{ fp_wpasupplicant_backup }}"
   register: fp_wpa_supplicant_conf_changes
   loop: "{{ fp_wpasupplicant_conf }}"
+  loop_control:
+    label: "{{ item.dev }}"
   no_log: "{{ not fp_wpasupplicant_debug_classified }}"
   tags: fp_wpasupplicant_conf
 

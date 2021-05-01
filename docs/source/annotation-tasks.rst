@@ -638,7 +638,7 @@ running.
 .. seealso::
    * Handler :ref:`as_handler_nfsd.yml`
    * Template :ref:`as_template_exports.j2`
-   * Seealso others for nfsd
+   * <TBD>
 
 .. note::
    * <TBD>
@@ -654,10 +654,28 @@ running.
 nfs.yml
 -------
 
-Synopsis: Configure nfs.
+Synopsis: Configure NFS client.
 
 
-Description of the task.
+To display variables (3) enable ``fp_nfs_debug=true`` (27). Collect
+status of the services (31) stored in the list
+``fp_nfs_service_paths``. The module ``service_facts`` doesn't work
+in FreeBSD. Instead, use the task ``al_bsd_service_facts`` (34) from
+the library (33). This task doesn't support the check mode. This
+task will return the dictionary
+``al_ansible_facts_services``. Display this dictionary (42). This
+dictionary is used to select the handlers in the dictionary
+``fp_nfs_handlers``. There is no status option of the service
+``nfsclient``. Insteda of starting the service, restart it if there
+are any nfs mountpoints, i.e. the file ``/var/db/mounttab``
+exists. Test the existence of the file ``var/db/nounttab`` (50) and
+display the result ``fp_var_db_mounttab.stat.exists`` (56). This
+variable will be used to select the handler in the dictionary
+``fp_nfs_handlers``.  Display the dictionary ``fp_nfsd_handlers``
+(62). The defaults are used in check mode because of empty
+dictionary ``al_ansible_facts_services``. Configure and enable (68),
+or disable (88) services. If the configuration of a service changes
+the service will be reloaded or restarted when already running.
 
 
 [`tasks/nfs.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/tasks/nfs.yml>`_]
@@ -666,12 +684,22 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/nfs.yml
     :language: Yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 3,27,31,42,50,56,62,68,88
     :linenos:
 
+.. seealso::
+   * Handler :ref:`as_handler_nfs.yml`
+   * Handler :ref:`as_handler_nfsd.yml`
+   * <TBD>
 
+.. note::
+   * <TBD>
 
+.. hint::
+   * <TBD>
 
+.. warning::
+   * <TBD>
 
 .. _as_ntpdate.yml:
 
