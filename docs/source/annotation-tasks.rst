@@ -529,6 +529,30 @@ Description of the task.
 
 
 
+.. _as_mount-img.yml:
+
+mount-img.yml
+-------------
+
+Synopsis: Configure mount-img.
+
+
+Description of the task.
+
+
+[`tasks/mount-img.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/tasks/mount-img.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../tasks/mount-img.yml
+    :language: Yaml
+    :emphasize-lines: 1,2
+    :linenos:
+
+
+
+
+
 .. _as_mount-iso.yml:
 
 mount-iso.yml
@@ -553,15 +577,53 @@ Description of the task.
 
 
 
+.. _as_mount-vnode.yml:
+
+mount-vnode.yml
+---------------
+
+Synopsis: Configure mount-vnode.
+
+
+Description of the task.
+
+
+[`tasks/mount-vnode.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/tasks/mount-vnode.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../tasks/mount-vnode.yml
+    :language: Yaml
+    :emphasize-lines: 1,2
+    :linenos:
+
+
+
+
+
 .. _as_nfsd.yml:
 
 nfsd.yml
 --------
 
-Synopsis: Configure nfsd.
+Synopsis: Configure NFS server.
 
 
-Description of the task.
+To display variables (3) enable ``fp_nfsd_debug=true`` (51). Collect
+status of the services (55) stored in the list
+``fp_nfsd_service_paths``. The module ``service_facts`` doesn't work
+in FreeBSD. Instead, use the task ``al_bsd_service_facts`` (58) from
+the library (57). This task doesn't support the check mode. This
+task will return the dictionary
+``al_ansible_facts_services``. Display this dictionary (66). This
+dictionary is used to select the handlers in the dictionary
+``fp_nfsd_handlers``.  Display the dictionary ``fp_nfsd_handlers``
+(72). The defaults are used in check mode because of empty
+dictionary ``al_ansible_facts_services``. Configure ``/etc/exports``
+(78) and notify handler ``reload mountd``. Configure and enable
+(86), or disable (114) services. If the configuration of a service
+changes the service will be reloaded or restarted when already
+running.
 
 
 [`tasks/nfsd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/tasks/nfsd.yml>`_]
@@ -570,22 +632,50 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/nfsd.yml
     :language: Yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 3,55,66,72,78,86,114
     :linenos:
 
+.. seealso::
+   * Handler :ref:`as_handler_nfsd.yml`
+   * Template :ref:`as_template_exports.j2`
+   * <TBD>
 
+.. note::
+   * <TBD>
 
+.. hint::
+   * <TBD>
 
+.. warning::
+   * <TBD>
 
 .. _as_nfs.yml:
 
 nfs.yml
 -------
 
-Synopsis: Configure nfs.
+Synopsis: Configure NFS client.
 
 
-Description of the task.
+To display variables (3) enable ``fp_nfs_debug=true`` (27). Collect
+status of the services (31) stored in the list
+``fp_nfs_service_paths``. The module ``service_facts`` doesn't work
+in FreeBSD. Instead, use the task ``al_bsd_service_facts`` (34) from
+the library (33). This task doesn't support the check mode. This
+task will return the dictionary
+``al_ansible_facts_services``. Display this dictionary (42). This
+dictionary is used to select the handlers in the dictionary
+``fp_nfs_handlers``. There is no status option of the service
+``nfsclient``. Insteda of starting the service, restart it if there
+are any nfs mountpoints, i.e. the file ``/var/db/mounttab``
+exists. Test the existence of the file ``var/db/nounttab`` (50) and
+display the result ``fp_var_db_mounttab.stat.exists`` (56). This
+variable will be used to select the handler in the dictionary
+``fp_nfs_handlers``.  Display the dictionary ``fp_nfsd_handlers``
+(62). The defaults are used in check mode because of empty
+dictionary ``al_ansible_facts_services``. Configure and enable (68),
+or disable (88) services. If the configuration of a service changes
+the service will be reloaded or restarted when already running.
 
 
 [`tasks/nfs.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/tasks/nfs.yml>`_]
@@ -594,12 +684,22 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/nfs.yml
     :language: Yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 3,27,31,42,50,56,62,68,88
     :linenos:
 
+.. seealso::
+   * Handler :ref:`as_handler_nfs.yml`
+   * Handler :ref:`as_handler_nfsd.yml`
+   * <TBD>
 
+.. note::
+   * <TBD>
 
+.. hint::
+   * <TBD>
 
+.. warning::
+   * <TBD>
 
 .. _as_ntpdate.yml:
 
@@ -809,6 +909,30 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/smartd.yml
+    :language: Yaml
+    :emphasize-lines: 1,2
+    :linenos:
+
+
+
+
+
+.. _as_sanity.yml:
+
+sanity.yml
+----------
+
+Synopsis: Configure sanity.
+
+
+Description of the task.
+
+
+[`tasks/sanity.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/tasks/sanity.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../tasks/sanity.yml
     :language: Yaml
     :emphasize-lines: 1,2
     :linenos:
@@ -1241,6 +1365,30 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/fn/mdconfig-detach-disk.yml
+    :language: Yaml
+    :emphasize-lines: 1,2
+    :linenos:
+
+
+
+
+
+.. _as_rcconf-item.yml:
+
+rcconf-item.yml
+---------------
+
+Synopsis: Configure rcconf-item.
+
+
+Description of the task.
+
+
+[`tasks/fn/rcconf-item.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/tasks/fn/rcconf-item.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../tasks/fn/rcconf-item.yml
     :language: Yaml
     :emphasize-lines: 1,2
     :linenos:

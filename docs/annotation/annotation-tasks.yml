@@ -285,6 +285,19 @@ mytasks:
     hints: []
     warnings: []
 
+  - file: mount-img.yml
+    link: mount-img.yml
+    path: tasks/mount-img.yml
+    synopsis: |
+      Configure mount-img.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
   - file: mount-iso.yml
     link: mount-iso.yml
     path: tasks/mount-iso.yml
@@ -298,11 +311,11 @@ mytasks:
     hints: []
     warnings: []
 
-  - file: nfsd.yml
-    link: nfsd.yml
-    path: tasks/nfsd.yml
+  - file: mount-vnode.yml
+    link: mount-vnode.yml
+    path: tasks/mount-vnode.yml
     synopsis: |
-      Configure nfsd.
+      Configure mount-vnode.
     description: |
       Description of the task.
     lines: 1,2
@@ -311,18 +324,67 @@ mytasks:
     hints: []
     warnings: []
 
+  - file: nfsd.yml
+    link: nfsd.yml
+    path: tasks/nfsd.yml
+    synopsis: |
+      Configure NFS server.
+
+    description: |
+      To display variables (3) enable ``fp_nfsd_debug=true`` (51). Collect
+      status of the services (55) stored in the list
+      ``fp_nfsd_service_paths``. The module ``service_facts`` doesn't work
+      in FreeBSD. Instead, use the task ``al_bsd_service_facts`` (58) from
+      the library (57). This task doesn't support the check mode. This
+      task will return the dictionary
+      ``al_ansible_facts_services``. Display this dictionary (66). This
+      dictionary is used to select the handlers in the dictionary
+      ``fp_nfsd_handlers``.  Display the dictionary ``fp_nfsd_handlers``
+      (72). The defaults are used in check mode because of empty
+      dictionary ``al_ansible_facts_services``. Configure ``/etc/exports``
+      (78) and notify handler ``reload mountd``. Configure and enable
+      (86), or disable (114) services. If the configuration of a service
+      changes the service will be reloaded or restarted when already
+      running.
+
+    lines: 3,55,66,72,78,86,114
+    seealso: {'handlers': ['nfsd'], 'templates': ['exports'], 'others': ['<TBD>']}
+    notes: ['<TBD>']
+    hints: ['<TBD>']
+    warnings: ['<TBD>']
+
   - file: nfs.yml
     link: nfs.yml
     path: tasks/nfs.yml
     synopsis: |
-      Configure nfs.
+      Configure NFS client.
+
     description: |
-      Description of the task.
-    lines: 1,2
-    seealso: []
-    notes: []
-    hints: []
-    warnings: []
+      To display variables (3) enable ``fp_nfs_debug=true`` (27). Collect
+      status of the services (31) stored in the list
+      ``fp_nfs_service_paths``. The module ``service_facts`` doesn't work
+      in FreeBSD. Instead, use the task ``al_bsd_service_facts`` (34) from
+      the library (33). This task doesn't support the check mode. This
+      task will return the dictionary
+      ``al_ansible_facts_services``. Display this dictionary (42). This
+      dictionary is used to select the handlers in the dictionary
+      ``fp_nfs_handlers``. There is no status option of the service
+      ``nfsclient``. Insteda of starting the service, restart it if there
+      are any nfs mountpoints, i.e. the file ``/var/db/mounttab``
+      exists. Test the existence of the file ``var/db/nounttab`` (50) and
+      display the result ``fp_var_db_mounttab.stat.exists`` (56). This
+      variable will be used to select the handler in the dictionary
+      ``fp_nfs_handlers``.  Display the dictionary ``fp_nfsd_handlers``
+      (62). The defaults are used in check mode because of empty
+      dictionary ``al_ansible_facts_services``. Configure and enable (68),
+      or disable (88) services. If the configuration of a service changes
+      the service will be reloaded or restarted when already running.
+
+    lines: 3,27,31,42,50,56,62,68,88
+    seealso: {'handlers': ['nfs', 'nfsd'], 'templates': [], 'others': ['<TBD>']}
+    notes: ['<TBD>']
+    hints: ['<TBD>']
+    warnings: ['<TBD>']
 
   - file: ntpdate.yml
     link: ntpdate.yml
@@ -433,6 +495,19 @@ mytasks:
     path: tasks/smartd.yml
     synopsis: |
       Configure smartd.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: sanity.yml
+    link: sanity.yml
+    path: tasks/sanity.yml
+    synopsis: |
+      Configure sanity.
     description: |
       Description of the task.
     lines: 1,2
@@ -667,6 +742,19 @@ mytasks:
     path: tasks/fn/mdconfig-detach-disk.yml
     synopsis: |
       Configure mdconfig-detach-disk.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: rcconf-item.yml
+    link: rcconf-item.yml
+    path: tasks/fn/rcconf-item.yml
+    synopsis: |
+      Configure rcconf-item.
     description: |
       Description of the task.
     lines: 1,2

@@ -3,6 +3,7 @@
 - name: "loader: Debug"
   vars:
     msg: |
+      fp_loader_warning [{{ fp_loader_warning }}]
       fp_loader_conf_template_enable [{{ fp_loader_conf_template_enable }}]
       fp_loader_load_modules [{{ fp_loader_load_modules }}]
       fp_loader_conf_file [{{ fp_loader_conf_file }}]
@@ -32,6 +33,7 @@
     msg: "[WARNING] Next task does not report changes in check mode because of empty tmp_loader_vars"
   when:
     - ansible_check_mode|bool
+    - fp_loader_warning|bool
     - fp_loader_debug|bool
 
 - name: "loader: Add items to fp_sysctl_loader_conf"
@@ -52,6 +54,7 @@
     msg: "[WARNING] Next task does not report changes in check mode because of empty fp_sysctl_loader_conf"
   when:
     - ansible_check_mode|bool
+    - fp_loader_warning|bool
     - fp_loader_debug|bool
 
 - name: "loader: Configure {{ fp_loader_conf_file }} from template {{ fp_loader_conf_template }}"

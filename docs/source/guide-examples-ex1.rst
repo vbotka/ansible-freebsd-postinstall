@@ -1,7 +1,7 @@
 .. _ug_task_task1_ex1:
 
 Example 1: Configure ...
-^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------
 
 Create a playbook
 

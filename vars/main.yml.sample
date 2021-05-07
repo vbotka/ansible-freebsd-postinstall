@@ -52,6 +52,16 @@
 #   - {name: "/export/test", src: "box9:/export/test", fstype: "nfs",  opts: "rw", state: 'present'}
 #   - {name: "/export/images", src: "box9:/zroot/images", fstype: "nfs", opts: "ro,late", state: 'present'}
 
+# fp_hosts: true
+# fp_hosts_conf_template: hosts-aliases-list.j2
+# fp_hosts_conf:
+#   - {ip: "10.1.0.1", fqdn: "ac1.d3.example.com", hostname: "ac1"}
+#   - {ip: "10.1.0.2", fqdn: "ac2.d3.example.com", hostname: "ac2"}
+#   - {ip: "10.1.0.3", fqdn: "ac3.d3.example.com", hostname: "ac3"}
+#   - {ip: "10.1.0.10", fqdn: "srv1.d3.example.com", hostname: "srv1"}
+#   - {ip: "10.1.0.11", fqdn: "srv2.d3.example.com", hostname: "srv2"}
+#   - {ip: "10.1.0.12", fqdn: "srv3.d3.example.com", hostname: "srv3", aliases: ["build", "www", "mail", "nagios"]}
+
 # fp_linux: true
 # fp_linux_install: true
 # fp_linux_enable: true
@@ -116,7 +126,7 @@
 # fp_nfs_enable: true
 
 # fp_nfsd: true
-# fp_nfsd_enable: false
+# fp_nfsd_enable: true
 # fp_nfsd_exports:
 #   - {mount_point: '/usr/ports/packages', flags: '10.132.0.3 10.132.0.4'}
 # fp_nfs_server_flags: '-u -t -n 4'
@@ -150,6 +160,8 @@
 #   - {list: smart, enabled: "{{ fp_smartd_install }}"}
 #   - {list: snmpd, enabled: "{{ fp_snmpd_install }}"}
 #   - {list: wpa_supplicant, enabled: "{{ fp_wpasupplicant_install }}"}
+#   - {list: qemu, enabled: "{{ fp_qemu_install }}"}
+#   - {list: qemu_user_static, enabled: "{{ fp_qemu_user_static_install }}"}
 #   - {list: apache, enabled: true}
 #   - {list: bind, enabled: false}
 #   - {list: devel, enabled: false}
@@ -336,6 +348,12 @@
 #         - {key: psk, value: '"MY-AP1-PSK"'}
 #         - {key: key_mgmt, value: WPA-PSK}
 #         - {key: pairwise, value: CCMP}
+
+# fp_qemu: true
+# fp_qemu_enabled: true
+# fp_qemu_install: false              # list of packages: qemu
+# fp_qemu_user_static_install: true   # list of packages: qemu_user_static
+# fp_qemu_rcvar: qemu_user_static
 
 # NOTES
 #

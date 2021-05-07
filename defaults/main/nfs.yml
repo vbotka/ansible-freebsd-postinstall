@@ -1,7 +1,33 @@
 ---
 fp_nfs: false
+fp_nfs_debug: false
 fp_nfs_enable: false
+fp_nfs_access_cache: "60"
+fp_nfs_bufpackets: ""
 fp_nfs_enable_rcconf:
   - {key: nfs_client_enable, value: "YES"}
+  - {key: nfs_access_cache, value: "{{ fp_nfs_access_cache }}"}
+  - {key: nfs_bufpackets, value: "{{ fp_nfs_bufpackets }}"}
 fp_nfs_disable_rcconf:
   - {key: nfs_client_enable, value: "NO"}
+
+# rpc_lockd (SEE nfsd.yml)
+# rpc_statd (SEE nfsd.yml)
+
+# handlers
+fp_nfs_service_paths:
+  - /etc/rc.d/lockd
+  - /etc/rc.d/statd
+fp_nfs_handlers:
+  nfsclient: "{{ fp_var_db_mounttab.stat.exists|default(false)|
+                 ternary('restart nfs client',
+                     'enable and start nfs client') }}"
+  lockd: "{{ (al_ansible_facts_services.lockd.state|default('stopped') == 'running')|
+             ternary('restart lockd',
+                     'enable and start lockd') }}"
+  statd: "{{ (al_ansible_facts_services.statd.state|default('stopped') == 'running')|
+             ternary('restart statd',
+                     'enable and start statd') }}"
+
+# EOF
+...

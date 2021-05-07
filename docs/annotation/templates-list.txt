@@ -5,6 +5,7 @@ groupdel.j2
 groupmod.j2
 hostapd.conf.j2
 hosts.j2
+hosts-aliases-list.j2
 loader.conf.j2
 login.conf.j2
 make.conf.j2

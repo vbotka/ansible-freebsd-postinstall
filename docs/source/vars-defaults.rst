@@ -1,5 +1,5 @@
 Default variables
-=================
+-----------------
 
 [`defaults/main <https://github.com/vbotka/ansible-freebsd-postinstall/tree/2.0-stable/defaults/main/>`_]
 

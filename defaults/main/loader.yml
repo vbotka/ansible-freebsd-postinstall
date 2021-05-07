@@ -1,6 +1,7 @@
 ---
 fp_loader: false
 fp_loader_debug: false
+fp_loader_warning: true
 fp_loader_conf_template_enable: false
 fp_loader_load_modules: false
 fp_loader_conf_template: loader.conf.j2

@@ -132,6 +132,7 @@ pkg_dict_amd64:
   - pkglist: dns
     packages:
       - dns/bind{{ bsd_bind_version }}
+      - dns/bind-tools
   - pkglist: yazvs
     packages:
       - dns/p5-Net-DNS
@@ -196,6 +197,12 @@ pkg_dict_amd64:
     packages:
       - net-mgmt/net-snmp
       - net-mgmt/py-pysnmp
+  - pkglist: qemu
+    packages:
+      - emulators/qemu
+  - pkglist: qemu_user_static
+    packages:
+      - emulators/qemu-user-static
 
 # EOF
 ...

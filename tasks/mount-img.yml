@@ -1,0 +1,26 @@
+---
+
+- name: "mount-img: Debug"
+  vars:
+    msg: |-
+      fp_mount_img_points_create [{{ fp_mount_img_points_create }}]
+      fp_mount_img_entries
+      {{ fp_mount_img_entries|to_nice_yaml }}
+  debug:
+    msg: "{{ msg.split('\n') }}"
+  when: fp_mount_img_debug|bool
+  tags: [fp_mount_img_debug, always]
+
+- name: "mount-img: Set variables"
+  set_fact:
+    _fp_mount_task: img
+    _fp_mount_fstype_default: ufs
+    _fp_mount_points_create: "{{ fp_mount_img_points_create }}"
+    _fp_mount_entries: "{{ fp_mount_img_entries }}"
+    _fp_mount_debug: "{{ fp_mount_img_debug }}"
+
+- name: "mount-iso: Import mount-vnode.yml"
+  import_tasks: mount-vnode.yml
+
+# EOF
+...

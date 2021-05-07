@@ -1,73 +1,109 @@
 ---
 
-# nfs
-- name: "nfs: Enable and start nfs client"
-  when: fp_nfs_enable|bool
-  lineinfile:
-    dest: /etc/rc.conf
-    regexp: '^\s*{{ item.key }}\s*=(.*)$'
-    line: '{{ item.key }}="{{ item.value }}"'
-    backup: "{{ fp_backup }}"
-  loop: "{{ fp_nfs_enable_rcconf }}"
-  notify: enable and start nfs client
-  tags: fp_nfs_rcconf
+- name: "nfs: Debug"
+  vars:
+    msg: |-
+         fp_nfs_enable [{{ fp_nfs_enable }}]
+         fp_nfs_enable_rcconf
+         {{ fp_nfs_enable_rcconf|to_yaml }}
+         fp_nfs_disable_rcconf
+         {{ fp_nfs_disable_rcconf|to_yaml }}
+         fp_rpc_lockd_enable [{{ fp_rpc_lockd_enable }}]
+         fp_rpc_lockd_flags [{{ fp_rpc_lockd_flags }}]
+         fp_rpc_lockd_enable_rcconf
+         {{ fp_rpc_lockd_enable_rcconf|to_yaml }}
+         fp_rpc_lockd_disable_rcconf
+         {{ fp_rpc_lockd_disable_rcconf|to_yaml }}
+         fp_rpc_statd_enable [{{ fp_rpc_statd_enable }}]
+         fp_rpc_statd_flags [{{ fp_rpc_statd_flags }}]
+         fp_rpc_statd_enable_rcconf
+         {{ fp_rpc_statd_enable_rcconf|to_yaml }}
+         fp_rpc_statd_disable_rcconf
+         {{ fp_rpc_statd_disable_rcconf|to_yaml }}
+         fp_nfs_service_paths
+         {{ fp_nfs_service_paths|to_nice_yaml }}
+  debug:
+    msg: "{{ msg.split('\n') }}"
+  when: fp_nfs_debug|bool
+  tags: [fp_nfs_debug, always]
 
-- name: "nfs: Disable and stop nfs client"
-  when: not fp_nfs_enable|bool
-  lineinfile:
-    dest: /etc/rc.conf
-    regexp: '^\s*{{ item.key }}\s*=(.*)$'
-    line: '{{ item.key }}="{{ item.value }}"'
-    backup: "{{ fp_backup }}"
-  loop: "{{ fp_nfs_disable_rcconf }}"
-  notify: disable and stop nfs client
-  tags: fp_nfs_rcconf
+# Note: The module service_facts doesn't work in FreeBSD.
+- name: "nfs: Service state info"
+  include_role:
+    name: vbotka.ansible_lib
+    tasks_from: al_bsd_service_facts
+    apply:
+      tags: fp_nfs_services
+  tags: always
+  when: not ansible_check_mode
+  vars:
+    al_bsd_service_paths: "{{ fp_nfs_service_paths }}"
 
-# lockd
-- name: "nfs: Enable and start lockd"
-  when: fp_rpc_lockd_enable|bool
-  lineinfile:
-    dest: /etc/rc.conf
-    regexp: '^\s*{{ item.key }}\s*=(.*)$'
-    line: '{{ item.key }}="{{ item.value }}"'
-    backup: "{{ fp_backup }}"
-  loop: "{{ fp_rpc_lockd_enable_rcconf }}"
-  notify: enable and start lockd
-  tags: fp_nfs_lockd_rcconf
+- name: "nfs: Debug service state info"
+  debug:
+    var: al_ansible_facts_services|default({})
+  when: fp_nfs_debug|bool
+  tags: fp_nfs_services
 
-- name: "nfs: Disable and stop lockd"
-  when: not fp_rpc_lockd_enable|bool
-  lineinfile:
-    dest: /etc/rc.conf
-    regexp: '^\s*{{ item.key }}\s*=(.*)$'
-    line: '{{ item.key }}="{{ item.value }}"'
-    backup: "{{ fp_backup }}"
-  loop: "{{ fp_rpc_lockd_disable_rcconf }}"
-  notify: disable and stop lockd
-  tags: fp_nfs_lockd_rcconf
+# Note: There is no status option of nfsclient. If needed, restart the
+# service when /var/db/mounttab exists.
+- name: "nfs: Stat /var/db/mounttab"
+  stat:
+    path: /var/db/mounttab
+  register: fp_var_db_mounttab
+  tags: fp_nfs_services
 
-# statd
-- name: "nfs: Enable and start statd"
-  when: fp_rpc_statd_enable|bool
-  lineinfile:
-    dest: /etc/rc.conf
-    regexp: '^\s*{{ item.key }}\s*=(.*)$'
-    line: '{{ item.key }}="{{ item.value }}"'
-    backup: "{{ fp_backup }}"
-  loop: "{{ fp_rpc_statd_enable_rcconf }}"
-  notify: enable and start statd
-  tags: fp_nfs_statd_rcconf
+- name: "nfs: Debug stat /var/db/mounttab"
+  debug:
+    var: fp_var_db_mounttab.stat.exists
+  when: fp_nfs_debug|bool
+  tags: fp_nfs_services
 
-- name: "nfs: Disable and stop statd"
-  when: not fp_rpc_statd_enable|bool
-  lineinfile:
-    dest: /etc/rc.conf
-    regexp: '^\s*{{ item.key }}\s*=(.*)$'
-    line: '{{ item.key }}="{{ item.value }}"'
-    backup: "{{ fp_backup }}"
-  loop: "{{ fp_rpc_statd_disable_rcconf }}"
-  notify: disable and stop statd
-  tags: fp_nfs_statd_rcconf
+- name: "nfs: Debug handlers"
+  debug:
+    var: fp_nfs_handlers
+  when: fp_nfs_debug|bool
+  tags: fp_nfs_services
+
+- name: "nfs: Enable services"
+  include_tasks: fn/rcconf-item.yml
+  loop:
+    - label: "nfs: Enable and start nfs client"
+      conf: "{{ fp_nfs_enable_rcconf }}"
+      when: "{{ fp_nfs_enable|bool }}"
+      notify: "{{ fp_nfs_handlers.nfsclient }}"
+    - label: "nfs: Enable and start lockd"
+      conf: "{{ fp_rpc_lockd_enable_rcconf }}"
+      when: "{{ fp_rpc_lockd_enable|bool }}"
+      notify: "{{ fp_nfs_handlers.lockd }}"
+    - label: "nfs: Enable and start statd"
+      conf: "{{ fp_rpc_statd_enable_rcconf }}"
+      when: "{{ fp_rpc_statd_enable|bool }}"
+      notify: "{{ fp_nfs_handlers.statd }}"
+  loop_control:
+    loop_var: oi
+    label: "{{ oi.label }}"
+  tags: fp_nfs_enable
+
+- name: "nfsd: Disable services"
+  include_tasks: fn/rcconf-item.yml
+  loop:
+    - label: "nfs: Disable and stop nfs client"
+      conf: "{{ fp_nfs_disable_rcconf }}"
+      when: "{{ not fp_nfs_enable|bool }}"
+      notify: disable and stop nfs client
+    - label: "nfs: Disable and stop lockd"
+      conf: "{{ fp_rpc_lockd_disable_rcconf }}"
+      when: "{{ not fp_rpc_lockd_enable|bool }}"
+      notify: disable and stop lockd
+    - label: "nfs: Disable and stop statd"
+      conf: "{{ fp_rpc_statd_disable_rcconf }}"
+      when: "{{ not fp_rpc_statd_enable|bool }}"
+      notify: disable and stop statd
+  loop_control:
+    loop_var: oi
+    label: "{{ oi.label }}"
+  tags: fp_nfs_disable
 
 # EOF
 ...

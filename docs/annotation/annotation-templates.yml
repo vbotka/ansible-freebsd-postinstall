@@ -2,7 +2,7 @@
 mytemplates:
 
   - file: apcupsd.conf.j2
-    link: template_apcupsd.conf.j2
+    link: apcupsd.conf.j2
     path: templates/apcupsd.conf.j2
     synopsis: |
       Template apcupsd.conf.
@@ -14,7 +14,7 @@ mytemplates:
     warning: []
 
   - file: exports.j2
-    link: template_exports.j2
+    link: exports.j2
     path: templates/exports.j2
     synopsis: |
       Template exports.
@@ -26,7 +26,7 @@ mytemplates:
     warning: []
 
   - file: groupadd.j2
-    link: template_groupadd.j2
+    link: groupadd.j2
     path: templates/groupadd.j2
     synopsis: |
       Template groupadd.
@@ -38,7 +38,7 @@ mytemplates:
     warning: []
 
   - file: groupdel.j2
-    link: template_groupdel.j2
+    link: groupdel.j2
     path: templates/groupdel.j2
     synopsis: |
       Template groupdel.
@@ -50,7 +50,7 @@ mytemplates:
     warning: []
 
   - file: groupmod.j2
-    link: template_groupmod.j2
+    link: groupmod.j2
     path: templates/groupmod.j2
     synopsis: |
       Template groupmod.
@@ -62,7 +62,7 @@ mytemplates:
     warning: []
 
   - file: hostapd.conf.j2
-    link: template_hostapd.conf.j2
+    link: hostapd.conf.j2
     path: templates/hostapd.conf.j2
     synopsis: |
       Template hostapd.conf.
@@ -74,7 +74,7 @@ mytemplates:
     warning: []
 
   - file: hosts.j2
-    link: template_hosts.j2
+    link: hosts.j2
     path: templates/hosts.j2
     synopsis: |
       Template hosts.
@@ -85,8 +85,20 @@ mytemplates:
     note: []
     warning: []
 
+  - file: hosts-aliases-list.j2
+    link: hosts-aliases-list.j2
+    path: templates/hosts-aliases-list.j2
+    synopsis: |
+      Template hosts-aliases-list.
+    description: |
+      Description of the template.
+    lines: 1
+    seealso: []
+    note: []
+    warning: []
+
   - file: loader.conf.j2
-    link: template_loader.conf.j2
+    link: loader.conf.j2
     path: templates/loader.conf.j2
     synopsis: |
       Template loader.conf.
@@ -98,7 +110,7 @@ mytemplates:
     warning: []
 
   - file: login.conf.j2
-    link: template_login.conf.j2
+    link: login.conf.j2
     path: templates/login.conf.j2
     synopsis: |
       Template login.conf.
@@ -110,7 +122,7 @@ mytemplates:
     warning: []
 
   - file: make.conf.j2
-    link: template_make.conf.j2
+    link: make.conf.j2
     path: templates/make.conf.j2
     synopsis: |
       Template make.conf.
@@ -122,7 +134,7 @@ mytemplates:
     warning: []
 
   - file: motd.j2
-    link: template_motd.j2
+    link: motd.j2
     path: templates/motd.j2
     synopsis: |
       Template motd.
@@ -134,7 +146,7 @@ mytemplates:
     warning: []
 
   - file: ntp.conf.j2
-    link: template_ntp.conf.j2
+    link: ntp.conf.j2
     path: templates/ntp.conf.j2
     synopsis: |
       Template ntp.conf.
@@ -146,7 +158,7 @@ mytemplates:
     warning: []
 
   - file: procmailrc-includerc-capability.j2
-    link: template_procmailrc-includerc-capability.j2
+    link: procmailrc-includerc-capability.j2
     path: templates/procmailrc-includerc-capability.j2
     synopsis: |
       Template procmailrc-includerc-capability.
@@ -158,7 +170,7 @@ mytemplates:
     warning: []
 
   - file: procmailrc-includerc-duplicates.j2
-    link: template_procmailrc-includerc-duplicates.j2
+    link: procmailrc-includerc-duplicates.j2
     path: templates/procmailrc-includerc-duplicates.j2
     synopsis: |
       Template procmailrc-includerc-duplicates.
@@ -170,7 +182,7 @@ mytemplates:
     warning: []
 
   - file: procmailrc-includerc-get-certificate.j2
-    link: template_procmailrc-includerc-get-certificate.j2
+    link: procmailrc-includerc-get-certificate.j2
     path: templates/procmailrc-includerc-get-certificate.j2
     synopsis: |
       Template procmailrc-includerc-get-certificate.
@@ -182,7 +194,7 @@ mytemplates:
     warning: []
 
   - file: procmailrc-includerc-get-fingerprint.j2
-    link: template_procmailrc-includerc-get-fingerprint.j2
+    link: procmailrc-includerc-get-fingerprint.j2
     path: templates/procmailrc-includerc-get-fingerprint.j2
     synopsis: |
       Template procmailrc-includerc-get-fingerprint.
@@ -194,7 +206,7 @@ mytemplates:
     warning: []
 
   - file: procmailrc-includerc-get-fingerprints.j2
-    link: template_procmailrc-includerc-get-fingerprints.j2
+    link: procmailrc-includerc-get-fingerprints.j2
     path: templates/procmailrc-includerc-get-fingerprints.j2
     synopsis: |
       Template procmailrc-includerc-get-fingerprints.
@@ -206,7 +218,7 @@ mytemplates:
     warning: []
 
   - file: procmailrc-includerc-get-message.j2
-    link: template_procmailrc-includerc-get-message.j2
+    link: procmailrc-includerc-get-message.j2
     path: templates/procmailrc-includerc-get-message.j2
     synopsis: |
       Template procmailrc-includerc-get-message.
@@ -218,7 +230,7 @@ mytemplates:
     warning: []
 
   - file: ssh_config.j2
-    link: template_ssh_config.j2
+    link: ssh_config.j2
     path: templates/ssh_config.j2
     synopsis: |
       Template ssh_config.
@@ -230,7 +242,7 @@ mytemplates:
     warning: []
 
   - file: wpa_supplicant.conf.j2
-    link: template_wpa_supplicant.conf.j2
+    link: wpa_supplicant.conf.j2
     path: templates/wpa_supplicant.conf.j2
     synopsis: |
       Template wpa_supplicant.conf.

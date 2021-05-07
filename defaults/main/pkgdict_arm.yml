@@ -132,6 +132,7 @@ pkg_dict_arm:
   - pkglist: dns
     packages:
       - dns/bind{{ bsd_bind_version }}
+      - dns/bind-tools
   - pkglist: yazvs
     packages:
       - dns/p5-Net-DNS

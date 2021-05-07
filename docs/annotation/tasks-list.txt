@@ -19,7 +19,9 @@ loader.yml
 login.yml
 make.yml
 motd.yml
+mount-img.yml
 mount-iso.yml
+mount-vnode.yml
 nfsd.yml
 nfs.yml
 ntpdate.yml
@@ -31,6 +33,7 @@ periodic.yml
 procmail.yml
 resolvconf.yml
 smartd.yml
+sanity.yml
 snmpd.yml
 sshd.yml
 ssh.yml
@@ -49,3 +52,4 @@ copy/unarch-optional.yml
 fn/cron-rename-entry.yml
 fn/mdconfig-attach-disk.yml
 fn/mdconfig-detach-disk.yml
+fn/rcconf-item.yml

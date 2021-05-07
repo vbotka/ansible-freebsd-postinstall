@@ -14,6 +14,7 @@
 - import_tasks: nfs.yml
 - import_tasks: ntpdate.yml
 - import_tasks: ntpd.yml
+- import_tasks: qemu.yml
 - import_tasks: resolvconf.yml
 - import_tasks: smartd.yml
 - import_tasks: snmpd.yml

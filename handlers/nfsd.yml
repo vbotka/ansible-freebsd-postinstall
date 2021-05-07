@@ -7,21 +7,6 @@
 - name: restart nfs server
   service: name="nfsd" state="restarted"
   when: fp_nfsd_enable|bool
-# lockd
-- name: enable and start lockd
-  service: name="lockd" state="started" enabled=true
-- name: disable and stop lockd
-  service: name="lockd" state="stopped" enabled=false
-# statd
-- name: enable and start statd
-  service: name="statd" state="started" enabled=true
-- name: disable and stop statd
-  service: name="statd" state="stopped" enabled=false
-# rpcbind
-- name: enable and start rpcbind
-  service: name="rpcbind" state="started" enabled=true
-- name: disable and stop rpcbind
-  service: name="rpcbind" state="stopped" enabled=false
 # mountd
 - name: enable and start mountd
   service: name="mountd" state="started" enabled=true
@@ -30,3 +15,27 @@
 - name: reload mountd
   service: name="mountd" state="reloaded"
   when: fp_mountd_enable|bool
+# rpcbind
+- name: enable and start rpcbind
+  service: name="rpcbind" state="started" enabled=true
+- name: disable and stop rpcbind
+  service: name="rpcbind" state="stopped" enabled=false
+- name: restart rpcbind
+  service: name="rpcbind" state="restarted"
+  when: fp_rpcbind_enable|bool
+# lockd
+- name: enable and start lockd
+  service: name="lockd" state="started" enabled=true
+- name: disable and stop lockd
+  service: name="lockd" state="stopped" enabled=false
+- name: restart lockd
+  service: name="lockd" state="restarted"
+  when: fp_rpc_lockd_enable|bool
+# statd
+- name: enable and start statd
+  service: name="statd" state="started" enabled=true
+- name: disable and stop statd
+  service: name="statd" state="stopped" enabled=false
+- name: restart statd
+  service: name="statd" state="restarted"
+  when: fp_rpc_statd_enable|bool
