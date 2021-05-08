@@ -2,7 +2,7 @@
 # Sync default
 
 - name: "copy:sync-default: Debug default directory exists"
-  debug:
+  ansible.builtin.debug:
     msg: "Directory {{ mypath }} exists: {{ mystat }}"
   vars:
     mypath: "{{ fp_copy_dir }}/{{ fp_copy_dir_default }}"
@@ -10,7 +10,7 @@
   when: fp_copy_debug|bool
 
 - name: "copy:sync-default: Synchronize default files {{ fp_copy_dir }}/{{ fp_copy_dir_default }}"
-  synchronize:
+  ansible.posix.synchronize:
     src: "{{ mypath_src }}"
     dest: "{{ item.dest }}"
     archive: "{{ item.archive|default(fp_synchronize_archive) }}"
@@ -36,7 +36,7 @@
   when: mypath is exists
 
 - name: "copy:sync-optional: Debug synchronize default files result"
-  debug:
+  ansible.builtin.debug:
     var: result
   when: fp_copy_debug|bool
 

@@ -1,10 +1,8 @@
 ---
 
 - name: "packages: Debug"
-  debug:
-    msg: "{{ msg.split('\n')[:-1] }}"
   vars:
-    msg: |
+    msg: |-
          freebsd_install_method [{{ freebsd_install_method }}]
          freebsd_use_packages [{{ freebsd_use_packages }}]
          freebsd_install_retries [{{ freebsd_install_retries }}]
@@ -29,17 +27,20 @@
          pkg_dict_{{ ansible_architecture }}
          {{ lookup('vars', 'pkg_dict_' ~ ansible_architecture)|
             sort(attribute='pkglist')|to_yaml }}
+  ansible.builtin.debug:
+    msg: "{{ msg.split('\n') }}"
   when: fp_packages_debug|bool
   tags: [fp_packages_debug, always]
 
 - name: "packages: Install packages"
-  include_tasks: packages-install.yml
+  include_tasks:
+    file: packages-install.yml
   loop: "{{ fp_packages }}"
   when: item.enabled
 
 # links
 - name: "packages: Create symbolic links"
-  file:
+  ansible.builtin.file:
     src: "{{ item.target }}"
     dest: "{{ item.link }}"
     state: link

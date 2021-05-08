@@ -1,9 +1,8 @@
 ---
 
 - name: "cron: Debug"
-  when: fp_cron_debug|bool
   vars:
-    msg: |
+    msg: |-
       fp_cron_dir [{{ fp_cron_dir }}]
       fp_cron_var
       {{ fp_cron_var|to_yaml }}
@@ -14,8 +13,9 @@
       {{ fp_cron_var_system|to_yaml }}
       fp_cron_tab_system
       {{ fp_cron_tab_system|to_nice_yaml }}
-  debug:
-    msg: "{{ msg.split('\n')[:-1] }}"
+  ansible.builtin.debug:
+    msg: "{{ msg.split('\n') }}"
+  when: fp_cron_debug|bool
   tags: [fp_cron_debug, always]
 
 # Note on "cron – Manage cron.d and crontab entries"
@@ -32,12 +32,13 @@
 # avoid double-entries
 
 - name: "cron: Rename present crontab entries"
-  include_tasks: fn/cron-rename-entry.yml
+  include_tasks:
+    file: fn/cron-rename-entry.yml
   loop: "{{ fp_cron_tab }}"
   tags: fp_cron_rename_entries
 
 - name: "cron: Rename present crontab entries system"
-  replace:
+  ansible.builtin.replace:
     path: "{{ fp_cron_file_system }}"
     regexp: '^\s*#\s*{{ item.name }}$'
     replace: "#Ansible: {{ item.name }}"
@@ -48,7 +49,7 @@
   tags: fp_cron_rename_entries_system
 
 - name: "cron: Configure cron variables"
-  cronvar:
+  community.general.cronvar:
     name: "{{ item.name }}"
     value: "{{ item.value }}"
     user: "{{ item.user }}"
@@ -56,7 +57,7 @@
   tags: fp_cron_var
 
 - name: "cron: Configure crontab entries"
-  cron:
+  ansible.builtin.cron:
     state: "{{ item.state }}"
     user: "{{ item.user }}"
     name: "{{ item.name }}"
@@ -72,7 +73,7 @@
   tags: fp_cron_tab
 
 - name: "cron: Configure cron variables system"
-  cronvar:
+  community.general.cronvar:
     cron_file: "{{ fp_cron_file_system }}"
     name: "{{ item.name }}"
     value: "{{ item.value }}"
@@ -80,7 +81,7 @@
   tags: fp_cron_var_system
 
 - name: "cron: Configure crontab entries system"
-  cron:
+  ansible.builtin.cron:
     cron_file: "{{ fp_cron_file_system }}"
     state: "{{ item.state }}"
     user: "{{ item.user }}"

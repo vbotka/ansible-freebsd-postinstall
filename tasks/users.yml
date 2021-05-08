@@ -2,16 +2,16 @@
 
 - name: "users: Debug"
   vars:
-    msg: |
+    msg: |-
       fp_users_conf
       {{ fp_users_conf|to_nice_yaml }}
-  debug:
-    msg: "{{ msg.split('\n')[:-1] }}"
+  ansible.builtin.debug:
+    msg: "{{ msg.split('\n') }}"
   when: fp_users_debug|bool
   tags: [fp_users_debug, always]
 
 - name: "users: Manage user accounts"
-  user:
+  ansible.builtin.user:
     name: "{{ item.name }}"
     append: "{{ item.append|default(omit) }}"
     authorization: "{{ item.authorization|default(omit) }}"

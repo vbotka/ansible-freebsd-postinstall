@@ -1,13 +1,13 @@
 ---
 
 - name: "gitserver: Add {{ fp_gitserver_group }} group"
-  group:
+  ansible.builtin.group:
     name: "{{ fp_gitserver_group }}"
     gid: "{{ fp_gitserver_group_gid|default(omit) }}"
   tags: fp_gitserver_group
 
 - name: "gitserver: Add {{ fp_gitserver_owner }} user"
-  user:
+  ansible.builtin.user:
     name: "{{ fp_gitserver_owner }}"
     uid: "{ fp_gitserver_owner_uid|default(omit) }}"
     shell: "{{ fp_gitserver_owner_shell|default(omit) }}"
@@ -15,13 +15,13 @@
   tags: fp_gitserver_owner
 
 - name: "gitserver: Add user {{ fp_gitserver_owner }} to {{ fp_gitserver_group }} group"
-  user:
+  ansible.builtin.user:
     name: "{{ fp_gitserver_owner }}"
     groups: "{{ fp_gitserver_group }}"
   tags: fp_gitserver_owner
 
 - name: "gitserver: Set ownership and permissions of {{ fp_gitserver_dir }}"
-  file:
+  ansible.builtin.file:
     state: directory
     path: "{{ fp_gitserver_dir }}"
     owner: "{{ fp_gitserver_owner }}"

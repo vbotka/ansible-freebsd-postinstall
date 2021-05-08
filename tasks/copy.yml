@@ -1,9 +1,8 @@
 ---
 
 - name: "copy: Debug"
-  when: fp_copy_debug|bool
   vars:
-    msg: |
+    msg: |-
          fp_unarch_default [{{ fp_unarch_default }}]
          fp_unarch_optional [{{ fp_unarch_optional }}]
 
@@ -33,8 +32,9 @@
          fp_synchronize_perms [{{ fp_synchronize_perms }}]
          fp_synchronize_times [{{ fp_synchronize_times }}]
          fp_synchronize_verify_host [{{ fp_synchronize_verify_host }}]
-  debug:
-    msg: "{{ msg.split('\n')[:-1] }}"
+  ansible.builtin.debug:
+    msg: "{{ msg.split('\n') }}"
+  when: fp_copy_debug|bool
   tags: [fp_copy_debug, always]
 
 # Sync default

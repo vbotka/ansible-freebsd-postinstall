@@ -27,13 +27,13 @@
       fp_wpasupplicant_conf
       {{ fp_wpasupplicant_conf|to_yaml }}
       {% endif %}
-  debug:
+  ansible.builtin.debug:
     msg: "{{ msg.split('\n') }}"
   when: fp_wpasupplicant_debug|bool
   tags: [fp_wpasupplicant_debug, always]
 
 - name: "wpasupplicant: Configure /etc/rc.conf"
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: /etc/rc.conf
     regexp: '^\s*{{ item.key }}\s*=(.*)$'
     line: '{{ item.key }}="{{ item.value }}"'
@@ -43,7 +43,7 @@
   tags: fp_wpasupplicant_rcconf
 
 - name: "wpasupplicant: Configure {{ fp_wpasupplicant_conf_file }}.DEV"
-  template:
+  ansible.builtin.template:
     src: "{{ fp_wpasupplicant_conf_template }}"
     dest: "{{ fp_wpasupplicant_conf_file }}.{{ item.dev }}"
     owner: "{{ fp_wpasupplicant_conf_owner }}"
@@ -58,13 +58,13 @@
   tags: fp_wpasupplicant_conf
 
 - name: "wpasupplicant: Debug: registered to fp_wpa_supplicant_conf_changes"
-  debug:
+  ansible.builtin.debug:
     msg: "{{ fp_wpa_supplicant_conf_changes }}"
   no_log: "{{ not fp_wpasupplicant_debug_classified }}"
   when: fp_wpasupplicant_debug|bool
 
 - name: "wpasupplicant: Link {{ fp_wpasupplicant_conf_file }}"
-  file:
+  ansible.builtin.file:
     state: link
     src: "{{ fp_wpasupplicant_conf_file }}.{{ fp_wpasupplicant_conf_file_link }}"
     dest: "{{ fp_wpasupplicant_conf_file }}"
@@ -75,7 +75,7 @@
 # Use device specific configuration. Example:
 # /usr/local/sbin/wpa_supplicant -s -B -i wlan1 -c /etc/wpa_supplicant.conf.wlan1
 - name: "wpasupplicant: Configure /etc/rc.d/wpa_supplicant"
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: /etc/rc.d/wpa_supplicant
     regexp: '^\s*{{ item.key }}\s*=(.*)$'
     line: '{{ item.key }}={{ item.value }}'

@@ -1,7 +1,7 @@
 ---
 
 - name: "apcupsd: Enable and start apcupsd"
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: /etc/rc.conf
     regexp: '^\s*apcupsd_enable\s*=(.*)$'
     line: 'apcupsd_enable="YES"'
@@ -11,7 +11,7 @@
   tags: fp_apcupsd_rcconf
 
 - name: "apcupsd: Disable and stop apcupsd"
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: /etc/rc.conf
     regexp: '^\s*apcupsd_enable\s*=(.*)$'
     line: 'apcupsd_enable="NO"'
@@ -21,13 +21,13 @@
   tags: fp_apcupsd_rcconf
 
 - name: "apcupsd: Create directory {{ fp_apcupsd_conf_dir }}"
-  file:
+  ansible.builtin.file:
     state: directory
     path: "{{ fp_apcupsd_conf_dir }}"
   tags: fp_apcupsd_conf
 
 - name: "apcupsd: Configure apcupsd.conf"
-  template:
+  ansible.builtin.template:
     src: apcupsd.conf.j2
     dest: "{{ fp_apcupsd_conf_file }}"
     owner: "{{ fp_apcupsd_conf_owner }}"

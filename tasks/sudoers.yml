@@ -1,7 +1,7 @@
 ---
 
 - name: "sudoers: Configure {{ fp_sudoers_conf_file }}"
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: "{{ fp_sudoers_conf_file }}"
     regexp: '^\s*{{ item.key }}\s+(.*)$'
     line: "{{ item.key }} {{ item.value }}"

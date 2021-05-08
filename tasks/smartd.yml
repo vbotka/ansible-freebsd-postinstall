@@ -1,7 +1,7 @@
 ---
 
 - name: "smartd: Enable and start smartd"
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: /etc/rc.conf
     regexp: '^\s*smartd_enable\s*=(.*)$'
     line: 'smartd_enable="YES"'
@@ -11,7 +11,7 @@
   tags: fp_smartd_rcconf
 
 - name: "smartd: Disable and stop smartd"
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: /etc/rc.conf
     regexp: '^\s*smartd_enable\s*=(.*)$'
     line: 'smartd_enable="NO"'
@@ -21,7 +21,7 @@
   tags: fp_smartd_rcconf
 
 - name: "smartd: Configure smartd.conf"
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: "{{ fp_smartd_conf_file }}"
     regexp: '^\s*DEVICESCAN(.*)$'
     state: absent
@@ -30,7 +30,7 @@
   tags: fp_smartd_conf
 
 - name: "smartd: Configure devices in {{ fp_smartd_conf_file }}"
-  lineinfile:
+  ansible.builtin.lineinfile:
     create: true
     dest: "{{ fp_smartd_conf_file }}"
     regexp: "{{ item.regexp }}"

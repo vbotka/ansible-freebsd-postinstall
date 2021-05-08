@@ -16,11 +16,11 @@ task_nfsd_description: |
   (72). The defaults are used in check mode because of empty
   dictionary ``al_ansible_facts_services``. Configure ``/etc/exports``
   (78) and notify handler ``reload mountd``. Configure and enable
-  (86), or disable (114) services. If the configuration of a service
+  (86), or disable (115) services. If the configuration of a service
   changes the service will be reloaded or restarted when already
   running.
 
-task_nfsd_lines: 3,55,66,72,78,86,114
+task_nfsd_lines: 3,55,66,72,78,86,115
 
 task_nfsd_seealso:
   handlers:

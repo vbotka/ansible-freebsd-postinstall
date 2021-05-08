@@ -2,16 +2,16 @@
 
 - name: "tmpmfs: Debug"
   vars:
-    msg: |
+    msg: |-
       fp_tmpmfs_rcconf
       {{ fp_tmpmfs_rcconf|to_yaml }}
-  debug:
-    msg: "{{ msg.split('\n')[:-1] }}"
+  ansible.builtin.debug:
+    msg: "{{ msg.split('\n') }}"
   when: fp_tmpmfs_debug|bool
   tags: [fp_tmpmfs_debug, always]
 
 - name: "tmpmfs: Configure tmpmfs"
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: /etc/rc.conf
     regexp: '^\s*{{ item.key }}\s*=(.*)$'
     line: '{{ item.key }}="{{ item.value }}"'

@@ -2,34 +2,35 @@
 
 - name: "sysctl: Debug"
   vars:
-    msg: |
+    msg: |-
       fp_sysctl_warning_loader_needed [{{ fp_sysctl_warning_loader_needed }}]
       fp_sysctl_conf_file [{{ fp_sysctl_conf_file }}]
       fp_sysctl_ignoreerrors [{{ fp_sysctl_ignoreerrors }}]
       fp_sysctl_conf
       {{ fp_sysctl_conf|to_yaml }}
-  debug:
-    msg: "{{ msg.split('\n')[:-1] }}"
+  ansible.builtin.debug:
+    msg: "{{ msg.split('\n') }}"
   when: fp_sysctl_debug|bool
 
 - name: "sysctl: Register sysctl variables that are settable via loader"
-  command: "sysctl -aNT"
+  command:
+    cmd: sysctl -aNT
   register: tmp_loader_vars
   changed_when: false
 
 - name: "sysctl: Create empty list fp_sysctl_noloader_conf"
-  set_fact:
+  ansible.builtin.set_fact:
     fp_sysctl_noloader_conf: []
 
 - name: "sysctl: [WARNING] Does not report changes in check mode because of empty tmp_loader_vars"
-  debug:
+  ansible.builtin.debug:
     msg: "[WARNING] Next task does not report changes in check mode because of empty tmp_loader_vars"
   when:
     - ansible_check_mode|bool
     - fp_sysctl_debug|bool
 
 - name: "sysctl: Add items to fp_sysctl_noloader_conf"
-  set_fact:
+  ansible.builtin.set_fact:
     fp_sysctl_noloader_conf: "{{ fp_sysctl_noloader_conf + [item] }}"
   loop: "{{ fp_sysctl_conf }}"
   when:
@@ -37,19 +38,19 @@
     - item.name not in tmp_loader_vars.stdout_lines
 
 - name: "sysctl: Debug fp_sysctl_noloader_conf"
-  debug:
+  ansible.builtin.debug:
     var: fp_sysctl_noloader_conf|to_yaml
   when: fp_sysctl_debug|bool
 
 - name: "sysctl: [WARNING] Does not report changes in check mode because of empty fp_sysctl_noloader_conf"
-  debug:
+  ansible.builtin.debug:
     msg: "[WARNING] Next task does not report changes in check mode because of empty fp_sysctl_noloader_conf"
   when:
     - ansible_check_mode|bool
     - fp_sysctl_debug|bool
 
 - name: "sysctl: Configure {{ fp_sysctl_conf_file }}"
-  sysctl:
+  ansible.posix.sysctl:
     sysctl_file: "{{ fp_sysctl_conf_file }}"
     name: "{{ item.name }}"
     value: "{{ item.value }}"
@@ -61,7 +62,7 @@
 
 
 - name: "sysctl: [WARNING] Tuneables present in fp_sysctl_conf but fp_loader not enabled"
-  debug:
+  ansible.builtin.debug:
     msg: "[WARNING] Tuneables present in fp_sysctl_conf but fp_loader not enabled"
   when:
     - not ansible_check_mode|bool

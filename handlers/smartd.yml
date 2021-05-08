@@ -1,12 +1,12 @@
 ---
 # smartd
 - name: enable and start smartd
-  service: name="smartd" state="started" enabled=true
+  ansible.builtin.service: name="smartd" state="started" enabled=true
 - name: disable and stop smartd
-  service: name="smartd" state="stopped" enabled=false
+  ansible.builtin.service: name="smartd" state="stopped" enabled=false
 - name: restart smartd
-  service: name="smartd" state="restarted"
-  when: fp_smartd_enabled
+  ansible.builtin.service: name="smartd" state="restarted"
+  when: fp_smartd_enabled|bool
 - name: reload smartd
-  service: name="smartd" state="reloaded"
+  ansible.builtin.service: name="smartd" state="reloaded"
   when: fp_smartd_enabled|bool

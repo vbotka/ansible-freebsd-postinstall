@@ -343,11 +343,11 @@ mytasks:
       (72). The defaults are used in check mode because of empty
       dictionary ``al_ansible_facts_services``. Configure ``/etc/exports``
       (78) and notify handler ``reload mountd``. Configure and enable
-      (86), or disable (114) services. If the configuration of a service
+      (86), or disable (115) services. If the configuration of a service
       changes the service will be reloaded or restarted when already
       running.
 
-    lines: 3,55,66,72,78,86,114
+    lines: 3,55,66,72,78,86,115
     seealso: {'handlers': ['nfsd'], 'templates': ['exports'], 'others': ['<TBD>']}
     notes: ['<TBD>']
     hints: ['<TBD>']
@@ -377,10 +377,10 @@ mytasks:
       ``fp_nfs_handlers``.  Display the dictionary ``fp_nfsd_handlers``
       (62). The defaults are used in check mode because of empty
       dictionary ``al_ansible_facts_services``. Configure and enable (68),
-      or disable (88) services. If the configuration of a service changes
+      or disable (89) services. If the configuration of a service changes
       the service will be reloaded or restarted when already running.
 
-    lines: 3,27,31,42,50,56,62,68,88
+    lines: 3,31,42,50,56,62,68,89
     seealso: {'handlers': ['nfs', 'nfsd'], 'templates': [], 'others': ['<TBD>']}
     notes: ['<TBD>']
     hints: ['<TBD>']

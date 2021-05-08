@@ -1,9 +1,9 @@
 ---
 # nfs
 - name: enable and start nfs client
-  service: name="nfsclient" state="started" enabled=true
+  ansible.builtin.service: name="nfsclient" state="started" enabled=true
 - name: disable and stop nfs client
-  service: name="nfsclient" state="stopped" enabled=false
+  ansible.builtin.service: name="nfsclient" state="stopped" enabled=false
 - name: restart nfs client
-  service: name="nfsclient" state="restarted"
+  ansible.builtin.service: name="nfsclient" state="restarted"
   when: fp_nfs_enable|bool

@@ -1,7 +1,7 @@
 ---
 
 - name: "login: Create {{ fp_login_conf_file }}"
-  template:
+  ansible.builtin.template:
     src: "{{ fp_login_conf_template }}"
     dest: "{{ fp_login_conf_file }}"
     owner: root
