@@ -1,7 +1,7 @@
 ---
 
 - name: "fstab: Configure fstab entries"
-  mount:
+  ansible.posix.mount:
     name: "{{ item.name }}"
     src: "{{ item.src }}"
     fstype: "{{ item.fstype }}"

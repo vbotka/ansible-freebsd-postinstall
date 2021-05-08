@@ -34,4 +34,7 @@ galaxy_info:
     - users
     - packages
 dependencies: []
+collections:
+  - ansible.posix
+  - community.general
 ...

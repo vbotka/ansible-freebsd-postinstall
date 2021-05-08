@@ -1,9 +1,9 @@
 ---
 # devfs
 - name: enable and start devfs
-  service: name="devfs" state="started" enabled=true
+  ansible.builtin.service: name="devfs" state="started" enabled=true
 - name: disable and stop devfs
-  service: name="devfs" state="stopped" enabled=false
+  ansible.builtin.service: name="devfs" state="stopped" enabled=false
 - name: restart devfs
-  service: name="devfs" state="restarted"
+  ansible.builtin.service: name="devfs" state="restarted"
   when: fp_devfs_enabled|bool

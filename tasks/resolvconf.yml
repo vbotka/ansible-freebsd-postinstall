@@ -2,7 +2,7 @@
 
 # resolv.conf
 - name: "resolvconf: Absent lines in {{ fp_resolv_conf_file }}"
-  lineinfile:
+  ansible.builtin.lineinfile:
     create: true
     state: absent
     dest: "{{ fp_resolv_conf_file }}"
@@ -15,7 +15,7 @@
   tags: fp_resolv_conf_absent
 
 - name: "resolvconf: Present lines in {{ fp_resolv_conf_file }}"
-  lineinfile:
+  ansible.builtin.lineinfile:
     create: true
     dest: "{{ fp_resolv_conf_file }}"
     owner: "{{ fp_resolv_conf_owner }}"
@@ -29,7 +29,7 @@
 
 # resolvconf.conf
 - name: "resolvconf: Absent lines in {{ fp_resolvconf_conf_file }}"
-  lineinfile:
+  ansible.builtin.lineinfile:
     create: true
     state: absent
     dest: "{{ fp_resolvconf_conf_file }}"
@@ -43,7 +43,7 @@
   tags: fp_resolvconf_absent
 
 - name: "resolvconf: Present lines in {{ fp_resolvconf_conf_file }}"
-  lineinfile:
+  ansible.builtin.lineinfile:
     create: true
     dest: "{{ fp_resolvconf_conf_file }}"
     owner: "{{ fp_resolvconf_conf_owner }}"

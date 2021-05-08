@@ -4,7 +4,7 @@
 # no such utililities in BSD. Let us create them.
 
 - name: "groupwrappers: Create directory for wrappers {{ fp_groupwrappers_dir }}"
-  file:
+  ansible.builtin.file:
     state: "directory"
     path: "{{ fp_groupwrappers_dir }}"
     owner: "{{ fp_groupwrappers_owner }}"
@@ -12,7 +12,7 @@
   tags: fp_groupwrappers_dir
 
 - name: "groupwrappers: Create groupadd wrapper in {{ fp_groupwrappers_dir }}"
-  template:
+  ansible.builtin.template:
     src: "groupadd.j2"
     dest: "{{ fp_groupwrappers_dir }}/groupadd"
     owner: "{{ fp_groupwrappers_owner }}"
@@ -22,7 +22,7 @@
   tags: fp_groupwrappers_groupadd
 
 - name: "groupwrappers: Create groupdel wrapper in {{ fp_groupwrappers_dir }}"
-  template:
+  ansible.builtin.template:
     src: "groupdel.j2"
     dest: "{{ fp_groupwrappers_dir }}/groupdel"
     owner: "{{ fp_groupwrappers_owner }}"
@@ -32,7 +32,7 @@
   tags: fp_groupwrappers_groupdel
 
 - name: "groupwrappers: Create groupmod wrapper in {{ fp_groupwrappers_dir }}"
-  template:
+  ansible.builtin.template:
     src: "groupmod.j2"
     dest: "{{ fp_groupwrappers_dir }}/groupmod"
     owner: "{{ fp_groupwrappers_owner }}"

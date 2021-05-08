@@ -2,17 +2,17 @@
 
 - name: "ssh: Debug"
   vars:
-    msg: |
+    msg: |-
       fp_ssh_conf_file [{{ fp_ssh_conf_file }}]
       fp_ssh_conf
       {{ fp_ssh_conf|to_yaml }}
-  debug:
-    msg: "{{ msg.split('\n')[:-1] }}"
+  ansible.builtin.debug:
+    msg: "{{ msg.split('\n') }}"
   when: fp_ssh_debug|bool
   tags: [fp_ssh_debug, always]
 
 - name: "ssh: Configure {{ fp_ssh_conf_file }}"
-  template:
+  ansible.builtin.template:
     src: "{{ fp_ssh_conf_template }}"
     dest: "{{ fp_ssh_conf_file }}"
     owner: "{{ fp_ssh_conf_owner }}"

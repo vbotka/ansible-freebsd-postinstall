@@ -2,7 +2,7 @@
 # Unarch default
 
 - name: "copy:unarch-default: Debug default archive exists"
-  debug:
+  ansible.builtin.debug:
     msg: "Archive {{ mypath }} exists: {{ mystat }}"
   vars:
     mypath: "{{ fp_copy_dir }}/{{ fp_copy_arch_default }}"
@@ -10,7 +10,7 @@
   when: fp_copy_debug|bool
 
 - name: "copy:unarch-default: Extract default archive {{ fp_copy_dir }}/{{ fp_copy_arch_default }}"
-  unarchive:
+  ansible.builtin.unarchive:
     src: "{{ fp_copy_dir }}/{{ fp_copy_arch_default }}"
     dest: "/"
     keep_newer: "{{ fp_unarchive_keep_newer }}"

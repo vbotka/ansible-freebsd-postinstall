@@ -1,7 +1,7 @@
 ---
 
 - name: "aliases: Configure {{ fp_aliases_conf_file }}"
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: "{{ fp_aliases_conf_file }}"
     regexp: '^\s*{{ item.alias }}:(.*)$'
     line: '{{ item.alias }}: {{ item.user }}'

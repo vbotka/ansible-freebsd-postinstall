@@ -1,7 +1,7 @@
 ---
 
 - name: "ntp: Enable and start ntpd"
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: /etc/rc.conf
     regexp: '^\s*ntpd_enable\s*=(.*)$'
     line: 'ntpd_enable="YES"'
@@ -11,7 +11,7 @@
   tags: fp_ntp_rcconf
 
 - name: "ntp: Disable and stop ntpd"
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: /etc/rc.conf
     regexp: '^\s*ntpd_enable\s*=(.*)$'
     line: 'ntpd_enable="NO"'
@@ -21,7 +21,7 @@
   tags: fp_ntp_rcconf
 
 - name: "ntp: Create /etc/ntp.conf from template"
-  template:
+  ansible.builtin.template:
     src: "{{ fp_ntp_conf_template }}"
     dest: "{{ fp_ntp_conf_file }}"
     backup: "{{ fp_backup }}"

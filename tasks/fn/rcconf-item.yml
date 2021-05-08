@@ -1,7 +1,7 @@
 ---
 
 - name: "{{ oi.label }}"
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: "{{ oi.dest|default('/etc/rc.conf') }}"
     regexp: '^\s*{{ item.key }}\s*=(.*)$'
     line: '{{ item.key }}="{{ item.value }}"'

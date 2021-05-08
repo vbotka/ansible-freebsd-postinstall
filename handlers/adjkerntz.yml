@@ -3,4 +3,5 @@
 # update the local time CMOS clock and kernel machdep.adjkerntz
 # variable when timezone changes occur
 - name: adjust CMOS
-  command: adjkerntz -a
+  command:
+    cmd: adjkerntz -a

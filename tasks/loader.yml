@@ -2,7 +2,7 @@
 
 - name: "loader: Debug"
   vars:
-    msg: |
+    msg: |-
       fp_loader_warning [{{ fp_loader_warning }}]
       fp_loader_conf_template_enable [{{ fp_loader_conf_template_enable }}]
       fp_loader_load_modules [{{ fp_loader_load_modules }}]
@@ -14,22 +14,23 @@
       {{ fp_loader_conf_modules|to_yaml }}
       fp_sysctl_conf
       {{ fp_sysctl_conf|to_yaml }}
-  debug:
-    msg: "{{ msg.split('\n')[:-1] }}"
+  ansible.builtin.debug:
+    msg: "{{ msg.split('\n') }}"
   when: fp_loader_debug|bool
   tags: [fp_loader_debug, always]
 
 - name: "loader: Register sysctl variables that are settable via loader"
-  command: "sysctl -aNT"
+  command:
+    cmd: sysctl -aNT
   register: tmp_loader_vars
   changed_when: false
 
 - name: "loader: Create empty list fp_sysctl_loader_conf"
-  set_fact:
+  ansible.builtin.set_fact:
     fp_sysctl_loader_conf: []
 
 - name: "loader: [WARNING] does not report changes in check mode because of empty tmp_loader_vars"
-  debug:
+  ansible.builtin.debug:
     msg: "[WARNING] Next task does not report changes in check mode because of empty tmp_loader_vars"
   when:
     - ansible_check_mode|bool
@@ -37,7 +38,7 @@
     - fp_loader_debug|bool
 
 - name: "loader: Add items to fp_sysctl_loader_conf"
-  set_fact:
+  ansible.builtin.set_fact:
     fp_sysctl_loader_conf: "{{ fp_sysctl_loader_conf + [item.name ~ '=' ~ item.value, ] }}"
   loop: "{{ fp_sysctl_conf }}"
   when:
@@ -45,12 +46,12 @@
     - item.name in tmp_loader_vars.stdout_lines
 
 - name: "loader: Debug fp_sysctl_loader_conf"
-  debug:
+  ansible.builtin.debug:
     var: fp_sysctl_loader_conf|to_yaml
   when: fp_loader_debug|bool
 
 - name: "loader: [WARNING] does not report changes in check mode because of empty fp_sysctl_loader_conf"
-  debug:
+  ansible.builtin.debug:
     msg: "[WARNING] Next task does not report changes in check mode because of empty fp_sysctl_loader_conf"
   when:
     - ansible_check_mode|bool
@@ -58,7 +59,7 @@
     - fp_loader_debug|bool
 
 - name: "loader: Configure {{ fp_loader_conf_file }} from template {{ fp_loader_conf_template }}"
-  template:
+  ansible.builtin.template:
     src: "{{ fp_loader_conf_template }}"
     dest: "{{ fp_loader_conf_file }}"
     owner: root
@@ -71,7 +72,9 @@
   notify: loader message reboot
 
 - name: "loader: Load modules"
-  shell: "kldstat -q -n {{ item }} || kldload -n {{ item }}"
+  shell:
+    cmd: >
+      kldstat -q -n {{ item }} || kldload -n {{ item }}
   loop: "{{ fp_loader_conf_modules }}"
   changed_when: false
   when: fp_loader_load_modules|bool

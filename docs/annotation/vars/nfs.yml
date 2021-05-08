@@ -21,10 +21,10 @@ task_nfs_description: |
   ``fp_nfs_handlers``.  Display the dictionary ``fp_nfsd_handlers``
   (62). The defaults are used in check mode because of empty
   dictionary ``al_ansible_facts_services``. Configure and enable (68),
-  or disable (88) services. If the configuration of a service changes
+  or disable (89) services. If the configuration of a service changes
   the service will be reloaded or restarted when already running.
 
-task_nfs_lines: 3,27,42,50,56,62,68,88
+task_nfs_lines: 3,31,42,50,56,62,68,89
 
 task_nfs_seealso:
   handlers:

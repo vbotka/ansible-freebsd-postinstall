@@ -13,12 +13,12 @@
       fp_do_rcconf_digitalocean_enable [{{ fp_do_rcconf_digitalocean_enable }}]
       fp_do_rcconf
       {{ fp_do_rcconf|to_yaml }}
-  debug:
+  ansible.builtin.debug:
     msg: "{{ msg.split('\n')[:-1] }}"
   tags: [fp_do_debug, always]
 
 - name: "digitalocean: Configure /etc/rc.conf"
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: /etc/rc.conf
     regexp: '^\s*{{ item.key }}\s*=(.*)$'
     line: '{{ item.key }}="{{ item.value }}"'
@@ -28,7 +28,7 @@
 
 - name: "digitalocean: Remove default user"
   when: fp_do_default_user_remove|bool
-  user:
+  ansible.builtin.user:
     name: "{{ fp_do_default_user }}"
     state: absent
     remove: "{{ fp_do_default_user_remove_home }}"
@@ -36,7 +36,7 @@
 
 # DO overwrites hostname from rc.conf
 - name: "hostname: Configure hostname in /etc/rc.digitalocean.d/droplet.conf"
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: /etc/rc.digitalocean.d/droplet.conf
     regexp: '^\s*{{ item.key }}\s*=(.*)$'
     line: '{{ item.key }}="{{ item.value }}"'

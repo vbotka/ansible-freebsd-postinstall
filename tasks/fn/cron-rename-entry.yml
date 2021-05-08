@@ -1,12 +1,12 @@
 ---
 
 - name: "cron-rename-entry: Stat {{ fp_cron_dir }}/{{ item.user }}"
-  stat:
+  ansible.builtin.stat:
     path: "{{ fp_cron_dir }}/{{ item.user }}"
   register: result
 
 - name: "cron-rename-entry: Rename present crontab entry"
-  replace:
+  ansible.builtin.replace:
     path: "{{ fp_cron_dir }}/{{ item.user }}"
     regexp: '^\s*#\s*{{ item.name }}$'
     replace: "#Ansible: {{ item.name }}"

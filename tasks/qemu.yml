@@ -1,7 +1,7 @@
 ---
 
 - name: "qemu: Enable and start {{ fp_qemu_rcvar }}"
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: /etc/rc.conf
     regexp: '^\s*{{ fp_qemu_rcvar }}\s*=(.*)$'
     line: '{{ fp_qemu_rcvar }}="YES"'
@@ -11,7 +11,7 @@
   tags: fp_qemu_rcconf
 
 - name: "qemu: Disable and stop {{ fp_qemu_rcvar }}"
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: /etc/rc.conf
     regexp: '^\s*{{ fp_qemu_rcvar }}\s*=(.*)$'
     line: '{{ fp_qemu_rcvar }}="NO"'

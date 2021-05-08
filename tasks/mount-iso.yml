@@ -2,17 +2,17 @@
 
 - name: "mount-iso: Debug"
   vars:
-    msg: |
+    msg: |-
       fp_mount_iso_points_create [{{ fp_mount_iso_points_create }}]
       fp_mount_iso_entries
       {{ fp_mount_iso_entries|to_nice_yaml }}
-  debug:
+  ansible.builtin.debug:
     msg: "{{ msg.split('\n') }}"
   when: fp_mount_iso_debug|bool
   tags: [fp_mount_iso_debug, always]
 
 - name: "mount-iso: Set variables"
-  set_fact:
+  ansible.builtin.set_fact:
     _fp_mount_task: iso
     _fp_mount_fstype_default: cd9660
     _fp_mount_points_create: "{{ fp_mount_iso_points_create }}"

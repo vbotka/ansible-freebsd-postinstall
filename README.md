@@ -10,18 +10,26 @@ This role and the documentation is work in progress. If the documentation of a t
 
 Feel free to [share your feedback and report issues](https://github.com/vbotka/ansible-freebsd-postinstall/issues). [Contributions are welcome](https://github.com/firstcontributions/first-contributions).
 
-## Supported Releases
-
-* Production: 2.0, 1.23
-* Upcomming: 3.0
 
 ## Supported platforms
 
 This role has been developed and tested with [FreeBSD Supported Releases](https://www.freebsd.org/releases/).
 
-## Requirements
+
+## Requirements and dependencies
+
+### Roles
 
 * Ansible role [vbotka.ansible_lib](https://galaxy.ansible.com/vbotka/ansible_lib)
+
+### Collections
+
+* ansible.posix
+* community.general
+
+### Packages
+
+See the dictionaries pkg_dict_* in defaults/main/
 
 
 ## Variables
@@ -87,6 +95,7 @@ cat freebsd-postinstall.yml
 ```
 ansible-playbook freebsd-postinstall.yml
 ```
+
 
 ## Notes
 
@@ -173,6 +182,7 @@ To solve this problem apply the path below
 - [users - FreeBSD handbook: 6.27. Adding Users and Groups](https://www.freebsd.org/doc/en/books/porters-handbook/users-and-groups.html)
 - [wpa_supplicant](https://w1.fi/wpa_supplicant/)
 - [wpa_supplicant - 31.3. Wireless Networking](https://www.freebsd.org/doc/handbook/network-wireless.html)
+
 
 ## Cloud providers
 

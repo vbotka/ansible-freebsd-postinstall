@@ -1,14 +1,14 @@
 ---
 
 - name: "motd: Configure /etc/motd"
-  template:
+  ansible.builtin.template:
     src: "{{ fp_motd_conf_template }}"
     dest: "{{ fp_motd_conf_file }}"
     backup: "{{ fp_backup }}"
   tags: fp_motd_create
 
 - name: "motd: Set update_motd YES"
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: /etc/rc.conf
     regexp: '^\s*update_motd\s*=(.*)$'
     line: 'update_motd="YES"'
@@ -17,7 +17,7 @@
   tags: fp_motd_rcconf
 
 - name: "motd: Set update_motd NO"
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: /etc/rc.conf
     regexp: '^\s*update_motd\s*=(.*)$'
     line: 'update_motd="NO"'

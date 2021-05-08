@@ -621,7 +621,7 @@ dictionary is used to select the handlers in the dictionary
 (72). The defaults are used in check mode because of empty
 dictionary ``al_ansible_facts_services``. Configure ``/etc/exports``
 (78) and notify handler ``reload mountd``. Configure and enable
-(86), or disable (114) services. If the configuration of a service
+(86), or disable (115) services. If the configuration of a service
 changes the service will be reloaded or restarted when already
 running.
 
@@ -632,7 +632,7 @@ running.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/nfsd.yml
     :language: Yaml
-    :emphasize-lines: 3,55,66,72,78,86,114
+    :emphasize-lines: 3,55,66,72,78,86,115
     :linenos:
 
 .. seealso::
@@ -674,7 +674,7 @@ variable will be used to select the handler in the dictionary
 ``fp_nfs_handlers``.  Display the dictionary ``fp_nfsd_handlers``
 (62). The defaults are used in check mode because of empty
 dictionary ``al_ansible_facts_services``. Configure and enable (68),
-or disable (88) services. If the configuration of a service changes
+or disable (89) services. If the configuration of a service changes
 the service will be reloaded or restarted when already running.
 
 
@@ -684,7 +684,7 @@ the service will be reloaded or restarted when already running.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/nfs.yml
     :language: Yaml
-    :emphasize-lines: 3,27,31,42,50,56,62,68,88
+    :emphasize-lines: 3,31,42,50,56,62,68,89
     :linenos:
 
 .. seealso::

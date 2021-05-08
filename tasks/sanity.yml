@@ -1,7 +1,7 @@
 ---
 
 - name: "sanity: Debug"
-  debug:
+  ansible.builtin.debug:
     msg: |
       ansible_run_tags
       {{ ansible_run_tags|to_yaml }}
@@ -13,7 +13,7 @@
   tags: fp_sanity_debug
 
 - name: "sanity: Unknown run tags"
-  fail:
+  ansible.builtin.fail:
     msg: "[ERROR] Unknown run tag(s): {{ _tags_unknown }}"
   vars:
     _tags_unknown: "{{ ansible_run_tags|difference(fp_sanity_tags) }}"
@@ -23,7 +23,7 @@
     - _tags_unknown|length > 0
 
 - name: "sanity: Unknown skip tags"
-  fail:
+  ansible.builtin.fail:
     msg: "[ERROR] Unknown skip tag(s): {{ _tags_unknown }}"
   vars:
     _tags_unknown: "{{ ansible_skip_tags|difference(fp_sanity_tags) }}"

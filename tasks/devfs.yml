@@ -1,9 +1,8 @@
 ---
 
 - name: "devfs: Debug"
-  when: fp_devfs_debug|bool
   vars:
-    msg: |
+    msg: |-
          fp_devfs_enabled [{{ fp_devfs_enabled }}]
          fp_devfs_load_rulesets [{{ fp_devfs_load_rulesets }}]
          fp_devfs_system_ruleset [{{ fp_devfs_system_ruleset }}]
@@ -17,12 +16,15 @@
          fp_devfs_rules_path [{{ fp_devfs_rules_path }}]
          fp_devfs_rules
          {{ fp_devfs_rules|to_yaml }}
-  debug:
-    msg: "{{ msg.split('\n')[:-1] }}"
+  ansible.builtin.debug:
+    msg: "{{ msg.split('\n') }}"
+  when: fp_devfs_debug|bool
   tags: [fp_devfs_debug, always]
 
 - name: "devfs: Shell: /etc/rc.d/devfs rcvar | grep ^devfs*"
-  shell: '/etc/rc.d/devfs rcvar | grep ^devfs*'
+  shell:
+    cmd: >
+      /etc/rc.d/devfs rcvar | grep ^devfs*
   register: result
   changed_when: false
   ignore_errors: true
@@ -31,7 +33,7 @@
 - name: "devfs: Test rcvar for system module"
   block:
     - name: "devfs: ERROR no rcvar"
-      debug:
+      ansible.builtin.debug:
         msg: |
           [ERROR] unable to determine rcvar. End of play.
           Variable rcvar is missing in the file /etc/rc.d/devfs
@@ -45,13 +47,13 @@
   tags: fp_devfs_rcvar
 
 - name: "devfs: Debug print rcvar"
-  debug:
+  ansible.builtin.debug:
     var: result.stdout_lines|default('not defined')
   when: fp_devfs_debug|bool
   tags: fp_devfs_rcvar
 
 - name: "devfs: Enable and start devfs"
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: /etc/rc.conf
     regexp: '^\s*devfs_load_rulesets\s*=(.*)$'
     line: 'devfs_load_rulesets="YES"'
@@ -61,7 +63,7 @@
   tags: fp_devfs_rcconf
 
 - name: "devfs: Disable and stop devfs"
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: /etc/rc.conf
     regexp: '^\s*devfs_load_rulesets\s*=(.*)$'
     line: 'devfs_load_rulesets="NO"'
@@ -71,7 +73,7 @@
   tags: fp_devfs_rcconf
 
 - name: "devfs: Configure devfs in /etc/rc.conf"
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: /etc/rc.conf
     regexp: '^\s*{{ item.key }}\s*=(.*)$'
     line: '{{ item.key }}="{{ item.value }}"'
@@ -81,7 +83,7 @@
   tags: fp_devfs_rcconf
 
 - name: "devfs: Configure {{ fp_devfs_conf_path }}"
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: "{{ fp_devfs_conf_path }}"
     regexp: '^\s*{{ item.action }}\s+{{ item.devname }}\s+{{ item.arg }}'
     line: "{{ item.action }} {{ item.devname }} {{ item.arg }}"
@@ -91,7 +93,7 @@
   tags: fp_devfs_conf
 
 - name: "devfs: Configure {{ fp_devfs_rules_path }}"
-  ini_file:
+  community.general.ini_file:
     path: "{{ fp_devfs_rules_path }}"
     create: true
     allow_no_value: true

@@ -1,9 +1,9 @@
 ---
 # apcupsd
 - name: enable and start apcupsd
-  service: name="apcupsd" state="started" enabled=true
+  ansible.builtin.service: name="apcupsd" state="started" enabled=true
 - name: disable and stop apcupsd
-  service: name="apcupsd" state="stopped" enabled=false
+  ansible.builtin.service: name="apcupsd" state="stopped" enabled=false
 - name: restart apcupsd
-  service: name="apcupsd" state="restarted"
+  ansible.builtin.service: name="apcupsd" state="restarted"
   when: fp_apcupsd_enabled|bool

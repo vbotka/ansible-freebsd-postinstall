@@ -1,13 +1,13 @@
 ---
 
 - name: "packages-install: Get list of packages for {{ item.list }}"
-  set_fact:
+  ansible.builtin.set_fact:
     local_pkg_list: "{{ lookup('vars', 'pkg_dict_' ~ ansible_architecture)|json_query(query) }}"
   vars:
     query: "[?pkglist=='{{ item.list }}'].packages"
 
 - name: "packages-install: Install packages"
-  pkgng:
+  community.general.pkgng:
     name: "{{ local_pkg }}"
     autoremove: "{{ fp_pkg_autoremove|default(omit) }}"
     cached: "{{ fp_pkg_cached|default(omit) }}"
@@ -27,7 +27,7 @@
   when: freebsd_install_method|lower == "packages"
 
 - name: "packages-install: Install ports"
-  portinstall:
+  community.general.portinstall:
     name: "{{ local_pkg }}"
     use_packages: "{{ freebsd_use_packages }}"
   loop: "{{ local_pkg_list }}"

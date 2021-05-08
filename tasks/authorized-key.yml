@@ -1,12 +1,12 @@
 ---
 
 - name: "authorized-key: Get list of users"
-  getent:
+  ansible.builtin.getent:
     database: passwd
 
 - name: "authorized-key: Debug"
   vars:
-    msg: |
+    msg: |-
       fp_authorized_key_fail [{{ fp_authorized_key_fail }}]
       fp_authorized_key_install_individually [{{ fp_authorized_key_install_individually }}]
       fp_authorized_key_install_exclusive [{{ fp_authorized_key_install_exclusive|bool }}]
@@ -20,13 +20,13 @@
       {{ fp_authorized_key_conf|to_nice_yaml }}
       getent_passwd keys
       {{ getent_passwd.keys()|list|sort|to_yaml }}
-  debug:
-    msg: "{{ msg.split('\n')[:-1] }}"
+  ansible.builtin.debug:
+    msg: "{{ msg.split('\n') }}"
   when: fp_authorized_key_debug|bool
   tags: [fp_authorized_key_debug, always]
 
 - name: "authorized-key: Configure authorized keys individually"
-  authorized_key:
+  ansible.posix.authorized_key:
     user: "{{ item.user }}"
     key: "{{ item.key }}"
     exclusive: "{{ item.exclusive|default(omit) }}"
@@ -47,14 +47,14 @@
 - name: "authorized-key: Configure joined authorized keys"
   block:
     - name: "authorized-key: Create list of users"
-      set_fact:
+      ansible.builtin.set_fact:
         local_list_users: "{{ fp_authorized_key_conf|json_query('[].user')|unique }}"
     - name: "authorized-key: Debug show list of users"
-      debug:
+      ansible.builtin.debug:
         var: local_list_users
       when: fp_authorized_key_debug|bool
     - name: "authorized-key: Debug show joined keys"
-      debug:
+      ansible.builtin.debug:
         msg: "{{ msg.split('\n')[:-1] }}"
       loop: "{{ local_list_users }}"
       vars:
@@ -62,7 +62,7 @@
         msg: "{{ fp_authorized_key_conf|json_query(my_query)|join('\n') }}"
       when: fp_authorized_key_debug|bool
     - name: "authorized-key: Configure joined authorized keys"
-      authorized_key:
+      ansible.posix.authorized_key:
         user: "{{ item }}"
         key: "{{ fp_authorized_key_conf|json_query(my_query)|join('\n') }}"
         exclusive: "{{ fp_authorized_key_install_exclusive|bool }}"

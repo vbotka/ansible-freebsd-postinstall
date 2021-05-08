@@ -1,12 +1,12 @@
 ---
 # qemu
 - name: enable and start qemu
-  service: name="{{ fp_qemu_rcvar }}" state="started" enabled=true
+  ansible.builtin.service: name="{{ fp_qemu_rcvar }}" state="started" enabled=true
 - name: disable and stop qemu
-  service: name="{{ fp_qemu_rcvar }}" state="stopped" enabled=false
+  ansible.builtin.service: name="{{ fp_qemu_rcvar }}" state="stopped" enabled=false
 - name: restart qemu
-  service: name="{{ fp_qemu_rcvar }}" state="restarted"
+  ansible.builtin.service: name="{{ fp_qemu_rcvar }}" state="restarted"
   when: fp_qemu_enabled|bool
 - name: reload qemu
-  service: name="{{ fp_qemu_rcvar }}" state="reloaded"
+  ansible.builtin.service: name="{{ fp_qemu_rcvar }}" state="reloaded"
   when: fp_qemu_enabled|bool

@@ -1,7 +1,7 @@
 ---
 
 - name: "hostapd: Enable and start hostapd"
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: /etc/rc.conf
     regexp: '^\s*hostapd_enable\s*=(.*)$'
     line: 'hostapd_enable="YES"'
@@ -11,7 +11,7 @@
   tags: fp_hostapd_rcconf
 
 - name: "hostapd: Disable and stop hostapd"
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: /etc/rc.conf
     regexp: '^\s*hostapd_enable\s*=(.*)$'
     line: 'hostapd_enable="NO"'
@@ -21,7 +21,7 @@
   tags: fp_hostapd_rcconf
 
 - name: "hostapd: Configure interface for hostapd"
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: /etc/rc.conf
     regexp: '^\s*{{ item.key }}\s*=(.*)$'
     line: '{{ item.key }}="{{ item.value }}"'
@@ -31,7 +31,7 @@
   tags: fp_hostapd_rcconf
 
 - name: "hostapd: Configure {{ fp_hostapd_conf_file }}"
-  template:
+  ansible.builtin.template:
     src: "{{ fp_hostapd_conf_template }}"
     dest: "{{ fp_hostapd_conf_file }}"
     owner: "{{ fp_hostapd_conf_owner }}"

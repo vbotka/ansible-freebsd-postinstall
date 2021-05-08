@@ -2,18 +2,18 @@
 
 - name: "sshd: Debug"
   vars:
-    msg: |
+    msg: |-
          fp_sshd_bin [{{ fp_sshd_bin }}]
          fp_sshd_conf_file [{{ fp_sshd_conf_file }}]
          fp_sshd_conf
          {{ fp_sshd_conf|to_yaml }}
-  debug:
-    msg: "{{ msg.split('\n')[:-1] }}"
+  ansible.builtin.debug:
+    msg: "{{ msg.split('\n') }}"
   when: fp_sshd_debug|bool
   tags: [fp_sshd_debug, always]
 
 - name: "sshd: Enable and start sshd"
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: /etc/rc.conf
     regexp: '^\s*sshd_enable\s*=(.*)$'
     line: 'sshd_enable="YES"'
@@ -23,7 +23,7 @@
   tags: fp_sshd_rcconf
 
 - name: "sshd: Disable and stop sshd"
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: /etc/rc.conf
     regexp: '^\s*sshd_enable\s*=(.*)$'
     line: 'sshd_enable="NO"'
@@ -33,7 +33,7 @@
   tags: fp_sshd_rcconf
 
 - name: "sshd: Configure {{ fp_sshd_conf_file }}"
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: "{{ fp_sshd_conf_file }}"
     regexp: '^\s*{{ item.key }}\s+(.*)$'
     insertbefore: '^\s*#\s*{{ item.key }}'

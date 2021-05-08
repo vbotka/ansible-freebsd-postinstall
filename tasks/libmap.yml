@@ -1,7 +1,7 @@
 ---
 
 - name: "libmap: Configure {{ fp_libmap_conf_file }}"
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: "{{ fp_libmap_conf_file }}"
     regexp: '^\s*{{ item.origin }}\s+(.*)$'
     line: "{{ item.origin }} {{ item.target }}"
