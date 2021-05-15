@@ -54,11 +54,13 @@ speedup the execution of the playbook
 
 Install the role ``vbotka.freebsd_postinstall`` ::
 
-    shell> ansible-galaxy install vbotka.freebsd_postinstall
+    shell> ansible-galaxy role install vbotka.freebsd_postinstall
 
-Install the library ``vbotka.ansible_lib`` ::
+Install the library ``vbotka.ansible_lib`` and the collections ::
 
-    shell> ansible-galaxy install vbotka.ansible_lib
+    shell> ansible-galaxy role install vbotka.ansible_lib
+    shell> ansible-galaxy collection install ansible.posix
+    shell> ansible-galaxy collection install community.general
 
 Review the role
 
