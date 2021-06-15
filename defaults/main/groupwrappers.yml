@@ -2,6 +2,7 @@
 fp_groupwrappers: false
 fp_groupwrappers_install: false  # list of packages: none
 fp_groupwrappers_dir: /root/bin
+fp_groupwrappers_dir_mode: "0755"
 fp_groupwrappers_owner: root
 fp_groupwrappers_group: wheel
 fp_groupwrappers_mode: "0774"

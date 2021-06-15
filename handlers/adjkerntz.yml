@@ -3,5 +3,5 @@
 # update the local time CMOS clock and kernel machdep.adjkerntz
 # variable when timezone changes occur
 - name: adjust CMOS
-  command:
+  ansible.builtin.command:
     cmd: adjkerntz -a

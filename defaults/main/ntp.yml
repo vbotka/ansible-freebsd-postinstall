@@ -2,6 +2,7 @@
 fp_ntp: false
 fp_ntp_enable: false
 fp_ntp_conf_file: /etc/ntp.conf
+fp_ntp_conf_mode: "0644"
 fp_ntp_conf_template: ntp.conf.j2
 fp_ntp_config_options:
   - 'tos minclock 3 maxclock 6'

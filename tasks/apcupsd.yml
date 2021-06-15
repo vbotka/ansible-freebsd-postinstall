@@ -24,6 +24,7 @@
   ansible.builtin.file:
     state: directory
     path: "{{ fp_apcupsd_conf_dir }}"
+    mode: "{{ fp_apcupsd_conf_dir_mode }}"
   tags: fp_apcupsd_conf
 
 - name: "apcupsd: Configure apcupsd.conf"

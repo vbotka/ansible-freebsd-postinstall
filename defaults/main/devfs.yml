@@ -15,4 +15,5 @@ fp_devfs_rcconf:
 fp_devfs_conf_path: /etc/devfs.conf
 fp_devfs_conf: []
 fp_devfs_rules_path: /etc/devfs.rules
+fp_devfs_rules_mode: "0644"
 fp_devfs_rules: []

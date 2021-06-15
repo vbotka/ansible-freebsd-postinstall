@@ -1,5 +1,5 @@
 ---
 # login.conf
 - name: rebuild login_conf
-  command:
+  ansible.builtin.command:
     cmd: "/usr/bin/cap_mkdb /etc/login.conf"

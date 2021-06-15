@@ -13,7 +13,7 @@
   when: fp_sysctl_debug|bool
 
 - name: "sysctl: Register sysctl variables that are settable via loader"
-  command:
+  ansible.builtin.command:
     cmd: sysctl -aNT
   register: tmp_loader_vars
   changed_when: false

@@ -1,5 +1,5 @@
 ---
 # hostname
 - name: set hostname
-  command:
+  ansible.builtin.command:
     cmd: "hostname {{ rc_conf_hostname }}"

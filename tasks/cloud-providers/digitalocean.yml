@@ -1,9 +1,8 @@
 ---
 
 - name: "digitalocean: Debug"
-  when: fp_do_debug|bool
   vars:
-    msg: |
+    msg: |-
       ansible_distribution_major_version [{{ ansible_distribution_major_version }}]
       fp_do_default_user [{{ fp_do_default_user }}]
       fp_do_default_user_remove [{{ fp_do_default_user_remove }}]
@@ -14,7 +13,8 @@
       fp_do_rcconf
       {{ fp_do_rcconf|to_yaml }}
   ansible.builtin.debug:
-    msg: "{{ msg.split('\n')[:-1] }}"
+    msg: "{{ msg.split('\n') }}"
+  when: fp_do_debug|bool
   tags: [fp_do_debug, always]
 
 - name: "digitalocean: Configure /etc/rc.conf"
@@ -27,11 +27,11 @@
   tags: fp_do_rcconf
 
 - name: "digitalocean: Remove default user"
-  when: fp_do_default_user_remove|bool
   ansible.builtin.user:
     name: "{{ fp_do_default_user }}"
     state: absent
     remove: "{{ fp_do_default_user_remove_home }}"
+  when: fp_do_default_user_remove|bool
   tags: fp_do_defaul_user_remove
 
 # DO overwrites hostname from rc.conf

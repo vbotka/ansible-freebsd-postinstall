@@ -1,184 +1,230 @@
 ---
 # tasks for freebsd_postinstall
 
-- import_tasks: debug.yml
+- name: Import debug.yml
+  ansible.builtin.import_tasks: debug.yml
   when: fp_debug|bool
   tags: [fp_debug, always]
 
-- import_tasks: sanity.yml
+- name: Import sanity.yml
+  ansible.builtin.import_tasks: sanity.yml
   when: fp_sanity|bool
   tags: always
 
-- import_tasks: cloud-providers.yml
+- name: Import cloud-providers.yml
+  ansible.builtin.import_tasks: cloud-providers.yml
   tags: fp_cloud_proividers
 
-- import_tasks: loader.yml
+- name: Import loader.yml
+  ansible.builtin.import_tasks: loader.yml
   when: fp_loader|bool
   tags: fp_loader
 
-- import_tasks: sysctl.yml
+- name: Import sysctl.yml
+  ansible.builtin.import_tasks: sysctl.yml
   when: fp_sysctl|bool
   tags: fp_sysctl
 
-- import_tasks: tmpmfs.yml
+- name: Import tmpmfs.yml
+  ansible.builtin.import_tasks: tmpmfs.yml
   when: fp_tmpmfs|bool
   tags: fp_tmpmfs
 
-- import_tasks: devfs.yml
+- name: Import devfs.yml
+  ansible.builtin.import_tasks: devfs.yml
   when: fp_devfs|bool
   tags: fp_devfs
 
-- import_tasks: make.yml
+- name: Import make.yml
+  ansible.builtin.import_tasks: make.yml
   when: fp_make|bool
   tags: fp_make
 
-- import_tasks: swap.yml
+- name: Import swap.yml
+  ansible.builtin.import_tasks: swap.yml
   when: fp_swap|bool
   tags: fp_swap
 
-- meta: flush_handlers
+- name: Import flush_handlers
+  ansible.builtin.meta: flush_handlers
 
-- import_tasks: fstab.yml
+- name: Import fstab.yml
+  ansible.builtin.import_tasks: fstab.yml
   when: fp_fstab|bool
   tags: fp_fstab
 
-- import_tasks: mount-iso.yml
+- name: Import mount-iso.yml
+  ansible.builtin.import_tasks: mount-iso.yml
   when: fp_mount_iso|bool
   tags: fp_mount_iso
 
-- import_tasks: mount-img.yml
+- name: Import mount-img.yml
+  ansible.builtin.import_tasks: mount-img.yml
   when: fp_mount_img|bool
   tags: fp_mount_img
 
-- import_tasks: packages.yml
+- name: Import packages.yml
+  ansible.builtin.import_tasks: packages.yml
   when: fp_install|bool
   tags: fp_packages
 
-- import_tasks: copy.yml
+- name: Import copy.yml
+  ansible.builtin.import_tasks: copy.yml
   when: fp_copy|bool
   tags: fp_copy
 
-- import_tasks: libmap.yml
+- name: Import libmap.yml
+  ansible.builtin.import_tasks: libmap.yml
   when: fp_libmap|bool
   tags: fp_libmap
 
-- import_tasks: groups.yml
+- name: Import groups.yml
+  ansible.builtin.import_tasks: groups.yml
   when: fp_groups|bool
   tags: fp_groups
 
-- import_tasks: users.yml
+- name: Import users.yml
+  ansible.builtin.import_tasks: users.yml
   when: fp_users|bool
   tags: fp_users
 
-- import_tasks: passwords.yml
+- name: Import passwords.yml
+  ansible.builtin.import_tasks: passwords.yml
   when: fp_passwords|bool
   tags: fp_passwords
 
-- import_tasks: groupwrappers.yml
+- name: Import groupwrappers.yml
+  ansible.builtin.import_tasks: groupwrappers.yml
   when: fp_groupwrappers|bool
   tags: fp_groupwrappers
 
-- import_tasks: hostname.yml
+- name: Import hostname.yml
+  ansible.builtin.import_tasks: hostname.yml
   when: fp_hostname|bool
   tags: fp_hostname
 
-- import_tasks: hosts.yml
+- name: Import hosts.yml
+  ansible.builtin.import_tasks: hosts.yml
   when: fp_hosts|bool
   tags: fp_hosts
 
-- import_tasks: ssh.yml
+- name: Import ssh.yml
+  ansible.builtin.import_tasks: ssh.yml
   when: fp_ssh|bool
   tags: fp_ssh
 
-- import_tasks: sshd.yml
+- name: Import sshd.yml
+  ansible.builtin.import_tasks: sshd.yml
   when: fp_sshd|bool
   tags: fp_sshd
 
-- import_tasks: authorized-key.yml
+- name: Import authorized-key.yml
+  ansible.builtin.import_tasks: authorized-key.yml
   when: fp_authorized_key|bool
   tags: fp_authorized_key
 
-- import_tasks: timezone.yml
+- name: Import timezone.yml
+  ansible.builtin.import_tasks: timezone.yml
   when: fp_timezone|bool
   tags: fp_timezone
 
-- import_tasks: ntp.yml
+- name: Import ntp.yml
+  ansible.builtin.import_tasks: ntp.yml
   when: fp_ntp|bool
   tags: fp_ntp
 
-- import_tasks: ntpdate.yml
+- name: Import ntpdate.yml
+  ansible.builtin.import_tasks: ntpdate.yml
   when: fp_ntpdate|bool
   tags: fp_ntpdate
 
-- import_tasks: nfs.yml
+- name: Import nfs.yml
+  ansible.builtin.import_tasks: nfs.yml
   when: fp_nfs|bool
   tags: fp_nfs
 
-- import_tasks: nfsd.yml
+- name: Import nfsd.yml
+  ansible.builtin.import_tasks: nfsd.yml
   when: fp_nfsd|bool
   tags: fp_nfsd
 
-- import_tasks: smartd.yml
+- name: Import smartd.yml
+  ansible.builtin.import_tasks: smartd.yml
   when: fp_smartd|bool
   tags: fp_smartd
 
-- import_tasks: apcupsd.yml
+- name: Import apcupsd.yml
+  ansible.builtin.import_tasks: apcupsd.yml
   when: fp_apcupsd|bool
   tags: fp_apcupsd
 
-- import_tasks: hostapd.yml
+- name: Import hostapd.yml
+  ansible.builtin.import_tasks: hostapd.yml
   when: fp_hostapd|bool
   tags: fp_hostapd
 
-- import_tasks: procmail.yml
+- name: Import procmail.yml
+  ansible.builtin.import_tasks: procmail.yml
   when: fp_procmail|bool
   tags: fp_procmail
 
-- import_tasks: motd.yml
+- name: Import motd.yml
+  ansible.builtin.import_tasks: motd.yml
   when: fp_motd|bool
   tags: fp_motd
 
-- import_tasks: gitserver.yml
+- name: Import gitserver.yml
+  ansible.builtin.import_tasks: gitserver.yml
   when: fp_gitserver|bool
   tags: fp_gitserver
 
-- import_tasks: sudoers.yml
+- name: Import sudoers.yml
+  ansible.builtin.import_tasks: sudoers.yml
   when: fp_sudoers|bool
   tags: fp_sudoers
 
-- import_tasks: cron.yml
+- name: Import cron.yml
+  ansible.builtin.import_tasks: cron.yml
   when: fp_cron|bool
   tags: fp_cron
 
-- import_tasks: resolvconf.yml
+- name: Import resolvconf.yml
+  ansible.builtin.import_tasks: resolvconf.yml
   when: fp_resolvconf|bool
   tags: fp_resolvconf
 
-- import_tasks: aliases.yml
+- name: Import aliases.yml
+  ansible.builtin.import_tasks: aliases.yml
   when: fp_aliases|bool
   tags: fp_aliases
 
-- import_tasks: periodic.yml
+- name: Import periodic.yml
+  ansible.builtin.import_tasks: periodic.yml
   when: fp_periodic|bool
   tags: fp_periodic
 
-- import_tasks: wpasupplicant.yml
+- name: Import wpasupplicant.yml
+  ansible.builtin.import_tasks: wpasupplicant.yml
   when: fp_wpasupplicant|bool
   tags: fp_wpasupplicant
 
-- import_tasks: linux.yml
+- name: Import linux.yml
+  ansible.builtin.import_tasks: linux.yml
   when: fp_linux|bool
   tags: fp_linux
 
-- import_tasks: login.yml
+- name: Import login.yml
+  ansible.builtin.import_tasks: login.yml
   when: fp_login|bool
   tags: fp_login
 
-- import_tasks: snmpd.yml
+- name: Import snmpd.yml
+  ansible.builtin.import_tasks: snmpd.yml
   when: fp_snmpd|bool
   tags: fp_snmpd
 
-- import_tasks: qemu.yml
+- name: Import qemu.yml
+  ansible.builtin.import_tasks: qemu.yml
   when: fp_qemu|bool
   tags: fp_qemu
 

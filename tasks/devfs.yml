@@ -14,6 +14,7 @@
          fp_devfs_conf
          {{ fp_devfs_conf|to_yaml }}
          fp_devfs_rules_path [{{ fp_devfs_rules_path }}]
+         fp_devfs_rules_mode [{{ fp_devfs_rules_mode }}]
          fp_devfs_rules
          {{ fp_devfs_rules|to_yaml }}
   ansible.builtin.debug:
@@ -22,7 +23,7 @@
   tags: [fp_devfs_debug, always]
 
 - name: "devfs: Shell: /etc/rc.d/devfs rcvar | grep ^devfs*"
-  shell:
+  ansible.builtin.shell:
     cmd: >
       /etc/rc.d/devfs rcvar | grep ^devfs*
   register: result
@@ -96,6 +97,7 @@
   community.general.ini_file:
     path: "{{ fp_devfs_rules_path }}"
     create: true
+    mode: "{{ fp_devfs_rules_mode }}"
     allow_no_value: true
     owner: "{{ fp_devfs_owner }}"
     group: "{{ fp_devfs_group }}"

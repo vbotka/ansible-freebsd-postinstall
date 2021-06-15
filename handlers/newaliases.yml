@@ -1,5 +1,5 @@
 ---
 # newaliases
 - name: newaliases
-  command:
-    cmd: "/usr/bin/newaliases"
+  ansible.builtin.command:
+    cmd: /usr/bin/newaliases

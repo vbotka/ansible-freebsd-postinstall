@@ -3,6 +3,7 @@
 - name: "users: Debug"
   vars:
     msg: |-
+      fp_users_debug_classified [{{ fp_users_debug_classified }}]
       fp_users_conf
       {{ fp_users_conf|to_nice_yaml }}
   ansible.builtin.debug:
@@ -48,6 +49,7 @@
   loop: "{{ fp_users_conf }}"
   loop_control:
     label: "{{ item.name }}"
+  no_log: "{{ not fp_users_debug_classified }}"
 
 # EOF
 ...

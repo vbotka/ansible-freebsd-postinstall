@@ -17,13 +17,14 @@
   ansible.builtin.file:
     state: directory
     path: "{{ item.mount }}"
+    mode: "{{ item.dirmode|default('0755') }}"
   loop: "{{ fp_mount_entries }}"
   when:
     - _fp_mount_points_create|bool  # Note 2.
     - item.state|default("mounted") == "mounted"
 
 - name: "mount-{{ _fp_mount_task }}: Attach memory disks"
-  include_tasks:
+  ansible.builtin.include_tasks:
     file: fn/mdconfig-attach-disk.yml
   loop: "{{ _fp_mount_entries }}"
   when: item.state|default("mounted") == "mounted"
@@ -71,7 +72,7 @@
   when: _fp_mount_debug|bool
 
 - name: "mount-{{ _fp_mount_task }}: Detach memory disks"
-  include_tasks:
+  ansible.builtin.include_tasks:
     file: fn/mdconfig-detach-disk.yml
   loop: "{{ _fp_mount_entries }}"
   when: item.state|default("mounted") == "unmounted"
