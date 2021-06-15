@@ -7,5 +7,5 @@ fp_sshd_conf_file: /etc/ssh/sshd_config
 fp_sshd_passwordauthentication: "no"
 fp_sshd_challengeresponseauthentication: "no"
 fp_sshd_conf:
-  - {key: PasswordAuthentication, value: "{{ sshd_passwordauthentication }}"}
-  - {key: ChallengeResponseAuthentication, value: "{{ sshd_challengeresponseauthentication }}"}
+  - {key: PasswordAuthentication, value: "{{ fp_sshd_passwordauthentication }}"}
+  - {key: ChallengeResponseAuthentication, value: "{{ fp_sshd_challengeresponseauthentication }}"}
