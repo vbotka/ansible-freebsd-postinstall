@@ -11,5 +11,6 @@ fp_procmail_pmdir: "$HOME/.procmail"
 fp_procmail_logfile: "$PMDIR/pm.log"
 fp_procmail_lockfile: "$PMDIR/.lockfile"
 fp_procmail_sendmail: /usr/sbin/sendmail
+fp_procmail_forwarders_rebuild: false
 fp_procmail_forwarders: []
 fp_procmail_includerc: []

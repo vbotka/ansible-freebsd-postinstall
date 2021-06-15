@@ -1,6 +1,7 @@
 ---
 
-- import_tasks: cloud-providers/digitalocean.yml
+- name: Import cloud-providers/digitalocean.yml
+  import_tasks: cloud-providers/digitalocean.yml
   when: digitalocean|bool
   tags: fp_do
 

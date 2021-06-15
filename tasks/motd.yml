@@ -4,6 +4,7 @@
   ansible.builtin.template:
     src: "{{ fp_motd_conf_template }}"
     dest: "{{ fp_motd_conf_file }}"
+    mode: "{{ fp_motd_conf_mode }}"
     backup: "{{ fp_backup }}"
   tags: fp_motd_create
 

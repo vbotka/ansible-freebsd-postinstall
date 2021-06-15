@@ -2,5 +2,6 @@
 fp_motd: false
 fp_update_motd: false
 fp_motd_conf_file: /etc/motd
+fp_motd_conf_mode: "0644"
 fp_motd_conf_template: motd.j2
 fp_motd_message: "Welcome to Ansible FreeBSD postinstall!"

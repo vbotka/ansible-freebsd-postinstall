@@ -32,7 +32,7 @@
 # avoid double-entries
 
 - name: "cron: Rename present crontab entries"
-  include_tasks:
+  ansible.builtin.include_tasks:
     file: fn/cron-rename-entry.yml
   loop: "{{ fp_cron_tab }}"
   tags: fp_cron_rename_entries

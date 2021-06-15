@@ -16,7 +16,7 @@
 - name: "swap: Enable swap and add entry in /etc/fstab"
   block:
     - name: "swap: Create swapfile {{ fp_swap_file }}"
-      shell:
+      ansible.builtin.shell:
         cmd: >
           sh -c
           'if [ ! -e {{ fp_swap_file }} ]; then
@@ -45,7 +45,7 @@
 # expected. Instead of adding the src all swap mount points present in
 # the fstab are replaced with src.
     - name: "swap: Change swapfile {{ fp_swap_file }}"
-      shell:
+      ansible.builtin.shell:
         cmd: >
           sh -c
           'if [ -e {{ fp_swap_file }} ] &&

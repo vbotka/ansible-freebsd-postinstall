@@ -1,12 +1,13 @@
 ---
 galaxy_info:
+  namespace: vbotka
   role_name: freebsd_postinstall
   author: Vladimir Botka
   description: Postinstallation configuration of FreeBSD.
   company: https://botka.link
   github_branch: master
   license: BSD
-  min_ansible_version: 2.9
+  min_ansible_version: "2.10"
   platforms:
     - name: FreeBSD
       versions:

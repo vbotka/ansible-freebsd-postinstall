@@ -33,7 +33,7 @@
   tags: [fp_packages_debug, always]
 
 - name: "packages: Install packages"
-  include_tasks:
+  ansible.builtin.include_tasks:
     file: packages-install.yml
   loop: "{{ fp_packages }}"
   when: item.enabled

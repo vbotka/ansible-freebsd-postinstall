@@ -24,6 +24,7 @@
   ansible.builtin.template:
     src: "{{ fp_ntp_conf_template }}"
     dest: "{{ fp_ntp_conf_file }}"
+    mode: "{{ fp_ntp_conf_mode }}"
     backup: "{{ fp_backup }}"
   notify: restart ntpd
   tags: fp_ntp_conf

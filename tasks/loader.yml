@@ -20,7 +20,7 @@
   tags: [fp_loader_debug, always]
 
 - name: "loader: Register sysctl variables that are settable via loader"
-  command:
+  ansible.builtin.command:
     cmd: sysctl -aNT
   register: tmp_loader_vars
   changed_when: false
@@ -72,7 +72,7 @@
   notify: loader message reboot
 
 - name: "loader: Load modules"
-  shell:
+  ansible.builtin.shell:
     cmd: >
       kldstat -q -n {{ item }} || kldload -n {{ item }}
   loop: "{{ fp_loader_conf_modules }}"

@@ -1,5 +1,5 @@
 ---
 # resolvconf
 - name: resolvconf apply
-  command:
+  ansible.builtin.command:
     cmd: resolvconf -u

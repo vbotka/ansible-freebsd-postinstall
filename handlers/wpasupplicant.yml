@@ -4,11 +4,11 @@
   ansible.builtin.service: name="netif" state="restarted"
 
 - name: reconfigure wpa_supplicant
-  shell:
+  ansible.builtin.shell:
     cmd: >
       [ -S {{ fp_wpasupplicant_conf_ctrl_interface }}/{{ item.item.dev }} ] &&
       wpa_cli -p {{ fp_wpasupplicant_conf_ctrl_interface }} -i {{ item.item.dev }} reconfigure  ||
       exit 0
   when: item.changed
   loop: "{{ fp_wpa_supplicant_conf_changes }}"
-  # TODO: Wait for OK result. Error: 'RECONFIGURE' command timed out.
+# TODO: Wait for OK result. Error: 'RECONFIGURE' command timed out.

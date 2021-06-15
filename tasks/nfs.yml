@@ -29,7 +29,7 @@
 
 # Note: The module service_facts doesn't work in FreeBSD.
 - name: "nfs: Service state info"
-  include_role:
+  ansible.builtin.include_role:
     name: vbotka.ansible_lib
     tasks_from: al_bsd_service_facts
     apply:
@@ -66,7 +66,7 @@
   tags: fp_nfs_services
 
 - name: "nfs: Enable services"
-  include_tasks:
+  ansible.builtin.include_tasks:
     file: fn/rcconf-item.yml
   loop:
     - label: "nfs: Enable and start nfs client"
@@ -87,7 +87,7 @@
   tags: fp_nfs_enable
 
 - name: "nfsd: Disable services"
-  include_tasks:
+  ansible.builtin.include_tasks:
     file: fn/rcconf-item.yml
   loop:
     - label: "nfs: Disable and stop nfs client"

@@ -20,7 +20,7 @@
     _fp_mount_debug: "{{ fp_mount_iso_debug }}"
 
 - name: "mount-iso: Import mount-vnode.yml"
-  import_tasks: mount-vnode.yml
+  ansible.builtin.import_tasks: mount-vnode.yml
 
 # EOF
 ...
