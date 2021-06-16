@@ -47,7 +47,7 @@ freebsd_install_method: packages
 #freebsd_use_packages: true
 ```
 
-Optionaly the packages can be built by [freebsd_poudriere](https://galaxy.ansible.com/vbotka/freebsd_poudriere) and installed by [freebsd_packages](https://galaxy.ansible.com/vbotka/freebsd_packages)
+Optionally the packages can be built by [freebsd_poudriere](https://galaxy.ansible.com/vbotka/freebsd_poudriere) and installed by [freebsd_packages](https://galaxy.ansible.com/vbotka/freebsd_packages)
 
 
 ## freebsd_use_packages
@@ -69,10 +69,13 @@ freebsd_use_packages: true
 ansible host -e 'ansible_shell_type=csh ansible_shell_executable=/bin/csh' -a 'sudo pw usermod user -s /bin/sh'
 ```
 
-2) Install role
+2) Install the roles and collections
 
 ```
-ansible-galaxy install vbotka.freebsd_postinstall
+ansible-galaxy role install vbotka.freebsd_postinstall
+ansible-galaxy role install vbotka.ansible_lib
+ansible-galaxy collection install ansible.posix
+ansible-galaxy collection install community.general
 ```
 
 3) Fit variables
@@ -149,7 +152,7 @@ To solve this problem apply the path below
 - [git - FreeBSD forum: How to setup a Git repository](https://forums.freebsd.org/threads/10810/)
 - [git - Getting Git on a Server](https://git-scm.com/book/ch4-2.html)
 - [hostapd - Atheros wireless driver support](https://wiki.freebsd.org/dev/ath%284%29)
-- [login.conf - FreeBSD nadbook: 13.13. Resource Limits](https://www.freebsd.org/doc/handbook/security-resourcelimits.html)
+- [login.conf - FreeBSD handbook: 13.13. Resource Limits](https://www.freebsd.org/doc/handbook/security-resourcelimits.html)
 - [linux - FreeBSD handbook: 10. Linux Binary Compatibility](https://www.freebsd.org/doc/handbook/linuxemu.html)
 - [linprocfs - FreeBSD man](https://www.freebsd.org/cgi/man.cgi?linprocfs(5))
 - [loader.conf - FreeBSD handbook: FreeBSD Boot Process](https://www.freebsd.org/doc/handbook/boot-introduction.html)
