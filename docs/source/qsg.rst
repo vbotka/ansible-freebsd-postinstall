@@ -265,19 +265,19 @@ data (10)
    shell> cat host_vars/test_14.example.com/fp-sshd.yml 
    fp_sshd: true
    fp_sshd_enable: true
-   sshd_PasswordAuthentication: "no"
-   sshd_ChallengeResponseAuthentication: "no"
-   sshd_PermitRootLogin: "no"
-   sshd_PermitTunnel: "no"
-   sshd_AllowTcpForwarding: "yes"
-   sshd_X11Forwarding: "no"
+   fp_sshd_passwordauthentication: "no"
+   fp_sshd_challengeresponseauthentication: "no"
+   fp_sshd_permitrootlogin: "no"
+   fp_sshd_permittunnel: "no"
+   fp_sshd_allowtcpforwarding: "yes"
+   fp_sshd_x11forwarding: "no"
    fp_sshd_conf:
-     - {key: PasswordAuthentication, value: "{{ sshd_PasswordAuthentication }}"}
-     - {key: ChallengeResponseAuthentication, value: "{{ sshd_ChallengeResponseAuthentication }}"}
-     - {key: PermitRootLogin, value: "{{ sshd_PermitRootLogin }}"}
-     - {key: PermitTunnel, value: "{{ sshd_PermitTunnel }}"}
-     - {key: AllowTcpForwarding, value: "{{ sshd_AllowTcpForwarding }}"}
-     - {key: X11Forwarding, value: "{{ sshd_X11Forwarding }}"}
+     - {key: PasswordAuthentication, value: "{{ fp_sshd_passwordauthentication }}"}
+     - {key: ChallengeResponseAuthentication, value: "{{ fp_sshd_challengeresponseauthentication }}"}
+     - {key: PermitRootLogin, value: "{{ fp_sshd_permitrootlogin }}"}
+     - {key: PermitTunnel, value: "{{ fp_sshd_permittunnel }}"}
+     - {key: AllowTcpForwarding, value: "{{ fp_sshd_allowtcpforwarding }}"}
+     - {key: X11Forwarding, value: "{{ fp_sshd_x11forwarding }}"}
      - {key: UseBlacklist, value: "yes"}
 
 Configure *sshd*

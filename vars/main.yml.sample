@@ -276,19 +276,19 @@
 
 # fp_sshd: true
 # fp_sshd_enable: true
-# sshd_PasswordAuthentication: "no"
-# sshd_ChallengeResponseAuthentication: "no"
-# sshd_PermitRootLogin: "no"
-# sshd_PermitTunnel: "no"
-# sshd_AllowTcpForwarding: "yes"
-# sshd_X11Forwarding: "no"
+# sshd_passwordauthentication: "no"
+# sshd_challengeresponseauthentication: "no"
+# sshd_permitrootlogin: "no"
+# sshd_permittunnel: "no"
+# sshd_allowtcpforwarding: "yes"
+# sshd_x11forwarding: "no"
 # fp_sshd_conf:
-#   - {key: PasswordAuthentication, value: "{{ sshd_PasswordAuthentication }}"}
-#   - {key: ChallengeResponseAuthentication, value: "{{ sshd_ChallengeResponseAuthentication }}"}
-#   - {key: PermitRootLogin, value: "{{ sshd_PermitRootLogin }}"}
-#   - {key: PermitTunnel, value: "{{ sshd_PermitTunnel }}"}
-#   - {key: AllowTcpForwarding, value: "{{ sshd_AllowTcpForwarding }}"}
-#   - {key: X11Forwarding, value: "{{ sshd_X11Forwarding }}"}
+#   - {key: PasswordAuthentication, value: "{{ sshd_passwordauthentication }}"}
+#   - {key: ChallengeResponseAuthentication, value: "{{ sshd_challengeresponseauthentication }}"}
+#   - {key: PermitRootLogin, value: "{{ sshd_permitrootlogin }}"}
+#   - {key: PermitTunnel, value: "{{ sshd_permittunnel }}"}
+#   - {key: AllowTcpForwarding, value: "{{ sshd_allowtcpforwarding }}"}
+#   - {key: X11Forwarding, value: "{{ sshd_x11forwarding }}"}
 #   - {key: UseBlacklist, value: "yes"}
 
 # fp_sudoers: true
