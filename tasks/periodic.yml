@@ -7,7 +7,7 @@
       fp_periodic_conf_local
       {{ fp_periodic_conf_local|to_yaml }}
   ansible.builtin.debug:
-    msg: "{{ msg.split('\n') }}"
+    msg: "{{ '{}'.format(msg) }}"
   when: fp_periodic_debug|bool
   tags: [fp_periodic_debug, always]
 

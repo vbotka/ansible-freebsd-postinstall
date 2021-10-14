@@ -7,7 +7,7 @@
       fp_mount_img_entries
       {{ fp_mount_img_entries|to_nice_yaml }}
   ansible.builtin.debug:
-    msg: "{{ msg.split('\n') }}"
+    msg: "{{ '{}'.format(msg) }}"
   when: fp_mount_img_debug|bool
   tags: [fp_mount_img_debug, always]
 

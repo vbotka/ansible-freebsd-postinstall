@@ -7,7 +7,7 @@
       fp_ssh_conf
       {{ fp_ssh_conf|to_yaml }}
   ansible.builtin.debug:
-    msg: "{{ msg.split('\n') }}"
+    msg: "{{ '{}'.format(msg) }}"
   when: fp_ssh_debug|bool
   tags: [fp_ssh_debug, always]
 

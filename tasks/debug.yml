@@ -74,7 +74,7 @@
          fp_rpc_lockd_enable [{{ fp_rpc_lockd_enable }}]
          fp_rpc_statd_enable [{{ fp_rpc_statd_enable }}]
   ansible.builtin.debug:
-    msg: "{{ msg.split('\n') }}"
+    msg: "{{ '{}'.format(msg) }}"
 
 # EOF
 ...

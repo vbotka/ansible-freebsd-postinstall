@@ -9,7 +9,7 @@
       fp_swap_size [{{ fp_swap_size|default("UNDEFINED") }}]
       fp_swap_stsize [{{ fp_swap_stsize|default("UNDEFINED") }}]
   ansible.builtin.debug:
-    msg: "{{ msg.split('\n') }}"
+    msg: "{{ '{}'.format(msg) }}"
   when: fp_swap_debug|bool
   tags: [fp_swap_debug, always]
 

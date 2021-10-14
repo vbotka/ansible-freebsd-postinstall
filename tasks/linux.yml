@@ -11,7 +11,7 @@
       fp_linux_lib
       {{ fp_linux_lib|to_yaml }}
   ansible.builtin.debug:
-    msg: "{{ msg.split('\n') }}"
+    msg: "{{ '{}'.format(msg) }}"
   when: fp_linux_debug|bool
   tags: [fp_linux_debug, always]
 

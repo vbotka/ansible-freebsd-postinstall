@@ -11,7 +11,7 @@
       fp_make_conf
       {{ fp_make_conf|to_nice_yaml }}
   ansible.builtin.debug:
-    msg: "{{ msg.split('\n') }}"
+    msg: "{{ '{}'.format(msg) }}"
   when: fp_make_debug|bool
   tags: [fp_make_debug, always]
 

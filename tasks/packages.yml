@@ -28,7 +28,7 @@
          {{ lookup('vars', 'pkg_dict_' ~ ansible_architecture)|
             sort(attribute='pkglist')|to_yaml }}
   ansible.builtin.debug:
-    msg: "{{ msg.split('\n') }}"
+    msg: "{{ '{}'.format(msg) }}"
   when: fp_packages_debug|bool
   tags: [fp_packages_debug, always]
 

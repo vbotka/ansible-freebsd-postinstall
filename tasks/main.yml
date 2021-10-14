@@ -4,7 +4,7 @@
 - name: Import debug.yml
   ansible.builtin.import_tasks: debug.yml
   when: fp_debug|bool
-  tags: [fp_debug, always]
+  tags: fp_debug
 
 - name: Import sanity.yml
   ansible.builtin.import_tasks: sanity.yml

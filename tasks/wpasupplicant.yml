@@ -28,7 +28,7 @@
       {{ fp_wpasupplicant_conf|to_yaml }}
       {% endif %}
   ansible.builtin.debug:
-    msg: "{{ msg.split('\n') }}"
+    msg: "{{ '{}'.format(msg) }}"
   when: fp_wpasupplicant_debug|bool
   tags: [fp_wpasupplicant_debug, always]
 

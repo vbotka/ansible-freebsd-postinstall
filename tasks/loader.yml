@@ -15,7 +15,7 @@
       fp_sysctl_conf
       {{ fp_sysctl_conf|to_yaml }}
   ansible.builtin.debug:
-    msg: "{{ msg.split('\n') }}"
+    msg: "{{ '{}'.format(msg) }}"
   when: fp_loader_debug|bool
   tags: [fp_loader_debug, always]
 

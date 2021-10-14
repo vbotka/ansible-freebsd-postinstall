@@ -9,7 +9,7 @@
       _fp_mount_entries
       {{ _fp_mount_entries|to_nice_yaml }}
   ansible.builtin.debug:
-    msg: "{{ msg.split('\n') }}"
+    msg: "{{ '{}'.format(msg) }}"
   when: fp_mount_vnode_debug|default(false)|bool
 
 # mounted - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

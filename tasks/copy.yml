@@ -33,7 +33,7 @@
          fp_synchronize_times [{{ fp_synchronize_times }}]
          fp_synchronize_verify_host [{{ fp_synchronize_verify_host }}]
   ansible.builtin.debug:
-    msg: "{{ msg.split('\n') }}"
+    msg: "{{ '{}'.format(msg) }}"
   when: fp_copy_debug|bool
   tags: [fp_copy_debug, always]
 

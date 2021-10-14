@@ -47,7 +47,7 @@
          fp_nfsd_service_paths
          {{ fp_nfsd_service_paths|to_nice_yaml }}
   ansible.builtin.debug:
-    msg: "{{ msg.split('\n') }}"
+    msg: "{{ '{}'.format(msg) }}"
   when: fp_nfsd_debug|bool
   tags: [fp_nfsd_debug, always]
 
