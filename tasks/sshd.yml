@@ -8,7 +8,7 @@
          fp_sshd_conf
          {{ fp_sshd_conf|to_yaml }}
   ansible.builtin.debug:
-    msg: "{{ msg.split('\n') }}"
+    msg: "{{ '{}'.format(msg) }}"
   when: fp_sshd_debug|bool
   tags: [fp_sshd_debug, always]
 

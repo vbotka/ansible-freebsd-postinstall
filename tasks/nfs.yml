@@ -23,7 +23,7 @@
          fp_nfs_service_paths
          {{ fp_nfs_service_paths|to_nice_yaml }}
   ansible.builtin.debug:
-    msg: "{{ msg.split('\n') }}"
+    msg: "{{ '{}'.format(msg) }}"
   when: fp_nfs_debug|bool
   tags: [fp_nfs_debug, always]
 

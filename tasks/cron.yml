@@ -14,7 +14,7 @@
       fp_cron_tab_system
       {{ fp_cron_tab_system|to_nice_yaml }}
   ansible.builtin.debug:
-    msg: "{{ msg.split('\n') }}"
+    msg: "{{ '{}'.format(msg) }}"
   when: fp_cron_debug|bool
   tags: [fp_cron_debug, always]
 

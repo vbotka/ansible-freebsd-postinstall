@@ -7,7 +7,7 @@
       fp_users_conf
       {{ fp_users_conf|to_nice_yaml }}
   ansible.builtin.debug:
-    msg: "{{ msg.split('\n') }}"
+    msg: "{{ '{}'.format(msg) }}"
   when: fp_users_debug|bool
   tags: [fp_users_debug, always]
 

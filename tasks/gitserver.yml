@@ -9,7 +9,7 @@
 - name: "gitserver: Add {{ fp_gitserver_owner }} user"
   ansible.builtin.user:
     name: "{{ fp_gitserver_owner }}"
-    uid: "{ fp_gitserver_owner_uid|default(omit) }}"
+    uid: "{{ fp_gitserver_owner_uid|default(omit) }}"
     shell: "{{ fp_gitserver_owner_shell|default(omit) }}"
     home: "{{ fp_gitserver_owner_home|default(omit) }}"
   tags: fp_gitserver_owner

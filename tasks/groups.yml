@@ -6,7 +6,7 @@
       fp_groups_conf
       {{ fp_groups_conf|to_nice_yaml }}
   ansible.builtin.debug:
-    msg: "{{ msg.split('\n') }}"
+    msg: "{{ '{}'.format(msg) }}"
   when: fp_groups_debug|bool
   tags: [fp_groups_debug, always]
 

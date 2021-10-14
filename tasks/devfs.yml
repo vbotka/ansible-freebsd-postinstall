@@ -18,7 +18,7 @@
          fp_devfs_rules
          {{ fp_devfs_rules|to_yaml }}
   ansible.builtin.debug:
-    msg: "{{ msg.split('\n') }}"
+    msg: "{{ '{}'.format(msg) }}"
   when: fp_devfs_debug|bool
   tags: [fp_devfs_debug, always]
 
@@ -41,7 +41,7 @@
           Put the following line into the file /etc/rc.d/devfs
           rcvar="devfs_load_rulesets"
     - name: "devfs: Block: End of play."
-      meta: end_play
+      ansible.builtin.meta: end_play
   when:
     - not ansible_check_mode
     - result|default({}) is failed

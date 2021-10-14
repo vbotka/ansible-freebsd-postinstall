@@ -21,7 +21,7 @@
       getent_passwd keys
       {{ getent_passwd.keys()|list|sort|to_yaml }}
   ansible.builtin.debug:
-    msg: "{{ msg.split('\n') }}"
+    msg: "{{ '{}'.format(msg) }}"
   when: fp_authorized_key_debug|bool
   tags: [fp_authorized_key_debug, always]
 
