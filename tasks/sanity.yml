@@ -2,13 +2,13 @@
 
 - name: "sanity: Debug"
   ansible.builtin.debug:
-    msg: |
-      ansible_run_tags
-      {{ ansible_run_tags|to_yaml }}
-      ansible_skip_tags
-      {{ ansible_skip_tags|to_yaml }}
-      fp_sanity_tags
-      {{ fp_sanity_tags|to_yaml }}
+    msg: |-
+      ansible_run_tags:
+        {{ ansible_run_tags|to_yaml }}
+      ansible_skip_tags:
+        {{ ansible_skip_tags|to_yaml }}
+      fp_sanity_tags:
+        {{ fp_sanity_tags|to_yaml }}
   when: fp_sanity_debug|bool
   tags: fp_sanity_debug
 
