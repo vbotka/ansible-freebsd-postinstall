@@ -3,12 +3,12 @@
 - name: "groups: Debug"
   vars:
     msg: |-
-      fp_groups_conf
-      {{ fp_groups_conf|to_nice_yaml }}
+      fp_groups_conf:
+        {{ fp_groups_conf|to_nice_yaml|indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
   when: fp_groups_debug|bool
-  tags: [fp_groups_debug, always]
+  tags: fp_groups_debug
 
 - name: "groups: Manage groups"
   ansible.builtin.group:
