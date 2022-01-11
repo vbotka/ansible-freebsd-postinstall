@@ -3,12 +3,12 @@
 - name: "tmpmfs: Debug"
   vars:
     msg: |-
-      fp_tmpmfs_rcconf
-      {{ fp_tmpmfs_rcconf|to_yaml }}
+      fp_tmpmfs_rcconf:
+        {{ fp_tmpmfs_rcconf|to_yaml|indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
   when: fp_tmpmfs_debug|bool
-  tags: [fp_tmpmfs_debug, always]
+  tags: fp_tmpmfs_debug
 
 - name: "tmpmfs: Configure tmpmfs"
   ansible.builtin.lineinfile:
