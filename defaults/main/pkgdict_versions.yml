@@ -1,13 +1,13 @@
 ---
 
 apache_version: "24"
-apache_php_version: "72"
-bsd_php_version: "72"
+apache_php_version: "74"
+bsd_php_version: "74"
 bsd_dhcp_version: "44"
-bsd_bind_version: "911"
-bsd_mysql_version: "57"
-bsd_python_version: "37"
-bsd_linux_version: "c6"
+bsd_bind_version: "916"
+bsd_mysql_version: "80"
+bsd_python_version: "38"
+bsd_linux_version: "c7"
 
 # Make default versions
 bsd_make_python_version: "{{ bsd_python_version[0] ~ '.' ~ bsd_python_version[1] }}"
