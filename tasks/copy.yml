@@ -3,39 +3,35 @@
 - name: "copy: Debug"
   vars:
     msg: |-
-         fp_unarch_default [{{ fp_unarch_default }}]
-         fp_unarch_optional [{{ fp_unarch_optional }}]
-
-         fp_synchronize_default
-         {{ fp_synchronize_default|to_nice_yaml }}
-         fp_synchronize_optional
-         {{ fp_synchronize_optional|to_nice_yaml }}
-
-         fp_copy_dir [{{ fp_copy_dir }}]
-         fp_copy_dir_default [{{ fp_copy_dir_default }}]
-         fp_copy_arch_defaul [{{ fp_copy_arch_default }}]
-         fp_copy_dir_optional [{{ fp_copy_dir_optional }}]
-         fp_copy_arch_optional [{{ fp_copy_arch_optional }}]
-
-         fp_unarchive_keep_newer [{{ fp_unarchive_keep_newer }}]
-
-         fp_synchronize_delete [{{ fp_synchronize_delete }}]
-         fp_synchronize_archive [{{ fp_synchronize_archive }}]
-         fp_synchronize_checksum [{{ fp_synchronize_checksum }}]
-         fp_synchronize_compress [{{ fp_synchronize_compress }}]
-         fp_synchronize_copy_links [{{ fp_synchronize_copy_links }}]
-         fp_synchronize_dirs [{{ fp_synchronize_dirs }}]
-         fp_synchronize_existing_only [{{ fp_synchronize_existing_only }}]
-         fp_synchronize_group [{{ fp_synchronize_group }}]
-         fp_synchronize_mode [{{ fp_synchronize_mode }}]
-         fp_synchronize_owner [{{ fp_synchronize_owner }}]
-         fp_synchronize_perms [{{ fp_synchronize_perms }}]
-         fp_synchronize_times [{{ fp_synchronize_times }}]
-         fp_synchronize_verify_host [{{ fp_synchronize_verify_host }}]
+         fp_unarch_default: {{ fp_unarch_default }}
+         fp_unarch_optional: {{ fp_unarch_optional }}
+         fp_synchronize_default:
+           {{ fp_synchronize_default|to_nice_yaml|indent(2) }}
+         fp_synchronize_optional:
+           {{ fp_synchronize_optional|to_nice_yaml|indent(2) }}
+         fp_copy_dir: {{ fp_copy_dir }}
+         fp_copy_dir_default: {{ fp_copy_dir_default }}
+         fp_copy_arch_defaul: {{ fp_copy_arch_default }}
+         fp_copy_dir_optional: {{ fp_copy_dir_optional }}
+         fp_copy_arch_optional: {{ fp_copy_arch_optional }}
+         fp_unarchive_keep_newer: {{ fp_unarchive_keep_newer }}
+         fp_synchronize_delete: {{ fp_synchronize_delete }}
+         fp_synchronize_archive: {{ fp_synchronize_archive }}
+         fp_synchronize_checksum: {{ fp_synchronize_checksum }}
+         fp_synchronize_compress: {{ fp_synchronize_compress }}
+         fp_synchronize_copy_links: {{ fp_synchronize_copy_links }}
+         fp_synchronize_dirs: {{ fp_synchronize_dirs }}
+         fp_synchronize_existing_only: {{ fp_synchronize_existing_only }}
+         fp_synchronize_group: {{ fp_synchronize_group }}
+         fp_synchronize_mode: {{ fp_synchronize_mode }}
+         fp_synchronize_owner: {{ fp_synchronize_owner }}
+         fp_synchronize_perms: {{ fp_synchronize_perms }}
+         fp_synchronize_times: {{ fp_synchronize_times }}
+         fp_synchronize_verify_host: {{ fp_synchronize_verify_host }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
   when: fp_copy_debug|bool
-  tags: [fp_copy_debug, always]
+  tags: fp_copy_debug
 
 # Sync default
 - name: "copy: Synchronize default files {{ fp_copy_dir }}/{{ fp_copy_dir_default }}"
