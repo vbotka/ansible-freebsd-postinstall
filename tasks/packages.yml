@@ -3,38 +3,33 @@
 - name: "packages: Debug"
   vars:
     msg: |-
-         freebsd_install_method [{{ freebsd_install_method }}]
-         freebsd_use_packages [{{ freebsd_use_packages }}]
-         freebsd_install_retries [{{ freebsd_install_retries }}]
-         freebsd_install_delay [{{ freebsd_install_delay }}]
-
-         fp_install [{{ fp_install }}]
-
-         fp_pkg_autoremove [{{ fp_pkg_autoremove|default('UNDEFINED') }}]
-         fp_pkg_cached [{{ fp_pkg_cached|default('UNDEFINED') }}]
-         fp_pkg_chroot [{{ fp_pkg_chroot|default('UNDEFINED') }}]
-         fp_pkg_jail [{{ fp_pkg_jail|default('UNDEFINED') }}]
-         fp_pkg_pkgsite [{{ fp_pkg_pkgsite|default('UNDEFINED') }}]
-         fp_pkg_rootdir [{{ fp_pkg_rootdir|default('UNDEFINED') }}]
-         fp_pkg_state [{{ fp_pkg_state|default('UNDEFINED') }}]
-
-         fp_packages
-         {{ fp_packages|sort(attribute='list')|to_yaml }}
-         fp_links
-         {{ fp_links|to_yaml }}
-
-         ansible_architecture [{{ ansible_architecture }}]
-         pkg_dict_{{ ansible_architecture }}
-         {{ lookup('vars', 'pkg_dict_' ~ ansible_architecture)|
-            sort(attribute='pkglist')|to_yaml }}
+         freebsd_install_method: {{ freebsd_install_method }}
+         freebsd_use_packages: {{ freebsd_use_packages }}
+         freebsd_install_retries: {{ freebsd_install_retries }}
+         freebsd_install_delay: {{ freebsd_install_delay }}
+         fp_install: {{ fp_install }}
+         fp_pkg_autoremove: {{ fp_pkg_autoremove|default('UNDEFINED') }}
+         fp_pkg_cached: {{ fp_pkg_cached|default('UNDEFINED') }}
+         fp_pkg_chroot: {{ fp_pkg_chroot|default('UNDEFINED') }}
+         fp_pkg_jail: {{ fp_pkg_jail|default('UNDEFINED') }}
+         fp_pkg_pkgsite: {{ fp_pkg_pkgsite|default('UNDEFINED') }}
+         fp_pkg_rootdir: {{ fp_pkg_rootdir|default('UNDEFINED') }}
+         fp_pkg_state: {{ fp_pkg_state|default('UNDEFINED') }}
+         fp_packages:
+           {{ fp_packages|sort(attribute='list')|to_yaml|indent(2) }}
+         fp_links:
+           {{ fp_links|to_yaml|indent(2) }}
+         ansible_architecture: {{ ansible_architecture }}
+         pkg_dict_{{ ansible_architecture }}:
+           {{ lookup('vars', 'pkg_dict_' ~ ansible_architecture)|
+              sort(attribute='pkglist')|to_yaml|indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
   when: fp_packages_debug|bool
-  tags: [fp_packages_debug, always]
+  tags: fp_packages_debug
 
 - name: "packages: Install packages"
-  ansible.builtin.include_tasks:
-    file: packages-install.yml
+  ansible.builtin.include_tasks: packages-install.yml
   loop: "{{ fp_packages }}"
   when: item.enabled
 
