@@ -3,24 +3,24 @@
 - name: "devfs: Debug"
   vars:
     msg: |-
-         fp_devfs_enabled [{{ fp_devfs_enabled }}]
-         fp_devfs_load_rulesets [{{ fp_devfs_load_rulesets }}]
-         fp_devfs_system_ruleset [{{ fp_devfs_system_ruleset }}]
-         fp_devfs_rulesets [{{ fp_devfs_rulesets }}]
-         fp_devfs_set_rulesets [{{ fp_devfs_set_rulesets }}]
-         fp_devfs_rcconf
-         {{ fp_devfs_rcconf|to_yaml }}
-         fp_devfs_conf_path [{{ fp_devfs_conf_path }}]
-         fp_devfs_conf
-         {{ fp_devfs_conf|to_yaml }}
-         fp_devfs_rules_path [{{ fp_devfs_rules_path }}]
-         fp_devfs_rules_mode [{{ fp_devfs_rules_mode }}]
-         fp_devfs_rules
-         {{ fp_devfs_rules|to_yaml }}
+         fp_devfs_enabled: {{ fp_devfs_enabled }}
+         fp_devfs_load_rulesets: {{ fp_devfs_load_rulesets }}
+         fp_devfs_system_ruleset: {{ fp_devfs_system_ruleset }}
+         fp_devfs_rulesets: {{ fp_devfs_rulesets }}
+         fp_devfs_set_rulesets: {{ fp_devfs_set_rulesets }}
+         fp_devfs_rcconf:
+           {{ fp_devfs_rcconf|to_yaml|indent(2) }}
+         fp_devfs_conf_path: {{ fp_devfs_conf_path }}
+         fp_devfs_conf:
+           {{ fp_devfs_conf|to_yaml|indent(2) }}
+         fp_devfs_rules_path: {{ fp_devfs_rules_path }}
+         fp_devfs_rules_mode: {{ fp_devfs_rules_mode }}
+         fp_devfs_rules:
+           {{ fp_devfs_rules|to_yaml|indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
   when: fp_devfs_debug|bool
-  tags: [fp_devfs_debug, always]
+  tags: fp_devfs_debug
 
 - name: "devfs: Shell: /etc/rc.d/devfs rcvar | grep ^devfs*"
   ansible.builtin.shell:

@@ -3,13 +3,13 @@
 - name: "users: Debug"
   vars:
     msg: |-
-      fp_users_debug_classified [{{ fp_users_debug_classified }}]
-      fp_users_conf
-      {{ fp_users_conf|to_nice_yaml }}
+      fp_users_debug_classified: {{ fp_users_debug_classified }}
+      fp_users_conf:
+        {{ fp_users_conf|to_nice_yaml|indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
   when: fp_users_debug|bool
-  tags: [fp_users_debug, always]
+  tags: fp_users_debug
 
 - name: "users: Manage user accounts"
   ansible.builtin.user:

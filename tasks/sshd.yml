@@ -3,14 +3,14 @@
 - name: "sshd: Debug"
   vars:
     msg: |-
-         fp_sshd_bin [{{ fp_sshd_bin }}]
-         fp_sshd_conf_file [{{ fp_sshd_conf_file }}]
-         fp_sshd_conf
-         {{ fp_sshd_conf|to_yaml }}
+      fp_sshd_bin: {{ fp_sshd_bin }}
+      fp_sshd_conf_file: {{ fp_sshd_conf_file }}
+      fp_sshd_conf:
+        {{ fp_sshd_conf|to_yaml|indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
   when: fp_sshd_debug|bool
-  tags: [fp_sshd_debug, always]
+  tags: fp_sshd_debug
 
 - name: "sshd: Enable and start sshd"
   ansible.builtin.lineinfile:

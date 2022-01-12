@@ -3,13 +3,13 @@
 - name: "ssh: Debug"
   vars:
     msg: |-
-      fp_ssh_conf_file [{{ fp_ssh_conf_file }}]
-      fp_ssh_conf
-      {{ fp_ssh_conf|to_yaml }}
+      fp_ssh_conf_file: {{ fp_ssh_conf_file }}
+      fp_ssh_conf:
+        {{ fp_ssh_conf|to_yaml|indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
   when: fp_ssh_debug|bool
-  tags: [fp_ssh_debug, always]
+  tags: fp_ssh_debug
 
 - name: "ssh: Configure {{ fp_ssh_conf_file }}"
   ansible.builtin.template:

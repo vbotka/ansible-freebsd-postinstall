@@ -3,15 +3,15 @@
 - name: "swap: Debug"
   vars:
     msg: |-
-      fp_swap_enable [{{ fp_swap_enable }}]
-      fp_swap_file [{{ fp_swap_file|default("UNDEFINED") }}]
-      fp_swap_md [{{ fp_swap_md|default("UNDEFINED") }}]
-      fp_swap_size [{{ fp_swap_size|default("UNDEFINED") }}]
-      fp_swap_stsize [{{ fp_swap_stsize|default("UNDEFINED") }}]
+      fp_swap_enable: {{ fp_swap_enable }}
+      fp_swap_file: {{ fp_swap_file|default("UNDEFINED") }}
+      fp_swap_md: {{ fp_swap_md|default("UNDEFINED") }}
+      fp_swap_size: {{ fp_swap_size|default("UNDEFINED") }}
+      fp_swap_stsize: {{ fp_swap_stsize|default("UNDEFINED") }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
   when: fp_swap_debug|bool
-  tags: [fp_swap_debug, always]
+  tags: fp_swap_debug
 
 - name: "swap: Enable swap and add entry in /etc/fstab"
   block:

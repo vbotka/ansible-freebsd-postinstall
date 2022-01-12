@@ -6,73 +6,73 @@
     _fp_qemu_install_values: "{{ _fp_qemu_install_varnames|map('extract', vars)|list }}"
     _fp_qemu_install_dict: "{{ dict(_fp_qemu_install_varnames|zip(_fp_qemu_install_values)) }}"
     msg: |-
-         ansible_architecture [{{ ansible_architecture }}]
-         ansible_os_family [{{ ansible_os_family }}]
-         ansible_distribution [{{ ansible_distribution }}]
-         ansible_distribution_major_version [{{ ansible_distribution_major_version }}]
-         ansible_distribution_version [{{ ansible_distribution_version }}]
-         ansible_distribution_release [{{ ansible_distribution_release }}]
+         ansible_architecture: {{ ansible_architecture }}
+         ansible_os_family: {{ ansible_os_family }}
+         ansible_distribution: {{ ansible_distribution }}
+         ansible_distribution_major_version: {{ ansible_distribution_major_version }}
+         ansible_distribution_version: {{ ansible_distribution_version }}
+         ansible_distribution_release: {{ ansible_distribution_release }}
 
-         rc_conf_hostname [{{ rc_conf_hostname }}]
-         fp_domain [{{ fp_domain }}]
-         aws [{{ aws }}]
-         digitalocean [{{ digitalocean }}]
-         gcp [{{ gcp }}]
+         rc_conf_hostname: {{ rc_conf_hostname }}
+         fp_domain: {{ fp_domain }}
+         aws: {{ aws }}
+         digitalocean: {{ digitalocean }}
+         gcp: {{ gcp }}
 
-         freebsd_install_method [{{ freebsd_install_method }}]
-         freebsd_use_packages [{{ freebsd_use_packages|default('UNDEFINED') }}]
-         freebsd_install_retries [{{ freebsd_install_retries }}]
-         freebsd_install_delay [{{ freebsd_install_delay }}]
+         freebsd_install_method: {{ freebsd_install_method }}
+         freebsd_use_packages: {{ freebsd_use_packages|default('UNDEFINED') }}
+         freebsd_install_retries: {{ freebsd_install_retries }}
+         freebsd_install_delay: {{ freebsd_install_delay }}
 
-         fp_install [{{ fp_install }}]
-         fp_backup [{{ fp_backup }}]
-         fp_sanity [{{ fp_sanity }}] fp_sanity_tags_fatal [{{ fp_sanity_tags_fatal }}]
+         fp_install: {{ fp_install }}
+         fp_backup: {{ fp_backup }}
+         fp_sanity: {{ fp_sanity }} fp_sanity_tags_fatal: {{ fp_sanity_tags_fatal }}
 
-         fp_aliases [{{ fp_aliases }}]
-         fp_apcupsd [{{ fp_apcupsd }}] fp_apcupsd_install [{{ fp_apcupsd_install }}] fp_apcupsd_enabled [{{ fp_apcupsd_enabled }}]
-         fp_authorized_key [{{ fp_authorized_key }}]
-         fp_copy [{{ fp_copy }}] fp_unarch_default [{{ fp_unarch_default }}] fp_unarch_optional [{{ fp_unarch_optional }}]
-         fp_cron [{{ fp_cron }}]
-         fp_devfs [{{ fp_devfs }}] fp_devfs_enabled [{{ fp_devfs_enabled }}]
-         fp_fstab [{{ fp_fstab }}]
-         fp_gitserver [{{ fp_gitserver }}] fp_gitserver_install [{{ fp_gitserver_install }}]
-         fp_groups [{{ fp_groups }}]
-         fp_groupwrappers_install [{{ fp_groupwrappers_install }}]
-         fp_hostapd [{{ fp_hostapd }}] fp_hostapd_install [{{ fp_hostapd_install }}] fp_hostapd_enabled [{{ fp_hostapd_enabled }}]
-         fp_hostname [{{ fp_hostname }}]
-         fp_linux [{{ fp_linux }}] fp_linux_install [{{ fp_linux_install }}] fp_linux_enable [{{ fp_linux_enable }}]
-         fp_loader [{{ fp_loader }}] fp_loader_warning [{{ fp_loader_warning }}]
-         fp_login [{{ fp_login }}]
-         fp_make [{{ fp_make }}]
-         fp_motd [{{ fp_motd }}]
-         fp_mount_img [{{ fp_mount_img }}]
-         fp_mount_iso [{{ fp_mount_iso }}]
-         fp_nfs [{{ fp_nfs }}] fp_nfs_enable [{{ fp_nfs_enable }}]
-         fp_nfsd [{{ fp_nfsd }}] fp_nfsd_enable [{{ fp_nfsd_enable }}]
-         fp_ntp [{{ fp_ntp }}] fp_ntp_enable [{{ fp_ntp_enable }}]
-         fp_ntpdate [{{ fp_ntpdate }}]
-         fp_passwords [{{ fp_passwords }}]
-         fp_periodic [{{ fp_periodic }}]
-         fp_procmail [{{ fp_procmail }}] fp_procmail_install [{{ fp_procmail_install }}]
-         fp_qemu [{{ fp_qemu }}] fp_qemu_enabled [{{ fp_qemu_enabled }}]{% for k,v in _fp_qemu_install_dict.items() %} [{{ k }}: {{ v }}]{% endfor %}
+         fp_aliases: {{ fp_aliases }}
+         fp_apcupsd: {{ fp_apcupsd }} fp_apcupsd_install: {{ fp_apcupsd_install }} fp_apcupsd_enabled: {{ fp_apcupsd_enabled }}
+         fp_authorized_key: {{ fp_authorized_key }}
+         fp_copy: {{ fp_copy }} fp_unarch_default: {{ fp_unarch_default }} fp_unarch_optional: {{ fp_unarch_optional }}
+         fp_cron: {{ fp_cron }}
+         fp_devfs: {{ fp_devfs }} fp_devfs_enabled: {{ fp_devfs_enabled }}
+         fp_fstab: {{ fp_fstab }}
+         fp_gitserver: {{ fp_gitserver }} fp_gitserver_install: {{ fp_gitserver_install }}
+         fp_groups: {{ fp_groups }}
+         fp_groupwrappers_install: {{ fp_groupwrappers_install }}
+         fp_hostapd: {{ fp_hostapd }} fp_hostapd_install: {{ fp_hostapd_install }} fp_hostapd_enabled: {{ fp_hostapd_enabled }}
+         fp_hostname: {{ fp_hostname }}
+         fp_linux: {{ fp_linux }} fp_linux_install: {{ fp_linux_install }} fp_linux_enable: {{ fp_linux_enable }}
+         fp_loader: {{ fp_loader }} fp_loader_warning: {{ fp_loader_warning }}
+         fp_login: {{ fp_login }}
+         fp_make: {{ fp_make }}
+         fp_motd: {{ fp_motd }}
+         fp_mount_img: {{ fp_mount_img }}
+         fp_mount_iso: {{ fp_mount_iso }}
+         fp_nfs: {{ fp_nfs }} fp_nfs_enable: {{ fp_nfs_enable }}
+         fp_nfsd: {{ fp_nfsd }} fp_nfsd_enable: {{ fp_nfsd_enable }}
+         fp_ntp: {{ fp_ntp }} fp_ntp_enable: {{ fp_ntp_enable }}
+         fp_ntpdate: {{ fp_ntpdate }}
+         fp_passwords: {{ fp_passwords }}
+         fp_periodic: {{ fp_periodic }}
+         fp_procmail: {{ fp_procmail }} fp_procmail_install: {{ fp_procmail_install }}
+         fp_qemu: {{ fp_qemu }} fp_qemu_enabled: {{ fp_qemu_enabled }}{% for k,v in _fp_qemu_install_dict.items() %} {{ k }}: {{ v }}{% endfor %}
 
-         fp_resolvconf [{{ fp_resolvconf }}]
-         fp_smartd [{{ fp_smartd }}] fp_smartd_install [{{ fp_smartd_install }}] fp_smartd_enabled [{{ fp_smartd_enabled }}]
-         fp_snmpd [{{ fp_snmpd }}] fp_snmpd_install [{{ fp_snmpd_install }}] fp_snmpd_enabled [{{ fp_snmpd_enabled }}]
-         fp_ssh [{{ fp_ssh }}]
-         fp_sshd [{{ fp_sshd }}] fp_sshd_enable [{{ fp_sshd_enable }}]
-         fp_sudoers [{{ fp_sudoers }}]
-         fp_swap [{{ fp_swap }}] fp_swap_enable [{{ fp_swap_enable }}]
-         fp_sysctl [{{ fp_sysctl }}]
-         fp_timezone [{{ fp_timezone }}]
-         fp_tmpmfs [{{ fp_tmpmfs }}]
-         fp_users [{{ fp_users }}]
-         fp_wpasuppliant [{{ fp_wpasupplicant }}] fp_wpasuppliant_install [{{ fp_wpasupplicant_install }}]
+         fp_resolvconf: {{ fp_resolvconf }}
+         fp_smartd: {{ fp_smartd }} fp_smartd_install: {{ fp_smartd_install }} fp_smartd_enabled: {{ fp_smartd_enabled }}
+         fp_snmpd: {{ fp_snmpd }} fp_snmpd_install: {{ fp_snmpd_install }} fp_snmpd_enabled: {{ fp_snmpd_enabled }}
+         fp_ssh: {{ fp_ssh }}
+         fp_sshd: {{ fp_sshd }} fp_sshd_enable: {{ fp_sshd_enable }}
+         fp_sudoers: {{ fp_sudoers }}
+         fp_swap: {{ fp_swap }} fp_swap_enable: {{ fp_swap_enable }}
+         fp_sysctl: {{ fp_sysctl }}
+         fp_timezone: {{ fp_timezone }}
+         fp_tmpmfs: {{ fp_tmpmfs }}
+         fp_users: {{ fp_users }}
+         fp_wpasuppliant: {{ fp_wpasupplicant }} fp_wpasuppliant_install: {{ fp_wpasupplicant_install }}
 
-         fp_mountd_enable [{{ fp_mountd_enable }}]
-         fp_rpcbind_enable [{{ fp_rpcbind_enable }}]
-         fp_rpc_lockd_enable [{{ fp_rpc_lockd_enable }}]
-         fp_rpc_statd_enable [{{ fp_rpc_statd_enable }}]
+         fp_mountd_enable: {{ fp_mountd_enable }}
+         fp_rpcbind_enable: {{ fp_rpcbind_enable }}
+         fp_rpc_lockd_enable: {{ fp_rpc_lockd_enable }}
+         fp_rpc_statd_enable: {{ fp_rpc_statd_enable }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
 

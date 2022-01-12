@@ -3,29 +3,29 @@
 - name: "nfs: Debug"
   vars:
     msg: |-
-         fp_nfs_enable [{{ fp_nfs_enable }}]
-         fp_nfs_enable_rcconf
-         {{ fp_nfs_enable_rcconf|to_yaml }}
-         fp_nfs_disable_rcconf
-         {{ fp_nfs_disable_rcconf|to_yaml }}
-         fp_rpc_lockd_enable [{{ fp_rpc_lockd_enable }}]
-         fp_rpc_lockd_flags [{{ fp_rpc_lockd_flags }}]
-         fp_rpc_lockd_enable_rcconf
-         {{ fp_rpc_lockd_enable_rcconf|to_yaml }}
-         fp_rpc_lockd_disable_rcconf
-         {{ fp_rpc_lockd_disable_rcconf|to_yaml }}
-         fp_rpc_statd_enable [{{ fp_rpc_statd_enable }}]
-         fp_rpc_statd_flags [{{ fp_rpc_statd_flags }}]
-         fp_rpc_statd_enable_rcconf
-         {{ fp_rpc_statd_enable_rcconf|to_yaml }}
-         fp_rpc_statd_disable_rcconf
-         {{ fp_rpc_statd_disable_rcconf|to_yaml }}
-         fp_nfs_service_paths
-         {{ fp_nfs_service_paths|to_nice_yaml }}
+         fp_nfs_enable: {{ fp_nfs_enable }}
+         fp_nfs_enable_rcconf:
+           {{ fp_nfs_enable_rcconf|to_yaml|indent(2) }}
+         fp_nfs_disable_rcconf:
+           {{ fp_nfs_disable_rcconf|to_yaml|indent(2) }}
+         fp_rpc_lockd_enable: {{ fp_rpc_lockd_enable }}
+         fp_rpc_lockd_flags: {{ fp_rpc_lockd_flags }}
+         fp_rpc_lockd_enable_rcconf:
+           {{ fp_rpc_lockd_enable_rcconf|to_yaml|indent(2) }}
+         fp_rpc_lockd_disable_rcconf:
+           {{ fp_rpc_lockd_disable_rcconf|to_yaml|indent(2) }}
+         fp_rpc_statd_enable: {{ fp_rpc_statd_enable }}
+         fp_rpc_statd_flags: {{ fp_rpc_statd_flags }}
+         fp_rpc_statd_enable_rcconf:
+           {{ fp_rpc_statd_enable_rcconf|to_yaml|indent(2) }}
+         fp_rpc_statd_disable_rcconf:
+           {{ fp_rpc_statd_disable_rcconf|to_yaml|indent(2) }}
+         fp_nfs_service_paths:
+           {{ fp_nfs_service_paths|to_nice_yaml|indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
   when: fp_nfs_debug|bool
-  tags: [fp_nfs_debug, always]
+  tags: fp_nfs_debug
 
 # Note: The module service_facts doesn't work in FreeBSD.
 - name: "nfs: Service state info"

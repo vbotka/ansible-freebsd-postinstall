@@ -3,11 +3,11 @@
 - name: "mount-{{ _fp_mount_task }}: Debug entering mount-vnode.yml"
   vars:
     msg: |-
-      _fp_mount_task [{{ _fp_mount_task }}]
-      _fp_mount_fstype_default [{{ _fp_mount_fstype_default }}]
-      _fp_mount_points_create [{{ _fp_mount_points_create }}]
-      _fp_mount_entries
-      {{ _fp_mount_entries|to_nice_yaml }}
+      _fp_mount_task: {{ _fp_mount_task }}
+      _fp_mount_fstype_default: {{ _fp_mount_fstype_default }}
+      _fp_mount_points_create: {{ _fp_mount_points_create }}
+      _fp_mount_entries:
+        {{ _fp_mount_entries|to_nice_yaml|indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
   when: fp_mount_vnode_debug|default(false)|bool

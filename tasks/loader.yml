@@ -3,21 +3,21 @@
 - name: "loader: Debug"
   vars:
     msg: |-
-      fp_loader_warning [{{ fp_loader_warning }}]
-      fp_loader_conf_template_enable [{{ fp_loader_conf_template_enable }}]
-      fp_loader_load_modules [{{ fp_loader_load_modules }}]
-      fp_loader_conf_file [{{ fp_loader_conf_file }}]
-      fp_loader_conf_template [{{ fp_loader_conf_template }}]
-      fp_loader_conf
-      {{ fp_loader_conf|to_yaml }}
-      fp_loader_conf_modules
-      {{ fp_loader_conf_modules|to_yaml }}
-      fp_sysctl_conf
-      {{ fp_sysctl_conf|to_yaml }}
+      fp_loader_warning: {{ fp_loader_warning }}
+      fp_loader_conf_template_enable: {{ fp_loader_conf_template_enable }}
+      fp_loader_load_modules: {{ fp_loader_load_modules }}
+      fp_loader_conf_file: {{ fp_loader_conf_file }}
+      fp_loader_conf_template: {{ fp_loader_conf_template }}
+      fp_loader_conf:
+        {{ fp_loader_conf|to_yaml|indent(2) }}
+      fp_loader_conf_modules:
+        {{ fp_loader_conf_modules|to_yaml|indent(2) }}
+      fp_sysctl_conf:
+        {{ fp_sysctl_conf|to_yaml|indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
   when: fp_loader_debug|bool
-  tags: [fp_loader_debug, always]
+  tags: fp_loader_debug
 
 - name: "loader: Register sysctl variables that are settable via loader"
   ansible.builtin.command:

@@ -3,34 +3,30 @@
 - name: "wpasupplicant: Debug"
   vars:
     msg: |-
-      fp_wpasupplicant_backup [{{ fp_wpasupplicant_backup }}]
-
-      fp_wpasupplicant_program [{{ fp_wpasupplicant_program }}]
-      fp_wpasupplicant_flags [{{ fp_wpasupplicant_flags }}]
-      fp_wpasupplicant_rcconf
-      {{ fp_wpasupplicant_rcconf|to_yaml }}
-      fp_wpasupplicant_conf_rc [{{ fp_wpasupplicant_conf_rc }}]
-
-      fp_wpasupplicant_conf_file_link [{{ fp_wpasupplicant_conf_file_link }}]
-      fp_wpasupplicant_conf_owner [{{ fp_wpasupplicant_conf_owner }}]
-      fp_wpasupplicant_conf_group [{{ fp_wpasupplicant_conf_group }}]
-      fp_wpasupplicant_conf_mode [{{ fp_wpasupplicant_conf_mode }}]
-      fp_wpasupplicant_conf_dir [{{ fp_wpasupplicant_conf_dir }}]
-      fp_wpasupplicant_conf_file [{{ fp_wpasupplicant_conf_file }}]
-      fp_wpasupplicant_conf_template [{{ fp_wpasupplicant_conf_template }}]
-
-      fp_wpasupplicant_conf_ctrl_interface [{{ fp_wpasupplicant_conf_ctrl_interface }}]
-      fp_wpasupplicant_conf_global
-      {{ fp_wpasupplicant_conf_global|to_yaml }}
-
+      fp_wpasupplicant_backup: {{ fp_wpasupplicant_backup }}
+      fp_wpasupplicant_program: {{ fp_wpasupplicant_program }}
+      fp_wpasupplicant_flags: {{ fp_wpasupplicant_flags }}
+      fp_wpasupplicant_rcconf:
+        {{ fp_wpasupplicant_rcconf|to_yaml|indent(2) }}
+      fp_wpasupplicant_conf_rc: {{ fp_wpasupplicant_conf_rc }}
+      fp_wpasupplicant_conf_file_link: {{ fp_wpasupplicant_conf_file_link }}
+      fp_wpasupplicant_conf_owner: {{ fp_wpasupplicant_conf_owner }}
+      fp_wpasupplicant_conf_group: {{ fp_wpasupplicant_conf_group }}
+      fp_wpasupplicant_conf_mode: {{ fp_wpasupplicant_conf_mode }}
+      fp_wpasupplicant_conf_dir: {{ fp_wpasupplicant_conf_dir }}
+      fp_wpasupplicant_conf_file: {{ fp_wpasupplicant_conf_file }}
+      fp_wpasupplicant_conf_template: {{ fp_wpasupplicant_conf_template }}
+      fp_wpasupplicant_conf_ctrl_interface: {{ fp_wpasupplicant_conf_ctrl_interface }}
+      fp_wpasupplicant_conf_global:
+        {{ fp_wpasupplicant_conf_global|to_yaml|indent(2) }}
       {% if fp_wpasupplicant_debug_classified %}
-      fp_wpasupplicant_conf
-      {{ fp_wpasupplicant_conf|to_yaml }}
+      fp_wpasupplicant_conf:
+        {{ fp_wpasupplicant_conf|to_yaml|indent(2) }}
       {% endif %}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
   when: fp_wpasupplicant_debug|bool
-  tags: [fp_wpasupplicant_debug, always]
+  tags: fp_wpasupplicant_debug
 
 - name: "wpasupplicant: Configure /etc/rc.conf"
   ansible.builtin.lineinfile:

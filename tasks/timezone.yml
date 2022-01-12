@@ -2,9 +2,10 @@
 
 - name: "timezone: Debug"
   ansible.builtin.debug:
-    msg: "fp_zoneinfo [{{ fp_zoneinfo }}]"
+    msg: |-
+      fp_zoneinfo: {{ fp_zoneinfo }}
   when: fp_timezone_debug|bool
-  tags: [fp_timezone_debug, always]
+  tags: fp_timezone_debug
 
 - name: "timezone: set timezone to {{ fp_zoneinfo }}"
   community.general.timezone:
