@@ -89,7 +89,7 @@ Create the inventory ``hosts``
    test_14.example.com
 
    [example_com:vars]
-   ansible_python_interpreter=/usr/local/bin/python3.6
+   ansible_python_interpreter=/usr/local/bin/python3.8
    ansible_perl_interpreter=/usr/local/bin/perl
 
 Create the playbook ``playbook.yml`` for single host test_14.example.com
