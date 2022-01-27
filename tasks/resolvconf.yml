@@ -25,7 +25,7 @@
     line: '{{ item.key }} {{ item.value }}'
     backup: "{{ fp_backup }}"
   loop: "{{ fp_resolv_conf }}"
-  tags: fp_resolvconf_conf
+  tags: fp_resolv_conf
 
 # resolvconf.conf
 - name: "resolvconf: Absent lines in {{ fp_resolvconf_conf_file }}"
@@ -40,7 +40,7 @@
     backup: "{{ fp_backup }}"
   loop: "{{ fp_resolvconf_conf_absent }}"
   notify: resolvconf apply
-  tags: fp_resolvconf_absent
+  tags: fp_resolvconf_conf_absent
 
 - name: "resolvconf: Present lines in {{ fp_resolvconf_conf_file }}"
   ansible.builtin.lineinfile:
