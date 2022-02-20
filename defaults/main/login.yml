@@ -1,5 +1,8 @@
 ---
 fp_login: false
+
+# /etc/login.conf
+fp_login_conf_global: false
 fp_login_conf_template: login.conf.j2
 fp_login_conf_file: /etc/login.conf
 fp_login_conf_extra: []
@@ -59,3 +62,7 @@ fp_login_conf:
       - charset=UTF-8
       - lang=ru_RU.UTF-8
       - tc=default
+
+# #HOME/.login_conf
+fp_login_conf_template_local: login_conf.j2
+fp_login_conf_local: []
