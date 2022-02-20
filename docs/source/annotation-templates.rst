@@ -201,6 +201,26 @@ Description of the template.
     :emphasize-lines: 1
     :linenos:
 
+.. _as_template_login_conf.j2:
+
+login_conf.j2
+-------------
+
+Synopsis: Template login_conf.
+
+
+Description of the template.
+
+
+[`templates/login_conf.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/login_conf.j2>`_]
+
+.. highlight:: jinja
+    :linenothreshold: 5
+.. literalinclude:: ../../templates/login_conf.j2
+    :language: jinja
+    :emphasize-lines: 1
+    :linenos:
+
 .. _as_template_make.conf.j2:
 
 make.conf.j2

@@ -3,7 +3,7 @@
 Installation
 ============
 
-The most convenient way how to install an Ansible role is to use :index:`Ansible Galaxy` CLI
+The most convenient way how to install an Ansible role is to use `Ansible Galaxy` CLI
 ``ansible-galaxy``. The utility comes with the standard Ansible package and provides the user with a
 simple interface to the Ansible Galaxy's services. For example, take a look at the current status of
 the role ::
@@ -28,3 +28,10 @@ Install the collections
 .. seealso::
    * To install specific versions from various sources see `Installing content <https://galaxy.ansible.com/docs/using/installing.html>`_
    * Take a look at other roles ``shell> ansible-galaxy search --author=vbotka``
+
+.. note::
+   This role configures FreeBSD on the remote host. To install and configure Ansible on the controller running FreeBSD see:
+
+   * `Ansible and BSD - docs.ansible.com <https://docs.ansible.com/ansible/devel/user_guide/intro_bsd.html#ansible-and-bsd>`_
+   * `Installing Ansible on FreeBSD - docs.ansible.com <https://docs.ansible.com/ansible/devel/installation_guide/intro_installation.html#installing-ansible-on-freebsd>`_
+   * `Install and configure Ansible - Ansible role at galaxy.ansible.com <https://galaxy.ansible.com/vbotka/ansible>`_

@@ -3,11 +3,13 @@
 Quick start guide
 *****************
 
-For the users who want to try the role quickly, this guide provides an example of how to
+For the users who want to try the role quickly this guide provides an example of how to:
 
 * Configure Ansible and install the role
 
 * Create inventory and playbook
+
+Then, on the controller, run the playbook and configure the remote host:
 
 * Set hostname and timezone
 
@@ -17,15 +19,21 @@ For the users who want to try the role quickly, this guide provides an example o
 
 * Configure sshd and sudo.
 
-Requirements on the remote host
 
-* Password-less ssh by *admin*
+Requirements on the remote host
+===============================
+
+* Password-less ssh by *admin* (or any other user by your choice)
 
 * Login shell for *admin* is /bin/sh
 
 * User *admin* is granted unlimited sudo
 
 * Python and Perl are installed.
+
+.. seealso::
+   * `Ansible and BSD <https://docs.ansible.com/ansible/devel/user_guide/intro_bsd.html#ansible-and-bsd>`_
+   * `Installing Ansible on FreeBSD <https://docs.ansible.com/ansible/devel/installation_guide/intro_installation.html#installing-ansible-on-freebsd>`_
 
 
 Installation

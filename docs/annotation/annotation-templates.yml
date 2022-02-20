@@ -121,6 +121,18 @@ mytemplates:
     note: []
     warning: []
 
+  - file: login_conf.j2
+    link: login_conf.j2
+    path: templates/login_conf.j2
+    synopsis: |
+      Template login_conf.
+    description: |
+      Description of the template.
+    lines: 1
+    seealso: []
+    note: []
+    warning: []
+
   - file: make.conf.j2
     link: make.conf.j2
     path: templates/make.conf.j2

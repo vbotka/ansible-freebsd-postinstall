@@ -8,6 +8,7 @@ hosts.j2
 hosts-aliases-list.j2
 loader.conf.j2
 login.conf.j2
+login_conf.j2
 make.conf.j2
 motd.j2
 ntp.conf.j2

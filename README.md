@@ -161,7 +161,7 @@ To solve this problem apply the path below
 - [make.conf - GNU emacs flavours in FreeBSD](https://ximalas.info/2018/02/02/gnu-emacs-flavours-in-freebsd/)
 - [mount - FreeBSD handbook: Mounting and Unmounting File Systems](https://docs.freebsd.org/en/books/handbook/basics/#mount-unmount)
 - [nfs - FreeBSD handbook: Network File System (NFS)](https://docs.freebsd.org/en/books/handbook/network-servers/#network-nfs)
-- [nfsd- FreeBSD forum: NFSv4 without Kerberos](https://forums.freebsd.org/threads/nfsv4-without-kerberos.71899/)
+- [nfsd - FreeBSD forum: NFSv4 without Kerberos](https://forums.freebsd.org/threads/nfsv4-without-kerberos.71899/)
 - [ntp - FreeBSD handbook: Clock Synchronization with NTP](https://docs.freebsd.org/en/books/handbook/network-servers/#network-ntp)
 - [ntp - FreeBSD forum: Testing NTP](https://forums.freebsd.org/threads/41874/)
 - [ntp - NTP Support Wiki](http://support.ntp.org/bin/view/Main/WebHome)
@@ -170,7 +170,7 @@ To solve this problem apply the path below
 - [ports - FreeBSD handbook: Upgrading Ports Using Portmaster](https://docs.freebsd.org/en/books/handbook/ports/#ports-using)
 - [procmail - Documentation Project](http://pm-doc.sourceforge.net/)
 - [qemu - FreeBSD Wiki: Qemu on FreeBSD as host](https://wiki.freebsd.org/qemu)
-- [qemu- QEMU Wiki: Hosts/BSD](https://wiki.qemu.org/Hosts/BSD)
+- [qemu - QEMU Wiki: Hosts/BSD](https://wiki.qemu.org/Hosts/BSD)
 - [resolv.conf - FreeBSD handbook: Configuration Files](https://docs.freebsd.org/en/books/handbook/config/#configtuning-configfiles)
 - [smartd - FreeBSD forum: camcontrol hdd smart status](https://forums.freebsd.org/threads/camcontrol-hdd-smart-status.65306/)
 - [snmp - Install and configure snmp in Freebsd](http://blog.up-link.ro/freebsd-how-to-install-and-configure-snmp-in-freebsd/)
@@ -183,7 +183,7 @@ To solve this problem apply the path below
 - [tmpmfs - FreeBSD forum: Questions about ramdisk in FreeBSD](https://forums.freebsd.org/threads/questions-about-ramdisk-in-freebsd.20345/)
 - [tmpfs - FreeBSD forum: /dev/shm | md questions](https://forums.freebsd.org/threads/tmpfs-dev-shm-md-questions.45210/)
 - [users - FreeBSD handbook: Adding Users and Groups](https://docs.freebsd.org/en/books/porters-handbook/special/#users-and-groups)
-- [wpa_supplicant](https://w1.fi/wpa_supplicant/)
+- [wpa_supplicant - Project site](https://w1.fi/wpa_supplicant/)
 - [wpa_supplicant - FreeBSD handbook: Wireless Networking](https://docs.freebsd.org/en/books/handbook/advanced-networking/#network-wireless)
 
 
