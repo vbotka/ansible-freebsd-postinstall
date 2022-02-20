@@ -3,7 +3,7 @@
 # system classes
 {% for item in fp_login_conf %}
 {{ item.class }}:\
-{% for citem in item.conf %}
+{% for citem in item.conf|flatten %}
 {{ '\t' }}:{{ citem }}:{% if not loop.last %}\{% endif %}
 
 {% endfor %}
@@ -12,7 +12,7 @@
 # extra classes
 {% for item in fp_login_conf_extra %}
 {{ item.class }}:\
-{% for citem in item.conf %}
+{% for citem in item.conf|flatten %}
 {{ '\t' }}:{{ citem }}:{% if not loop.last %}\{% endif %}
 
 {% endfor %}

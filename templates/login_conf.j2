@@ -1,0 +1,9 @@
+# {{ ansible_managed }}
+
+{{ item.class }}:\
+{% for citem in item.conf|flatten %}
+{{ '\t' }}:{{ citem }}:{% if not loop.last %}\{% endif %}
+
+{% endfor %}
+
+# EOF

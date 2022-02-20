@@ -86,6 +86,7 @@
 # fp_loader_conf: []
 
 # fp_login: true
+# fp_login_conf_global: true
 # fp_login_conf_extra:
 #   - class: insecure
 #     conf:
@@ -111,6 +112,19 @@
 #       - umask=022
 #       - ignoretime@
 #       - label=biba/10(10-10)
+# fp_login_conf_local:
+#   - user: admin
+#     class: me
+#     conf:
+#       - "{{ fp_login_conf_iocage_locale }}"
+#   - user: devel
+#     class: me
+#     conf:
+#       - "{{ fp_login_conf_iocage_locale }}"
+# fp_login_conf_iocage_locale:
+#   - charset=UTF-8
+#   - lang=en_US.UTF-8
+#   - setenv=LC_COLLATE=C
 
 # fp_motd: true
 # fp_motd_message: "To get capabilities of the responder send email TO: responder@{{rc_conf_hostname}} SUBJECT: capability"
