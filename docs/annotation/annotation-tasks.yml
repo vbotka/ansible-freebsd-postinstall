@@ -116,6 +116,19 @@ mytasks:
     hints: []
     warnings: []
 
+  - file: dhclient.yml
+    link: dhclient.yml
+    path: tasks/dhclient.yml
+    synopsis: |
+      Configure dhclient.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
   - file: fstab.yml
     link: fstab.yml
     path: tasks/fstab.yml

@@ -6,6 +6,7 @@ copy.yml
 cron.yml
 debug.yml
 devfs.yml
+dhclient.yml
 fstab.yml
 gitserver.yml
 groups.yml

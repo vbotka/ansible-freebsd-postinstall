@@ -81,6 +81,26 @@ Description of the handler.
     :emphasize-lines: 1,2
     :linenos:
 
+.. _as_handler_dhclient.yml:
+
+dhclient.yml
+------------
+
+Synopsis: Handler dhclient.
+
+
+Description of the handler.
+
+
+[`handlers/dhclient.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/dhclient.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../handlers/dhclient.yml
+    :language: Yaml
+    :emphasize-lines: 1,2
+    :linenos:
+
 .. _as_handler_fstab.yml:
 
 fstab.yml
@@ -277,6 +297,26 @@ Description of the handler.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/ntpd.yml
+    :language: Yaml
+    :emphasize-lines: 1,2
+    :linenos:
+
+.. _as_handler_qemu.yml:
+
+qemu.yml
+--------
+
+Synopsis: Handler qemu.
+
+
+Description of the handler.
+
+
+[`handlers/qemu.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/qemu.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../handlers/qemu.yml
     :language: Yaml
     :emphasize-lines: 1,2
     :linenos:

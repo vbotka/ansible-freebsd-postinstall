@@ -1,5 +1,4 @@
 ---
-# linux_postinstall dhclient
 
 - name: "dhclient: Debug"
   vars:

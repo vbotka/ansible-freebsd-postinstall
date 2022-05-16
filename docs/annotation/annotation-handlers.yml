@@ -48,6 +48,18 @@ myhandlers:
     note: []
     warning: []
 
+  - file: dhclient.yml
+    link: dhclient.yml
+    path: handlers/dhclient.yml
+    synopsis: |
+      Handler dhclient.
+    description: |
+      Description of the handler.
+    lines: 1,2
+    seealso: []
+    note: []
+    warning: []
+
   - file: fstab.yml
     link: fstab.yml
     path: handlers/fstab.yml
@@ -161,6 +173,18 @@ myhandlers:
     path: handlers/ntpd.yml
     synopsis: |
       Handler ntpd.
+    description: |
+      Description of the handler.
+    lines: 1,2
+    seealso: []
+    note: []
+    warning: []
+
+  - file: qemu.yml
+    link: qemu.yml
+    path: handlers/qemu.yml
+    synopsis: |
+      Handler qemu.
     description: |
       Description of the handler.
     lines: 1,2

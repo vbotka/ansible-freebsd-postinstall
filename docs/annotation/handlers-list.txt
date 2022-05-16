@@ -1,6 +1,7 @@
 adjkerntz.yml
 apcupsd.yml
 devfs.yml
+dhclient.yml
 fstab.yml
 hostapd.yml
 hostname.yml
@@ -11,6 +12,7 @@ nfsd.yml
 nfs.yml
 ntpdate.yml
 ntpd.yml
+qemu.yml
 resolvconf.yml
 smartd.yml
 snmpd.yml
