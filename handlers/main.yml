@@ -7,6 +7,8 @@
   ansible.builtin.import_tasks: apcupsd.yml
 - name: Import devfs.yml
   ansible.builtin.import_tasks: devfs.yml
+- name: Import dhclient.yml
+  ansible.builtin.import_tasks: dhclient.yml
 - name: Import fstab.yml
   ansible.builtin.import_tasks: fstab.yml
 - name: Import hostapd.yml

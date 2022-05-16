@@ -1,0 +1,34 @@
+---
+
+fp_dhclient: false
+
+fp_dhclient_debug: false
+
+# If set True test:
+# * If the list fp_dhclient_ifn (see below) is empty either
+#   fp_dhclient_ifn_rcconf or fp_dhclient_ifn_leases must be True, but
+#   not both.
+# * If the list fp_dhclient_ifn is not empty both
+#   fp_dhclient_ifn_rcconf and fp_dhclient_ifn_leases must be False.
+fp_dhclient_sanity: true
+
+# List of the iterfaces. The utility dhclient will be restarted on
+# these interfaces if the default parameters fp_dhclient_conf_defaults
+# change in fp_dhclient_conf_path. By default, this list empty.
+# Optionally, select the list of the interfaces from the configuration
+# blocks
+# fp_dhclient_ifn: "{{ fp_dhclient_conf_blocks|map(attribute='ifn')|unique }}"
+fp_dhclient_ifn: []
+
+# If set True (default) the list of the iterfaces will be created from
+# active leases /var/db/dhclient.leases.*
+fp_dhclient_ifn_leases: true
+
+# If set True the list of the iterfaces will be created from
+# /etc/rc.conf. Iterfaces set to *DHCP will be selected. Mutually
+# exclusive with fp_dhclient_ifn_leases
+fp_dhclient_ifn_rcconf: false
+
+fp_dhclient_conf_path: /etc/dhclient.conf
+fp_dhclient_conf_defaults: []
+fp_dhclient_conf_blocks: []
