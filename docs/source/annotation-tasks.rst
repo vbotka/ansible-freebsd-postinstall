@@ -217,6 +217,30 @@ Description of the task.
 
 
 
+.. _as_dhclient.yml:
+
+dhclient.yml
+------------
+
+Synopsis: Configure dhclient.
+
+
+Description of the task.
+
+
+[`tasks/dhclient.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/dhclient.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../tasks/dhclient.yml
+    :language: Yaml
+    :emphasize-lines: 1,2
+    :linenos:
+
+
+
+
+
 .. _as_fstab.yml:
 
 fstab.yml
