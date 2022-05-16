@@ -2,7 +2,7 @@
 
 [![quality](https://img.shields.io/ansible/quality/27910)](https://galaxy.ansible.com/vbotka/freebsd_postinstall)[![Build Status](https://app.travis-ci.com/vbotka/ansible-freebsd-postinstall.svg?branch=master)](https://app.travis-ci.com/vbotka/ansible-freebsd-postinstall)[![Documentation Status](https://readthedocs.org/projects/docs/badge/?version=latest)](https://ansible-freebsd-postinstall.readthedocs.io/en/latest/)
 
-[Ansible role.](https://galaxy.ansible.com/vbotka/freebsd_postinstall/) FreeBSD post-install configuration: aliases, apcupsd, authorized keys, cron, devfs, fstab, groups, hostapd, hostname, hosts, libmap, linux compatibility, login.conf, loader.conf, make.conf, motd, nfsd, ntpd, ntpdate, procmail, qemu, resolvconf.conf, smartd, snmpd, sudoers, ssh, sshd, swap, sysctl, timezone, tmpmfs, users, packages and ports, periodic.conf, overlays, wpa_supplicant, (wip) ...
+[Ansible role.](https://galaxy.ansible.com/vbotka/freebsd_postinstall/) FreeBSD post-install configuration: aliases, apcupsd, authorized keys, cron, devfs, dhclient, fstab, groups, hostapd, hostname, hosts, libmap, linux compatibility, login.conf, loader.conf, make.conf, motd, nfsd, ntpd, ntpdate, procmail, qemu, resolvconf.conf, smartd, snmpd, sudoers, ssh, sshd, swap, sysctl, timezone, tmpmfs, users, packages and ports, periodic.conf, overlays, wpa_supplicant, (wip) ...
 
 [Documentation at readthedocs.io](https://ansible-freebsd-postinstall.readthedocs.io)
 
@@ -126,6 +126,7 @@ To solve this problem apply the path below
  stop_cmd=':'
 ```
 
+
 ## License
 
 [![license](https://img.shields.io/badge/license-BSD-red.svg)](https://www.freebsd.org/doc/en/articles/bsdl-gpl/article.html)
@@ -148,6 +149,7 @@ To solve this problem apply the path below
 - [devfs.rules - man](https://www.freebsd.org/cgi/man.cgi?query=devfs.rules&sektion=5&n=1)
 - [devfs rules - FreeBSD Wiki](https://forums.freebsd.org/threads/devfs-rules.56172/)
 - [devfs rules not applied by default for jails - FreeBSD-SA-14:07.devfs](https://www.freebsd.org/security/advisories/FreeBSD-SA-14:07.devfs.asc)
+- [dhclient - FreeBSD handbook: Configuring a DHCP Client](https://docs.freebsd.org/en/books/handbook/network-servers/#network-dhcp)
 - [fstab - FreeBSD handbook: Mounting and Unmounting File Systems](https://docs.freebsd.org/en/books/handbook/basics/#mount-unmount)
 - [git - FreeBSD forum: How to setup a Git repository](https://forums.freebsd.org/threads/10810/)
 - [git - Getting Git on a Server](https://git-scm.com/book/ch4-2.html)
