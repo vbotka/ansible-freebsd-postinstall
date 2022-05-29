@@ -1,0 +1,9 @@
+# fp_hosts: true
+# fp_hosts_conf_template: hosts-aliases-list.j2
+# fp_hosts_conf:
+#   - {ip: "10.1.0.1", fqdn: "ac1.d3.example.com", hostname: "ac1"}
+#   - {ip: "10.1.0.2", fqdn: "ac2.d3.example.com", hostname: "ac2"}
+#   - {ip: "10.1.0.3", fqdn: "ac3.d3.example.com", hostname: "ac3"}
+#   - {ip: "10.1.0.10", fqdn: "srv1.d3.example.com", hostname: "srv1"}
+#   - {ip: "10.1.0.11", fqdn: "srv2.d3.example.com", hostname: "srv2"}
+#   - {ip: "10.1.0.12", fqdn: "srv3.d3.example.com", hostname: "srv3", aliases: ["build", "www", "mail", "nagios"]}

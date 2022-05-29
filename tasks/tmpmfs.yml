@@ -1,6 +1,6 @@
 ---
 
-- name: "tmpmfs: Debug"
+- name: "tmpmfs: Debug (fp_tmpmfs_debug={{ fp_tmpmfs_debug }})"
   vars:
     msg: |-
       fp_tmpmfs_rcconf:

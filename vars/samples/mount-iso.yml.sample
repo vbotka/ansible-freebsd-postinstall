@@ -1,0 +1,5 @@
+# fp_mount_iso: true
+# fp_mount_iso_entries:
+#   - iso: "/export/images/FreeBSD/12.1/FreeBSD-12.1-RELEASE-amd64-disc1.iso"
+#     mount: "/export/distro/FreeBSD-12.1-RELEASE-amd64-disc1.iso"
+#     state: mounted

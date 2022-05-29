@@ -1,0 +1,29 @@
+---
+# vars for freebsd_postinstall
+
+# NOTES
+#
+# 1) gtar: Ansible module unarchive needs gtar. Ansible make use of the
+# tar argument --diff. OpenBSD and FreeBSD doesn't have an --diff,
+# -d, --compare option for tar. Without gtar unarchive always
+# extracts and reports as changed.
+#
+# 2) SEE: How do I generate crypted passwords for the user module?
+# http://docs.ansible.com/ansible/faq.html#how-do-i-generate-crypted-passwords-for-the-user-module
+# example: mkpasswd --method=SHA-512 PASSWORD -s SALT
+# SALT can be created with: pwgen -s 16 1
+#
+# 3) fp_sysctl configuration is stored in /etc/sysctl.conf.
+# Set state=absent to remove the item from /etc/sysctl.conf before
+# removing it from the list fp_sysctl.
+# fp_sysctl:
+#   - {name: vfs.zfs.prefetch_disable, value: 0}
+#   - {name: net.inet.ip.forwarding, value: 1}
+#   - {name: security.jail.set_hostname_allowed, value: 1}
+#   - {name: security.jail.param.path, value: 1024}
+#
+# 4) FreeBSD handbook: 15.7.1. Create an Insecure User Class
+# https://www.freebsd.org/doc/handbook/mac-implementing.html
+
+# EOF
+...

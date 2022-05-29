@@ -1,6 +1,6 @@
 ---
 
-- name: "loader: Debug"
+- name: "loader: Debug (fp_loader_debug={{ fp_loader_debug }})"
   vars:
     msg: |-
       fp_loader_warning: {{ fp_loader_warning }}

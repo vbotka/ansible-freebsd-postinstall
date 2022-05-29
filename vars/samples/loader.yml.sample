@@ -1,0 +1,11 @@
+# fp_loader: true
+# fp_loader_conf_template_enable: true
+# fp_loader_load_modules: false
+# fp_loader_conf_modules:
+#   - if_ath
+#   - wlan_wep
+#   - wlan_ccmp
+#   - wlan_tkip
+#   - pf
+#   - geom_eli
+# fp_loader_conf: []

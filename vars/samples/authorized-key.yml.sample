@@ -1,0 +1,7 @@
+# fp_authorized_key: true
+# fp_authorized_key_install_exclusive: true
+# fp_authorized_key_install_individually: false
+# fp_authorized_key_conf:
+#   - {user: admin, key: "{{ lookup('file', '~/.ansible/copy/ssh-pub-keys/devel-box1/id_rsa.pub') }}"}
+#   - {user: admin, key: "{{ lookup('file', '~/.ansible/copy/ssh-pub-keys/devel-box2/id_rsa.pub') }}"}
+#   - {user: admin, key: "{{ lookup('file', '~/.ansible/copy/ssh-pub-keys/devel-box3/id_rsa.pub') }}"}

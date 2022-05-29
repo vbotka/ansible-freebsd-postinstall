@@ -1,0 +1,40 @@
+# fp_login: true
+# fp_login_conf_global: true
+# fp_login_conf_extra:
+#   - class: insecure
+#     conf:
+#       - copyright=/etc/COPYRIGHT
+#       - welcome=/etc/motd
+#       - setenv=MAIL=/var/mail/$,BLOCKSIZE=K
+#       - path=~/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin
+#       - manpath=/usr/share/man /usr/local/man
+#       - nologin=/usr/sbin/nologin
+#       - cputime=1h30m
+#       - datasize=8M
+#       - vmemoryuse=100M
+#       - stacksize=2M
+#       - memorylocked=4M
+#       - memoryuse=8M
+#       - filesize=8M
+#       - coredumpsize=8M
+#       - openfiles=24
+#       - maxproc=32
+#       - priority=0
+#       - requirehome
+#       - passwordtime=91d
+#       - umask=022
+#       - ignoretime@
+#       - label=biba/10(10-10)
+# fp_login_conf_local:
+#   - user: admin
+#     class: me
+#     conf:
+#       - "{{ fp_login_conf_iocage_locale }}"
+#   - user: devel
+#     class: me
+#     conf:
+#       - "{{ fp_login_conf_iocage_locale }}"
+# fp_login_conf_iocage_locale:
+#   - charset=UTF-8
+#   - lang=en_US.UTF-8
+#   - setenv=LC_COLLATE=C

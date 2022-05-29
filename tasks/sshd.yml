@@ -1,6 +1,6 @@
 ---
 
-- name: "sshd: Debug"
+- name: "sshd: Debug (fp_sshd_debug={{ fp_sshd_debug }})"
   vars:
     msg: |-
       fp_sshd_bin: {{ fp_sshd_bin }}

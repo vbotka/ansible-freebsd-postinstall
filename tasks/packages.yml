@@ -1,6 +1,6 @@
 ---
 
-- name: "packages: Debug"
+- name: "packages: Debug (fp_packages_debug={{ fp_packages_debug }})"
   vars:
     msg: |-
          freebsd_install_method: {{ freebsd_install_method }}
