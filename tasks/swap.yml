@@ -1,6 +1,6 @@
 ---
 
-- name: "swap: Debug"
+- name: "swap: Debug (fp_swap_debug={{ fp_swap_debug }})"
   vars:
     msg: |-
       fp_swap_enable: {{ fp_swap_enable }}

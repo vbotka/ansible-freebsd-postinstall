@@ -1,0 +1,27 @@
+# fp_wpasupplicant: true
+# fp_wpasupplicant_install: true
+# fp_wpasupplicant_debug: false
+# fp_wpasupplicant_backup: true
+# fp_wpasupplicant_conf_rc: true
+# fp_wpasupplicant_conf_file_link: wlan0
+# fp_wpasupplicant_program: /usr/local/sbin/wpa_supplicant
+# fp_wpasupplicant_conf_ctrl_interface: /var/run/wpa_supplicant
+# fp_wpasupplicant_conf_global:
+#   - key: ctrl_interface
+#     value: "{{ fp_wpasupplicant_conf_ctrl_interface }}"
+#   - key: ctrl_interface_group
+#     value: wheel
+#   - key: eapol_version
+#     value: "2"
+#   - key: ap_scan
+#     value: "1"
+#   - key: fast_reauth
+#     value: "1"
+# fp_wpasupplicant_conf:
+#   - dev: wlan0
+#     network:
+#       - conf:
+#         - {key: ssid, value: '"MY-AP1"'}
+#         - {key: psk, value: '"MY-AP1-PSK"'}
+#         - {key: key_mgmt, value: WPA-PSK}
+#         - {key: pairwise, value: CCMP}

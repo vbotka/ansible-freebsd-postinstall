@@ -1,0 +1,10 @@
+# fp_linux: true
+# fp_linux_install: true
+# fp_linux_enable: true
+# fp_linux_debug: false
+# fp_linux_fstab:
+#   - {name: /compat/linux/proc, src: linproc, fstype: linprocfs, opts: rw}
+# fp_linux_lib_dir: copy/linux-compat-lib
+# fp_linux_lib:
+#   - {src: /lib/x86_64-linux-gnu/libpthread.so.0, link: libpthread.so.0}
+#   - {src: /lib/x86_64-linux-gnu/libc.so.6, link: libc.so.6}

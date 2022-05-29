@@ -1,6 +1,6 @@
 ---
 
-- name: "periodic: Debug"
+- name: "periodic: Debug (fp_periodic_debug={{ fp_periodic_debug }})"
   vars:
     msg: |-
       fp_periodic_conf_local_file: {{ fp_periodic_conf_local_file }}

@@ -1,6 +1,6 @@
 ---
 
-- name: "wpasupplicant: Debug"
+- name: "wpasupplicant: Debug (fp_wpasupplicant_debug={{ fp_wpasupplicant_debug }})"
   vars:
     msg: |-
       fp_wpasupplicant_backup: {{ fp_wpasupplicant_backup }}

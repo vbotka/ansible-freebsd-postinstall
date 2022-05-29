@@ -1,0 +1,12 @@
+# fp_users: true
+# fp_users_conf:
+#   - name: ansible
+#     shell: /bin/sh
+#     groups: [wheel]
+#   - name: admin
+#     shell: /usr/local/bin/bash
+#     groups: [wheel]
+#   - name: responder
+#     shell: /usr/sbin/nologin
+#   - name: freebsd
+#     state: absent

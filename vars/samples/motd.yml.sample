@@ -1,0 +1,3 @@
+# fp_motd: true
+# fp_motd_message: "To get capabilities of the responder send email TO: responder@{{rc_conf_hostname}} SUBJECT: capability"
+# fp_update_motd: false

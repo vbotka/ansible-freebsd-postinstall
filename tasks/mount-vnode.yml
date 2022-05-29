@@ -1,6 +1,6 @@
 ---
 
-- name: "mount-{{ _fp_mount_task }}: Debug entering mount-vnode.yml"
+- name: "mount-{{ _fp_mount_task }}: Debug  (fp_mount_vnode_debug={{ fp_mount_vnode_debug }})"
   vars:
     msg: |-
       _fp_mount_task: {{ _fp_mount_task }}

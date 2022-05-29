@@ -1,0 +1,8 @@
+# fp_ntpdate: true
+# fp_ntpdate_enable: "NO"
+# fp_ntpdate_flags: "-b"
+# fp_ntpd_sync_on_start: "YES"
+# fp_ntpdate_rcconf:
+#   - {key: ntpdate_enable, value: "{{ fp_ntpdate_enable }}"}
+#   - {key: ntpdate_flags, value: "{{ fp_ntpdate_flags }}"}
+#   - {key: ntpd_sync_on_start, value: "{{ fp_ntpd_sync_on_start }}"}

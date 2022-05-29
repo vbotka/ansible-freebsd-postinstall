@@ -1,6 +1,6 @@
 ---
 
-- name: "nfsd: Debug"
+- name: "nfsd: Debug (fp_nfsd_debug={{ fp_nfsd_debug }})"
   vars:
     msg: |-
          fp_nfsd_exports:

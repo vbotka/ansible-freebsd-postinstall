@@ -1,6 +1,6 @@
 ---
 
-- name: "cron: Debug"
+- name: "cron: Debug (fp_cron_debug={{ fp_cron_debug }})"
   vars:
     msg: |-
       fp_cron_dir: {{ fp_cron_dir }}

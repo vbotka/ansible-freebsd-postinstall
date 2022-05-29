@@ -1,6 +1,6 @@
 ---
 
-- name: "linux: Debug"
+- name: "linux: Debug (fp_linux_debug={{ fp_linux_debug }})"
   vars:
     msg: |-
       fp_linux_install: {{ fp_linux_install }}

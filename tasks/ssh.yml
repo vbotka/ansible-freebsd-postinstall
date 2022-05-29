@@ -1,6 +1,6 @@
 ---
 
-- name: "ssh: Debug"
+- name: "ssh: Debug (fp_ssh_debug={{ fp_ssh_debug }})"
   vars:
     msg: |-
       fp_ssh_conf_file: {{ fp_ssh_conf_file }}

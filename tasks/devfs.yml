@@ -1,6 +1,6 @@
 ---
 
-- name: "devfs: Debug"
+- name: "devfs: Debug (fp_devfs_debug={{ fp_devfs_debug }})"
   vars:
     msg: |-
          fp_devfs_enabled: {{ fp_devfs_enabled }}

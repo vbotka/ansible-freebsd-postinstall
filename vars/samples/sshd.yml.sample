@@ -1,0 +1,16 @@
+# fp_sshd: true
+# fp_sshd_enable: true
+# sshd_passwordauthentication: "no"
+# sshd_challengeresponseauthentication: "no"
+# sshd_permitrootlogin: "no"
+# sshd_permittunnel: "no"
+# sshd_allowtcpforwarding: "yes"
+# sshd_x11forwarding: "no"
+# fp_sshd_conf:
+#   - {key: PasswordAuthentication, value: "{{ sshd_passwordauthentication }}"}
+#   - {key: ChallengeResponseAuthentication, value: "{{ sshd_challengeresponseauthentication }}"}
+#   - {key: PermitRootLogin, value: "{{ sshd_permitrootlogin }}"}
+#   - {key: PermitTunnel, value: "{{ sshd_permittunnel }}"}
+#   - {key: AllowTcpForwarding, value: "{{ sshd_allowtcpforwarding }}"}
+#   - {key: X11Forwarding, value: "{{ sshd_x11forwarding }}"}
+#   - {key: UseBlacklist, value: "yes"}

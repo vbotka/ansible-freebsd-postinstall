@@ -1,6 +1,6 @@
 ---
 
-- name: "copy: Debug"
+- name: "copy: Debug (fp_copy_debug={{ fp_copy_debug }})"
   vars:
     msg: |-
          fp_unarch_default: {{ fp_unarch_default }}

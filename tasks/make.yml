@@ -1,6 +1,6 @@
 ---
 
-- name: "make: Debug"
+- name: "make: Debug (fp_make_debug={{ fp_make_debug }})"
   vars:
     msg: |-
       fp_make_conf_template: {{ fp_make_conf_template }}

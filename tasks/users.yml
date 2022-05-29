@@ -1,6 +1,6 @@
 ---
 
-- name: "users: Debug"
+- name: "users: Debug (fp_users_debug={{ fp_users_debug }})"
   vars:
     msg: |-
       fp_users_debug_classified: {{ fp_users_debug_classified }}

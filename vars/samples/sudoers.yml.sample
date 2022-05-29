@@ -1,0 +1,4 @@
+# fp_sudoers: true
+# fp_sudoers_conf:
+#   - {key: asadmin, value: "ALL=(ALL) NOPASSWD: ALL"}
+#   - {key: acadmin, value: "ALL=(ALL) NOPASSWD: ALL"}

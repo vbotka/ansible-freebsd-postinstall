@@ -1,0 +1,12 @@
+# fp_nfsd: true
+# fp_nfsd_enable: true
+# fp_nfs_server_flags: '-u -t -n 4'
+# fp_nfsv4_server_enable: 'YES'
+# fp_mountd_enable: true
+# fp_mountd_flags: '-r'
+# fp_rpcbind_enable: true
+# fp_rpc_lockd_enable: true
+# fp_rpc_statd_enable: true
+
+# fp_nfsd_exports:
+#   - {mount_point: '/usr/ports/packages', flags: '10.132.0.3 10.132.0.4'}

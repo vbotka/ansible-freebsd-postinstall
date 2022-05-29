@@ -1,6 +1,6 @@
 ---
 
-- name: "sanity: Debug"
+- name: "sanity: Debug (fp_sanity_debug={{ fp_sanity_debug }})"
   ansible.builtin.debug:
     msg: |-
       ansible_run_tags:

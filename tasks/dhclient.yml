@@ -1,6 +1,6 @@
 ---
 
-- name: "dhclient: Debug"
+- name: "dhclient: Debug (fp_dhclient_debug={{ fp_dhclient_debug }})"
   vars:
     msg: |-
          fp_dhclient_ifn: {{ fp_dhclient_ifn }}

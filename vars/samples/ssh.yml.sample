@@ -1,0 +1,20 @@
+# fp_ssh: true
+# ssh_Protocol: "2"
+# ssh_ForwardAgent: "no"
+# ssh_ForwardX11: "no"
+# ssh_HostbasedAuthentication: "no"
+# ssh_StrictHostKeyChecking: "no"
+# ssh_Ciphers: "aes128-ctr,aes192-ctr,aes256-ctr,aes128-cbc,3des-cbc"
+# ssh_Tunnel: "no"
+# ssh_ServerAliveInterval: "420"
+# fp_ssh_conf:
+#   - host: "*"
+#     conf:
+#       - {key: Protocol, val: "{{ ssh_Protocol }}"}
+#       - {key: ForwardAgent, val: "{{ ssh_ForwardAgent }}"}
+#       - {key: ForwardX11, val: "{{ ssh_ForwardX11 }}"}
+#       - {key: HostbasedAuthentication, val: "{{ ssh_HostbasedAuthentication }}"}
+#       - {key: StrictHostKeyChecking, val: "{{ ssh_StrictHostKeyChecking }}"}
+#       - {key: Ciphers, val: "{{ ssh_Ciphers }}"}
+#       - {key: Tunnel, val: "{{ ssh_Tunnel }}"}
+#       - {key: ServerAliveInterval, val: "{{ ssh_ServerAliveInterval }}"}

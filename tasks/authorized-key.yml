@@ -5,7 +5,7 @@
     database: passwd
   tags: fp_authorized_key_debug
 
-- name: "authorized-key: Debug"
+- name: "authorized-key: Debug (fp_authorized_key_debug={{ fp_authorized_key_debug }})"
   vars:
     msg: |-
       fp_authorized_key_fail: {{ fp_authorized_key_fail|bool }}

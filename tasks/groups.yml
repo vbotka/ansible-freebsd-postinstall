@@ -1,6 +1,6 @@
 ---
 
-- name: "groups: Debug"
+- name: "groups: Debug (fp_groups_debug={{ fp_groups_debug }})"
   vars:
     msg: |-
       fp_groups_conf:

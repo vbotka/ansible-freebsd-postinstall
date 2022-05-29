@@ -1,0 +1,4 @@
+# fp_aliases: true
+# fp_aliases_conf:
+#   - {alias: root, user: admin@example.com}
+#   - {alias: devel, user: admin@example.com}

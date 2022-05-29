@@ -14,4 +14,4 @@ update of the role.
 
 .. seealso::
 
-   * The examples of the customization ``vars/main.yml.sample``
+   * The examples of the customization in the directory ``vars/samples``
