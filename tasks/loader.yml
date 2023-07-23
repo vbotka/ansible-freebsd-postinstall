@@ -9,11 +9,11 @@
       fp_loader_conf_file: {{ fp_loader_conf_file }}
       fp_loader_conf_template: {{ fp_loader_conf_template }}
       fp_loader_conf:
-        {{ fp_loader_conf|to_yaml|indent(2) }}
+        {{ fp_loader_conf|to_yaml(indent=2)|indent(2) }}
       fp_loader_conf_modules:
-        {{ fp_loader_conf_modules|to_yaml|indent(2) }}
+        {{ fp_loader_conf_modules|to_yaml(indent=2)|indent(2) }}
       fp_sysctl_conf:
-        {{ fp_sysctl_conf|to_yaml|indent(2) }}
+        {{ fp_sysctl_conf|to_yaml(indent=2)|indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
   when: fp_loader_debug|bool

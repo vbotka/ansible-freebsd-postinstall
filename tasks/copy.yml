@@ -6,9 +6,9 @@
          fp_unarch_default: {{ fp_unarch_default }}
          fp_unarch_optional: {{ fp_unarch_optional }}
          fp_synchronize_default:
-           {{ fp_synchronize_default|to_nice_yaml|indent(2) }}
+           {{ fp_synchronize_default|to_nice_yaml(indent=2)|indent(2) }}
          fp_synchronize_optional:
-           {{ fp_synchronize_optional|to_nice_yaml|indent(2) }}
+           {{ fp_synchronize_optional|to_nice_yaml(indent=2)|indent(2) }}
          fp_copy_dir: {{ fp_copy_dir }}
          fp_copy_dir_default: {{ fp_copy_dir_default }}
          fp_copy_arch_defaul: {{ fp_copy_arch_default }}

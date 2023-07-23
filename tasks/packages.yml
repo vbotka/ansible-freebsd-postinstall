@@ -18,7 +18,7 @@
          fp_packages:
            {{ fp_packages|sort(attribute='list')|to_yaml|indent(2) }}
          fp_links:
-           {{ fp_links|to_yaml|indent(2) }}
+           {{ fp_links|to_yaml(indent=2)|indent(2) }}
          ansible_architecture: {{ ansible_architecture }}
          pkg_dict_{{ ansible_architecture }}:
            {{ lookup('vars', 'pkg_dict_' ~ ansible_architecture)|

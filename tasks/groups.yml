@@ -4,7 +4,7 @@
   vars:
     msg: |-
       fp_groups_conf:
-        {{ fp_groups_conf|to_nice_yaml|indent(2) }}
+        {{ fp_groups_conf|to_nice_yaml(indent=2)|indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
   when: fp_groups_debug|bool
