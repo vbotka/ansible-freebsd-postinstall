@@ -5,7 +5,7 @@
     msg: |-
       fp_periodic_conf_local_file: {{ fp_periodic_conf_local_file }}
       fp_periodic_conf_local:
-        {{ fp_periodic_conf_local|to_yaml|indent(2) }}
+        {{ fp_periodic_conf_local|to_yaml(indent=2)|indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
   when: fp_periodic_debug|bool

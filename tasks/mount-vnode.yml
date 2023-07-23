@@ -7,7 +7,7 @@
       _fp_mount_fstype_default: {{ _fp_mount_fstype_default }}
       _fp_mount_points_create: {{ _fp_mount_points_create }}
       _fp_mount_entries:
-        {{ _fp_mount_entries|to_nice_yaml|indent(2) }}
+        {{ _fp_mount_entries|to_nice_yaml(indent=2)|indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
   when: fp_mount_vnode_debug|default(false)|bool

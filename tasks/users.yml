@@ -5,7 +5,7 @@
     msg: |-
       fp_users_debug_classified: {{ fp_users_debug_classified }}
       fp_users_conf:
-        {{ fp_users_conf|to_nice_yaml|indent(2) }}
+        {{ fp_users_conf|to_nice_yaml(indent=2)|indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
   when: fp_users_debug|bool

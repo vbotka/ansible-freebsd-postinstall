@@ -7,7 +7,7 @@
       fp_sysctl_conf_file: {{ fp_sysctl_conf_file }}
       fp_sysctl_ignoreerrors: {{ fp_sysctl_ignoreerrors }}
       fp_sysctl_conf:
-        {{ fp_sysctl_conf|to_yaml|indent(2) }}
+        {{ fp_sysctl_conf|to_yaml(indent=2)|indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
   when: fp_sysctl_debug|bool

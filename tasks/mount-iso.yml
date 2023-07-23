@@ -5,7 +5,7 @@
     msg: |-
       fp_mount_iso_points_create: {{ fp_mount_iso_points_create }}
       fp_mount_iso_entries:
-        {{ fp_mount_iso_entries|to_nice_yaml|indent(2) }}
+        {{ fp_mount_iso_entries|to_nice_yaml(indent=2)|indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
   when: fp_mount_iso_debug|bool

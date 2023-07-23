@@ -5,14 +5,14 @@
     msg: |-
       fp_cron_dir: {{ fp_cron_dir }}
       fp_cron_var:
-        {{ fp_cron_var|to_yaml|indent(2) }}
+        {{ fp_cron_var|to_yaml(indent=2)|indent(2) }}
       fp_cron_tab:
-        {{ fp_cron_tab|to_nice_yaml|indent(2) }}
+        {{ fp_cron_tab|to_nice_yaml(indent=2)|indent(2) }}
       fp_cron_file_system: {{ fp_cron_file_system }}
       fp_cron_var_system:
-        {{ fp_cron_var_system|to_yaml|indent(2) }}
+        {{ fp_cron_var_system|to_yaml(indent=2)|indent(2) }}
       fp_cron_tab_system:
-        {{ fp_cron_tab_system|to_nice_yaml|indent(2) }}
+        {{ fp_cron_tab_system|to_nice_yaml(indent=2)|indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
   when: fp_cron_debug|bool

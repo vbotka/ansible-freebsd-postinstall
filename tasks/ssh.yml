@@ -5,7 +5,7 @@
     msg: |-
       fp_ssh_conf_file: {{ fp_ssh_conf_file }}
       fp_ssh_conf:
-        {{ fp_ssh_conf|to_yaml|indent(2) }}
+        {{ fp_ssh_conf|to_yaml(indent=2)|indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
   when: fp_ssh_debug|bool

@@ -18,9 +18,9 @@
       fp_authorized_key_state: {{ fp_authorized_key_state|default('present') }}
       fp_authorized_key_validate_certs: {{ fp_authorized_key_validate_certs|bool }}
       fp_authorized_key_conf:
-        {{ fp_authorized_key_conf|to_nice_yaml|indent(2) }}
+        {{ fp_authorized_key_conf|to_nice_yaml(indent=2)|indent(2) }}
       getent_passwd keys:
-        {{ getent_passwd.keys()|list|sort|to_yaml|indent(2) }}
+        {{ getent_passwd.keys()|list|sort|to_yaml(indent=2)|indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
   when: fp_authorized_key_debug|bool

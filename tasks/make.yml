@@ -9,7 +9,7 @@
       fp_make_conf_group: {{ fp_make_conf_group }}
       fp_make_conf_mode: {{ fp_make_conf_mode }}
       fp_make_conf:
-        {{ fp_make_conf|to_nice_yaml|indent(2) }}
+        {{ fp_make_conf|to_nice_yaml(indent=2)|indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
   when: fp_make_debug|bool

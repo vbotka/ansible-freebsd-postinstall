@@ -7,7 +7,7 @@
       fp_wpasupplicant_program: {{ fp_wpasupplicant_program }}
       fp_wpasupplicant_flags: {{ fp_wpasupplicant_flags }}
       fp_wpasupplicant_rcconf:
-        {{ fp_wpasupplicant_rcconf|to_yaml|indent(2) }}
+        {{ fp_wpasupplicant_rcconf|to_yaml(indent=2)|indent(2) }}
       fp_wpasupplicant_conf_rc: {{ fp_wpasupplicant_conf_rc }}
       fp_wpasupplicant_conf_file_link: {{ fp_wpasupplicant_conf_file_link }}
       fp_wpasupplicant_conf_owner: {{ fp_wpasupplicant_conf_owner }}
@@ -18,10 +18,10 @@
       fp_wpasupplicant_conf_template: {{ fp_wpasupplicant_conf_template }}
       fp_wpasupplicant_conf_ctrl_interface: {{ fp_wpasupplicant_conf_ctrl_interface }}
       fp_wpasupplicant_conf_global:
-        {{ fp_wpasupplicant_conf_global|to_yaml|indent(2) }}
+        {{ fp_wpasupplicant_conf_global|to_yaml(indent=2)|indent(2) }}
       {% if fp_wpasupplicant_debug_classified %}
       fp_wpasupplicant_conf:
-        {{ fp_wpasupplicant_conf|to_yaml|indent(2) }}
+        {{ fp_wpasupplicant_conf|to_yaml(indent=2)|indent(2) }}
       {% endif %}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"

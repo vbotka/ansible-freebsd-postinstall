@@ -4,11 +4,11 @@
   ansible.builtin.debug:
     msg: |-
       ansible_run_tags:
-        {{ ansible_run_tags|to_yaml }}
+        {{ ansible_run_tags|to_yaml(indent=2)|indent(2) }}
       ansible_skip_tags:
-        {{ ansible_skip_tags|to_yaml }}
+        {{ ansible_skip_tags|to_yaml(indent=2)|indent(2) }}
       fp_sanity_tags:
-        {{ fp_sanity_tags|to_yaml }}
+        {{ fp_sanity_tags|to_yaml(indent=2)|indent(2) }}
   when: fp_sanity_debug|bool
   tags: fp_sanity_debug
 
