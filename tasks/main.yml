@@ -83,6 +83,11 @@
   when: fp_libmap|bool
   tags: fp_libmap
 
+- name: Import groupwrappers.yml
+  ansible.builtin.import_tasks: groupwrappers.yml
+  when: fp_groupwrappers|bool
+  tags: fp_groupwrappers
+
 - name: Import groups.yml
   ansible.builtin.import_tasks: groups.yml
   when: fp_groups|bool
@@ -97,11 +102,6 @@
   ansible.builtin.import_tasks: passwords.yml
   when: fp_passwords|bool
   tags: fp_passwords
-
-- name: Import groupwrappers.yml
-  ansible.builtin.import_tasks: groupwrappers.yml
-  when: fp_groupwrappers|bool
-  tags: fp_groupwrappers
 
 - name: Import hostname.yml
   ansible.builtin.import_tasks: hostname.yml
