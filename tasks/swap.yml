@@ -4,10 +4,10 @@
   vars:
     msg: |-
       fp_swap_enable: {{ fp_swap_enable }}
-      fp_swap_file: {{ fp_swap_file|default("UNDEFINED") }}
-      fp_swap_md: {{ fp_swap_md|default("UNDEFINED") }}
-      fp_swap_size: {{ fp_swap_size|default("UNDEFINED") }}
-      fp_swap_stsize: {{ fp_swap_stsize|default("UNDEFINED") }}
+      fp_swap_file: {{ fp_swap_file|default('UNDEFINED') }}
+      fp_swap_md: {{ fp_swap_md|default('UNDEFINED') }}
+      fp_swap_size: {{ fp_swap_size|default('UNDEFINED') }}
+      fp_swap_stsize: {{ fp_swap_stsize|default('UNDEFINED') }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
   when: fp_swap_debug|bool
@@ -15,6 +15,7 @@
 
 - name: "swap: Enable swap and add entry in /etc/fstab"
   block:
+
     - name: "swap: Create swapfile {{ fp_swap_file }}"
       ansible.builtin.shell:
         cmd: >
@@ -23,8 +24,9 @@
              printf "create";
           fi'
       register: command_result
-      changed_when: command_result.stdout|default("none") == "create"
+      changed_when: command_result.stdout|default('none') == 'create'
       notify: create swap
+
     - name: "swap: Create swap entry in /etc/fstab"
       ansible.builtin.lineinfile:
         path: /etc/fstab
@@ -32,18 +34,21 @@
         line: "{{ fp_swap_md }} none swap sw,file={{ fp_swap_file }},late 0 0"
         backup: "{{ fp_backup }}"
       notify: mount swap
-#  ansible.posix.mount:
-#    name="none"
-#    src="{{ fp_swap_md }}"
-#    fstype="swap"
-#    opts="sw,file={{ fp_swap_file }},late"
-#    passno="0"
-#    dump="0"
-#    state="present"
-#    backup yes
-# Note: mount module fstype swap does not work with FreeBSD as
-# expected. Instead of adding the src all swap mount points present in
-# the fstab are replaced with src.
+
+#   - ansible.posix.mount:
+#       name: 'none'
+#       src: "{{ fp_swap_md }}"
+#       fstype: swap
+#       opts: "sw,file={{ fp_swap_file }},late"
+#       passno: '0'
+#       dump: '0'
+#       state: mounted
+#       backup: true
+#
+# Note: ansible.posix.mount module can't mount fstype swap
+# https://github.com/ansible/ansible/pull/49390
+# https://github.com/ansible-collections/ansible.posix/issues/106
+
     - name: "swap: Change swapfile {{ fp_swap_file }}"
       ansible.builtin.shell:
         cmd: >
@@ -53,7 +58,7 @@
              printf "change";
           fi'
       register: command_result
-      changed_when: command_result.stdout|default("none") == "change"
+      changed_when: command_result.stdout|default('none') == 'change'
       notify: change and mount swap
   when: fp_swap_enable|bool
 
