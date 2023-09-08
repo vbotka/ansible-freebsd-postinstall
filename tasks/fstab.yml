@@ -1,6 +1,6 @@
 ---
 
-- name: "fstab: Configure fstab entries"
+- name: "fstab: Configure fstab entries by mount"
   ansible.posix.mount:
     name: "{{ item.name }}"
     src: "{{ item.src }}"
@@ -10,7 +10,27 @@
     passno: "{{ item.passno|default('0') }}"
     state: "{{ item.state|default('mounted') }}"
     backup: "{{ fp_backup }}"
-  loop: "{{ fp_fstab_entries }}"
+  loop: "{{ fp_fstab_entries|
+            rejectattr('fstype', 'in', fp_fstab_fstype_blacklist) }}"
+
+- name: "fstab: Configure fstab swap entries."
+  ansible.builtin.lineinfile:
+    path: /etc/fstab
+    regexp: '^\s*{{ item.src }}\s+(.*)$'
+    line: "{{ item.src }} none swap {{ item.opts }} 0 0"
+    state: "{{ item.state|default('present') }}"
+    backup: "{{ fp_backup }}"
+  notify: mount swap
+  loop: "{{ fp_fstab_entries|
+            selectattr('fstype', 'eq', 'swap') }}"
+
+# NOTE:
+# The module ansible.posix.mount do not mount swap
+# SEE:
+# * Add support for swap management #106
+#   https://github.com/ansible-collections/ansible.posix/issues/106
+# * New module swap: manage ... swap partitions #49455
+#   https://github.com/ansible/ansible/pull/49455
 
 # EOF
 ...
