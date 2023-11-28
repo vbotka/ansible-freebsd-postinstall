@@ -10,10 +10,14 @@ vbotka.freebsd_postinstall 2.6 Release Notes
 
 Release Summary
 ---------------
-Add changelog.
+Update fstab. Add changelog. Add docs/requirements.txt
 
 Major changes
 -------------
+* Formatting and comments in swap.
+* Configure fstab swap entries.
+* Update fstab sample vars.
+* Add ansible_python_version to debug.
 
 
 2.6.3
