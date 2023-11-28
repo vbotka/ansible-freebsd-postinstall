@@ -1,6 +1,8 @@
 # fp_fstab: true
 # fp_fstab_entries:
+#   - {name: none, src: /dev/ada0p3, fstype: swap, opts: sw}
+#   - {name: /export, src: /dev/ada0p5, fstype: ext2fs, opts: rw}
 #   - {name: /proc, src: proc, fstype: procfs, opts: rw}
 #   - {name: /dev/fd, src: fdesc, fstype: fdescfs, opts: rw}
-#   - {name: "/export/test", src: "box9:/export/test", fstype: "nfs",  opts: "rw", state: 'present'}
-#   - {name: "/export/images", src: "box9:/zroot/images", fstype: "nfs", opts: "ro,late", state: 'present'}
+#   - {name: /export/test, src: 'box9:/export/test', fstype: nfs,  opts: rw, state: present}
+#   - {name: /export/images, src: 'box9:/zroot/images', fstype: nfs, opts: 'ro,late', state: present}
