@@ -5,6 +5,14 @@ vbotka.freebsd_postinstall 2.6 Release Notes
 .. contents:: Topics
 
 
+2.6.5
+=====
+
+Release Summary
+---------------
+Fix requirements: docs/requirements.txt
+
+
 2.6.4
 =====
 
