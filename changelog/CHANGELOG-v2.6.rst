@@ -12,6 +12,11 @@ Release Summary
 ---------------
 Update to Ansible 2.16. Add FreeBSD 14.0
 
+Major changes
+-------------
+
+* Add support to manage /etc/freebsd-update.conf
+
 
 2.6.5
 =====
