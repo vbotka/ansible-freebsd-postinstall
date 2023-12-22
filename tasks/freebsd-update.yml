@@ -1,0 +1,12 @@
+---
+
+- name: "freebsd-update: Create /etc/freebsd-update.conf from template"
+  ansible.builtin.template:
+    src: freebsd-update.conf.j2
+    dest: /etc/freebsd-update.conf
+    owner: root
+    mode: "0644"
+  tags: fp_freebsd_update_conf
+
+# EOF
+...

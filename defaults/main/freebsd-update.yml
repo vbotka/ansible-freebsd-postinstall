@@ -1,0 +1,38 @@
+---
+fp_freebsd_update: false
+
+# Not sure we need a variable to change the KeyPrint
+# Security impications of changing it are numerious
+#fp_freebsd_update_keyprint: 800651ef4b4c71c27e60786d7b487188970f4b4169cc055784e21eb71d410cc5
+fp_freebsd_update_servername: update.FreeBSD.org
+fp_freebsd_update_components:
+  - src
+  - world
+  - kernel
+#fp_freebsd_update_ignorepaths:
+fp_freebsd_update_idsignorepaths:
+  - /usr/share/man/cat
+  - /usr/share/man/whatis
+  - /var/db/locate.database
+  - /var/log
+fp_freebsd_update_updateifunmodified:
+  - /etc/
+  - /var/
+  - /root/
+  - /.cshrc
+  - /.profile
+fp_freebsd_update_mergechanges:
+  - /etc/
+  - /boot/device.hints
+
+# These are the defaults and just here for completeness
+#fp_freebsd_update_workdir: /var/db/freebsd-update
+#fp_freebsd_update_mailto: root
+#fp_freebsd_update_allowadd: 'yes'
+#fp_freebsd_update_allowdelete: 'yes'
+#fp_freebsd_update_keepmodifiedmetadata: 'yes'
+#fp_freebsd_update_strictcomponents: 'no'
+#fp_freebsd_update_backupkernel: 'yes'
+#fp_freebsd_update_backupkerneldir: /boot/kernel.old
+#fp_freebsd_update_backupkernelsymbolfiles: 'no'
+#fp_freebsd_update_createbootenv: 'yes'

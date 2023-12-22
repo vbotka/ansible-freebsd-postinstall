@@ -233,5 +233,10 @@
   when: fp_qemu|bool
   tags: fp_qemu
 
+- name: Import freebsd-update.yml
+  ansible.builtin.import_tasks: freebsd-update.yml
+  when: fp_freebsd_update|bool
+  tags: fp_freebsd_update
+
 # EOF
 ...
