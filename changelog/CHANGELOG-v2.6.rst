@@ -5,6 +5,14 @@ vbotka.freebsd_postinstall 2.6 Release Notes
 .. contents:: Topics
 
 
+2.6.6
+=====
+
+Release Summary
+---------------
+Update to Ansible 2.16. Add FreeBSD 14.0
+
+
 2.6.5
 =====
 
