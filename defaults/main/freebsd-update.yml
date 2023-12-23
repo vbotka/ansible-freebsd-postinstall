@@ -1,5 +1,10 @@
 ---
 fp_freebsd_update: false
+fp_freebsd_update_debug: false
+fp_freebsd_update_protect_KeyPrint: true
+fp_freebsd_update_sanity: true
+fp_freebsd_update_sanity_quiet: false
+fp_freebsd_update_sanity_KeyPrint: true
 
 # Copy /etc/freebsd-update.conf to /etc/freebsd-update.conf.orig
 fp_freebsd_update_conf_orig: false
