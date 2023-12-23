@@ -6,38 +6,43 @@ fp_freebsd_update_conf_orig: false
 # Template for /etc/freebsd-update.conf
 fp_freebsd_update_conf_template: freebsd-update.conf.j2
 
-# Not sure we need a variable to change the KeyPrint
-# Security impications of changing it are numerious
-#fp_freebsd_update_keyprint: 800651ef4b4c71c27e60786d7b487188970f4b4169cc055784e21eb71d410cc5
-fp_freebsd_update_servername: update.FreeBSD.org
-fp_freebsd_update_components:
+# Options /etc/freebsd-update.conf
+# - - - WARNING - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Trusted keyprint.  Changing this is a Bad Idea unless you've received
+# a PGP-signed email from <security-officer@FreeBSD.org> telling you to
+# change it and explaining why.
+fp_freebsd_update_KeyPrint: 800651ef4b4c71c27e60786d7b487188970f4b4169cc055784e21eb71d410cc5
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+fp_freebsd_update_ServerName: update.FreeBSD.org
+fp_freebsd_update_Components:
   - src
   - world
   - kernel
-#fp_freebsd_update_ignorepaths:
-fp_freebsd_update_idsignorepaths:
+fp_freebsd_update_IgnorePaths: ''
+fp_freebsd_update_IDSIgnorePaths:
   - /usr/share/man/cat
   - /usr/share/man/whatis
   - /var/db/locate.database
   - /var/log
-fp_freebsd_update_updateifunmodified:
+fp_freebsd_update_UpdateIfUnmodified:
   - /etc/
   - /var/
   - /root/
   - /.cshrc
   - /.profile
-fp_freebsd_update_mergechanges:
+fp_freebsd_update_MergeChanges:
   - /etc/
   - /boot/device.hints
 
-# These are the defaults and just here for completeness
-#fp_freebsd_update_workdir: /var/db/freebsd-update
-#fp_freebsd_update_mailto: root
-#fp_freebsd_update_allowadd: 'yes'
-#fp_freebsd_update_allowdelete: 'yes'
-#fp_freebsd_update_keepmodifiedmetadata: 'yes'
-#fp_freebsd_update_strictcomponents: 'no'
-#fp_freebsd_update_backupkernel: 'yes'
-#fp_freebsd_update_backupkerneldir: /boot/kernel.old
-#fp_freebsd_update_backupkernelsymbolfiles: 'no'
-#fp_freebsd_update_createbootenv: 'yes'
+# Defaults /etc/freebsd-update.conf
+# If you want to change the below defaults uncomment and change it
+# fp_freebsd_update_WorkDir: /var/db/freebsd-update
+# fp_freebsd_update_MailTo: root
+# fp_freebsd_update_AllowAdd: 'yes'
+# fp_freebsd_update_AllowDelete: 'yes'
+# fp_freebsd_update_KeepModifiedMetadata: 'yes'
+# fp_freebsd_update_StrictComponents: 'no'
+# fp_freebsd_update_BackupKernel: 'yes'
+# fp_freebsd_update_BackupKernelDir: /boot/kernel.old
+# fp_freebsd_update_BackupKernelSymbolFiles: 'no'
+# fp_freebsd_update_CreateBootEnv: 'yes'

@@ -12,7 +12,9 @@
     src: "{{ fp_freebsd_update_conf_template }}"
     dest: /etc/freebsd-update.conf
     owner: root
+    group: wheel
     mode: '0644'
+    backup: "{{ fp_backup }}"
   tags: fp_freebsd_update_conf
 
 # EOF
