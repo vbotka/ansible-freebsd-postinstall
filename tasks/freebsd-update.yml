@@ -24,6 +24,41 @@
     - fp_freebsd_update_protect_keyprint
     - fp_freebsd_update_sanity
 
+- name: "freebsd-update: Debug"
+  vars:
+    msg: |-
+      fp_freebsd_update_protect_KeyPrint: {{ fp_freebsd_update_protect_KeyPrint }}
+      fp_freebsd_update_sanity: {{ fp_freebsd_update_sanity }}
+      fp_freebsd_update_sanity_quiet: {{ fp_freebsd_update_sanity_quiet }}
+      fp_freebsd_update_sanity_KeyPrint: {{ fp_freebsd_update_sanity_KeyPrint }}
+      fp_freebsd_update_conf_orig: {{ fp_freebsd_update_conf_orig }}
+
+      fp_freebsd_update_conf_template: {{ fp_freebsd_update_conf_template }}
+      fp_freebsd_update_KeyPrint: {{ fp_freebsd_update_KeyPrint }}
+      fp_freebsd_update_Components:
+        {{ fp_freebsd_update_Components|to_nice_yaml(indent=2)|indent(2) }}
+      fp_freebsd_update_IgnorePaths: {{ fp_freebsd_update_IgnorePaths }}
+      fp_freebsd_update_IDSIgnorePaths:
+        {{ fp_freebsd_update_IDSIgnorePaths|to_nice_yaml(indent=2)|indent(2) }}
+      fp_freebsd_update_UpdateIfUnmodified:
+        {{ fp_freebsd_update_UpdateIfUnmodified|to_nice_yaml(indent=2)|indent(2) }}
+      fp_freebsd_update_MergeChanges:
+        {{ fp_freebsd_update_MergeChanges|to_nice_yaml(indent=2)|indent(2) }}
+      fp_freebsd_update_WorkDir: {{ fp_freebsd_update_WorkDir|d('UNDEFINED') }}
+      fp_freebsd_update_MailTo: {{ fp_freebsd_update_MailTo|d('UNDEFINED') }}
+      fp_freebsd_update_AllowAdd: {{ fp_freebsd_update_AllowAdd|d('UNDEFINED') }}
+      fp_freebsd_update_AllowDelete: {{ fp_freebsd_update_AllowDelete|d('UNDEFINED') }}
+      fp_freebsd_update_KeepModifiedMetadata: {{ fp_freebsd_update_KeepModifiedMetadata|d('UNDEFINED') }}
+      fp_freebsd_update_StrictComponents: {{ fp_freebsd_update_StrictComponents|d('UNDEFINED') }}
+      fp_freebsd_update_BackupKernel: {{ fp_freebsd_update_BackupKernel|d('UNDEFINED') }}
+      fp_freebsd_update_BackupKernelDir: {{ fp_freebsd_update_BackupKernelDir|d('UNDEFINED') }}
+      fp_freebsd_update_BackupKernelSymbolFiles: {{ fp_freebsd_update_BackupKernelSymbolFiles|d('UNDEFINED') }}
+      fp_freebsd_update_CreateBootEnv: {{ fp_freebsd_update_CreateBootEnv|d('UNDEFINED') }}
+  ansible.builtin.debug:
+    msg: "{{ '{}'.format(msg) }}"
+  when: fp_freebsd_update_debug|bool
+  tags: fp_freebsd_update_debug
+
 - name: "freebsd-update: Protect trusted keyprint"
   ansible.builtin.assert:
     quiet: "{{ fp_freebsd_update_sanity_quiet }}"
@@ -31,7 +66,9 @@
       fp_freebsd_update_conf.keyprint == fp_freebsd_update_KeyPrint
     fail_msg: '[ERR] Changing KeyPrint not allowed.'
     success_msg: '[OK]  KeyPrint will not change.'
-  when: fp_freebsd_update_protect_KeyPrint|bool
+  when:
+    - fp_freebsd_update_protect_KeyPrint|bool
+    - not ansible_check_mode
   tags: fp_freebsd_update_protect_keyprint
 
 - name: Sanity
