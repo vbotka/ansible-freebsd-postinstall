@@ -1,6 +1,8 @@
 ---
 fp_freebsd_update: false
 
+# Copy /etc/freebsd-update.conf to /etc/freebsd-update.conf.orig
+fp_freebsd_update_conf_orig: false
 # Template for /etc/freebsd-update.conf
 fp_freebsd_update_conf_template: freebsd-update.conf.j2
 

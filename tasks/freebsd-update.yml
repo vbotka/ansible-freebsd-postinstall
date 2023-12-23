@@ -1,5 +1,12 @@
 ---
 
+- name: "freebsd-update: Backup origin /etc/freebsd-update.conf"
+  ansible.builtin.command:
+    cmd: cp /etc/freebsd-update.conf /etc/freebsd-update.conf.orig
+    creates: /etc/freebsd-update.conf.orig
+  when: fp_freebsd_update_conf_orig|bool
+  tags: fp_freebsd_update_conf_orig
+
 - name: "freebsd-update: Create /etc/freebsd-update.conf from template"
   ansible.builtin.template:
     src: "{{ fp_freebsd_update_conf_template }}"
