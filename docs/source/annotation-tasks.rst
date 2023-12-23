@@ -241,6 +241,30 @@ Description of the task.
 
 
 
+.. _as_freebsd-update.yml:
+
+freebsd-update.yml
+------------------
+
+Synopsis: Configure freebsd-update.
+
+
+Description of the task.
+
+
+[`tasks/freebsd-update.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/freebsd-update.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../tasks/freebsd-update.yml
+    :language: Yaml
+    :emphasize-lines: 1,2
+    :linenos:
+
+
+
+
+
 .. _as_fstab.yml:
 
 fstab.yml

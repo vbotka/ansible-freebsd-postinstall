@@ -129,6 +129,19 @@ mytasks:
     hints: []
     warnings: []
 
+  - file: freebsd-update.yml
+    link: freebsd-update.yml
+    path: tasks/freebsd-update.yml
+    synopsis: |
+      Configure freebsd-update.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
   - file: fstab.yml
     link: fstab.yml
     path: tasks/fstab.yml

@@ -3,9 +3,8 @@
 Debug
 =====
 
-To display some facts (11-16) and values of the control variables, run select the task *fp_debug*
-and enable the debug output. By default all control variables are disabled. The example below shows
-values used in the examples of the Quick start guide
+To display some facts (11-17) and values of the control variables, run select the task *fp_debug*
+and enable the debug output. By default all control variables are disabled.
 
 .. include:: debug-example.rst
 

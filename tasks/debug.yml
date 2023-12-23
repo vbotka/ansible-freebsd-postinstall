@@ -35,6 +35,7 @@
          fp_copy: {{ fp_copy }} fp_unarch_default: {{ fp_unarch_default }} fp_unarch_optional: {{ fp_unarch_optional }}
          fp_cron: {{ fp_cron }}
          fp_devfs: {{ fp_devfs }} fp_devfs_enabled: {{ fp_devfs_enabled }}
+         fp_freebsd_update: {{ fp_freebsd_update }}
          fp_fstab: {{ fp_fstab }}
          fp_gitserver: {{ fp_gitserver }} fp_gitserver_install: {{ fp_gitserver_install }}
          fp_groups: {{ fp_groups }}
