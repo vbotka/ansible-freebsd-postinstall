@@ -5,7 +5,7 @@
     src: "{{ fp_freebsd_update_conf_template }}"
     dest: /etc/freebsd-update.conf
     owner: root
-    mode: "0644"
+    mode: '0644'
   tags: fp_freebsd_update_conf
 
 # EOF
