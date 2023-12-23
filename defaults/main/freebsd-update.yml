@@ -1,6 +1,9 @@
 ---
 fp_freebsd_update: false
 
+# Template for /etc/freebsd-update.conf
+fp_freebsd_update_conf_template: freebsd-update.conf.j2
+
 # Not sure we need a variable to change the KeyPrint
 # Security impications of changing it are numerious
 #fp_freebsd_update_keyprint: 800651ef4b4c71c27e60786d7b487188970f4b4169cc055784e21eb71d410cc5
