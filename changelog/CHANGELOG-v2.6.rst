@@ -16,6 +16,7 @@ Major changes
 -------------
 
 * Add support to manage /etc/freebsd-update.conf
+* Update smartd
 
 
 2.6.5
