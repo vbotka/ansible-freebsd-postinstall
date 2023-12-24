@@ -99,7 +99,7 @@
   when: fp_dhclient_ifn_rcconf|bool
   tags: fp_dhclient_ifn_rcconf
 
-- name: "dhclient: Create {{ fp_dhclient_conf_path }}"
+- name: "dhclient: Change owner, group and permissions {{ fp_dhclient_conf_path }}"
   ansible.builtin.file:
     path: "{{ fp_dhclient_conf_path }}"
     owner: root
