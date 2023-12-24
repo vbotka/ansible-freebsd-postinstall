@@ -16,7 +16,7 @@ Major changes
 -------------
 
 * Add support to manage /etc/freebsd-update.conf
-* Update smartd, apcupsd
+* Update smartd, apcupsd, devfs
 
 
 2.6.5

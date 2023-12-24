@@ -110,5 +110,12 @@
   notify: restart devfs
   tags: fp_devfs_rules
 
+- name: "devfs: {{ state }} devfs"
+  ansible.builtin.service:
+    name: devfs
+    state: "{{ state }}"
+  vars:
+    state: "{{ fp_devfs_enabled|bool|ternary('started', 'stopped') }}"
+
 # EOF
 ...
