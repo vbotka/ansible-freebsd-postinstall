@@ -18,7 +18,7 @@ Major changes
 * Add support to manage /etc/freebsd-update.conf
 
 * Update smartd, apcupsd, devfs, hostapd, nfsd, nfs, ntpdate, ntp,
-  qemu, resolvconf
+  qemu, resolvconf, snmpd
 
 
 2.6.5

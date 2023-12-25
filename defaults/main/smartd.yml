@@ -5,5 +5,5 @@ fp_smartd_enabled: false
 fp_smartd_conf_file: /usr/local/etc/smartd.conf
 fp_smartd_conf_owner: root
 fp_smartd_conf_group: wheel
-fp_smartd_conf_mode: "0644"
+fp_smartd_conf_mode: '0644'
 fp_smartd_devices: []

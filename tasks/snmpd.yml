@@ -38,7 +38,7 @@
     dest: /usr/local/etc/snmpd.conf
     owner: root
     group: wheel
-    mode: "0644"
+    mode: '0644'
   notify: restart snmpd
   tags: fp_snmpd_conf_copy
 
@@ -52,6 +52,13 @@
   loop: "{{ fp_snmpd_conf }}"
   notify: restart snmpd
   tags: fp_snmpd_conf
+
+- name: "snmpd: {{ state }} snmpd"
+  ansible.builtin.service:
+    name: snmpd
+    state: "{{ state }}"
+  vars:
+    state: "{{ fp_snmpd_enabled|bool|ternary('started', 'stopped') }}"
 
 # EOF
 ...
