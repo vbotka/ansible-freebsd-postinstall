@@ -44,5 +44,12 @@
   notify: reload sshd
   tags: fp_sshd_config
 
+- name: "sshd: {{ state }} sshd"
+  ansible.builtin.service:
+    name: sshd
+    state: "{{ state }}"
+  vars:
+    state: "{{ fp_sshd_enable|bool|ternary('started', 'stopped') }}"
+
 # EOF
 ...
