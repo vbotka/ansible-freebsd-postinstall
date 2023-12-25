@@ -29,5 +29,12 @@
   notify: restart ntpd
   tags: fp_ntp_conf
 
+- name: "ntp: {{ state }} ntpd"
+  ansible.builtin.service:
+    name: ntpd
+    state: "{{ state }}"
+  vars:
+    state: "{{ fp_ntp_enable|bool|ternary('started', 'stopped') }}"
+
 # EOF
 ...
