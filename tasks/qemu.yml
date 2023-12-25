@@ -20,5 +20,12 @@
   notify: disable and stop qemu
   tags: fp_qemu_rcconf
 
+- name: "qemu: {{ state }} smartd"
+  ansible.builtin.service:
+    name: "{{ fp_qemu_rcvar }}"
+    state: "{{ state }}"
+  vars:
+    state: "{{ fp_qemu_enabled|bool|ternary('started', 'stopped') }}"
+
 # EOF
 ...

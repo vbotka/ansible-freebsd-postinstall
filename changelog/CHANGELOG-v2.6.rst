@@ -17,7 +17,8 @@ Major changes
 
 * Add support to manage /etc/freebsd-update.conf
 
-* Update smartd, apcupsd, devfs, hostapd, nfsd, nfs, ntpdate, ntp
+* Update smartd, apcupsd, devfs, hostapd, nfsd, nfs, ntpdate, ntp,
+  qemu
 
 
 2.6.5
