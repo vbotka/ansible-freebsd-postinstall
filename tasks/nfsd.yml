@@ -79,7 +79,7 @@
   ansible.builtin.template:
     src: exports.j2
     dest: /etc/exports
-    mode: "0644"
+    mode: '0644'
     backup: "{{ fp_backup }}"
   notify: reload mountd
   tags: fp_nfsd_exports
