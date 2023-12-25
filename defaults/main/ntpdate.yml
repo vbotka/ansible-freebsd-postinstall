@@ -1,13 +1,16 @@
 ---
 fp_ntpdate: false
+
 # Run ntpdate to sync time on boot
-fp_ntpdate_enable: "NO"
+fp_ntpdate_enable: 'NO'
+
 # -b Force the time to be stepped using the settimeofday(2) system call,
 # rather than slewed (default) using the adjtime(2) system call.  This
 # option should be used when called from a startup file at boot time.
-fp_ntpdate_flags: "-b"
+fp_ntpdate_flags: -b
+
 # Sync time on ntpd startup
-fp_ntpd_sync_on_start: "YES"
+fp_ntpd_sync_on_start: 'YES'
 fp_ntpdate_rcconf:
   - {key: ntpdate_enable, value: '"{{ fp_ntpdate_enable }}"'}
   - {key: ntpdate_flags, value: '"{{ fp_ntpdate_flags }}"'}
