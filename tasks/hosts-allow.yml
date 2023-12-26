@@ -1,0 +1,34 @@
+---
+- name: "hosts.allow: Create logfile {{ fp_hosts_allow_logfile }}"
+  ansible.builtin.file:
+    state: touch
+    access_time: preserve
+    modification_time: preserve
+    path: "{{ fp_hosts_allow_logfile }}"
+    owner: root
+    group: wheel
+    mode: '0644'
+  tags: fp_hosts_allow
+
+- name: "hosts.allow: Create /etc/syslog.d/tcp_wrappers.conf from template"
+  ansible.builtin.template:
+    src: syslog_config.j2
+    dest: /etc/syslog.d/tcp_wrappers.conf
+    owner: root
+    mode: "0644"
+  vars:
+    config: "{{ fp_hosts_allow_syslog_conf }}"
+  notify: restart syslog
+  tags: fp_hosts_allow
+
+- name: "hosts.allow: Configure {{ fp_hosts_allow_file }}"
+  ansible.builtin.template:
+    src: hosts-allow.j2
+    dest: "{{ fp_hosts_allow_file }}"
+    owner: root
+    group: wheel
+    mode: '0644'
+  tags: fp_hosts_allow
+
+# EOF
+...

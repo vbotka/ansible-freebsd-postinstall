@@ -113,6 +113,11 @@
   when: fp_hosts|bool
   tags: fp_hosts
 
+- name: Import hosts-allow.yml
+  ansible.builtin.import_tasks: hosts-allow.yml
+  when: fp_hosts_allow|bool
+  tags: fp_hosts_allow
+
 - name: Import ssh.yml
   ansible.builtin.import_tasks: ssh.yml
   when: fp_ssh|bool
