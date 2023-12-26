@@ -17,6 +17,8 @@ Major changes
 
 * Add support to manage /etc/freebsd-update.conf
 
+* Add support to manage inetd
+
 * Update smartd, apcupsd, devfs, hostapd, nfsd, nfs, ntpdate, ntp,
   qemu, resolvconf, snmpd, sshd, swap, sysctl, wpasupplicant
 

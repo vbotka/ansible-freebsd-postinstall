@@ -1,13 +1,17 @@
 ---
-fp_hosts_allow: false
-fp_hosts_allow_file: /etc/hosts.allow
-fp_hosts_allow_logfile: /var/log/connections.log
-fp_hosts_allow_syslog_conf:
-  - logfile: "{{ fp_hosts_allow_logfile }}"
+fp_inetd_allow: false
+fp_inetd_enable: false
+fp_inetd_debug: false
+
+fp_inetd_hosts_allow_file: /etc/hosts.allow
+fp_inetd_hosts_allow_logfile: /var/log/connections.log
+fp_inetd_hosts_allow_syslog_conf:
+  - logfile: "{{ fp_inetd_hosts_allow_logfile }}"
     selectors:
       - 'local3.info'
+
 # Recreate the native /etc/hosts.allow file that is installed
-fp_hosts_alllow_conf:
+fp_inetd_hosts_allow_conf:
   # Start by allowing everything (this prevents the rest of the file
   # from working, so remove it when you need protection).
   # The rules here work on a "First match wins" basis.
@@ -20,12 +24,12 @@ fp_hosts_alllow_conf:
 
   # Wrapping sshd(8) is not normally a good idea, but if you
   # need to do it, here's how
-#  - daemons:
-#      - sshd
-#    clients:
-#      - .evil.cracker.example.com
-#    action:
-#      - deny
+  #  - daemons:
+  #      - sshd
+  #    clients:
+  #      - .evil.cracker.example.com
+  #    action:
+  #      - deny
 
   # Protect against simple DNS spoofing attacks by checking that the
   # forward and reverse records for the remote host match. If a mismatch
@@ -67,18 +71,18 @@ fp_hosts_alllow_conf:
       - localhost
     action:
       - allow
-#  - daemons:
-#      - sendmail
-#    clients:
-#      - .nice.guy.example.com
-#    action:
-#      - allow
-#  - daemons:
-#      - sendmail
-#    clients:
-#      - .evil.cracker.example.com
-#    action:
-#      - deny
+  #  - daemons:
+  #      - sendmail
+  #    clients:
+  #      - .nice.guy.example.com
+  #    action:
+  #      - allow
+  #  - daemons:
+  #      - sendmail
+  #    clients:
+  #      - .evil.cracker.example.com
+  #    action:
+  #      - deny
   - daemons:
       - sendmail
     clients:
@@ -93,18 +97,18 @@ fp_hosts_alllow_conf:
       - localhost
     action:
       - allow
-#  - daemons:
-#      - exim
-#    clients:
-#      - .nice.guy.example.com
-#    action:
-#      - allow
-#  - daemons:
-#      - exim
-#    clients:
-#      - .evil.cracker.example.com
-#    action:
-#      - deny
+  #  - daemons:
+  #      - exim
+  #    clients:
+  #      - .nice.guy.example.com
+  #    action:
+  #      - allow
+  #  - daemons:
+  #      - exim
+  #    clients:
+  #      - .evil.cracker.example.com
+  #    action:
+  #      - deny
   - daemons:
       - exim
     clients:
@@ -115,18 +119,18 @@ fp_hosts_alllow_conf:
   # Rpcbind is used for all RPC services; protect your NFS!
   # Rpcbind should be running with -W option to support this.
   # (IP addresses rather than hostnames *MUST* be used here)
-#  - daemons:
-#      - rpcbind
-#    clients:
-#      - 192.0.2.32/255.255.255.224
-#    action:
-#      - allow
-#  - daemons:
-#      - rpcbind
-#    clients:
-#      - 192.0.2.96/255.255.255.224
-#    action:
-#      - allow
+  #  - daemons:
+  #      - rpcbind
+  #    clients:
+  #      - 192.0.2.32/255.255.255.224
+  #    action:
+  #      - allow
+  #  - daemons:
+  #      - rpcbind
+  #    clients:
+  #      - 192.0.2.96/255.255.255.224
+  #    action:
+  #      - allow
   - daemons:
       - rpcbind
     clients:
@@ -142,18 +146,18 @@ fp_hosts_alllow_conf:
       - localhost
     action:
       - allow
-#  - daemons:
-#      - ypserv
-#    clients:
-#      - .unsafe.my.net.example.com
-#    action:
-#      - deny
-#  - daemons:
-#      - ypserv
-#    clients:
-#      - .my.net.example.com
-#    action:
-#      - allow
+  #  - daemons:
+  #      - ypserv
+  #    clients:
+  #      - .unsafe.my.net.example.com
+  #    action:
+  #      - deny
+  #  - daemons:
+  #      - ypserv
+  #    clients:
+  #      - .my.net.example.com
+  #    action:
+  #      - allow
   - daemons:
       - ypserv
     clients:
@@ -168,18 +172,18 @@ fp_hosts_alllow_conf:
       - localhost
     action:
       - allow
-#  - daemons:
-#      - ftpd
-#    clients:
-#      - .nice.guy.example.com
-#    action:
-#      - allow
-#  - daemons:
-#      - ftpd
-#    clients:
-#      - .evil.cracker.example.com
-#    action:
-#      - deny
+  #  - daemons:
+  #      - ftpd
+  #    clients:
+  #      - .nice.guy.example.com
+  #    action:
+  #      - allow
+  #  - daemons:
+  #      - ftpd
+  #    clients:
+  #      - .evil.cracker.example.com
+  #    action:
+  #      - deny
   - daemons:
       - ftpd
     clients:

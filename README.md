@@ -2,7 +2,15 @@
 
 [![quality](https://img.shields.io/ansible/quality/27910)](https://galaxy.ansible.com/vbotka/freebsd_postinstall)[![Build Status](https://app.travis-ci.com/vbotka/ansible-freebsd-postinstall.svg?branch=master)](https://app.travis-ci.com/vbotka/ansible-freebsd-postinstall)[![Documentation Status](https://readthedocs.org/projects/docs/badge/?version=latest)](https://ansible-freebsd-postinstall.readthedocs.io/en/latest/)
 
-[Ansible role.](https://galaxy.ansible.com/vbotka/freebsd_postinstall/) FreeBSD post-install configuration: aliases, apcupsd, authorized keys, cron, devfs, dhclient, fstab, groups, hostapd, hostname, hosts, libmap, linux compatibility, login.conf, loader.conf, make.conf, motd, nfsd, ntpd, ntpdate, procmail, qemu, resolvconf.conf, smartd, snmpd, sudoers, ssh, sshd, swap, sysctl, timezone, tmpmfs, users, packages and ports, periodic.conf, overlays, wpa_supplicant, (wip) ...
+[Ansible
+role.](https://galaxy.ansible.com/vbotka/freebsd_postinstall/) FreeBSD
+post-install configuration: aliases, apcupsd, authorized keys, cron,
+devfs, dhclient, freebsd-update, fstab, groups, hostapd, hostname,
+hosts, inetd, libmap, linux compatibility, login.conf, loader.conf,
+make.conf, motd, nfsd, ntpd, ntpdate, procmail, qemu, resolvconf.conf,
+smartd, snmpd, sudoers, ssh, sshd, swap, sysctl, timezone, tmpmfs,
+users, packages and ports, periodic.conf, overlays, wpa_supplicant,
+(wip) ...
 
 [Documentation at readthedocs.io](https://ansible-freebsd-postinstall.readthedocs.io)
 
@@ -63,22 +71,27 @@ freebsd_use_packages: true
 
 ## Workflow
 
-1) Change shell to /bin/sh
+1) On the remote hosts, change shell to /bin/sh for the remote user if necessary
 
 ```
 ansible host -e 'ansible_shell_type=csh ansible_shell_executable=/bin/csh' -a 'sudo pw usermod user -s /bin/sh'
 ```
 
-2) Install the roles and collections
+2) Install the roles
 
 ```
 ansible-galaxy role install vbotka.freebsd_postinstall
 ansible-galaxy role install vbotka.ansible_lib
+```
+
+and install the collections if necessary
+
+```
 ansible-galaxy collection install ansible.posix
 ansible-galaxy collection install community.general
 ```
 
-3) Fit variables
+3) Fit variables, for example in *vars*
 
 ```
 editor vbotka.freebsd_postinstall/vars/main.yml
