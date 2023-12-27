@@ -1,34 +1,134 @@
 ---
-- name: "hosts.allow: Create logfile {{ fp_hosts_allow_logfile }}"
+
+- name: "inetd: Debug"
+  vars:
+    msg: |-
+      fp_inetd_enabled: {{ fp_inetd_enabled }}
+      fp_inetd_rcconf:
+        {{ fp_inetd_rcconf|to_nice_yaml(indent=2)|indent(2) }}
+      fp_inetd_conf_orig: {{ fp_inetd_conf_orig }}
+      fp_inetd_conf:
+        {{ fp_inetd_conf|to_nice_yaml(indent=2)|indent(2) }}
+      fp_inetd_hosts_allow_file: {{ fp_inetd_hosts_allow_file }}
+      fp_inetd_hosts_allow_orig: {{ fp_inetd_hosts_allow_orig }}
+      fp_inetd_hosts_allow_template: {{ fp_inetd_hosts_allow_template }}
+      fp_inetd_hosts_allow_conf:
+        {{ fp_inetd_hosts_allow_conf|to_yaml(indent=2)|indent(2) }}
+      fp_inetd_syslogd_conf:
+        {{ fp_inetd_syslogd_conf|to_nice_yaml(indent=2)|indent(2) }}
+  ansible.builtin.debug:
+    msg: "{{ '{}'.format(msg) }}"
+  when: fp_inetd_debug|bool
+  tags: fp_inetd_debug
+
+# rc.conf
+- name: "inetd: Configure /etc/rc.conf"
+  ansible.builtin.lineinfile:
+    dest: /etc/rc.conf
+    regexp: '^\s*{{ item.key }}\s*=(.*)$'
+    line: '{{ item.key }}="{{ item.value }}"'
+    backup: "{{ fp_backup }}"
+  loop: "{{ fp_inetd_rcconf }}"
+  notify: restart inetd
+  tags: fp_inetd_rcconf
+
+- name: "inetd: Enable and start inetd"
+  ansible.builtin.lineinfile:
+    dest: /etc/rc.conf
+    regexp: '^\s*inetd_enable\s*=(.*)$'
+    line: 'inetd_enable="YES"'
+    backup: "{{ fp_backup }}"
+  when: fp_inetd_enabled|bool
+  notify: enable and start inetd
+  tags: fp_inetd_rcconf
+
+- name: "inetd: Disable and stop inetd"
+  ansible.builtin.lineinfile:
+    dest: /etc/rc.conf
+    regexp: '^\s*inetd_enable\s*=(.*)$'
+    line: 'inetd_enable="NO"'
+    backup: "{{ fp_backup }}"
+  when: not fp_inetd_enabled|bool
+  notify: disable and stop inetd
+  tags: fp_inetd_rcconf
+
+# logfile
+- name: "inetd: Create logfile {{ fp_inetd_logfile }}"
   ansible.builtin.file:
     state: touch
     access_time: preserve
     modification_time: preserve
-    path: "{{ fp_hosts_allow_logfile }}"
+    path: "{{ fp_inetd_logfile }}"
     owner: root
     group: wheel
     mode: '0644'
-  tags: fp_hosts_allow
+  when: fp_inetd_logfile|length > 0
+  tags: fp_inetd_logfile
 
-- name: "hosts.allow: Create /etc/syslog.d/tcp_wrappers.conf from template"
+- name: "inetd: Create files in /etc/syslog.d/"
   ansible.builtin.template:
-    src: syslog_config.j2
-    dest: /etc/syslog.d/tcp_wrappers.conf
+    src: "{{ item.template }}"
+    dest: "/etc/syslog.d/{{ item.path }}"
     owner: root
-    mode: "0644"
+    group: wheel
+    mode: '0644'
+    backup: "{{ fp_backup }}"
+  loop: "{{ fp_inetd_syslogd_conf }}"
+  loop_control:
+    label: "{{ item.path }}"
   vars:
-    config: "{{ fp_hosts_allow_syslog_conf }}"
-  notify: restart syslog
-  tags: fp_hosts_allow
+    syslogd_conf: "{{ item.conf }}"
+  notify: reload syslogd
+  tags: fp_inetd_syslogd
 
-- name: "hosts.allow: Configure {{ fp_hosts_allow_file }}"
+# inetd.conf
+- name: "inetd: Backup origin /etc/inetd.conf"
+  ansible.builtin.command:
+    cmd: "cp /etc/inetd.conf /etc/inetd.conf.orig"
+    creates: /etc/inetd.conf.orig
+  when: fp_inetd_conf_orig|bool
+  tags: fp_inetd_conf_orig
+
+# TODO:
+# - name: "inetd: Configure /etc/inetd.conf"
+#   ansible.builtin.template:
+#     src: inetd.conf.j2
+#     dest: /etc/inetd.conf
+#     owner: root
+#     group: wheel
+#     mode: '0644'
+#     backup: "{{ fp_backup }}"
+#   notify: reload inetd
+#   when: fp_inetd_conf|length > 0
+#   tags: fp_inetd_conf
+
+# hosts.allow
+- name: "inetd: Backup origin {{ fp_inetd_hosts_allow_file }}"
+  ansible.builtin.command:
+    cmd: "cp {{ fp_inetd_hosts_allow_file }} {{ fp_inetd_hosts_allow_file }}.orig"
+    creates: "{{ fp_inetd_hosts_allow_file }}.orig"
+  when: fp_inetd_hosts_allow_orig|bool
+  tags: fp_inetd_hosts_allow_orig
+
+- name: "inetd: Configure {{ fp_hosts_allow_file }}"
   ansible.builtin.template:
-    src: hosts-allow.j2
-    dest: "{{ fp_hosts_allow_file }}"
+    src: "{{ fp_inetd_hosts_allow_template }}"
+    dest: "{{ fp_inetd_hosts_allow_file }}"
     owner: root
     group: wheel
     mode: '0644'
-  tags: fp_hosts_allow
+    backup: "{{ fp_backup }}"
+  notify: reload inetd
+  when: fp_inetd_hosts_allow_conf|length > 0
+  tags: fp_inetd_hosts_allow
+
+# service
+- name: "inetd: {{ state }} inetd"
+  ansible.builtin.service:
+    name: inetd
+    state: "{{ state }}"
+  vars:
+    state: "{{ fp_inetd_enabled|bool|ternary('started', 'stopped') }}"
 
 # EOF
 ...

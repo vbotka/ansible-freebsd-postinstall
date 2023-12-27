@@ -1,5 +1,5 @@
 # {{ ansible_managed }}
-{% for item in fp_hosts_alllow_conf %}
+{% for item in fp_inetd_hosts_allow_conf %}
 {{ item.daemons | join(' ') }} : \
     {{ item.clients | join(' ') }} : \
 {% if item.options is defined %}

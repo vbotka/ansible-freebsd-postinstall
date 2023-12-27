@@ -1,0 +1,16 @@
+---
+# inetd
+
+- name: enable and start inetd
+  ansible.builtin.service: name=inetd state=started enabled=true
+
+- name: disable and stop inetd
+  ansible.builtin.service: name=inetd state=stopped enabled=false
+
+- name: restart inetd
+  ansible.builtin.service: name=inetd state=restarted
+  when: fp_inetd_enabled|bool
+
+- name: reload inetd
+  ansible.builtin.service: name=inetd state=reloaded
+  when: fp_inetd_enabled|bool
