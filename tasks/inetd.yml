@@ -110,7 +110,7 @@
   when: fp_inetd_hosts_allow_orig|bool
   tags: fp_inetd_hosts_allow_orig
 
-- name: "inetd: Configure {{ fp_hosts_allow_file }}"
+- name: "inetd: Configure {{ fp_inetd_hosts_allow_file }}"
   ansible.builtin.template:
     src: "{{ fp_inetd_hosts_allow_template }}"
     dest: "{{ fp_inetd_hosts_allow_file }}"
