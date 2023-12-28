@@ -19,6 +19,8 @@ Major changes
 
 * Add support to manage inetd
 
+* Add support to manage syslogd
+
 * Update smartd, apcupsd, devfs, hostapd, nfsd, nfs, ntpdate, ntp,
   qemu, resolvconf, snmpd, sshd, swap, sysctl, wpasupplicant
 
