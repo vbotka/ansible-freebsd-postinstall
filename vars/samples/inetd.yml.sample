@@ -1,6 +1,6 @@
 ---
 fp_inetd_logfile: /var/log/connections.log
-fp_inetd_syslogd_conf:
+fp_inetd_syslogd_confd:
   - path: tcp_wrappers.conf
     template: syslogd_conf.j2
     conf:

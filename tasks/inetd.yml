@@ -14,8 +14,8 @@
       fp_inetd_hosts_allow_template: {{ fp_inetd_hosts_allow_template }}
       fp_inetd_hosts_allow_conf:
         {{ fp_inetd_hosts_allow_conf|to_yaml(indent=2)|indent(2) }}
-      fp_inetd_syslogd_conf:
-        {{ fp_inetd_syslogd_conf|to_nice_yaml(indent=2)|indent(2) }}
+      fp_inetd_syslogd_confd:
+        {{ fp_inetd_syslogd_confd|to_nice_yaml(indent=2)|indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
   when: fp_inetd_debug|bool
@@ -73,7 +73,7 @@
     group: wheel
     mode: '0644'
     backup: "{{ fp_backup }}"
-  loop: "{{ fp_inetd_syslogd_conf }}"
+  loop: "{{ fp_inetd_syslogd_confd }}"
   loop_control:
     label: "{{ item.path }}"
   vars:

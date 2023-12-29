@@ -9,13 +9,19 @@
       fp_syslogd_conf_orig: {{ fp_syslogd_conf_orig }}
       fp_syslogd_conf:
         {{ fp_syslogd_conf|to_nice_yaml(indent=2)|indent(2) }}
-      fp_syslogd_syslogd_conf:
-        {{ fp_syslogd_syslogd_conf|to_nice_yaml(indent=2)|indent(2) }}
+      fp_syslogd_confd:
+        {{ fp_syslogd_confd|to_nice_yaml(indent=2)|indent(2) }}
+      fp_syslogd_newconf_orig: {{ fp_syslogd_newconf_orig }}
+      fp_syslogd_newconf:
+        {{ fp_syslogd_newconf|to_nice_yaml(indent=2)|indent(2) }}
+      fp_syslogd_newconfd:
+        {{ fp_syslogd_newconfd|to_nice_yaml(indent=2)|indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
   when: fp_syslogd_debug|bool
   tags: fp_syslogd_debug
 
+# rc.conf
 - name: "syslogd: Configure /etc/rc.conf"
   ansible.builtin.lineinfile:
     dest: /etc/rc.conf
@@ -46,10 +52,11 @@
   notify: disable and stop syslogd
   tags: fp_syslogd_rcconf
 
+# syslog.conf
 - name: "syslogd: Backup origin /etc/syslog.conf"
   ansible.builtin.command:
     cmd: "cp /etc/syslog.conf /etc/syslog.conf.orig"
-    creates: /etc/syslo.conf.orig
+    creates: /etc/syslog.conf.orig
   when: fp_syslogd_conf_orig|bool
   tags: fp_syslogd_conf_orig
 
@@ -73,14 +80,51 @@
     group: wheel
     mode: '0644'
     backup: "{{ fp_backup }}"
-  loop: "{{ fp_syslogd_syslogd_conf }}"
+  loop: "{{ fp_syslogd_confd }}"
   loop_control:
     label: "{{ item.path }}"
   vars:
     syslogd_conf: "{{ item.conf }}"
   notify: reload syslogd
-  tags: fp_syslogd_syslogd
+  tags: fp_syslogd_confd
 
+# newsyslog.conf
+- name: "syslogd: Backup origin /etc/newsyslog.conf"
+  ansible.builtin.command:
+    cmd: "cp /etc/newsyslog.conf /etc/newsyslog.conf.orig"
+    creates: /etc/newsyslog.conf.orig
+  when: fp_syslogd_newconf_orig|bool
+  tags: fp_syslogd_newconf_orig
+
+- name: "syslogd: Configure /etc/newsyslog.conf"
+  ansible.builtin.template:
+    src: newsyslog.conf.j2
+    dest: /etc/newsyslog.conf
+    owner: root
+    group: wheel
+    mode: '0644'
+    backup: "{{ fp_backup }}"
+  notify: create newsyslog
+  when: fp_syslogd_newconf|length > 0
+  tags: fp_syslogd_newconf
+
+- name: "syslogd: Create files in /etc/newsyslog.conf.d/"
+  ansible.builtin.template:
+    src: "{{ item.template }}"
+    dest: "/etc/newsyslog.conf.d/{{ item.path }}"
+    owner: root
+    group: wheel
+    mode: '0644'
+    backup: "{{ fp_backup }}"
+  loop: "{{ fp_syslogd_newconfd }}"
+  loop_control:
+    label: "{{ item.path }}"
+  vars:
+    syslogd_newconf: "{{ item.conf }}"
+  notify: create newsyslogd
+  tags: fp_syslogd_newconfd
+
+# service
 - name: "syslogd: {{ state }} syslogd"
   ansible.builtin.service:
     name: syslogd

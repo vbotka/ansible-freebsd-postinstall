@@ -55,6 +55,7 @@ fp_sanity_tags: [all, always, fp_aliases,
                  fp_sshd, fp_sshd_config, fp_sshd_debug, fp_sshd_rcconf,
                  fp_sudoers,
                  fp_swap, fp_swap_debug,
+                 fp_syslogd, fp_syslogd_debug, fp_syslogd_rcconf, fp_syslogd_conf_orig, fp_syslogd_conf, fp_syslogd_confd, fp_syslogd_newconf_orig, fp_syslogd_newconf, fp_syslogd_newconfd
                  fp_sysctl,
                  fp_timezone, fp_timezone_debug,
                  fp_tmpmfs, fp_tmpmfs_debug, fp_tmpmfs_rcconf,

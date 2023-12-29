@@ -11,8 +11,11 @@ fp_syslogd_rcconf: []
 # /etc/syslog.conf
 fp_syslogd_conf_orig: false
 fp_syslogd_conf: []
+fp_syslogd_confd: []
 
-# /etc/syslog.d/
-fp_syslogd_syslogd_conf: []
+# /etc/newsyslog.conf
+fp_syslogd_newconf_orig: false
+fp_syslogd_newconf: []
+fp_syslogd_newconfd: []
 
 # EOF

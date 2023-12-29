@@ -1,0 +1,6 @@
+# {{ ansible_managed }}
+{% for k,v in syslogd_newconf.items() %}
+{{ k }}		{{ v }}
+{% endfor %}
+
+# EOF
