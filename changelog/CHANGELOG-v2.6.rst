@@ -24,6 +24,18 @@ Major changes
 * Update smartd, apcupsd, devfs, hostapd, nfsd, nfs, ntpdate, ntp,
   qemu, resolvconf, snmpd, sshd, swap, sysctl, wpasupplicant
 
+Minor Changes
+-------------
+
+Bugfixes
+--------
+
+* #4 Fix apcupsd script location
+* #4 Remove double quote when using ntpdate rc vars
+
+Breaking Changes / Porting Guide
+--------------------------------
+
 
 2.6.5
 =====
