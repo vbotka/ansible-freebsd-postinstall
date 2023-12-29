@@ -63,7 +63,7 @@
   ansible.builtin.assert:
     quiet: "{{ fp_freebsd_update_sanity_quiet }}"
     that:
-      fp_freebsd_update_conf.keyprint == fp_freebsd_update_KeyPrint
+      fp_freebsd_update_conf.KEYPRINT == fp_freebsd_update_KeyPrint
     fail_msg: '[ERR] Changing KeyPrint not allowed.'
     success_msg: '[OK]  KeyPrint will not change.'
   when:
