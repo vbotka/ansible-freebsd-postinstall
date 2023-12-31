@@ -39,9 +39,10 @@ Requirements on the remote host
 Installation
 ============
 
-Configure Ansible. Fit the paths to the inventory (3) and to the roles (4) to your needs. Let's
-disable *retry_files* (5). Don't' display *ok* and *skipped* hosts (6-8). Pipelining (12) should
-speedup the execution of the playbook
+Configure Ansible. Fit the paths to the inventory (3) and to the
+roles (4) to your needs. Disable *retry_files* (5). Don't' display
+*ok* and *skipped* hosts (6-8). Pipelining (12) should speedup the
+execution of the playbook
 
 .. code-block:: bash
    :emphasize-lines: 1
@@ -64,9 +65,12 @@ Install the role ``vbotka.freebsd_postinstall`` ::
 
     shell> ansible-galaxy role install vbotka.freebsd_postinstall
 
-Install the library ``vbotka.ansible_lib`` and the collections ::
+Install the library ``vbotka.ansible_lib`` ::
 
     shell> ansible-galaxy role install vbotka.ansible_lib
+
+Install the collections if necessary ::
+
     shell> ansible-galaxy collection install ansible.posix
     shell> ansible-galaxy collection install community.general
 
@@ -100,7 +104,7 @@ Create the inventory ``hosts``
    ansible_python_interpreter=/usr/local/bin/python3.8
    ansible_perl_interpreter=/usr/local/bin/perl
 
-Create the playbook ``playbook.yml`` for single host test_14.example.com
+Create the playbook ``playbook.yml`` for single *host test_14.example.com*
 
 .. code-block:: bash
    :emphasize-lines: 1
@@ -145,7 +149,7 @@ debug output (7) and backup of changed files (8)
    fp_timezone: true
    fp_zoneinfo: UTC
    fp_debug: false
-   fp_backup_conf: false
+   fp_backup: false
 
 Set ``hostname`` and ``timezone``
 
@@ -191,7 +195,7 @@ Install packages
    :linenos:
 
    shell> ansible-playbook playbook.yml -t fp_packages
-   <TODO>
+     ...
 
 
 Create users
@@ -257,13 +261,13 @@ Update authorized keys
    :linenos:
 
    shell> ansible-playbook playbook.yml -t fp_authorized_key
-   <TODO>
+     ...
 
 
 Configure sshd
 ==============
 
-Enable the configuration of *sshd* (2), enable *sshd* service, and create the configuration
+Enable the configuration of *sshd* (2), enable *sshd* service (3), and create the configuration
 data (10)
 
 .. code-block:: bash
@@ -273,12 +277,12 @@ data (10)
    shell> cat host_vars/test_14.example.com/fp-sshd.yml 
    fp_sshd: true
    fp_sshd_enable: true
-   fp_sshd_passwordauthentication: "no"
-   fp_sshd_challengeresponseauthentication: "no"
-   fp_sshd_permitrootlogin: "no"
-   fp_sshd_permittunnel: "no"
-   fp_sshd_allowtcpforwarding: "yes"
-   fp_sshd_x11forwarding: "no"
+   fp_sshd_passwordauthentication: 'no'
+   fp_sshd_challengeresponseauthentication: 'no'
+   fp_sshd_permitrootlogin: 'no'
+   fp_sshd_permittunnel: 'no'
+   fp_sshd_allowtcpforwarding: 'yes'
+   fp_sshd_x11forwarding: 'no'
    fp_sshd_conf:
      - {key: PasswordAuthentication, value: "{{ fp_sshd_passwordauthentication }}"}
      - {key: ChallengeResponseAuthentication, value: "{{ fp_sshd_challengeresponseauthentication }}"}
@@ -286,7 +290,7 @@ data (10)
      - {key: PermitTunnel, value: "{{ fp_sshd_permittunnel }}"}
      - {key: AllowTcpForwarding, value: "{{ fp_sshd_allowtcpforwarding }}"}
      - {key: X11Forwarding, value: "{{ fp_sshd_x11forwarding }}"}
-     - {key: UseBlacklist, value: "yes"}
+     - {key: UseBlacklist, value: 'yes'}
 
 Configure *sshd*
 

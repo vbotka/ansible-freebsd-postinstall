@@ -22,11 +22,11 @@ For example,
 .. code-block:: console
    :emphasize-lines: 1
 
-    shell> ansible-playbook playbook.yml -t fp_packages --check
+    shell> ansible-playbook playbook.yml -t fp_packages -e fp_install=true --check
 
-* Install the packages only
+* Install the packages
 
 .. code-block:: console
    :emphasize-lines: 1
 
-    shell> ansible-playbook playbook.yml -t fp_packages
+    shell> ansible-playbook playbook.yml -t fp_packages -e fp_install=true

@@ -3,11 +3,12 @@ mount-iso
 
 Mount images.
 
-**Example**
+Example
+^^^^^^^
 
-Enable the mounting of ISO images (2) and create the list of mount points (3). For example
+Enable the mounting of ISO images (2) and create the list of mount points (3). For example,
 
-.. code-block:: sh
+.. code-block:: yaml
    :emphasize-lines: 2,3
    :linenos:
 

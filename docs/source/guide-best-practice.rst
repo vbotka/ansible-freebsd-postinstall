@@ -18,15 +18,15 @@ See what variables will be included
 
    shell> ansible-playbook playbook.yml -t fp_debug -e fp_debug=true
 
-:index:`Dry-run`, display differences and display variables
+:index:`Dry-run` and display changes
 
 .. code-block:: console
    :emphasize-lines: 1
 
-   shell> ansible-playbook playbook.yml -e fp_debug=true --check --diff
+   shell> ansible-playbook playbook.yml --check --diff
 
-
-Install packages. Run this task separately if the installation takes too long. Then disable it.
+Install packages. Run this task separately if the installation takes
+too long. Then disable it.
 
 .. code-block:: console
    :emphasize-lines: 1
@@ -40,9 +40,11 @@ Run the playbook
 
    shell> ansible-playbook playbook.yml -e fp_install=false
 
-Test the :index:`idempotency`. The role and the configuration data shall be idempotent. There
-should be no changes reported by *ansible-playbook* when the playbook is run repeatedly. Disable the
-debug output, and the installation of packages or ports to speedup the playbook.
+Test the :index:`idempotency`. The role and the configuration data
+shall be idempotent. There should be no changes reported by
+*ansible-playbook* when the playbook is run repeatedly. Disable the
+debug output, and the installation of packages or ports to speedup the
+playbook.
 
 .. code-block:: console
    :emphasize-lines: 1

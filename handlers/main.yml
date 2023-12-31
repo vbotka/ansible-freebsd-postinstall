@@ -52,6 +52,5 @@
 - name: Import wpasupplicant.yml
   ansible.builtin.import_tasks: wpasupplicant.yml
 
-
 # EOF
 ...

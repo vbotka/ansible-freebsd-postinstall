@@ -1,9 +1,10 @@
 Development and testing
 =======================
 
-In order to deliver an Ansible project it's necessary to test the code and configuration. The tags
-provide the administrators with a tool to test groups of tasks. For example, to test a group of
-tasks at single remote host *test_01*, create the playbook
+In order to deliver an Ansible project it's necessary to test the code
+and configuration. The tags provide the administrators with a tool to
+test groups of tasks. For example, to test a group of tasks at single
+remote host *test_01*, create the playbook
 
 .. code-block:: sh
    :emphasize-lines: 1
@@ -35,5 +36,3 @@ configuration is :index:`idempotent`
    :emphasize-lines: 1
 
    shell> ansible-playbook playbook.yml -t <tag>
-
-<TBC>

@@ -3,15 +3,16 @@ mount-img
 
 Mount images.
 
-**Example**
+Example
+^^^^^^^
 
-Enable the mounting of images (2) and create the list of mount points (3). For example
+Enable the mounting of images (2) and create the list of mount points (3). For example,
 
-.. code-block:: sh
+.. code-block:: yaml
    :emphasize-lines: 2,3
    :linenos:
 
-   shell> cat host_vars/build.example.com/fp-mount-img.yml 
+   shell> cat host_vars/build.example.com/fp-mount-img.yml
    fp_mount_img: true
    fp_mount_img_entries:
      - img: /export/img/FreeBSD-12.2-RELEASE-arm-armv7-CUBOX-HUMMINGBOARD.img
