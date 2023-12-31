@@ -1,0 +1,88 @@
+---
+
+# /etc/rc.conf
+fp_syslogd_rcconf:
+  - {key: syslogd_flags, value: '-s'}
+
+# /etc/syslog.conf
+fp_syslogd_conf_orig: false
+fp_syslogd_conf:
+  /dev/console: ['*.err', kern.warning, auth.notice, mail.crit]
+  /var/log/messages: ['*.notice', authpriv.none, kern.debug, lpr.info, mail.crit, news.err]
+  /var/log/security: ['security.*']
+  /var/log/auth.log: [auth.info, authpriv.info]
+  /var/log/maillog: [mail.info]
+  /var/log/cron: ['cron.*']
+  '!-devd':
+    /var/log/debug.log: ['*.=debug']
+    '*': ['*.emerg']
+    /var/log/daemon.log: [daemon.info]
+  '!*':
+    /etc/syslog.d: [include]
+    /usr/local/etc/syslog.d: [include]
+
+fp_syslogd_confd:
+  - path: ftp.conf
+    template: syslog.conf.j2
+    conf:
+      /var/log/xferlog: [ftp.info]
+  - path: lpr.conf
+    template: syslog.conf.j2
+    conf:
+      /var/log/lpd-errs: [lpr.info]
+  - path: ppp.conf
+    template: syslog.conf.j2
+    conf:
+      '!ppp':
+        /var/log/ppp.log: ['*.*']
+
+# /etc/newsyslog.conf
+fp_syslogd_newconf_orig: false
+fp_syslogd_newconf:
+  /var/log/all.log: ['', 600, 7, '*', '@T00', J]
+  /var/log/auth.log: ['', 600, 7, 1000, '@0101T', JC]
+  /var/log/console.log: ['', 600, 5, 1000, '*', J]
+  /var/log/cron: ['', 600, 3, 1000, '*', JC]
+  /var/log/daily.log: ['', 640, 7, '*', '@T00', JN]
+  /var/log/debug.log: ['', 600, 7, 1000, '*', JC]
+  /var/log/init.log: ['', 644, 3, 1000, '*', J]
+  /var/log/kerberos.log: ['', 600, 7, 1000, '*', J]
+  /var/log/maillog: ['', 640, 7, '*', '@T00', JC]
+  /var/log/messages: ['', 644, 5, 1000, '@0101T', JC]
+  /var/log/monthly.log: ['', 640, 12, '*', '$M1D0', JN]
+  /var/log/devd.log: ['', 644, 3, 1000, '*', JC]
+  /var/log/security: ['', 600, 10, 1000, '*', JC]
+  /var/log/utx.log: ['', 644, 3, '*', '@01T05', B]
+  /var/log/weekly.log: ['', 640, 5, '*', '$W6D0', JN]
+  /var/log/daemon.log: ['', 644, 5, 1000, '@0101T', JC]
+  include:
+    - '/etc/newsyslog.conf.d/[!.]*.conf'
+    - '/usr/local/etc/newsyslog.conf.d/[!.]*.conf'
+
+fp_syslogd_newconfd:
+  - path: ftp.conf
+    template: newsyslog.conf.j2
+    conf:
+      /var/log/xferlog: ['', 600, 7, 1000, '*', JC]
+  - path: lpr.conf
+    template: newsyslog.conf.j2
+    conf:
+      /var/log/lpd-errs: ['', 644, 7, 1000, '*', JC]
+  - path: opensm.conf
+    template: newsyslog.conf.j2
+    conf:
+      /var/log/opensm.log: ['', 600, 7, 1000, '*', J, /var/run/opensm.pid, 30]
+  - path: pf.conf
+    template: newsyslog.conf.j2
+    conf:
+      /var/log/pflog: ['', 600, 3, 1000, '*', JB, /var/run/pflogd.pid]
+  - path: ppp.conf
+    template: newsyslog.conf.j2
+    conf:
+      /var/log/ppp.log: ['root:network', 640, 3, 1000, '*', JC]
+  - path: sendmail.conf
+    template: newsyslog.conf.j2
+    conf:
+      /var/log/sendmail.st: ['', 640, 10, '*', 168, BN]
+
+# EOF

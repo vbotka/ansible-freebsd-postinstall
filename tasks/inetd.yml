@@ -77,7 +77,7 @@
   loop_control:
     label: "{{ item.path }}"
   vars:
-    syslogd_conf: "{{ item.conf }}"
+    fp_syslogd_conf: "{{ item.conf }}"
   notify: reload syslogd
   tags: fp_inetd_syslogd
 

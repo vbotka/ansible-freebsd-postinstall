@@ -5,17 +5,17 @@
     msg: |-
       fp_syslogd_enabled: {{ fp_syslogd_enabled }}
       fp_syslogd_rcconf:
-        {{ fp_syslogd_rcconf|to_nice_yaml(indent=2)|indent(2) }}
+        {{ fp_syslogd_rcconf|to_yaml(indent=2)|indent(2) }}
       fp_syslogd_conf_orig: {{ fp_syslogd_conf_orig }}
       fp_syslogd_conf:
-        {{ fp_syslogd_conf|to_nice_yaml(indent=2)|indent(2) }}
+        {{ fp_syslogd_conf|to_yaml(indent=2)|indent(2) }}
       fp_syslogd_confd:
-        {{ fp_syslogd_confd|to_nice_yaml(indent=2)|indent(2) }}
+        {{ fp_syslogd_confd|to_yaml(indent=2)|indent(2) }}
       fp_syslogd_newconf_orig: {{ fp_syslogd_newconf_orig }}
       fp_syslogd_newconf:
-        {{ fp_syslogd_newconf|to_nice_yaml(indent=2)|indent(2) }}
+        {{ fp_syslogd_newconf|to_yaml(indent=2)|indent(2) }}
       fp_syslogd_newconfd:
-        {{ fp_syslogd_newconfd|to_nice_yaml(indent=2)|indent(2) }}
+        {{ fp_syslogd_newconfd|to_yaml(indent=2)|indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
   when: fp_syslogd_debug|bool
@@ -84,7 +84,7 @@
   loop_control:
     label: "{{ item.path }}"
   vars:
-    syslogd_conf: "{{ item.conf }}"
+    fp_syslogd_conf: "{{ item.conf }}"
   notify: reload syslogd
   tags: fp_syslogd_confd
 
@@ -120,8 +120,8 @@
   loop_control:
     label: "{{ item.path }}"
   vars:
-    syslogd_newconf: "{{ item.conf }}"
-  notify: create newsyslogd
+    fp_syslogd_newconf: "{{ item.conf }}"
+  notify: create newsyslog
   tags: fp_syslogd_newconfd
 
 # service

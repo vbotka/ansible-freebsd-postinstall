@@ -2,9 +2,9 @@
 fp_inetd_logfile: /var/log/connections.log
 fp_inetd_syslogd_confd:
   - path: tcp_wrappers.conf
-    template: syslogd_conf.j2
+    template: syslog.conf.j2
     conf:
-      local3.info: "{{ fp_inetd_logfile }}"
+      /var/log/connections.log: [local3.info]
 
 fp_inetd_hosts_allow_file: /etc/hosts.allow
 # Copy /etc/hosts.allow to /etc//etc/hosts.allow.orig
