@@ -2,14 +2,14 @@
 fp_nfs: false
 fp_nfs_debug: false
 fp_nfs_enable: false
-fp_nfs_access_cache: "60"
-fp_nfs_bufpackets: ""
+fp_nfs_access_cache: '60'
+fp_nfs_bufpackets: ''
 fp_nfs_enable_rcconf:
-  - {key: nfs_client_enable, value: "YES"}
+  - {key: nfs_client_enable, value: 'YES'}
   - {key: nfs_access_cache, value: "{{ fp_nfs_access_cache }}"}
   - {key: nfs_bufpackets, value: "{{ fp_nfs_bufpackets }}"}
 fp_nfs_disable_rcconf:
-  - {key: nfs_client_enable, value: "NO"}
+  - {key: nfs_client_enable, value: 'NO'}
 
 # rpc_lockd (SEE nfsd.yml)
 # rpc_statd (SEE nfsd.yml)

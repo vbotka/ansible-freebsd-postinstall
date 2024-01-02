@@ -3,9 +3,11 @@ users
 
 Manage users.
 
-**Example**
+Example
+^^^^^^^
 
-Enable management of users (3) and create list of the users (4). For example
+Enable management of users (3) and create list of the users (4). For
+example,
 
 .. code-block:: sh
    :emphasize-lines: 3,4

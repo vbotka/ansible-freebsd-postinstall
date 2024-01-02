@@ -2,25 +2,25 @@
 fp_ntp: false
 fp_ntp_enable: false
 fp_ntp_conf_file: /etc/ntp.conf
-fp_ntp_conf_mode: "0644"
+fp_ntp_conf_mode: '0644'
 fp_ntp_conf_template: ntp.conf.j2
 fp_ntp_config_options:
-  - 'tos minclock 3 maxclock 6'
+  - tos minclock 3 maxclock 6
 fp_ntp_config_pool:
-  - '0.pool.ntp.org iburst'
-  - '1.pool.ntp.org iburst'
-  - '2.pool.ntp.org iburst'
-  - '3.pool.ntp.org iburst'
+  - 0.pool.ntp.org iburst
+  - 1.pool.ntp.org iburst
+  - 2.pool.ntp.org iburst
+  - 3.pool.ntp.org iburst
 fp_ntp_config_server: []
 fp_ntp_config_peer: []
 fp_ntp_config_restrict:
-  - 'default limited kod nomodify notrap nopeer noquery'
-  - '-6 default limited kod nomodify notrap nopeer noquery'
-  - '127.0.0.1'
-  - '-6 ::1'
-  - '127.127.1.0'
+  - default limited kod nomodify notrap nopeer noquery
+  - -6 default limited kod nomodify notrap nopeer noquery
+  - 127.0.0.1
+  - -6 ::1
+  - 127.127.1.0
 fp_ntp_config_driftfile: ''
-fp_ntp_config_leapfile: '/var/db/ntpd.leap-seconds.list'
+fp_ntp_config_leapfile: /var/db/ntpd.leap-seconds.list
 fp_ntp_config_listen: []
 fp_ntp_config_filegen: []
 fp_ntp_config_statistics: ''

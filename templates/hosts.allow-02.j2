@@ -1,0 +1,9 @@
+# {{ ansible_managed }}
+{% for item in fp_inetd_hosts_allow_conf %}
+{{ item.daemons | join(' ') }} : \
+    {{ item.clients | join(' ') }} : \
+{% if item.options is defined %}
+    {{ item.options | join(' ') }} : \
+{% endif %}
+    {{ item.action | join(' ') }}
+{% endfor %}

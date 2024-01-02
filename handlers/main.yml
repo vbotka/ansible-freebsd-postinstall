@@ -16,11 +16,15 @@
 - name: Import hostname.yml
   ansible.builtin.import_tasks: hostname.yml
 - name: Import login.yml
+  ansible.builtin.import_tasks: inetd.yml
+- name: Import inetd.yml
   ansible.builtin.import_tasks: login.yml
 - name: Import messages.yml
   ansible.builtin.import_tasks: messages.yml
 - name: Import newaliases.yml
   ansible.builtin.import_tasks: newaliases.yml
+- name: Import newsyslog.yml
+  ansible.builtin.import_tasks: newsyslog.yml
 - name: Import nfsd.yml
   ansible.builtin.import_tasks: nfsd.yml
 - name: Import nfs.yml
@@ -43,9 +47,10 @@
   ansible.builtin.import_tasks: swap.yml
 - name: Import sysctl.yml
   ansible.builtin.import_tasks: sysctl.yml
+- name: Import syslogd.yml
+  ansible.builtin.import_tasks: syslogd.yml
 - name: Import wpasupplicant.yml
   ansible.builtin.import_tasks: wpasupplicant.yml
-
 
 # EOF
 ...

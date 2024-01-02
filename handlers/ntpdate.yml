@@ -1,6 +1,8 @@
 ---
 # ntpdate
+
 - name: enable ntpdate
-  ansible.builtin.service: name="ntpdate" enabled=true
+  ansible.builtin.service: name=ntpdate enabled=true
+
 - name: disable ntpdate
-  ansible.builtin.service: name="ntpdate" enabled=false
+  ansible.builtin.service: name=ntpdate enabled=false

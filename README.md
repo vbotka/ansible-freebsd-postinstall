@@ -2,7 +2,15 @@
 
 [![quality](https://img.shields.io/ansible/quality/27910)](https://galaxy.ansible.com/vbotka/freebsd_postinstall)[![Build Status](https://app.travis-ci.com/vbotka/ansible-freebsd-postinstall.svg?branch=master)](https://app.travis-ci.com/vbotka/ansible-freebsd-postinstall)[![Documentation Status](https://readthedocs.org/projects/docs/badge/?version=latest)](https://ansible-freebsd-postinstall.readthedocs.io/en/latest/)
 
-[Ansible role.](https://galaxy.ansible.com/vbotka/freebsd_postinstall/) FreeBSD post-install configuration: aliases, apcupsd, authorized keys, cron, devfs, dhclient, fstab, groups, hostapd, hostname, hosts, libmap, linux compatibility, login.conf, loader.conf, make.conf, motd, nfsd, ntpd, ntpdate, procmail, qemu, resolvconf.conf, smartd, snmpd, sudoers, ssh, sshd, swap, sysctl, timezone, tmpmfs, users, packages and ports, periodic.conf, overlays, wpa_supplicant, (wip) ...
+[Ansible role](https://galaxy.ansible.com/vbotka/freebsd_postinstall/)
+
+FreeBSD post-install configuration: aliases, apcupsd, authorized keys,
+cron, devfs, dhclient, freebsd-update, fstab, groups, hostapd,
+hostname, hosts, inetd, libmap, linux compatibility, login.conf,
+loader.conf, make.conf, motd, nfsd, ntpd, ntpdate, procmail, qemu,
+resolvconf.conf, smartd, snmpd, sudoers, ssh, sshd, swap, sysctl,
+syslog, timezone, tmpmfs, users, packages and ports, periodic.conf,
+overlays, wpa_supplicant, (wip) ...
 
 [Documentation at readthedocs.io](https://ansible-freebsd-postinstall.readthedocs.io)
 
@@ -24,12 +32,12 @@ This role has been developed and tested with [FreeBSD Supported Releases](https:
 
 ### Collections
 
-* ansible.posix
-* community.general
+* [ansible.posix](https://github.com/ansible-collections/ansible.posix)
+* [community.general](https://github.com/ansible-collections/community.general)
 
 ### Packages
 
-See the dictionaries pkg_dict_* in defaults/main/
+See the dictionaries pkg_dict_* in defaults/main/pkgdict_*.yml
 
 
 ## Variables
@@ -39,9 +47,11 @@ Review defaults and examples in vars.
 
 ## freebsd_install_method
 
-By default *freebsd_install_method* is set to install packages. Installation is faster. But, later, after having upgraded from the ports (*portmaster -a*) switch the method to *ports*.
+By default *freebsd_install_method* is set to install
+packages. Installation is faster. But, later, after having upgraded
+from the ports (*portmaster -a*) switch the method to *ports*.
 
-```
+```yaml
 freebsd_install_method: packages
 #freebsd_install_method: ports
 #freebsd_use_packages: true
@@ -54,7 +64,7 @@ Optionally the packages can be built by [freebsd_poudriere](https://galaxy.ansib
 
 Role [freebsd_ports](https://galaxy.ansible.com/vbotka/freebsd_ports) will install packages if this option is set.
 
-```
+```yaml
 #freebsd_install_method: packages
 freebsd_install_method: ports
 freebsd_use_packages: true
@@ -63,39 +73,46 @@ freebsd_use_packages: true
 
 ## Workflow
 
-1) Change shell to /bin/sh
+1) On the remote hosts, change shell to /bin/sh for the remote user if necessary
 
-```
-ansible host -e 'ansible_shell_type=csh ansible_shell_executable=/bin/csh' -a 'sudo pw usermod user -s /bin/sh'
+```bash
+ansible host -e ansible_shell_type=csh -e ansible_shell_executable=/bin/csh -a 'sudo pw usermod user -s /bin/sh'
 ```
 
-2) Install the roles and collections
+2) Install the roles
 
-```
+```bash
 ansible-galaxy role install vbotka.freebsd_postinstall
 ansible-galaxy role install vbotka.ansible_lib
+```
+
+and install the collections if necessary
+
+```bash
 ansible-galaxy collection install ansible.posix
 ansible-galaxy collection install community.general
 ```
 
-3) Fit variables
+3) Fit variables, for example in *vars*
 
-```
+```bash
 editor vbotka.freebsd_postinstall/vars/main.yml
 ```
 
 4) Create playbook
 
-```
+```yaml
 cat freebsd-postinstall.yml
 - hosts: host
   roles:
     - vbotka.freebsd_postinstall
 ```
 
+See the [Best practice](https://ansible-freebsd-postinstall.readthedocs.io/en/latest/guide-best-practice.html).
+
 5) Configure the system
 
-```
+```yaml
 ansible-playbook freebsd-postinstall.yml
 ```
 
@@ -106,14 +123,14 @@ ansible-playbook freebsd-postinstall.yml
 
 "/etc/rc.d/devfs rcvar" returns no variable. As a result module "system" fails
 
-```
+```bash
 fatal: [srv.example.com]: FAILED! => changed=false
   msg: unable to determine rcvar
 ```
 
 To solve this problem apply the path below
 
-```
+```bash
 --- devfs.orig	2019-07-13 20:31:04.688022000 +0200
 +++ devfs	2019-07-13 20:34:49.347159000 +0200
 @@ -11,6 +11,7 @@
@@ -150,10 +167,12 @@ To solve this problem apply the path below
 - [devfs rules - FreeBSD Wiki](https://forums.freebsd.org/threads/devfs-rules.56172/)
 - [devfs rules not applied by default for jails - FreeBSD-SA-14:07.devfs](https://www.freebsd.org/security/advisories/FreeBSD-SA-14:07.devfs.asc)
 - [dhclient - FreeBSD handbook: Configuring a DHCP Client](https://docs.freebsd.org/en/books/handbook/network-servers/#network-dhcp)
+- [freebsd-update - FreeBSD handbook: FreeBSD Update](https://docs.freebsd.org/en/books/handbook/cutting-edge/#updating-upgrading-freebsdupdate)
 - [fstab - FreeBSD handbook: Mounting and Unmounting File Systems](https://docs.freebsd.org/en/books/handbook/basics/#mount-unmount)
 - [git - FreeBSD forum: How to setup a Git repository](https://forums.freebsd.org/threads/10810/)
 - [git - Getting Git on a Server](https://git-scm.com/book/ch4-2.html)
 - [hostapd - Atheros wireless driver support](https://wiki.freebsd.org/dev/ath%284%29)
+- [inetd - FreeBSD handbook: The inetd Super-Server](https://docs.freebsd.org/en/books/handbook/network-servers/#network-inetd)
 - [login.conf - FreeBSD handbook: Resource Limits](https://docs.freebsd.org/en/books/handbook/security/#security-resourcelimits)
 - [linux - FreeBSD handbook: Linux Binary Compatibility](https://docs.freebsd.org/en/books/handbook/linuxemu/)
 - [linprocfs - FreeBSD man](https://www.freebsd.org/cgi/man.cgi?linprocfs(5))
@@ -181,6 +200,7 @@ To solve this problem apply the path below
 - [sudo - FreeBSD handbook: Shared Administration with Sudo](https://docs.freebsd.org/en/books/handbook/security/#security-sudo)
 - [swap - FreeBSD handbook: Adding Swap Space](https://docs.freebsd.org/en/books/handbook/config/#adding-swap-space)
 - [sysctl - FreeBSD handbook: Tuning with sysctl](https://docs.freebsd.org/en/books/handbook/config/#configtuning-sysctl)
+- [syslog - FreeBSD handbook: Configuring System Logging](https://docs.freebsd.org/en/books/handbook/config/#configtuning-syslog)
 - [timezone - How to set up FreeBSD for my region?](https://unix.stackexchange.com/questions/34567/how-to-set-up-freebsd-for-my-region)
 - [tmpmfs - FreeBSD forum: Questions about ramdisk in FreeBSD](https://forums.freebsd.org/threads/questions-about-ramdisk-in-freebsd.20345/)
 - [tmpfs - FreeBSD forum: /dev/shm | md questions](https://forums.freebsd.org/threads/tmpfs-dev-shm-md-questions.45210/)

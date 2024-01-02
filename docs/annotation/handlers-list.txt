@@ -5,13 +5,14 @@ dhclient.yml
 fstab.yml
 hostapd.yml
 hostname.yml
+inetd.yml
 login.yml
 messages.yml
 newaliases.yml
-nfsd.yml
 nfs.yml
-ntpdate.yml
+nfsd.yml
 ntpd.yml
+ntpdate.yml
 qemu.yml
 resolvconf.yml
 smartd.yml
@@ -19,4 +20,5 @@ snmpd.yml
 sshd.yml
 swap.yml
 sysctl.yml
+syslogd.yml
 wpasupplicant.yml

@@ -23,6 +23,7 @@ pkg_dict_arm64:
   - pkglist: smart
     packages:
       - sysutils/smartmontools
+      - sysutils/smart
   - pkglist: hostap
     packages:
       - net/hostapd

@@ -3,13 +3,13 @@
 Playbook
 ========
 
-Create simple playbook that calls this role (10) at a single host test_14.example.com (2)
+Create ``playbook.yml`` that calls this role (9) at a single host
+*test_14.example.com* (1)
 
-.. code-block:: sh
-   :emphasize-lines: 2,10
+.. code-block:: yaml
    :linenos:
+   :emphasize-lines: 1,9
 
-   shell> cat playbook.yml
    - hosts: test_14.example.com
      gather_facts: true
      connection: ssh
@@ -20,8 +20,8 @@ Create simple playbook that calls this role (10) at a single host test_14.exampl
      roles:
        - vbotka.freebsd_postinstall
 
-.. note:: Enable ``gather_facts: true`` (3) to collect facts.
+.. note:: Enable ``gather_facts: true`` (2) to collect facts.
 
 .. seealso::
-   * For details see `Connection Plugins <https://docs.ansible.com/ansible/latest/plugins/connection.html>`_ (4-5)
-   * See also `Understanding Privilege Escalation <https://docs.ansible.com/ansible/latest/user_guide/become.html#understanding-privilege-escalation>`_ (6-8)
+   * For details see `Connection Plugins <https://docs.ansible.com/ansible/latest/plugins/connection.html>`_ (3-4)
+   * See also `Understanding Privilege Escalation <https://docs.ansible.com/ansible/latest/user_guide/become.html#understanding-privilege-escalation>`_ (5-7)

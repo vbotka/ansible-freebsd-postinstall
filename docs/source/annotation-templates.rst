@@ -41,6 +41,26 @@ Description of the template.
     :emphasize-lines: 1
     :linenos:
 
+.. _as_template_freebsd-update.conf.j2:
+
+freebsd-update.conf.j2
+----------------------
+
+Synopsis: Template freebsd-update.conf.
+
+
+Description of the template.
+
+
+[`templates/freebsd-update.conf.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/freebsd-update.conf.j2>`_]
+
+.. highlight:: jinja
+    :linenothreshold: 5
+.. literalinclude:: ../../templates/freebsd-update.conf.j2
+    :language: jinja
+    :emphasize-lines: 1
+    :linenos:
+
 .. _as_template_groupadd.j2:
 
 groupadd.j2
@@ -161,6 +181,46 @@ Description of the template.
     :emphasize-lines: 1
     :linenos:
 
+.. _as_template_hosts.allow-01.j2:
+
+hosts.allow-01.j2
+-----------------
+
+Synopsis: Template hosts.allow-01.
+
+
+Description of the template.
+
+
+[`templates/hosts.allow-01.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/hosts.allow-01.j2>`_]
+
+.. highlight:: jinja
+    :linenothreshold: 5
+.. literalinclude:: ../../templates/hosts.allow-01.j2
+    :language: jinja
+    :emphasize-lines: 1
+    :linenos:
+
+.. _as_template_hosts.allow-02.j2:
+
+hosts.allow-02.j2
+-----------------
+
+Synopsis: Template hosts.allow-02.
+
+
+Description of the template.
+
+
+[`templates/hosts.allow-02.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/hosts.allow-02.j2>`_]
+
+.. highlight:: jinja
+    :linenothreshold: 5
+.. literalinclude:: ../../templates/hosts.allow-02.j2
+    :language: jinja
+    :emphasize-lines: 1
+    :linenos:
+
 .. _as_template_loader.conf.j2:
 
 loader.conf.j2
@@ -257,6 +317,26 @@ Description of the template.
 .. highlight:: jinja
     :linenothreshold: 5
 .. literalinclude:: ../../templates/motd.j2
+    :language: jinja
+    :emphasize-lines: 1
+    :linenos:
+
+.. _as_template_newsyslog.conf.j2:
+
+newsyslog.conf.j2
+-----------------
+
+Synopsis: Template newsyslog.conf.
+
+
+Description of the template.
+
+
+[`templates/newsyslog.conf.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/newsyslog.conf.j2>`_]
+
+.. highlight:: jinja
+    :linenothreshold: 5
+.. literalinclude:: ../../templates/newsyslog.conf.j2
     :language: jinja
     :emphasize-lines: 1
     :linenos:
@@ -417,6 +497,26 @@ Description of the template.
 .. highlight:: jinja
     :linenothreshold: 5
 .. literalinclude:: ../../templates/ssh_config.j2
+    :language: jinja
+    :emphasize-lines: 1
+    :linenos:
+
+.. _as_template_syslog.conf.j2:
+
+syslog.conf.j2
+--------------
+
+Synopsis: Template syslog.conf.
+
+
+Description of the template.
+
+
+[`templates/syslog.conf.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/syslog.conf.j2>`_]
+
+.. highlight:: jinja
+    :linenothreshold: 5
+.. literalinclude:: ../../templates/syslog.conf.j2
     :language: jinja
     :emphasize-lines: 1
     :linenos:

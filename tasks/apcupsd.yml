@@ -38,5 +38,12 @@
   notify: restart apcupsd
   tags: fp_apcupsd_conf
 
+- name: "apcupsd: {{ state }} apcupsd"
+  ansible.builtin.service:
+    name: apcupsd
+    state: "{{ state }}"
+  vars:
+    state: "{{ fp_apcupsd_enabled|bool|ternary('started', 'stopped') }}"
+
 # EOF
 ...

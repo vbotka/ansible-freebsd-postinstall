@@ -41,5 +41,12 @@
   notify: restart hostapd
   tags: fp_hostapd_conf
 
+- name: "hostapd: {{ state }} hostapd"
+  ansible.builtin.service:
+    name: hostapd
+    state: "{{ state }}"
+  vars:
+    state: "{{ fp_hostapd_enabled|bool|ternary('started', 'stopped') }}"
+
 # EOF
 ...

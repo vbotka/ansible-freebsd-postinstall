@@ -5,6 +5,35 @@ vbotka.freebsd_postinstall 2.6 Release Notes
 .. contents:: Topics
 
 
+2.6.6
+=====
+
+Release Summary
+---------------
+Update to Ansible 2.16. Add FreeBSD 14.0
+
+Major changes
+-------------
+* Add support to manage /etc/freebsd-update.conf
+* Add support to manage inetd, /etc/hosts.allow
+* Add support to manage syslogd
+* Update smartd, apcupsd, devfs, hostapd, nfsd, nfs, ntpdate, ntp,
+  qemu, resolvconf, snmpd, sshd, swap, sysctl, wpasupplicant
+* Update procmail. Configure /usr/local/etc/procmailrc
+
+Minor Changes
+-------------
+* Update docs
+
+Bugfixes
+--------
+* #4 Fix apcupsd script location
+* #4 Remove double quote when using ntpdate rc vars
+
+Breaking Changes / Porting Guide
+--------------------------------
+
+
 2.6.5
 =====
 
