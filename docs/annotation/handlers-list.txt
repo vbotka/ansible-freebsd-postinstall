@@ -9,6 +9,7 @@ inetd.yml
 login.yml
 messages.yml
 newaliases.yml
+newsyslog.yml
 nfs.yml
 nfsd.yml
 ntpd.yml

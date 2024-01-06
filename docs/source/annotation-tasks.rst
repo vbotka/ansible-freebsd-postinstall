@@ -739,7 +739,7 @@ status of the services (55) stored in the list
 in FreeBSD. Instead, use the task ``al_bsd_service_facts`` (58) from
 the library (57). This task doesn't support the check mode. This
 task will return the dictionary
-``al_ansible_facts_services``. Display this dictionary (66).  This
+``al_ansible_facts_services``. Display this dictionary (66). This
 dictionary is used to select the handlers in the dictionary
 ``fp_nfsd_handlers``.  Display the dictionary ``fp_nfsd_handlers``
 (72). The defaults are used in check mode because of empty
@@ -932,6 +932,30 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/procmail.yml
+    :language: Yaml
+    :emphasize-lines: 1,2
+    :linenos:
+
+
+
+
+
+.. _as_qemu.yml:
+
+qemu.yml
+--------
+
+Synopsis: Configure qemu.
+
+
+Description of the task.
+
+
+[`tasks/qemu.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/qemu.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../tasks/qemu.yml
     :language: Yaml
     :emphasize-lines: 1,2
     :linenos:

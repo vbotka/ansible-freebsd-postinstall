@@ -144,6 +144,18 @@ myhandlers:
     note: []
     warning: []
 
+  - file: newsyslog.yml
+    link: newsyslog.yml
+    path: handlers/newsyslog.yml
+    synopsis: |
+      Handler newsyslog.
+    description: |
+      Description of the handler.
+    lines: 1,2
+    seealso: []
+    note: []
+    warning: []
+
   - file: nfs.yml
     link: nfs.yml
     path: handlers/nfs.yml

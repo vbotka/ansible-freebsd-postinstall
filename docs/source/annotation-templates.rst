@@ -481,6 +481,26 @@ Description of the template.
     :emphasize-lines: 1
     :linenos:
 
+.. _as_template_procmailrc.j2:
+
+procmailrc.j2
+-------------
+
+Synopsis: Template procmailrc.
+
+
+Description of the template.
+
+
+[`templates/procmailrc.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/procmailrc.j2>`_]
+
+.. highlight:: jinja
+    :linenothreshold: 5
+.. literalinclude:: ../../templates/procmailrc.j2
+    :language: jinja
+    :emphasize-lines: 1
+    :linenos:
+
 .. _as_template_ssh_config.j2:
 
 ssh_config.j2

@@ -241,6 +241,26 @@ Description of the handler.
     :emphasize-lines: 1,2
     :linenos:
 
+.. _as_handler_newsyslog.yml:
+
+newsyslog.yml
+-------------
+
+Synopsis: Handler newsyslog.
+
+
+Description of the handler.
+
+
+[`handlers/newsyslog.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/newsyslog.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../handlers/newsyslog.yml
+    :language: Yaml
+    :emphasize-lines: 1,2
+    :linenos:
+
 .. _as_handler_nfs.yml:
 
 nfs.yml

@@ -289,6 +289,18 @@ mytemplates:
     note: []
     warning: []
 
+  - file: procmailrc.j2
+    link: procmailrc.j2
+    path: templates/procmailrc.j2
+    synopsis: |
+      Template procmailrc.
+    description: |
+      Description of the template.
+    lines: 1
+    seealso: []
+    note: []
+    warning: []
+
   - file: ssh_config.j2
     link: ssh_config.j2
     path: templates/ssh_config.j2
