@@ -15,6 +15,7 @@ fp_inetd_conf: []
 # /etc/syslog.d/
 fp_inetd_logfile: ''
 fp_inetd_syslogd_confd: []
+fp_inetd_syslogd_newconfd: []
 
 # /etc/hosts.allow
 fp_inetd_hosts_allow_file: /etc/hosts.allow

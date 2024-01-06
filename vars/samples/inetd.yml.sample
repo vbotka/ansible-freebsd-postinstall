@@ -5,6 +5,11 @@ fp_inetd_syslogd_confd:
     template: syslog.conf.j2
     conf:
       /var/log/connections.log: [local3.info]
+fp_inetd_syslogd_newconfd:
+  - path: tcp_wrappers.conf
+    template: newsyslog.conf.j2
+    conf:
+      /var/log/connections.log: ['', 600, 7, '*', '@T00', JC]
 
 fp_inetd_hosts_allow_file: /etc/hosts.allow
 # Copy /etc/hosts.allow to /etc//etc/hosts.allow.orig

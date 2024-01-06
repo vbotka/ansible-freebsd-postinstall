@@ -81,6 +81,22 @@
   notify: reload syslogd
   tags: fp_inetd_syslogd
 
+- name: "inetd: Create files in /etc/newsyslog.conf.d/"
+  ansible.builtin.template:
+    src: "{{ item.template }}"
+    dest: "/etc/newsyslog.conf.d/{{ item.path }}"
+    owner: root
+    group: wheel
+    mode: '0644'
+    backup: "{{ fp_backup }}"
+  loop: "{{ fp_inetd_syslogd_newconfd }}"
+  loop_control:
+    label: "{{ item.path }}"
+  vars:
+    fp_syslogd_newconf: "{{ item.conf }}"
+  notify: create newsyslog
+  tags: fp_inetd_syslogd_newconfd
+
 # inetd.conf
 - name: "inetd: Backup origin /etc/inetd.conf"
   ansible.builtin.command:
