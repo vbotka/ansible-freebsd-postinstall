@@ -1,18 +1,20 @@
 ---
 
 apache_version: "24"
-apache_php_version: "74"
-bsd_php_version: "74"
+apache_php_version: "81"
+bsd_php_version: "81"
 bsd_dhcp_version: "44"
 bsd_bind_version: "916"
 bsd_mysql_version: "80"
-bsd_python_version: "38"
+bsd_python_version: "39"
+bsd_perl_version: "5.36"
 bsd_linux_version: "c7"
 
 # Make default versions
 bsd_make_python_version: "{{ bsd_python_version[0] ~ '.' ~ bsd_python_version[1] }}"
 bsd_make_php_version: "{{ bsd_php_version[0] ~ '.' ~ bsd_php_version[1] }}"
 bsd_make_mysql_version: "{{ bsd_mysql_version[0] ~ '.' ~ bsd_mysql_version[1] }}"
+bsd_make_perl_version: "{{ bsd_perl_version }}"
 
 # Compatibility deprecated versions
 php_mcrypt: "php71-mcrypt"

@@ -32,6 +32,7 @@ Bugfixes
 
 Breaking Changes / Porting Guide
 --------------------------------
+* Update defaults/main/pkgdict_versions.yml
 
 
 2.6.5
