@@ -20,6 +20,8 @@ Major changes
 * Update smartd, apcupsd, devfs, hostapd, nfsd, nfs, ntpdate, ntp,
   qemu, resolvconf, snmpd, sshd, swap, sysctl, wpasupplicant
 * Update procmail. Configure /usr/local/etc/procmailrc
+* Add variables bsd_perl_version, bsd_make_perl_version.
+  Add vars/samples/make.yml.sample
 
 Minor Changes
 -------------
