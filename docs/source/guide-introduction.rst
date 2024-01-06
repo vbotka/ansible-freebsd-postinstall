@@ -3,8 +3,7 @@
 Introduction
 ============
 
-The role is a collection of independent sets of tasks, grouped in separate files, that configure
-particular functionality of the system (cron, hostname, sshd, ...). By default all tasks are
+The role is a set of independent sets of tasks, grouped in separate files, that configure a particular functionality of the system (cron, hostname, sshd, ...). By default, all tasks are
 disabled. See the control variables of the form ``fp_<tasks_group>`` in ``tasks/main.yml``. There
 are two more categories of control variables used by some of the tasks. ``fp_<tasks_group>_install``
 and ``fp_<task_group>_enable``. The first one can be used to selectively install predefined groups

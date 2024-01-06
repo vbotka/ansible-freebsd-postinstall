@@ -3,9 +3,10 @@
 Debug
 =====
 
-To display some facts (11-16) and values of the control variables, run select the task *fp_debug*
-and enable the debug output. By default all control variables are disabled. The example below shows
-values used in the examples of the Quick start guide
+To display some facts (11-17) and values of the control variables
+(34-78), select the task *fp_debug* and enable the debug output. By
+default, all control variables are disabled. Below is an example
+configuration of a typical VM for testing
 
 .. include:: debug-example.rst
 
@@ -13,9 +14,10 @@ values used in the examples of the Quick start guide
           environment variable ``ANSIBLE_DISPLAY_OK_HOSTS=True`` or in the configuration file
           ``display_ok_hosts=true``.
 
-Some tasks will display additional information when the variable :index:`fp_*_debug` is enabled,
-e.g. configuration of sshd below. Inspect the files in the ``tasks`` directory whether *debug* is
-available or not
+Some tasks will display additional information when the variable
+:index:`fp_*_debug` is enabled.  For example, see the configuration of
+sshd below. Inspect the files in the ``tasks`` directory whether
+*debug* is available or not
 
 .. include:: debug-sshd-example.rst
 

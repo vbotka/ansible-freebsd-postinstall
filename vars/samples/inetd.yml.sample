@@ -1,0 +1,219 @@
+---
+fp_inetd_logfile: ''
+fp_inetd_syslogd_confd:
+  - path: tcp_wrappers.conf
+    template: syslog.conf.j2
+    conf:
+      /var/log/connections.log: [local3.info]
+fp_inetd_syslogd_newconfd:
+  - path: tcp_wrappers.conf
+    template: newsyslog.conf.j2
+    conf:
+      /var/log/connections.log: ['', 600, 7, '*', '@T00', JC]
+
+fp_inetd_hosts_allow_file: /etc/hosts.allow
+# Copy /etc/hosts.allow to /etc//etc/hosts.allow.orig
+fp_inetd_hosts_allow_orig: false
+# Template for /etc/hosts.allow
+fp_inetd_hosts_allow_template: hosts.allow-01.j2
+# Recreate the native /etc/hosts.allow file that is installed
+fp_inetd_hosts_allow_conf:
+  # Start by allowing everything (this prevents the rest of the file
+  # from working, so remove it when you need protection).
+  # The rules here work on a "First match wins" basis.
+  - daemons:
+      - ALL
+    clients:
+      - ALL
+    action:
+      - allow
+
+  # Wrapping sshd(8) is not normally a good idea, but if you
+  # need to do it, here's how
+  #  - daemons:
+  #      - sshd
+  #    clients:
+  #      - .evil.cracker.example.com
+  #    action:
+  #      - deny
+
+  # Protect against simple DNS spoofing attacks by checking that the
+  # forward and reverse records for the remote host match. If a mismatch
+  # occurs, access is denied, and any positive ident response within
+  # 20 seconds is logged. No protection is afforded against DNS poisoning,
+  # IP spoofing or more complicated attacks. Hosts with no reverse DNS
+  # pass this rule.
+  - daemons:
+      - ALL
+    clients:
+      - PARANOID
+    options:
+      - RFC931 20
+    action:
+      - deny
+
+  # Allow anything from localhost.  Note that an IP address (not a host
+  # name) *MUST* be specified for rpcbind(8).
+  - daemons:
+      - ALL
+    clients:
+      - localhost
+      - 127.0.0.1
+    action:
+      - allow
+
+  # Comment out next line if you build libwrap without IPv6 support.
+  - daemons:
+      - ALL
+    clients:
+      - '[::1]'
+    action:
+      - allow
+
+  # Sendmail can help protect you against spammers and relay-rapers
+  - daemons:
+      - sendmail
+    clients:
+      - localhost
+    action:
+      - allow
+  #  - daemons:
+  #      - sendmail
+  #    clients:
+  #      - .nice.guy.example.com
+  #    action:
+  #      - allow
+  #  - daemons:
+  #      - sendmail
+  #    clients:
+  #      - .evil.cracker.example.com
+  #    action:
+  #      - deny
+  - daemons:
+      - sendmail
+    clients:
+      - ALL
+    action:
+      - allow
+
+  # Exim is an alternative to sendmail, available in the ports tree
+  - daemons:
+      - exim
+    clients:
+      - localhost
+    action:
+      - allow
+  #  - daemons:
+  #      - exim
+  #    clients:
+  #      - .nice.guy.example.com
+  #    action:
+  #      - allow
+  #  - daemons:
+  #      - exim
+  #    clients:
+  #      - .evil.cracker.example.com
+  #    action:
+  #      - deny
+  - daemons:
+      - exim
+    clients:
+      - ALL
+    action:
+      - allow
+
+  # Rpcbind is used for all RPC services; protect your NFS!
+  # Rpcbind should be running with -W option to support this.
+  # (IP addresses rather than hostnames *MUST* be used here)
+  #  - daemons:
+  #      - rpcbind
+  #    clients:
+  #      - 192.0.2.32/255.255.255.224
+  #    action:
+  #      - allow
+  #  - daemons:
+  #      - rpcbind
+  #    clients:
+  #      - 192.0.2.96/255.255.255.224
+  #    action:
+  #      - allow
+  - daemons:
+      - rpcbind
+    clients:
+      - ALL
+    action:
+      - deny
+
+  # NIS master server. Only local nets should have access
+  # (Since this is an RPC service, rpcbind needs to be considered)
+  - daemons:
+      - ypserv
+    clients:
+      - localhost
+    action:
+      - allow
+  #  - daemons:
+  #      - ypserv
+  #    clients:
+  #      - .unsafe.my.net.example.com
+  #    action:
+  #      - deny
+  #  - daemons:
+  #      - ypserv
+  #    clients:
+  #      - .my.net.example.com
+  #    action:
+  #      - allow
+  - daemons:
+      - ypserv
+    clients:
+      - ALL
+    action:
+      - deny
+
+  # Provide a small amount of protection for ftpd
+  - daemons:
+      - ftpd
+    clients:
+      - localhost
+    action:
+      - allow
+  #  - daemons:
+  #      - ftpd
+  #    clients:
+  #      - .nice.guy.example.com
+  #    action:
+  #      - allow
+  #  - daemons:
+  #      - ftpd
+  #    clients:
+  #      - .evil.cracker.example.com
+  #    action:
+  #      - deny
+  - daemons:
+      - ftpd
+    clients:
+      - ALL
+    action:
+      - allow
+
+  # You need to be clever with finger; do _not_ backfinger!! You can easily
+  # start a "finger war".
+  - daemons:
+      - fingerd
+    clients:
+      - ALL
+    options:
+      - 'spawn (echo Finger. | /usr/bin/mail -s "tcpd\: %u@%h[%a] fingered me!" root) &'
+    action:
+      - deny
+
+  # The rest of the daemons are protected.
+  - daemons:
+      - ALL
+    clients:
+      - ALL
+    options:
+      - severity auth.info
+    action:
+      - 'twist /bin/echo "You are not welcome to use %d from %h."'

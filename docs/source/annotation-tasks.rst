@@ -241,6 +241,30 @@ Description of the task.
 
 
 
+.. _as_freebsd-update.yml:
+
+freebsd-update.yml
+------------------
+
+Synopsis: Configure freebsd-update.
+
+
+Description of the task.
+
+
+[`tasks/freebsd-update.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/freebsd-update.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../tasks/freebsd-update.yml
+    :language: Yaml
+    :emphasize-lines: 1,2
+    :linenos:
+
+
+
+
+
 .. _as_fstab.yml:
 
 fstab.yml
@@ -401,6 +425,30 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/hosts.yml
+    :language: Yaml
+    :emphasize-lines: 1,2
+    :linenos:
+
+
+
+
+
+.. _as_inetd.yml:
+
+inetd.yml
+---------
+
+Synopsis: Configure inetd.
+
+
+Description of the task.
+
+
+[`tasks/inetd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/inetd.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../tasks/inetd.yml
     :language: Yaml
     :emphasize-lines: 1,2
     :linenos:
@@ -625,54 +673,6 @@ Description of the task.
 
 
 
-.. _as_nfsd.yml:
-
-nfsd.yml
---------
-
-Synopsis: Configure NFS server.
-
-
-To display variables (3) enable ``fp_nfsd_debug=true`` (51). Collect
-status of the services (55) stored in the list
-``fp_nfsd_service_paths``. The module ``service_facts`` doesn't work
-in FreeBSD. Instead, use the task ``al_bsd_service_facts`` (58) from
-the library (57). This task doesn't support the check mode. This
-task will return the dictionary
-``al_ansible_facts_services``. Display this dictionary (66). This
-dictionary is used to select the handlers in the dictionary
-``fp_nfsd_handlers``.  Display the dictionary ``fp_nfsd_handlers``
-(72). The defaults are used in check mode because of empty
-dictionary ``al_ansible_facts_services``. Configure ``/etc/exports``
-(78) and notify handler ``reload mountd``. Configure and enable
-(86), or disable (115) services. If the configuration of a service
-changes the service will be reloaded or restarted when already
-running.
-
-
-[`tasks/nfsd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/nfsd.yml>`_]
-
-.. highlight:: yaml
-    :linenothreshold: 5
-.. literalinclude:: ../../tasks/nfsd.yml
-    :language: Yaml
-    :emphasize-lines: 3,55,66,72,78,86,115
-    :linenos:
-
-.. seealso::
-   * Handler :ref:`as_handler_nfsd.yml`
-   * Template :ref:`as_template_exports.j2`
-   * <TBD>
-
-.. note::
-   * <TBD>
-
-.. hint::
-   * <TBD>
-
-.. warning::
-   * <TBD>
-
 .. _as_nfs.yml:
 
 nfs.yml
@@ -725,29 +725,52 @@ the service will be reloaded or restarted when already running.
 .. warning::
    * <TBD>
 
-.. _as_ntpdate.yml:
+.. _as_nfsd.yml:
 
-ntpdate.yml
------------
+nfsd.yml
+--------
 
-Synopsis: Configure ntpdate.
-
-
-Description of the task.
+Synopsis: Configure NFS server.
 
 
-[`tasks/ntpdate.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/ntpdate.yml>`_]
+To display variables (3) enable ``fp_nfsd_debug=true`` (51). Collect
+status of the services (55) stored in the list
+``fp_nfsd_service_paths``. The module ``service_facts`` doesn't work
+in FreeBSD. Instead, use the task ``al_bsd_service_facts`` (58) from
+the library (57). This task doesn't support the check mode. This
+task will return the dictionary
+``al_ansible_facts_services``. Display this dictionary (66). This
+dictionary is used to select the handlers in the dictionary
+``fp_nfsd_handlers``.  Display the dictionary ``fp_nfsd_handlers``
+(72). The defaults are used in check mode because of empty
+dictionary ``al_ansible_facts_services``. Configure ``/etc/exports``
+(78) and notify handler ``reload mountd``. Configure and enable
+(87), or disable (116) services. If there are any changes the
+service will be reloaded or restarted when already running.
+
+
+[`tasks/nfsd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/nfsd.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
-.. literalinclude:: ../../tasks/ntpdate.yml
+.. literalinclude:: ../../tasks/nfsd.yml
     :language: Yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 3,55,66,72,78,87,116
     :linenos:
 
+.. seealso::
+   * Handler :ref:`as_handler_nfsd.yml`
+   * Template :ref:`as_template_exports.j2`
+   * <TBD>
 
+.. note::
+   * <TBD>
 
+.. hint::
+   * <TBD>
 
+.. warning::
+   * <TBD>
 
 .. _as_ntp.yml:
 
@@ -765,6 +788,30 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/ntp.yml
+    :language: Yaml
+    :emphasize-lines: 1,2
+    :linenos:
+
+
+
+
+
+.. _as_ntpdate.yml:
+
+ntpdate.yml
+-----------
+
+Synopsis: Configure ntpdate.
+
+
+Description of the task.
+
+
+[`tasks/ntpdate.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/ntpdate.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../tasks/ntpdate.yml
     :language: Yaml
     :emphasize-lines: 1,2
     :linenos:
@@ -893,6 +940,30 @@ Description of the task.
 
 
 
+.. _as_qemu.yml:
+
+qemu.yml
+--------
+
+Synopsis: Configure qemu.
+
+
+Description of the task.
+
+
+[`tasks/qemu.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/qemu.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../tasks/qemu.yml
+    :language: Yaml
+    :emphasize-lines: 1,2
+    :linenos:
+
+
+
+
+
 .. _as_resolvconf.yml:
 
 resolvconf.yml
@@ -909,30 +980,6 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/resolvconf.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
-    :linenos:
-
-
-
-
-
-.. _as_smartd.yml:
-
-smartd.yml
-----------
-
-Synopsis: Configure smartd.
-
-
-Description of the task.
-
-
-[`tasks/smartd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/smartd.yml>`_]
-
-.. highlight:: yaml
-    :linenothreshold: 5
-.. literalinclude:: ../../tasks/smartd.yml
     :language: Yaml
     :emphasize-lines: 1,2
     :linenos:
@@ -965,6 +1012,30 @@ Description of the task.
 
 
 
+.. _as_smartd.yml:
+
+smartd.yml
+----------
+
+Synopsis: Configure smartd.
+
+
+Description of the task.
+
+
+[`tasks/smartd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/smartd.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../tasks/smartd.yml
+    :language: Yaml
+    :emphasize-lines: 1,2
+    :linenos:
+
+
+
+
+
 .. _as_snmpd.yml:
 
 snmpd.yml
@@ -989,30 +1060,6 @@ Description of the task.
 
 
 
-.. _as_sshd.yml:
-
-sshd.yml
---------
-
-Synopsis: Configure sshd.
-
-
-Description of the task.
-
-
-[`tasks/sshd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/sshd.yml>`_]
-
-.. highlight:: yaml
-    :linenothreshold: 5
-.. literalinclude:: ../../tasks/sshd.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
-    :linenos:
-
-
-
-
-
 .. _as_ssh.yml:
 
 ssh.yml
@@ -1029,6 +1076,30 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/ssh.yml
+    :language: Yaml
+    :emphasize-lines: 1,2
+    :linenos:
+
+
+
+
+
+.. _as_sshd.yml:
+
+sshd.yml
+--------
+
+Synopsis: Configure sshd.
+
+
+Description of the task.
+
+
+[`tasks/sshd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/sshd.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../tasks/sshd.yml
     :language: Yaml
     :emphasize-lines: 1,2
     :linenos:
@@ -1101,6 +1172,30 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/sysctl.yml
+    :language: Yaml
+    :emphasize-lines: 1,2
+    :linenos:
+
+
+
+
+
+.. _as_syslogd.yml:
+
+syslogd.yml
+-----------
+
+Synopsis: Configure syslogd.
+
+
+Description of the task.
+
+
+[`tasks/syslogd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/syslogd.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../tasks/syslogd.yml
     :language: Yaml
     :emphasize-lines: 1,2
     :linenos:

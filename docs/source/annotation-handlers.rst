@@ -161,6 +161,26 @@ Description of the handler.
     :emphasize-lines: 1,2
     :linenos:
 
+.. _as_handler_inetd.yml:
+
+inetd.yml
+---------
+
+Synopsis: Handler inetd.
+
+
+Description of the handler.
+
+
+[`handlers/inetd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/inetd.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../handlers/inetd.yml
+    :language: Yaml
+    :emphasize-lines: 1,2
+    :linenos:
+
 .. _as_handler_login.yml:
 
 login.yml
@@ -221,22 +241,22 @@ Description of the handler.
     :emphasize-lines: 1,2
     :linenos:
 
-.. _as_handler_nfsd.yml:
+.. _as_handler_newsyslog.yml:
 
-nfsd.yml
---------
+newsyslog.yml
+-------------
 
-Synopsis: Handler nfsd.
+Synopsis: Handler newsyslog.
 
 
 Description of the handler.
 
 
-[`handlers/nfsd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/nfsd.yml>`_]
+[`handlers/newsyslog.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/newsyslog.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
-.. literalinclude:: ../../handlers/nfsd.yml
+.. literalinclude:: ../../handlers/newsyslog.yml
     :language: Yaml
     :emphasize-lines: 1,2
     :linenos:
@@ -261,22 +281,22 @@ Description of the handler.
     :emphasize-lines: 1,2
     :linenos:
 
-.. _as_handler_ntpdate.yml:
+.. _as_handler_nfsd.yml:
 
-ntpdate.yml
------------
+nfsd.yml
+--------
 
-Synopsis: Handler ntpdate.
+Synopsis: Handler nfsd.
 
 
 Description of the handler.
 
 
-[`handlers/ntpdate.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/ntpdate.yml>`_]
+[`handlers/nfsd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/nfsd.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
-.. literalinclude:: ../../handlers/ntpdate.yml
+.. literalinclude:: ../../handlers/nfsd.yml
     :language: Yaml
     :emphasize-lines: 1,2
     :linenos:
@@ -297,6 +317,26 @@ Description of the handler.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/ntpd.yml
+    :language: Yaml
+    :emphasize-lines: 1,2
+    :linenos:
+
+.. _as_handler_ntpdate.yml:
+
+ntpdate.yml
+-----------
+
+Synopsis: Handler ntpdate.
+
+
+Description of the handler.
+
+
+[`handlers/ntpdate.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/ntpdate.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../handlers/ntpdate.yml
     :language: Yaml
     :emphasize-lines: 1,2
     :linenos:
@@ -437,6 +477,26 @@ Description of the handler.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/sysctl.yml
+    :language: Yaml
+    :emphasize-lines: 1,2
+    :linenos:
+
+.. _as_handler_syslogd.yml:
+
+syslogd.yml
+-----------
+
+Synopsis: Handler syslogd.
+
+
+Description of the handler.
+
+
+[`handlers/syslogd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/syslogd.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../handlers/syslogd.yml
     :language: Yaml
     :emphasize-lines: 1,2
     :linenos:

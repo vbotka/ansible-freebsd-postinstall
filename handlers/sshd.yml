@@ -1,12 +1,16 @@
 ---
 # sshd
+
 - name: enable and start sshd
-  ansible.builtin.service: name="sshd" state="started" enabled=true
+  ansible.builtin.service: name=sshd state=started enabled=true
+
 - name: disable and stop sshd
-  ansible.builtin.service: name="sshd" state="stopped" enabled=false
+  ansible.builtin.service: name=sshd state=stopped enabled=false
+
 - name: restart sshd
-  ansible.builtin.service: name="sshd" state="restarted"
+  ansible.builtin.service: name=sshd state=restarted
   when: fp_sshd_enable|bool
+
 - name: reload sshd
-  ansible.builtin.service: name="sshd" state="reloaded"
+  ansible.builtin.service: name=sshd state=reloaded
   when: fp_sshd_enable|bool

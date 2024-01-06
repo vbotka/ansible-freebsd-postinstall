@@ -23,6 +23,7 @@ pkg_dict_i386:
   - pkglist: smart
     packages:
       - sysutils/smartmontools
+      - sysutils/smart
   - pkglist: hostap
     packages:
       - net/hostapd

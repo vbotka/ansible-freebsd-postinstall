@@ -1,0 +1,12 @@
+# {{ ansible_managed }}
+{% set separator='	' %}
+{% for k,v in fp_syslogd_newconf.items() %}
+{% if k == 'include' %}
+
+{% for i in v %}
+<include> {{ i }}
+{% endfor %}
+{% else %}
+{{ k }}		{{ v|join(separator) }}
+{% endif %}
+{% endfor %}

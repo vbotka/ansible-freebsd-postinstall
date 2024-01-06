@@ -44,5 +44,12 @@
   notify: reload smartd
   tags: fp_smartd_conf
 
+- name: "smartd: {{ state }} smartd"
+  ansible.builtin.service:
+    name: smartd
+    state: "{{ state }}"
+  vars:
+    state: "{{ fp_smartd_enabled|bool|ternary('started', 'stopped') }}"
+
 # EOF
 ...

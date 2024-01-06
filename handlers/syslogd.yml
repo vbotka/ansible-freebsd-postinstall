@@ -1,0 +1,16 @@
+---
+# syslogd
+
+- name: enable and start syslogd
+  ansible.builtin.service: name=syslogd state=started enabled=true
+
+- name: disable and stop syslogd
+  ansible.builtin.service: name=syslogd state=stopped enabled=false
+
+- name: restart syslogd
+  ansible.builtin.service: name=syslogd state=restarted
+  when: fp_syslogd_enabled|bool
+
+- name: reload syslogd
+  ansible.builtin.service: name=syslogd state=reloaded
+  when: fp_syslogd_enabled|bool

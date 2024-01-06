@@ -5,5 +5,5 @@ fp_ssh_conf_file: /etc/ssh/ssh_config
 fp_ssh_conf_template: ssh_config.j2
 fp_ssh_conf_owner: root
 fp_ssh_conf_group: wheel
-fp_ssh_conf_mode: "0644"
+fp_ssh_conf_mode: '0644'
 fp_ssh_conf: []

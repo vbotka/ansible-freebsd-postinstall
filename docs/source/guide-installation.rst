@@ -20,7 +20,7 @@ Install the requirements ::
 
 Install the collections
 `community.general <https://docs.ansible.com/ansible/latest/collections/community/general/>`_ and
-`ansible.posix <https://docs.ansible.com/ansible/latest/collections/ansible/posix/index.html#plugins-in-ansible-posix/>`_  ::
+`ansible.posix <https://docs.ansible.com/ansible/latest/collections/ansible/posix/index.html#plugins-in-ansible-posix/>`_ if necessary  ::
 
     shell> ansible-galaxy collection install ansible.posix
     shell> ansible-galaxy collection install community.general

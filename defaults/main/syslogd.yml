@@ -1,0 +1,21 @@
+---
+fp_syslogd: false
+fp_syslogd_enabled: false
+fp_syslogd_debug: false
+
+# See commented and tested examples in vars/samples/syslogd.yml.sample
+
+# /etc/rc.conf
+fp_syslogd_rcconf: []
+
+# /etc/syslog.conf
+fp_syslogd_conf_orig: false
+fp_syslogd_conf: []
+fp_syslogd_confd: []
+
+# /etc/newsyslog.conf
+fp_syslogd_newconf_orig: false
+fp_syslogd_newconf: []
+fp_syslogd_newconfd: []
+
+# EOF

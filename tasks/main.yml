@@ -113,6 +113,11 @@
   when: fp_hosts|bool
   tags: fp_hosts
 
+- name: Import inetd.yml
+  ansible.builtin.import_tasks: inetd.yml
+  when: fp_inetd|bool
+  tags: fp_inetd
+
 - name: Import ssh.yml
   ansible.builtin.import_tasks: ssh.yml
   when: fp_ssh|bool
@@ -232,6 +237,16 @@
   ansible.builtin.import_tasks: qemu.yml
   when: fp_qemu|bool
   tags: fp_qemu
+
+- name: Import freebsd-update.yml
+  ansible.builtin.import_tasks: freebsd-update.yml
+  when: fp_freebsd_update|bool
+  tags: fp_freebsd_update
+
+- name: Import syslogd.yml
+  ansible.builtin.import_tasks: syslogd.yml
+  when: fp_syslogd|bool
+  tags: fp_syslogd
 
 # EOF
 ...

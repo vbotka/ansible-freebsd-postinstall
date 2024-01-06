@@ -25,6 +25,18 @@ mytemplates:
     note: []
     warning: []
 
+  - file: freebsd-update.conf.j2
+    link: freebsd-update.conf.j2
+    path: templates/freebsd-update.conf.j2
+    synopsis: |
+      Template freebsd-update.conf.
+    description: |
+      Description of the template.
+    lines: 1
+    seealso: []
+    note: []
+    warning: []
+
   - file: groupadd.j2
     link: groupadd.j2
     path: templates/groupadd.j2
@@ -97,6 +109,30 @@ mytemplates:
     note: []
     warning: []
 
+  - file: hosts.allow-01.j2
+    link: hosts.allow-01.j2
+    path: templates/hosts.allow-01.j2
+    synopsis: |
+      Template hosts.allow-01.
+    description: |
+      Description of the template.
+    lines: 1
+    seealso: []
+    note: []
+    warning: []
+
+  - file: hosts.allow-02.j2
+    link: hosts.allow-02.j2
+    path: templates/hosts.allow-02.j2
+    synopsis: |
+      Template hosts.allow-02.
+    description: |
+      Description of the template.
+    lines: 1
+    seealso: []
+    note: []
+    warning: []
+
   - file: loader.conf.j2
     link: loader.conf.j2
     path: templates/loader.conf.j2
@@ -150,6 +186,18 @@ mytemplates:
     path: templates/motd.j2
     synopsis: |
       Template motd.
+    description: |
+      Description of the template.
+    lines: 1
+    seealso: []
+    note: []
+    warning: []
+
+  - file: newsyslog.conf.j2
+    link: newsyslog.conf.j2
+    path: templates/newsyslog.conf.j2
+    synopsis: |
+      Template newsyslog.conf.
     description: |
       Description of the template.
     lines: 1
@@ -241,11 +289,35 @@ mytemplates:
     note: []
     warning: []
 
+  - file: procmailrc.j2
+    link: procmailrc.j2
+    path: templates/procmailrc.j2
+    synopsis: |
+      Template procmailrc.
+    description: |
+      Description of the template.
+    lines: 1
+    seealso: []
+    note: []
+    warning: []
+
   - file: ssh_config.j2
     link: ssh_config.j2
     path: templates/ssh_config.j2
     synopsis: |
       Template ssh_config.
+    description: |
+      Description of the template.
+    lines: 1
+    seealso: []
+    note: []
+    warning: []
+
+  - file: syslog.conf.j2
+    link: syslog.conf.j2
+    path: templates/syslog.conf.j2
+    synopsis: |
+      Template syslog.conf.
     description: |
       Description of the template.
     lines: 1

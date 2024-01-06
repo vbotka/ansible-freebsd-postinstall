@@ -1,9 +1,12 @@
 ---
 # ntpd
+
 - name: enable and start ntpd
-  ansible.builtin.service: name="ntpd" state="started" enabled=true
+  ansible.builtin.service: name=ntpd state=started enabled=true
+
 - name: disable and stop ntpd
-  ansible.builtin.service: name="ntpd" state="stopped" enabled=false
+  ansible.builtin.service: name=ntpd state=stopped enabled=false
+
 - name: restart ntpd
-  ansible.builtin.service: name="ntpd" state="restarted"
+  ansible.builtin.service: name=ntpd state=restarted
   when: fp_ntp_enable|bool

@@ -1,12 +1,16 @@
 ---
 # hostapd
+
 - name: enable and start hostapd
-  ansible.builtin.service: name="hostapd" state="started" enabled=true
+  ansible.builtin.service: name=hostapd state=started enabled=true
+
 - name: disable and stop hostapd
-  ansible.builtin.service: name="hostapd" state="stopped" enabled=false
+  ansible.builtin.service: name=hostapd state=stopped enabled=false
+
 - name: restart hostapd
-  ansible.builtin.service: name="hostapd" state="restarted"
+  ansible.builtin.service: name=hostapd state=restarted
   when: fp_hostapd_enabled|bool
+
 - name: reload hostapd
-  ansible.builtin.service: name="hostapd" state="reloaded"
+  ansible.builtin.service: name=hostapd state=reloaded
   when: fp_hostapd_enabled|bool

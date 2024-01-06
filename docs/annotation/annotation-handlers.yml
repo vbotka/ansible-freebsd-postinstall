@@ -96,6 +96,18 @@ myhandlers:
     note: []
     warning: []
 
+  - file: inetd.yml
+    link: inetd.yml
+    path: handlers/inetd.yml
+    synopsis: |
+      Handler inetd.
+    description: |
+      Description of the handler.
+    lines: 1,2
+    seealso: []
+    note: []
+    warning: []
+
   - file: login.yml
     link: login.yml
     path: handlers/login.yml
@@ -132,11 +144,11 @@ myhandlers:
     note: []
     warning: []
 
-  - file: nfsd.yml
-    link: nfsd.yml
-    path: handlers/nfsd.yml
+  - file: newsyslog.yml
+    link: newsyslog.yml
+    path: handlers/newsyslog.yml
     synopsis: |
-      Handler nfsd.
+      Handler newsyslog.
     description: |
       Description of the handler.
     lines: 1,2
@@ -156,11 +168,11 @@ myhandlers:
     note: []
     warning: []
 
-  - file: ntpdate.yml
-    link: ntpdate.yml
-    path: handlers/ntpdate.yml
+  - file: nfsd.yml
+    link: nfsd.yml
+    path: handlers/nfsd.yml
     synopsis: |
-      Handler ntpdate.
+      Handler nfsd.
     description: |
       Description of the handler.
     lines: 1,2
@@ -173,6 +185,18 @@ myhandlers:
     path: handlers/ntpd.yml
     synopsis: |
       Handler ntpd.
+    description: |
+      Description of the handler.
+    lines: 1,2
+    seealso: []
+    note: []
+    warning: []
+
+  - file: ntpdate.yml
+    link: ntpdate.yml
+    path: handlers/ntpdate.yml
+    synopsis: |
+      Handler ntpdate.
     description: |
       Description of the handler.
     lines: 1,2
@@ -257,6 +281,18 @@ myhandlers:
     path: handlers/sysctl.yml
     synopsis: |
       Handler sysctl.
+    description: |
+      Description of the handler.
+    lines: 1,2
+    seealso: []
+    note: []
+    warning: []
+
+  - file: syslogd.yml
+    link: syslogd.yml
+    path: handlers/syslogd.yml
+    synopsis: |
+      Handler syslogd.
     description: |
       Description of the handler.
     lines: 1,2

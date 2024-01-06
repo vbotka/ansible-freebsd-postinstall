@@ -8,5 +8,12 @@
     backup: "{{ fp_backup }}"
   loop: "{{ fp_ntpdate_rcconf }}"
 
+- name: "ntpdate: {{ state }} ntpdate"
+  ansible.builtin.service:
+    name: ntpdate
+    state: "{{ state }}"
+  vars:
+    state: "{{ fp_ntpdate_enable|bool|ternary('started', 'stopped') }}"
+
 # EOF
 ...

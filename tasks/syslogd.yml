@@ -1,0 +1,136 @@
+---
+
+- name: "syslogd: Debug"
+  vars:
+    msg: |-
+      fp_syslogd_enabled: {{ fp_syslogd_enabled }}
+      fp_syslogd_rcconf:
+        {{ fp_syslogd_rcconf|to_yaml(indent=2)|indent(2) }}
+      fp_syslogd_conf_orig: {{ fp_syslogd_conf_orig }}
+      fp_syslogd_conf:
+        {{ fp_syslogd_conf|to_yaml(indent=2)|indent(2) }}
+      fp_syslogd_confd:
+        {{ fp_syslogd_confd|to_yaml(indent=2)|indent(2) }}
+      fp_syslogd_newconf_orig: {{ fp_syslogd_newconf_orig }}
+      fp_syslogd_newconf:
+        {{ fp_syslogd_newconf|to_yaml(indent=2)|indent(2) }}
+      fp_syslogd_newconfd:
+        {{ fp_syslogd_newconfd|to_yaml(indent=2)|indent(2) }}
+  ansible.builtin.debug:
+    msg: "{{ '{}'.format(msg) }}"
+  when: fp_syslogd_debug|bool
+  tags: fp_syslogd_debug
+
+# rc.conf
+- name: "syslogd: Configure /etc/rc.conf"
+  ansible.builtin.lineinfile:
+    dest: /etc/rc.conf
+    regexp: '^\s*{{ item.key }}\s*=(.*)$'
+    line: '{{ item.key }}="{{ item.value }}"'
+    backup: "{{ fp_backup }}"
+  loop: "{{ fp_syslogd_rcconf }}"
+  notify: restart syslogd
+  tags: fp_syslogd_rcconf
+
+- name: "syslogd: Enable and start syslogd"
+  ansible.builtin.lineinfile:
+    dest: /etc/rc.conf
+    regexp: '^\s*syslogd_enable\s*=(.*)$'
+    line: 'syslogd_enable="YES"'
+    backup: "{{ fp_backup }}"
+  when: fp_syslogd_enabled|bool
+  notify: enable and start syslogd
+  tags: fp_syslogd_rcconf
+
+- name: "syslogd: Disable and stop syslogd"
+  ansible.builtin.lineinfile:
+    dest: /etc/rc.conf
+    regexp: '^\s*syslogd_enable\s*=(.*)$'
+    line: 'syslogd_enable="NO"'
+    backup: "{{ fp_backup }}"
+  when: not fp_syslogd_enabled|bool
+  notify: disable and stop syslogd
+  tags: fp_syslogd_rcconf
+
+# syslog.conf
+- name: "syslogd: Backup origin /etc/syslog.conf"
+  ansible.builtin.command:
+    cmd: "cp /etc/syslog.conf /etc/syslog.conf.orig"
+    creates: /etc/syslog.conf.orig
+  when: fp_syslogd_conf_orig|bool
+  tags: fp_syslogd_conf_orig
+
+- name: "syslogd: Configure /etc/syslog.conf"
+  ansible.builtin.template:
+    src: syslog.conf.j2
+    dest: /etc/syslog.conf
+    owner: root
+    group: wheel
+    mode: '0644'
+    backup: "{{ fp_backup }}"
+  notify: reload syslogd
+  when: fp_syslogd_conf|length > 0
+  tags: fp_syslogd_conf
+
+- name: "syslogd: Create files in /etc/syslog.d/"
+  ansible.builtin.template:
+    src: "{{ item.template }}"
+    dest: "/etc/syslog.d/{{ item.path }}"
+    owner: root
+    group: wheel
+    mode: '0644'
+    backup: "{{ fp_backup }}"
+  loop: "{{ fp_syslogd_confd }}"
+  loop_control:
+    label: "{{ item.path }}"
+  vars:
+    fp_syslogd_conf: "{{ item.conf }}"
+  notify: reload syslogd
+  tags: fp_syslogd_confd
+
+# newsyslog.conf
+- name: "syslogd: Backup origin /etc/newsyslog.conf"
+  ansible.builtin.command:
+    cmd: "cp /etc/newsyslog.conf /etc/newsyslog.conf.orig"
+    creates: /etc/newsyslog.conf.orig
+  when: fp_syslogd_newconf_orig|bool
+  tags: fp_syslogd_newconf_orig
+
+- name: "syslogd: Configure /etc/newsyslog.conf"
+  ansible.builtin.template:
+    src: newsyslog.conf.j2
+    dest: /etc/newsyslog.conf
+    owner: root
+    group: wheel
+    mode: '0644'
+    backup: "{{ fp_backup }}"
+  notify: create newsyslog
+  when: fp_syslogd_newconf|length > 0
+  tags: fp_syslogd_newconf
+
+- name: "syslogd: Create files in /etc/newsyslog.conf.d/"
+  ansible.builtin.template:
+    src: "{{ item.template }}"
+    dest: "/etc/newsyslog.conf.d/{{ item.path }}"
+    owner: root
+    group: wheel
+    mode: '0644'
+    backup: "{{ fp_backup }}"
+  loop: "{{ fp_syslogd_newconfd }}"
+  loop_control:
+    label: "{{ item.path }}"
+  vars:
+    fp_syslogd_newconf: "{{ item.conf }}"
+  notify: create newsyslog
+  tags: fp_syslogd_newconfd
+
+# service
+- name: "syslogd: {{ state }} syslogd"
+  ansible.builtin.service:
+    name: syslogd
+    state: "{{ state }}"
+  vars:
+    state: "{{ fp_syslogd_enabled|bool|ternary('started', 'stopped') }}"
+
+# EOF
+...

@@ -1,7 +1,8 @@
 ---
 # wpasupplicant
+
 - name: restart netif
-  ansible.builtin.service: name="netif" state="restarted"
+  ansible.builtin.service: name=netif state=restarted
 
 - name: reconfigure wpa_supplicant
   ansible.builtin.shell:
@@ -11,4 +12,5 @@
       exit 0
   when: item.changed
   loop: "{{ fp_wpa_supplicant_conf_changes }}"
+
 # TODO: Wait for OK result. Error: 'RECONFIGURE' command timed out.

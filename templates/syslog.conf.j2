@@ -1,0 +1,11 @@
+# {{ ansible_managed }}
+{% for k,v in fp_syslogd_conf.items() %}
+{% if v is mapping %}
+{{ k }}
+{% for l,f in v.items() %}
+{{ f|join(';') }}		{{ l }}
+{% endfor %}
+{% else %}
+{{ v|join(';') }}		{{ k }}
+{% endif %}
+{% endfor %}

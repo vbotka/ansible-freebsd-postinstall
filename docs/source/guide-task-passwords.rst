@@ -1,24 +1,30 @@
 passwords
 ---------
 
-Manage users' passwords. At the moment only ``passwordstore`` *Unix password manager* is
-implemented.
+Manage users' passwords. At the moment only ``passwordstore`` *Unix
+password manager* is implemented.
 
-Passwordstore
+passwordstore
 ^^^^^^^^^^^^^
 
-Create passwords in ``passwordstore`` and enable access for the user who is running the
-playbook. For example ::
+Create passwords in ``passwordstore`` and enable access for the user
+who is running the playbook. For example, ::
 
    shell> pass build.example.com/
    build.example.com
    ├── admin
    └── root
 
-Configure the variables. Enable the management of the users' passwords (3), select ``passwordstore``
-(4), and configure the variable that keeps the name of the host used in passwordstore (5),
-*ansible_nodename* in this case. Next options might be *inventory_hostname* (default),
-*ansible_hostname*, or any other custom variable.  For example
+Configure the variables:
+
+* Enable the management of the users' passwords (3)
+
+* Select ``passwordstore`` (4)
+
+* Configure the variable that keeps the name of the host used in
+  passwordstore (5). In this case *ansible_nodename*. Next options
+  might be *inventory_hostname* (default), *ansible_hostname*, or any
+  other custom variable.
 
 .. code-block:: sh
    :emphasize-lines: 3,4,5

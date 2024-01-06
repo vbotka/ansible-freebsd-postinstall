@@ -1,0 +1,10 @@
+---
+# newsyslog
+
+- name: create newsyslog
+  ansible.builtin.command: newsyslog -C
+
+- name: create all newsyslog
+  ansible.builtin.command: newsyslog -CC
+
+# EOF

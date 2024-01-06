@@ -5,15 +5,15 @@ fp_wpasupplicant_debug: false
 fp_wpasupplicant_debug_classified: false
 fp_wpasupplicant_backup: false
 fp_wpasupplicant_conf_rc: false
-fp_wpasupplicant_conf_file_link: ""
+fp_wpasupplicant_conf_file_link: ''
 fp_wpasupplicant_conf_owner: root
 fp_wpasupplicant_conf_group: wheel
-fp_wpasupplicant_conf_mode: "0640"
+fp_wpasupplicant_conf_mode: '0640'
 fp_wpasupplicant_conf_dir: /etc
 fp_wpasupplicant_conf_file: "{{ fp_wpasupplicant_conf_dir }}/wpa_supplicant.conf"
 fp_wpasupplicant_conf_template: wpa_supplicant.conf.j2
 fp_wpasupplicant_program: /usr/sbin/wpa_supplicant
-fp_wpasupplicant_flags: "-s"
+fp_wpasupplicant_flags: -s
 fp_wpasupplicant_rcconf:
   - {key: wpa_supplicant_program, value: "{{ fp_wpasupplicant_program }}"}
   - {key: wpa_supplicant_flags, value: "{{ fp_wpasupplicant_flags }}"}
