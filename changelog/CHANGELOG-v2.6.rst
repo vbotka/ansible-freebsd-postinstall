@@ -10,9 +10,14 @@ vbotka.freebsd_postinstall 2.6 Release Notes
 
 Release Summary
 ---------------
+Feature update and fixes.
 
 Major changes
 -------------
+* Add tasks vars.yml. Add variables fp_vars(d=false),
+  fp_vars_default_versions(d=false), and fp_vars_debug(d:false).
+  Get default versions from /usr/ports/Mk/bsd.default-versions.mk
+  Creates dictionary pf_default_versions.
 
 Minor Changes
 -------------

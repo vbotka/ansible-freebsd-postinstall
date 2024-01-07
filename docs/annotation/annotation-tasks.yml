@@ -697,6 +697,19 @@ mytasks:
     hints: []
     warnings: []
 
+  - file: vars.yml
+    link: vars.yml
+    path: tasks/vars.yml
+    synopsis: |
+      Configure vars.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
   - file: wpasupplicant.yml
     link: wpasupplicant.yml
     path: tasks/wpasupplicant.yml
