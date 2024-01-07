@@ -1,27 +1,29 @@
 # fp_install: false
+#
 # fp_packages:
-#   - {list: minimal, enabled: true}
-#   - {list: postinstall, enabled: true}
-#   - {list: apcups, enabled: "{{ fp_apcupsd_install }}"}
-#   - {list: hostap, enabled: "{{ fp_hostapd_install }}"}
-#   - {list: linux, enabled: "{{ fp_linux_install }}"}
-#   - {list: procmail, enabled: "{{ fp_procmail_install }}"}
-#   - {list: smart, enabled: "{{ fp_smartd_install }}"}
-#   - {list: snmpd, enabled: "{{ fp_snmpd_install }}"}
-#   - {list: wpa_supplicant, enabled: "{{ fp_wpasupplicant_install }}"}
-#   - {list: qemu, enabled: "{{ fp_qemu_install }}"}
-#   - {list: qemu_user_static, enabled: "{{ fp_qemu_user_static_install }}"}
 #   - {list: apache, enabled: true}
+#   - {list: apcups, enabled: "{{ fp_apcupsd_install }}"}
 #   - {list: bind, enabled: false}
 #   - {list: devel, enabled: false}
 #   - {list: dhcp, enabled: false}
+#   - {list: hostap, enabled: "{{ fp_hostapd_install }}"}
 #   - {list: integrity, enabled: true}
+#   - {list: jail, enabled: true}
 #   - {list: leutils, enabled: false}
+#   - {list: linux, enabled: "{{ fp_linux_install }}"}
+#   - {list: minimal, enabled: true}
 #   - {list: mysql, enabled: false}
 #   - {list: pf, enabled: false}
+#   - {list: postinstall, enabled: true}
 #   - {list: poudriere, enabled: true}
+#   - {list: procmail, enabled: "{{ fp_procmail_install }}"}
 #   - {list: python, enabled: true}
-#   - {list: jail, enabled: true}
+#   - {list: qemu, enabled: "{{ fp_qemu_install }}"}
+#   - {list: qemu_user_static, enabled: "{{ fp_qemu_user_static_install }}"}
+#   - {list: smart, enabled: "{{ fp_smartd_install }}"}
+#   - {list: snmpd, enabled: "{{ fp_snmpd_install }}"}
+#   - {list: wpa_supplicant, enabled: "{{ fp_wpasupplicant_install }}"}
+#
 # fp_links:
 #   - target: "/usr/local/bin/python{{ bsd_make_python_version }}"
 #     link: /usr/local/bin/python

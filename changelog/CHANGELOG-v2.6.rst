@@ -18,6 +18,9 @@ Major changes
   fp_vars_default_versions(d=false), and fp_vars_debug(d:false).
   Get default versions from /usr/ports/Mk/bsd.default-versions.mk
   Creates dictionary pf_default_versions.
+* Update defaults/main/pkgdict_versions.yml. Use pf_default_versions
+  if avaialable. Update tasks/packages.yml debug and
+  packages.yml.sample
 
 Minor Changes
 -------------
