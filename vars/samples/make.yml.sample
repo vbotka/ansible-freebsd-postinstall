@@ -11,11 +11,11 @@ fp_make_conf:
   - "OPTIONS_UNSET+=\t\t\tGSSAPI_BASE KRB_BASE KERBEROS"
   - "OPTIONS_SET+=\t\t\tGSSAPI_NONE KRB_NONE"
   - "DEFAULT_VERSIONS+=\t\temacs=nox"
-  - "DEFAULT_VERSIONS+=\t\tssl=openssl"
-  - "DEFAULT_VERSIONS+=\t\tphp={{ bsd_make_php_version }}"
-  - "DEFAULT_VERSIONS+=\t\tpython={{ bsd_make_python_version }}"
   - "DEFAULT_VERSIONS+=\t\tmysql={{ bsd_make_mysql_version }}"
   - "DEFAULT_VERSIONS+=\t\tperl5={{ bsd_make_perl_version }}"
+  - "DEFAULT_VERSIONS+=\t\tphp={{ bsd_make_php_version }}"
+  - "DEFAULT_VERSIONS+=\t\tpython={{ bsd_make_python_version }}"
+  - "DEFAULT_VERSIONS+=\t\tssl={{ bsd_make_ssl_version }}"
 
 # - "WRKDIRPREFIX=/var/ports
 # - "DISTDIR=/var/ports/distfiles

@@ -197,6 +197,7 @@ To solve this problem apply the path below
 - [snmp - Install and configure snmp in Freebsd](http://blog.up-link.ro/freebsd-how-to-install-and-configure-snmp-in-freebsd/)
 - [snmp - Simple Network Management Protocol (SNMP)](http://www.net-snmp.org/)
 - [ssh - FreeBSD handbook: OpenSSH](https://docs.freebsd.org/en/books/handbook/security/#openssh)
+- [ssl - OpenSSL Wiki](https://wiki.freebsd.org/OpenSSL)
 - [sudo - FreeBSD handbook: Shared Administration with Sudo](https://docs.freebsd.org/en/books/handbook/security/#security-sudo)
 - [swap - FreeBSD handbook: Adding Swap Space](https://docs.freebsd.org/en/books/handbook/config/#adding-swap-space)
 - [sysctl - FreeBSD handbook: Tuning with sysctl](https://docs.freebsd.org/en/books/handbook/config/#configtuning-sysctl)

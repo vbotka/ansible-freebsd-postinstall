@@ -18,13 +18,14 @@
 
          apache_version: {{ apache_version }}
          apache_php_version: {{ apache_php_version }}
-         bsd_php_version: {{ bsd_php_version }}
-         bsd_dhcp_version: {{ bsd_dhcp_version }}
          bsd_bind_version: {{ bsd_bind_version }}
-         bsd_mysql_version: {{ bsd_mysql_version }}
-         bsd_python_version: {{ bsd_python_version }}
-         bsd_perl_version: {{ bsd_perl_version }}
+         bsd_dhcp_version: {{ bsd_dhcp_version }}
          bsd_linux_version: {{ bsd_linux_version }}
+         bsd_mysql_version: {{ bsd_mysql_version }}
+         bsd_perl_version: {{ bsd_perl_version }}
+         bsd_php_version: {{ bsd_php_version }}
+         bsd_python_version: {{ bsd_python_version }}
+         bsd_ssl_version: {{ bsd_ssl_version }}
 
          fp_links:
            {{ fp_links|to_yaml(indent=2)|indent(2) }}

@@ -21,6 +21,9 @@ Major changes
 * Update defaults/main/pkgdict_versions.yml. Use pf_default_versions
   if avaialable. Update tasks/packages.yml debug and
   packages.yml.sample
+* Add bsd_ssl_version, bsd_ssl_version_default, and
+  bsd_make_ssl_version to defaults/main/pkgdict_versions.yml. Update
+  vars/samples/make.yml.sample
 
 Minor Changes
 -------------
