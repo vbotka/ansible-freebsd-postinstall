@@ -205,6 +205,7 @@ To solve this problem apply the path below
 - [tmpmfs - FreeBSD forum: Questions about ramdisk in FreeBSD](https://forums.freebsd.org/threads/questions-about-ramdisk-in-freebsd.20345/)
 - [tmpfs - FreeBSD forum: /dev/shm | md questions](https://forums.freebsd.org/threads/tmpfs-dev-shm-md-questions.45210/)
 - [users - FreeBSD handbook: Adding Users and Groups](https://docs.freebsd.org/en/books/porters-handbook/special/#users-and-groups)
+- [vars - FreeBSD Wiki: Ports/DEFAULT_VERSIONS](https://wiki.freebsd.org/Ports/DEFAULT_VERSIONS)
 - [wpa_supplicant - Project site](https://w1.fi/wpa_supplicant/)
 - [wpa_supplicant - FreeBSD handbook: Wireless Networking](https://docs.freebsd.org/en/books/handbook/advanced-networking/#network-wireless)
 
