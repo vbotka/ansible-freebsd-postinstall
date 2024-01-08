@@ -41,7 +41,9 @@ pkg_dict_arm64:
       - emulators/linux_base-{{ bsd_linux_version }}
   - pkglist: devel
     packages:
-      - devel/llvm60
+      - devel/llvm{{ bsd_gcc_version }}
+  - pkglist: pip
+    packages:
       - devel/py-pip
   - pkglist: joomla
     packages:
@@ -72,7 +74,7 @@ pkg_dict_arm64:
       - mail/roundcube
       - net/php{{ bsd_php_version }}-ldap
       - security/php{{ bsd_php_version }}-filter
-      - security/php{{ bsd_php_version }}-hash
+#     - security/php{{ bsd_php_version }}-hash  # The hash module is now part of the PHP core
       - security/php{{ bsd_php_version }}-openssl
       - sysutils/php{{ bsd_php_version }}-fileinfo
       - sysutils/php{{ bsd_php_version }}-posix
@@ -80,7 +82,7 @@ pkg_dict_arm64:
       - textproc/php{{ bsd_php_version }}-dom
       - textproc/php{{ bsd_php_version }}-pspell
       - textproc/php{{ bsd_php_version }}-simplexml
-      - textproc/php{{ bsd_php_version }}-wddx
+#     - textproc/php{{ bsd_php_version }}-wddx  # Deprecated
       - textproc/php{{ bsd_php_version }}-xml
       - textproc/php{{ bsd_php_version }}-xmlreader
       - textproc/php{{ bsd_php_version }}-xmlwriter
@@ -181,6 +183,8 @@ pkg_dict_arm64:
   - pkglist: python
     packages:
       - lang/python{{ bsd_python_version }}
+      - lang/python
+      - lang/python3
   - pkglist: rsnapshot
     packages:
       - sysutils/rsnapshot

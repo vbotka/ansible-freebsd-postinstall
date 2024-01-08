@@ -6,7 +6,7 @@
   vars:
     query: "[?pkglist=='{{ item.list }}'].packages"
 
-- name: "packages-install: Install packages"
+- name: "packages-install: Install packages {{ item.list }}"
   community.general.pkgng:
     name: "{{ local_pkg }}"
     autoremove: "{{ fp_pkg_autoremove|default(omit) }}"
@@ -24,9 +24,9 @@
   retries: "{{ freebsd_install_retries }}"
   until: result is succeeded
   delay: "{{ freebsd_install_delay }}"
-  when: freebsd_install_method|lower == "packages"
+  when: freebsd_install_method|lower == 'packages'
 
-- name: "packages-install: Install ports"
+- name: "packages-install: Install ports {{ item.list }}"
   community.general.portinstall:
     name: "{{ local_pkg }}"
     use_packages: "{{ freebsd_use_packages }}"
@@ -37,7 +37,7 @@
   retries: "{{ freebsd_install_retries }}"
   until: result is succeeded
   delay: "{{ freebsd_install_delay }}"
-  when: freebsd_install_method|lower == "ports"
+  when: freebsd_install_method|lower == 'ports'
 
 # EOF
 ...

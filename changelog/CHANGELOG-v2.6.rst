@@ -19,11 +19,13 @@ Major changes
   Get default versions from /usr/ports/Mk/bsd.default-versions.mk
   Creates dictionary pf_default_versions.
 * Update defaults/main/pkgdict_versions.yml. Use pf_default_versions
-  if avaialable. Update tasks/packages.yml debug and
-  packages.yml.sample
-* Add bsd_ssl_version, bsd_ssl_version_default, and
-  bsd_make_ssl_version to defaults/main/pkgdict_versions.yml. Update
-  vars/samples/make.yml.sample
+  if avaialable.
+* Update defaults/main/pkgdict_*.yml
+* Add bsd_gcc_version, bsd_gcc_version_default, and bsd_make_gcc_version
+* Add bsd_ssl_version, bsd_ssl_version_default, and bsd_make_ssl_version
+* Update tasks/packages.yml and packages-install.yml
+* Update vars/samples/make.yml.sample
+* Update vars/samples/packages.yml.sample
 
 Minor Changes
 -------------
@@ -34,7 +36,8 @@ Bugfixes
 
 Breaking Changes / Porting Guide
 --------------------------------
-
+* Update defaults/main/pkgdict_*.yml; Use bsd_gcc_version; Split
+  pkglist pip from devel.
 
 2.6.6
 =====
