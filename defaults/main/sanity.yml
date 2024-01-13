@@ -59,5 +59,6 @@ fp_sanity_tags: [all, always, fp_aliases,
                  fp_timezone, fp_timezone_debug,
                  fp_tmpmfs, fp_tmpmfs_debug, fp_tmpmfs_rcconf,
                  fp_users, fp_users_debug,
+                 fp_vars, fp_vars_default_versions,
                  fp_wpasupplicant, fp_wpasupplicant_conf, fp_wpasupplicant_conf_file_link,
                  fp_wpasupplicant_conf_rc, fp_wpasupplicant_debug, fp_wpasupplicant_rcconf]

@@ -1,0 +1,27 @@
+---
+
+- name: Get default versions
+  block:
+
+    - name: "vars: Copy Makefile"
+      ansible.builtin.copy:
+        src: Makefile.default-versions
+        dest: Makefile
+
+    - name: "vars: Get default versions"
+      ansible.builtin.command:
+        cmd: make default-versions
+      register: result
+      changed_when: false
+
+    - name: "vars: Create dictionary pf_default_versions"
+      ansible.builtin.set_fact:
+        pf_default_versions: "{{ result.stdout|from_yaml }}"
+
+    - name: "vars: Debug default versions (fp_vars_debug={{ fp_vars_debug }})"
+      ansible.builtin.debug:
+        var: pf_default_versions
+      when: fp_vars_debug|bool
+
+  when: fp_vars_default_versions|bool
+  tags: fp_vars_default_versions

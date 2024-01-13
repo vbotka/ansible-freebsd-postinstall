@@ -27,6 +27,7 @@
 
          fp_install: {{ fp_install }}
          fp_backup: {{ fp_backup }}
+         fp_vars: {{ fp_vars }} fp_vars_default_versions: {{ fp_vars_default_versions }}
          fp_sanity: {{ fp_sanity }} fp_sanity_tags_fatal: {{ fp_sanity_tags_fatal }}
 
          fp_aliases: {{ fp_aliases }}

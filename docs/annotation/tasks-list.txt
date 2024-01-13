@@ -48,6 +48,7 @@ syslogd.yml
 timezone.yml
 tmpmfs.yml
 users.yml
+vars.yml
 wpasupplicant.yml
 cloud-providers/digitalocean.yml
 copy/sync-default.yml

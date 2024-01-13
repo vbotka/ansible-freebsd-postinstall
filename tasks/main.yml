@@ -1,6 +1,11 @@
 ---
 # tasks for freebsd_postinstall
 
+- name: Import vars.yml
+  ansible.builtin.import_tasks: vars.yml
+  when: fp_vars|bool
+  tags: [fp_vars, always]
+
 - name: Import debug.yml
   ansible.builtin.import_tasks: debug.yml
   when: fp_debug|bool

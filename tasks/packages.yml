@@ -15,14 +15,31 @@
          fp_pkg_pkgsite: {{ fp_pkg_pkgsite|default('UNDEFINED') }}
          fp_pkg_rootdir: {{ fp_pkg_rootdir|default('UNDEFINED') }}
          fp_pkg_state: {{ fp_pkg_state|default('UNDEFINED') }}
-         fp_packages:
-           {{ fp_packages|sort(attribute='list')|to_yaml|indent(2) }}
+
+         apache_version: {{ apache_version }}
+         apache_php_version: {{ apache_php_version }}
+         bsd_bind_version: {{ bsd_bind_version }}
+         bsd_dhcp_version: {{ bsd_dhcp_version }}
+         bsd_gcc_version: {{ bsd_gcc_version }}
+         bsd_linux_version: {{ bsd_linux_version }}
+         bsd_mysql_version: {{ bsd_mysql_version }}
+         bsd_perl_version: {{ bsd_perl_version }}
+         bsd_php_version: {{ bsd_php_version }}
+         bsd_python_version: {{ bsd_python_version }}
+         bsd_ssl_version: {{ bsd_ssl_version }}
+
          fp_links:
            {{ fp_links|to_yaml(indent=2)|indent(2) }}
+         fp_packages: (items2dict(key_name='list', value_name='enabled'))
+           {{ fp_packages|sort(attribute='list')|
+                          items2dict(key_name='list', value_name='enabled')|
+                          to_nice_yaml(indent=2)|indent(2) }}
          ansible_architecture: {{ ansible_architecture }}
-         pkg_dict_{{ ansible_architecture }}:
+         pkg_dict_{{ ansible_architecture }}: (items2dict(key_name='pkglist', value_name='packages'))
            {{ lookup('vars', 'pkg_dict_' ~ ansible_architecture)|
-              sort(attribute='pkglist')|to_yaml|indent(2) }}
+              sort(attribute='pkglist')|
+              items2dict(key_name='pkglist', value_name='packages')|
+              to_yaml(indent=2)|indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
   when: fp_packages_debug|bool

@@ -1276,6 +1276,30 @@ Description of the task.
 
 
 
+.. _as_vars.yml:
+
+vars.yml
+--------
+
+Synopsis: Configure vars.
+
+
+Description of the task.
+
+
+[`tasks/vars.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/vars.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../tasks/vars.yml
+    :language: Yaml
+    :emphasize-lines: 1,2
+    :linenos:
+
+
+
+
+
 .. _as_wpasupplicant.yml:
 
 wpasupplicant.yml
