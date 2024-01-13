@@ -30,6 +30,7 @@ Major changes
 Minor Changes
 -------------
 * Update docs
+* Update vars debug label.
 
 Bugfixes
 --------

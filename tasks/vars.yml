@@ -18,7 +18,7 @@
       ansible.builtin.set_fact:
         pf_default_versions: "{{ result.stdout|from_yaml }}"
 
-    - name: "vars: Debug default versions"
+    - name: "vars: Debug default versions (fp_vars_debug={{ fp_vars_debug }})"
       ansible.builtin.debug:
         var: pf_default_versions
       when: fp_vars_debug|bool
