@@ -5,6 +5,14 @@ vbotka.freebsd_postinstall 2.6 Release Notes
 .. contents:: Topics
 
 
+2.6.8
+=====
+
+Release Summary
+---------------
+Update docs requirements readthedocs-sphinx-search==0.3.2
+
+
 2.6.7
 =====
 
