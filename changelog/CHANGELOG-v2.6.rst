@@ -10,19 +10,7 @@ vbotka.freebsd_postinstall 2.6 Release Notes
 
 Release Summary
 ---------------
-
-Major changes
--------------
-
-Minor Changes
--------------
-* Bump 2.6.8 docs
-
-Bugfixes
---------
-
-Breaking Changes / Porting Guide
---------------------------------
+Update docs requirements readthedocs-sphinx-search==0.3.2
 
 
 2.6.7
