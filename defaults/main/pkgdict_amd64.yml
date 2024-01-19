@@ -162,6 +162,7 @@ pkg_dict_amd64:
   - pkglist: jail
     packages:
       - sysutils/ezjail
+      - ports-mgmt/portsnap
   - pkglist: security
     packages:
       - security/openssl
