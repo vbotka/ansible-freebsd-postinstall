@@ -3,4 +3,4 @@
   hosts: localhost
   connection: local
   roles:
-    - freebsd-postinstall
+    - ansible-freebsd-postinstall
