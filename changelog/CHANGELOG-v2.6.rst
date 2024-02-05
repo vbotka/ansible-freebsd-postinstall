@@ -10,7 +10,16 @@ vbotka.freebsd_postinstall 2.6 Release Notes
 
 Release Summary
 ---------------
-Add ports-mgmt/portsnap to defaults/pkgdict_*
+Update defaults/pkgdict_*, freebsd-update, and tests.
+
+Major changes
+-------------
+
+Minor Changes
+-------------
+* Add ports-mgmt/portsnap to defaults/pkgdict_*
+* Update freebsd-update. Do not require installation of jc.
+* Update tests.
 
 
 2.6.8
