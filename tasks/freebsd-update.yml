@@ -11,7 +11,10 @@
 
     - name: "freebsd-update: Create fp_freebsd_update_conf"
       ansible.builtin.set_fact:
-        fp_freebsd_update_conf: "{{ out.stdout|community.general.jc('ini') }}"
+        fp_freebsd_update_conf: "{{ dict(out.stdout_lines |
+                                         map('split', '=') |
+                                         map('map', 'trim')) }}"
+#       fp_freebsd_update_conf: "{{ out.stdout | community.general.jc('ini') }}"
 
     - name: "freebsd-update: Debug fp_freebsd_update_conf"
       ansible.builtin.debug:
