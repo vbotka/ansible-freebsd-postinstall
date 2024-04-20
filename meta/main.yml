@@ -11,8 +11,7 @@ galaxy_info:
   platforms:
     - name: FreeBSD
       versions:
-        - 12.4
-        - 13.2
+        - 13.3
         - 14.0
   galaxy_tags:
     - freebsd

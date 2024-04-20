@@ -10,11 +10,12 @@ vbotka.freebsd_postinstall 2.6 Release Notes
 
 Release Summary
 ---------------
-Bug fix and docs update.
+Feature and docs update.
 
 
 Major changes
 -------------
+* Support 13.3 and 14.0
 
 Minor Changes
 -------------
