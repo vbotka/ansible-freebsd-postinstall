@@ -19,7 +19,7 @@ Major changes
 
 Minor Changes
 -------------
-
+* Formatting Travis config.
 
 
 2.6.10
