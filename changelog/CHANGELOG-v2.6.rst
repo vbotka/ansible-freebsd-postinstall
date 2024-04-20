@@ -20,6 +20,7 @@ Major changes
 Minor Changes
 -------------
 * Formatting Travis config.
+* Update Ansible lint config.
 
 
 2.6.10
