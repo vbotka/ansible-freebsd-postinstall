@@ -5,6 +5,22 @@ vbotka.freebsd_postinstall 2.6 Release Notes
 .. contents:: Topics
 
 
+2.6.11
+======
+
+Release Summary
+---------------
+Bug fix and docs update.
+
+
+Major changes
+-------------
+
+Minor Changes
+-------------
+
+
+
 2.6.10
 ======
 
