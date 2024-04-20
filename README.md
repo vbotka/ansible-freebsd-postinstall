@@ -119,6 +119,17 @@ ansible-playbook freebsd-postinstall.yml
 ```
 
 
+### Ansible lint
+
+Use the configuration file *.ansible-lint.local* when running
+*ansible-lint*. Some rules might be disabled and some warnings might
+be ignored. See the notes in the configuration file.
+
+```bash
+shell> ansible-lint -c .ansible-lint.local
+```
+
+
 ## Notes
 
 1) devfs
