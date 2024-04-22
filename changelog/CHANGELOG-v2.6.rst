@@ -22,6 +22,7 @@ Minor Changes
 * Update Ansible lint config.
 * Update README
 * Exclude docs from local ansible-lint
+* Use default rules in local ansible-lint
 
 
 2.6.10

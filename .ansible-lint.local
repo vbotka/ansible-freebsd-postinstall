@@ -5,8 +5,8 @@ parseable: true
 use_default_rules: true
 skip_list:
   - schema
-rulesdir:
-  - $HOME/.ansible/ansible-lint-rules
+# rulesdir:
+#   - $HOME/.ansible/ansible-lint-rules
 exclude_paths:
   - docs/
 
