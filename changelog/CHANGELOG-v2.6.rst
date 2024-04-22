@@ -12,7 +12,6 @@ Release Summary
 ---------------
 Feature and docs update.
 
-
 Major changes
 -------------
 * Support 13.3 and 14.0
@@ -22,6 +21,7 @@ Minor Changes
 * Formatting Travis config.
 * Update Ansible lint config.
 * Update README
+* Exclude docs from local ansible-lint
 
 
 2.6.10
