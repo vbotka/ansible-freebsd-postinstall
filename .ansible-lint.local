@@ -4,11 +4,12 @@ quiet: false
 parseable: true
 use_default_rules: true
 skip_list:
-  - schema
-# rulesdir:
-#   - $HOME/.ansible/ansible-lint-rules
+  - schema[meta]
 exclude_paths:
   - docs/
+
+# rulesdir:
+#   - $HOME/.ansible/ansible-lint-rules
 
 # Notes of skip_list
 #

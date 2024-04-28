@@ -23,6 +23,7 @@ Minor Changes
 * Update README
 * Exclude docs from local ansible-lint
 * Use default rules in local ansible-lint
+* Update docs.
 
 
 2.6.10
