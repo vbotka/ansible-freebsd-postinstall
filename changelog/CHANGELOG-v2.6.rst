@@ -5,6 +5,27 @@ vbotka.freebsd_postinstall 2.6 Release Notes
 .. contents:: Topics
 
 
+2.6.11
+======
+
+Release Summary
+---------------
+Feature and docs update.
+
+Major changes
+-------------
+* Support 13.3 and 14.0
+
+Minor Changes
+-------------
+* Formatting Travis config.
+* Update Ansible lint config.
+* Update README
+* Exclude docs from local ansible-lint
+* Use default rules in local ansible-lint
+* Update docs.
+
+
 2.6.10
 ======
 

@@ -58,7 +58,7 @@ execution of the playbook
    display_skipped_hosts=false
    log_path = /var/log/ansible.log
 
-   [ssh_connection]
+   [connection]
    pipelining = true
 
 Install the role ``vbotka.freebsd_postinstall`` ::

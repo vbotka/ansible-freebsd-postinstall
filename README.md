@@ -1,6 +1,6 @@
 # freebsd_postinstall
 
-[![quality](https://img.shields.io/ansible/quality/27910)](https://galaxy.ansible.com/vbotka/freebsd_postinstall)[![Build Status](https://app.travis-ci.com/vbotka/ansible-freebsd-postinstall.svg?branch=master)](https://app.travis-ci.com/vbotka/ansible-freebsd-postinstall)[![Documentation Status](https://readthedocs.org/projects/docs/badge/?version=latest)](https://ansible-freebsd-postinstall.readthedocs.io/en/latest/)
+[![quality](https://img.shields.io/ansible/quality/27910)](https://galaxy.ansible.com/vbotka/freebsd_postinstall)[![Build Status](https://app.travis-ci.com/vbotka/ansible-freebsd-postinstall.svg?branch=master)](https://app.travis-ci.com/vbotka/ansible-freebsd-postinstall)[![Documentation Status](https://readthedocs.org/projects/docs/badge/?version=latest)](https://ansible-freebsd-postinstall.readthedocs.io/en/latest/)[![GitHub tag](https://img.shields.io/github/v/tag/vbotka/ansible-freebsd-postinstall)](https://github.com/vbotka/ansible-freebsd-postinstall/tags)
 
 [Ansible role](https://galaxy.ansible.com/vbotka/freebsd_postinstall/)
 
@@ -59,7 +59,7 @@ freebsd_install_method: packages
 #freebsd_use_packages: true
 ```
 
-Optionally the packages can be built by [freebsd_poudriere](https://galaxy.ansible.com/vbotka/freebsd_poudriere) and installed by [freebsd_packages](https://galaxy.ansible.com/vbotka/freebsd_packages)
+Optionally, the packages can be built by [freebsd_poudriere](https://galaxy.ansible.com/vbotka/freebsd_poudriere) and installed by [freebsd_packages](https://galaxy.ansible.com/vbotka/freebsd_packages)
 
 
 ## freebsd_use_packages
@@ -116,6 +116,17 @@ See the [Best practice](https://ansible-freebsd-postinstall.readthedocs.io/en/la
 
 ```yaml
 ansible-playbook freebsd-postinstall.yml
+```
+
+
+### Ansible lint
+
+Use the configuration file *.ansible-lint.local* when running
+*ansible-lint*. Some rules might be disabled and some warnings might
+be ignored. See the notes in the configuration file.
+
+```bash
+shell> ansible-lint -c .ansible-lint.local
 ```
 
 
