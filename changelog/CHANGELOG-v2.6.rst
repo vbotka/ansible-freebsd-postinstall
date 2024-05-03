@@ -17,6 +17,7 @@ Major changes
 
 Minor Changes
 -------------
+* Bump docs version.
 
 
 2.6.11
