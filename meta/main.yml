@@ -13,6 +13,7 @@ galaxy_info:
       versions:
         - 13.3
         - 14.0
+        - 14.1
   galaxy_tags:
     - freebsd
     - ups
@@ -37,5 +38,6 @@ galaxy_info:
 dependencies: []
 collections:
   - ansible.posix
+  - ansible.utils
   - community.general
 ...
