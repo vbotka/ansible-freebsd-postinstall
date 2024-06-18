@@ -1,6 +1,6 @@
 ---
 
-- name: "mount-iso: Debug (fp_mount_iso_debug={{ fp_mount_iso_debug }})"
+- name: "mount-iso: Debug fp_mount_iso_debug={{ fp_mount_iso_debug }}"
   vars:
     msg: |-
       fp_mount_iso_points_create: {{ fp_mount_iso_points_create }}

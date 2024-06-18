@@ -21,6 +21,7 @@ Minor Changes
 * Bump docs version.
 * Update hosts sanity testing.
 * Update passwords.
+* Update name: mount-*
 
 
 2.6.11
