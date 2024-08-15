@@ -22,6 +22,7 @@ Minor Changes
 * Update hosts sanity testing.
 * Update passwords.
 * Update tasks mount-*
+* Update var pkg_dict_amd64. Add pkg_dict_amd64_dict.
 
 
 2.6.11
