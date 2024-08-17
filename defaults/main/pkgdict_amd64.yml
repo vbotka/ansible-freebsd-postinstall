@@ -35,7 +35,7 @@ pkg_dict_amd64_dict:
   - net/hostapd
   integrity:
   - shells/bash
-  - devel/git
+  - devel/git@default
   - archivers/gtar
   - security/md5deep
   jail:
@@ -44,7 +44,7 @@ pkg_dict_amd64_dict:
   - www/joomla3
   leutils:
   - shells/bash
-  - devel/git
+  - devel/git@default
   - security/py-certbot
   linux:
   - emulators/linux_base-{{ bsd_linux_version }}

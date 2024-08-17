@@ -12,13 +12,19 @@ Release Summary
 ---------------
 Feature and bugfix release with docs update.
 
-Major changes
+Major Changes
 -------------
 * Support 14.1
+* Update flavor devel/git@default in pkg_dict_amd64
+* Update defaults/main/packages.yml
+  Update tasks/packages.yml and tasks/packages-install.yml
+  Enable upgrade "-t fp_packages -e fp_install=true -e
+  fp_pkg_state=latest -e fp_pkg_use_globs=false"
 
 Minor Changes
 -------------
 * Bump docs version.
+* Update debug.yml
 * Update hosts sanity testing.
 * Update passwords.
 * Update tasks mount-*
