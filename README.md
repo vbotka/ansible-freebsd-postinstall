@@ -35,7 +35,7 @@ This role has been developed and tested with [FreeBSD Supported Releases](https:
 ### Collections
 
 * [ansible.posix](https://github.com/ansible-collections/ansible.posix)
-* [community.general](https://github.com/ansible-collections/community.general)
+* [community.general](https://github.com/ansible-collections/community.general) >= 9.3.0
 
 ### Packages
 
