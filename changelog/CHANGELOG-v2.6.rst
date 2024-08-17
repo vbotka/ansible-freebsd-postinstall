@@ -24,6 +24,18 @@ Minor Changes
 * Update tasks mount-*
 * Update var pkg_dict_amd64. Add pkg_dict_amd64_dict.
 
+Bugfixes
+--------
+
+Breaking Changes / Porting Guide
+--------------------------------
+* Simplified tasks sysctl.yml and loader.yml; Add var
+  fp_loader_conf_file_backup_orig
+* Rename var fp_sysctl_warning_loader_needed to fp_sysctl_tuneables_warning
+* Remove var fp_loader_conf_template_enable
+* Add deafult template loader.conf2.j2
+
+
 
 2.6.11
 ======

@@ -2,3 +2,6 @@
 - name: loader message reboot
   ansible.builtin.debug:
     msg: "[MESSAGE] Reboot to activate configuration in /boot/loader.conf"
+
+# TODO: Optionally reboot and wait_for
+# EOF

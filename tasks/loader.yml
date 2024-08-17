@@ -1,64 +1,31 @@
 ---
 
-- name: "loader: Debug (fp_loader_debug={{ fp_loader_debug }})"
+- name: "loader: Debug fp_loader_debug={{ fp_loader_debug }}"
   vars:
     msg: |-
-      fp_loader_warning: {{ fp_loader_warning }}
-      fp_loader_conf_template_enable: {{ fp_loader_conf_template_enable }}
+      fp_loader_tuneables_warning: {{ fp_loader_tuneables_warning }}
       fp_loader_load_modules: {{ fp_loader_load_modules }}
+      fp_loader_conf_file_backup_orig: {{ fp_loader_conf_file_backup_orig }}
       fp_loader_conf_file: {{ fp_loader_conf_file }}
       fp_loader_conf_template: {{ fp_loader_conf_template }}
       fp_loader_conf:
-        {{ fp_loader_conf|to_yaml(indent=2)|indent(2) }}
-      fp_loader_conf_modules:
-        {{ fp_loader_conf_modules|to_yaml(indent=2)|indent(2) }}
-      fp_sysctl_conf:
-        {{ fp_sysctl_conf|to_yaml(indent=2)|indent(2) }}
+        {{ fp_loader_conf | to_yaml(indent=2) | indent(2) }}
+      fp_loader_modules:
+        {{ fp_loader_modules | to_yaml(indent=2) | indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
-  when: fp_loader_debug|bool
+  when: fp_loader_debug | bool
   tags: fp_loader_debug
 
-- name: "loader: Register sysctl variables that are settable via loader"
+- name: "loader: Backup orig {{ fp_loader_conf_file }}"
   ansible.builtin.command:
-    cmd: sysctl -aNT
-  register: tmp_loader_vars
-  changed_when: false
+    cmd: cp loader.conf loader.conf.orig
+    chdir: /boot
+    creates: /boot/loader.conf.orig
+  when: fp_loader_conf_file_backup_orig | bool
+  tags: fp_loader_conf_file_backup_orig
 
-- name: "loader: Create empty list fp_sysctl_loader_conf"
-  ansible.builtin.set_fact:
-    fp_sysctl_loader_conf: []
-
-- name: "loader: [WARNING] does not report changes in check mode because of empty tmp_loader_vars"
-  ansible.builtin.debug:
-    msg: "[WARNING] Next task does not report changes in check mode because of empty tmp_loader_vars"
-  when:
-    - ansible_check_mode|bool
-    - fp_loader_warning|bool
-    - fp_loader_debug|bool
-
-- name: "loader: Add items to fp_sysctl_loader_conf"
-  ansible.builtin.set_fact:
-    fp_sysctl_loader_conf: "{{ fp_sysctl_loader_conf + [item.name ~ '=' ~ item.value, ] }}"
-  loop: "{{ fp_sysctl_conf }}"
-  when:
-    - tmp_loader_vars.stdout_lines|default([])|length > 0
-    - item.name in tmp_loader_vars.stdout_lines
-
-- name: "loader: Debug fp_sysctl_loader_conf"
-  ansible.builtin.debug:
-    var: fp_sysctl_loader_conf|to_yaml
-  when: fp_loader_debug|bool
-
-- name: "loader: [WARNING] does not report changes in check mode because of empty fp_sysctl_loader_conf"
-  ansible.builtin.debug:
-    msg: "[WARNING] Next task does not report changes in check mode because of empty fp_sysctl_loader_conf"
-  when:
-    - ansible_check_mode|bool
-    - fp_loader_warning|bool
-    - fp_loader_debug|bool
-
-- name: "loader: Configure {{ fp_loader_conf_file }} from template {{ fp_loader_conf_template }}"
+- name: "loader: Configure {{ fp_loader_conf_file }}"
   ansible.builtin.template:
     src: "{{ fp_loader_conf_template }}"
     dest: "{{ fp_loader_conf_file }}"
@@ -66,18 +33,39 @@
     group: wheel
     mode: "0644"
     backup: "{{ fp_backup }}"
-  when:
-    - not ansible_check_mode|bool
-    - fp_loader_conf_template_enable|bool
   notify: loader message reboot
+  tags: fp_loader_conf
 
 - name: "loader: Load modules"
   ansible.builtin.shell:
     cmd: >
       kldstat -q -n {{ item }} || kldload -n {{ item }}
-  loop: "{{ fp_loader_conf_modules }}"
+  loop: "{{ fp_loader_modules }}"
   changed_when: false
-  when: fp_loader_load_modules|bool
+  when: fp_loader_load_modules | bool
+  tags: fp_loader_load_modules
+
+- name: Warn when fp_loader_conf keeps also non boot-time tuneables settable via loader.
+  when: fp_loader_tuneables_warning | bool
+  tags: fp_loader_tuneables_warning
+  block:
+
+    - name: "loader: Get sysctls settable via loader."
+      ansible.builtin.command: sysctl -aNT
+      register: result
+      changed_when: false
+      check_mode: false
+
+    - name: "loader: Warn when fp_sysctl_conf keeps also non boot-time tuneables settable via loader."
+      when: fp_loader_non_tuneables | length > 0
+      ansible.builtin.debug:
+        msg: >-
+          [WARNING] Non boot-time tuneables in fp_loader_conf:
+          {{ fp_loader_non_tuneables | to_yaml }}
+      vars:
+        fp_loader_non_tuneables: "{{ fp_loader_conf |
+                                     map(attribute='name') |
+                                     reject('in', result.stdout_lines) | sort }}"
 
 # EOF
 ...

@@ -1,0 +1,13 @@
+# {{ ansible_managed }}
+
+# fp_loader_conf
+{% for item in fp_loader_conf %}
+{{ item.name }}={{ item.value }}
+{% endfor %}
+
+# fp_loader_conf_modules
+{% for item in fp_loader_conf_modules %}
+{{ item }}_load="YES"
+{% endfor %}
+
+# EOF
