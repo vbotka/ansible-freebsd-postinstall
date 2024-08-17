@@ -2,7 +2,7 @@
 
 [![quality](https://img.shields.io/ansible/quality/27910)](https://galaxy.ansible.com/vbotka/freebsd_postinstall)[![Build Status](https://app.travis-ci.com/vbotka/ansible-freebsd-postinstall.svg?branch=master)](https://app.travis-ci.com/vbotka/ansible-freebsd-postinstall)[![Documentation Status](https://readthedocs.org/projects/docs/badge/?version=latest)](https://ansible-freebsd-postinstall.readthedocs.io/en/latest/)[![GitHub tag](https://img.shields.io/github/v/tag/vbotka/ansible-freebsd-postinstall)](https://github.com/vbotka/ansible-freebsd-postinstall/tags)
 
-[Ansible role](https://galaxy.ansible.com/vbotka/freebsd_postinstall/)
+Ansible role [vbotka.freebsd_postinstall](https://galaxy.ansible.com/vbotka/freebsd_postinstall/) at galaxy.ansible.com
 
 FreeBSD post-install configuration: aliases, apcupsd, authorized keys,
 cron, devfs, dhclient, freebsd-update, fstab, groups, hostapd,
@@ -12,7 +12,7 @@ resolvconf.conf, smartd, snmpd, sudoers, ssh, sshd, swap, sysctl,
 syslog, timezone, tmpmfs, users, packages and ports, periodic.conf,
 overlays, wpa_supplicant, (wip) ...
 
-[Documentation at readthedocs.io](https://ansible-freebsd-postinstall.readthedocs.io)
+Documentation [Ansible role FreeBSD postinstall](https://ansible-freebsd-postinstall.readthedocs.io) at readthedocs.io
 
 This role and the documentation is work in progress. If the documentation of a task is missing it's necessary to review the [source code](https://github.com/vbotka/ansible-freebsd-postinstall/tree/master/tasks) to learn how to use it. If a functionality is missing consider role [config_light](https://galaxy.ansible.com/vbotka/config_light). See various [examples](https://github.com/vbotka/ansible-config-light/tree/master/contrib). If *config_light* is not able to do what you want create new tasks.
 
