@@ -95,11 +95,7 @@ ansible-galaxy collection install ansible.posix
 ansible-galaxy collection install community.general
 ```
 
-3) Fit variables, for example in *vars*
-
-```bash
-editor vbotka.freebsd_postinstall/vars/main.yml
-```
+3) Fit variables to your needs.
 
 4) Create playbook
 
@@ -119,7 +115,7 @@ ansible-playbook freebsd-postinstall.yml
 ```
 
 
-### Ansible lint
+## Ansible lint
 
 Use the configuration file *.ansible-lint.local* when running
 *ansible-lint*. Some rules might be disabled and some warnings might
@@ -141,7 +137,7 @@ fatal: [srv.example.com]: FAILED! => changed=false
   msg: unable to determine rcvar
 ```
 
-To solve this problem apply the path below
+To solve this problem apply the patch below
 
 ```bash
 --- devfs.orig	2019-07-13 20:31:04.688022000 +0200
