@@ -279,6 +279,29 @@ Description of the template.
 
 
 
+.. _as_template_loader.conf2.j2:
+
+loader.conf2.j2
+---------------
+
+Synopsis: Template loader.conf2.
+
+
+Description of the template.
+
+
+[`templates/loader.conf2.j2 <https://github.com/vbotka/ansible-__PROJECT__/blob/__BRANCH__/templates/loader.conf2.j2>`_]
+
+.. highlight:: jinja
+    :linenothreshold: 5
+.. literalinclude:: ../../templates/loader.conf2.j2
+    :language: jinja
+    :emphasize-lines: 1
+    :linenos:
+
+
+
+
 .. _as_template_login.conf.j2:
 
 login.conf.j2

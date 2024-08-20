@@ -145,6 +145,18 @@ mytemplates:
     note: []
     warning: []
 
+  - file: loader.conf2.j2
+    link: loader.conf2.j2
+    path: templates/loader.conf2.j2
+    synopsis: |
+      Template loader.conf2.
+    description: |
+      Description of the template.
+    lines: 1
+    seealso: []
+    note: []
+    warning: []
+
   - file: login.conf.j2
     link: login.conf.j2
     path: templates/login.conf.j2

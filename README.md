@@ -1,6 +1,9 @@
 # freebsd_postinstall
 
-[![quality](https://img.shields.io/ansible/quality/27910)](https://galaxy.ansible.com/vbotka/freebsd_postinstall)[![Build Status](https://app.travis-ci.com/vbotka/ansible-freebsd-postinstall.svg?branch=master)](https://app.travis-ci.com/vbotka/ansible-freebsd-postinstall)[![Documentation Status](https://readthedocs.org/projects/docs/badge/?version=latest)](https://ansible-freebsd-postinstall.readthedocs.io/en/latest/)[![GitHub tag](https://img.shields.io/github/v/tag/vbotka/ansible-freebsd-postinstall)](https://github.com/vbotka/ansible-freebsd-postinstall/tags)
+[![quality](https://img.shields.io/ansible/quality/27910)](https://galaxy.ansible.com/vbotka/freebsd_postinstall)
+[![Build Status](https://app.travis-ci.com/vbotka/ansible-freebsd-postinstall.svg?branch=master)](https://app.travis-ci.com/vbotka/ansible-freebsd-postinstall)
+[![Documentation Status](https://readthedocs.org/projects/docs/badge/?version=latest)](https://ansible-freebsd-postinstall.readthedocs.io/en/latest/)
+[![GitHub tag](https://img.shields.io/github/v/tag/vbotka/ansible-freebsd-postinstall)](https://github.com/vbotka/ansible-freebsd-postinstall/tags)
 
 Ansible role [vbotka.freebsd_postinstall](https://galaxy.ansible.com/vbotka/freebsd_postinstall/) at galaxy.ansible.com
 
