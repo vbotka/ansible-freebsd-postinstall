@@ -1,41 +1,40 @@
 ---
-
-- name: "smartd: Enable and start smartd"
+- name: "Smartd: Enable and start smartd"
   ansible.builtin.lineinfile:
     dest: /etc/rc.conf
-    regexp: '^\s*smartd_enable\s*=(.*)$'
-    line: 'smartd_enable="YES"'
+    regexp: ^\s*smartd_enable\s*=(.*)$
+    line: smartd_enable="YES"
     backup: "{{ fp_backup }}"
-  when: fp_smartd_enabled|bool
+  when: fp_smartd_enabled | bool
   notify: enable and start smartd
   tags: fp_smartd_rcconf
 
-- name: "smartd: Disable and stop smartd"
+- name: "Smartd: Disable and stop smartd"
   ansible.builtin.lineinfile:
     dest: /etc/rc.conf
-    regexp: '^\s*smartd_enable\s*=(.*)$'
-    line: 'smartd_enable="NO"'
+    regexp: ^\s*smartd_enable\s*=(.*)$
+    line: smartd_enable="NO"
     backup: "{{ fp_backup }}"
-  when: not fp_smartd_enabled|bool
+  when: not fp_smartd_enabled | bool
   notify: disable and stop smartd
   tags: fp_smartd_rcconf
 
-- name: "smartd: Configure smartd.conf"
+- name: "Smartd: Configure smartd.conf"
   ansible.builtin.lineinfile:
     dest: "{{ fp_smartd_conf_file }}"
-    regexp: '^\s*DEVICESCAN(.*)$'
+    regexp: ^\s*DEVICESCAN(.*)$
     state: absent
     backup: "{{ fp_backup }}"
   notify: reload smartd
   tags: fp_smartd_conf
 
-- name: "smartd: Configure devices in {{ fp_smartd_conf_file }}"
+- name: "Smartd: Configure devices in {{ fp_smartd_conf_file }}"
   ansible.builtin.lineinfile:
     create: true
     dest: "{{ fp_smartd_conf_file }}"
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
-    state: "{{ item.state|default(omit) }}"
+    state: "{{ item.state | default(omit) }}"
     owner: "{{ fp_smartd_conf_owner }}"
     group: "{{ fp_smartd_conf_group }}"
     mode: "{{ fp_smartd_conf_mode }}"
@@ -44,12 +43,11 @@
   notify: reload smartd
   tags: fp_smartd_conf
 
-- name: "smartd: {{ state }} smartd"
+- name: "Smartd: smartd {{ state }}"
   ansible.builtin.service:
     name: smartd
     state: "{{ state }}"
   vars:
-    state: "{{ fp_smartd_enabled|bool|ternary('started', 'stopped') }}"
+    state: "{{ fp_smartd_enabled | bool | ternary('started', 'stopped') }}"
 
 # EOF
-...

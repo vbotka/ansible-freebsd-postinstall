@@ -1,22 +1,21 @@
 ---
-
-- name: "periodic: Debug (fp_periodic_debug={{ fp_periodic_debug }})"
+- name: "Periodic: Debug fp_periodic_debug={{ fp_periodic_debug }}"
   vars:
     msg: |-
       fp_periodic_conf_local_file: {{ fp_periodic_conf_local_file }}
       fp_periodic_conf_local:
-        {{ fp_periodic_conf_local|to_yaml(indent=2)|indent(2) }}
+        {{ fp_periodic_conf_local | to_yaml(indent=2) | indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
-  when: fp_periodic_debug|bool
+  when: fp_periodic_debug | bool
   tags: fp_periodic_debug
 
-- name: "periodic: Configure {{ fp_periodic_conf_local_file }}"
+- name: "Periodic: Configure {{ fp_periodic_conf_local_file }}"
   ansible.builtin.lineinfile:
     create: true
     mode: "0644"
     dest: "{{ fp_periodic_conf_local_file }}"
-    regexp: '^\s*{{ item.key }}\s*=(.*)$'
+    regexp: ^\s*{{ item.key }}\s*=(.*)$
     line: '{{ item.key }}="{{ item.value }}"'
     backup: "{{ fp_backup }}"
   loop: "{{ fp_periodic_conf_local }}"
@@ -34,4 +33,3 @@
 # https://forums.freebsd.org/threads/daily-security-scripts-best-practice-for-jails.55868/
 
 # EOF
-...

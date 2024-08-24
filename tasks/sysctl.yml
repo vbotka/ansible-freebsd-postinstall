@@ -1,6 +1,5 @@
 ---
-
-- name: "sysctl: Debug fp_sysctl_debug={{ fp_sysctl_debug }}"
+- name: "Sysctl: Debug fp_sysctl_debug={{ fp_sysctl_debug }}"
   vars:
     msg: |-
       fp_sysctl_tuneables_warning: {{ fp_sysctl_tuneables_warning }}
@@ -13,7 +12,7 @@
   when: fp_sysctl_debug | bool
   tags: fp_sysctl_debug
 
-- name: "sysctl: Configure {{ fp_sysctl_conf_file }}"
+- name: "Sysctl: Configure {{ fp_sysctl_conf_file }}"
   ansible.posix.sysctl:
     sysctl_file: "{{ fp_sysctl_conf_file }}"
     name: "{{ item.name }}"
@@ -30,22 +29,20 @@
   tags: fp_sysctl_tuneables_warning
   block:
 
-    - name: "sysctl: Get sysctls settable via loader."
+    - name: "Sysctl: Get sysctls settable via loader."
       ansible.builtin.command: sysctl -aNT
       register: result
       changed_when: false
       check_mode: false
 
-    - name: "sysctl: Warn when fp_sysctl_conf keeps boot-time tuneables settable via loader."
+    - name: "Sysctl: Warn when fp_sysctl_conf keeps boot-time tuneables settable via loader."
       when: fp_sysctl_tuneables | length > 0
       ansible.builtin.debug:
         msg: >-
           [WARNING] Loader boot-time tuneables in fp_sysctl_conf:
           {{ fp_sysctl_tuneables | to_yaml }}
       vars:
-        fp_sysctl_tuneables: "{{ fp_sysctl_conf |
-                                 map(attribute='name') |
-                                 select('in', result.stdout_lines) | sort }}"
+        fp_sysctl_tuneables: "{{ fp_sysctl_conf | map(attribute='name') | select('in', result.stdout_lines) | sort }}"
 
 # NOTES
 # 1) As of v2.6 module sysctl 'optionally performs a /sbin/sysctl -p'
@@ -57,4 +54,3 @@
 # https://forums.freebsd.org/threads/reload-loader-conf.72010/
 
 # EOF
-...

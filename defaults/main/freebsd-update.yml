@@ -1,53 +1,75 @@
 ---
 fp_freebsd_update: false
 fp_freebsd_update_debug: false
-fp_freebsd_update_protect_KeyPrint: true
+
+# Sanity
 fp_freebsd_update_sanity: true
 fp_freebsd_update_sanity_quiet: false
-fp_freebsd_update_sanity_KeyPrint: true
+fp_freebsd_update_protect_keyprint: true
+fp_freebsd_update_valid_keyprint: true
 
 # Copy /etc/freebsd-update.conf to /etc/freebsd-update.conf.orig
 fp_freebsd_update_conf_orig: false
+
 # Template for /etc/freebsd-update.conf
-fp_freebsd_update_conf_template: freebsd-update.conf.j2
+fp_freebsd_update_conf_template: freebsd-update.conf2.j2
 
 # Options /etc/freebsd-update.conf
 # - - - WARNING - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-# Trusted keyprint.  Changing this is a Bad Idea unless you've received
+# Trusted keyprint. Changing KeyPrint is a bad idea unless you've received
 # a PGP-signed email from <security-officer@FreeBSD.org> telling you to
 # change it and explaining why.
-fp_freebsd_update_KeyPrint: 800651ef4b4c71c27e60786d7b487188970f4b4169cc055784e21eb71d410cc5
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-fp_freebsd_update_ServerName: update.FreeBSD.org
-fp_freebsd_update_Components:
-  - src
-  - world
-  - kernel
-fp_freebsd_update_IgnorePaths: ''
-fp_freebsd_update_IDSIgnorePaths:
-  - /usr/share/man/cat
-  - /usr/share/man/whatis
-  - /var/db/locate.database
-  - /var/log
-fp_freebsd_update_UpdateIfUnmodified:
-  - /etc/
-  - /var/
-  - /root/
-  - /.cshrc
-  - /.profile
-fp_freebsd_update_MergeChanges:
-  - /etc/
-  - /boot/device.hints
 
-# Defaults /etc/freebsd-update.conf
-# If you want to change the below defaults uncomment and change it
-# fp_freebsd_update_WorkDir: /var/db/freebsd-update
-# fp_freebsd_update_MailTo: root
-# fp_freebsd_update_AllowAdd: 'yes'
-# fp_freebsd_update_AllowDelete: 'yes'
-# fp_freebsd_update_KeepModifiedMetadata: 'yes'
-# fp_freebsd_update_StrictComponents: 'no'
-# fp_freebsd_update_BackupKernel: 'yes'
-# fp_freebsd_update_BackupKernelDir: /boot/kernel.old
-# fp_freebsd_update_BackupKernelSymbolFiles: 'no'
-# fp_freebsd_update_CreateBootEnv: 'yes'
+fp_freebsd_update_conf:
+# AllowAdd: 'yes'
+# AllowDelete: 'yes'
+# BackupKernel: 'yes'
+# BackupKernelDir: /boot/kernel.old
+# BackupKernelSymbolFiles: 'no'
+  Components: src world kernel
+  CreateBootEnv: 'yes'
+# IDSIgnorePaths: [/usr/share/man/cat, /usr/share/man/whatis, /var/db/locate.database, /var/log]
+# IgnorePaths: ""
+# KeepModifiedMetadata: 'yes'
+# KeyPrint: 800651ef4b4c71c27e60786d7b487188970f4b4169cc055784e21eb71d410cc5
+# MailTo: root
+# MergeChanges: [/etc/, /boot/device.hints]
+# ServerName: update.FreeBSD.org
+# StrictComponents: 'no'
+# UpdateIfUnmodified: [/etc/, /var/, /root/, /.cshrc, /.profile]
+# WorkDir: /var/db/freebsd-update
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Devel note: The below variables are needed to keep the camel-case
+# options in fp_freebsd_update_conf. They won't be needed if
+# fp_freebsd_update_conf keys are upper-case and upper-case keys are
+# used in the template too. Then fp_freebsd_update_conf_current and
+# fp_freebsd_update_conf could be combined without replacing the keys.
+
+fp_freebsd_update_conf_options:
+  - AllowAdd
+  - AllowDelete
+  - BackupKernel
+  - BackupKernelDir
+  - BackupKernelSymbolFiles
+  - Components
+  - CreateBootEnv
+  - IDSIgnorePaths
+  - IgnorePaths
+  - KeepModifiedMetadata
+  - KeyPrint
+  - MailTo
+  - MergeChanges
+  - ServerName
+  - StrictComponents
+  - UpdateIfUnmodified
+  - WorkDir
+
+# Target to community.general.replace_keys. The command
+# "freebsd-update showconfig" returns upper-case options. The
+# dictionary fp_freebsd_update_conf_target is used to replace them
+# back to the original camel-case.
+fp_freebsd_update_conf_options_upper: "{{ fp_freebsd_update_conf_options | map('upper') }}"
+fp_freebsd_update_conf_target: "{{ dict(fp_freebsd_update_conf_options_upper |
+                                        zip(fp_freebsd_update_conf_options)) }}"

@@ -1,19 +1,18 @@
 ---
-# dhclient
-- name: restart dhclient
+- name: Restart dhclient
+  listen: restart dhclient
   ansible.builtin.service:
     name: dhclient
     state: restarted
 
-- name: restart dhclient all
+- name: Restart dhclient all # noqa: no-changed-when
+  listen: restart dhclient all
   ansible.builtin.command:
-    cmd: "/etc/rc.d/dhclient restart {{ item }}"
+    cmd: /etc/rc.d/dhclient restart {{ item }}
   loop: "{{ fp_dhclient_ifn }}"
 
-- name: restart dhclient blocks
+- name: Restart dhclient blocks # noqa: no-changed-when
+  listen: restart dhclient blocks
   ansible.builtin.command:
-    cmd: "/etc/rc.d/dhclient restart {{ item }}"
-  loop: "{{ fp_dhclient_conf_changes.results|
-            selectattr('changed')|
-            map(attribute='item.ifn')|
-            unique }}"
+    cmd: /etc/rc.d/dhclient restart {{ item }}
+  loop: "{{ fp_dhclient_conf_changes.results | selectattr('changed') | map(attribute='item.ifn') | unique }}"

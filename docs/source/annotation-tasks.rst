@@ -683,24 +683,24 @@ nfs.yml
 Synopsis: Configure NFS client.
 
 
-To display variables (3) enable ``fp_nfs_debug=true`` (27). Collect
-status of the services (31) stored in the list
+To display variables (3) enable ``fp_nfs_debug=true`` (26). Collect
+status of the services (30) stored in the list
 ``fp_nfs_service_paths``. The module ``service_facts`` doesn't work
-in FreeBSD. Instead, use the task ``al_bsd_service_facts`` (34) from
-the library (33). This task doesn't support the check mode. This
+in FreeBSD. Instead, use the task ``al_bsd_service_facts`` (33) from
+the library (32). This task doesn't support the check mode. This
 task will return the dictionary
-``al_ansible_facts_services``. Display this dictionary (42). This
+``al_ansible_facts_services``. Display this dictionary (55). This
 dictionary is used to select the handlers in the dictionary
 ``fp_nfs_handlers``. There is no status option of the service
-``nfsclient``. Insteda of starting the service, restart it if there
-are any nfs mountpoints, i.e. the file ``/var/db/mounttab``
-exists. Test the existence of the file ``var/db/nounttab`` (50) and
-display the result ``fp_var_db_mounttab.stat.exists`` (56). This
+``nfsclient``. Instead of starting the service, restart it if there
+are any nfs mountpoints. This means if the file ``/var/db/mounttab``
+exists. Test the existence of the file ``var/db/nounttab`` (42) and
+display the result ``fp_nfs_var_db_mounttab.stat.exists`` (59). This
 variable will be used to select the handler in the dictionary
 ``fp_nfs_handlers``.  Display the dictionary ``fp_nfsd_handlers``
-(62). The defaults are used in check mode because of empty
-dictionary ``al_ansible_facts_services``. Configure and enable (68),
-or disable (89) services. If the configuration of a service changes
+(63). The defaults are used in check mode because of empty
+dictionary ``al_ansible_facts_services``. Configure and enable (65),
+or disable (86) services. If the configuration of a service changes
 the service will be reloaded or restarted when already running.
 
 
@@ -710,7 +710,7 @@ the service will be reloaded or restarted when already running.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/nfs.yml
     :language: Yaml
-    :emphasize-lines: 3,31,42,50,56,62,68,89
+    :emphasize-lines: 3,26,30,32,33,42,55,59,63,65,86
     :linenos:
 
 .. seealso::
@@ -735,19 +735,19 @@ nfsd.yml
 Synopsis: Configure NFS server.
 
 
-To display variables (3) enable ``fp_nfsd_debug=true`` (51). Collect
-status of the services (55) stored in the list
+To display variables (3) enable ``fp_nfsd_debug=true`` (50). Collect
+status of the services (54) stored in the list
 ``fp_nfsd_service_paths``. The module ``service_facts`` doesn't work
-in FreeBSD. Instead, use the task ``al_bsd_service_facts`` (58) from
-the library (57). This task doesn't support the check mode. This
+in FreeBSD. Instead, use the task ``al_bsd_service_facts`` (57) from
+the library (56). This task doesn't support the check mode. This
 task will return the dictionary
-``al_ansible_facts_services``. Display this dictionary (66). This
+``al_ansible_facts_services``. Display this dictionary (71). This
 dictionary is used to select the handlers in the dictionary
 ``fp_nfsd_handlers``.  Display the dictionary ``fp_nfsd_handlers``
-(72). The defaults are used in check mode because of empty
+(75). The defaults are used in check mode because of empty
 dictionary ``al_ansible_facts_services``. Configure ``/etc/exports``
-(78) and notify handler ``reload mountd``. Configure and enable
-(87), or disable (116) services. If there are any changes the
+(77) and notify handler ``reload mountd``. Configure and enable
+(86), or disable (115) services. If there are any changes the
 service will be reloaded or restarted when already running.
 
 
@@ -757,7 +757,7 @@ service will be reloaded or restarted when already running.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/nfsd.yml
     :language: Yaml
-    :emphasize-lines: 3,55,66,72,78,87,116
+    :emphasize-lines: 3,50,54,56,57,71,75,77,86,115
     :linenos:
 
 .. seealso::

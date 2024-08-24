@@ -1,11 +1,10 @@
 ---
-
-- name: "sudoers: Configure {{ fp_sudoers_conf_file }}"
+- name: "Sudoers: Configure {{ fp_sudoers_conf_file }}"
   ansible.builtin.lineinfile:
     dest: "{{ fp_sudoers_conf_file }}"
-    regexp: '^\s*{{ item.key }}\s+(.*)$'
+    regexp: ^\s*{{ item.key }}\s+(.*)$
     line: "{{ item.key }} {{ item.value }}"
-    state: "{{ item.state|default(omit) }}"
+    state: "{{ item.state | default(omit) }}"
     insertafter: EOF
     owner: "{{ fp_sudoers_conf_owner }}"
     group: "{{ fp_sudoers_conf_group }}"
@@ -18,4 +17,3 @@
 # (2) configure /usr/local/etc/sudoers.dist
 
 # EOF
-...

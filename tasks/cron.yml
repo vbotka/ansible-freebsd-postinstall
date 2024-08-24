@@ -1,21 +1,20 @@
 ---
-
-- name: "cron: Debug (fp_cron_debug={{ fp_cron_debug }})"
+- name: "Cron: Debug (fp_cron_debug={{ fp_cron_debug }})"
   vars:
     msg: |-
       fp_cron_dir: {{ fp_cron_dir }}
       fp_cron_var:
-        {{ fp_cron_var|to_yaml(indent=2)|indent(2) }}
+        {{ fp_cron_var | to_yaml(indent=2) | indent(2) }}
       fp_cron_tab:
-        {{ fp_cron_tab|to_nice_yaml(indent=2)|indent(2) }}
+        {{ fp_cron_tab | to_nice_yaml(indent=2) | indent(2) }}
       fp_cron_file_system: {{ fp_cron_file_system }}
       fp_cron_var_system:
-        {{ fp_cron_var_system|to_yaml(indent=2)|indent(2) }}
+        {{ fp_cron_var_system | to_yaml(indent=2) | indent(2) }}
       fp_cron_tab_system:
-        {{ fp_cron_tab_system|to_nice_yaml(indent=2)|indent(2) }}
+        {{ fp_cron_tab_system | to_nice_yaml(indent=2) | indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
-  when: fp_cron_debug|bool
+  when: fp_cron_debug | bool
   tags: fp_cron_debug
 
 # Note on "cron – Manage cron.d and crontab entries"
@@ -31,16 +30,16 @@
 # If "# <name>" entry is present change it to "#Ansible: <name>" to
 # avoid double-entries
 
-- name: "cron: Rename present crontab entries"
+- name: "Cron: Rename present crontab entries"
   ansible.builtin.include_tasks:
     file: fn/cron-rename-entry.yml
   loop: "{{ fp_cron_tab }}"
   tags: fp_cron_rename_entries
 
-- name: "cron: Rename present crontab entries system"
+- name: "Cron: Rename present crontab entries system"
   ansible.builtin.replace:
     path: "{{ fp_cron_file_system }}"
-    regexp: '^\s*#\s*{{ item.name }}$'
+    regexp: ^\s*#\s*{{ item.name }}$
     replace: "#Ansible: {{ item.name }}"
     backup: "{{ fp_backup }}"
   loop: "{{ fp_cron_tab }}"
@@ -48,7 +47,7 @@
     label: "{{ item.name }}"
   tags: fp_cron_rename_entries_system
 
-- name: "cron: Configure cron variables"
+- name: "Cron: Configure cron variables"
   community.general.cronvar:
     name: "{{ item.name }}"
     value: "{{ item.value }}"
@@ -56,7 +55,7 @@
   loop: "{{ fp_cron_var }}"
   tags: fp_cron_var
 
-- name: "cron: Configure crontab entries"
+- name: "Cron: Configure crontab entries"
   ansible.builtin.cron:
     state: "{{ item.state }}"
     user: "{{ item.user }}"
@@ -72,7 +71,7 @@
     label: "{{ item.name }}"
   tags: fp_cron_tab
 
-- name: "cron: Configure cron variables system"
+- name: "Cron: Configure cron variables system"
   community.general.cronvar:
     cron_file: "{{ fp_cron_file_system }}"
     name: "{{ item.name }}"
@@ -80,7 +79,7 @@
   loop: "{{ fp_cron_var_system }}"
   tags: fp_cron_var_system
 
-- name: "cron: Configure crontab entries system"
+- name: "Cron: Configure crontab entries system"
   ansible.builtin.cron:
     cron_file: "{{ fp_cron_file_system }}"
     state: "{{ item.state }}"
@@ -102,4 +101,3 @@
 # /usr/local/etc/cron.d
 
 # EOF
-...

@@ -1,17 +1,16 @@
 ---
-
-- name: "packages-install: Get list of packages for {{ item.list }}"
+- name: "Packages-install: Get list of packages for {{ item.list }}"
   ansible.builtin.set_fact:
     fp_pkg_item_list: "{{ lookup('vars', 'pkg_dict_' ~ ansible_architecture) | json_query(query) }}"
   vars:
     query: "[?pkglist=='{{ item.list }}'].packages"
 
-- name: "packages-install: Debug fp_pkg_item_list fp_packages_debug={{ fp_packages_debug }}"
+- name: "Packages-install: Debug fp_pkg_item_list fp_packages_debug={{ fp_packages_debug }}"
   ansible.builtin.debug:
     var: fp_pkg_item_list
   when: fp_packages_debug | bool
 
-- name: "packages-install: Install packages {{ item.list }}"
+- name: "Packages-install: Install packages {{ item.list }}"
   community.general.pkgng:
     name: "{{ local_pkgs }}"
     annotation: "{{ fp_pkg_annotation | d(omit) }}"
@@ -34,7 +33,7 @@
   delay: "{{ freebsd_install_delay }}"
   when: freebsd_install_method | lower == 'packages'
 
-- name: "packages-install: Install ports {{ item.list }}"
+- name: "Packages-install: Install ports {{ item.list }}"
   community.general.portinstall:
     name: "{{ local_pkg }}"
     use_packages: "{{ freebsd_use_packages }}"
@@ -48,4 +47,3 @@
   when: freebsd_install_method | lower == 'ports'
 
 # EOF
-...

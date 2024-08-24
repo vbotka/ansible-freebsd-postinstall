@@ -74,7 +74,7 @@ pkg_dict_arm:
       - mail/roundcube
       - net/php{{ bsd_php_version }}-ldap
       - security/php{{ bsd_php_version }}-filter
-#     - security/php{{ bsd_php_version }}-hash  # The hash module is now part of the PHP core
+      #     - security/php{{ bsd_php_version }}-hash  # The hash module is now part of the PHP core
       - security/php{{ bsd_php_version }}-openssl
       - sysutils/php{{ bsd_php_version }}-fileinfo
       - sysutils/php{{ bsd_php_version }}-posix
@@ -82,7 +82,7 @@ pkg_dict_arm:
       - textproc/php{{ bsd_php_version }}-dom
       - textproc/php{{ bsd_php_version }}-pspell
       - textproc/php{{ bsd_php_version }}-simplexml
-#     - textproc/php{{ bsd_php_version }}-wddx  # Deprecated
+      #     - textproc/php{{ bsd_php_version }}-wddx  # Deprecated
       - textproc/php{{ bsd_php_version }}-xml
       - textproc/php{{ bsd_php_version }}-xmlreader
       - textproc/php{{ bsd_php_version }}-xmlwriter
@@ -97,7 +97,7 @@ pkg_dict_arm:
   - pkglist: mcrypt
     packages:
       - security/pecl-mcrypt
-#     - security/{{ php_mcrypt }}
+  #     - security/{{ php_mcrypt }}
   - pkglist: mysql
     packages:
       - databases/mysql{{ bsd_mysql_version }}-client
@@ -195,4 +195,3 @@ pkg_dict_arm:
       - net-mgmt/py-pysnmp
 
 # EOF
-...

@@ -5,7 +5,7 @@ fp_make_conf_template: make.conf.j2
 fp_make_conf_file: /etc/make.conf
 fp_make_conf_owner: root
 fp_make_conf_group: wheel
-fp_make_conf_mode: "u=rw,g=r,o=r"
+fp_make_conf_mode: u=rw,g=r,o=r
 fp_make_conf:
   - "WRKDIRPREFIX=\t\t/var/ports"
   - "DISTDIR=\t\t/var/ports/distfiles"

@@ -1,6 +1,5 @@
 ---
-
-- name: "motd: Configure /etc/motd"
+- name: "Motd: Configure /etc/motd"
   ansible.builtin.template:
     src: "{{ fp_motd_conf_template }}"
     dest: "{{ fp_motd_conf_file }}"
@@ -8,22 +7,22 @@
     backup: "{{ fp_backup }}"
   tags: fp_motd_create
 
-- name: "motd: Set update_motd YES"
+- name: "Motd: Set update_motd YES"
   ansible.builtin.lineinfile:
     dest: /etc/rc.conf
-    regexp: '^\s*update_motd\s*=(.*)$'
-    line: 'update_motd="YES"'
+    regexp: ^\s*update_motd\s*=(.*)$
+    line: update_motd="YES"
     backup: "{{ fp_backup }}"
-  when: fp_update_motd|bool
+  when: fp_update_motd | bool
   tags: fp_motd_rcconf
 
-- name: "motd: Set update_motd NO"
+- name: "Motd: Set update_motd NO"
   ansible.builtin.lineinfile:
     dest: /etc/rc.conf
-    regexp: '^\s*update_motd\s*=(.*)$'
-    line: 'update_motd="NO"'
+    regexp: ^\s*update_motd\s*=(.*)$
+    line: update_motd="NO"
     backup: "{{ fp_backup }}"
-  when: not fp_update_motd|bool
+  when: not fp_update_motd | bool
   tags: fp_motd_rcconf
 
 # NOTES
@@ -31,4 +30,3 @@
 # Set fp_update_motd=False to disable this update.
 
 # EOF
-...

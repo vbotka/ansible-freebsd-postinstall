@@ -1,29 +1,29 @@
 ---
 
 # Default versions
-apache_version_default: '2.4'
-apache_php_version_default: '8.1'
-bsd_gcc_version_default: '12'
-bsd_linux_version_default: 'c7'
-bsd_mysql_version_default: '8.0'
-bsd_perl_version_default: '5.36'
-bsd_php_version_default: '8.1'
-bsd_python_version_default: '3.9'
+apache_version_default: "2.4"
+apache_php_version_default: "8.1"
+bsd_gcc_version_default: "12"
+bsd_linux_version_default: c7
+bsd_mysql_version_default: "8.0"
+bsd_perl_version_default: "5.36"
+bsd_php_version_default: "8.1"
+bsd_python_version_default: "3.9"
 bsd_ssl_version_default: openssl
 
 # Default versions from /usr/ports/Mk/bsd.default-versions.mk if
 # enabled (fp_vars_default_versions=true). See tasks/vars.yml
-apache_version: "{{ pf_default_versions.APACHE_DEFAULT|d(apache_version_default)|string|split('.')|join }}"
-apache_php_version: "{{ pf_default_versions.PHP_DEFAULT|d(apache_php_version_default)|string|split('.')|join }}"
-bsd_bind_version: '916'
-bsd_dhcp_version: '44'
-bsd_gcc_version: "{{ pf_default_versions.GCC_DEFAULT|d(bsd_gcc_version_default)|string }}"
-bsd_linux_version: "{{ pf_default_versions.LINUX_DEFAULT|d(bsd_linux_version_default)|string }}"
-bsd_mysql_version: "{{ pf_default_versions.MYSQL_DEFAULT|d(bsd_mysql_version_default)|string|split('.')|join }}"
-bsd_perl_version: "{{ pf_default_versions.PERL5_DEFAULT|d(bsd_perl_version_default)|string }}"
-bsd_php_version: "{{ pf_default_versions.PHP_DEFAULT|d(bsd_php_version_default)|string|split('.')|join }}"
-bsd_python_version: "{{ pf_default_versions.PYTHON_DEFAULT|d(bsd_python_version_default)|string|split('.')|join }}"
-bsd_ssl_version: "{{ pf_default_versions.SSL_DEFAULT|d(bsd_ssl_version_default)|string }}"
+apache_version: "{{ pf_default_versions.APACHE_DEFAULT | d(apache_version_default) | string | split('.') | join }}"
+apache_php_version: "{{ pf_default_versions.PHP_DEFAULT | d(apache_php_version_default) | string | split('.') | join }}"
+bsd_bind_version: "916"
+bsd_dhcp_version: "44"
+bsd_gcc_version: "{{ pf_default_versions.GCC_DEFAULT | d(bsd_gcc_version_default) | string }}"
+bsd_linux_version: "{{ pf_default_versions.LINUX_DEFAULT | d(bsd_linux_version_default) | string }}"
+bsd_mysql_version: "{{ pf_default_versions.MYSQL_DEFAULT | d(bsd_mysql_version_default) | string | split('.') | join }}"
+bsd_perl_version: "{{ pf_default_versions.PERL5_DEFAULT | d(bsd_perl_version_default) | string }}"
+bsd_php_version: "{{ pf_default_versions.PHP_DEFAULT | d(bsd_php_version_default) | string | split('.') | join }}"
+bsd_python_version: "{{ pf_default_versions.PYTHON_DEFAULT | d(bsd_python_version_default) | string | split('.') | join }}"
+bsd_ssl_version: "{{ pf_default_versions.SSL_DEFAULT | d(bsd_ssl_version_default) | string }}"
 
 # Make default versions
 bsd_make_gcc_version: "{{ bsd_gcc_version }}"
@@ -34,7 +34,7 @@ bsd_make_python_version: "{{ bsd_python_version[0] ~ '.' ~ bsd_python_version[1:
 bsd_make_ssl_version: "{{ bsd_ssl_version }}"
 
 # Compatibility deprecated versions
-php_mcrypt: "php71-mcrypt"
+php_mcrypt: php71-mcrypt
 
 # NOTES
 #
@@ -42,4 +42,3 @@ php_mcrypt: "php71-mcrypt"
 #   https://www.freshports.org/security/pecl-mcrypt
 
 # EOF
-...

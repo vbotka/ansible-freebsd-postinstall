@@ -1,11 +1,9 @@
 ---
-
-- name: "mdconfig-attach-disk: Attach memory disk"
+- name: "Mdconfig-attach-disk: Attach memory disk"
   ansible.builtin.include_role:
     name: vbotka.ansible_lib
     tasks_from: al_mdconfig.yml
   vars:
-    al_mdconfig_file: "{{ item[_fp_mount_task] }}"
+    al_mdconfig_file: "{{ item[_fp_mount_task] }}" # noqa: var-naming[no-role-prefix]
 
 # EOF
-...

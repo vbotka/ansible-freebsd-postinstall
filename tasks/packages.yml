@@ -1,6 +1,5 @@
 ---
-
-- name: "packages: Debug fp_packages_debug={{ fp_packages_debug }}"
+- name: "Packages: Debug fp_packages_debug={{ fp_packages_debug }}"
   vars:
     msg: |-
       freebsd_install_method: {{ freebsd_install_method }}
@@ -18,17 +17,17 @@
       fp_pkg_state: {{ fp_pkg_state | d('UNDEFINED') }}
       fp_pkg_use_globs: {{ fp_pkg_use_globs | d('UNDEFINED') }}
 
-      apache_version: {{ apache_version }}
-      apache_php_version: {{ apache_php_version }}
-      bsd_bind_version: {{ bsd_bind_version }}
-      bsd_dhcp_version: {{ bsd_dhcp_version }}
-      bsd_gcc_version: {{ bsd_gcc_version }}
-      bsd_linux_version: {{ bsd_linux_version }}
-      bsd_mysql_version: {{ bsd_mysql_version }}
-      bsd_perl_version: {{ bsd_perl_version }}
-      bsd_php_version: {{ bsd_php_version }}
-      bsd_python_version: {{ bsd_python_version }}
-      bsd_ssl_version: {{ bsd_ssl_version }}
+      apache_version: {{ apache_version | d('UNDEFINED') }}
+      apache_php_version: {{ apache_php_version | d('UNDEFINED') }}
+      bsd_bind_version: {{ bsd_bind_version | d('UNDEFINED') }}
+      bsd_dhcp_version: {{ bsd_dhcp_version | d('UNDEFINED') }}
+      bsd_gcc_version: {{ bsd_gcc_version | d('UNDEFINED') }}
+      bsd_linux_version: {{ bsd_linux_version | d('UNDEFINED') }}
+      bsd_mysql_version: {{ bsd_mysql_version | d('UNDEFINED') }}
+      bsd_perl_version: {{ bsd_perl_version | d('UNDEFINED') }}
+      bsd_php_version: {{ bsd_php_version | d('UNDEFINED') }}
+      bsd_python_version: {{ bsd_python_version | d('UNDEFINED') }}
+      bsd_ssl_version: {{ bsd_ssl_version | d('UNDEFINED') }}
 
       fp_links:
         {{ fp_links | to_yaml(indent=2) | indent(2) }}
@@ -42,13 +41,13 @@
   when: fp_packages_debug | bool
   tags: fp_packages_debug
 
-- name: "packages: Install packages"
+- name: "Packages: Install packages"
   ansible.builtin.include_tasks: packages-install.yml
   loop: "{{ fp_packages | selectattr('enabled') }}"
   loop_control:
     label: "{{ item.list }}"
 
-- name: "packages: Create symbolic links"
+- name: "Packages: Create symbolic links"
   ansible.builtin.file:
     src: "{{ item.target }}"
     dest: "{{ item.link }}"
@@ -58,4 +57,3 @@
   tags: fp_packages_links
 
 # EOF
-...

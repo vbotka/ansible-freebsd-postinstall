@@ -7,7 +7,7 @@ fp_login_conf_template: login.conf.j2
 fp_login_conf_file: /etc/login.conf
 fp_login_conf_extra: []
 fp_login_conf:
-  - class: 'default'
+  - class: default
     conf:
       - passwd_format=sha512
       - copyright=/etc/COPYRIGHT
@@ -33,31 +33,31 @@ fp_login_conf:
       - priority=0
       - ignoretime@
       - umask=022
-  - class: 'standard'
+  - class: standard
     conf:
       - tc=default
-  - class: 'xuser'
+  - class: xuser
     conf:
       - tc=default
-  - class: 'staff'
+  - class: staff
     conf:
       - tc=default
-  - class: 'daemon'
+  - class: daemon
     conf:
       - memorylocked=128M
       - tc=default
-  - class: 'news'
+  - class: news
     conf:
       - tc=default
-  - class: 'dialer'
+  - class: dialer
     conf:
       - tc=default
-  - class: 'root'
+  - class: root
     conf:
       - ignorenologin
       - memorylocked=unlimited
       - tc=default
-  - class: 'russian|Russian Users Account'
+  - class: russian|Russian Users Account
     conf:
       - charset=UTF-8
       - lang=ru_RU.UTF-8

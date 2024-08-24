@@ -40,4 +40,3 @@ collections:
   - ansible.posix
   - ansible.utils
   - community.general
-...

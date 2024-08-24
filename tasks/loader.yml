@@ -1,6 +1,5 @@
 ---
-
-- name: "loader: Debug fp_loader_debug={{ fp_loader_debug }}"
+- name: "Loader: Debug fp_loader_debug={{ fp_loader_debug }}"
   vars:
     msg: |-
       fp_loader_tuneables_warning: {{ fp_loader_tuneables_warning }}
@@ -17,7 +16,7 @@
   when: fp_loader_debug | bool
   tags: fp_loader_debug
 
-- name: "loader: Backup orig {{ fp_loader_conf_file }}"
+- name: "Loader: Backup orig {{ fp_loader_conf_file }}"
   ansible.builtin.command:
     cmd: cp loader.conf loader.conf.orig
     chdir: /boot
@@ -25,7 +24,7 @@
   when: fp_loader_conf_file_backup_orig | bool
   tags: fp_loader_conf_file_backup_orig
 
-- name: "loader: Configure {{ fp_loader_conf_file }}"
+- name: "Loader: Configure {{ fp_loader_conf_file }}"
   ansible.builtin.template:
     src: "{{ fp_loader_conf_template }}"
     dest: "{{ fp_loader_conf_file }}"
@@ -36,7 +35,7 @@
   notify: loader message reboot
   tags: fp_loader_conf
 
-- name: "loader: Load modules"
+- name: "Loader: Load modules"
   ansible.builtin.shell:
     cmd: >
       kldstat -q -n {{ item }} || kldload -n {{ item }}
@@ -50,22 +49,19 @@
   tags: fp_loader_tuneables_warning
   block:
 
-    - name: "loader: Get sysctls settable via loader."
+    - name: "Loader: Get sysctls settable via loader."
       ansible.builtin.command: sysctl -aNT
       register: result
       changed_when: false
       check_mode: false
 
-    - name: "loader: Warn when fp_sysctl_conf keeps also non boot-time tuneables settable via loader."
+    - name: "Loader: Warn when fp_sysctl_conf keeps also non boot-time tuneables settable via loader."
       when: fp_loader_non_tuneables | length > 0
       ansible.builtin.debug:
         msg: >-
           [WARNING] Non boot-time tuneables in fp_loader_conf:
           {{ fp_loader_non_tuneables | to_yaml }}
       vars:
-        fp_loader_non_tuneables: "{{ fp_loader_conf |
-                                     map(attribute='name') |
-                                     reject('in', result.stdout_lines) | sort }}"
+        fp_loader_non_tuneables: "{{ fp_loader_conf | map(attribute='name') | reject('in', result.stdout_lines) | sort }}"
 
 # EOF
-...

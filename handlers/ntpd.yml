@@ -1,12 +1,21 @@
 ---
-# ntpd
+- name: Enable and start ntpd
+  listen: enable and start ntpd
+  ansible.builtin.service:
+    name: ntpd
+    state: started
+    enabled: true
 
-- name: enable and start ntpd
-  ansible.builtin.service: name=ntpd state=started enabled=true
+- name: Disable and stop ntpd
+  listen: disable and stop ntpd
+  ansible.builtin.service:
+    name: ntpd
+    state: stopped
+    enabled: false
 
-- name: disable and stop ntpd
-  ansible.builtin.service: name=ntpd state=stopped enabled=false
-
-- name: restart ntpd
-  ansible.builtin.service: name=ntpd state=restarted
-  when: fp_ntp_enable|bool
+- name: Restart ntpd
+  listen: restart ntpd
+  ansible.builtin.service:
+    name: ntpd
+    state: restarted
+  when: fp_ntp_enable | bool

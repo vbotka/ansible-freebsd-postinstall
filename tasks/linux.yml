@@ -1,39 +1,38 @@
 ---
-
-- name: "linux: Debug (fp_linux_debug={{ fp_linux_debug }})"
+- name: "Linux: Debug fp_linux_debug={{ fp_linux_debug }}"
   vars:
     msg: |-
       fp_linux_install: {{ fp_linux_install }}
       fp_linux_enable: {{ fp_linux_enable }}
       fp_linux_fstab:
-        {{ fp_linux_fstab|to_yaml(indent=2)|indent(2) }}
+        {{ fp_linux_fstab | to_yaml(indent=2) | indent(2) }}
       fp_linux_lib_dir: {{ fp_linux_lib_dir }}
       fp_linux_lib:
-        {{ fp_linux_lib|to_yaml(indent=2)|indent(2) }}
+        {{ fp_linux_lib | to_yaml(indent=2) | indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
-  when: fp_linux_debug|bool
+  when: fp_linux_debug | bool
   tags: fp_linux_debug
 
-- name: "linux: Enable linux"
+- name: "Linux: Enable linux"
   ansible.builtin.lineinfile:
     dest: /etc/rc.conf
-    regexp: '^\s*linux_enable\s*=(.*)$'
-    line: 'linux_enable="YES"'
+    regexp: ^\s*linux_enable\s*=(.*)$
+    line: linux_enable="YES"
     backup: "{{ fp_backup }}"
-  when: fp_linux_enable|bool
+  when: fp_linux_enable | bool
   tags: fp_linux_rcconf
 
-- name: "linux: Disable linux"
+- name: "Linux: Disable linux"
   ansible.builtin.lineinfile:
     dest: /etc/rc.conf
-    regexp: '^\s*linux_enable\s*=(.*)$'
-    line: 'linux_enable="NO"'
+    regexp: ^\s*linux_enable\s*=(.*)$
+    line: linux_enable="NO"
     backup: "{{ fp_backup }}"
-  when: not fp_linux_enable|bool
+  when: not fp_linux_enable | bool
   tags: fp_linux_rcconf
 
-- name: "linux: Configure fstab"
+- name: "Linux: Configure fstab"
   ansible.posix.mount:
     name: "{{ item.name }}"
     src: "{{ item.src }}"
@@ -43,29 +42,28 @@
   loop: "{{ fp_linux_fstab }}"
   tags: fp_linux_fstab
 
-- name: "linux: Create dirs for libraries"
+- name: "Linux: Create dirs for libraries"
   ansible.builtin.file:
     state: directory
-    path: "/compat/linux{{ item.src|dirname }}"
-    mode: "{{ item.dirmode|default('0755') }}"
+    path: /compat/linux{{ item.src | dirname }}
+    mode: "{{ item.dirmode | default('0755') }}"
   loop: "{{ fp_linux_lib }}"
   tags: fp_linux_lib_dir
 
-- name: "linux: Copy libraries from {{ fp_linux_lib_dir }} to /compat/linux"
+- name: "Linux: Copy libraries to /compat/linux from {{ fp_linux_lib_dir }}"
   ansible.builtin.copy:
     src: "{{ fp_linux_lib_dir }}{{ item.src }}"
-    dest: "/compat/linux{{ item.src }}"
+    dest: /compat/linux{{ item.src }}
     mode: preserve
   loop: "{{ fp_linux_lib }}"
   tags: fp_linux_lib_copy
 
-- name: "linux: Link libraries"
+- name: "Linux: Link libraries"
   ansible.builtin.file:
     state: link
-    src: "/compat/linux{{ item.src }}"
-    dest: "/compat/linux{{ item.link }}"
+    src: /compat/linux{{ item.src }}
+    dest: /compat/linux{{ item.link }}
   loop: "{{ fp_linux_lib }}"
   tags: fp_linux_lib_link
 
 # EOF
-...

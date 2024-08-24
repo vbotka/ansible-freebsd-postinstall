@@ -1,14 +1,21 @@
 ---
-# devfs
+- name: Enable and start devfs
+  listen: enable and start devfs
+  ansible.builtin.service:
+    name: devfs
+    state: started
+    enabled: true
 
-- name: enable and start devfs
-  ansible.builtin.service: name=devfs state=started enabled=true
-  when: not ansible_check_mode
+- name: Disable and stop devfs
+  listen: disable and stop devfs
+  ansible.builtin.service:
+    name: devfs
+    state: stopped
+    enabled: false
 
-- name: disable and stop devfs
-  ansible.builtin.service: name=devfs state=stopped enabled=false
-  when: not ansible_check_mode
-
-- name: restart devfs
-  ansible.builtin.service: name=devfs state=restarted
-  when: fp_devfs_enabled|bool
+- name: Restart devfs
+  listen: restart devfs
+  ansible.builtin.service:
+    name: devfs
+    state: restarted
+  when: fp_devfs_enabled | bool

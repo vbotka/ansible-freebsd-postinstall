@@ -1,9 +1,8 @@
 ---
-
-- name: "libmap: Configure {{ fp_libmap_conf_file }}"
+- name: "Libmap: Configure {{ fp_libmap_conf_file }}"
   ansible.builtin.lineinfile:
     dest: "{{ fp_libmap_conf_file }}"
-    regexp: '^\s*{{ item.origin }}\s+(.*)$'
+    regexp: ^\s*{{ item.origin }}\s+(.*)$
     line: "{{ item.origin }} {{ item.target }}"
     backup: "{{ fp_backup }}"
   loop: "{{ fp_libmap_entries }}"
@@ -11,4 +10,3 @@
 # TODO: includedir /usr/local/etc/libmap.d
 
 # EOF
-...

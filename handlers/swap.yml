@@ -1,17 +1,19 @@
 ---
-# swap
-- name: create swap
+- name: Create swap # noqa: no-changed-when
+  listen: create swap
   ansible.builtin.command:
     cmd: >
       sh -c
       'dd if=/dev/zero of={{ fp_swap_file }} bs=1m count={{ fp_swap_size }} &&
       chmod 0600 {{ fp_swap_file }}'
 
-- name: mount swap
+- name: Mount swap # noqa: no-changed-when
+  listen: mount swap
   ansible.builtin.command:
     cmd: sh -c 'swapon -aL'
   register: command_result
   failed_when: "'adding' not in command_result.stdout"
+
 # NOTE 1: swapon creates /dev/mdXX
 # NOTE 2: Successful mount returns exit code 1
 # FreeBSD 11.1. Ansible 2.5 command_result:
@@ -28,7 +30,8 @@
 #  stdout: 'swapon: adding /dev/md99 as swap device'
 #  stdout_lines: <omitted>
 
-- name: change and mount swap
+- name: Change and mount swap # noqa: no-changed-when
+  listen: change and mount swap
   ansible.builtin.command:
     cmd: >
       sh -c
@@ -38,7 +41,8 @@
       chmod 0600 {{ fp_swap_file }} &&
       swapon -aL'
 
-- name: umount and delete swap
+- name: Umount and delete swap # noqa: no-changed-when
+  listen: umount and delete swap
   ansible.builtin.command:
     cmd: >
       sh -c

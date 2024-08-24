@@ -1,5 +1,6 @@
 ---
-- name: loader message reboot
+- name: Loader message reboot
+  listen: loader message reboot
   ansible.builtin.debug:
     msg: "[MESSAGE] Reboot to activate configuration in /boot/loader.conf"
 

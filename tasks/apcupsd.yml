@@ -1,33 +1,32 @@
 ---
-
-- name: "apcupsd: Enable and start apcupsd"
+- name: "Apcupsd: Enable and start apcupsd"
   ansible.builtin.lineinfile:
     dest: /etc/rc.conf
-    regexp: '^\s*apcupsd_enable\s*=(.*)$'
-    line: 'apcupsd_enable="YES"'
+    regexp: ^\s*apcupsd_enable\s*=(.*)$
+    line: apcupsd_enable="YES"
     backup: "{{ fp_backup }}"
-  when: fp_apcupsd_enabled|bool
+  when: fp_apcupsd_enabled | bool
   notify: enable and start apcupsd
   tags: fp_apcupsd_rcconf
 
-- name: "apcupsd: Disable and stop apcupsd"
+- name: "Apcupsd: Disable and stop apcupsd"
   ansible.builtin.lineinfile:
     dest: /etc/rc.conf
-    regexp: '^\s*apcupsd_enable\s*=(.*)$'
-    line: 'apcupsd_enable="NO"'
+    regexp: ^\s*apcupsd_enable\s*=(.*)$
+    line: apcupsd_enable="NO"
     backup: "{{ fp_backup }}"
-  when: not fp_apcupsd_enabled|bool
+  when: not fp_apcupsd_enabled | bool
   notify: disable and stop apcupsd
   tags: fp_apcupsd_rcconf
 
-- name: "apcupsd: Create directory {{ fp_apcupsd_conf_dir }}"
+- name: "Apcupsd: Create directory {{ fp_apcupsd_conf_dir }}"
   ansible.builtin.file:
     state: directory
     path: "{{ fp_apcupsd_conf_dir }}"
     mode: "{{ fp_apcupsd_conf_dir_mode }}"
   tags: fp_apcupsd_conf
 
-- name: "apcupsd: Configure apcupsd.conf"
+- name: "Apcupsd: Configure apcupsd.conf"
   ansible.builtin.template:
     src: apcupsd.conf.j2
     dest: "{{ fp_apcupsd_conf_file }}"
@@ -38,12 +37,11 @@
   notify: restart apcupsd
   tags: fp_apcupsd_conf
 
-- name: "apcupsd: {{ state }} apcupsd"
+- name: "Apcupsd: Service apcupsd {{ state }}"
   ansible.builtin.service:
     name: apcupsd
     state: "{{ state }}"
   vars:
-    state: "{{ fp_apcupsd_enabled|bool|ternary('started', 'stopped') }}"
+    state: "{{ fp_apcupsd_enabled | bool | ternary('started', 'stopped') }}"
 
 # EOF
-...

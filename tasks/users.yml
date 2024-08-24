@@ -1,55 +1,53 @@
 ---
-
-- name: "users: Debug (fp_users_debug={{ fp_users_debug }})"
+- name: "Users: Debug (fp_users_debug={{ fp_users_debug }})"
   vars:
     msg: |-
       fp_users_debug_classified: {{ fp_users_debug_classified }}
       fp_users_conf:
-        {{ fp_users_conf|to_nice_yaml(indent=2)|indent(2) }}
+        {{ fp_users_conf | to_nice_yaml(indent=2) | indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
   when: fp_users_debug|bool
   tags: fp_users_debug
 
-- name: "users: Manage user accounts"
+- name: "Users: Manage user accounts"
   ansible.builtin.user:
     name: "{{ item.name }}"
-    append: "{{ item.append|default(omit) }}"
-    authorization: "{{ item.authorization|default(omit) }}"
-    comment: "{{ item.comment|default(omit) }}"
-    create_home: "{{ item.create_home|default(omit) }}"
-    expires: "{{ item.expires|default(omit) }}"
-    force: "{{ item.force|default(omit) }}"
-    generate_ssh_key: "{{ item.generate_ssh_key|default(omit) }}"
-    group: "{{ item.group|default(omit) }}"
-    groups: "{{ item.groups|default(omit) }}"
-    hidden: "{{ item.hidden|default(omit) }}"
-    home: "{{ item.home|default(omit) }}"
-    local: "{{ item.local|default(omit) }}"
-    login_class: "{{ item.login_class|default(omit) }}"
-    move_home: "{{ item.move_home|default(omit) }}"
-    non_unique: "{{ item.non_unique|default(omit) }}"
-    password: "{{ item.password|default(omit) }}"
-    password_lock: "{{ item.password_lock|default(omit) }}"
-    profile: "{{ item.profile|default(omit) }}"
-    remove: "{{ item.remove|default(omit) }}"
-    role: "{{ item.role|default(omit) }}"
-    seuser: "{{  item.seuser|default(omit) }}"
-    shell: "{{ item.shell|default(omit) }}"
-    skeleton: "{{ item.skeleton|default(omit) }}"
-    ssh_key_bits: "{{ item.ssh_key_bits|default(omit) }}"
-    ssh_key_comment: "{{ item.ssh_key_comment|default(omit) }}"
-    ssh_key_file: "{{ item.ssh_key_file|default(omit) }}"
-    ssh_key_passphrase: "{{ item.ssh_key_passphrase|default(omit) }}"
-    ssh_key_type: "{{ item.ssh_key_type|default(omit) }}"
-    state: "{{ item.state|default(omit) }}"
-    system: "{{ item.system|default(omit) }}"
-    uid: "{{ item.uid|default(omit) }}"
-    update_password: "{{ item.update_password|default(omit) }}"
+    append: "{{ item.append | default(omit) }}"
+    authorization: "{{ item.authorization | default(omit) }}"
+    comment: "{{ item.comment | default(omit) }}"
+    create_home: "{{ item.create_home | default(omit) }}"
+    expires: "{{ item.expires | default(omit) }}"
+    force: "{{ item.force | default(omit) }}"
+    generate_ssh_key: "{{ item.generate_ssh_key | default(omit) }}"
+    group: "{{ item.group | default(omit) }}"
+    groups: "{{ item.groups | default(omit) }}"
+    hidden: "{{ item.hidden | default(omit) }}"
+    home: "{{ item.home | default(omit) }}"
+    local: "{{ item.local | default(omit) }}"
+    login_class: "{{ item.login_class | default(omit) }}"
+    move_home: "{{ item.move_home | default(omit) }}"
+    non_unique: "{{ item.non_unique | default(omit) }}"
+    password: "{{ item.password | default(omit) }}"
+    password_lock: "{{ item.password_lock | default(omit) }}"
+    profile: "{{ item.profile | default(omit) }}"
+    remove: "{{ item.remove | default(omit) }}"
+    role: "{{ item.role | default(omit) }}"
+    seuser: "{{  item.seuser | default(omit) }}"
+    shell: "{{ item.shell | default(omit) }}"
+    skeleton: "{{ item.skeleton | default(omit) }}"
+    ssh_key_bits: "{{ item.ssh_key_bits | default(omit) }}"
+    ssh_key_comment: "{{ item.ssh_key_comment | default(omit) }}"
+    ssh_key_file: "{{ item.ssh_key_file | default(omit) }}"
+    ssh_key_passphrase: "{{ item.ssh_key_passphrase | default(omit) }}"
+    ssh_key_type: "{{ item.ssh_key_type | default(omit) }}"
+    state: "{{ item.state | default(omit) }}"
+    system: "{{ item.system | default(omit) }}"
+    uid: "{{ item.uid | default(omit) }}"
+    update_password: "{{ item.update_password | default(omit) }}"
   loop: "{{ fp_users_conf }}"
   loop_control:
     label: "{{ item.name }}"
   no_log: "{{ not fp_users_debug_classified }}"
 
 # EOF
-...

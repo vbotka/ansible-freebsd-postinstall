@@ -29,9 +29,11 @@ Minor Changes
 * Update passwords.
 * Update tasks mount-*
 * Update var pkg_dict_amd64. Add pkg_dict_amd64_dict.
+* Add variable fp_role_version
 
 Bugfixes
 --------
+* Fix lint.
 
 Breaking Changes / Porting Guide
 --------------------------------
@@ -39,8 +41,8 @@ Breaking Changes / Porting Guide
   fp_loader_conf_file_backup_orig
 * Rename var fp_sysctl_warning_loader_needed to fp_sysctl_tuneables_warning
 * Remove var fp_loader_conf_template_enable
-* Add deafult template loader.conf2.j2
-
+* Add default template loader.conf2.j2
+* Add default template freebsd-update.conf2.j2
 
 
 2.6.11

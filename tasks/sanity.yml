@@ -1,36 +1,34 @@
 ---
-
-- name: "sanity: Debug (fp_sanity_debug={{ fp_sanity_debug }})"
+- name: "Sanity: Debug fp_sanity_debug={{ fp_sanity_debug }}"
   ansible.builtin.debug:
     msg: |-
       ansible_run_tags:
-        {{ ansible_run_tags|to_yaml(indent=2)|indent(2) }}
+        {{ ansible_run_tags | to_yaml(indent=2) | indent(2) }}
       ansible_skip_tags:
-        {{ ansible_skip_tags|to_yaml(indent=2)|indent(2) }}
+        {{ ansible_skip_tags | to_yaml(indent=2) | indent(2) }}
       fp_sanity_tags:
-        {{ fp_sanity_tags|to_yaml(indent=2)|indent(2) }}
-  when: fp_sanity_debug|bool
+        {{ fp_sanity_tags | to_yaml(indent=2) | indent(2) }}
+  when: fp_sanity_debug | bool
   tags: fp_sanity_debug
 
-- name: "sanity: Unknown run tags"
+- name: "Sanity: Unknown run tags"
   ansible.builtin.fail:
-    msg: "[ERROR] Unknown run tag(s): {{ _tags_unknown }}"
+    msg: "[ERR] Unknown run tag(s): {{ _tags_unknown }}"
   vars:
-    _tags_unknown: "{{ ansible_run_tags|difference(fp_sanity_tags) }}"
+    _tags_unknown: "{{ ansible_run_tags | difference(fp_sanity_tags) }}"
   when:
-    - fp_sanity_tags_fatal|bool
-    - ansible_run_tags|length > 0
-    - _tags_unknown|length > 0
+    - fp_sanity_tags_fatal | bool
+    - ansible_run_tags | length > 0
+    - _tags_unknown | length > 0
 
-- name: "sanity: Unknown skip tags"
+- name: "Sanity: Unknown skip tags"
   ansible.builtin.fail:
-    msg: "[ERROR] Unknown skip tag(s): {{ _tags_unknown }}"
+    msg: "[ERR] Unknown skip tag(s): {{ _tags_unknown }}"
   vars:
-    _tags_unknown: "{{ ansible_skip_tags|difference(fp_sanity_tags) }}"
+    _tags_unknown: "{{ ansible_skip_tags | difference(fp_sanity_tags) }}"
   when:
-    - fp_sanity_tags_fatal|bool
-    - ansible_skip_tags|length > 0
-    - _tags_unknown|length > 0
+    - fp_sanity_tags_fatal | bool
+    - ansible_skip_tags | length > 0
+    - _tags_unknown | length > 0
 
 # EOF
-...

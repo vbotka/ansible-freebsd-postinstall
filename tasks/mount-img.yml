@@ -1,6 +1,5 @@
 ---
-
-- name: "mount-img: Debug (fp_mount_img_debug={{ fp_mount_img_debug }})"
+- name: "Mount-img: Debug fp_mount_img_debug={{ fp_mount_img_debug }}"
   vars:
     msg: |-
       fp_mount_img_points_create: {{ fp_mount_img_points_create }}
@@ -11,7 +10,7 @@
   when: fp_mount_img_debug | bool
   tags: fp_mount_img_debug
 
-- name: "mount-img: Import mount-vnode.yml"
+- name: "Mount-img: Import mount-vnode.yml"
   ansible.builtin.import_tasks: mount-vnode.yml
   vars:
     _fp_mount_task: img
@@ -21,4 +20,3 @@
     _fp_mount_debug: "{{ fp_mount_img_debug }}"
 
 # EOF
-...

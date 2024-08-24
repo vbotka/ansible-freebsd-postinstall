@@ -1,33 +1,32 @@
 ---
-
-- name: "procmail: Remove forwarders"
+- name: "Procmail: Remove forwarders"
   ansible.builtin.file:
     state: absent
-    dest: "/home/{{ item.user }}/.forward"
+    dest: /home/{{ item.user }}/.forward
   loop: "{{ fp_procmail_forwarders }}"
-  when: fp_procmail_forwarders_rebuild|bool
+  when: fp_procmail_forwarders_rebuild | bool
   tags: fp_procmail_forwarders
 
-- name: "procmail: Configure forwarders"
+- name: "Procmail: Configure forwarders"
   ansible.builtin.blockinfile:
     create: true
-    dest: "/home/{{ item.user }}/.forward"
+    dest: /home/{{ item.user }}/.forward
     owner: "{{ item.user }}"
-    mode: '0644'
-    marker: '# {mark} ANSIBLE MANAGED BLOCK'
+    mode: "0644"
+    marker: "# {mark} ANSIBLE MANAGED BLOCK"
     backup: "{{ fp_backup }}"
     block: |
       "{{ item.forward }}"
   loop: "{{ fp_procmail_forwarders }}"
   tags: fp_procmail_forwarders
 
-- name: "procmail: Configure .procmailrc"
+- name: "Procmail: Configure .procmailrc"
   ansible.builtin.blockinfile:
     create: true
-    dest: "/home/{{ item.user }}/.procmailrc"
+    dest: /home/{{ item.user }}/.procmailrc
     owner: "{{ item.user }}"
-    mode: '0644'
-    marker: '# {mark} ANSIBLE MANAGED BLOCK'
+    mode: "0644"
+    marker: "# {mark} ANSIBLE MANAGED BLOCK"
     backup: "{{ fp_backup }}"
     block: |
       SHELL={{ fp_procmail_shell }}
@@ -42,34 +41,34 @@
   loop: "{{ fp_procmail_forwarders }}"
   tags: fp_procmail_procmailrc
 
-- name: "procmail: Create .procmail directory"
+- name: "Procmail: Create .procmail directory"
   ansible.builtin.file:
     state: directory
-    mode: '0755'
-    path: "/home/{{ item.user }}/.procmail"
+    mode: "0755"
+    path: /home/{{ item.user }}/.procmail
     owner: "{{ item.user }}"
   loop: "{{ fp_procmail_forwarders }}"
   tags: fp_procmail_dir
 
-- name: "procmail: Create includerc files"
+- name: "Procmail: Create includerc files"
   ansible.builtin.template:
-    src: "procmailrc-includerc-{{ item.template }}.j2"
-    dest: "/home/{{ item.user }}/.procmail/{{ item.template }}.rc"
+    src: procmailrc-includerc-{{ item.template }}.j2
+    dest: /home/{{ item.user }}/.procmail/{{ item.template }}.rc
     owner: "{{ item.user }}"
-    mode: '0644'
+    mode: "0644"
     backup: "{{ fp_backup }}"
   loop: "{{ fp_procmail_includerc }}"
   loop_control:
     label: "{{ item.user }} {{ item.template }}"
   tags: fp_procmail_includerc
 
-- name: "procmail: Include rc files in .procmailrc"
+- name: "Procmail: Include rc files in .procmailrc"
   ansible.builtin.lineinfile:
     create: true
-    dest: "/home/{{ item.user }}/.procmailrc"
+    dest: /home/{{ item.user }}/.procmailrc
     owner: "{{ item.user }}"
-    mode: '0644'
-    line: "INCLUDERC=$PMDIR/{{ item.template }}.rc"
+    mode: "0644"
+    line: INCLUDERC=$PMDIR/{{ item.template }}.rc
     insertafter: EOF
     backup: "{{ fp_backup }}"
   loop: "{{ fp_procmail_includerc }}"
@@ -77,16 +76,15 @@
     label: "{{ item.user }} {{ item.template }}"
   tags: fp_procmail_includerc
 
-- name: "procmail: Configure {{ fp_procmail_rc_file }}"
+- name: "Procmail: Configure {{ fp_procmail_rc_file }}"
   ansible.builtin.template:
     dest: "{{ fp_procmail_rc_file }}"
     owner: root
-    mode: '0644'
+    mode: "0644"
     src: procmailrc.j2
   vars:
     config: "{{ fp_procmail_rc_conf }}"
-  when: fp_procmail_rc_conf|length > 0
+  when: fp_procmail_rc_conf | length > 0
   tags: fp_procmail_rc
 
 # EOF
-...

@@ -1,13 +1,12 @@
 ---
-
-- name: "wpasupplicant: Debug (fp_wpasupplicant_debug={{ fp_wpasupplicant_debug }})"
+- name: "Wpasupplicant: Debug fp_wpasupplicant_debug={{ fp_wpasupplicant_debug }}"
   vars:
     msg: |-
       fp_wpasupplicant_backup: {{ fp_wpasupplicant_backup }}
       fp_wpasupplicant_program: {{ fp_wpasupplicant_program }}
       fp_wpasupplicant_flags: {{ fp_wpasupplicant_flags }}
       fp_wpasupplicant_rcconf:
-        {{ fp_wpasupplicant_rcconf|to_yaml(indent=2)|indent(2) }}
+        {{ fp_wpasupplicant_rcconf | to_yaml(indent=2) | indent(2) }}
       fp_wpasupplicant_conf_rc: {{ fp_wpasupplicant_conf_rc }}
       fp_wpasupplicant_conf_file_link: {{ fp_wpasupplicant_conf_file_link }}
       fp_wpasupplicant_conf_owner: {{ fp_wpasupplicant_conf_owner }}
@@ -18,27 +17,27 @@
       fp_wpasupplicant_conf_template: {{ fp_wpasupplicant_conf_template }}
       fp_wpasupplicant_conf_ctrl_interface: {{ fp_wpasupplicant_conf_ctrl_interface }}
       fp_wpasupplicant_conf_global:
-        {{ fp_wpasupplicant_conf_global|to_yaml(indent=2)|indent(2) }}
+        {{ fp_wpasupplicant_conf_global | to_yaml(indent=2) | indent(2) }}
       {% if fp_wpasupplicant_debug_classified %}
       fp_wpasupplicant_conf:
-        {{ fp_wpasupplicant_conf|to_yaml(indent=2)|indent(2) }}
+        {{ fp_wpasupplicant_conf | to_yaml(indent=2) | indent(2) }}
       {% endif %}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
-  when: fp_wpasupplicant_debug|bool
+  when: fp_wpasupplicant_debug | bool
   tags: fp_wpasupplicant_debug
 
-- name: "wpasupplicant: Configure /etc/rc.conf"
+- name: "Wpasupplicant: Configure /etc/rc.conf"
   ansible.builtin.lineinfile:
     dest: /etc/rc.conf
-    regexp: '^\s*{{ item.key }}\s*=(.*)$'
+    regexp: ^\s*{{ item.key }}\s*=(.*)$
     line: '{{ item.key }}="{{ item.value }}"'
     backup: "{{ fp_wpasupplicant_backup }}"
   loop: "{{ fp_wpasupplicant_rcconf }}"
   notify: restart netif
   tags: fp_wpasupplicant_rcconf
 
-- name: "wpasupplicant: Configure {{ fp_wpasupplicant_conf_file }}.DEV"
+- name: "Wpasupplicant: Configure {{ fp_wpasupplicant_conf_file ~ '.DEV' }}"
   ansible.builtin.template:
     src: "{{ fp_wpasupplicant_conf_template }}"
     dest: "{{ fp_wpasupplicant_conf_file }}.{{ item.dev }}"
@@ -53,33 +52,32 @@
   no_log: "{{ not fp_wpasupplicant_debug_classified }}"
   tags: fp_wpasupplicant_conf
 
-- name: "wpasupplicant: Debug: registered to fp_wpa_supplicant_conf_changes"
+- name: "Wpasupplicant: Debug: registered to fp_wpa_supplicant_conf_changes"
   ansible.builtin.debug:
     msg: "{{ fp_wpa_supplicant_conf_changes }}"
   no_log: "{{ not fp_wpasupplicant_debug_classified }}"
-  when: fp_wpasupplicant_debug|bool
+  when: fp_wpasupplicant_debug | bool
 
-- name: "wpasupplicant: Link {{ fp_wpasupplicant_conf_file }}"
+- name: "Wpasupplicant: Link {{ fp_wpasupplicant_conf_file }}"
   ansible.builtin.file:
     state: link
     src: "{{ fp_wpasupplicant_conf_file }}.{{ fp_wpasupplicant_conf_file_link }}"
     dest: "{{ fp_wpasupplicant_conf_file }}"
     force: true
-  when: fp_wpasupplicant_conf_file_link|length > 0
+  when: fp_wpasupplicant_conf_file_link | length > 0
   tags: fp_wpasupplicant_conf_file_link
 
 # Use device specific configuration. Example:
 # /usr/local/sbin/wpa_supplicant -s -B -i wlan1 -c /etc/wpa_supplicant.conf.wlan1
-- name: "wpasupplicant: Configure /etc/rc.d/wpa_supplicant"
+- name: "Wpasupplicant: Configure /etc/rc.d/wpa_supplicant"
   ansible.builtin.lineinfile:
     dest: /etc/rc.d/wpa_supplicant
-    regexp: '^\s*{{ item.key }}\s*=(.*)$'
-    line: '{{ item.key }}={{ item.value }}'
+    regexp: ^\s*{{ item.key }}\s*=(.*)$
+    line: "{{ item.key }}={{ item.value }}"
     backup: "{{ fp_wpasupplicant_backup }}"
   loop:
-    - {key: "conf_file", value: "${wpa_supplicant_conf_file}.${ifn}"}
-  when: fp_wpasupplicant_conf_rc|bool
+    - { key: conf_file, value: "${wpa_supplicant_conf_file}.${ifn}" }
+  when: fp_wpasupplicant_conf_rc | bool
   tags: fp_wpasupplicant_conf_rc
 
 # EOF
-...

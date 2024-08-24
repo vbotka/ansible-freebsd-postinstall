@@ -1,61 +1,59 @@
 ---
-
-- name: "copy: Debug (fp_copy_debug={{ fp_copy_debug }})"
+- name: "Copy: Debug fp_copy_debug={{ fp_copy_debug }}"
   vars:
     msg: |-
-         fp_unarch_default: {{ fp_unarch_default }}
-         fp_unarch_optional: {{ fp_unarch_optional }}
-         fp_synchronize_default:
-           {{ fp_synchronize_default|to_nice_yaml(indent=2)|indent(2) }}
-         fp_synchronize_optional:
-           {{ fp_synchronize_optional|to_nice_yaml(indent=2)|indent(2) }}
-         fp_copy_dir: {{ fp_copy_dir }}
-         fp_copy_dir_default: {{ fp_copy_dir_default }}
-         fp_copy_arch_defaul: {{ fp_copy_arch_default }}
-         fp_copy_dir_optional: {{ fp_copy_dir_optional }}
-         fp_copy_arch_optional: {{ fp_copy_arch_optional }}
-         fp_unarchive_keep_newer: {{ fp_unarchive_keep_newer }}
-         fp_synchronize_delete: {{ fp_synchronize_delete }}
-         fp_synchronize_archive: {{ fp_synchronize_archive }}
-         fp_synchronize_checksum: {{ fp_synchronize_checksum }}
-         fp_synchronize_compress: {{ fp_synchronize_compress }}
-         fp_synchronize_copy_links: {{ fp_synchronize_copy_links }}
-         fp_synchronize_dirs: {{ fp_synchronize_dirs }}
-         fp_synchronize_existing_only: {{ fp_synchronize_existing_only }}
-         fp_synchronize_group: {{ fp_synchronize_group }}
-         fp_synchronize_mode: {{ fp_synchronize_mode }}
-         fp_synchronize_owner: {{ fp_synchronize_owner }}
-         fp_synchronize_perms: {{ fp_synchronize_perms }}
-         fp_synchronize_times: {{ fp_synchronize_times }}
-         fp_synchronize_verify_host: {{ fp_synchronize_verify_host }}
+      fp_unarch_default: {{ fp_unarch_default }}
+      fp_unarch_optional: {{ fp_unarch_optional }}
+      fp_synchronize_default:
+        {{ fp_synchronize_default | to_nice_yaml(indent=2) | indent(2) }}
+      fp_synchronize_optional:
+        {{ fp_synchronize_optional | to_nice_yaml(indent=2) | indent(2) }}
+      fp_copy_dir: {{ fp_copy_dir }}
+      fp_copy_dir_default: {{ fp_copy_dir_default }}
+      fp_copy_arch_defaul: {{ fp_copy_arch_default }}
+      fp_copy_dir_optional: {{ fp_copy_dir_optional }}
+      fp_copy_arch_optional: {{ fp_copy_arch_optional }}
+      fp_unarchive_keep_newer: {{ fp_unarchive_keep_newer }}
+      fp_synchronize_delete: {{ fp_synchronize_delete }}
+      fp_synchronize_archive: {{ fp_synchronize_archive }}
+      fp_synchronize_checksum: {{ fp_synchronize_checksum }}
+      fp_synchronize_compress: {{ fp_synchronize_compress }}
+      fp_synchronize_copy_links: {{ fp_synchronize_copy_links }}
+      fp_synchronize_dirs: {{ fp_synchronize_dirs }}
+      fp_synchronize_existing_only: {{ fp_synchronize_existing_only }}
+      fp_synchronize_group: {{ fp_synchronize_group }}
+      fp_synchronize_mode: {{ fp_synchronize_mode }}
+      fp_synchronize_owner: {{ fp_synchronize_owner }}
+      fp_synchronize_perms: {{ fp_synchronize_perms }}
+      fp_synchronize_times: {{ fp_synchronize_times }}
+      fp_synchronize_verify_host: {{ fp_synchronize_verify_host }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
-  when: fp_copy_debug|bool
+  when: fp_copy_debug | bool
   tags: fp_copy_debug
 
-# Sync default
-- name: "copy: Synchronize default files {{ fp_copy_dir }}/{{ fp_copy_dir_default }}"
+  # Sync default
+- name: "Copy: Synchronize default files {{ fp_copy_dir ~ '/' ~ fp_copy_dir_default }}"
   ansible.builtin.import_tasks: copy/sync-default.yml
-  when: fp_synchronize_default|length > 0
+  when: fp_synchronize_default | length > 0
   tags: fp_copy_sync_default
 
-# Sync optional
-- name: "copy: Synchronize optional files {{ fp_copy_dir }}/{{ fp_copy_dir_optional }}"
+  # Sync optional
+- name: "Copy: Synchronize optional files {{ fp_copy_dir ~ '/' ~ fp_copy_dir_optional }}"
   ansible.builtin.import_tasks: copy/sync-optional.yml
-  when: fp_synchronize_optional|length > 0
+  when: fp_synchronize_optional | length > 0
   tags: fp_copy_sync_optional
 
-# Unarch default
-- name: "copy: Extract default files {{ fp_copy_dir }}/{{ fp_copy_arch_defaul }}"
+  # Unarch default
+- name: "Copy: Extract default files {{ fp_copy_dir ~ '/' ~ fp_copy_arch_defaul }}"
   ansible.builtin.import_tasks: copy/unarch-default.yml
-  when: fp_unarch_default|bool
+  when: fp_unarch_default | bool
   tags: fp_copy_unarch_default
 
-# Unarch optional
-- name: "copy: Extract optional files {{ fp_copy_dir }}/{{ fp_copy_arch_optional }}"
+  # Unarch optional
+- name: "Copy: Extract optional files {{ fp_copy_dir ~ '/' ~ fp_copy_arch_optional }}"
   ansible.builtin.import_tasks: copy/unarch-optional.yml
-  when: fp_unarch_optional|bool
+  when: fp_unarch_optional | bool
   tags: fp_copy_unarch_optional
 
 # EOF
-...

@@ -1,12 +1,21 @@
 ---
-# snmpd
+- name: Enable and start snmpd
+  listen: enable and start snmpd
+  ansible.builtin.service:
+    name: snmpd
+    state: started
+    enabled: true
 
-- name: enable and start snmpd
-  ansible.builtin.service: name=snmpd state=started enabled=true
+- name: Disable and stop snmpd
+  listen: disable and stop snmpd
+  ansible.builtin.service:
+    name: snmpd
+    state: stopped
+    enabled: false
 
-- name: disable and stop snmpd
-  ansible.builtin.service: name=snmpd state=stopped enabled=false
-
-- name: restart snmpd
-  ansible.builtin.service: name=snmpd state=restarted
-  when: fp_snmpd_enabled|bool
+- name: Restart snmpd
+  listen: restart snmpd
+  ansible.builtin.service:
+    name: snmpd
+    state: restarted
+  when: fp_snmpd_enabled | bool

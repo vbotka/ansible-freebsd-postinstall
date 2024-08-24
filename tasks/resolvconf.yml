@@ -1,7 +1,6 @@
 ---
-
 # resolv.conf
-- name: "resolvconf: Absent lines in {{ fp_resolv_conf_file }}"
+- name: "Resolvconf: Absent lines in {{ fp_resolv_conf_file }}"
   ansible.builtin.lineinfile:
     create: true
     state: absent
@@ -9,26 +8,26 @@
     owner: "{{ fp_resolv_conf_owner }}"
     group: "{{ fp_resolv_conf_group }}"
     mode: "{{ fp_resolv_conf_mode }}"
-    regexp: '^\s*{{ item }}\s*$'
+    regexp: ^\s*{{ item }}\s*$
     backup: "{{ fp_backup }}"
   loop: "{{ fp_resolv_conf_absent }}"
   tags: fp_resolv_conf_absent
 
-- name: "resolvconf: Present lines in {{ fp_resolv_conf_file }}"
+- name: "Resolvconf: Present lines in {{ fp_resolv_conf_file }}"
   ansible.builtin.lineinfile:
     create: true
     dest: "{{ fp_resolv_conf_file }}"
     owner: "{{ fp_resolv_conf_owner }}"
     group: "{{ fp_resolv_conf_group }}"
     mode: "{{ fp_resolv_conf_mode }}"
-    regexp: '^\s*{{ item.key }}(.*)$'
-    line: '{{ item.key }} {{ item.value }}'
+    regexp: ^\s*{{ item.key }}(.*)$
+    line: "{{ item.key }} {{ item.value }}"
     backup: "{{ fp_backup }}"
   loop: "{{ fp_resolv_conf }}"
   tags: fp_resolv_conf
 
-# resolvconf.conf
-- name: "resolvconf: Absent lines in {{ fp_resolvconf_conf_file }}"
+  # resolvconf.conf
+- name: "Resolvconf: Absent lines in {{ fp_resolvconf_conf_file }}"
   ansible.builtin.lineinfile:
     create: true
     state: absent
@@ -36,20 +35,20 @@
     owner: "{{ fp_resolvconf_conf_owner }}"
     group: "{{ fp_resolvconf_conf_group }}"
     mode: "{{ fp_resolvconf_conf_mode }}"
-    regexp: '^\s*{{ item }}\s*$'
+    regexp: ^\s*{{ item }}\s*$
     backup: "{{ fp_backup }}"
   loop: "{{ fp_resolvconf_conf_absent }}"
   notify: resolvconf apply
   tags: fp_resolvconf_conf_absent
 
-- name: "resolvconf: Present lines in {{ fp_resolvconf_conf_file }}"
+- name: "Resolvconf: Present lines in {{ fp_resolvconf_conf_file }}"
   ansible.builtin.lineinfile:
     create: true
     dest: "{{ fp_resolvconf_conf_file }}"
     owner: "{{ fp_resolvconf_conf_owner }}"
     group: "{{ fp_resolvconf_conf_group }}"
     mode: "{{ fp_resolvconf_conf_mode }}"
-    regexp: '^\s*{{ item.key }}\s*=(.*)$'
+    regexp: ^\s*{{ item.key }}\s*=(.*)$
     line: '{{ item.key }}="{{ item.value }}"'
     backup: "{{ fp_backup }}"
   loop: "{{ fp_resolvconf_conf }}"
@@ -57,4 +56,3 @@
   tags: fp_resolvconf_conf
 
 # EOF
-...

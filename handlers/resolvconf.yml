@@ -1,5 +1,5 @@
 ---
-# resolvconf
-- name: resolvconf apply
+- name: Resolvconf apply # noqa: no-changed-when
+  listen: resolvconf apply
   ansible.builtin.command:
     cmd: resolvconf -u

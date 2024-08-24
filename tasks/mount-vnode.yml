@@ -1,6 +1,5 @@
 ---
-
-- name: "mount-vnode: Debug _fp_mount_debug={{ _fp_mount_debug }}"
+- name: "Mount-vnode: Debug _fp_mount_debug={{ _fp_mount_debug }}"
   vars:
     msg: |-
       _fp_mount_fstype_default: {{ _fp_mount_fstype_default }}
@@ -11,7 +10,7 @@
     msg: "{{ '{}'.format(msg) }}"
   when: _fp_mount_debug | bool
 
-- name: "mount-vnode: Create mount points"
+- name: "Mount-vnode: Create mount points"
   ansible.builtin.file:
     state: directory
     path: "{{ item.mount }}"
@@ -19,29 +18,29 @@
   loop: "{{ fp_mount_entries }}"
   when:
     - item.state | d("mounted") == "mounted"
-    - _fp_mount_points_create | bool  # Note 2.
+    - _fp_mount_points_create | bool # Note 2.
 
-- name: "mount-vnode: Attach memory disks"
+- name: "Mount-vnode: Attach memory disks"
   ansible.builtin.include_tasks:
     file: fn/mdconfig-attach-disk.yml
   loop: "{{ _fp_mount_entries }}"
   when: item.state | d("mounted") == "mounted"
 
-- name: "mount-vnode: Debug attach memory disks _fp_mount_debug={{ _fp_mount_debug }}"
+- name: "Mount-vnode: Debug attach memory disks _fp_mount_debug={{ _fp_mount_debug }}"
   ansible.builtin.debug:
     var: al_mdconfig_devs
   when: _fp_mount_debug | bool
 
-# TODO: Sanity al_mdconfig_devs[_vnode] is defined; not in check-mode
+  # TODO: Sanity al_mdconfig_devs[_vnode] is defined; not in check-mode
 
-- name: "mount-vnode: Mount"
+- name: "Mount-vnode: Mount"
   ansible.posix.mount:
-    src: "/dev/md{{ al_mdconfig_devs[_vnode]['unit'] }}{{ item.partition | d('') }}"
-    path: "{{ item.mount }}"  # Note 2.
+    src: /dev/md{{ al_mdconfig_devs[_vnode]['unit'] }}{{ item.partition | d('') }}
+    path: "{{ item.mount }}" # Note 2.
     fstype: "{{ item.fstype | d(_fp_mount_fstype_default) }}"
     opts: "{{ item.opts | d(omit) }}"
     state: mounted
-    fstab: /tmp/tmp.fstab  # Note 1.
+    fstab: /tmp/tmp.fstab # Note 1.
   loop: "{{ _fp_mount_entries }}"
   register: result
   when:
@@ -50,32 +49,32 @@
   vars:
     _vnode: "{{ item[_fp_mount_task] }}"
 
-- name: "mount-vnode: Debug mount _fp_mount_debug={{ _fp_mount_debug }}"
+- name: "Mount-vnode: Debug mount _fp_mount_debug={{ _fp_mount_debug }}"
   ansible.builtin.debug:
     var: result
   when: _fp_mount_debug | bool
 
-- name: "mount-vnode: Unmount"
+- name: "Mount-vnode: Unmount"
   ansible.posix.mount:
-    path: "{{ item.mount }}"  # Note 2.
+    path: "{{ item.mount }}" # Note 2.
     state: unmounted
-    fstab: /tmp/tmp.fstab  # Note 1.
+    fstab: /tmp/tmp.fstab # Note 1.
   loop: "{{ _fp_mount_entries }}"
   register: result
   when: item.state | d("mounted") == "unmounted"
 
-- name: "mount-vnode: Debug unmount _fp_mount_debug={{ _fp_mount_debug }}"
+- name: "Mount-vnode: Debug unmount _fp_mount_debug={{ _fp_mount_debug }}"
   ansible.builtin.debug:
     var: result
   when: _fp_mount_debug | bool
 
-- name: "mount-vnode: Detach memory disks"
+- name: "Mount-vnode: Detach memory disks"
   ansible.builtin.include_tasks:
     file: fn/mdconfig-detach-disk.yml
   loop: "{{ _fp_mount_entries }}"
   when: item.state | d("mounted") == "unmounted"
 
-- name: "mount-vnode: Debug detach memory disks _fp_mount_debug={{ _fp_mount_debug }}"
+- name: "Mount-vnode: Debug detach memory disks _fp_mount_debug={{ _fp_mount_debug }}"
   ansible.builtin.debug:
     var: al_mdconfig_devs
   when: _fp_mount_debug | bool
@@ -93,4 +92,3 @@
 # https://forums.freebsd.org/threads/mounting-vnode-backed-memory-disks-at-startup.21002/
 
 # EOF
-...
