@@ -3,7 +3,7 @@
 Tags
 ====
 
-The :index:`tags` provide the user with a very useful tool to run selected groups of tasks. Use the
+The :index:`tags` provide the user with a powerful tool to run selected groups of tasks. Use the
 command below to display available tags
 
 .. include:: tags-list.rst

@@ -32,8 +32,10 @@ Requirements on the remote host
 * Python and Perl are installed.
 
 .. seealso::
-   * `Ansible and BSD <https://docs.ansible.com/ansible/devel/user_guide/intro_bsd.html#ansible-and-bsd>`_
-   * `Installing Ansible on FreeBSD <https://docs.ansible.com/ansible/devel/installation_guide/intro_installation.html#installing-ansible-on-freebsd>`_
+
+   * `Using Ansible on BSD`_
+   * `Managing BSD hosts with Ansible`_
+   * `Installing Ansible`_
 
 
 Installation
@@ -63,16 +65,17 @@ execution of the playbook
 
 Install the role ``vbotka.freebsd_postinstall`` ::
 
-    shell> ansible-galaxy role install vbotka.freebsd_postinstall
+   shell> ansible-galaxy role install vbotka.freebsd_postinstall
 
 Install the library ``vbotka.ansible_lib`` ::
 
-    shell> ansible-galaxy role install vbotka.ansible_lib
+   shell> ansible-galaxy role install vbotka.ansible_lib
 
 Install the collections if necessary ::
 
-    shell> ansible-galaxy collection install ansible.posix
-    shell> ansible-galaxy collection install community.general
+   shell> ansible-galaxy collection install ansible.posix
+   shell> ansible-galaxy collection install ansible.utils
+   shell> ansible-galaxy collection install community.general
 
 Review the role
 
@@ -380,8 +383,8 @@ the data and run the tasks all in one play
    
    2 directories, 9 files
 
-Run all enabled tasks in the playbook again. Optionally, disable installation to speedup the
-execution
+Run all enabled tasks in the playbook again. Optionally, disable the
+installation to speedup the execution
 
 .. code-block:: bash
    :emphasize-lines: 1
@@ -395,3 +398,8 @@ execution
    test_14.example.com: ok=10 changed=0 unreachable=0 failed=0 skipped=172 rescued=0 ignored=0
 
 .. warning:: The host has not been secured by this playbook and should be used for testing only.
+
+
+.. _`Using Ansible on BSD`: https://docs.ansible.com/ansible/devel/os_guide/index.html#using-ansible-on-windows-and-bsd
+.. _`Managing BSD hosts with Ansible`: https://docs.ansible.com/ansible/devel/user_guide/intro_bsd.html#ansible-and-bsd
+.. _`Installing Ansible`: https://docs.ansible.com/ansible/devel/installation_guide/intro_installation.html#installing-ansible

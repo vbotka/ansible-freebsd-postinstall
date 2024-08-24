@@ -1,18 +1,22 @@
+.. _tasks_packages:
+
 Packages *(packages)*
 ---------------------
 
 Install and upgrade packages or ports from the packages lists
 described below. This way you can create packages lists as needed for
 a particular purpose and install them automatically when enabled. The
-details are described in the section *Automatic installation*. For
-general management of FreeBSD packages and ports use Ansible roles
-`vbotka.freebsd_packages`_ and `vbotka.freebsd_ports`_
+details are described in the section *Installation frameworks*
+below. For general management of FreeBSD packages and ports use
+Ansible roles `vbotka.freebsd_packages`_ and `vbotka.freebsd_ports`_
 
 .. seealso::
 
    * Annotated Source code :ref:`as_packages.yml`
    * Annotated Source code :ref:`as_packages-install.yml`
 
+
+.. _tasks_packages_defaults:
 
 defaults
 ^^^^^^^^
@@ -21,28 +25,28 @@ See `defaults/main/packages.yml`_. By default, the installation is disabled
 
 .. code-block:: yaml
 
-    fp_install: false
+   fp_install: false
 
 If enabled, the binary packages will be installed. If failed, the
 installation will be retried ten times delayed by five seconds
 
 .. code-block:: yaml
 
-    freebsd_install_method: packages
-    freebsd_install_retries: 10
-    freebsd_install_delay: 5
+   freebsd_install_method: packages
+   freebsd_install_retries: 10
+   freebsd_install_delay: 5
 
 You can change the defaults to install from ports
 
 .. code-block:: yaml
 
-    freebsd_install_method: ports
+   freebsd_install_method: ports
 
 and optionally, use the already created binaries
 
 .. code-block:: yaml
 
-    freebsd_use_packages: true
+   freebsd_use_packages: true
 
 .. seealso::
 
@@ -50,6 +54,8 @@ and optionally, use the already created binaries
    * Ansible module `community.general.pkgng`_
    * Ansible module `community.general.portinstall`_
 
+
+.. _tasks_packages_lists_pkgorig:
 
 Packages lists pkg-orig
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -62,28 +68,28 @@ in the form *pkg-orig* aka *category/port*
 
 .. code-block:: yaml
 
-    shell> cat host_vars/foo.example.com/pkg_dict.yml
-    ---
-    pkg_dict_amd64:
-      - pkglist: ansible
-        packages:
-          - sysutils/ansible
-          - sysutils/py-ansible-lint
-          - sysutils/py-ansible-runner
-      - pkglist: minimal
-        packages:
-          - shells/bash
-          - devel/git@default
-          - archivers/gtar
-          - ports-mgmt/pkg
-          - ports-mgmt/portmaster
-          - ports-mgmt/portupgrade
-          - net/rsync
-          - ftp/wget
-      - pkglist: smart
-        packages:
-	  - sysutils/smartmontools
-	  - sysutils/smart
+   shell> cat host_vars/foo.example.com/pkg_dict.yml
+   ---
+   pkg_dict_amd64:
+     - pkglist: ansible
+       packages:
+         - sysutils/ansible
+         - sysutils/py-ansible-lint
+         - sysutils/py-ansible-runner
+     - pkglist: minimal
+       packages:
+         - shells/bash
+         - devel/git@default
+         - archivers/gtar
+         - ports-mgmt/pkg
+         - ports-mgmt/portmaster
+         - ports-mgmt/portupgrade
+         - net/rsync
+         - ftp/wget
+     - pkglist: smart
+       packages:
+         - sysutils/smartmontools
+         - sysutils/smart
 
 You can use this form also to:
 
@@ -93,15 +99,19 @@ You can use this form also to:
 
 .. seealso::
 
-    Default packages lists *pkg_dict_\** in *defaults/main*. Fit the
-    lists to you needs and put them for example into the *group_vars/all*
+   The default lists of dictionaries *pkg_dict_\** in *defaults/main*. Fit the
+   lists to you needs and put them, for example, into the *group_vars/all*
 
 .. note::
 
-   In this role, the packages list is selected automatically by the variable *ansible_architecture*. See :ref:`as_packages-install.yml`
+   The list of dictionaries is selected automatically by the variable *ansible_architecture* ::
 
-    *lookup('vars', 'pkg_dict_' ~ ansible_architecture)*
+    lookup('vars', 'pkg_dict_' ~ ansible_architecture)
 
+   See :ref:`as_packages-install.yml`
+
+
+.. _tasks_packages_lists_enable:
 
 Enable lists
 ^^^^^^^^^^^^
@@ -110,70 +120,78 @@ In the variable *fp_packages* enable packages lists that shall be installed
 
 .. code-block:: yaml
 
-    shell> cat host_vars/foo.example.com/fp-packages.yml
-    ---
-    fp_install: true
-    fp_packages:
-      - {list: ansible, enabled: true}
-      - {list: minimal, enabled: true}
+   shell> cat host_vars/foo.example.com/fp-packages.yml
+   ---
+   fp_install: true
+   fp_packages:
+     - {list: ansible, enabled: true}
+     - {list: minimal, enabled: true}
+
+
+.. _tasks_packages_install:
 
 Install packages
 ^^^^^^^^^^^^^^^^
 
 .. code-block:: yaml
 
-    shell> ANSIBLE_DISPLAY_SKIPPED_HOSTS=false ansible-playbook pb.yml -t fp_packages
-    ...
+   shell> ANSIBLE_DISPLAY_SKIPPED_HOSTS=false ansible-playbook pb.yml -t fp_packages
+   ...
 
-    TASK [vbotka.freebsd_postinstall : packages: Install packages] ****************************************************************************************
-    included: /home/admin/.ansible/roles/vbotka.freebsd_postinstall/tasks/packages-install.yml for foo.example.com => (item=ansible)
-    included: /home/admin/.ansible/roles/vbotka.freebsd_postinstall/tasks/packages-install.yml for foo.example.com => (item=minimal)
+   TASK [vbotka.freebsd_postinstall : packages: Install packages] ****************************************************************************************
+   included: /home/admin/.ansible/roles/vbotka.freebsd_postinstall/tasks/packages-install.yml for foo.example.com => (item=ansible)
+   included: /home/admin/.ansible/roles/vbotka.freebsd_postinstall/tasks/packages-install.yml for foo.example.com => (item=minimal)
 
-    TASK [vbotka.freebsd_postinstall : packages-install: Get list of packages for ansible] ****************************************************************
-    ok: [foo.example.com]
+   TASK [vbotka.freebsd_postinstall : packages-install: Get list of packages for ansible] ****************************************************************
+   ok: [foo.example.com]
 
-    TASK [vbotka.freebsd_postinstall : packages-install: Install packages ansible] ************************************************************************
-    ok: [foo.example.com] => (item=['sysutils/ansible', 'sysutils/py-ansible-lint', 'sysutils/py-ansible-runner'])
+   TASK [vbotka.freebsd_postinstall : packages-install: Install packages ansible] ************************************************************************
+   ok: [foo.example.com] => (item=['sysutils/ansible', 'sysutils/py-ansible-lint', 'sysutils/py-ansible-runner'])
 
-    TASK [vbotka.freebsd_postinstall : packages-install: Get list of packages for minimal] ****************************************************************
-    ok: [foo.example.com]
+   TASK [vbotka.freebsd_postinstall : packages-install: Get list of packages for minimal] ****************************************************************
+   ok: [foo.example.com]
 
-    TASK [vbotka.freebsd_postinstall : packages-install: Install packages minimal] ************************************************************************
-    ok: [foo.example.com] => (item=['shells/bash', 'devel/git@default', 'archivers/gtar', 'ports-mgmt/pkg', 'ports-mgmt/portmaster', 'ports-mgmt/portupgrade', 'net/rsync', 'ftp/wget'])
+   TASK [vbotka.freebsd_postinstall : packages-install: Install packages minimal] ************************************************************************
+   ok: [foo.example.com] => (item=['shells/bash', 'devel/git@default', 'archivers/gtar', 'ports-mgmt/pkg', 'ports-mgmt/portmaster', 'ports-mgmt/portupgrade', 'net/rsync', 'ftp/wget'])
 
-    ...
+   ...
+
+
+.. _tasks_packages_upgrade:
 
 Upgrade packages
 ^^^^^^^^^^^^^^^^
 
-If you want to upgrade packages set *fp_pkg_state=latest*. The module
+Set *fp_pkg_state=latest* if you want to upgrade packages. The module
 `community.general.pkgng`_ by default set the parameter
 *use_globs=true*. This means the module, quote: *"Treat the package
-names as shell glob patterns"*. If you use the form *pkg-orig* disable
-this parameter and set *fp_pkg_use_globs=false*
+names as shell glob patterns"*. Disable this parameter and set
+*fp_pkg_use_globs=false* if you use the form *pkg-orig*
 
 .. code-block:: yaml
 
-    shell> ansible-playbook pb.yml -t fp_packages -e fp_pkg_state=latest -e fp_pkg_use_globs=false
+   shell> ansible-playbook pb.yml -t fp_packages -e fp_pkg_state=latest -e fp_pkg_use_globs=false
 
+
+.. _tasks_packages_lists_pkgname:
 
 Packages lists pkg-name
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-You can simplify the packages lists and use the form *pkg-name*. To
-simplify the structure you might want to create a dictionary first and
-convert it to the list
+You can use the form *pkg-name* to simplify the packages lists. You
+might want to create a dictionary first and convert it to the list to
+simplify the structure
 
 .. code-block:: yaml
 
-    shell>  cat host_vars/foo.example.com/pkg_dict.yml
-    ---
-    pkg_dict_amd64: "{{ pkg_dict_amd64_dict |
-                        dict2items(key_name='pkglist', value_name='packages') }}"
-    pkg_dict_amd64_dict:
-      ansible: [py311-ansible, py311-ansible-lint, py311-ansible-runner]
-      minimal: [bash, git, gtar, pkg, portmaster, portupgrade, rsync, wget]
-      smart: [smartmontools, smart]
+   shell>  cat host_vars/foo.example.com/pkg_dict.yml
+   ---
+   pkg_dict_amd64: "{{ pkg_dict_amd64_dict |
+                       dict2items(key_name='pkglist', value_name='packages') }}"
+   pkg_dict_amd64_dict:
+     ansible: [py311-ansible, py311-ansible-lint, py311-ansible-runner]
+     minimal: [bash, git, gtar, pkg, portmaster, portupgrade, rsync, wget]
+     smart: [smartmontools, smart]
 
 You'll have to explicitly include the flavors (py311).
 
@@ -182,6 +200,8 @@ You'll have to explicitly include the flavors (py311).
 .. note ::  The form *pkg-orig* takes the version from the default Python.
 
 
+.. _tasks_packages_frameworks:
+
 Installation frameworks
 ^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -189,11 +209,11 @@ You can put the list of enabled package lists into the *host_vars*. For example,
 
 .. code-block:: yaml
 
-    fp_packages:
-      - {list: ansible, enabled: true}
-      - {list: minimal, enabled: true}
-      - {list: postinstall, enabled: true}
-      - {list: smart, enabled: true}
+   fp_packages:
+     - {list: ansible, enabled: true}
+     - {list: minimal, enabled: true}
+     - {list: postinstall, enabled: true}
+     - {list: smart, enabled: true}
 
 Optionally, you can keep the list *fp_packages* together with the
 packages lists *pkg_dict_** in *group_vars/all*. In this case, enable
@@ -202,67 +222,85 @@ enable other packages lists as needed. For example,
 
 .. code-block:: yaml
 
-    fp_packages:
-      - {list: minimal, enabled: true}
-      - {list: postinstall, enabled: true}
-      - {list: apcups, enabled: "{{ fp_apcupsd_install }}"}
-      - {list: hostap, enabled: "{{ fp_hostapd_install }}"}
-      - {list: linux, enabled: "{{ fp_linux_install }}"}
-      - {list: procmail, enabled: "{{ fp_procmail_install }}"}
-      - {list: smart, enabled: "{{ fp_smartd_install }}"}
-      - {list: snmpd, enabled: "{{ fp_snmpd_install }}"}
-      - {list: wpa_supplicant, enabled: "{{ fp_wpasupplicant_install }}"}
+   fp_packages:
+     - {list: ansible, enabled: true}
+     - {list: minimal, enabled: true}
+     - {list: postinstall, enabled: true}
+     - {list: apcups, enabled: "{{ fp_apcupsd_install }}"}
+     - {list: hostap, enabled: "{{ fp_hostapd_install }}"}
+     - {list: linux, enabled: "{{ fp_linux_install }}"}
+     - {list: procmail, enabled: "{{ fp_procmail_install }}"}
+     - {list: smart, enabled: "{{ fp_smartd_install }}"}
+     - {list: snmpd, enabled: "{{ fp_snmpd_install }}"}
+     - {list: wpa_supplicant, enabled: "{{ fp_wpasupplicant_install }}"}
 
-By default, all tasks are disabled in the role. See :ref:`as_main.yml`
-For example, if you want to configure `smartd`_ enable *fp_smartd* in
-host_vars. If you also want to install packages list *smart* enable
-*fp_smartd_install*
+All tasks are disabled in the role by default. See
+:ref:`as_main.yml`. For example, if you want to configure `smartd`_
+enable *fp_smartd* to import :ref:`as_smartd.yml`. Enable
+*fp_smartd_install* if you also want to install packages list *smart*
 
 .. code-block:: yaml
 
-    fp_smartd: true
-    fp_smartd_install: true
+   fp_apcupsd: true
+   fp_apcupsd_install: true
+   fp_procmail: true
+   fp_procmail_install: true
+   fp_smartd: true
+   fp_smartd_install: true
+
+.. note ::
+
+   * Some variables of the form *fp_\*_install* are predefined in
+     *defaults*. Take a look at the result of the command ::
+
+        shell> egrep -r fp_.*_install ansible-freebsd-postinstall/defaults/
+
+   * Take a look at the values of the variables ::
+
+        shell> ansible-playbook pb.yml -t fp_debug -e fp_debug=true
+
 
 The simple option is to use the "enablement" variables also in the
 list *fp_packages*. For example,
 
 .. code-block:: yaml
 
-    fp_packages:
-      - {list: minimal, enabled: true}
-      - {list: postinstall, enabled: true}
-      - {list: apcups, enabled: "{{ fp_apcupsd }}"}
-      - {list: hostap, enabled: "{{ fp_hostapd }}"}
-      - {list: linux, enabled: "{{ fp_linux }}"}
-      - {list: procmail, enabled: "{{ fp_procmail }}"}
-      - {list: smart, enabled: "{{ fp_smartd }}"}
-      - {list: snmpd, enabled: "{{ fp_snmpd }}"}
-      - {list: wpa_supplicant, enabled: "{{ fp_wpasupplicant }}"}
+   fp_packages:
+     - {list: ansible, enabled: true}
+     - {list: minimal, enabled: true}
+     - {list: postinstall, enabled: true}
+     - {list: apcups, enabled: "{{ fp_apcupsd }}"}
+     - {list: hostap, enabled: "{{ fp_hostapd }}"}
+     - {list: linux, enabled: "{{ fp_linux }}"}
+     - {list: procmail, enabled: "{{ fp_procmail }}"}
+     - {list: smart, enabled: "{{ fp_smartd }}"}
+     - {list: snmpd, enabled: "{{ fp_snmpd }}"}
+     - {list: wpa_supplicant, enabled: "{{ fp_wpasupplicant }}"}
 
-If you enable the tasks the packages list will be installed. For example,
+In this case, if you enable the tasks the packages list installation
+will be also enabled. For example,
 
 .. code-block:: yaml
 
-    fp_apcupsd: true
-    fp_procmail: true
-    fp_smartd: true
+   fp_apcupsd: true
+   fp_procmail: true
+   fp_smartd: true
 
 The best practice is to install the packages as a first step
 
 .. code-block:: yaml
 
-    shell> ansible-playbook pb.yml -t fp_packages
+   shell> ansible-playbook pb.yml -t fp_packages
 
 Then disable the installation to speedup the play
 
 .. code-block:: yaml
 
-    fp_install: false
+   fp_install: false
 
 .. _`vbotka.freebsd_packages`: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_packages/
 .. _`vbotka.freebsd_ports`: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_ports/
 .. _`vbotka.freebsd_poudriere`: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_poudriere/
-
 
 .. _`defaults/main/packages.yml`: https://github.com/vbotka/ansible-freebsd-postinstall/tree/master/defaults/main/packages.yml
 .. _`Chapter 4. Installing Applications: Packages and Ports`: https://docs.freebsd.org/en/books/handbook/ports/
