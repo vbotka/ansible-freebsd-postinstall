@@ -37,7 +37,8 @@ Minor Changes
 
 Bugfixes
 --------
-* Fix lint.
+* Ansible lint errors and warnings.
+* var fp_ntpdate_enable shall be boolean. Was string.
 
 Breaking Changes / Porting Guide
 --------------------------------
@@ -47,6 +48,7 @@ Breaking Changes / Porting Guide
 * Remove var fp_loader_conf_template_enable
 * Add default template loader.conf2.j2
 * Add default template freebsd-update.conf2.j2
+* var fp_ntpdate_enable changed to boolean. See defaults/main/ntpdate.yml
 
 
 2.6.11
