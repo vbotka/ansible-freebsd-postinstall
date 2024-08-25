@@ -37,6 +37,18 @@ mytemplates:
     note: []
     warning: []
 
+  - file: freebsd-update.conf2.j2
+    link: freebsd-update.conf2.j2
+    path: templates/freebsd-update.conf2.j2
+    synopsis: |
+      Template freebsd-update.conf2.
+    description: |
+      Description of the template.
+    lines: 1
+    seealso: []
+    note: []
+    warning: []
+
   - file: groupadd.j2
     link: groupadd.j2
     path: templates/groupadd.j2
@@ -138,6 +150,18 @@ mytemplates:
     path: templates/loader.conf.j2
     synopsis: |
       Template loader.conf.
+    description: |
+      Description of the template.
+    lines: 1
+    seealso: []
+    note: []
+    warning: []
+
+  - file: loader.conf2.j2
+    link: loader.conf2.j2
+    path: templates/loader.conf2.j2
+    synopsis: |
+      Template loader.conf2.
     description: |
       Description of the template.
     lines: 1

@@ -1,13 +1,11 @@
 ---
-
-- name: "aliases: Configure {{ fp_aliases_conf_file }}"
+- name: "Aliases: Configure {{ fp_aliases_conf_file }}"
   ansible.builtin.lineinfile:
     dest: "{{ fp_aliases_conf_file }}"
-    regexp: '^\s*{{ item.alias }}:(.*)$'
-    line: '{{ item.alias }}: {{ item.user }}'
+    regexp: ^\s*{{ item.alias }}:(.*)$
+    line: "{{ item.alias }}: {{ item.user }}"
     backup: "{{ fp_backup }}"
   loop: "{{ fp_aliases_conf }}"
   notify: newaliases
 
 # EOF
-...

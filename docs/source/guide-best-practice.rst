@@ -4,7 +4,7 @@
 Best practice
 =============
 
-Test syntax
+Test the syntax
 
 .. code-block:: console
    :emphasize-lines: 1
@@ -18,20 +18,20 @@ See what variables will be included
 
    shell> ansible-playbook playbook.yml -t fp_debug -e fp_debug=true
 
+Install packages. Run this task separately if the installation takes
+too long. Then disable the installation to speedup the play
+
+.. code-block:: console
+   :emphasize-lines: 1
+
+   shell> ansible-playbook playbook.yml -t fp_packages -e fp_install=true
+
 :index:`Dry-run` and display changes
 
 .. code-block:: console
    :emphasize-lines: 1
 
    shell> ansible-playbook playbook.yml --check --diff
-
-Install packages. Run this task separately if the installation takes
-too long. Then disable it.
-
-.. code-block:: console
-   :emphasize-lines: 1
-
-   shell> ansible-playbook playbook.yml -t fp_packages -e fp_install=true
 
 Run the playbook
 
@@ -49,4 +49,4 @@ playbook.
 .. code-block:: console
    :emphasize-lines: 1
 
-    shell> ansible-playbook playbook.yml
+    shell> ansible-playbook playbook.yml -e fp_install=false

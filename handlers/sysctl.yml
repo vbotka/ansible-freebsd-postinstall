@@ -1,5 +1,6 @@
 ---
-# sysctl
-
-- name: reload sysctl
-  ansible.builtin.service: name=sysctl state=reloaded
+- name: Reload sysctl
+  listen: reload sysctl
+  ansible.builtin.service:
+    name: sysctl
+    state: reloaded

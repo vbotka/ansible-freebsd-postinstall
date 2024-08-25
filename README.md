@@ -1,8 +1,11 @@
 # freebsd_postinstall
 
-[![quality](https://img.shields.io/ansible/quality/27910)](https://galaxy.ansible.com/vbotka/freebsd_postinstall)[![Build Status](https://app.travis-ci.com/vbotka/ansible-freebsd-postinstall.svg?branch=master)](https://app.travis-ci.com/vbotka/ansible-freebsd-postinstall)[![Documentation Status](https://readthedocs.org/projects/docs/badge/?version=latest)](https://ansible-freebsd-postinstall.readthedocs.io/en/latest/)[![GitHub tag](https://img.shields.io/github/v/tag/vbotka/ansible-freebsd-postinstall)](https://github.com/vbotka/ansible-freebsd-postinstall/tags)
+[![quality](https://img.shields.io/ansible/quality/27910)](https://galaxy.ansible.com/vbotka/freebsd_postinstall)
+[![Build Status](https://app.travis-ci.com/vbotka/ansible-freebsd-postinstall.svg?branch=master)](https://app.travis-ci.com/vbotka/ansible-freebsd-postinstall)
+[![Documentation Status](https://readthedocs.org/projects/docs/badge/?version=latest)](https://ansible-freebsd-postinstall.readthedocs.io/en/latest/)
+[![GitHub tag](https://img.shields.io/github/v/tag/vbotka/ansible-freebsd-postinstall)](https://github.com/vbotka/ansible-freebsd-postinstall/tags)
 
-[Ansible role](https://galaxy.ansible.com/vbotka/freebsd_postinstall/)
+Ansible role [vbotka.freebsd_postinstall](https://galaxy.ansible.com/vbotka/freebsd_postinstall/) at galaxy.ansible.com
 
 FreeBSD post-install configuration: aliases, apcupsd, authorized keys,
 cron, devfs, dhclient, freebsd-update, fstab, groups, hostapd,
@@ -12,7 +15,7 @@ resolvconf.conf, smartd, snmpd, sudoers, ssh, sshd, swap, sysctl,
 syslog, timezone, tmpmfs, users, packages and ports, periodic.conf,
 overlays, wpa_supplicant, (wip) ...
 
-[Documentation at readthedocs.io](https://ansible-freebsd-postinstall.readthedocs.io)
+Documentation [Ansible role FreeBSD postinstall](https://ansible-freebsd-postinstall.readthedocs.io) at readthedocs.io
 
 This role and the documentation is work in progress. If the documentation of a task is missing it's necessary to review the [source code](https://github.com/vbotka/ansible-freebsd-postinstall/tree/master/tasks) to learn how to use it. If a functionality is missing consider role [config_light](https://galaxy.ansible.com/vbotka/config_light). See various [examples](https://github.com/vbotka/ansible-config-light/tree/master/contrib). If *config_light* is not able to do what you want create new tasks.
 
@@ -35,7 +38,8 @@ This role has been developed and tested with [FreeBSD Supported Releases](https:
 ### Collections
 
 * [ansible.posix](https://github.com/ansible-collections/ansible.posix)
-* [community.general](https://github.com/ansible-collections/community.general)
+* [ansible.utils](https://github.com/ansible-collections/ansible.utils)
+* [community.general](https://github.com/ansible-collections/community.general) >= 9.3.0
 
 ### Packages
 
@@ -95,11 +99,7 @@ ansible-galaxy collection install ansible.posix
 ansible-galaxy collection install community.general
 ```
 
-3) Fit variables, for example in *vars*
-
-```bash
-editor vbotka.freebsd_postinstall/vars/main.yml
-```
+3) Fit variables to your needs.
 
 4) Create playbook
 
@@ -119,7 +119,7 @@ ansible-playbook freebsd-postinstall.yml
 ```
 
 
-### Ansible lint
+## Ansible lint
 
 Use the configuration file *.ansible-lint.local* when running
 *ansible-lint*. Some rules might be disabled and some warnings might
@@ -128,6 +128,12 @@ be ignored. See the notes in the configuration file.
 ```bash
 shell> ansible-lint -c .ansible-lint.local
 ```
+
+
+## Configure the role
+
+The playbook *.configure.yml* provides blocks of tasks to configure
+the role. Read it to understand the details.
 
 
 ## Notes
@@ -141,7 +147,7 @@ fatal: [srv.example.com]: FAILED! => changed=false
   msg: unable to determine rcvar
 ```
 
-To solve this problem apply the path below
+To solve this problem apply the patch below
 
 ```bash
 --- devfs.orig	2019-07-13 20:31:04.688022000 +0200

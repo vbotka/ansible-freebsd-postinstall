@@ -1,6 +1,5 @@
 ---
-
-- name: "make: Debug (fp_make_debug={{ fp_make_debug }})"
+- name: "Make: Debug fp_make_debug={{ fp_make_debug }}"
   vars:
     msg: |-
       fp_make_conf_template: {{ fp_make_conf_template }}
@@ -9,13 +8,13 @@
       fp_make_conf_group: {{ fp_make_conf_group }}
       fp_make_conf_mode: {{ fp_make_conf_mode }}
       fp_make_conf:
-        {{ fp_make_conf|to_nice_yaml(indent=2)|indent(2) }}
+        {{ fp_make_conf | to_nice_yaml(indent=2) | indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
-  when: fp_make_debug|bool
+  when: fp_make_debug | bool
   tags: fp_make_debug
 
-- name: "make: Configure {{ fp_make_conf_file }}"
+- name: "Make: Configure {{ fp_make_conf_file }}"
   ansible.builtin.template:
     src: "{{ fp_make_conf_template }}"
     dest: "{{ fp_make_conf_file }}"
@@ -26,4 +25,3 @@
   tags: fp_make_conf
 
 # EOF
-...

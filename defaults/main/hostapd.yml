@@ -1,6 +1,6 @@
 ---
 fp_hostapd: false
-fp_hostapd_install: false  # list of packages: hostap
+fp_hostapd_install: false # list of packages: hostap
 fp_hostapd_enabled: false
 fp_hostapd_name: hostapd
 fp_hostapd_state: stopped
@@ -35,11 +35,11 @@ fp_hostapd_conf_file: /etc/hostapd.conf
 fp_hostapd_conf_template: hostapd.conf.j2
 fp_hostapd_conf_owner: root
 fp_hostapd_conf_group: wheel
-fp_hostapd_conf_mode: '0640'
+fp_hostapd_conf_mode: "0640"
 fp_hostapd_rcconf:
-  - key: "create_args_{{ fp_hostapd_interface }}"
-    value: "wlanmode hostap country {{ fp_hostapd_country }}"
-  - key: "wlans_{{ fp_hostapd_device }}"
+  - key: create_args_{{ fp_hostapd_interface }}
+    value: wlanmode hostap country {{ fp_hostapd_country }}
+  - key: wlans_{{ fp_hostapd_device }}
     value: "{{ fp_hostapd_interface }}"
-  - key: "ifconfig_{{ fp_hostapd_interface }}"
-    value: "inet {{ fp_hostapd_inet }} netmask {{ fp_hostapd_netmask }}"
+  - key: ifconfig_{{ fp_hostapd_interface }}
+    value: inet {{ fp_hostapd_inet }} netmask {{ fp_hostapd_netmask }}

@@ -1,6 +1,5 @@
 ---
-
-- name: "login: Create {{ fp_login_conf_file }}"
+- name: "Login: Create {{ fp_login_conf_file }}"
   ansible.builtin.template:
     src: "{{ fp_login_conf_template }}"
     dest: "{{ fp_login_conf_file }}"
@@ -9,14 +8,14 @@
     mode: "0644"
     backup: "{{ fp_backup }}"
   notify: rebuild login_conf
-  when: fp_login_conf_global|bool
+  when: fp_login_conf_global | bool
 
-- name: "login: Create local .login_conf"
+- name: "Login: Create local .login_conf"
   ansible.builtin.template:
     src: "{{ fp_login_conf_template_local }}"
-    dest: "/home/{{ item.user }}/.login_conf"
+    dest: /home/{{ item.user }}/.login_conf
     owner: "{{ item.user }}"
-    group: "{{ item.group|default(item.user) }}"
+    group: "{{ item.group | d(item.user) }}"
     mode: "0644"
     backup: "{{ fp_backup }}"
   loop: "{{ fp_login_conf_local }}"
@@ -24,4 +23,3 @@
     label: "{{ item.user }}"
 
 # EOF
-...

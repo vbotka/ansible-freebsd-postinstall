@@ -1,28 +1,25 @@
 ---
-
-- name: "fstab: Configure fstab entries by mount"
+- name: "Fstab: Configure fstab entries by mount"
   ansible.posix.mount:
     name: "{{ item.name }}"
     src: "{{ item.src }}"
     fstype: "{{ item.fstype }}"
     opts: "{{ item.opts }}"
-    dump: "{{ item.dump|default('0') }}"
-    passno: "{{ item.passno|default('0') }}"
-    state: "{{ item.state|default('mounted') }}"
+    dump: "{{ item.dump | d('0') }}"
+    passno: "{{ item.passno | d('0') }}"
+    state: "{{ item.state | d('mounted') }}"
     backup: "{{ fp_backup }}"
-  loop: "{{ fp_fstab_entries|
-            rejectattr('fstype', 'in', fp_fstab_fstype_blacklist) }}"
+  loop: "{{ fp_fstab_entries | rejectattr('fstype', 'in', fp_fstab_fstype_blacklist) }}"
 
-- name: "fstab: Configure fstab swap entries."
+- name: "Fstab: Configure fstab swap entries."
   ansible.builtin.lineinfile:
     path: /etc/fstab
-    regexp: '^\s*{{ item.src }}\s+(.*)$'
+    regexp: ^\s*{{ item.src }}\s+(.*)$
     line: "{{ item.src }} none swap {{ item.opts }} 0 0"
-    state: "{{ item.state|default('present') }}"
+    state: "{{ item.state | d('present') }}"
     backup: "{{ fp_backup }}"
   notify: mount swap
-  loop: "{{ fp_fstab_entries|
-            selectattr('fstype', 'eq', 'swap') }}"
+  loop: "{{ fp_fstab_entries | selectattr('fstype', 'eq', 'swap') }}"
 
 # NOTE:
 # The module ansible.posix.mount do not mount swap
@@ -33,4 +30,3 @@
 #   https://github.com/ansible/ansible/pull/49455
 
 # EOF
-...

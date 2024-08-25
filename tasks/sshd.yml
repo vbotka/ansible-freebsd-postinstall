@@ -1,42 +1,41 @@
 ---
-
-- name: "sshd: Debug (fp_sshd_debug={{ fp_sshd_debug }})"
+- name: "Sshd: Debug fp_sshd_debug={{ fp_sshd_debug }}"
   vars:
     msg: |-
       fp_sshd_bin: {{ fp_sshd_bin }}
       fp_sshd_conf_file: {{ fp_sshd_conf_file }}
       fp_sshd_conf:
-        {{ fp_sshd_conf|to_yaml(indent=2)|indent(2) }}
+        {{ fp_sshd_conf | to_yaml(indent=2) | indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
-  when: fp_sshd_debug|bool
+  when: fp_sshd_debug | bool
   tags: fp_sshd_debug
 
-- name: "sshd: Enable and start sshd"
+- name: "Sshd: Enable and start sshd"
   ansible.builtin.lineinfile:
     dest: /etc/rc.conf
-    regexp: '^\s*sshd_enable\s*=(.*)$'
-    line: 'sshd_enable="YES"'
+    regexp: ^\s*sshd_enable\s*=(.*)$
+    line: sshd_enable="YES"
     backup: "{{ fp_backup }}"
   notify: enable and start sshd
-  when: fp_sshd_enable|bool
+  when: fp_sshd_enable | bool
   tags: fp_sshd_rcconf
 
-- name: "sshd: Disable and stop sshd"
+- name: "Sshd: Disable and stop sshd"
   ansible.builtin.lineinfile:
     dest: /etc/rc.conf
-    regexp: '^\s*sshd_enable\s*=(.*)$'
-    line: 'sshd_enable="NO"'
+    regexp: ^\s*sshd_enable\s*=(.*)$
+    line: sshd_enable="NO"
     backup: "{{ fp_backup }}"
   notify: disable and stop sshd
-  when: not fp_sshd_enable|bool
+  when: not fp_sshd_enable | bool
   tags: fp_sshd_rcconf
 
-- name: "sshd: Configure {{ fp_sshd_conf_file }}"
+- name: "Sshd: Configure {{ fp_sshd_conf_file }}"
   ansible.builtin.lineinfile:
     dest: "{{ fp_sshd_conf_file }}"
-    regexp: '^\s*{{ item.key }}\s+(.*)$'
-    insertbefore: '^\s*#\s*{{ item.key }}'
+    regexp: ^\s*{{ item.key }}\s+(.*)$
+    insertbefore: ^\s*#\s*{{ item.key }}
     line: "{{ item.key }} {{ item.value }}"
     backup: "{{ fp_backup }}"
     validate: "{{ fp_sshd_bin }} -t -f %s"
@@ -44,12 +43,11 @@
   notify: reload sshd
   tags: fp_sshd_config
 
-- name: "sshd: {{ state }} sshd"
+- name: "Sshd: sshd {{ state }}"
   ansible.builtin.service:
     name: sshd
     state: "{{ state }}"
   vars:
-    state: "{{ fp_sshd_enable|bool|ternary('started', 'stopped') }}"
+    state: "{{ fp_sshd_enable | bool | ternary('started', 'stopped') }}"
 
 # EOF
-...

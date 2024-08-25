@@ -1,214 +1,166 @@
 ---
 
 pkg_list_amd64: []
-pkg_dict_amd64:
-  - pkglist: minimal
-    packages:
-      - shells/bash
-      - devel/git
-      - archivers/gtar
-      - ports-mgmt/pkg
-      - ports-mgmt/portmaster
-      - ports-mgmt/portupgrade
-      - net/rsync
-      - ftp/wget
-  - pkglist: postinstall
-    packages:
-      - editors/emacs
-  - pkglist: ansible
-    packages:
-      - sysutils/ansible
-      - sysutils/py-ansible-lint
-      - sysutils/py-ansible-runner
-  - pkglist: smart
-    packages:
-      - sysutils/smartmontools
-      - sysutils/smart
-  - pkglist: hostap
-    packages:
-      - net/hostapd
-  - pkglist: procmail
-    packages:
-      - mail/procmail
-  - pkglist: apcups
-    packages:
-      - sysutils/apcupsd
-  - pkglist: wpa_supplicant
-    packages:
-      - security/wpa_supplicant
-  - pkglist: linux
-    packages:
-      - emulators/linux_base-{{ bsd_linux_version }}
-  - pkglist: devel
-    packages:
-      - devel/llvm{{ bsd_gcc_version }}
-  - pkglist: pip
-    packages:
-      - devel/py-pip
-  - pkglist: joomla
-    packages:
-      - www/joomla3
-  - pkglist: roundcube
-    packages:
-      - archivers/php{{ bsd_php_version }}-bz2
-      - archivers/php{{ bsd_php_version }}-phar
-      - archivers/php{{ bsd_php_version }}-zip
-      - archivers/php{{ bsd_php_version }}-zlib
-      - converters/php{{ bsd_php_version }}-iconv
-      - converters/php{{ bsd_php_version }}-mbstring
-      - databases/mysql{{ bsd_mysql_version }}-client
-      - databases/mysql{{ bsd_mysql_version }}-server
-      - databases/php{{ bsd_php_version }}-mysqli
-      - databases/php{{ bsd_php_version }}-pdo
-      - databases/php{{ bsd_php_version }}-pdo_mysql
-      - databases/php{{ bsd_php_version }}-pdo_sqlite
-      - databases/php{{ bsd_php_version }}-sqlite3
-      - devel/php{{ bsd_php_version }}-json
-      - devel/php{{ bsd_php_version }}-tokenizer
-      - ftp/php{{ bsd_php_version }}-curl
-      - ftp/php{{ bsd_php_version }}-ftp
-      - graphics/php{{ bsd_php_version }}-exif
-      - graphics/php{{ bsd_php_version }}-gd
-      - lang/php{{ bsd_php_version }}
-      - lang/php{{ bsd_php_version }}-extensions
-      - mail/roundcube
-      - net/php{{ bsd_php_version }}-ldap
-      - security/php{{ bsd_php_version }}-filter
-#     - security/php{{ bsd_php_version }}-hash  # The hash module is now part of the PHP core
-      - security/php{{ bsd_php_version }}-openssl
-      - sysutils/php{{ bsd_php_version }}-fileinfo
-      - sysutils/php{{ bsd_php_version }}-posix
-      - textproc/php{{ bsd_php_version }}-ctype
-      - textproc/php{{ bsd_php_version }}-dom
-      - textproc/php{{ bsd_php_version }}-pspell
-      - textproc/php{{ bsd_php_version }}-simplexml
-#     - textproc/php{{ bsd_php_version }}-wddx  # Deprecated
-      - textproc/php{{ bsd_php_version }}-xml
-      - textproc/php{{ bsd_php_version }}-xmlreader
-      - textproc/php{{ bsd_php_version }}-xmlwriter
-      - textproc/php{{ bsd_php_version }}-xsl
-      - www/mod_php{{ bsd_php_version }}
-      - www/php{{ bsd_php_version }}-opcache
-      - www/php{{ bsd_php_version }}-session
-  - pkglist: roundcube_aspell
-    packages:
-      - textproc/aspell
-      - textproc/en-aspell
-  - pkglist: mcrypt
-    packages:
-      - security/pecl-mcrypt
-#     - security/{{ php_mcrypt }}
-  - pkglist: mysql
-    packages:
-      - databases/mysql{{ bsd_mysql_version }}-client
-      - databases/mysql{{ bsd_mysql_version }}-server
-  - pkglist: mysql_extra
-    packages:
-      - databases/py-pymysql
-      - databases/py-mysql-connector-python
-      - security/py-cryptography
-      - databases/py-mysqlclient
-      - databases/py-MySQLdb
-  - pkglist: pf
-    packages:
-      - security/sshguard
-  - pkglist: apache
-    packages:
-      - www/apache{{ apache_version }}
-      - www/mod_php{{ apache_php_version }}
-  - pkglist: mailserver
-    packages:
-      - mail/postfix-sasl
-      - mail/dovecot
-      - security/cyrus-sasl2
-  - pkglist: mailserver_sieve
-    packages:
-      - mail/dovecot-pigeonhole
-  - pkglist: mailserver_spamassasin
-    packages:
-      - mail/spamassassin
-      - mail/sa-utils
-  - pkglist: dhcp
-    packages:
-      - net/isc-dhcp{{ bsd_dhcp_version }}-server
-      - net/dhcpdump
-  - pkglist: dns
-    packages:
-      - dns/bind{{ bsd_bind_version }}
-      - dns/bind-tools
-  - pkglist: yazvs
-    packages:
-      - dns/p5-Net-DNS
-      - dns/p5-Net-DNS-SEC
-      - dns/p5-Net-DNS-ZoneFile-Fast
-      - lang/p5-Switch
-      - misc/p5-List-Compare
-  - pkglist: leutils
-    packages:
-      - shells/bash
-      - devel/git
-      - security/py-certbot
-  - pkglist: integrity
-    packages:
-      - shells/bash
-      - devel/git
-      - archivers/gtar
-      - security/md5deep
-  - pkglist: nginx
-    packages:
-      - www/nginx
-      - www/nginx-full
-      - www/nginx-lite
-  - pkglist: jail
-    packages:
-      - sysutils/ezjail
-      - ports-mgmt/portsnap
-  - pkglist: security
-    packages:
-      - security/openssl
-      - security/ca_root_nss
-      - security/py-openssl
-      - security/py-acme-tiny
-      - security/py-certbot
-  - pkglist: ssmtp
-    packages:
-      - mail/ssmtp
-  - pkglist: poudriere
-    packages:
-      - ports-mgmt/poudriere
-      - ports-mgmt/portmaster
-      - devel/ccache
-  - pkglist: php
-    packages:
-      - lang/php{{ bsd_php_version }}
-  - pkglist: python
-    packages:
-      - lang/python{{ bsd_python_version }}
-      - lang/python
-      - lang/python3
-  - pkglist: docker
-    packages:
-      - sysutils/docker-freebsd
-      - security/ca_root_nss
-      - shells/bash
-      - print/indexinfo
-      - lang/go
-      - databases/sqlite3
-      - devel/gettext-runtime
-      - devel/readline
-  - pkglist: rsnapshot
-    packages:
-      - sysutils/rsnapshot
-  - pkglist: snmpd
-    packages:
-      - net-mgmt/net-snmp
-      - net-mgmt/py-pysnmp
-  - pkglist: qemu
-    packages:
-      - emulators/qemu
-  - pkglist: qemu_user_static
-    packages:
-      - emulators/qemu-user-static
+pkg_dict_amd64: "{{ pkg_dict_amd64_dict | dict2items(key_name='pkglist', value_name='packages') }}"
 
-# EOF
-...
+pkg_dict_amd64_dict:
+  ansible:
+    - sysutils/ansible
+    - sysutils/py-ansible-lint
+    - sysutils/py-ansible-runner
+  apache:
+    - www/apache{{ apache_version }}
+    - www/mod_php{{ apache_php_version }}
+  apcups:
+    - sysutils/apcupsd
+  devel:
+    - devel/llvm
+    - devel/py-pip
+  dhcp:
+    - net/isc-dhcp{{ bsd_dhcp_version }}-server
+    - net/dhcpdump
+  dns:
+    - dns/bind{{ bsd_bind_version }}
+    - dns/bind-tools
+  docker:
+    - sysutils/docker-freebsd
+    - security/ca_root_nss
+    - shells/bash
+    - print/indexinfo
+    - lang/go
+    - databases/sqlite3
+    - devel/gettext-runtime
+    - devel/readline
+  hostap:
+    - net/hostapd
+  integrity:
+    - shells/bash
+    - devel/git@default
+    - archivers/gtar
+    - security/md5deep
+  jail:
+    - sysutils/ezjail
+  joomla:
+    - www/joomla3
+  leutils:
+    - shells/bash
+    - devel/git@default
+    - security/py-certbot
+  linux:
+    - emulators/linux_base-{{ bsd_linux_version }}
+  mailserver:
+    - mail/postfix@sasl
+    - mail/dovecot
+    - security/cyrus-sasl2
+  mailserver_sieve:
+    - mail/dovecot-pigeonhole
+  mailserver_spamassasin:
+    - mail/spamassassin
+    - mail/sa-utils
+  mcrypt:
+    - security/pecl-mcrypt
+  minimal:
+    - shells/bash
+    - devel/git@default
+    - archivers/gtar
+    - ports-mgmt/pkg
+    - ports-mgmt/portmaster
+    - ports-mgmt/portupgrade
+    - net/rsync
+    - ftp/wget
+  mysql:
+    - databases/mysql{{ bsd_mysql_version }}-client
+    - databases/mysql{{ bsd_mysql_version }}-server
+  mysql_extra:
+    - databases/py-pymysql
+    - databases/py-mysql-connector-python
+    - security/py-cryptography
+    - databases/py-mysqlclient
+  nginx:
+    - www/nginx
+    - www/nginx-full
+    - www/nginx-lite
+  pf:
+    - security/sshguard
+  php:
+    - lang/php{{ bsd_php_version }}
+  postinstall:
+    - editors/emacs@nox
+  poudriere:
+    - ports-mgmt/poudriere
+    - ports-mgmt/portmaster
+    - devel/ccache
+  procmail:
+    - mail/procmail
+  python:
+    - lang/python{{ bsd_python_version }}
+    - lang/python
+    - lang/python3
+  qemu:
+    - emulators/qemu
+  qemu_user_static:
+    - emulators/qemu-user-static
+  roundcube:
+    - archivers/php{{ bsd_php_version }}-bz2
+    - archivers/php{{ bsd_php_version }}-phar
+    - archivers/php{{ bsd_php_version }}-zip
+    - archivers/php{{ bsd_php_version }}-zlib
+    - converters/php{{ bsd_php_version }}-iconv
+    - converters/php{{ bsd_php_version }}-mbstring
+    - databases/mysql{{ bsd_mysql_version }}-client
+    - databases/mysql{{ bsd_mysql_version }}-server
+    - databases/php{{ bsd_php_version }}-mysqli
+    - databases/php{{ bsd_php_version }}-pdo
+    - databases/php{{ bsd_php_version }}-pdo_mysql
+    - databases/php{{ bsd_php_version }}-pdo_sqlite
+    - databases/php{{ bsd_php_version }}-sqlite3
+    - devel/php{{ bsd_php_version }}-tokenizer
+    - ftp/php{{ bsd_php_version }}-curl
+    - ftp/php{{ bsd_php_version }}-ftp
+    - graphics/php{{ bsd_php_version }}-exif
+    - graphics/php{{ bsd_php_version }}-gd
+    - lang/php{{ bsd_php_version }}
+    - lang/php{{ bsd_php_version }}-extensions
+    - mail/roundcube
+    - net/php{{ bsd_php_version }}-ldap
+    - security/php{{ bsd_php_version }}-filter
+    - sysutils/php{{ bsd_php_version }}-fileinfo
+    - sysutils/php{{ bsd_php_version }}-posix
+    - textproc/php{{ bsd_php_version }}-ctype
+    - textproc/php{{ bsd_php_version }}-dom
+    - textproc/php{{ bsd_php_version }}-pspell
+    - textproc/php{{ bsd_php_version }}-simplexml
+    - textproc/php{{ bsd_php_version }}-xml
+    - textproc/php{{ bsd_php_version }}-xmlreader
+    - textproc/php{{ bsd_php_version }}-xmlwriter
+    - textproc/php{{ bsd_php_version }}-xsl
+    - www/mod_php{{ bsd_php_version }}
+    - www/php{{ bsd_php_version }}-opcache
+    - www/php{{ bsd_php_version }}-session
+  roundcube_aspell:
+    - textproc/aspell
+    - textproc/en-aspell
+  rsnapshot:
+    - sysutils/rsnapshot
+  security:
+    - security/openssl
+    - security/ca_root_nss
+    - security/py-openssl
+    - security/py-acme-tiny
+    - security/py-certbot
+  smart:
+    - sysutils/smartmontools
+    - sysutils/smart
+  snmpd:
+    - net-mgmt/net-snmp
+    - net-mgmt/py-pysnmp
+  ssmtp:
+    - mail/ssmtp
+  wpa_supplicant:
+    - security/wpa_supplicant
+  yazvs:
+    - dns/p5-Net-DNS
+    - dns/p5-Net-DNS-SEC
+    - dns/p5-Net-DNS-ZoneFile-Fast
+    - lang/p5-Switch
+    - misc/p5-List-Compare

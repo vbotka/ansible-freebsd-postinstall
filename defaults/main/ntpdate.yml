@@ -2,7 +2,7 @@
 fp_ntpdate: false
 
 # Run ntpdate to sync time on boot
-fp_ntpdate_enable: 'NO'
+fp_ntpdate_enable: false
 
 # -b Force the time to be stepped using the settimeofday(2) system call,
 # rather than slewed (default) using the adjtime(2) system call.  This
@@ -10,8 +10,8 @@ fp_ntpdate_enable: 'NO'
 fp_ntpdate_flags: -b
 
 # Sync time on ntpd startup
-fp_ntpd_sync_on_start: 'YES'
+fp_ntpd_sync_on_start: "YES"
 fp_ntpdate_rcconf:
-  - {key: ntpdate_enable, value: "{{ fp_ntpdate_enable }}"}
-  - {key: ntpdate_flags, value: "{{ fp_ntpdate_flags }}"}
-  - {key: ntpd_sync_on_start, value: "{{ fp_ntpd_sync_on_start }}"}
+  - { key: ntpdate_enable, value: "{{ fp_ntpdate_enable | bool | ternary('YES', 'NO') }}" }
+  - { key: ntpdate_flags, value: "{{ fp_ntpdate_flags }}" }
+  - { key: ntpd_sync_on_start, value: "{{ fp_ntpd_sync_on_start }}" }

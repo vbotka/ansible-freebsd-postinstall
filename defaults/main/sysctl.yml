@@ -1,7 +1,7 @@
 ---
 fp_sysctl: false
 fp_sysctl_debug: false
-fp_sysctl_warning_loader_needed: true
+fp_sysctl_tuneables_warning: true
 fp_sysctl_conf_file: /etc/sysctl.conf
 fp_sysctl_ignoreerrors: false
 fp_sysctl_conf: []

@@ -1,9 +1,8 @@
 ---
-
 - name: "{{ oi.label }}"
   ansible.builtin.lineinfile:
-    dest: "{{ oi.dest|default('/etc/rc.conf') }}"
-    regexp: '^\s*{{ item.key }}\s*=(.*)$'
+    dest: "{{ oi.dest | default('/etc/rc.conf') }}"
+    regexp: ^\s*{{ item.key }}\s*=(.*)$
     line: '{{ item.key }}="{{ item.value }}"'
     backup: "{{ fp_backup }}"
   loop: "{{ oi.conf }}"
@@ -11,4 +10,3 @@
   notify: "{{ oi.notify }}"
 
 # EOF
-...

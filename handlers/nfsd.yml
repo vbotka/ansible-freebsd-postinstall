@@ -1,46 +1,110 @@
 ---
-
 # nfsd
-- name: enable and start nfs server
-  ansible.builtin.service: name=nfsd state=started enabled=true
-- name: disable and stop nfs server
-  ansible.builtin.service: name=nfsd state=stopped enabled=false
-- name: restart nfs server
-  ansible.builtin.service: name=nfsd state=restarted
-  when: fp_nfsd_enable|bool
+- name: Enable and start nfs server
+  listen: enable and start nfs server
+  ansible.builtin.service:
+    name: nfsd
+    state: started
+    enabled: true
+
+- name: Disable and stop nfs server
+  listen: disable and stop nfs server
+  ansible.builtin.service:
+    name: nfsd
+    state: stopped
+    enabled: false
+
+- name: Restart nfs server
+  listen: restart nfs server
+  ansible.builtin.service:
+    name: nfsd
+    state: restarted
+  when: fp_nfsd_enable | bool
 
 # mountd
-- name: enable and start mountd
-  ansible.builtin.service: name=mountd state=started enabled=true
-- name: disable and stop mountd
-  ansible.builtin.service: name=mountd state=stopped enabled=false
-- name: reload mountd
-  ansible.builtin.service: name=mountd state=reloaded
-  when: fp_mountd_enable|bool
+- name: Enable and start mountd
+  listen: enable and start mountd
+  ansible.builtin.service:
+    name: mountd
+    state: started
+    enabled: true
+
+- name: Disable and stop mountd
+  listen: disable and stop mountd
+  ansible.builtin.service:
+    name: mountd
+    state: stopped
+    enabled: false
+
+- name: Reload mountd
+  listen: reload mountd
+  ansible.builtin.service:
+    name: mountd
+    state: reloaded
+  when: fp_mountd_enable | bool
 
 # rpcbind
-- name: enable and start rpcbind
-  ansible.builtin.service: name=rpcbind state=started enabled=true
-- name: disable and stop rpcbind
-  ansible.builtin.service: name=rpcbind state=stopped enabled=false
-- name: restart rpcbind
-  ansible.builtin.service: name=rpcbind state=restarted
-  when: fp_rpcbind_enable|bool
+- name: Enable and start rpcbind
+  listen: enable and start rpcbind
+  ansible.builtin.service:
+    name: rpcbind
+    state: started
+    enabled: true
+
+- name: Disable and stop rpcbind
+  listen: disable and stop rpcbind
+  ansible.builtin.service:
+    name: rpcbind
+    state: stopped
+    enabled: false
+
+- name: Restart rpcbind
+  listen: restart rpcbind
+  ansible.builtin.service:
+    name: rpcbind
+    state: restarted
+  when: fp_rpcbind_enable | bool
 
 # lockd
-- name: enable and start lockd
-  ansible.builtin.service: name=lockd state=started enabled=true
-- name: disable and stop lockd
-  ansible.builtin.service: name=lockd state=stopped enabled=false
-- name: restart lockd
-  ansible.builtin.service: name=lockd state=restarted
-  when: fp_rpc_lockd_enable|bool
+- name: Enable and start lockd
+  listen: enable and start lockd
+  ansible.builtin.service:
+    name: lockd
+    state: started
+    enabled: true
+
+- name: Disable and stop lockd
+  listen: disable and stop lockd
+  ansible.builtin.service:
+    name: lockd
+    state: stopped
+    enabled: false
+
+- name: Restart lockd
+  listen: restart lockd
+  ansible.builtin.service:
+    name: lockd
+    state: restarted
+  when: fp_rpc_lockd_enable | bool
 
 # statd
-- name: enable and start statd
-  ansible.builtin.service: name=statd state=started enabled=true
-- name: disable and stop statd
-  ansible.builtin.service: name=statd state=stopped enabled=false
-- name: restart statd
-  ansible.builtin.service: name=statd state=restarted
-  when: fp_rpc_statd_enable|bool
+- name: Enable and start statd
+  listen: enable and start statd
+  ansible.builtin.service:
+    name: statd
+    state: started
+    enabled: true
+
+- name: Disable and stop statd
+  listen: disable and stop statd
+  ansible.builtin.service:
+    name: statd
+    state: stopped
+    enabled: false
+
+- name: Restart statd
+  listen: restart statd
+  ansible.builtin.service:
+    name: statd
+    state: restarted
+  when: fp_rpc_statd_enable | bool

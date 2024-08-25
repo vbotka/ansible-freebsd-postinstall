@@ -1,57 +1,53 @@
 ---
-
-- name: "packages: Debug (fp_packages_debug={{ fp_packages_debug }})"
+- name: "Packages: Debug fp_packages_debug={{ fp_packages_debug }}"
   vars:
     msg: |-
-         freebsd_install_method: {{ freebsd_install_method }}
-         freebsd_use_packages: {{ freebsd_use_packages }}
-         freebsd_install_retries: {{ freebsd_install_retries }}
-         freebsd_install_delay: {{ freebsd_install_delay }}
-         fp_install: {{ fp_install }}
-         fp_pkg_autoremove: {{ fp_pkg_autoremove|default('UNDEFINED') }}
-         fp_pkg_cached: {{ fp_pkg_cached|default('UNDEFINED') }}
-         fp_pkg_chroot: {{ fp_pkg_chroot|default('UNDEFINED') }}
-         fp_pkg_jail: {{ fp_pkg_jail|default('UNDEFINED') }}
-         fp_pkg_pkgsite: {{ fp_pkg_pkgsite|default('UNDEFINED') }}
-         fp_pkg_rootdir: {{ fp_pkg_rootdir|default('UNDEFINED') }}
-         fp_pkg_state: {{ fp_pkg_state|default('UNDEFINED') }}
+      freebsd_install_method: {{ freebsd_install_method }}
+      freebsd_use_packages: {{ freebsd_use_packages }}
+      freebsd_install_retries: {{ freebsd_install_retries }}
+      freebsd_install_delay: {{ freebsd_install_delay }}
+      fp_install: {{ fp_install }}
+      fp_pkg_annotation: {{ fp_pkg_annotation | d('UNDEFINED') }}
+      fp_pkg_autoremove: {{ fp_pkg_autoremove | d('UNDEFINED') }}
+      fp_pkg_cached: {{ fp_pkg_cached | d('UNDEFINED') }}
+      fp_pkg_chroot: {{ fp_pkg_chroot | d('UNDEFINED') }}
+      fp_pkg_jail: {{ fp_pkg_jail | d('UNDEFINED') }}
+      fp_pkg_pkgsite: {{ fp_pkg_pkgsite | d('UNDEFINED') }}
+      fp_pkg_rootdir: {{ fp_pkg_rootdir | d('UNDEFINED') }}
+      fp_pkg_state: {{ fp_pkg_state | d('UNDEFINED') }}
+      fp_pkg_use_globs: {{ fp_pkg_use_globs | d('UNDEFINED') }}
 
-         apache_version: {{ apache_version }}
-         apache_php_version: {{ apache_php_version }}
-         bsd_bind_version: {{ bsd_bind_version }}
-         bsd_dhcp_version: {{ bsd_dhcp_version }}
-         bsd_gcc_version: {{ bsd_gcc_version }}
-         bsd_linux_version: {{ bsd_linux_version }}
-         bsd_mysql_version: {{ bsd_mysql_version }}
-         bsd_perl_version: {{ bsd_perl_version }}
-         bsd_php_version: {{ bsd_php_version }}
-         bsd_python_version: {{ bsd_python_version }}
-         bsd_ssl_version: {{ bsd_ssl_version }}
+      apache_version: {{ apache_version | d('UNDEFINED') }}
+      apache_php_version: {{ apache_php_version | d('UNDEFINED') }}
+      bsd_bind_version: {{ bsd_bind_version | d('UNDEFINED') }}
+      bsd_dhcp_version: {{ bsd_dhcp_version | d('UNDEFINED') }}
+      bsd_gcc_version: {{ bsd_gcc_version | d('UNDEFINED') }}
+      bsd_linux_version: {{ bsd_linux_version | d('UNDEFINED') }}
+      bsd_mysql_version: {{ bsd_mysql_version | d('UNDEFINED') }}
+      bsd_perl_version: {{ bsd_perl_version | d('UNDEFINED') }}
+      bsd_php_version: {{ bsd_php_version | d('UNDEFINED') }}
+      bsd_python_version: {{ bsd_python_version | d('UNDEFINED') }}
+      bsd_ssl_version: {{ bsd_ssl_version | d('UNDEFINED') }}
 
-         fp_links:
-           {{ fp_links|to_yaml(indent=2)|indent(2) }}
-         fp_packages: (items2dict(key_name='list', value_name='enabled'))
-           {{ fp_packages|sort(attribute='list')|
-                          items2dict(key_name='list', value_name='enabled')|
-                          to_nice_yaml(indent=2)|indent(2) }}
-         ansible_architecture: {{ ansible_architecture }}
-         pkg_dict_{{ ansible_architecture }}: (items2dict(key_name='pkglist', value_name='packages'))
-           {{ lookup('vars', 'pkg_dict_' ~ ansible_architecture)|
-              sort(attribute='pkglist')|
-              items2dict(key_name='pkglist', value_name='packages')|
-              to_yaml(indent=2)|indent(2) }}
+      fp_links:
+        {{ fp_links | to_yaml(indent=2) | indent(2) }}
+      fp_packages:
+        {{ fp_packages | to_yaml(indent=2) | indent(2) }}
+      ansible_architecture: {{ ansible_architecture }}
+      pkg_dict_{{ ansible_architecture }}:
+        {{ lookup('vars', 'pkg_dict_' ~ ansible_architecture) | to_yaml(indent=2) | indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
-  when: fp_packages_debug|bool
+  when: fp_packages_debug | bool
   tags: fp_packages_debug
 
-- name: "packages: Install packages"
+- name: "Packages: Install packages"
   ansible.builtin.include_tasks: packages-install.yml
-  loop: "{{ fp_packages }}"
-  when: item.enabled
+  loop: "{{ fp_packages | selectattr('enabled') }}"
+  loop_control:
+    label: "{{ item.list }}"
 
-# links
-- name: "packages: Create symbolic links"
+- name: "Packages: Create symbolic links"
   ansible.builtin.file:
     src: "{{ item.target }}"
     dest: "{{ item.link }}"
@@ -61,4 +57,3 @@
   tags: fp_packages_links
 
 # EOF
-...

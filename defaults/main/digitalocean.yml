@@ -3,12 +3,12 @@ fp_do_debug: false
 fp_do_default_user: freebsd
 fp_do_default_user_remove: false
 fp_do_default_user_remove_home: false
-fp_do_rcconf_cloudinit_enable: 'YES'
-fp_do_rcconf_digitaloceanpre_enable: 'YES'
-fp_do_rcconf_digitalocean_enable: 'YES'
+fp_do_rcconf_cloudinit_enable: "YES"
+fp_do_rcconf_digitaloceanpre_enable: "YES"
+fp_do_rcconf_digitalocean_enable: "YES"
 fp_do_rcconf:
-  - {key: cloudinit_enable, value: "{{ fp_do_rcconf_cloudinit_enable }}"}
-  - {key: digitaloceanpre, value: "{{ fp_do_rcconf_digitaloceanpre_enable }}"}
-  - {key: digitalocean, value: "{{ fp_do_rcconf_digitalocean_enable }}"}
+  - { key: cloudinit_enable, value: "{{ fp_do_rcconf_cloudinit_enable }}" }
+  - { key: digitaloceanpre, value: "{{ fp_do_rcconf_digitaloceanpre_enable }}" }
+  - { key: digitalocean, value: "{{ fp_do_rcconf_digitalocean_enable }}" }
 fp_do_legacy_rcconf:
-  - {key: hostname, value: "{{ rc_conf_hostname }}"}
+  - { key: hostname, value: "{{ rc_conf_hostname }}" }

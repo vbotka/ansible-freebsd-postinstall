@@ -1,6 +1,7 @@
 apcupsd.conf.j2
 exports.j2
 freebsd-update.conf.j2
+freebsd-update.conf2.j2
 groupadd.j2
 groupdel.j2
 groupmod.j2
@@ -10,6 +11,7 @@ hosts-aliases-list.j2
 hosts.allow-01.j2
 hosts.allow-02.j2
 loader.conf.j2
+loader.conf2.j2
 login.conf.j2
 login_conf.j2
 make.conf.j2

@@ -13,101 +13,75 @@ KeyPrint {{ fp_freebsd_update_conf.KeyPrint }}
 ServerName {{ fp_freebsd_update_conf.ServerName }}
 
 # Components of the base system which should be kept updated.
-Components {{ fp_freebsd_update_conf.Components | join(' ') }}
+Components {{ fp_freebsd_update_conf.Components }}
 
 # Example for updating the userland and the kernel source code only:
 # Components src/base src/sys world
 
 # Paths which start with anything matching an entry in an IgnorePaths
 # statement will be ignored.
-{% if fp_freebsd_update_conf.IgnorePaths | length > 0 %}
 IgnorePaths {{ fp_freebsd_update_conf.IgnorePaths }}
-{% else %}
-IgnorePaths
-{% endif %}
 
 # Paths which start with anything matching an entry in an IDSIgnorePaths
 # statement will be ignored by "freebsd-update IDS".
-{% for item in fp_freebsd_update_conf.IDSIgnorePaths %}
-IDSIgnorePaths {{ item }}
-{% endfor %}
+IDSIgnorePaths {{ fp_freebsd_update_conf.IDSIgnorePaths }}
 
 # Paths which start with anything matching an entry in an UpdateIfUnmodified
 # statement will only be updated if the contents of the file have not been
 # modified by the user (unless changes are merged; see below).
-UpdateIfUnmodified {{ fp_freebsd_update_conf.UpdateIfUnmodified | join(' ') }}
+UpdateIfUnmodified {{ fp_freebsd_update_conf.UpdateIfUnmodified }}
 
 # When upgrading to a new FreeBSD release, files which match MergeChanges
 # will have any local changes merged into the version from the new release.
-MergeChanges {{ fp_freebsd_update_conf.MergeChanges | join(' ') }}
+MergeChanges {{ fp_freebsd_update_conf.MergeChanges }}
 
 ### Default configuration options:
 
 # Directory in which to store downloaded updates and temporary
 # files used by FreeBSD Update.
 # WorkDir /var/db/freebsd-update
-{% if fp_freebsd_update_conf.WorkDir is defined %}
 WorkDir {{ fp_freebsd_update_conf.WorkDir }}
-{% endif %}
 
 # Destination to send output of "freebsd-update cron" if an error
 # occurs or updates have been downloaded.
 # MailTo root
-{% if fp_freebsd_update_conf.MailTo is defined %}
 MailTo {{ fp_freebsd_update_conf.MailTo }}
-{% endif %}
 
 # Is FreeBSD Update allowed to create new files?
 # AllowAdd yes
-{% if fp_freebsd_update_conf.AllowAdd is defined %}
 AllowAdd {{ fp_freebsd_update_conf.AllowAdd }}
-{% endif %}
 
 # Is FreeBSD Update allowed to delete files?
 # AllowDelete yes
-{% if fp_freebsd_update_conf.AllowDelete is defined %}
 AllowDelete {{ fp_freebsd_update_conf.AllowDelete }}
-{% endif %}
 
 # If the user has modified file ownership, permissions, or flags, should
 # FreeBSD Update retain this modified metadata when installing a new version
 # of that file?
 # KeepModifiedMetadata yes
-{% if fp_freebsd_update_conf.KeepModifiedMetadata is defined %}
 KeepModifiedMetadata {{ fp_freebsd_update_conf.KeepModifiedMetadata }}
-{% endif %}
 
 # When upgrading between releases, should the list of Components be
 # read strictly (StrictComponents yes) or merely as a list of components
 # which *might* be installed of which FreeBSD Update should figure out
 # which actually are installed and upgrade those (StrictComponents no)?
 # StrictComponents no
-{% if fp_freebsd_update_conf.StrictComponents is defined %}
 StrictComponents {{ fp_freebsd_update_conf.StrictComponents }}
-{% endif %}
 
 # When installing a new kernel perform a backup of the old one first
 # so it is possible to boot the old kernel in case of problems.
 # BackupKernel yes
-{% if fp_freebsd_update_conf.BackupKernel is defined %}
 BackupKernel {{ fp_freebsd_update_conf.BackupKernel }}
-{% endif %}
 
 # If BackupKernel is enabled, the backup kernel is saved to this
 # directory.
 # BackupKernelDir /boot/kernel.old
-{% if fp_freebsd_update_conf.BackupKernelDir is defined %}
 BackupKernelDir {{ fp_freebsd_update_conf.BackupKernelDir }}
-{% endif %}
 
 # When backing up a kernel also back up debug symbol files?
 # BackupKernelSymbolFiles no
-{% if fp_freebsd_update_conf.BackupKernelSymbolFiles is defined %}
 BackupKernelSymbolFiles {{ fp_freebsd_update_conf.BackupKernelSymbolFiles }}
-{% endif %}
 
 # Create a new boot environment when installing patches
 # CreateBootEnv yes
-{% if fp_freebsd_update_conf.CreateBootEnv is defined %}
 CreateBootEnv {{ fp_freebsd_update_conf.CreateBootEnv }}
-{% endif %}

@@ -9,3 +9,18 @@ fp_install: false
 fp_packages_debug: false
 fp_packages: []
 fp_links: []
+
+# Optional parameters of the module community.general.pkgng
+# fp_pkg_annotation: [str]
+# fp_pkg_autoremove: false
+# fp_pkg_cached: false
+# fp_pkg_chroot: <path>
+# fp_pkg_ignore_osver: false
+# fp_pkg_jail: <jail name or id>
+# fp_pkg_pkgsite: <name of a repository configured in /usr/local/etc/pkg/repos>
+# fp_pkg_pkgsite: FreeBSD
+# fp_pkg_rootdir: <path>
+# fp_pkg_state: present
+# fp_pkg_use_globs: true
+
+# EOF

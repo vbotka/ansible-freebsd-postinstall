@@ -9,13 +9,14 @@ Feel free to `share your feedback and report issues <https://github.com/vbotka/a
 
 `Contributions are welcome <https://github.com/firstcontributions/first-contributions>`_.
 
-.. seealso::
-   * Source code :ref:`as_main.yml`
-
 .. toctree::
    :caption: Table of Contents
+   :maxdepth: 1
 
-   guide-task-mount-img
-   guide-task-mount-iso
-   guide-task-passwords
-   guide-task-users.rst
+   tasks-mount-img
+   tasks-mount-iso
+   tasks-packages
+   tasks-passwords
+   tasks-users
+
+.. seealso:: Source code :ref:`as_main.yml`

@@ -3,8 +3,8 @@
 Debug
 =====
 
-To display some facts (11-17) and values of the control variables
-(34-78), select the task *fp_debug* and enable the debug output. By
+To display some facts (12-18) and values of the control variables
+(36-80), select the task *fp_debug* and enable the debug output. By
 default, all control variables are disabled. Below is an example
 configuration of a typical VM for testing
 
@@ -23,16 +23,26 @@ sshd below. Inspect the files in the ``tasks`` directory whether
 
 .. note::
 
-   * The debug output of this role is optimized for the *default* or *yaml* callback plugin. Set the
-     plugin in the environment, e.g. ``shell> export ANSIBLE_STDOUT_CALLBACK=default`` or in the
-     configuration file ``stdout_callback = default``.
+   * The debug output of this role is optimized for the *yaml* callback plugin. Set the
+     plugin in the environment ::
 
-   * See the details about the yaml callback plugin ``shell> ansible-doc -t callback yaml``
+       shell> export ANSIBLE_STDOUT_CALLBACK=yaml
 
-   * See the list of other callback plugins ``shell> ansible-doc -t callback -l``
+     or in the configuration file ::
+
+       stdout_callback = yaml
+
+   * See the details about the yaml callback plugin ::
+
+       shell> ansible-doc -t callback community.general.yaml
+
+   * See the list of other callback plugins ::
+
+       shell> ansible-doc -t callback -l
 
 
 .. seealso::
+
    * `Playbook Debugger <https://docs.ansible.com/ansible/latest/user_guide/playbooks_debugger.html>`_
    * `Debugging modules <https://docs.ansible.com/ansible/latest/dev_guide/debugging.html#debugging-modules>`_
-   * `Python Debugging With Pdb <https://realpython.com/python-debugging-pdb/>`_
+   * `Python Debugging With Pdb <https://docs.python.org/3/library/pdb.html>`_

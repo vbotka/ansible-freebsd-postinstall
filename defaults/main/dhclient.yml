@@ -19,7 +19,6 @@ fp_dhclient_sanity: true
 # blocks
 # fp_dhclient_ifn: "{{ fp_dhclient_conf_blocks|map(attribute='ifn')|unique }}"
 fp_dhclient_ifn: []
-
 # If set True (default) the list of the iterfaces will be created from
 # active leases /var/db/dhclient.leases.*
 fp_dhclient_ifn_leases: true

@@ -1,10 +1,10 @@
 ---
 fp_loader: false
 fp_loader_debug: false
-fp_loader_warning: true
-fp_loader_conf_template_enable: false
+fp_loader_tuneables_warning: true
 fp_loader_load_modules: false
-fp_loader_conf_template: loader.conf.j2
+fp_loader_conf_file_backup_orig: true
+fp_loader_conf_template: loader.conf2.j2
 fp_loader_conf_file: /boot/loader.conf
 fp_loader_conf: []
-fp_loader_conf_modules: []
+fp_loader_modules: []

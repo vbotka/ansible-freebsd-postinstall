@@ -1,26 +1,22 @@
 ---
-
-- name: "mount-img: Debug (fp_mount_img_debug={{ fp_mount_img_debug }})"
+- name: "Mount-img: Debug fp_mount_img_debug={{ fp_mount_img_debug }}"
   vars:
     msg: |-
       fp_mount_img_points_create: {{ fp_mount_img_points_create }}
       fp_mount_img_entries:
-        {{ fp_mount_img_entries|to_nice_yaml(indent=2)|indent(2) }}
+        {{ fp_mount_img_entries | to_nice_yaml(indent=2) | indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
-  when: fp_mount_img_debug|bool
+  when: fp_mount_img_debug | bool
   tags: fp_mount_img_debug
 
-- name: "mount-img: Set variables"
-  ansible.builtin.set_fact:
+- name: "Mount-img: Import mount-vnode.yml"
+  ansible.builtin.import_tasks: mount-vnode.yml
+  vars:
     _fp_mount_task: img
     _fp_mount_fstype_default: ufs
     _fp_mount_points_create: "{{ fp_mount_img_points_create }}"
     _fp_mount_entries: "{{ fp_mount_img_entries }}"
     _fp_mount_debug: "{{ fp_mount_img_debug }}"
 
-- name: "mount-iso: Import mount-vnode.yml"
-  ansible.builtin.import_tasks: mount-vnode.yml
-
 # EOF
-...

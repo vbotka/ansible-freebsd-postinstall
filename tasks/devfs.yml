@@ -1,121 +1,123 @@
 ---
-
-- name: "devfs: Debug (fp_devfs_debug={{ fp_devfs_debug }})"
+- name: "Devfs: Debug fp_devfs_debug={{ fp_devfs_debug }}"
   vars:
     msg: |-
-         fp_devfs_enabled: {{ fp_devfs_enabled }}
-         fp_devfs_load_rulesets: {{ fp_devfs_load_rulesets }}
-         fp_devfs_system_ruleset: {{ fp_devfs_system_ruleset }}
-         fp_devfs_rulesets: {{ fp_devfs_rulesets }}
-         fp_devfs_set_rulesets: {{ fp_devfs_set_rulesets }}
-         fp_devfs_rcconf:
-           {{ fp_devfs_rcconf|to_yaml(indent=2)|indent(2) }}
-         fp_devfs_conf_path: {{ fp_devfs_conf_path }}
-         fp_devfs_conf:
-           {{ fp_devfs_conf|to_yaml(indent=2)|indent(2) }}
-         fp_devfs_rules_path: {{ fp_devfs_rules_path }}
-         fp_devfs_rules_mode: {{ fp_devfs_rules_mode }}
-         fp_devfs_rules:
-           {{ fp_devfs_rules|to_yaml(indent=2)|indent(2) }}
+      fp_devfs_enabled: {{ fp_devfs_enabled }}
+      fp_devfs_load_rulesets: {{ fp_devfs_load_rulesets }}
+      fp_devfs_system_ruleset: {{ fp_devfs_system_ruleset }}
+      fp_devfs_rulesets: {{ fp_devfs_rulesets }}
+      fp_devfs_set_rulesets: {{ fp_devfs_set_rulesets }}
+      fp_devfs_rcconf:
+        {{ fp_devfs_rcconf | to_yaml(indent=2) | indent(2) }}
+      fp_devfs_conf_path: {{ fp_devfs_conf_path }}
+      fp_devfs_conf:
+        {{ fp_devfs_conf | to_yaml(indent=2) | indent(2) }}
+      fp_devfs_rules_path: {{ fp_devfs_rules_path }}
+      fp_devfs_rules_mode: {{ fp_devfs_rules_mode }}
+      fp_devfs_rules:
+        {{ fp_devfs_rules | to_yaml(indent=2) | indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
-  when: fp_devfs_debug|bool
+  when: fp_devfs_debug | bool
   tags: fp_devfs_debug
 
-- name: "devfs: Shell: /etc/rc.d/devfs rcvar | grep ^devfs*"
+- name: "Devfs: Shell: /etc/rc.d/devfs rcvar | Grep ^devfs*"
   ansible.builtin.shell:
     cmd: >
       /etc/rc.d/devfs rcvar | grep ^devfs*
   register: result
   changed_when: false
   ignore_errors: true
+  check_mode: false
   tags: fp_devfs_rcvar
 
-- name: "devfs: Test rcvar for system module"
+- name: "Devfs: Test rcvar for system module"
+  when: result is failed
+  tags: fp_devfs_rcvar
   block:
-    - name: "devfs: ERROR no rcvar"
+
+    - name: "Devfs: ERROR no rcvar"
       ansible.builtin.debug:
         msg: |
           [ERROR] unable to determine rcvar. End of play.
           Variable rcvar is missing in the file /etc/rc.d/devfs
           Put the following line into the file /etc/rc.d/devfs
           rcvar="devfs_load_rulesets"
-    - name: "devfs: Block: End of play."
+
+    - name: "Devfs: Block: End of play."
       ansible.builtin.meta: end_play
-  when:
-    - not ansible_check_mode
-    - result|default({}) is failed
-  tags: fp_devfs_rcvar
 
-- name: "devfs: Debug print rcvar"
+- name: "Devfs: Debug print rcvar fp_devfs_debug={{ fp_devfs_debug }}"
   ansible.builtin.debug:
-    var: result.stdout_lines|default('not defined')
-  when: fp_devfs_debug|bool
+    var: result.stdout_lines
+  when: fp_devfs_debug | bool
   tags: fp_devfs_rcvar
 
-- name: "devfs: Enable and start devfs"
-  ansible.builtin.lineinfile:
-    dest: /etc/rc.conf
-    regexp: '^\s*devfs_load_rulesets\s*=(.*)$'
-    line: 'devfs_load_rulesets="YES"'
-    backup: "{{ fp_backup }}"
-  notify: enable and start devfs
-  when: fp_devfs_enabled|bool
+- name: Enable/Disable devfs in /etc/rc.conf
   tags: fp_devfs_rcconf
+  block:
 
-- name: "devfs: Disable and stop devfs"
-  ansible.builtin.lineinfile:
-    dest: /etc/rc.conf
-    regexp: '^\s*devfs_load_rulesets\s*=(.*)$'
-    line: 'devfs_load_rulesets="NO"'
-    backup: "{{ fp_backup }}"
-  notify: disable and stop devfs
-  when: not fp_devfs_enabled|bool
-  tags: fp_devfs_rcconf
+    - name: "Devfs: Enable and start devfs"
+      ansible.builtin.lineinfile:
+        dest: /etc/rc.conf
+        regexp: ^\s*devfs_load_rulesets\s*=(.*)$
+        line: devfs_load_rulesets="YES"
+        backup: "{{ fp_backup }}"
+      notify: enable and start devfs
+      when: fp_devfs_enabled | bool
 
-- name: "devfs: Configure devfs in /etc/rc.conf"
-  ansible.builtin.lineinfile:
-    dest: /etc/rc.conf
-    regexp: '^\s*{{ item.key }}\s*=(.*)$'
-    line: '{{ item.key }}="{{ item.value }}"'
-    backup: "{{ fp_backup }}"
-  loop: "{{ fp_devfs_rcconf }}"
+    - name: "Devfs: Disable and stop devfs"
+      ansible.builtin.lineinfile:
+        dest: /etc/rc.conf
+        regexp: ^\s*devfs_load_rulesets\s*=(.*)$
+        line: devfs_load_rulesets="NO"
+        backup: "{{ fp_backup }}"
+      notify: disable and stop devfs
+      when: not fp_devfs_enabled | bool
+
+- name: Configure devfs
   notify: restart devfs
-  tags: fp_devfs_rcconf
+  block:
 
-- name: "devfs: Configure {{ fp_devfs_conf_path }}"
-  ansible.builtin.lineinfile:
-    dest: "{{ fp_devfs_conf_path }}"
-    regexp: '^\s*{{ item.action }}\s+{{ item.devname }}\s+{{ item.arg }}'
-    line: "{{ item.action }} {{ item.devname }} {{ item.arg }}"
-    backup: "{{ fp_backup }}"
-  loop: "{{ fp_devfs_conf }}"
-  notify: restart devfs
-  tags: fp_devfs_conf
+    - name: "Devfs: Configure devfs in /etc/rc.conf"
+      ansible.builtin.lineinfile:
+        dest: /etc/rc.conf
+        regexp: ^\s*{{ item.key }}\s*=(.*)$
+        line: '{{ item.key }}="{{ item.value }}"'
+        backup: "{{ fp_backup }}"
+      loop: "{{ fp_devfs_rcconf }}"
+      tags: fp_devfs_rcconf
 
-- name: "devfs: Configure {{ fp_devfs_rules_path }}"
-  community.general.ini_file:
-    path: "{{ fp_devfs_rules_path }}"
-    create: true
-    mode: "{{ fp_devfs_rules_mode }}"
-    allow_no_value: true
-    owner: "{{ fp_devfs_owner }}"
-    group: "{{ fp_devfs_group }}"
-    section: "{{ item.section }}"
-    option: "{{ item.option }}"
-    value: "{{ item.value|default(omit) }}"
-    state: "{{ item.state|(default('present') }}"
-    backup: "{{ fp_backup }}"
-  loop: "{{ fp_devfs_rules }}"
-  notify: restart devfs
-  tags: fp_devfs_rules
+    - name: "Devfs: Configure {{ fp_devfs_conf_path }}"
+      ansible.builtin.lineinfile:
+        dest: "{{ fp_devfs_conf_path }}"
+        regexp: ^\s*{{ item.action }}\s+{{ item.devname }}\s+{{ item.arg }}
+        line: "{{ item.action }} {{ item.devname }} {{ item.arg }}"
+        backup: "{{ fp_backup }}"
+      loop: "{{ fp_devfs_conf }}"
+      tags: fp_devfs_conf
 
-- name: "devfs: {{ state }} devfs"
+    - name: "Devfs: Configure {{ fp_devfs_rules_path }}"
+      community.general.ini_file:
+        path: "{{ fp_devfs_rules_path }}"
+        create: true
+        mode: "{{ fp_devfs_rules_mode }}"
+        allow_no_value: true
+        owner: "{{ fp_devfs_owner }}"
+        group: "{{ fp_devfs_group }}"
+        section: "{{ item.section }}"
+        option: "{{ item.option }}"
+        value: "{{ item.value | d(omit) }}"
+        state: "{{ item.state | d('present') }}"
+        backup: "{{ fp_backup }}"
+      loop: "{{ fp_devfs_rules }}"
+      tags: fp_devfs_rules
+
+- name: "Devfs: State {{ state }}"
   ansible.builtin.service:
     name: devfs
     state: "{{ state }}"
   vars:
-    state: "{{ fp_devfs_enabled|bool|ternary('started', 'stopped') }}"
+    state: "{{ fp_devfs_enabled | bool | ternary('started', 'stopped') }}"
 
 # EOF
-...

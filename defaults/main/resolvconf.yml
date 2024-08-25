@@ -3,7 +3,7 @@ fp_resolvconf: false
 fp_resolvconf_conf_file: /etc/resolvconf.conf
 fp_resolvconf_conf_owner: root
 fp_resolvconf_conf_group: wheel
-fp_resolvconf_conf_mode: '0644'
+fp_resolvconf_conf_mode: "0644"
 fp_resolvconf_conf: []
 #  - {key: resolvconf, value: 'NO'}
 #  - {key: name_servers, val: 192.168.1.1}
@@ -13,7 +13,7 @@ fp_resolvconf_conf_absent: []
 fp_resolv_conf_file: /etc/resolv.conf
 fp_resolv_conf_owner: root
 fp_resolv_conf_group: wheel
-fp_resolv_conf_mode: '0644'
+fp_resolv_conf_mode: "0644"
 fp_resolv_conf: []
 #  - {key: search, value: example.com}
 #  - {key: nameserver, value: 147.11.1.11}

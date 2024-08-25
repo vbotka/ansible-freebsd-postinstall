@@ -1,11 +1,13 @@
 ---
-# wpasupplicant
+- name: Restart netif
+  listen: restart netif
+  ansible.builtin.service:
+    name: netif
+    state: restarted
 
-- name: restart netif
-  ansible.builtin.service: name=netif state=restarted
-
-- name: reconfigure wpa_supplicant
-  ansible.builtin.shell:
+- name: Reconfigure wpa_supplicant
+  listen: reconfigure wpa_supplicant
+  ansible.builtin.shell: # noqa: no-changed-when
     cmd: >
       [ -S {{ fp_wpasupplicant_conf_ctrl_interface }}/{{ item.item.dev }} ] &&
       wpa_cli -p {{ fp_wpasupplicant_conf_ctrl_interface }} -i {{ item.item.dev }} reconfigure  ||
