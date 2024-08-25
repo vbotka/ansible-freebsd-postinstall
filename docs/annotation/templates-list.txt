@@ -1,6 +1,7 @@
 apcupsd.conf.j2
 exports.j2
 freebsd-update.conf.j2
+freebsd-update.conf2.j2
 groupadd.j2
 groupdel.j2
 groupmod.j2

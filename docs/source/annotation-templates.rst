@@ -72,6 +72,29 @@ Description of the template.
 
 
 
+.. _as_template_freebsd-update.conf2.j2:
+
+freebsd-update.conf2.j2
+-----------------------
+
+Synopsis: Template freebsd-update.conf2.
+
+
+Description of the template.
+
+
+[`templates/freebsd-update.conf2.j2 <https://github.com/vbotka/ansible-__PROJECT__/blob/__BRANCH__/templates/freebsd-update.conf2.j2>`_]
+
+.. highlight:: jinja
+    :linenothreshold: 5
+.. literalinclude:: ../../templates/freebsd-update.conf2.j2
+    :language: jinja
+    :emphasize-lines: 1
+    :linenos:
+
+
+
+
 .. _as_template_groupadd.j2:
 
 groupadd.j2
