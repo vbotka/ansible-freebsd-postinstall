@@ -36,7 +36,7 @@
               {{ _tasks | to_yaml(indent=2) | indent(2) }}
           when: debug | d(false) | bool
 
-        - name: "Create list of tags"
+        - name: "Create list of tags" # noqa: jinja[invalid]
           ansible.builtin.debug:
             msg: |
               {{ _tags_tasks | to_yaml(indent=2) | indent(2) }}"
@@ -46,7 +46,7 @@
             _tags_block: "{{ _tasks | json_query('[].block[].tags') | flatten | unique | sort }}"
           when: debug | d(false) | bool
 
-        - name: "Create list of tags"
+        - name: "Create list of tags" # noqa: jinja[invalid]
           ansible.builtin.set_fact:
             _tags: "{{ (_tags_tasks + _tags_block + ['all']) |
                        difference(['always', 'never']) |
@@ -66,6 +66,7 @@
         - name: "Create {{ tags_path }}"
           ansible.builtin.copy:
             dest: "{{ tags_path }}"
+            mode: "0664"
             content: |
               fp_sanity_tags:
                 {{ _tags | to_nice_yaml(indent=2) | indent(2) }}
