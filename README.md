@@ -130,6 +130,12 @@ shell> ansible-lint -c .ansible-lint.local
 ```
 
 
+## Configure the role
+
+The playbook *.configure.yml* provides blocks of tasks to configure
+the role. Read it to understand the details.
+
+
 ## Notes
 
 1) devfs

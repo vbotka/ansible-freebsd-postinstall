@@ -30,6 +30,10 @@ Minor Changes
 * Update tasks mount-*
 * Update var pkg_dict_amd64. Add pkg_dict_amd64_dict.
 * Add variable fp_role_version
+* Add playbook .configure.yml to customize the role. Add file
+  defaults/main/sanity_tags.yml. Move default variable fp_sanity_tags
+  from defaults/main/sanity.yml to
+  defaults/main/sanity_tags.yml. Update tasks/sanity.yml
 
 Bugfixes
 --------
