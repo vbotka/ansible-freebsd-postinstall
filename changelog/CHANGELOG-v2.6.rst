@@ -5,6 +5,22 @@ vbotka.freebsd_postinstall 2.6 Release Notes
 .. contents:: Topics
 
 
+2.6.13
+======
+
+Release Summary
+---------------
+Maintenance update.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Update playbook .configure
+* Bump role and docs version
+
+
 2.6.12
 ======
 
@@ -14,6 +30,7 @@ Feature and bugfix release with docs update.
 
 Major Changes
 -------------
+
 * Support 14.1
 * Update flavor devel/git@default in pkg_dict_amd64
 * Update defaults/main/packages.yml

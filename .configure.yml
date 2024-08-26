@@ -25,7 +25,7 @@
 
         - name: "Create list of tasks"
           ansible.builtin.set_fact:
-            _tasks: "{{ _tasks + lookup('file', item) | from_yaml }}"
+            _tasks: "{{ _tasks + lookup('file', item) | from_yaml_all }}"
           loop: "{{ out.files | map(attribute='path') }}"
           vars:
             _tasks: []
@@ -36,11 +36,11 @@
               {{ _tasks | to_yaml(indent=2) | indent(2) }}
           when: debug | d(false) | bool
 
-        - name: "Create list of tags" # noqa: jinja[invalid]
+        - name: "Debug lists of tags" # noqa: jinja[invalid]
           ansible.builtin.debug:
             msg: |
-              {{ _tags_tasks | to_yaml(indent=2) | indent(2) }}"
-              {{ _tags_block | to_yaml(indent=2) | indent(2) }}"
+              _tags_tasks: {{ _tags_tasks | to_yaml(indent=2) | indent(2) }}"
+              _tags_block: {{ _tags_block | to_yaml(indent=2) | indent(2) }}"
           vars:
             _tags_tasks: "{{ _tasks | json_query('[].tags') | flatten | unique | sort }}"
             _tags_block: "{{ _tasks | json_query('[].block[].tags') | flatten | unique | sort }}"
@@ -60,7 +60,7 @@
           ansible.builtin.debug:
             msg: |
               no_of_tags: {{ _tags | length }}
-              tags: {{ _tags | to_yaml(indent=2) | indent(2) }}
+              _tags: {{ _tags | to_yaml(indent=2) | indent(2) }}
           when: debug | d(false) | bool
 
         - name: "Create {{ tags_path }}"
