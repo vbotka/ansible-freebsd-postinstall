@@ -15,9 +15,9 @@
   ansible.builtin.import_tasks: hostapd.yml
 - name: Import hostname.yml
   ansible.builtin.import_tasks: hostname.yml
-- name: Import login.yml
-  ansible.builtin.import_tasks: inetd.yml
 - name: Import inetd.yml
+  ansible.builtin.import_tasks: inetd.yml
+- name: Import login.yml
   ansible.builtin.import_tasks: login.yml
 - name: Import messages.yml
   ansible.builtin.import_tasks: messages.yml
@@ -25,14 +25,14 @@
   ansible.builtin.import_tasks: newaliases.yml
 - name: Import newsyslog.yml
   ansible.builtin.import_tasks: newsyslog.yml
-- name: Import nfsd.yml
-  ansible.builtin.import_tasks: nfsd.yml
 - name: Import nfs.yml
   ansible.builtin.import_tasks: nfs.yml
-- name: Import ntpdate.yml
-  ansible.builtin.import_tasks: ntpdate.yml
+- name: Import nfsd.yml
+  ansible.builtin.import_tasks: nfsd.yml
 - name: Import ntpd.yml
   ansible.builtin.import_tasks: ntpd.yml
+- name: Import ntpdate.yml
+  ansible.builtin.import_tasks: ntpdate.yml
 - name: Import qemu.yml
   ansible.builtin.import_tasks: qemu.yml
 - name: Import resolvconf.yml
@@ -51,5 +51,4 @@
   ansible.builtin.import_tasks: syslogd.yml
 - name: Import wpasupplicant.yml
   ansible.builtin.import_tasks: wpasupplicant.yml
-
 # EOF

@@ -22,6 +22,7 @@
             recurse: true
             patterns: '*.yml'
           register: out
+          check_mode: false
 
         - name: "Create list of tasks"
           ansible.builtin.set_fact:
@@ -67,6 +68,46 @@
           ansible.builtin.copy:
             dest: "{{ tags_path }}"
             mode: "0664"
+            backup: true
             content: |
               fp_sanity_tags:
                 {{ _tags | to_nice_yaml(indent=2) | indent(2) }}
+
+    - name: Create handlers/main.yml
+      when: fp_create_handlers_main | d(false) | bool
+      block:
+
+        - name: "Find tasks files"
+          ansible.builtin.find:
+            path: handlers
+            patterns: '*.yml'
+          register: out
+          check_mode: false
+
+        - name: "Debug list of handlers"
+          ansible.builtin.debug:
+            msg: |
+              _handlers: |
+                {{ _handlers | to_nice_yaml(indent=2) | indent(2) }}
+          vars:
+            _handlers: "{{ out.files | map(attribute='path') | map('basename') |
+                           difference(['main.yml']) | sort }}"
+          when: debug | d(false) | bool
+
+        - name: "Create handlers/main.yml"
+          ansible.builtin.copy:
+            dest: handlers/main.yml
+            mode: "0664"
+            backup: true
+            content: |
+              ---
+              # handlers for freebsd_postinstall
+
+              {% for handler in _handlers %}
+              - name: Import {{ handler }}
+                ansible.builtin.import_tasks: {{ handler }}
+              {% endfor %}
+              # EOF
+          vars:
+            _handlers: "{{ out.files | map(attribute='path') | map('basename') |
+                           difference(['main.yml']) | sort }}"

@@ -19,6 +19,8 @@ Minor Changes
 -------------
 * Update playbook .configure
 * Bump role and docs version
+* Add block "Create handlers/main.yml" to .configure
+* Update handlers/main.yml
 
 
 2.6.12
