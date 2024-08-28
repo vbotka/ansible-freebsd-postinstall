@@ -10,17 +10,15 @@ vbotka.freebsd_postinstall 2.6 Release Notes
 
 Release Summary
 ---------------
-Maintenance update.
+Ansible 2.17 Maintenance including docs update.
 
 Major Changes
 -------------
 
 Minor Changes
 -------------
-* Update playbook .configure
 * Bump role and docs version
-* Add block "Create handlers/main.yml" to .configure
-* Update handlers/main.yml
+* Update docs
 
 
 2.6.12
