@@ -18,7 +18,7 @@ Major Changes
 Minor Changes
 -------------
 * Bump role and docs version
-* Update docs
+* Update docs. Update tasks annotation.
 
 
 2.6.12
