@@ -1,7 +1,16 @@
 ---
+
+- name: "Packages: Set _fp_packages_enabled and _fp_pkg_dict for {{ ansible_architecture }}"
+  ansible.builtin.set_fact:
+    _fp_pkg_dict: "{{ lookup('vars', 'pkg_dict_' ~ ansible_architecture, default=[]) |
+                      items2dict(key_name='pkglist', value_name='packages') }}"
+    _fp_packages_enabled: "{{ fp_packages | selectattr('enabled') | map(attribute='list') }}"
+
+
 - name: "Packages: Debug fp_packages_debug={{ fp_packages_debug }}"
   vars:
     msg: |-
+      ansible_architecture: {{ ansible_architecture }}
       freebsd_install_method: {{ freebsd_install_method }}
       freebsd_use_packages: {{ freebsd_use_packages }}
       freebsd_install_retries: {{ freebsd_install_retries }}
@@ -33,19 +42,24 @@
         {{ fp_links | to_yaml(indent=2) | indent(2) }}
       fp_packages:
         {{ fp_packages | to_yaml(indent=2) | indent(2) }}
-      ansible_architecture: {{ ansible_architecture }}
-      pkg_dict_{{ ansible_architecture }}:
-        {{ lookup('vars', 'pkg_dict_' ~ ansible_architecture) | to_yaml(indent=2) | indent(2) }}
+      _fp_pkg_dict:
+        {{ _fp_pkg_dict | to_yaml(indent=2) | indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
   when: fp_packages_debug | bool
-  tags: fp_packages_debug
+
+- name: "Pkglist: Assert all items in fp_packages_enabled are available in _fp_pkg_dict"
+  ansible.builtin.assert:
+    quiet: true
+    that: _fp_packages_missing | length == 0
+    fail_msg: |
+      [ERR] The packages list(s): {{ _fp_packages_missing }} missing in _fp_pkg_dict
+  vars:
+    _fp_packages_missing: "{{ _fp_packages_enabled | difference(_fp_pkg_dict.keys()) }}"
 
 - name: "Packages: Install packages"
   ansible.builtin.include_tasks: packages-install.yml
-  loop: "{{ fp_packages | selectattr('enabled') }}"
-  loop_control:
-    label: "{{ item.list }}"
+  loop: "{{ _fp_packages_enabled  }}"
 
 - name: "Packages: Create symbolic links"
   ansible.builtin.file:

@@ -1,18 +1,7 @@
 ---
-- name: "Packages-install: Get list of packages for {{ item.list }}"
-  ansible.builtin.set_fact:
-    fp_pkg_item_list: "{{ lookup('vars', 'pkg_dict_' ~ ansible_architecture) | json_query(query) }}"
-  vars:
-    query: "[?pkglist=='{{ item.list }}'].packages"
-
-- name: "Packages-install: Debug fp_pkg_item_list fp_packages_debug={{ fp_packages_debug }}"
-  ansible.builtin.debug:
-    var: fp_pkg_item_list
-  when: fp_packages_debug | bool
-
-- name: "Packages-install: Install packages {{ item.list }}"
+- name: "Packages-install: Install packages list {{ item }}"
   community.general.pkgng:
-    name: "{{ local_pkgs }}"
+    name: "{{ _fp_pkg_dict[item] }}"
     annotation: "{{ fp_pkg_annotation | d(omit) }}"
     autoremove: "{{ fp_pkg_autoremove | d(omit) | bool }}"
     cached: "{{ fp_pkg_cached | d(omit) | bool }}"
@@ -23,23 +12,19 @@
     rootdir: "{{ fp_pkg_rootdir | d(omit) }}"
     state: "{{ fp_pkg_state | d(omit) }}"
     use_globs: "{{ fp_pkg_use_globs | d(omit) | bool }}"
-  loop: "{{ fp_pkg_item_list }}"
-  loop_control:
-    loop_var: local_pkgs
-    label: "{{ local_pkgs }}"
   register: result
   retries: "{{ freebsd_install_retries }}"
   until: result is succeeded
   delay: "{{ freebsd_install_delay }}"
   when: freebsd_install_method | lower == 'packages'
 
-- name: "Packages-install: Install ports {{ item.list }}"
+- name: "Packages-install: Install ports list {{ item }}"
   community.general.portinstall:
-    name: "{{ local_pkg }}"
+    name: "{{ local_item }}"
     use_packages: "{{ freebsd_use_packages }}"
-  loop: "{{ fp_pkg_item_list | flatten }}"
+  loop: "{{ _fp_pkg_dict[item] }}"
   loop_control:
-    loop_var: local_pkg
+    loop_var: local_item
   register: result
   retries: "{{ freebsd_install_retries }}"
   until: result is succeeded

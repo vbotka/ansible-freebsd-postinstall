@@ -14,6 +14,7 @@ Ansible 2.17 Maintenance including docs update.
 
 Major Changes
 -------------
+* Update tasks/packages.yml and tasks/packages-install.yml
 
 Minor Changes
 -------------
