@@ -74,8 +74,12 @@ pkg_dict_amd64_dict:
   mysql_extra:
     - databases/py-pymysql
     - databases/py-mysql-connector-python
-    - security/py-cryptography
     - databases/py-mysqlclient
+  nagios:
+    - net-mgmt/nagios4
+    - net-mgmt/nagios-plugins
+    - net-mgmt/nsca
+    - net-mgmt/nrpe
   nginx:
     - www/nginx
     - www/nginx-full
@@ -143,11 +147,13 @@ pkg_dict_amd64_dict:
   rsnapshot:
     - sysutils/rsnapshot
   security:
-    - security/openssl
     - security/ca_root_nss
-    - security/py-openssl
+    - security/openssl
+    - security/py-acme
     - security/py-acme-tiny
     - security/py-certbot
+    - security/py-cryptography
+    - security/py-openssl
   smart:
     - sysutils/smartmontools
     - sysutils/smart
