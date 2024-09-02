@@ -16,11 +16,15 @@ Major Changes
 -------------
 * Update tasks/packages.yml and tasks/packages-install.yml Add
   Pkglist: Assert freebsd_install_method in [packages, ports]
+* The playbook .configure.yml generates the file
+  defaults/main/nfsd_services.yml
+* Update defaults/main/nfsd.yml, tasks/nfsd.yml, and handlers/nfsd.yml
 
 Minor Changes
 -------------
 * Bump role and docs version
 * Update docs. Update tasks annotation.
+* Update docs/annotation/annotation-tasks.rst.j2
 
 
 2.6.12

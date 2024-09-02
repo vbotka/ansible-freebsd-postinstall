@@ -440,14 +440,14 @@ mytasks:
       :77: Configure ``/etc/exports`` and notify handler ``reload
            mountd``.
 
-      :86: Configure and enable
+      :86: Configure and enable services.
 
-      :115: or disable services. If there are any changes the service will
+      :95: Disable and stop services. If there are any changes the service will
             be reloaded or restarted when already running.
 
-    lines: 3,50,54,56,57,71,75,77,86,115
+    lines: 3,50,54,56,57,71,75,77,86,95
     seealso: {'handlers': ['nfsd'], 'templates': ['exports'], 'others': ['<TBD>']}
-    notes: ['<TBD>']
+    notes: ['The variables ``fp_nfsd_services_enable`` (89) and ``fp_nfsd_services_disable`` (98) are created by the playbook ``.configure.yml``']
     hints: ['<TBD>']
     warnings: ['<TBD>']
 

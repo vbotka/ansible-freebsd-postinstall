@@ -772,9 +772,9 @@ Synopsis: Configure NFS server.
 :77: Configure ``/etc/exports`` and notify handler ``reload
      mountd``.
 
-:86: Configure and enable
+:86: Configure and enable services.
 
-:115: or disable services. If there are any changes the service will
+:95: Disable and stop services. If there are any changes the service will
       be reloaded or restarted when already running.
 
 
@@ -784,7 +784,7 @@ Synopsis: Configure NFS server.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/nfsd.yml
     :language: Yaml
-    :emphasize-lines: 3,50,54,56,57,71,75,77,86,115
+    :emphasize-lines: 3,50,54,56,57,71,75,77,86,95
     :linenos:
 
 .. seealso::
@@ -793,7 +793,7 @@ Synopsis: Configure NFS server.
    * <TBD>
 
 .. note::
-   * <TBD>
+   * The variables ``fp_nfsd_services_enable`` (89) and ``fp_nfsd_services_disable`` (98) are created by the playbook ``.configure.yml``
 
 .. hint::
    * <TBD>

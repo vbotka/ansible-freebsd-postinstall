@@ -1,21 +1,21 @@
 ---
 # nfsd
-- name: Enable and start nfs server
-  listen: enable and start nfs server
+- name: Enable and start nfsd
+  listen: enable and start nfsd
   ansible.builtin.service:
     name: nfsd
     state: started
     enabled: true
 
-- name: Disable and stop nfs server
-  listen: disable and stop nfs server
+- name: Disable and stop nfsd
+  listen: disable and stop nfsd
   ansible.builtin.service:
     name: nfsd
     state: stopped
     enabled: false
 
-- name: Restart nfs server
-  listen: restart nfs server
+- name: Restart nfsd
+  listen: restart nfsd
   ansible.builtin.service:
     name: nfsd
     state: restarted
