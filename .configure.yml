@@ -4,6 +4,8 @@
   vars:
 
     tags_path: defaults/main/sanity_tags.yml
+    nfs_services_path: defaults/main/nfs_services.yml
+    nfsd_services_path: defaults/main/nfsd_services.yml
 
   tasks:
 
@@ -13,60 +15,27 @@
         fail_msg: Confirm that you know what you are doing.
 
     - name: Create list of all tags fp_sanity_tags in {{ tags_path }}
-      when: fp_sanity_tags | d(false) | bool
-      block:
+      ansible.builtin.include_tasks: .configure.tasks/create_sanity_tags.yml
+      when: fp_create_sanity_tags | d(false) | bool
 
-        - name: "Find tasks files"
-          ansible.builtin.find:
-            path: tasks
-            recurse: true
-            patterns: '*.yml'
-          register: out
+    - name: Create handlers/main.yml
+      ansible.builtin.include_tasks: .configure.tasks/create_handlers_main.yml
+      when: fp_create_handlers_main | d(false) | bool
 
-        - name: "Create list of tasks"
-          ansible.builtin.set_fact:
-            _tasks: "{{ _tasks + lookup('file', item) | from_yaml }}"
-          loop: "{{ out.files | map(attribute='path') }}"
-          vars:
-            _tasks: []
+    - name: Create lists fp_nfs_services_enable and disable in {{ nfs_services_path }}
+      ansible.builtin.include_tasks: .configure.tasks/create_nfs_services.yml
+      when: fp_create_nfs_services | d(false) | bool
+      vars:
+        nfs_services: {nfsclient: nfs, lockd: rpc_lockd, statd: rpc_statd}
+        _start: "{{ '{{' }}"
+        _stop: "{{ '}}' }}"
 
-        - name: "Debug list of tasks"
-          ansible.builtin.debug:
-            msg: |
-              {{ _tasks | to_yaml(indent=2) | indent(2) }}
-          when: debug | d(false) | bool
+    - name: Create lists fp_nfsd_services_enable and disable in {{ nfsd_services_path }}
+      ansible.builtin.include_tasks: .configure.tasks/create_nfsd_services.yml
+      when: fp_create_nfsd_services | d(false) | bool
+      vars:
+        nfsd_services: {nfsd: nfsd, mountd: mountd, rpcbind: rpcbind, lockd: rpc_lockd, statd: rpc_statd}
+        _start: "{{ '{{' }}"
+        _stop: "{{ '}}' }}"
 
-        - name: "Create list of tags" # noqa: jinja[invalid]
-          ansible.builtin.debug:
-            msg: |
-              {{ _tags_tasks | to_yaml(indent=2) | indent(2) }}"
-              {{ _tags_block | to_yaml(indent=2) | indent(2) }}"
-          vars:
-            _tags_tasks: "{{ _tasks | json_query('[].tags') | flatten | unique | sort }}"
-            _tags_block: "{{ _tasks | json_query('[].block[].tags') | flatten | unique | sort }}"
-          when: debug | d(false) | bool
-
-        - name: "Create list of tags" # noqa: jinja[invalid]
-          ansible.builtin.set_fact:
-            _tags: "{{ (_tags_tasks + _tags_block + ['all']) |
-                       difference(['always', 'never']) |
-                       unique | sort }}"
-          loop: "{{ out.files | map(attribute='path') }}"
-          vars:
-            _tags_tasks: "{{ _tasks | json_query('[].tags') | flatten | unique | sort }}"
-            _tags_block: "{{ _tasks | json_query('[].block[].tags') | flatten | unique | sort }}"
-
-        - name: "Debug list of tags"
-          ansible.builtin.debug:
-            msg: |
-              no_of_tags: {{ _tags | length }}
-              tags: {{ _tags | to_yaml(indent=2) | indent(2) }}
-          when: debug | d(false) | bool
-
-        - name: "Create {{ tags_path }}"
-          ansible.builtin.copy:
-            dest: "{{ tags_path }}"
-            mode: "0664"
-            content: |
-              fp_sanity_tags:
-                {{ _tags | to_nice_yaml(indent=2) | indent(2) }}
+# EOF

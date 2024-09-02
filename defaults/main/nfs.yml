@@ -20,7 +20,7 @@ fp_nfs_service_paths:
   - /etc/rc.d/statd
 fp_nfs_handlers:
   nfsclient: "{{ fp_nfs_var_db_mounttab.stat.exists | d(false) |
-                 ternary('restart nfs client', 'enable and start nfs client') }}"
+                 ternary('restart nfsclient', 'enable and start nfsclient') }}"
   lockd: "{{ (al_ansible_facts_services.lockd.state | d('stopped') == 'running') |
              ternary('restart lockd', 'enable and start lockd') }}"
   statd: "{{ (al_ansible_facts_services.statd.state | d('stopped') == 'running') |

@@ -683,25 +683,39 @@ nfs.yml
 Synopsis: Configure NFS client.
 
 
-To display variables (3) enable ``fp_nfs_debug=true`` (26). Collect
-status of the services (30) stored in the list
-``fp_nfs_service_paths``. The module ``service_facts`` doesn't work
-in FreeBSD. Instead, use the task ``al_bsd_service_facts`` (33) from
-the library (32). This task doesn't support the check mode. This
-task will return the dictionary
-``al_ansible_facts_services``. Display this dictionary (55). This
-dictionary is used to select the handlers in the dictionary
-``fp_nfs_handlers``. There is no status option of the service
-``nfsclient``. Instead of starting the service, restart it if there
-are any nfs mountpoints. This means if the file ``/var/db/mounttab``
-exists. Test the existence of the file ``var/db/nounttab`` (42) and
-display the result ``fp_nfs_var_db_mounttab.stat.exists`` (59). This
-variable will be used to select the handler in the dictionary
-``fp_nfs_handlers``.  Display the dictionary ``fp_nfsd_handlers``
-(63). The defaults are used in check mode because of empty
-dictionary ``al_ansible_facts_services``. Configure and enable (65),
-or disable (86) services. If the configuration of a service changes
-the service will be reloaded or restarted when already running.
+:3: Display variables.
+
+:26: Enable ``fp_nfs_debug=true``.
+
+:30: Collect status of the services stored in the list
+     ``fp_nfs_service_paths``.
+
+:32-33: The module ``service_facts`` doesn't work in
+        FreeBSD. Instead, use the task ``al_bsd_service_facts`` from
+        the library. This task doesn't support the check mode. This
+        task will return the dictionary
+        ``al_ansible_facts_services``.
+
+:55: Display this dictionary. This dictionary is used to select the
+     handlers in the dictionary ``fp_nfs_handlers``. There is no
+     status option of the service ``nfsclient``. Instead of starting
+     the service, restart it if there are any nfs mountpoints. This
+     means if the file ``/var/db/mounttab`` exists.
+
+:42: Test the existence of the file ``var/db/nounttab``
+
+:59: Display the result ``fp_nfs_var_db_mounttab.stat.exists``. This
+     variable will be used to select the handler in the dictionary
+     ``fp_nfs_handlers``.
+
+:63: Display the dictionary ``fp_nfsd_handlers``. The defaults are
+     used in check mode because of empty dictionary
+     ``al_ansible_facts_services``.
+
+:65: Configure and enable services.
+
+:74: Disable and stop services. If the configuration of a service changes
+     the service will be reloaded or restarted when already running.
 
 
 [`tasks/nfs.yml <https://github.com/vbotka/ansible-__PROJECT__/blob/__BRANCH__/tasks/nfs.yml>`_]
@@ -710,7 +724,7 @@ the service will be reloaded or restarted when already running.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/nfs.yml
     :language: Yaml
-    :emphasize-lines: 3,26,30,32,33,42,55,59,63,65,86
+    :emphasize-lines: 3,26,30,32,33,42,55,59,63,65,74
     :linenos:
 
 .. seealso::
@@ -719,7 +733,7 @@ the service will be reloaded or restarted when already running.
    * <TBD>
 
 .. note::
-   * <TBD>
+   * The variables ``fp_nfs_services_enable`` (68) and ``fp_nfs_services_disable`` (77) are created by the playbook ``.configure.yml``
 
 .. hint::
    * <TBD>
@@ -735,20 +749,33 @@ nfsd.yml
 Synopsis: Configure NFS server.
 
 
-To display variables (3) enable ``fp_nfsd_debug=true`` (50). Collect
-status of the services (54) stored in the list
-``fp_nfsd_service_paths``. The module ``service_facts`` doesn't work
-in FreeBSD. Instead, use the task ``al_bsd_service_facts`` (57) from
-the library (56). This task doesn't support the check mode. This
-task will return the dictionary
-``al_ansible_facts_services``. Display this dictionary (71). This
-dictionary is used to select the handlers in the dictionary
-``fp_nfsd_handlers``.  Display the dictionary ``fp_nfsd_handlers``
-(75). The defaults are used in check mode because of empty
-dictionary ``al_ansible_facts_services``. Configure ``/etc/exports``
-(77) and notify handler ``reload mountd``. Configure and enable
-(86), or disable (115) services. If there are any changes the
-service will be reloaded or restarted when already running.
+:3: Display variables.
+
+:50: enable ``fp_nfsd_debug=true``.
+
+:54: Collect status of the services stored in the list
+     ``fp_nfsd_service_paths``.
+
+:56-57: The module ``service_facts`` doesn't work in
+        FreeBSD. Instead, use the task ``al_bsd_service_facts`` from
+        the library. This task doesn't support the check mode. This
+        task will return the dictionary
+        ``al_ansible_facts_services``.
+
+:71: Display this dictionary. This dictionary is used to select the
+     handlers in the dictionary ``fp_nfsd_handlers``.
+
+:75: Display the dictionary ``fp_nfsd_handlers``. The defaults are
+     used in check mode because of empty dictionary
+     ``al_ansible_facts_services``.
+
+:77: Configure ``/etc/exports`` and notify handler ``reload
+     mountd``.
+
+:86: Configure and enable services.
+
+:95: Disable and stop services. If there are any changes the service will
+      be reloaded or restarted when already running.
 
 
 [`tasks/nfsd.yml <https://github.com/vbotka/ansible-__PROJECT__/blob/__BRANCH__/tasks/nfsd.yml>`_]
@@ -757,7 +784,7 @@ service will be reloaded or restarted when already running.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/nfsd.yml
     :language: Yaml
-    :emphasize-lines: 3,50,54,56,57,71,75,77,86,115
+    :emphasize-lines: 3,50,54,56,57,71,75,77,86,95
     :linenos:
 
 .. seealso::
@@ -766,7 +793,7 @@ service will be reloaded or restarted when already running.
    * <TBD>
 
 .. note::
-   * <TBD>
+   * The variables ``fp_nfsd_services_enable`` (89) and ``fp_nfsd_services_disable`` (98) are created by the playbook ``.configure.yml``
 
 .. hint::
    * <TBD>

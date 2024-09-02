@@ -5,6 +5,30 @@ vbotka.freebsd_postinstall 2.6 Release Notes
 .. contents:: Topics
 
 
+2.6.13
+======
+
+Release Summary
+---------------
+Ansible 2.17 Maintenance including docs update.
+
+Major Changes
+-------------
+* Update tasks/packages.yml and tasks/packages-install.yml Add
+  Pkglist: Assert freebsd_install_method in [packages, ports]
+* The playbook .configure.yml generates the files:
+  defaults/main/nfsd_services.yml
+  defaults/main/nfs_services.yml
+* Update defaults/main/nfsd.yml, tasks/nfsd.yml, and handlers/nfsd.yml
+* Update defaults/main/nfs.yml, tasks/nfs.yml, and handlers/nfs.yml
+
+Minor Changes
+-------------
+* Bump role and docs version
+* Update docs. Update tasks annotation.
+* Update docs/annotation/annotation-tasks.rst.j2
+
+
 2.6.12
 ======
 
@@ -14,6 +38,7 @@ Feature and bugfix release with docs update.
 
 Major Changes
 -------------
+
 * Support 14.1
 * Update flavor devel/git@default in pkg_dict_amd64
 * Update defaults/main/packages.yml

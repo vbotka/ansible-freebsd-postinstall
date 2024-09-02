@@ -80,7 +80,7 @@ fp_nfsd_service_paths:
   - /etc/rc.d/statd
 fp_nfsd_handlers:
   nfsd: "{{ (al_ansible_facts_services.nfsd.state | d('stopped') == 'running') |
-            ternary('restart nfs server', 'enable and start nfs server') }}"
+            ternary('restart nfsd', 'enable and start nfsd') }}"
   mountd: "{{ (al_ansible_facts_services.mountd.state | d('stopped') == 'running') |
               ternary('reload mountd', 'enable and start mountd') }}"
   rpcbind: "{{ (al_ansible_facts_services.rpcbind.state | d('stopped') == 'running') |
