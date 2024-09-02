@@ -14,7 +14,8 @@ Ansible 2.17 Maintenance including docs update.
 
 Major Changes
 -------------
-* Update tasks/packages.yml and tasks/packages-install.yml
+* Update tasks/packages.yml and tasks/packages-install.yml Add
+  Pkglist: Assert freebsd_install_method in [packages, ports]
 
 Minor Changes
 -------------
