@@ -702,9 +702,9 @@ Synopsis: Configure NFS client.
      the service, restart it if there are any nfs mountpoints. This
      means if the file ``/var/db/mounttab`` exists.
 
-:42: Test the existence of the file ``var/db/nounttab`` and
+:42: Test the existence of the file ``var/db/nounttab``
 
-:59: display the result ``fp_nfs_var_db_mounttab.stat.exists``. This
+:59: Display the result ``fp_nfs_var_db_mounttab.stat.exists``. This
      variable will be used to select the handler in the dictionary
      ``fp_nfs_handlers``.
 
@@ -712,9 +712,9 @@ Synopsis: Configure NFS client.
      used in check mode because of empty dictionary
      ``al_ansible_facts_services``.
 
-:65: Configure and enable
+:65: Configure and enable services.
 
-:86: or disable services. If the configuration of a service changes
+:74: Disable and stop services. If the configuration of a service changes
      the service will be reloaded or restarted when already running.
 
 
@@ -724,7 +724,7 @@ Synopsis: Configure NFS client.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/nfs.yml
     :language: Yaml
-    :emphasize-lines: 3,26,30,32,33,42,55,59,63,65,86
+    :emphasize-lines: 3,26,30,32,33,42,55,59,63,65,74
     :linenos:
 
 .. seealso::
@@ -733,7 +733,7 @@ Synopsis: Configure NFS client.
    * <TBD>
 
 .. note::
-   * <TBD>
+   * The variables ``fp_nfs_services_enable`` (68) and ``fp_nfs_services_disable`` (77) are created by the playbook ``.configure.yml``
 
 .. hint::
    * <TBD>
