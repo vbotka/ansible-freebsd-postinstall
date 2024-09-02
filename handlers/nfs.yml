@@ -1,20 +1,20 @@
 ---
-- name: Enable and start nfs client
-  listen: enable and start nfs client
+- name: Enable and start nfsclient
+  listen: enable and start nfsclient
   ansible.builtin.service:
     name: nfsclient
     state: started
     enabled: true
 
-- name: Disable and stop nfs client
-  listen: disable and stop nfs client
+- name: Disable and stop nfsclient
+  listen: disable and stop nfsclient
   ansible.builtin.service:
     name: nfsclient
     state: stopped
     enabled: false
 
-- name: Restart nfs client
-  listen: restart nfs client
+- name: Restart nfsclient
+  listen: restart nfsclient
   ansible.builtin.service:
     name: nfsclient
     state: restarted

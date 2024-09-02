@@ -66,11 +66,11 @@
   tags: fp_nfsd_services
   block:
 
-    - name: "Nfsd: Debug service state info"
+    - name: "Nfsd: Debug service state info fp_nfs_debug={{ fp_nfs_debug }}"
       ansible.builtin.debug:
         var: al_ansible_facts_services
 
-    - name: "Nfsd: Debug handlers"
+    - name: "Nfsd: Debug handlers fp_nfs_debug={{ fp_nfs_debug }}"
       ansible.builtin.debug:
         var: fp_nfsd_handlers
 

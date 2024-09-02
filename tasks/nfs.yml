@@ -35,7 +35,7 @@
       tags: fp_nfs_services
   vars:
     al_bsd_service_paths: "{{ fp_nfs_service_paths }}" # noqa: var-naming[no-role-prefix]
-  tags: always
+  tags: fp_nfs_services
 
   # Note: There is no status option of nfsclient. If needed, restart the
   # service when /var/db/mounttab exists.
@@ -46,8 +46,8 @@
   tags: fp_nfs_services
 
 - name: Debug
-  tags: fp_nfs_services
   when: fp_nfs_debug | bool
+  tags: fp_nfs_services
   block:
 
     - name: "Nfs: Debug service state info fp_nfs_debug={{ fp_nfs_debug }}"
@@ -65,19 +65,7 @@
 - name: "Nfs: Enable services"
   ansible.builtin.include_tasks:
     file: fn/rcconf-item.yml
-  loop:
-    - label: "nfs: Enable and start nfs client"
-      conf: "{{ fp_nfs_enable_rcconf }}"
-      when: "{{ fp_nfs_enable | bool }}"
-      notify: "{{ fp_nfs_handlers.nfsclient }}"
-    - label: "nfs: Enable and start lockd"
-      conf: "{{ fp_rpc_lockd_enable_rcconf }}"
-      when: "{{ fp_rpc_lockd_enable | bool }}"
-      notify: "{{ fp_nfs_handlers.lockd }}"
-    - label: "nfs: Enable and start statd"
-      conf: "{{ fp_rpc_statd_enable_rcconf }}"
-      when: "{{ fp_rpc_statd_enable | bool }}"
-      notify: "{{ fp_nfs_handlers.statd }}"
+  loop: "{{ fp_nfs_services_enable }}"
   loop_control:
     loop_var: oi
     label: "{{ oi.label }}"
@@ -86,19 +74,7 @@
 - name: "Nfsd: Disable services"
   ansible.builtin.include_tasks:
     file: fn/rcconf-item.yml
-  loop:
-    - label: "nfs: Disable and stop nfs client"
-      conf: "{{ fp_nfs_disable_rcconf }}"
-      when: "{{ not fp_nfs_enable | bool }}"
-      notify: disable and stop nfs client
-    - label: "nfs: Disable and stop lockd"
-      conf: "{{ fp_rpc_lockd_disable_rcconf }}"
-      when: "{{ not fp_rpc_lockd_enable | bool }}"
-      notify: disable and stop lockd
-    - label: "nfs: Disable and stop statd"
-      conf: "{{ fp_rpc_statd_disable_rcconf }}"
-      when: "{{ not fp_rpc_statd_enable | bool }}"
-      notify: disable and stop statd
+  loop: "{{ fp_nfs_services_disable }}"
   loop_control:
     loop_var: oi
     label: "{{ oi.label }}"
