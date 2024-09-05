@@ -10,15 +10,15 @@
       fp_nfs_services_enable:
       {% for service, var in nfs_services.items() %}
         - label: "nfs: Enable and start {{ service }}"
-          conf: "{{ _start }} fp_{{ var }}_enable_rcconf {{ _stop }}"
-          when: "{{ _start }} fp_{{ var }}_enable | bool {{ _stop }}"
-          notify: "{{ _start }} fp_nfs_handlers.{{ service }} {{ _stop }}"
+          conf: "{{ _beg }} fp_{{ var }}_enable_rcconf {{ _end }}"
+          when: "{{ _beg }} fp_{{ var }}_enable | bool {{ _end }}"
+          notify: "{{ _beg }} fp_nfs_handlers.{{ service }} {{ _end }}"
       {% endfor %}
 
       fp_nfs_services_disable:
       {% for service, var in nfs_services.items() %}
         - label: "nfs: Disable and stop {{ service }}"
-          conf: "{{ _start }} fp_{{ var }}_disable_rcconf {{ _stop }}"
-          when: "{{ _start }} not fp_{{ var }}_enable | bool {{ _stop }}"
+          conf: "{{ _beg }} fp_{{ var }}_disable_rcconf {{ _end }}"
+          when: "{{ _beg }} not fp_{{ var }}_enable | bool {{ _end }}"
           notify: disable and stop {{ service }}
       {% endfor %}

@@ -6,6 +6,8 @@
     tags_path: defaults/main/sanity_tags.yml
     nfs_services_path: defaults/main/nfs_services.yml
     nfsd_services_path: defaults/main/nfsd_services.yml
+    _beg: "{{ '{{' }}"
+    _end: "{{ '}}' }}"
 
   tasks:
 
@@ -27,15 +29,11 @@
       when: fp_create_nfs_services | d(false) | bool
       vars:
         nfs_services: {nfsclient: nfs, lockd: rpc_lockd, statd: rpc_statd}
-        _start: "{{ '{{' }}"
-        _stop: "{{ '}}' }}"
 
     - name: Create lists fp_nfsd_services_enable and disable in {{ nfsd_services_path }}
       ansible.builtin.include_tasks: .configure.tasks/create_nfsd_services.yml
       when: fp_create_nfsd_services | d(false) | bool
       vars:
         nfsd_services: {nfsd: nfsd, mountd: mountd, rpcbind: rpcbind, lockd: rpc_lockd, statd: rpc_statd}
-        _start: "{{ '{{' }}"
-        _stop: "{{ '}}' }}"
 
 # EOF

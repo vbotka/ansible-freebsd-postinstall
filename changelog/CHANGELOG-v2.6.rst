@@ -17,6 +17,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Update playbook .configure.yml
 
 
 2.6.13
