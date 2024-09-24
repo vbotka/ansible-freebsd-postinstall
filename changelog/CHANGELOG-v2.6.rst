@@ -3,6 +3,24 @@ vbotka.freebsd_postinstall 2.6 Release Notes
 ============================================
 
 .. contents:: Topics
+# BEGIN Commits 2.6.14
+- Update playbook .configure.yml
+- Start devel 2.6.14
+# END Commits 2.6.14
+# BEGIN Release notes 2.6.14
+2.6.14
+======
+Release Summary
+---------------
+Major Changes
+-------------
+Minor Changes
+-------------
+Bugfixes
+--------
+Breaking Changes / Porting Guide
+--------------------------------
+# END Release notes 2.6.14
 
 
 2.6.14
