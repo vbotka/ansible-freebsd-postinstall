@@ -5,6 +5,22 @@ vbotka.freebsd_postinstall 2.6 Release Notes
 .. contents:: Topics
 
 
+2.6.14
+======
+
+Release Summary
+---------------
+Maintenance including docs update.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+- Update python 3.11 in .travis.yml
+- Update playbook .configure.yml
+
+
 2.6.13
 ======
 
