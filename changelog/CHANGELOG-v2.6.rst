@@ -3,29 +3,6 @@ vbotka.freebsd_postinstall 2.6 Release Notes
 ============================================
 
 .. contents:: Topics
-# BEGIN Commits 2.6.14
-- Update python 3.11 in .travis.yml
-- Update playbook .configure.yml
-- Start devel 2.6.14
-# END Commits 2.6.14
-# BEGIN Release notes 2.6.14
-2.6.14
-======
-Release Summary
----------------
-Major Changes
--------------
-Minor Changes
--------------
-- Update python 3.11 in .travis.yml
-- Update playbook .configure.yml
-- Start devel 2.6.14
-
-Bugfixes
---------
-Breaking Changes / Porting Guide
---------------------------------
-# END Release notes 2.6.14
 
 
 2.6.14
@@ -40,7 +17,8 @@ Major Changes
 
 Minor Changes
 -------------
-* Update playbook .configure.yml
+- Update python 3.11 in .travis.yml
+- Update playbook .configure.yml
 
 
 2.6.13
