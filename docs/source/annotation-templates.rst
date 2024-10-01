@@ -14,7 +14,7 @@ Synopsis: Template apcupsd.conf.
 Description of the template.
 
 
-[`templates/apcupsd.conf.j2 <https://github.com/vbotka/ansible-__PROJECT__/blob/__BRANCH__/templates/apcupsd.conf.j2>`_]
+[`templates/apcupsd.conf.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/apcupsd.conf.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -37,7 +37,7 @@ Synopsis: Template exports.
 Description of the template.
 
 
-[`templates/exports.j2 <https://github.com/vbotka/ansible-__PROJECT__/blob/__BRANCH__/templates/exports.j2>`_]
+[`templates/exports.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/exports.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -60,7 +60,7 @@ Synopsis: Template freebsd-update.conf.
 Description of the template.
 
 
-[`templates/freebsd-update.conf.j2 <https://github.com/vbotka/ansible-__PROJECT__/blob/__BRANCH__/templates/freebsd-update.conf.j2>`_]
+[`templates/freebsd-update.conf.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/freebsd-update.conf.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -83,7 +83,7 @@ Synopsis: Template freebsd-update.conf2.
 Description of the template.
 
 
-[`templates/freebsd-update.conf2.j2 <https://github.com/vbotka/ansible-__PROJECT__/blob/__BRANCH__/templates/freebsd-update.conf2.j2>`_]
+[`templates/freebsd-update.conf2.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/freebsd-update.conf2.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -106,7 +106,7 @@ Synopsis: Template groupadd.
 Description of the template.
 
 
-[`templates/groupadd.j2 <https://github.com/vbotka/ansible-__PROJECT__/blob/__BRANCH__/templates/groupadd.j2>`_]
+[`templates/groupadd.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/groupadd.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -129,7 +129,7 @@ Synopsis: Template groupdel.
 Description of the template.
 
 
-[`templates/groupdel.j2 <https://github.com/vbotka/ansible-__PROJECT__/blob/__BRANCH__/templates/groupdel.j2>`_]
+[`templates/groupdel.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/groupdel.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -152,7 +152,7 @@ Synopsis: Template groupmod.
 Description of the template.
 
 
-[`templates/groupmod.j2 <https://github.com/vbotka/ansible-__PROJECT__/blob/__BRANCH__/templates/groupmod.j2>`_]
+[`templates/groupmod.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/groupmod.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -175,7 +175,7 @@ Synopsis: Template hostapd.conf.
 Description of the template.
 
 
-[`templates/hostapd.conf.j2 <https://github.com/vbotka/ansible-__PROJECT__/blob/__BRANCH__/templates/hostapd.conf.j2>`_]
+[`templates/hostapd.conf.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/hostapd.conf.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -198,7 +198,7 @@ Synopsis: Template hosts.
 Description of the template.
 
 
-[`templates/hosts.j2 <https://github.com/vbotka/ansible-__PROJECT__/blob/__BRANCH__/templates/hosts.j2>`_]
+[`templates/hosts.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/hosts.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -221,7 +221,7 @@ Synopsis: Template hosts-aliases-list.
 Description of the template.
 
 
-[`templates/hosts-aliases-list.j2 <https://github.com/vbotka/ansible-__PROJECT__/blob/__BRANCH__/templates/hosts-aliases-list.j2>`_]
+[`templates/hosts-aliases-list.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/hosts-aliases-list.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -244,7 +244,7 @@ Synopsis: Template hosts.allow-01.
 Description of the template.
 
 
-[`templates/hosts.allow-01.j2 <https://github.com/vbotka/ansible-__PROJECT__/blob/__BRANCH__/templates/hosts.allow-01.j2>`_]
+[`templates/hosts.allow-01.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/hosts.allow-01.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -267,7 +267,7 @@ Synopsis: Template hosts.allow-02.
 Description of the template.
 
 
-[`templates/hosts.allow-02.j2 <https://github.com/vbotka/ansible-__PROJECT__/blob/__BRANCH__/templates/hosts.allow-02.j2>`_]
+[`templates/hosts.allow-02.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/hosts.allow-02.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -290,7 +290,7 @@ Synopsis: Template loader.conf.
 Description of the template.
 
 
-[`templates/loader.conf.j2 <https://github.com/vbotka/ansible-__PROJECT__/blob/__BRANCH__/templates/loader.conf.j2>`_]
+[`templates/loader.conf.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/loader.conf.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -313,7 +313,7 @@ Synopsis: Template loader.conf2.
 Description of the template.
 
 
-[`templates/loader.conf2.j2 <https://github.com/vbotka/ansible-__PROJECT__/blob/__BRANCH__/templates/loader.conf2.j2>`_]
+[`templates/loader.conf2.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/loader.conf2.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -336,7 +336,7 @@ Synopsis: Template login.conf.
 Description of the template.
 
 
-[`templates/login.conf.j2 <https://github.com/vbotka/ansible-__PROJECT__/blob/__BRANCH__/templates/login.conf.j2>`_]
+[`templates/login.conf.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/login.conf.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -359,7 +359,7 @@ Synopsis: Template login_conf.
 Description of the template.
 
 
-[`templates/login_conf.j2 <https://github.com/vbotka/ansible-__PROJECT__/blob/__BRANCH__/templates/login_conf.j2>`_]
+[`templates/login_conf.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/login_conf.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -382,7 +382,7 @@ Synopsis: Template make.conf.
 Description of the template.
 
 
-[`templates/make.conf.j2 <https://github.com/vbotka/ansible-__PROJECT__/blob/__BRANCH__/templates/make.conf.j2>`_]
+[`templates/make.conf.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/make.conf.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -405,7 +405,7 @@ Synopsis: Template motd.
 Description of the template.
 
 
-[`templates/motd.j2 <https://github.com/vbotka/ansible-__PROJECT__/blob/__BRANCH__/templates/motd.j2>`_]
+[`templates/motd.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/motd.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -428,7 +428,7 @@ Synopsis: Template newsyslog.conf.
 Description of the template.
 
 
-[`templates/newsyslog.conf.j2 <https://github.com/vbotka/ansible-__PROJECT__/blob/__BRANCH__/templates/newsyslog.conf.j2>`_]
+[`templates/newsyslog.conf.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/newsyslog.conf.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -451,7 +451,7 @@ Synopsis: Template ntp.conf.
 Description of the template.
 
 
-[`templates/ntp.conf.j2 <https://github.com/vbotka/ansible-__PROJECT__/blob/__BRANCH__/templates/ntp.conf.j2>`_]
+[`templates/ntp.conf.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/ntp.conf.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -474,7 +474,7 @@ Synopsis: Template procmailrc-includerc-capability.
 Description of the template.
 
 
-[`templates/procmailrc-includerc-capability.j2 <https://github.com/vbotka/ansible-__PROJECT__/blob/__BRANCH__/templates/procmailrc-includerc-capability.j2>`_]
+[`templates/procmailrc-includerc-capability.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/procmailrc-includerc-capability.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -497,7 +497,7 @@ Synopsis: Template procmailrc-includerc-duplicates.
 Description of the template.
 
 
-[`templates/procmailrc-includerc-duplicates.j2 <https://github.com/vbotka/ansible-__PROJECT__/blob/__BRANCH__/templates/procmailrc-includerc-duplicates.j2>`_]
+[`templates/procmailrc-includerc-duplicates.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/procmailrc-includerc-duplicates.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -520,7 +520,7 @@ Synopsis: Template procmailrc-includerc-get-certificate.
 Description of the template.
 
 
-[`templates/procmailrc-includerc-get-certificate.j2 <https://github.com/vbotka/ansible-__PROJECT__/blob/__BRANCH__/templates/procmailrc-includerc-get-certificate.j2>`_]
+[`templates/procmailrc-includerc-get-certificate.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/procmailrc-includerc-get-certificate.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -543,7 +543,7 @@ Synopsis: Template procmailrc-includerc-get-fingerprint.
 Description of the template.
 
 
-[`templates/procmailrc-includerc-get-fingerprint.j2 <https://github.com/vbotka/ansible-__PROJECT__/blob/__BRANCH__/templates/procmailrc-includerc-get-fingerprint.j2>`_]
+[`templates/procmailrc-includerc-get-fingerprint.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/procmailrc-includerc-get-fingerprint.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -566,7 +566,7 @@ Synopsis: Template procmailrc-includerc-get-fingerprints.
 Description of the template.
 
 
-[`templates/procmailrc-includerc-get-fingerprints.j2 <https://github.com/vbotka/ansible-__PROJECT__/blob/__BRANCH__/templates/procmailrc-includerc-get-fingerprints.j2>`_]
+[`templates/procmailrc-includerc-get-fingerprints.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/procmailrc-includerc-get-fingerprints.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -589,7 +589,7 @@ Synopsis: Template procmailrc-includerc-get-message.
 Description of the template.
 
 
-[`templates/procmailrc-includerc-get-message.j2 <https://github.com/vbotka/ansible-__PROJECT__/blob/__BRANCH__/templates/procmailrc-includerc-get-message.j2>`_]
+[`templates/procmailrc-includerc-get-message.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/procmailrc-includerc-get-message.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -612,7 +612,7 @@ Synopsis: Template procmailrc.
 Description of the template.
 
 
-[`templates/procmailrc.j2 <https://github.com/vbotka/ansible-__PROJECT__/blob/__BRANCH__/templates/procmailrc.j2>`_]
+[`templates/procmailrc.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/procmailrc.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -635,7 +635,7 @@ Synopsis: Template ssh_config.
 Description of the template.
 
 
-[`templates/ssh_config.j2 <https://github.com/vbotka/ansible-__PROJECT__/blob/__BRANCH__/templates/ssh_config.j2>`_]
+[`templates/ssh_config.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/ssh_config.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -658,7 +658,7 @@ Synopsis: Template syslog.conf.
 Description of the template.
 
 
-[`templates/syslog.conf.j2 <https://github.com/vbotka/ansible-__PROJECT__/blob/__BRANCH__/templates/syslog.conf.j2>`_]
+[`templates/syslog.conf.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/syslog.conf.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -681,7 +681,7 @@ Synopsis: Template wpa_supplicant.conf.
 Description of the template.
 
 
-[`templates/wpa_supplicant.conf.j2 <https://github.com/vbotka/ansible-__PROJECT__/blob/__BRANCH__/templates/wpa_supplicant.conf.j2>`_]
+[`templates/wpa_supplicant.conf.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/wpa_supplicant.conf.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
