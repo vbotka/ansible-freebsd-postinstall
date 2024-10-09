@@ -4,33 +4,35 @@
   block:
 
     - name: "Hostapd: Enable and start hostapd"
+      when: fp_hostapd_enabled | bool
+      notify: enable and start hostapd
       ansible.builtin.lineinfile:
         dest: /etc/rc.conf
         regexp: ^\s*hostapd_enable\s*=(.*)$
         line: hostapd_enable="YES"
         backup: "{{ fp_backup }}"
-      notify: enable and start hostapd
-      when: fp_hostapd_enabled | bool
 
     - name: "Hostapd: Disable and stop hostapd"
+      when: not fp_hostapd_enabled | bool
+      notify: disable and stop hostapd
       ansible.builtin.lineinfile:
         dest: /etc/rc.conf
         regexp: ^\s*hostapd_enable\s*=(.*)$
         line: hostapd_enable="NO"
         backup: "{{ fp_backup }}"
-      notify: disable and stop hostapd
-      when: not fp_hostapd_enabled | bool
 
     - name: "Hostapd: Configure interface for hostapd"
+      notify: restart hostapd
       ansible.builtin.lineinfile:
         dest: /etc/rc.conf
         regexp: ^\s*{{ item.key }}\s*=(.*)$
         line: '{{ item.key }}="{{ item.value }}"'
         backup: "{{ fp_backup }}"
       loop: "{{ fp_hostapd_rcconf }}"
-      notify: restart hostapd
 
 - name: "Hostapd: Configure {{ fp_hostapd_conf_file }}"
+  tags: fp_hostapd_conf
+  notify: restart hostapd
   ansible.builtin.template:
     src: "{{ fp_hostapd_conf_template }}"
     dest: "{{ fp_hostapd_conf_file }}"
@@ -38,15 +40,13 @@
     group: "{{ fp_hostapd_conf_group }}"
     mode: "{{ fp_hostapd_conf_mode }}"
     backup: "{{ fp_backup }}"
-  notify: restart hostapd
-  tags: fp_hostapd_conf
 
 - name: "Hostapd: hostapd {{ state }}"
+  tags: fp_hostapd_service
+  vars:
+    state: "{{ fp_hostapd_enabled | bool | ternary('started', 'stopped') }}"
   ansible.builtin.service:
     name: hostapd
     state: "{{ state }}"
-  vars:
-    state: "{{ fp_hostapd_enabled | bool | ternary('started', 'stopped') }}"
-  tags: fp_hostapd_service
 
 # EOF

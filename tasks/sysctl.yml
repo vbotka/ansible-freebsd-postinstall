@@ -1,5 +1,7 @@
 ---
 - name: "Sysctl: Debug fp_sysctl_debug={{ fp_sysctl_debug }}"
+  when: fp_sysctl_debug | bool
+  tags: fp_sysctl_debug
   vars:
     msg: |-
       fp_sysctl_tuneables_warning: {{ fp_sysctl_tuneables_warning }}
@@ -9,10 +11,9 @@
         {{ fp_sysctl_conf | to_yaml(indent=2) | indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
-  when: fp_sysctl_debug | bool
-  tags: fp_sysctl_debug
 
 - name: "Sysctl: Configure {{ fp_sysctl_conf_file }}"
+  tags: fp_sysctl_conf
   ansible.posix.sysctl:
     sysctl_file: "{{ fp_sysctl_conf_file }}"
     name: "{{ item.name }}"
@@ -22,7 +23,6 @@
     sysctl_set: "{{ item.set | default(omit) }}"
     ignoreerrors: "{{ fp_sysctl_ignoreerrors | d(omit) }}"
   loop: "{{ fp_sysctl_conf }}"
-  tags: fp_sysctl_conf
 
 - name: Warn when fp_sysctl_conf keeps boot-time tuneables settable via loader.
   when: fp_sysctl_tuneables_warning | bool
@@ -30,19 +30,19 @@
   block:
 
     - name: "Sysctl: Get sysctls settable via loader."
-      ansible.builtin.command: sysctl -aNT
       register: result
+      ansible.builtin.command: sysctl -aNT
       changed_when: false
       check_mode: false
 
     - name: "Sysctl: Warn when fp_sysctl_conf keeps boot-time tuneables settable via loader."
       when: fp_sysctl_tuneables | length > 0
+      vars:
+        fp_sysctl_tuneables: "{{ fp_sysctl_conf | map(attribute='name') | select('in', result.stdout_lines) | sort }}"
       ansible.builtin.debug:
         msg: >-
           [WARNING] Loader boot-time tuneables in fp_sysctl_conf:
           {{ fp_sysctl_tuneables | to_yaml }}
-      vars:
-        fp_sysctl_tuneables: "{{ fp_sysctl_conf | map(attribute='name') | select('in', result.stdout_lines) | sort }}"
 
 # NOTES
 # 1) As of v2.6 module sysctl 'optionally performs a /sbin/sysctl -p'

@@ -1,29 +1,32 @@
 ---
-- name: "Qemu: Enable and start {{ fp_qemu_rcvar }}"
-  ansible.builtin.lineinfile:
-    dest: /etc/rc.conf
-    regexp: ^\s*{{ fp_qemu_rcvar }}\s*=(.*)$
-    line: '{{ fp_qemu_rcvar }}="YES"'
-    backup: "{{ fp_backup }}"
-  when: fp_qemu_enabled | bool
-  notify: enable and start qemu
+- name: Configure /etc/rc.conf
   tags: fp_qemu_rcconf
+  block:
 
-- name: "Qemu: Disable and stop {{ fp_qemu_rcvar }}"
-  ansible.builtin.lineinfile:
-    dest: /etc/rc.conf
-    regexp: ^\s*{{ fp_qemu_rcvar }}\s*=(.*)$
-    line: '{{ fp_qemu_rcvar }}="NO"'
-    backup: "{{ fp_backup }}"
-  when: not fp_qemu_enabled | bool
-  notify: disable and stop qemu
-  tags: fp_qemu_rcconf
+    - name: "Qemu: Enable and start {{ fp_qemu_rcvar }}"
+      when: fp_qemu_enabled | bool
+      notify: enable and start qemu
+      ansible.builtin.lineinfile:
+        dest: /etc/rc.conf
+        regexp: ^\s*{{ fp_qemu_rcvar }}\s*=(.*)$
+        line: '{{ fp_qemu_rcvar }}="YES"'
+        backup: "{{ fp_backup }}"
+
+    - name: "Qemu: Disable and stop {{ fp_qemu_rcvar }}"
+      when: not fp_qemu_enabled | bool
+      notify: disable and stop qemu
+      ansible.builtin.lineinfile:
+        dest: /etc/rc.conf
+        regexp: ^\s*{{ fp_qemu_rcvar }}\s*=(.*)$
+        line: '{{ fp_qemu_rcvar }}="NO"'
+        backup: "{{ fp_backup }}"
 
 - name: "Qemu: smartd {{ state }}"
+  tags: fp_qemu_service
+  vars:
+    state: "{{ fp_qemu_enabled | bool | ternary('started', 'stopped') }}"
   ansible.builtin.service:
     name: "{{ fp_qemu_rcvar }}"
     state: "{{ state }}"
-  vars:
-    state: "{{ fp_qemu_enabled | bool | ternary('started', 'stopped') }}"
 
 # EOF

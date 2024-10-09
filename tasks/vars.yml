@@ -11,9 +11,9 @@
         mode: "0644"
 
     - name: "Vars: Get default versions"
+      register: result
       ansible.builtin.command:
         cmd: make default-versions
-      register: result
       changed_when: false
 
     - name: "Vars: Create dictionary pf_default_versions"
@@ -21,6 +21,6 @@
         pf_default_versions: "{{ result.stdout | from_yaml }}"
 
     - name: "Vars: Debug default versions (fp_vars_debug={{ fp_vars_debug }})"
+      when: fp_vars_debug | bool
       ansible.builtin.debug:
         var: pf_default_versions
-      when: fp_vars_debug | bool

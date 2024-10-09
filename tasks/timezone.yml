@@ -1,14 +1,14 @@
 ---
 - name: "Timezone: Debug fp_timezone_debug={{ fp_timezone_debug }}"
+  when: fp_timezone_debug | bool
+  tags: fp_timezone_debug
   ansible.builtin.debug:
     msg: |-
       fp_zoneinfo: {{ fp_zoneinfo }}
-  when: fp_timezone_debug | bool
-  tags: fp_timezone_debug
 
 - name: "Timezone: set timezone to {{ fp_zoneinfo }}"
+  notify: adjust CMOS
   community.general.timezone:
     name: "{{ fp_zoneinfo }}"
-  notify: adjust CMOS
 
 # EOF

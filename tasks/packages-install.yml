@@ -1,5 +1,6 @@
 ---
 - name: "Packages-install: Install packages list {{ item }}"
+  when: freebsd_install_method | lower == 'packages'
   community.general.pkgng:
     name: "{{ _fp_pkg_dict[item] }}"
     annotation: "{{ fp_pkg_annotation | d(omit) }}"
@@ -16,9 +17,9 @@
   retries: "{{ freebsd_install_retries }}"
   until: result is succeeded
   delay: "{{ freebsd_install_delay }}"
-  when: freebsd_install_method | lower == 'packages'
 
 - name: "Packages-install: Install ports list {{ item }}"
+  when: freebsd_install_method | lower == 'ports'
   community.general.portinstall:
     name: "{{ local_item }}"
     use_packages: "{{ freebsd_use_packages }}"
@@ -29,6 +30,5 @@
   retries: "{{ freebsd_install_retries }}"
   until: result is succeeded
   delay: "{{ freebsd_install_delay }}"
-  when: freebsd_install_method | lower == 'ports'
 
 # EOF

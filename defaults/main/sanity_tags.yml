@@ -7,8 +7,8 @@ fp_sanity_tags:
   - fp_apcupsd
   - fp_apcupsd_conf
   - fp_apcupsd_rcconf
+  - fp_apcupsd_service
   - fp_authorized_key
-  - fp_authorized_key_debug
   - fp_cloud_proividers
   - fp_copy
   - fp_copy_debug
@@ -31,6 +31,7 @@ fp_sanity_tags:
   - fp_devfs_rcconf
   - fp_devfs_rcvar
   - fp_devfs_rules
+  - fp_devfs_service
   - fp_dhclient
   - fp_dhclient_conf_blocks
   - fp_dhclient_conf_create
@@ -121,6 +122,7 @@ fp_sanity_tags:
   - fp_ntp
   - fp_ntp_conf
   - fp_ntp_rcconf
+  - fp_ntp_service
   - fp_ntpdate
   - fp_packages
   - fp_packages_links
@@ -138,6 +140,7 @@ fp_sanity_tags:
   - fp_procmail_rc
   - fp_qemu
   - fp_qemu_rcconf
+  - fp_qemu_service
   - fp_resolv_conf
   - fp_resolv_conf_absent
   - fp_resolvconf
@@ -148,10 +151,11 @@ fp_sanity_tags:
   - fp_smartd
   - fp_smartd_conf
   - fp_smartd_rcconf
+  - fp_smartd_service
   - fp_snmpd
   - fp_snmpd_conf
-  - fp_snmpd_conf_copy
   - fp_snmpd_rcconf
+  - fp_snmpd_service
   - fp_ssh
   - fp_ssh_config
   - fp_ssh_debug
@@ -159,22 +163,22 @@ fp_sanity_tags:
   - fp_sshd_config
   - fp_sshd_debug
   - fp_sshd_rcconf
+  - fp_sshd_service
   - fp_sudoers
   - fp_swap
   - fp_swap_debug
+  - fp_swap_disable
+  - fp_swap_enable
   - fp_sysctl
   - fp_sysctl_conf
   - fp_sysctl_debug
   - fp_sysctl_tuneables_warning
   - fp_syslogd
   - fp_syslogd_conf
-  - fp_syslogd_conf_orig
-  - fp_syslogd_confd
   - fp_syslogd_debug
-  - fp_syslogd_newconf
-  - fp_syslogd_newconf_orig
   - fp_syslogd_newconfd
   - fp_syslogd_rcconf
+  - fp_syslogd_service
   - fp_timezone
   - fp_timezone_debug
   - fp_tmpmfs

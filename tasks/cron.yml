@@ -1,5 +1,7 @@
 ---
 - name: "Cron: Debug (fp_cron_debug={{ fp_cron_debug }})"
+  when: fp_cron_debug | bool
+  tags: fp_cron_debug
   vars:
     msg: |-
       fp_cron_dir: {{ fp_cron_dir }}
@@ -14,8 +16,6 @@
         {{ fp_cron_tab_system | to_nice_yaml(indent=2) | indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
-  when: fp_cron_debug | bool
-  tags: fp_cron_debug
 
 # Note on "cron – Manage cron.d and crontab entries"
 # https://docs.ansible.com/ansible/latest/modules/cron_module.html
@@ -31,12 +31,13 @@
 # avoid double-entries
 
 - name: "Cron: Rename present crontab entries"
+  tags: fp_cron_rename_entries
   ansible.builtin.include_tasks:
     file: fn/cron-rename-entry.yml
   loop: "{{ fp_cron_tab }}"
-  tags: fp_cron_rename_entries
 
 - name: "Cron: Rename present crontab entries system"
+  tags: fp_cron_rename_entries_system
   ansible.builtin.replace:
     path: "{{ fp_cron_file_system }}"
     regexp: ^\s*#\s*{{ item.name }}$
@@ -45,17 +46,17 @@
   loop: "{{ fp_cron_tab }}"
   loop_control:
     label: "{{ item.name }}"
-  tags: fp_cron_rename_entries_system
 
 - name: "Cron: Configure cron variables"
+  tags: fp_cron_var
   community.general.cronvar:
     name: "{{ item.name }}"
     value: "{{ item.value }}"
     user: "{{ item.user }}"
   loop: "{{ fp_cron_var }}"
-  tags: fp_cron_var
 
 - name: "Cron: Configure crontab entries"
+  tags: fp_cron_tab
   ansible.builtin.cron:
     state: "{{ item.state }}"
     user: "{{ item.user }}"
@@ -69,17 +70,17 @@
   loop: "{{ fp_cron_tab }}"
   loop_control:
     label: "{{ item.name }}"
-  tags: fp_cron_tab
 
 - name: "Cron: Configure cron variables system"
+  tags: fp_cron_var_system
   community.general.cronvar:
     cron_file: "{{ fp_cron_file_system }}"
     name: "{{ item.name }}"
     value: "{{ item.value }}"
   loop: "{{ fp_cron_var_system }}"
-  tags: fp_cron_var_system
 
 - name: "Cron: Configure crontab entries system"
+  tags: fp_cron_tab_system
   ansible.builtin.cron:
     cron_file: "{{ fp_cron_file_system }}"
     state: "{{ item.state }}"
@@ -94,7 +95,6 @@
   loop: "{{ fp_cron_tab_system }}"
   loop_control:
     label: "{{ item.name }}"
-  tags: fp_cron_tab_system
 
 # TODO:
 # /etc/cron.d

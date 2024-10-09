@@ -1,32 +1,32 @@
 ---
 - name: "Gitserver: Add group {{ fp_gitserver_group }}"
+  tags: fp_gitserver_group
   ansible.builtin.group:
     name: "{{ fp_gitserver_group }}"
     gid: "{{ fp_gitserver_group_gid | d(omit) }}"
-  tags: fp_gitserver_group
 
 - name: "Gitserver: Add user {{ fp_gitserver_owner }}"
+  tags: fp_gitserver_owner
   ansible.builtin.user:
     name: "{{ fp_gitserver_owner }}"
     uid: "{{ fp_gitserver_owner_uid | d(omit) }}"
     shell: "{{ fp_gitserver_owner_shell | d(omit) }}"
     home: "{{ fp_gitserver_owner_home | d(omit) }}"
-  tags: fp_gitserver_owner
 
 - name: "Gitserver: Add user to group"
+  tags: fp_gitserver_owner
   ansible.builtin.user:
     name: "{{ fp_gitserver_owner }}"
     groups: "{{ fp_gitserver_group }}"
-  tags: fp_gitserver_owner
 
 - name: "Gitserver: Set ownership and permissions of {{ fp_gitserver_dir }}"
+  tags: fp_gitserver_dir
   ansible.builtin.file:
     state: directory
     path: "{{ fp_gitserver_dir }}"
     owner: "{{ fp_gitserver_owner }}"
     group: "{{ fp_gitserver_group }}"
     mode: "{{ fp_gitserver_dir_mode }}"
-  tags: fp_gitserver_dir
 
 # TODO: How do I Setup up a Multi-User Git Server
 # https://forums.freebsd.org/threads/how-do-i-setup-up-a-multi-user-git-server.50969/

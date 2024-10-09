@@ -1,5 +1,7 @@
 ---
 - name: "Loader: Debug fp_loader_debug={{ fp_loader_debug }}"
+  when: fp_loader_debug | bool
+  tags: fp_loader_debug
   vars:
     msg: |-
       fp_loader_tuneables_warning: {{ fp_loader_tuneables_warning }}
@@ -13,18 +15,18 @@
         {{ fp_loader_modules | to_yaml(indent=2) | indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
-  when: fp_loader_debug | bool
-  tags: fp_loader_debug
 
 - name: "Loader: Backup orig {{ fp_loader_conf_file }}"
+  when: fp_loader_conf_file_backup_orig | bool
+  tags: fp_loader_conf_file_backup_orig
   ansible.builtin.command:
     cmd: cp loader.conf loader.conf.orig
     chdir: /boot
     creates: /boot/loader.conf.orig
-  when: fp_loader_conf_file_backup_orig | bool
-  tags: fp_loader_conf_file_backup_orig
 
 - name: "Loader: Configure {{ fp_loader_conf_file }}"
+  tags: fp_loader_conf
+  notify: loader message reboot
   ansible.builtin.template:
     src: "{{ fp_loader_conf_template }}"
     dest: "{{ fp_loader_conf_file }}"
@@ -32,17 +34,15 @@
     group: wheel
     mode: "0644"
     backup: "{{ fp_backup }}"
-  notify: loader message reboot
-  tags: fp_loader_conf
 
 - name: "Loader: Load modules"
+  when: fp_loader_load_modules | bool
+  tags: fp_loader_load_modules
   ansible.builtin.shell:
     cmd: >
       kldstat -q -n {{ item }} || kldload -n {{ item }}
   loop: "{{ fp_loader_modules }}"
   changed_when: false
-  when: fp_loader_load_modules | bool
-  tags: fp_loader_load_modules
 
 - name: Warn when fp_loader_conf keeps also non boot-time tuneables settable via loader.
   when: fp_loader_tuneables_warning | bool
@@ -50,18 +50,20 @@
   block:
 
     - name: "Loader: Get sysctls settable via loader."
-      ansible.builtin.command: sysctl -aNT
       register: result
+      ansible.builtin.command: sysctl -aNT
       changed_when: false
       check_mode: false
 
     - name: "Loader: Warn when fp_sysctl_conf keeps also non boot-time tuneables settable via loader."
       when: fp_loader_non_tuneables | length > 0
+      vars:
+        fp_loader_non_tuneables: "{{ fp_loader_conf |
+                                     map(attribute='name') |
+                                     reject('in', result.stdout_lines) | sort }}"
       ansible.builtin.debug:
         msg: >-
           [WARNING] Non boot-time tuneables in fp_loader_conf:
           {{ fp_loader_non_tuneables | to_yaml }}
-      vars:
-        fp_loader_non_tuneables: "{{ fp_loader_conf | map(attribute='name') | reject('in', result.stdout_lines) | sort }}"
 
 # EOF

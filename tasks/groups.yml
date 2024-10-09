@@ -1,15 +1,16 @@
 ---
 - name: "Groups: Debug fp_groups_debug={{ fp_groups_debug }}"
+  when: fp_groups_debug | bool
+  tags: fp_groups_debug
   vars:
     msg: |-
       fp_groups_conf:
         {{ fp_groups_conf | to_nice_yaml(indent=2) | indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
-  when: fp_groups_debug | bool
-  tags: fp_groups_debug
 
 - name: "Groups: Manage groups"
+  tags: fp_groups_conf
   ansible.builtin.group:
     name: "{{ item.name }}"
     gid: "{{ item.gid | d(omit) }}"
@@ -17,6 +18,5 @@
     state: "{{ item.state | d(omit) }}"
     system: "{{ item.system | d(omit) }}"
   loop: "{{ fp_groups_conf }}"
-  tags: fp_groups_conf
 
 # EOF

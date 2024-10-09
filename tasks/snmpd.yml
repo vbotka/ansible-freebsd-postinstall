@@ -1,62 +1,65 @@
 ---
-- name: "Snmpd: Enable and start snmpd"
-  ansible.builtin.lineinfile:
-    dest: /etc/rc.conf
-    regexp: ^\s*snmpd_enable\s*=(.*)$
-    line: snmpd_enable="YES"
-    backup: "{{ fp_backup }}"
-  when: fp_snmpd_enabled | bool
-  notify: enable and start snmpd
+- name: Configure /etc/rc.conf
   tags: fp_snmpd_rcconf
+  block:
 
-- name: "Snmpd: Disable and stop snmpd"
-  ansible.builtin.lineinfile:
-    dest: /etc/rc.conf
-    regexp: ^\s*snmpd_enable\s*=(.*)$
-    line: snmpd_enable="NO"
-    backup: "{{ fp_backup }}"
-  when: not fp_snmpd_enabled | bool
-  notify: disable and stop snmpd
-  tags: fp_snmpd_rcconf
+    - name: "Snmpd: Enable and start snmpd"
+      when: fp_snmpd_enabled | bool
+      notify: enable and start snmpd
+      ansible.builtin.lineinfile:
+        dest: /etc/rc.conf
+        regexp: ^\s*snmpd_enable\s*=(.*)$
+        line: snmpd_enable="YES"
+        backup: "{{ fp_backup }}"
 
-- name: "Snmpd: Configure /etc/rc.conf"
-  ansible.builtin.lineinfile:
-    dest: /etc/rc.conf
-    regexp: ^\s*{{ item.key }}\s*=(.*)$
-    line: '{{ item.key }}="{{ item.value }}"'
-    backup: "{{ fp_backup }}"
-  loop: "{{ fp_snmpd_rcconf }}"
-  notify: restart snmpd
-  tags: fp_snmpd_rcconf
+    - name: "Snmpd: Disable and stop snmpd"
+      when: not fp_snmpd_enabled | bool
+      notify: disable and stop snmpd
+      ansible.builtin.lineinfile:
+        dest: /etc/rc.conf
+        regexp: ^\s*snmpd_enable\s*=(.*)$
+        line: snmpd_enable="NO"
+        backup: "{{ fp_backup }}"
 
-- name: "Snmpd: Copy snmpd.conf.example to snmpd.conf if not exist"
-  ansible.builtin.copy:
-    force: false
-    remote_src: true
-    src: /usr/local/share/snmp/snmpd.conf.example
-    dest: /usr/local/etc/snmpd.conf
-    owner: root
-    group: wheel
-    mode: "0644"
-  notify: restart snmpd
-  tags: fp_snmpd_conf_copy
+    - name: "Snmpd: Configure /etc/rc.conf"
+      notify: restart snmpd
+      ansible.builtin.lineinfile:
+        dest: /etc/rc.conf
+        regexp: ^\s*{{ item.key }}\s*=(.*)$
+        line: '{{ item.key }}="{{ item.value }}"'
+        backup: "{{ fp_backup }}"
+      loop: "{{ fp_snmpd_rcconf }}"
 
-- name: "Snmpd: Configure /usr/local/etc/snmpd.conf"
-  ansible.builtin.lineinfile:
-    path: /usr/local/etc/snmpd.conf
-    regexp: ^\s*{{ item.key }}\s*=(.*)$
-    line: "{{ item.key }} {{ item.value }}"
-    state: "{{ item.state | default(omit) }}"
-    backup: "{{ fp_backup }}"
-  loop: "{{ fp_snmpd_conf }}"
-  notify: restart snmpd
+- name: Configure /usr/local/etc/snmpd.conf
   tags: fp_snmpd_conf
+  notify: restart snmpd
+  block:
+
+    - name: "Snmpd: Copy snmpd.conf.example to snmpd.conf if not exist"
+      ansible.builtin.copy:
+        force: false
+        remote_src: true
+        src: /usr/local/share/snmp/snmpd.conf.example
+        dest: /usr/local/etc/snmpd.conf
+        owner: root
+        group: wheel
+        mode: "0644"
+
+    - name: "Snmpd: Configure /usr/local/etc/snmpd.conf"
+      ansible.builtin.lineinfile:
+        path: /usr/local/etc/snmpd.conf
+        regexp: ^\s*{{ item.key }}\s*=(.*)$
+        line: "{{ item.key }} {{ item.value }}"
+        state: "{{ item.state | default(omit) }}"
+        backup: "{{ fp_backup }}"
+      loop: "{{ fp_snmpd_conf }}"
 
 - name: "Snmpd: snmpd {{ state }}"
+  tags: fp_snmpd_service
+  vars:
+    state: "{{ fp_snmpd_enabled | bool | ternary('started', 'stopped') }}"
   ansible.builtin.service:
     name: snmpd
     state: "{{ state }}"
-  vars:
-    state: "{{ fp_snmpd_enabled | bool | ternary('started', 'stopped') }}"
 
 # EOF

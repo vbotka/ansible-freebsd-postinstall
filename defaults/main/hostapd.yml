@@ -3,7 +3,6 @@ fp_hostapd: false
 fp_hostapd_install: false # list of packages: hostap
 fp_hostapd_enabled: false
 fp_hostapd_name: hostapd
-fp_hostapd_state: stopped
 fp_hostapd_ssid: MY-SSID
 fp_hostapd_wpa_passphrase: MY-PASSPHRASE
 fp_hostapd_device: ath0

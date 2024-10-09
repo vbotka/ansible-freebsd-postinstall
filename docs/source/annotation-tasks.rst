@@ -696,13 +696,13 @@ Synopsis: Configure NFS client.
         task will return the dictionary
         ``al_ansible_facts_services``.
 
+:42: Test the existence of the file ``var/db/nounttab``
+
 :55: Display this dictionary. This dictionary is used to select the
      handlers in the dictionary ``fp_nfs_handlers``. There is no
      status option of the service ``nfsclient``. Instead of starting
      the service, restart it if there are any nfs mountpoints. This
      means if the file ``/var/db/mounttab`` exists.
-
-:42: Test the existence of the file ``var/db/nounttab``
 
 :59: Display the result ``fp_nfs_var_db_mounttab.stat.exists``. This
      variable will be used to select the handler in the dictionary

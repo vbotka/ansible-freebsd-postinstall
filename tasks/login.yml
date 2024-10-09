@@ -1,5 +1,7 @@
 ---
 - name: "Login: Create {{ fp_login_conf_file }}"
+  when: fp_login_conf_global | bool
+  notify: rebuild login_conf
   ansible.builtin.template:
     src: "{{ fp_login_conf_template }}"
     dest: "{{ fp_login_conf_file }}"
@@ -7,8 +9,6 @@
     group: wheel
     mode: "0644"
     backup: "{{ fp_backup }}"
-  notify: rebuild login_conf
-  when: fp_login_conf_global | bool
 
 - name: "Login: Create local .login_conf"
   ansible.builtin.template:

@@ -2,17 +2,16 @@
 fp_authorized_key: false
 fp_authorized_key_debug: false
 fp_authorized_key_conf: []
-# If user does not exist this will make the task fail if True
-fp_authorized_key_fail: true
+
 # If False, group keys by user and install string of keys
 fp_authorized_key_install_individually: true
-# If fp_authorized_key_install_individually: False,
-# use the following parameters
-fp_authorized_key_install_exclusive: false
+
+# See module authorized_key parameters
 # fp_authorized_key_comment: ""
-fp_authorized_key_follow: false
-# fp_authorized_key_key_options: ""
-fp_authorized_key_manage_dir: true
+# fp_authorized_key_install_exclusive: false
+# fp_authorized_key_follow: false
+# fp_authorized_key_manage_dir: true
 # fp_authorized_key_path: ""
 # fp_authorized_key_state: present
-fp_authorized_key_validate_certs: true
+# fp_authorized_key_key_options: ""
+# fp_authorized_key_validate_certs: true

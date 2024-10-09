@@ -1,7 +1,7 @@
 ---
 - name: Import cloud-providers/digitalocean.yml
-  ansible.builtin.import_tasks: cloud-providers/digitalocean.yml
   when: digitalocean | bool
   tags: fp_do
+  ansible.builtin.import_tasks: cloud-providers/digitalocean.yml
 
 # EOF

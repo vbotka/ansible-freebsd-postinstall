@@ -1,87 +1,96 @@
 ---
-- name: "Authorized-key: Get list of users"
-  ansible.builtin.getent:
-    database: passwd
-  tags: fp_authorized_key_debug
+- name: Set variables
+  block:
+
+    - name: "Authorized-key: Get passwd"
+      check_mode: false
+      ansible.builtin.getent:
+        database: passwd
+
+    - name: "Authorized-key: Set local_list_users"
+      ansible.builtin.set_fact:
+        local_list_users: "{{ fp_authorized_key_conf | map(attribute='user') | unique }}"
+
+    - name: "Authorized-key: Debug local_list_users fp_authorized_key_debug={{ fp_authorized_key_debug }}"
+      when: fp_authorized_key_debug | bool
+      ansible.builtin.debug:
+        var: local_list_users
 
 - name: "Authorized-key: Debug fp_authorized_key_debug={{ fp_authorized_key_debug }}"
+  when: fp_authorized_key_debug | bool
   vars:
     msg: |-
-      fp_authorized_key_fail: {{ fp_authorized_key_fail | bool }}
       fp_authorized_key_install_individually: {{ fp_authorized_key_install_individually | bool }}
-      fp_authorized_key_install_exclusive: {{ fp_authorized_key_install_exclusive | bool }}
-      fp_authorized_key_follow: {{ fp_authorized_key_follow | bool }}
+      fp_authorized_key_comment: {{ fp_authorized_key_comment | d('UNDEFINED') }}
+      fp_authorized_key_install_exclusive: {{ fp_authorized_key_install_exclusive | d('UNDEFINED') }}
+      fp_authorized_key_follow: {{ fp_authorized_key_follow | d('UNDEFINED') }}
       fp_authorized_key_key_options: {{ fp_authorized_key_key_options | d('UNDEFINED') }}
-      fp_authorized_key_manage_dir: {{ fp_authorized_key_manage_dir | bool }}
+      fp_authorized_key_manage_dir: {{ fp_authorized_key_manage_dir | d('UNDEFINED') }}
       fp_authorized_key_path: {{ fp_authorized_key_path | d('UNDEFINED') }}
-      fp_authorized_key_state: {{ fp_authorized_key_state | d('present') }}
-      fp_authorized_key_validate_certs: {{ fp_authorized_key_validate_certs | bool }}
+      fp_authorized_key_state: {{ fp_authorized_key_state | d('UNDEFINED') }}
+      fp_authorized_key_validate_certs: {{ fp_authorized_key_validate_certs | d('UNDEFINED') }}
       fp_authorized_key_conf:
         {{ fp_authorized_key_conf | to_nice_yaml(indent=2) | indent(2) }}
       getent_passwd keys:
         {{ getent_passwd.keys() | list | sort | to_yaml(indent=2) | indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
-  when: fp_authorized_key_debug | bool
-  tags: fp_authorized_key_debug
+
+- name: Sanity
+  block:
+
+    - name: "Authorized-key: Sanity: All users exist."
+      vars:
+        users_missing: "{{ local_list_users | difference(getent_passwd.keys()) }}"
+      ansible.builtin.assert:
+        that: users_missing | length == 0
+        fail_msg: >
+          [ERR] Users missing: {{ users_missing }}
 
 - name: "Authorized-key: Configure authorized keys individually"
+  when: fp_authorized_key_install_individually | bool
   ansible.posix.authorized_key:
     user: "{{ item.user }}"
     key: "{{ item.key }}"
-    exclusive: "{{ item.exclusive | d(omit) }}"
     comment: "{{ item.comment | d(omit) }}"
+    exclusive: "{{ item.exclusive | d(omit) }}"
     follow: "{{ item.follow | d(omit) }}"
-    key_options: "{{ item.key_iptions | d(omit) }}"
     manage_dir: "{{ item.manage_dir | d(omit) }}"
     path: "{{ item.path | d(omit) }}"
     state: "{{ item.state | d(omit) }}"
+    key_options: "{{ item.key_iptions | d(omit) }}"
     validate_certs: "{{ item.validate_certs | d(omit) }}"
   loop: "{{ fp_authorized_key_conf }}"
   loop_control:
     label: "{{ item.user }}"
-  when:
-    - fp_authorized_key_install_individually | bool
-    - fp_authorized_key_fail | bool or (item.user in getent_passwd.keys())
 
 - name: "Authorized-key: Configure joined authorized keys"
-  when:
-    - not fp_authorized_key_install_individually | bool
-    - fp_authorized_key_fail | bool or (item.user in getent_passwd.keys())
+  when: not fp_authorized_key_install_individually | bool
   block:
 
-    - name: "Authorized-key: Create list of users"
-      ansible.builtin.set_fact:
-        local_list_users: "{{ fp_authorized_key_conf | map(attribute='user') | unique }}"
-
-    - name: "Authorized-key: Debug show list of users fp_authorized_key_debug={{ fp_authorized_key_debug }}"
-      ansible.builtin.debug:
-        var: local_list_users
-      when: fp_authorized_key_debug | bool
-
     - name: "Authorized-key: Debug show joined keys fp_authorized_key_debug={{ fp_authorized_key_debug }}"
-      ansible.builtin.debug:
-        msg: "{{ '{}'.format(msg) }}"
-      loop: "{{ local_list_users }}"
+      when: fp_authorized_key_debug | bool
       vars:
         my_query: "[?user=='{{ item }}'].key"
         msg: "{{ fp_authorized_key_conf | json_query(my_query) | join('\n') }}"
-      when: fp_authorized_key_debug | bool
+      ansible.builtin.debug:
+        msg: "{{ '{}'.format(msg) }}"
+      loop: "{{ local_list_users }}"
 
     - name: "Authorized-key: Configure joined authorized keys"
+      vars:
+        my_query: "[?user=='{{ item }}'].key"
       ansible.posix.authorized_key:
         user: "{{ item }}"
         key: "{{ fp_authorized_key_conf | json_query(my_query) | join('\n') }}"
-        exclusive: "{{ fp_authorized_key_install_exclusive | bool }}"
         comment: "{{ fp_authorized_key_comment | d(omit) }}"
-        follow: "{{ fp_authorized_key_follow | bool }}"
-        key_options: "{{ fp_authorized_key_key_options | d(omit) }}"
-        manage_dir: "{{ fp_authorized_key_manage_dir | bool }}"
+        exclusive: "{{ fp_authorized_key_install_exclusive | d(omit) | bool }}"
+        follow: "{{ fp_authorized_key_follow | d(omit) | bool }}"
+        manage_dir: "{{ fp_authorized_key_manage_dir | d(omit) | bool }}"
         path: "{{ fp_authorized_key_path | d(omit) }}"
         state: "{{ fp_authorized_key_state | d(omit) }}"
-        validate_certs: "{{ fp_authorized_key_validate_certs | bool }}"
+        key_options: "{{ fp_authorized_key_key_options | d(omit) }}"
+        validate_certs: "{{ fp_authorized_key_validate_certs | d(omit) | bool }}"
       loop: "{{ local_list_users }}"
-      vars:
-        my_query: "[?user=='{{ item }}'].key"
 
 # EOF

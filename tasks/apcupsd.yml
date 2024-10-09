@@ -1,43 +1,48 @@
 ---
-- name: "Apcupsd: Enable and start apcupsd"
-  ansible.builtin.lineinfile:
-    dest: /etc/rc.conf
-    regexp: ^\s*apcupsd_enable\s*=(.*)$
-    line: apcupsd_enable="YES"
-    backup: "{{ fp_backup }}"
-  when: fp_apcupsd_enabled | bool
-  notify: enable and start apcupsd
+- name: Rcconf
   tags: fp_apcupsd_rcconf
+  block:
 
-- name: "Apcupsd: Disable and stop apcupsd"
-  ansible.builtin.lineinfile:
-    dest: /etc/rc.conf
-    regexp: ^\s*apcupsd_enable\s*=(.*)$
-    line: apcupsd_enable="NO"
-    backup: "{{ fp_backup }}"
-  when: not fp_apcupsd_enabled | bool
-  notify: disable and stop apcupsd
-  tags: fp_apcupsd_rcconf
+    - name: "Apcupsd: Enable and start apcupsd"
+      when: fp_apcupsd_enabled | bool
+      notify: enable and start apcupsd
+      ansible.builtin.lineinfile:
+        dest: /etc/rc.conf
+        regexp: ^\s*apcupsd_enable\s*=(.*)$
+        line: apcupsd_enable="YES"
+        backup: "{{ fp_backup }}"
 
-- name: "Apcupsd: Create directory {{ fp_apcupsd_conf_dir }}"
-  ansible.builtin.file:
-    state: directory
-    path: "{{ fp_apcupsd_conf_dir }}"
-    mode: "{{ fp_apcupsd_conf_dir_mode }}"
+    - name: "Apcupsd: Disable and stop apcupsd"
+      when: not fp_apcupsd_enabled | bool
+      notify: disable and stop apcupsd
+      ansible.builtin.lineinfile:
+        dest: /etc/rc.conf
+        regexp: ^\s*apcupsd_enable\s*=(.*)$
+        line: apcupsd_enable="NO"
+        backup: "{{ fp_backup }}"
+
+- name: Conf
   tags: fp_apcupsd_conf
+  block:
 
-- name: "Apcupsd: Configure apcupsd.conf"
-  ansible.builtin.template:
-    src: apcupsd.conf.j2
-    dest: "{{ fp_apcupsd_conf_file }}"
-    owner: "{{ fp_apcupsd_conf_owner }}"
-    group: "{{ fp_apcupsd_conf_group }}"
-    mode: "{{ fp_apcupsd_conf_mode }}"
-    backup: "{{ fp_backup }}"
-  notify: restart apcupsd
-  tags: fp_apcupsd_conf
+    - name: "Apcupsd: Create directory {{ fp_apcupsd_conf_dir }}"
+      ansible.builtin.file:
+        state: directory
+        path: "{{ fp_apcupsd_conf_dir }}"
+        mode: "{{ fp_apcupsd_conf_dir_mode }}"
+
+    - name: "Apcupsd: Configure apcupsd.conf"
+      notify: restart apcupsd
+      ansible.builtin.template:
+        src: apcupsd.conf.j2
+        dest: "{{ fp_apcupsd_conf_file }}"
+        owner: "{{ fp_apcupsd_conf_owner }}"
+        group: "{{ fp_apcupsd_conf_group }}"
+        mode: "{{ fp_apcupsd_conf_mode }}"
+        backup: "{{ fp_backup }}"
 
 - name: "Apcupsd: Service apcupsd {{ state }}"
+  tags: fp_apcupsd_service
   ansible.builtin.service:
     name: apcupsd
     state: "{{ state }}"

@@ -1,21 +1,21 @@
 ---
 - name: "Tmpmfs: Debug fp_tmpmfs_debug={{ fp_tmpmfs_debug }}"
+  when: fp_tmpmfs_debug | bool
+  tags: fp_tmpmfs_debug
   vars:
     msg: |-
       fp_tmpmfs_rcconf:
         {{ fp_tmpmfs_rcconf | to_yaml(indent=2) | indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
-  when: fp_tmpmfs_debug | bool
-  tags: fp_tmpmfs_debug
 
 - name: "Tmpmfs: Configure tmpmfs"
+  tags: fp_tmpmfs_rcconf
   ansible.builtin.lineinfile:
     dest: /etc/rc.conf
     regexp: ^\s*{{ item.key }}\s*=(.*)$
     line: '{{ item.key }}="{{ item.value }}"'
     backup: "{{ fp_backup }}"
   loop: "{{ fp_tmpmfs_rcconf }}"
-  tags: fp_tmpmfs_rcconf
 
 # EOF

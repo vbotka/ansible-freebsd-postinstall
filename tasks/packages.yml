@@ -6,6 +6,7 @@
     _fp_pkg_enabled: "{{ fp_packages | selectattr('enabled') | map(attribute='list') }}"
 
 - name: "Packages: Debug fp_packages_debug={{ fp_packages_debug }}"
+  when: fp_packages_debug | bool
   vars:
     msg: |-
       ansible_architecture: {{ ansible_architecture }}
@@ -44,35 +45,37 @@
         {{ _fp_pkg_dict | to_yaml(indent=2) | indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
-  when: fp_packages_debug | bool
 
-- name: "Pkglist: Assert all items in _fp_pkg_enabled are available in _fp_pkg_dict"
-  ansible.builtin.assert:
-    quiet: true
-    that: _fp_pkg_missing | length == 0
-    fail_msg: |
-      [ERR] The packages list(s): {{ _fp_pkg_missing }} missing in _fp_pkg_dict
-  vars:
-    _fp_pkg_missing: "{{ _fp_pkg_enabled | difference(_fp_pkg_dict.keys()) }}"
+- name: Sanity
+  block:
 
-- name: "Pkglist: Assert freebsd_install_method in [packages, ports]"
-  ansible.builtin.assert:
-    quiet: true
-    that: freebsd_install_method in ['packages', 'ports']
-    fail_msg: |
-      [ERR] freebsd_install_method must be 'packages' or 'ports'. Is '{{ freebsd_install_method }}'
+    - name: "Packages: Assert all items in _fp_pkg_enabled are available in _fp_pkg_dict"
+      vars:
+        _fp_pkg_missing: "{{ _fp_pkg_enabled | difference(_fp_pkg_dict.keys()) }}"
+      ansible.builtin.assert:
+        quiet: true
+        that: _fp_pkg_missing | length == 0
+        fail_msg: |
+          [ERR] The packages list(s): {{ _fp_pkg_missing }} missing in _fp_pkg_dict
+
+    - name: "Packages: Assert freebsd_install_method in [packages, ports]"
+      ansible.builtin.assert:
+        quiet: true
+        that: freebsd_install_method in ['packages', 'ports']
+        fail_msg: |
+          [ERR] freebsd_install_method must be 'packages' or 'ports'. Is '{{ freebsd_install_method }}'
 
 - name: "Packages: Install packages"
   ansible.builtin.include_tasks: packages-install.yml
   loop: "{{ _fp_pkg_enabled }}"
 
 - name: "Packages: Create symbolic links"
+  tags: fp_packages_links
   ansible.builtin.file:
     src: "{{ item.target }}"
     dest: "{{ item.link }}"
     state: link
     force: true
   loop: "{{ fp_links }}"
-  tags: fp_packages_links
 
 # EOF

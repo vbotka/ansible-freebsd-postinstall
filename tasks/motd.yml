@@ -1,29 +1,31 @@
 ---
 - name: "Motd: Configure /etc/motd"
+  tags: fp_motd_create
   ansible.builtin.template:
     src: "{{ fp_motd_conf_template }}"
     dest: "{{ fp_motd_conf_file }}"
     mode: "{{ fp_motd_conf_mode }}"
     backup: "{{ fp_backup }}"
-  tags: fp_motd_create
 
-- name: "Motd: Set update_motd YES"
-  ansible.builtin.lineinfile:
-    dest: /etc/rc.conf
-    regexp: ^\s*update_motd\s*=(.*)$
-    line: update_motd="YES"
-    backup: "{{ fp_backup }}"
-  when: fp_update_motd | bool
+- name: Configure /etc/rc.conf
   tags: fp_motd_rcconf
+  block:
 
-- name: "Motd: Set update_motd NO"
-  ansible.builtin.lineinfile:
-    dest: /etc/rc.conf
-    regexp: ^\s*update_motd\s*=(.*)$
-    line: update_motd="NO"
-    backup: "{{ fp_backup }}"
-  when: not fp_update_motd | bool
-  tags: fp_motd_rcconf
+    - name: "Motd: Set update_motd YES"
+      when: fp_update_motd | bool
+      ansible.builtin.lineinfile:
+        dest: /etc/rc.conf
+        regexp: ^\s*update_motd\s*=(.*)$
+        line: update_motd="YES"
+        backup: "{{ fp_backup }}"
+
+    - name: "Motd: Set update_motd NO"
+      when: not fp_update_motd | bool
+      ansible.builtin.lineinfile:
+        dest: /etc/rc.conf
+        regexp: ^\s*update_motd\s*=(.*)$
+        line: update_motd="NO"
+        backup: "{{ fp_backup }}"
 
 # NOTES
 # By default system info is added to the top of /etc/motd on reboot.
