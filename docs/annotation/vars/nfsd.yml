@@ -4,23 +4,23 @@ task_nfsd_synopsis: |
   Configure NFS server.
 
 task_nfsd_description: |
-  :3: Display variables.
+  :2: Display variables.
 
-  :50: enable ``fp_nfsd_debug=true``.
+  :3: enable ``fp_nfsd_debug=true``.
 
-  :54: Collect status of the services stored in the list
+  :58: Collect status of the services stored in the list
        ``fp_nfsd_service_paths``.
 
-  :56-57: The module ``service_facts`` doesn't work in
+  :62-63: The module ``service_facts`` doesn't work in
           FreeBSD. Instead, use the task ``al_bsd_service_facts`` from
           the library. This task doesn't support the check mode. This
           task will return the dictionary
           ``al_ansible_facts_services``.
 
-  :71: Display this dictionary. This dictionary is used to select the
+  :67: Display this dictionary. This dictionary is used to select the
        handlers in the dictionary ``fp_nfsd_handlers``.
 
-  :75: Display the dictionary ``fp_nfsd_handlers``. The defaults are
+  :72: Display the dictionary ``fp_nfsd_handlers``. The defaults are
        used in check mode because of empty dictionary
        ``al_ansible_facts_services``.
 
@@ -32,7 +32,7 @@ task_nfsd_description: |
   :95: Disable and stop services. If there are any changes the service will
         be reloaded or restarted when already running.
 
-task_nfsd_lines: 3,50,54,56,57,71,75,77,86,95
+task_nfsd_lines: 2,3,58,62,63,67,72,77,86,95
 
 task_nfsd_seealso:
   handlers:

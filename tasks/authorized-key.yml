@@ -9,7 +9,7 @@
 
     - name: "Authorized-key: Set local_list_users"
       ansible.builtin.set_fact:
-        local_list_users: "{{ fp_authorized_key_conf | map(attribute='user') | unique }}"
+        local_list_users: "{{ fp_authorized_key_conf | map(attribute='user') | unique | sort }}"
 
     - name: "Authorized-key: Debug local_list_users fp_authorized_key_debug={{ fp_authorized_key_debug }}"
       when: fp_authorized_key_debug | bool
@@ -49,6 +49,8 @@
 
 - name: "Authorized-key: Configure authorized keys individually"
   when: fp_authorized_key_install_individually | bool
+  environment:
+    CRYPTOGRAPHY_OPENSSL_NO_LEGACY: '1'
   ansible.posix.authorized_key:
     user: "{{ item.user }}"
     key: "{{ item.key }}"
@@ -78,6 +80,8 @@
       loop: "{{ local_list_users }}"
 
     - name: "Authorized-key: Configure joined authorized keys"
+      environment:
+        CRYPTOGRAPHY_OPENSSL_NO_LEGACY: '1'
       vars:
         my_query: "[?user=='{{ item }}'].key"
       ansible.posix.authorized_key:
