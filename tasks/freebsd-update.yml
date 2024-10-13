@@ -8,11 +8,11 @@
   block:
 
     - name: "Freebsd-update: Read /etc/freebsd-update.conf"
-      ansible.builtin.shell:
-        cmd: set -o pipefail && freebsd-update showconfig | sort | grep .*=.*
-      register: out
       changed_when: false
       check_mode: false
+      ansible.builtin.shell:
+        cmd: set -o pipefail && freebsd-update showconfig | grep .*=.* | sort
+      register: out
 
     - name: "Freebsd-update: Create fp_freebsd_update_conf_current"
       ansible.builtin.set_fact:
@@ -20,11 +20,13 @@
       # fp_freebsd_update_conf_current: "{{ out.stdout | community.general.jc('ini') }}"
 
     - name: "Freebsd-update: Debug fp_freebsd_update_debug={{ fp_freebsd_update_debug }}"
+      when: fp_freebsd_update_debug | bool
       ansible.builtin.debug:
         var: fp_freebsd_update_conf_current
-      when: fp_freebsd_update_debug | bool
 
 - name: "Freebsd-update: Debug fp_freebsd_update_debug={{ fp_freebsd_update_debug }}"
+  when: fp_freebsd_update_debug | bool
+  tags: fp_freebsd_update_debug
   vars:
     msg: |-
       fp_freebsd_update_sanity: {{ fp_freebsd_update_sanity }}
@@ -40,58 +42,56 @@
         {{ fp_freebsd_update_conf_target | to_nice_yaml(indent=2) | indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
-  when: fp_freebsd_update_debug | bool
-  tags: fp_freebsd_update_debug
 
 - name: Sanity
-  vars:
-    fp_default_keyprint: "{{ fp_freebsd_update_conf_current.KEYPRINT }}"
   when: fp_freebsd_update_sanity | bool
   tags: fp_freebsd_update_sanity
+  vars:
+    fp_default_keyprint: "{{ fp_freebsd_update_conf_current.KEYPRINT }}"
   block:
 
     - name: "Freebsd-update: Protect trusted keyprint"
+      when: fp_freebsd_update_protect_keyprint | bool
       ansible.builtin.assert:
         quiet: "{{ fp_freebsd_update_sanity_quiet }}"
         that: fp_freebsd_update_conf_current.KEYPRINT == fp_freebsd_update_conf.KeyPrint | d(fp_default_keyprint)
         fail_msg: "[ERR] Changing KeyPrint not allowed."
         success_msg: "[OK]  KeyPrint will not change."
-      when: fp_freebsd_update_protect_keyprint | bool
 
     - name: "Freebsd-update: Valid trusted keyprint"
+      vars:
+        state: "{{ fp_freebsd_update_conf.KeyPrint is defined | ternary('New', 'Current') }}"
+      when: fp_freebsd_update_valid_keyprint | bool
       ansible.builtin.assert:
         quiet: "{{ fp_freebsd_update_sanity_quiet }}"
         that: fp_freebsd_update_conf.KeyPrint | d(fp_default_keyprint) is regex('^[0-9a-fA-F]{64}$')
         fail_msg: "[ERR] {{ state }} KeyPrint not valid."
         success_msg: "[OK]  {{ state }} KeyPrint is valid."
-      vars:
-        state: "{{ fp_freebsd_update_conf.KeyPrint is defined | ternary('New', 'Current') }}"
-      when: fp_freebsd_update_valid_keyprint | bool
 
 - name: "Freebsd-update: Backup origin /etc/freebsd-update.conf"
+  when: fp_freebsd_update_conf_orig | bool
+  tags: fp_freebsd_update_conf_orig
   ansible.builtin.command:
     cmd: cp /etc/freebsd-update.conf /etc/freebsd-update.conf.orig
     creates: /etc/freebsd-update.conf.orig
-  when: fp_freebsd_update_conf_orig | bool
-  tags: fp_freebsd_update_conf_orig
 
 - name: Combine fp_freebsd_update_conf and update /etc/freebsd-update.conf
   tags: fp_freebsd_update_conf
   block:
 
     - name: "Combine fp_freebsd_update_conf"
+      vars:
+        target: "{{ fp_freebsd_update_conf_target | dict2items(key_name='before', value_name='after') }}"
       ansible.builtin.set_fact:
         fp_freebsd_update_conf: "{{ [fp_freebsd_update_conf_current] |
                                     community.general.replace_keys(target=target) |
                                     first |
                                     combine(fp_freebsd_update_conf) }}"
-      vars:
-        target: "{{ fp_freebsd_update_conf_target | dict2items(key_name='before', value_name='after') }}"
 
     - name: "Freebsd-update: Debug fp_freebsd_update_debug={{ fp_freebsd_update_debug }}"
+      when: fp_freebsd_update_debug | bool
       ansible.builtin.debug:
         var: fp_freebsd_update_conf
-      when: fp_freebsd_update_debug | bool
 
     - name: "Freebsd-update: Create /etc/freebsd-update.conf from template"
       ansible.builtin.template:

@@ -1,5 +1,7 @@
 ---
 - name: "Copy: Debug fp_copy_debug={{ fp_copy_debug }}"
+  when: fp_copy_debug | bool
+  tags: fp_copy_debug
   vars:
     msg: |-
       fp_unarch_default: {{ fp_unarch_default }}
@@ -29,31 +31,29 @@
       fp_synchronize_verify_host: {{ fp_synchronize_verify_host }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
-  when: fp_copy_debug | bool
-  tags: fp_copy_debug
 
   # Sync default
 - name: "Copy: Synchronize default files {{ fp_copy_dir ~ '/' ~ fp_copy_dir_default }}"
-  ansible.builtin.import_tasks: copy/sync-default.yml
   when: fp_synchronize_default | length > 0
   tags: fp_copy_sync_default
+  ansible.builtin.import_tasks: copy/sync-default.yml
 
   # Sync optional
 - name: "Copy: Synchronize optional files {{ fp_copy_dir ~ '/' ~ fp_copy_dir_optional }}"
-  ansible.builtin.import_tasks: copy/sync-optional.yml
   when: fp_synchronize_optional | length > 0
   tags: fp_copy_sync_optional
+  ansible.builtin.import_tasks: copy/sync-optional.yml
 
   # Unarch default
 - name: "Copy: Extract default files {{ fp_copy_dir ~ '/' ~ fp_copy_arch_defaul }}"
-  ansible.builtin.import_tasks: copy/unarch-default.yml
   when: fp_unarch_default | bool
   tags: fp_copy_unarch_default
+  ansible.builtin.import_tasks: copy/unarch-default.yml
 
   # Unarch optional
 - name: "Copy: Extract optional files {{ fp_copy_dir ~ '/' ~ fp_copy_arch_optional }}"
-  ansible.builtin.import_tasks: copy/unarch-optional.yml
   when: fp_unarch_optional | bool
   tags: fp_copy_unarch_optional
+  ansible.builtin.import_tasks: copy/unarch-optional.yml
 
 # EOF

@@ -1,5 +1,7 @@
 ---
 - name: "Mount-iso: Debug fp_mount_iso_debug={{ fp_mount_iso_debug }}"
+  when: fp_mount_iso_debug | bool
+  tags: fp_mount_iso_debug
   vars:
     msg: |-
       fp_mount_iso_points_create: {{ fp_mount_iso_points_create }}
@@ -7,16 +9,14 @@
         {{ fp_mount_iso_entries | to_nice_yaml(indent=2) | indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
-  when: fp_mount_iso_debug | bool
-  tags: fp_mount_iso_debug
 
 - name: "Mount-iso: Import mount-vnode.yml"
-  ansible.builtin.import_tasks: mount-vnode.yml
   vars:
     _fp_mount_task: iso
     _fp_mount_fstype_default: cd9660
     _fp_mount_points_create: "{{ fp_mount_iso_points_create }}"
     _fp_mount_entries: "{{ fp_mount_iso_entries }}"
     _fp_mount_debug: "{{ fp_mount_iso_debug }}"
+  ansible.builtin.import_tasks: mount-vnode.yml
 
 # EOF

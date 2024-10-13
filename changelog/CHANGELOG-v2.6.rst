@@ -5,6 +5,23 @@ vbotka.freebsd_postinstall 2.6 Release Notes
 .. contents:: Topics
 
 
+2.6.16
+======
+
+Release Summary
+---------------
+Maintenance including docs update.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Improve tasks formatting.
+* Fix environment: CRYPTOGRAPHY_OPENSSL_NO_LEGACY: '1'
+* Update docs.
+
+
 2.6.15
 ======
 

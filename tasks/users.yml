@@ -1,5 +1,7 @@
 ---
 - name: "Users: Debug (fp_users_debug={{ fp_users_debug }})"
+  when: fp_users_debug|bool
+  tags: fp_users_debug
   vars:
     msg: |-
       fp_users_debug_classified: {{ fp_users_debug_classified }}
@@ -7,10 +9,9 @@
         {{ fp_users_conf | to_nice_yaml(indent=2) | indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
-  when: fp_users_debug|bool
-  tags: fp_users_debug
 
 - name: "Users: Manage user accounts"
+  no_log: "{{ not fp_users_debug_classified }}"
   ansible.builtin.user:
     name: "{{ item.name }}"
     append: "{{ item.append | default(omit) }}"
@@ -48,6 +49,5 @@
   loop: "{{ fp_users_conf }}"
   loop_control:
     label: "{{ item.name }}"
-  no_log: "{{ not fp_users_debug_classified }}"
 
 # EOF

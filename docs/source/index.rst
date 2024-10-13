@@ -11,7 +11,7 @@ Feel free to `share your feedback and report issues
 
 .. toctree::
    :caption: Table of Contents
-   :maxdepth: 3
+   :maxdepth: 2
 
    qsg
    guide

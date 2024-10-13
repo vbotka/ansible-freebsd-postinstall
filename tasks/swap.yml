@@ -1,5 +1,7 @@
 ---
 - name: "Swap: Debug (fp_swap_debug={{ fp_swap_debug }})"
+  when: fp_swap_debug | bool
+  tags: fp_swap_debug
   vars:
     msg: |-
       fp_swap_enable: {{ fp_swap_enable }}
@@ -9,31 +11,30 @@
       fp_swap_stsize: {{ fp_swap_stsize | d('UNDEFINED') }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
-  when: fp_swap_debug | bool
-  tags: fp_swap_debug
 
 - name: "Swap: Enable swap and add entry in /etc/fstab"
   when: fp_swap_enable | bool
+  tags: fp_swap_enable
   block:
 
     - name: "Swap: Create swapfile {{ fp_swap_file }}"
+      register: command_result
+      notify: create swap
       ansible.builtin.shell:
         cmd: >
           sh -c
           'if [ ! -e {{ fp_swap_file }} ]; then
              printf "create";
           fi'
-      register: command_result
       changed_when: command_result.stdout | d('none') == 'create'
-      notify: create swap
 
     - name: "Swap: Create swap entry in /etc/fstab"
+      notify: mount swap
       ansible.builtin.lineinfile:
         path: /etc/fstab
         regexp: ^\s*{{ fp_swap_md }}\s+(.*)$
         line: "{{ fp_swap_md }} none swap sw,file={{ fp_swap_file }},late 0 0"
         backup: "{{ fp_backup }}"
-      notify: mount swap
 
     #   - ansible.posix.mount:
     #       name: 'none'
@@ -50,6 +51,8 @@
     # https://github.com/ansible-collections/ansible.posix/issues/106
 
     - name: "Swap: Change swapfile {{ fp_swap_file }}"
+      register: command_result
+      notify: change and mount swap
       ansible.builtin.shell:
         cmd: >
           sh -c
@@ -57,19 +60,18 @@
           [ "`stat -f %z {{ fp_swap_file }}`" -ne "{{ fp_swap_stsize }}" ]; then
              printf "change";
           fi'
-      register: command_result
       changed_when: command_result.stdout | d('none') == 'change'
-      notify: change and mount swap
 
 - name: "Swap: Disable swap and remove entry from /etc/fstab"
+  tags: fp_swap_disable
+  when:
+    - not fp_swap_enable | bool
+    - fp_swap_md is defined
+  notify: umount and delete swap
   ansible.builtin.lineinfile:
     path: /etc/fstab
     regexp: ^\s*{{ fp_swap_md }}\s+(.*)$
     state: absent
     backup: "{{ fp_backup }}"
-  notify: umount and delete swap
-  when:
-    - not fp_swap_enable | bool
-    - fp_swap_md is defined
 
 # EOF

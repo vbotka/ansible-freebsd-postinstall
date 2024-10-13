@@ -1,13 +1,17 @@
 ---
 - name: "Copy:sync-optional: Debug optional directory exists fp_copy_debug={{ fp_copy_debug }}"
-  ansible.builtin.debug:
-    msg: "Directory {{ mypath }} exists: {{ mystat }}"
+  when: fp_copy_debug | bool
   vars:
     mypath: "{{ fp_copy_dir }}/{{ fp_copy_dir_optional }}"
     mystat: "{{ mypath is exists }}"
-  when: fp_copy_debug | bool
+  ansible.builtin.debug:
+    msg: "Directory {{ mypath }} exists: {{ mystat }}"
 
 - name: "Copy:sync-optional: Synchronize optional files {{ fp_copy_dir ~ '/' ~ fp_copy_dir_optional }}"
+  when: mypath is exists
+  register: result
+  vars:
+    mypath: "{{ fp_copy_dir }}/{{ fp_copy_dir_optional }}/{{ item.src }}"
   ansible.posix.synchronize:
     src: "{{ mypath }}"
     dest: "{{ item.dest }}"
@@ -25,17 +29,13 @@
     times: "{{ item.synchronize_times | d(omit) }}"
     recursive: "{{ item.recursive | d(omit) }}"
     verify_host: "{{ item.verify_host | d(fp_synchronize_verify_host) }}"
-  register: result
   loop: "{{ fp_synchronize_optional }}"
   loop_control:
     label: "{{ item.dest }}"
-  vars:
-    mypath: "{{ fp_copy_dir }}/{{ fp_copy_dir_optional }}/{{ item.src }}"
-  when: mypath is exists
 
 - name: "Copy:sync-optional: Debug synchronize optional files result fp_copy_debug={{ fp_copy_debug }}"
+  when: fp_copy_debug | bool
   ansible.builtin.debug:
     var: result
-  when: fp_copy_debug | bool
 
 # EOF

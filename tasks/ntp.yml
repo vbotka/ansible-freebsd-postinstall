@@ -1,38 +1,41 @@
 ---
-- name: "Ntp: Enable and start ntpd"
-  ansible.builtin.lineinfile:
-    dest: /etc/rc.conf
-    regexp: ^\s*ntpd_enable\s*=(.*)$
-    line: ntpd_enable="YES"
-    backup: "{{ fp_backup }}"
-  when: fp_ntp_enable|bool
-  notify: enable and start ntpd
+- name: Configure /etc/rc.conf
   tags: fp_ntp_rcconf
+  block:
 
-- name: "Ntp: Disable and stop ntpd"
-  ansible.builtin.lineinfile:
-    dest: /etc/rc.conf
-    regexp: ^\s*ntpd_enable\s*=(.*)$
-    line: ntpd_enable="NO"
-    backup: "{{ fp_backup }}"
-  when: not fp_ntp_enable|bool
-  notify: disable and stop ntpd
-  tags: fp_ntp_rcconf
+    - name: "Ntp: Enable and start ntpd"
+      when: fp_ntp_enable | bool
+      notify: enable and start ntpd
+      ansible.builtin.lineinfile:
+        dest: /etc/rc.conf
+        regexp: ^\s*ntpd_enable\s*=(.*)$
+        line: ntpd_enable="YES"
+        backup: "{{ fp_backup }}"
+
+    - name: "Ntp: Disable and stop ntpd"
+      when: not fp_ntp_enable | bool
+      notify: disable and stop ntpd
+      ansible.builtin.lineinfile:
+        dest: /etc/rc.conf
+        regexp: ^\s*ntpd_enable\s*=(.*)$
+        line: ntpd_enable="NO"
+        backup: "{{ fp_backup }}"
 
 - name: "Ntp: Create /etc/ntp.conf from template"
+  tags: fp_ntp_conf
+  notify: restart ntpd
   ansible.builtin.template:
     src: "{{ fp_ntp_conf_template }}"
     dest: "{{ fp_ntp_conf_file }}"
     mode: "{{ fp_ntp_conf_mode }}"
     backup: "{{ fp_backup }}"
-  notify: restart ntpd
-  tags: fp_ntp_conf
 
 - name: "Ntp: ntpd {{ state }}"
+  tags: fp_ntp_service
+  vars:
+    state: "{{ fp_ntp_enable | bool | ternary('started', 'stopped') }}"
   ansible.builtin.service:
     name: ntpd
     state: "{{ state }}"
-  vars:
-    state: "{{ fp_ntp_enable | bool | ternary('started', 'stopped') }}"
 
 # EOF

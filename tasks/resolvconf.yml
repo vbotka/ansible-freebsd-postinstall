@@ -1,6 +1,7 @@
 ---
-# resolv.conf
+  # resolv.conf
 - name: "Resolvconf: Absent lines in {{ fp_resolv_conf_file }}"
+  tags: fp_resolv_conf_absent
   ansible.builtin.lineinfile:
     create: true
     state: absent
@@ -11,9 +12,9 @@
     regexp: ^\s*{{ item }}\s*$
     backup: "{{ fp_backup }}"
   loop: "{{ fp_resolv_conf_absent }}"
-  tags: fp_resolv_conf_absent
 
 - name: "Resolvconf: Present lines in {{ fp_resolv_conf_file }}"
+  tags: fp_resolv_conf
   ansible.builtin.lineinfile:
     create: true
     dest: "{{ fp_resolv_conf_file }}"
@@ -24,10 +25,11 @@
     line: "{{ item.key }} {{ item.value }}"
     backup: "{{ fp_backup }}"
   loop: "{{ fp_resolv_conf }}"
-  tags: fp_resolv_conf
 
   # resolvconf.conf
 - name: "Resolvconf: Absent lines in {{ fp_resolvconf_conf_file }}"
+  tags: fp_resolvconf_conf_absent
+  notify: resolvconf apply
   ansible.builtin.lineinfile:
     create: true
     state: absent
@@ -38,10 +40,10 @@
     regexp: ^\s*{{ item }}\s*$
     backup: "{{ fp_backup }}"
   loop: "{{ fp_resolvconf_conf_absent }}"
-  notify: resolvconf apply
-  tags: fp_resolvconf_conf_absent
 
 - name: "Resolvconf: Present lines in {{ fp_resolvconf_conf_file }}"
+  tags: fp_resolvconf_conf
+  notify: resolvconf apply
   ansible.builtin.lineinfile:
     create: true
     dest: "{{ fp_resolvconf_conf_file }}"
@@ -52,7 +54,5 @@
     line: '{{ item.key }}="{{ item.value }}"'
     backup: "{{ fp_backup }}"
   loop: "{{ fp_resolvconf_conf }}"
-  notify: resolvconf apply
-  tags: fp_resolvconf_conf
 
 # EOF

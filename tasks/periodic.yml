@@ -1,5 +1,7 @@
 ---
 - name: "Periodic: Debug fp_periodic_debug={{ fp_periodic_debug }}"
+  when: fp_periodic_debug | bool
+  tags: fp_periodic_debug
   vars:
     msg: |-
       fp_periodic_conf_local_file: {{ fp_periodic_conf_local_file }}
@@ -7,10 +9,9 @@
         {{ fp_periodic_conf_local | to_yaml(indent=2) | indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
-  when: fp_periodic_debug | bool
-  tags: fp_periodic_debug
 
 - name: "Periodic: Configure {{ fp_periodic_conf_local_file }}"
+  tags: fp_periodic_conf_local
   ansible.builtin.lineinfile:
     create: true
     mode: "0644"
@@ -19,7 +20,6 @@
     line: '{{ item.key }}="{{ item.value }}"'
     backup: "{{ fp_backup }}"
   loop: "{{ fp_periodic_conf_local }}"
-  tags: fp_periodic_conf_local
 
 # NOTES
 #

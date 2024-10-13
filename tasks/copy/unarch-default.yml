@@ -1,19 +1,21 @@
 ---
 - name: "Copy:unarch-default: Debug default archive exists fp_copy_debug={{ fp_copy_debug }}"
-  ansible.builtin.debug:
-    msg: "Archive {{ mypath }} exists: {{ mystat }}"
+  when: fp_copy_debug | bool
   vars:
     mypath: "{{ fp_copy_dir }}/{{ fp_copy_arch_default }}"
     mystat: "{{ mypath is exists }}"
-  when: fp_copy_debug | bool
+  ansible.builtin.debug:
+    msg: "Archive {{ mypath }} exists: {{ mystat }}"
 
 - name: "Copy:unarch-default: Extract default archive {{ fp_copy_dir ~ '/' ~ fp_copy_arch_default }}"
+  when: mypath is exists
+  vars:
+    mypath: "{{ fp_copy_dir }}/{{ fp_copy_arch_default }}"
+  environment:
+    CRYPTOGRAPHY_OPENSSL_NO_LEGACY: '1'
   ansible.builtin.unarchive:
     src: "{{ fp_copy_dir }}/{{ fp_copy_arch_default }}"
     dest: /
     keep_newer: "{{ fp_unarchive_keep_newer }}"
-  vars:
-    mypath: "{{ fp_copy_dir }}/{{ fp_copy_arch_default }}"
-  when: mypath is exists
 
 # EOF

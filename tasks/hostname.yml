@@ -1,11 +1,11 @@
 ---
 - name: "Hostname: Configure hostname in /etc/rc.conf"
+  notify: set hostname
   ansible.builtin.lineinfile:
     dest: /etc/rc.conf
     regexp: ^\s*{{ item.key }}\s*=(.*)$
     line: '{{ item.key }}="{{ item.value }}"'
     backup: "{{ fp_backup }}"
   loop: "{{ fp_hostname_rcconf }}"
-  notify: set hostname
 
 # EOF
