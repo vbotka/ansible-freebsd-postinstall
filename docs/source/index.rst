@@ -3,7 +3,7 @@ Ansible role FreeBSD postinstall
 
 **vbotka.freebsd_postinstall**
 
-Role version 2.6.17
+Role version 2.6.18
 
 
 This `role <https://galaxy.ansible.com/vbotka/freebsd_postinstall/>`_ and the documentation is work in progress. If the documentation of a task is missing it's necessary to review the `source code <https://github.com/vbotka/ansible-freebsd-postinstall/tree/master/tasks/>`_ to learn how to use it. If a functionality is missing consider the role `config_light <https://galaxy.ansible.com/vbotka/config_light>`_. See various `examples <https://github.com/vbotka/ansible-config-light/tree/master/contrib>`_. If *config_light* is not able to do what you want create new tasks.
@@ -13,7 +13,7 @@ This `role <https://galaxy.ansible.com/vbotka/freebsd_postinstall/>`_ and the do
 | `Contributions are welcome <https://github.com/firstcontributions/first-contributions>`_.
 
 | GitHub: `ansible-freebsd-postinstall  <https://github.com/vbotka/ansible-freebsd-postinstall/>`_
-| Ansible Galaxy: `vbotka.freebsd_postinstall <https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/>`_
+| Ansible Galaxy: `vbotka.freebsd_postinstall <https://galaxy.ansible.com/vbotka/freebsd_postinstall/>`_
 
 | This role is licensed and distributed as a whole under
 | **BSD 2-Clause "Simplified" License**
