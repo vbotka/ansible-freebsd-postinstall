@@ -5,6 +5,22 @@ vbotka.freebsd_postinstall 2.6 Release Notes
 .. contents:: Topics
 
 
+2.6.19
+======
+
+Release Summary
+---------------
+Configure devd.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Add devd.yml tasks, handlers, default vars, and vars/samples
+* Update docs.
+
+
 2.6.18
 ======
 

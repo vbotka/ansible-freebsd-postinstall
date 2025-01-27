@@ -72,6 +72,29 @@ Description of the handler.
 
 
 
+.. _as_handler_devd.yml:
+
+devd.yml
+--------
+
+Synopsis: Handler devd.
+
+
+Description of the handler.
+
+
+[`handlers/devd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/devd.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../handlers/devd.yml
+    :language: Yaml
+    :emphasize-lines: 1,2
+    :linenos:
+
+
+
+
 .. _as_handler_devfs.yml:
 
 devfs.yml

@@ -35,6 +35,11 @@
   when: fp_tmpmfs | bool
   tags: fp_tmpmfs
 
+- name: Import devd.yml
+  ansible.builtin.import_tasks: devd.yml
+  when: fp_devd | bool
+  tags: fp_devd
+
 - name: Import devfs.yml
   ansible.builtin.import_tasks: devfs.yml
   when: fp_devfs | bool

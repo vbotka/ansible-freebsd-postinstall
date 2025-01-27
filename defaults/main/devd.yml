@@ -1,0 +1,19 @@
+---
+fp_devd: false
+fp_devd_debug: false
+fp_devd_enabled: true
+fp_devd_flags: ""
+#
+fp_devd_conf_path: /etc/devd.conf
+fp_devd_conf_blocks: {}
+#
+fp_devd_dir: /etc/devd
+fp_devd_files: {}
+#
+fp_devd_local_dir: /usr/local/etc/devd
+fp_devd_local_files: {}
+#
+fp_devd_owner: root
+fp_devd_group: wheel
+fp_devd_dir_mode: "0755"
+fp_devd_file_mode: "0644"

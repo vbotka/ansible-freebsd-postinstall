@@ -25,6 +25,10 @@ fp_sanity_tags:
   - fp_cron_var
   - fp_cron_var_system
   - fp_debug
+  - fp_devd
+  - fp_devd_debug
+  - fp_devd_dir
+  - fp_devd_files
   - fp_devfs
   - fp_devfs_conf
   - fp_devfs_debug

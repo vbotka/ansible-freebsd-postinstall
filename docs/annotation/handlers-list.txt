@@ -1,5 +1,6 @@
 adjkerntz.yml
 apcupsd.yml
+devd.yml
 devfs.yml
 dhclient.yml
 fstab.yml

@@ -179,6 +179,8 @@ To solve this problem apply the patch below
 - [aliases - FreeBSD handbook: Sendmail Configuration Files](https://docs.freebsd.org/en/books/handbook/mail/#sendmail)
 - [apcupsd - FreeBSD diary: Configuring a UPS daemon](http://www.freebsddiary.org/apcupsd.php)
 - [cron - FreeBSD handbook: Configuring cron](https://docs.freebsd.org/en/books/handbook/config/#configtuning-cron)
+- [devd - man 8](https://man.freebsd.org/cgi/man.cgi?devd)
+- [devd.conf - man 5](https://man.freebsd.org/cgi/man.cgi?devd.conf)
 - [devfs - man 5](https://www.freebsd.org/cgi/man.cgi?query=devfs&sektion=5)
 - [devfs - man 8](https://www.freebsd.org/cgi/man.cgi?query=devfs&sektion=8)
 - [devfs.conf - man](https://www.freebsd.org/cgi/man.cgi?devfs.conf)

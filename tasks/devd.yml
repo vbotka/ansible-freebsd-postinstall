@@ -1,0 +1,55 @@
+---
+- name: "Devd: Debug fp_devd_debug={{ fp_devd_debug }}"
+  when: fp_devd_debug | bool
+  tags: fp_devd_debug
+  vars:
+    msg: |-
+      fp_devd_enabled: {{ fp_devd_enabled }}
+      fp_devd_flags: {{ fp_devd_flags }}
+
+      fp_devd_conf_path: {{ fp_devd_conf_path }}
+      fp_devd_conf_blocks:
+        {{ fp_devd_conf_blocks | to_nice_yaml(indent=2) | indent(2) }}
+      fp_devd_dir: {{ fp_devd_dir }}
+      fp_devd_files:
+        {{ fp_devd_files | to_nice_yaml(indent=2) | indent(2) }}
+      fp_devd_local_dir: {{ fp_devd_local_dir }}
+      fp_devd_local_files:
+        {{ fp_devd_local_files | to_nice_yaml(indent=2) | indent(2) }}
+      fp_devd_owner: {{ fp_devd_owner }}
+      fp_devd_group: {{ fp_devd_group }}
+      fp_devd_dir_mode: {{ fp_devd_dir_mode }}
+      fp_devd_file_mode: {{ fp_devd_file_mode }}
+  ansible.builtin.debug:
+    msg: "{{ '{}'.format(msg) }}"
+
+  # TODO:
+  # - Configure /etc/devd.conf
+  # - Configure /etc/devd
+  # - Configure /etc/rc.conf
+  # - Start/stop devd
+
+- name: "Devd: Create {{ fp_devd_local_dir }}"
+  tags: fp_devd_local_dir
+  ansible.builtin.file:
+    state: directory
+    path: "{{ fp_devd_local_dir }}"
+    owner: "{{ fp_devd_owner }}"
+    group: "{{ fp_devd_group }}"
+    mode: "{{ fp_devd_dir_mode }}"
+
+- name: "Devd: Configure files in {{ fp_devd_local_dir }}"
+  tags: fp_devd_local_files
+  notify: restart devd
+  ansible.builtin.copy:
+    dest: "{{ fp_devd_local_dir }}/{{ item.key }}.conf"
+    content: "{{ item.value }}"
+    owner: "{{ fp_devd_owner }}"
+    group: "{{ fp_devd_group }}"
+    mode: "{{ fp_devd_file_mode }}"
+    backup: "{{ fp_backup }}"
+  loop: "{{ fp_devd_local_files | dict2items }}"
+  loop_control:
+    label: "{{ item.key }}"
+
+# EOF

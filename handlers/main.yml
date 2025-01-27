@@ -6,6 +6,8 @@
   ansible.builtin.import_tasks: adjkerntz.yml
 - name: Import apcupsd.yml
   ansible.builtin.import_tasks: apcupsd.yml
+- name: Import devd.yml
+  ansible.builtin.import_tasks: devd.yml
 - name: Import devfs.yml
   ansible.builtin.import_tasks: devfs.yml
 - name: Import dhclient.yml
