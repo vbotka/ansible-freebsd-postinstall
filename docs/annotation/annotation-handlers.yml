@@ -36,6 +36,18 @@ myhandlers:
     note: []
     warning: []
 
+  - file: devd.yml
+    link: devd.yml
+    path: handlers/devd.yml
+    synopsis: |
+      Handler devd.
+    description: |
+      Description of the handler.
+    lines: 1,2
+    seealso: []
+    note: []
+    warning: []
+
   - file: devfs.yml
     link: devfs.yml
     path: handlers/devfs.yml

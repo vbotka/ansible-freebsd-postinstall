@@ -1,0 +1,12 @@
+---
+
+fp_devd: true
+
+fp_devd_local_files:
+  notify_ue0: |
+    notify 0 {
+            match "system"    "IFNET";
+            match "subsystem" "ue0";
+            match "type"      "ADDR_ADD";
+            action "echo $address > /var/db/devd.address.$subsystem";
+    };

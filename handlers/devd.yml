@@ -1,0 +1,21 @@
+---
+- name: Enable and start devd
+  listen: enable and start devd
+  ansible.builtin.service:
+    name: devd
+    state: started
+    enabled: true
+
+- name: Disable and stop devd
+  listen: disable and stop devd
+  ansible.builtin.service:
+    name: devd
+    state: stopped
+    enabled: false
+
+- name: Restart devd
+  listen: restart devd
+  ansible.builtin.service:
+    name: devd
+    state: restarted
+  when: fp_devd_enabled | bool

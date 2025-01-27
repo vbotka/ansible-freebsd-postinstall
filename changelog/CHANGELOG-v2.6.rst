@@ -17,6 +17,8 @@ Major Changes
 
 Minor Changes
 -------------
+* Add devd.yml tasks, handlers, default vars, and vars/samples
+* Update docs.
 
 
 2.6.18

@@ -103,6 +103,19 @@ mytasks:
     hints: []
     warnings: []
 
+  - file: devd.yml
+    link: devd.yml
+    path: tasks/devd.yml
+    synopsis: |
+      Configure devd.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
   - file: devfs.yml
     link: devfs.yml
     path: tasks/devfs.yml

@@ -195,6 +195,30 @@ Description of the task.
 
 
 
+.. _as_devd.yml:
+
+devd.yml
+--------
+
+Synopsis: Configure devd.
+
+
+Description of the task.
+
+
+[`tasks/devd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/devd.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../tasks/devd.yml
+    :language: Yaml
+    :emphasize-lines: 1,2
+    :linenos:
+
+
+
+
+
 .. _as_devfs.yml:
 
 devfs.yml

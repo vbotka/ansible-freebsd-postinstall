@@ -5,6 +5,7 @@ cloud-providers.yml
 copy.yml
 cron.yml
 debug.yml
+devd.yml
 devfs.yml
 dhclient.yml
 freebsd-update.yml
