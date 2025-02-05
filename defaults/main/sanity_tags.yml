@@ -27,8 +27,8 @@ fp_sanity_tags:
   - fp_debug
   - fp_devd
   - fp_devd_debug
-  - fp_devd_dir
-  - fp_devd_files
+  - fp_devd_local_dir
+  - fp_devd_local_files
   - fp_devfs
   - fp_devfs_conf
   - fp_devfs_debug
@@ -41,6 +41,7 @@ fp_sanity_tags:
   - fp_dhclient_conf_create
   - fp_dhclient_conf_defaults
   - fp_dhclient_debug
+  - fp_dhclient_hooks
   - fp_dhclient_ifn_leases
   - fp_dhclient_ifn_rcconf
   - fp_dhclient_sanity

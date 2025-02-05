@@ -3,6 +3,7 @@
 fp_dhclient: false
 
 fp_dhclient_debug: false
+fp_dhclient_debug2: false
 
 # If set True test:
 # * If the list fp_dhclient_ifn (see below) is empty either
@@ -28,6 +29,10 @@ fp_dhclient_ifn_leases: true
 # exclusive with fp_dhclient_ifn_leases
 fp_dhclient_ifn_rcconf: false
 
-fp_dhclient_conf_path: /etc/dhclient.conf
+fp_dhclient_etc_dir: /etc
+
+fp_dhclient_conf_path: "{{ fp_dhclient_etc_dir }}/dhclient.conf"
 fp_dhclient_conf_defaults: []
 fp_dhclient_conf_blocks: []
+
+fp_dhclient_hooks: {}
