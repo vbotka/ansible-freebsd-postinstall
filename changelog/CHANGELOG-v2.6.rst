@@ -5,6 +5,24 @@ vbotka.freebsd_postinstall 2.6 Release Notes
 .. contents:: Topics
 
 
+2.6.20
+======
+
+Release Summary
+---------------
+Add hooks configuration to dhclient.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Update dhclient tasks, defaults, and vars.
+* Add variables fp_dhclient_etc_dir, fp_dhclient_hooks, and
+  fp_dhclient_debug2
+* Update README
+
+
 2.6.19
 ======
 
