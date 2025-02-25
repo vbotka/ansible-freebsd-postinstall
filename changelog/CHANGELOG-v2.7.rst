@@ -13,6 +13,8 @@ Release Summary
 
 Major Changes
 -------------
+* Meta: Ansible 2.18; FreeBSD 13.4, 14.1, 14.2
+
 
 Minor Changes
 -------------
