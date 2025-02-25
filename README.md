@@ -43,7 +43,9 @@ This role has been developed and tested with [FreeBSD Supported Releases](https:
 
 ### Packages
 
-See the dictionaries pkg_dict_* in defaults/main/pkgdict_*.yml
+* [fqdn](https://pypi.org/project/fqdn/) required by [community.general.fqdn_valid](https://docs.ansible.com/ansible/latest/collections/community/general/fqdn_valid_test.html)
+
+* See the dictionaries pkg_dict_* in defaults/main/pkgdict_*.yml
 
 
 ## Variables
