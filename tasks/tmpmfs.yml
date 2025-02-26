@@ -9,13 +9,15 @@
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
 
-- name: "Tmpmfs: Configure tmpmfs"
+- name: "Tmpmfs: Configure tmpmfs in {{ _path }}"
+  vars:
+    _path: "{{ fp_rcconfd | bool | ternary(fp_rcconfd_path.tmpmfs, '/etc/rc.conf') }}"
   tags: fp_tmpmfs_rcconf
-  ansible.builtin.lineinfile:
-    dest: /etc/rc.conf
-    regexp: ^\s*{{ item.key }}\s*=(.*)$
-    line: '{{ item.key }}="{{ item.value }}"'
-    backup: "{{ fp_backup }}"
+  community.general.sysrc:
+    path: "{{ _path }}"
+    name: "{{ item.key }}"
+    value: "{{ item.value | d(omit) }}"
+    state: "{{ item.state | d(omit) }}"
   loop: "{{ fp_tmpmfs_rcconf }}"
 
 # EOF

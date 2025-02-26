@@ -1,34 +1,34 @@
 ---
 - name: Configure /etc/rc.conf
+  vars:
+    _path: "{{ fp_rcconfd | bool | ternary(fp_rcconfd_path.snmpd, '/etc/rc.conf') }}"
   tags: fp_snmpd_rcconf
   block:
 
-    - name: "Snmpd: Enable and start snmpd"
+    - name: "Snmpd: Configure {{ _path }}"
+      notify: restart snmpd
+      community.general.sysrc:
+        path: "{{ _path }}"
+        name: "{{ item.key }}"
+        value: "{{ item.value | d(omit) }}"
+        state: "{{ item.state | d(omit) }}"
+      loop: "{{ fp_snmpd_rcconf }}"
+
+    - name: "Snmpd: Enable and start snmpd in {{ _path }}"
       when: fp_snmpd_enabled | bool
       notify: enable and start snmpd
-      ansible.builtin.lineinfile:
-        dest: /etc/rc.conf
-        regexp: ^\s*snmpd_enable\s*=(.*)$
-        line: snmpd_enable="YES"
-        backup: "{{ fp_backup }}"
+      community.general.sysrc:
+        path: "{{ _path }}"
+        name: snmpd_enable
+        value: "YES"
 
-    - name: "Snmpd: Disable and stop snmpd"
+    - name: "Snmpd: Disable and stop snmpd in {{ _path }}"
       when: not fp_snmpd_enabled | bool
       notify: disable and stop snmpd
-      ansible.builtin.lineinfile:
-        dest: /etc/rc.conf
-        regexp: ^\s*snmpd_enable\s*=(.*)$
-        line: snmpd_enable="NO"
-        backup: "{{ fp_backup }}"
-
-    - name: "Snmpd: Configure /etc/rc.conf"
-      notify: restart snmpd
-      ansible.builtin.lineinfile:
-        dest: /etc/rc.conf
-        regexp: ^\s*{{ item.key }}\s*=(.*)$
-        line: '{{ item.key }}="{{ item.value }}"'
-        backup: "{{ fp_backup }}"
-      loop: "{{ fp_snmpd_rcconf }}"
+      community.general.sysrc:
+        path: "{{ _path }}"
+        name: snmpd_enable
+        value: "NO"
 
 - name: Configure /usr/local/etc/snmpd.conf
   tags: fp_snmpd_conf
@@ -50,7 +50,7 @@
         path: /usr/local/etc/snmpd.conf
         regexp: ^\s*{{ item.key }}\s*=(.*)$
         line: "{{ item.key }} {{ item.value }}"
-        state: "{{ item.state | default(omit) }}"
+        state: "{{ item.state | d(omit) }}"
         backup: "{{ fp_backup }}"
       loop: "{{ fp_snmpd_conf }}"
 

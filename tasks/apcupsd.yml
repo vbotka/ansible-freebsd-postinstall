@@ -1,25 +1,25 @@
 ---
 - name: Rcconf
+  vars:
+    _path: "{{ fp_rcconfd | bool | ternary(fp_rcconfd_path.apcupsd, '/etc/rc.conf') }}"
   tags: fp_apcupsd_rcconf
   block:
 
-    - name: "Apcupsd: Enable and start apcupsd"
+    - name: "Apcupsd: Enable and start apcupsd in {{ _path }}"
       when: fp_apcupsd_enabled | bool
       notify: enable and start apcupsd
-      ansible.builtin.lineinfile:
-        dest: /etc/rc.conf
-        regexp: ^\s*apcupsd_enable\s*=(.*)$
-        line: apcupsd_enable="YES"
-        backup: "{{ fp_backup }}"
+      community.general.sysrc:
+        path: "{{ _path }}"
+        name: apcupsd_enable
+        value: "YES"
 
-    - name: "Apcupsd: Disable and stop apcupsd"
+    - name: "Apcupsd: Disable and stop apcupsd in {{ _path }}"
       when: not fp_apcupsd_enabled | bool
       notify: disable and stop apcupsd
-      ansible.builtin.lineinfile:
-        dest: /etc/rc.conf
-        regexp: ^\s*apcupsd_enable\s*=(.*)$
-        line: apcupsd_enable="NO"
-        backup: "{{ fp_backup }}"
+      community.general.sysrc:
+        path: "{{ _path }}"
+        name: apcupsd_enable
+        value: "NO"
 
 - name: Conf
   tags: fp_apcupsd_conf

@@ -15,24 +15,24 @@
     msg: "{{ '{}'.format(msg) }}"
 
 - name: Configure /etc/rc.conf
+  vars:
+    _path: "{{ fp_rcconfd | bool | ternary(fp_rcconfd_path.linux, '/etc/rc.conf') }}"
   tags: fp_linux_rcconf
   block:
 
-    - name: "Linux: Enable linux"
+    - name: "Linux: Enable linux in {{ _path }}"
       when: fp_linux_enable | bool
-      ansible.builtin.lineinfile:
-        dest: /etc/rc.conf
-        regexp: ^\s*linux_enable\s*=(.*)$
-        line: linux_enable="YES"
-        backup: "{{ fp_backup }}"
+      community.general.sysrc:
+        path: "{{ _path }}"
+        name: linux_enable
+        value: "YES"
 
-    - name: "Linux: Disable linux"
+    - name: "Linux: Disable linux in {{ _path }}"
       when: not fp_linux_enable | bool
-      ansible.builtin.lineinfile:
-        dest: /etc/rc.conf
-        regexp: ^\s*linux_enable\s*=(.*)$
-        line: linux_enable="NO"
-        backup: "{{ fp_backup }}"
+      community.general.sysrc:
+        path: "{{ _path }}"
+        name: linux_enable
+        value: "NO"
 
 - name: "Linux: Configure fstab"
   tags: fp_linux_fstab

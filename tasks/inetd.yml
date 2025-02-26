@@ -23,35 +23,35 @@
     msg: "{{ '{}'.format(msg) }}"
 
 - name: Configure /etc/rc.conf
+  vars:
+    _path: "{{ fp_rcconfd | bool | ternary(fp_rcconfd_path.inetd, '/etc/rc.conf') }}"
   tags: fp_inetd_rcconf
   block:
 
-    - name: "Inetd: Configure /etc/rc.conf"
+    - name: "Inetd: Configure {{ _path }}"
       notify: restart inetd
-      ansible.builtin.lineinfile:
-        dest: /etc/rc.conf
-        regexp: ^\s*{{ item.key }}\s*=(.*)$
-        line: '{{ item.key }}="{{ item.value }}"'
-        backup: "{{ fp_backup }}"
+      community.general.sysrc:
+        path: "{{ _path }}"
+        name: "{{ item.key }}"
+        value: "{{ item.value | d(omit) }}"
+        state: "{{ item.state | d(omit) }}"
       loop: "{{ fp_inetd_rcconf }}"
 
-    - name: "Inetd: Enable and start inetd"
+    - name: "Inetd: Enable and start inetd in {{ _path }}"
       when: fp_inetd_enabled | bool
       notify: enable and start inetd
-      ansible.builtin.lineinfile:
-        dest: /etc/rc.conf
-        regexp: ^\s*inetd_enable\s*=(.*)$
-        line: inetd_enable="YES"
-        backup: "{{ fp_backup }}"
+      community.general.sysrc:
+        path: "{{ _path }}"
+        name: inetd_enable
+        value: "YES"
 
-    - name: "Inetd: Disable and stop inetd"
+    - name: "Inetd: Disable and stop inetd in {{ _path }}"
       when: not fp_inetd_enabled | bool
       notify: disable and stop inetd
-      ansible.builtin.lineinfile:
-        dest: /etc/rc.conf
-        regexp: ^\s*inetd_enable\s*=(.*)$
-        line: inetd_enable="NO"
-        backup: "{{ fp_backup }}"
+      community.general.sysrc:
+        path: "{{ _path }}"
+        name: inetd_enable
+        value: "NO"
 
 - name: Configure syslog
   block:

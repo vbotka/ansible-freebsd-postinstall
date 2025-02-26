@@ -27,14 +27,16 @@
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
 
-- name: "Wpasupplicant: Configure /etc/rc.conf"
+- name: "Wpasupplicant: Configure {{ _path }}"
+  vars:
+    _path: "{{ fp_rcconfd | bool | ternary(fp_rcconfd_path.wpasupplicant, '/etc/rc.conf') }}"
   tags: fp_wpasupplicant_rcconf
   notify: restart netif
-  ansible.builtin.lineinfile:
-    dest: /etc/rc.conf
-    regexp: ^\s*{{ item.key }}\s*=(.*)$
-    line: '{{ item.key }}="{{ item.value }}"'
-    backup: "{{ fp_wpasupplicant_backup }}"
+  community.general.sysrc:
+    path: "{{ _path }}"
+    name: "{{ item.key }}"
+    value: "{{ item.value | d(omit) }}"
+    state: "{{ item.state | d(omit) }}"
   loop: "{{ fp_wpasupplicant_rcconf }}"
 
 - name: "Wpasupplicant: Configure {{ fp_wpasupplicant_conf_file ~ '.DEV' }}"

@@ -1,11 +1,13 @@
 ---
-- name: "Hostname: Configure hostname in /etc/rc.conf"
+- name: "Hostname: Configure hostname in {{ _path }}"
+  vars:
+    _path: "{{ fp_rcconfd | bool | ternary(fp_rcconfd_path.hostname, '/etc/rc.conf') }}"
   notify: set hostname
-  ansible.builtin.lineinfile:
-    dest: /etc/rc.conf
-    regexp: ^\s*{{ item.key }}\s*=(.*)$
-    line: '{{ item.key }}="{{ item.value }}"'
-    backup: "{{ fp_backup }}"
+  community.general.sysrc:
+    path: "{{ _path }}"
+    name: "{{ item.key }}"
+    value: "{{ item.value | d(omit) }}"
+    state: "{{ item.state | d(omit) }}"
   loop: "{{ fp_hostname_rcconf }}"
 
 # EOF

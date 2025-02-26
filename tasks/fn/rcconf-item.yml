@@ -1,12 +1,12 @@
 ---
 - name: "{{ oi.label }}"
-  ansible.builtin.lineinfile:
-    dest: "{{ oi.dest | default('/etc/rc.conf') }}"
-    regexp: ^\s*{{ item.key }}\s*=(.*)$
-    line: '{{ item.key }}="{{ item.value }}"'
-    backup: "{{ fp_backup }}"
+  community.general.sysrc:
+    path: "{{ oi.dest | d('/etc/rc.conf') }}"
+    name: "{{ item.key }}"
+    value: "{{ item.value | d(omit) }}"
+    state: "{{ item.state | d(omit) }}"
+    delim: "{{ item.delim | d(omit) }}"
   loop: "{{ oi.conf }}"
-  when: oi.when
   notify: "{{ oi.notify }}"
 
 # EOF

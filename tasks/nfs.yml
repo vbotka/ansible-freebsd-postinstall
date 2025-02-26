@@ -67,7 +67,7 @@
   tags: fp_nfs_enable
   ansible.builtin.include_tasks:
     file: fn/rcconf-item.yml
-  loop: "{{ fp_nfs_services_enable }}"
+  loop: "{{ fp_nfs_services_enable | selectattr('when') }}"
   loop_control:
     loop_var: oi
     label: "{{ oi.label }}"
@@ -76,7 +76,7 @@
   tags: fp_nfs_disable
   ansible.builtin.include_tasks:
     file: fn/rcconf-item.yml
-  loop: "{{ fp_nfs_services_disable }}"
+  loop: "{{ fp_nfs_services_disable | selectattr('when') }}"
   loop_control:
     loop_var: oi
     label: "{{ oi.label }}"

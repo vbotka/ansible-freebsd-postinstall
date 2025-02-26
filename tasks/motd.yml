@@ -8,24 +8,24 @@
     backup: "{{ fp_backup }}"
 
 - name: Configure /etc/rc.conf
+  vars:
+    _path: "{{ fp_rcconfd | bool | ternary(fp_rcconfd_path.motd, '/etc/rc.conf') }}"
   tags: fp_motd_rcconf
   block:
 
-    - name: "Motd: Set update_motd YES"
+    - name: "Motd: Set update_motd YES in {{ _path }}"
       when: fp_update_motd | bool
-      ansible.builtin.lineinfile:
-        dest: /etc/rc.conf
-        regexp: ^\s*update_motd\s*=(.*)$
-        line: update_motd="YES"
-        backup: "{{ fp_backup }}"
+      community.general.sysrc:
+        path: "{{ _path }}"
+        name: update_motd
+        value: "YES"
 
-    - name: "Motd: Set update_motd NO"
+    - name: "Motd: Set update_motd NO in {{ _path }}"
       when: not fp_update_motd | bool
-      ansible.builtin.lineinfile:
-        dest: /etc/rc.conf
-        regexp: ^\s*update_motd\s*=(.*)$
-        line: update_motd="NO"
-        backup: "{{ fp_backup }}"
+      community.general.sysrc:
+        path: "{{ _path }}"
+        name: update_motd
+        value: "NO"
 
 # NOTES
 # By default system info is added to the top of /etc/motd on reboot.

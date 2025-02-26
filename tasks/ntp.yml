@@ -1,25 +1,25 @@
 ---
 - name: Configure /etc/rc.conf
+  vars:
+    _path: "{{ fp_rcconfd | bool | ternary(fp_rcconfd_path.ntp, '/etc/rc.conf') }}"
   tags: fp_ntp_rcconf
   block:
 
-    - name: "Ntp: Enable and start ntpd"
+    - name: "Ntp: Enable and start ntpd in {{ _path }}"
       when: fp_ntp_enable | bool
       notify: enable and start ntpd
-      ansible.builtin.lineinfile:
-        dest: /etc/rc.conf
-        regexp: ^\s*ntpd_enable\s*=(.*)$
-        line: ntpd_enable="YES"
-        backup: "{{ fp_backup }}"
+      community.general.sysrc:
+        path: "{{ _path }}"
+        name: ntpd_enable
+        value: "YES"
 
-    - name: "Ntp: Disable and stop ntpd"
+    - name: "Ntp: Disable and stop ntpd in {{ _path }}"
       when: not fp_ntp_enable | bool
       notify: disable and stop ntpd
-      ansible.builtin.lineinfile:
-        dest: /etc/rc.conf
-        regexp: ^\s*ntpd_enable\s*=(.*)$
-        line: ntpd_enable="NO"
-        backup: "{{ fp_backup }}"
+      community.general.sysrc:
+        path: "{{ _path }}"
+        name: ntpd_enable
+        value: "NO"
 
 - name: "Ntp: Create /etc/ntp.conf from template"
   tags: fp_ntp_conf

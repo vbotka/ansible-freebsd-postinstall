@@ -12,26 +12,26 @@
     msg: "{{ '{}'.format(msg) }}"
 
 - name: Configure /etc/rc.conf
+  vars:
+    _path: "{{ fp_rcconfd | bool | ternary(fp_rcconfd_path.sshd, '/etc/rc.conf') }}"
   tags: fp_sshd_rcconf
   block:
 
-    - name: "Sshd: Enable and start sshd"
+    - name: "Sshd: Enable and start sshd in {{ _path }}"
       when: fp_sshd_enable | bool
       notify: enable and start sshd
-      ansible.builtin.lineinfile:
-        dest: /etc/rc.conf
-        regexp: ^\s*sshd_enable\s*=(.*)$
-        line: sshd_enable="YES"
-        backup: "{{ fp_backup }}"
+      community.general.sysrc:
+        path: "{{ _path }}"
+        name: sshd_enable
+        value: "YES"
 
-    - name: "Sshd: Disable and stop sshd"
+    - name: "Sshd: Disable and stop sshd in {{ _path }}"
       when: not fp_sshd_enable | bool
       notify: disable and stop sshd
-      ansible.builtin.lineinfile:
-        dest: /etc/rc.conf
-        regexp: ^\s*sshd_enable\s*=(.*)$
-        line: sshd_enable="NO"
-        backup: "{{ fp_backup }}"
+      community.general.sysrc:
+        path: "{{ _path }}"
+        name: sshd_enable
+        value: "NO"
 
 - name: "Sshd: Configure {{ fp_sshd_conf_file }}"
   tags: fp_sshd_config

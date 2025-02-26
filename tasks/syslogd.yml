@@ -21,35 +21,35 @@
     msg: "{{ '{}'.format(msg) }}"
 
 - name: Configure /etc/rc.conf
+  vars:
+    _path: "{{ fp_rcconfd | bool | ternary(fp_rcconfd_path.syslogd, '/etc/rc.conf') }}"
   tags: fp_syslogd_rcconf
   block:
 
-    - name: "Syslogd: Configure /etc/rc.conf"
+    - name: "Syslogd: Configure {{ _path }}"
       notify: restart syslogd
-      ansible.builtin.lineinfile:
-        dest: /etc/rc.conf
-        regexp: ^\s*{{ item.key }}\s*=(.*)$
-        line: '{{ item.key }}="{{ item.value }}"'
-        backup: "{{ fp_backup }}"
+      community.general.sysrc:
+        path: "{{ _path }}"
+        name: "{{ item.key }}"
+        value: "{{ item.value | d(omit) }}"
+        state: "{{ item.state | d(omit) }}"
       loop: "{{ fp_syslogd_rcconf }}"
 
-    - name: "Syslogd: Enable and start syslogd"
+    - name: "Syslogd: Enable and start syslogd in {{ _path }}"
       when: fp_syslogd_enabled | bool
       notify: enable and start syslogd
-      ansible.builtin.lineinfile:
-        dest: /etc/rc.conf
-        regexp: ^\s*syslogd_enable\s*=(.*)$
-        line: syslogd_enable="YES"
-        backup: "{{ fp_backup }}"
+      community.general.sysrc:
+        path: "{{ _path }}"
+        name: syslogd_enable
+        value: "YES"
 
-    - name: "Syslogd: Disable and stop syslogd"
+    - name: "Syslogd: Disable and stop syslogd in {{ _path }}"
       when: not fp_syslogd_enabled | bool
       notify: disable and stop syslogd
-      ansible.builtin.lineinfile:
-        dest: /etc/rc.conf
-        regexp: ^\s*syslogd_enable\s*=(.*)$
-        line: syslogd_enable="NO"
-        backup: "{{ fp_backup }}"
+      community.general.sysrc:
+        path: "{{ _path }}"
+        name: syslogd_enable
+        value: "NO"
 
 - name: Configure syslogd
   tags: fp_syslogd_conf

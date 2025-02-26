@@ -87,7 +87,7 @@
   tags: fp_nfsd_enable
   ansible.builtin.include_tasks:
     file: fn/rcconf-item.yml
-  loop: "{{ fp_nfsd_services_enable }}"
+  loop: "{{ fp_nfsd_services_enable | selectattr('when') }}"
   loop_control:
     loop_var: oi
     label: "{{ oi.label }}"
@@ -96,7 +96,7 @@
   tags: fp_nfsd_disable
   ansible.builtin.include_tasks:
     file: fn/rcconf-item.yml
-  loop: "{{ fp_nfsd_services_disable }}"
+  loop: "{{ fp_nfsd_services_disable | selectattr('when') }}"
   loop_control:
     loop_var: oi
     label: "{{ oi.label }}"
