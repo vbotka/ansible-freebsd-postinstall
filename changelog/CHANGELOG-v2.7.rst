@@ -17,6 +17,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Add dictionary fp_environment
 * Update tasks/dhclient.yml
   Optionally read the interfaces from /etc/rc.conf.d/*
   Add var fp_dhclient_ifn_rcconfd (default=false)

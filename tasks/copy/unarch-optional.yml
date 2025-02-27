@@ -11,8 +11,7 @@
   when: mypath is exists
   vars:
     mypath: "{{ fp_copy_dir }}/{{ fp_copy_arch_optional }}"
-  environment:
-    CRYPTOGRAPHY_OPENSSL_NO_LEGACY: '1'
+  environment: "{{ fp_environment.crypto | d(fp_environment.default) }}"
   ansible.builtin.unarchive:
     src: "{{ fp_copy_dir }}/{{ fp_copy_arch_optional }}"
     dest: /
