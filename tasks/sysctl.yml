@@ -20,7 +20,7 @@
     value: "{{ item.value }}"
     state: "{{ item.state | d(omit) }}"
     reload: "{{ item.reload | d(omit) }}"
-    sysctl_set: "{{ item.set | default(omit) }}"
+    sysctl_set: "{{ item.set | d(omit) }}"
     ignoreerrors: "{{ fp_sysctl_ignoreerrors | d(omit) }}"
   loop: "{{ fp_sysctl_conf }}"
 

@@ -39,7 +39,7 @@
         dest: "{{ fp_smartd_conf_file }}"
         regexp: "{{ item.regexp }}"
         line: "{{ item.line }}"
-        state: "{{ item.state | default(omit) }}"
+        state: "{{ item.state | d(omit) }}"
         owner: "{{ fp_smartd_conf_owner }}"
         group: "{{ fp_smartd_conf_group }}"
         mode: "{{ fp_smartd_conf_mode }}"

@@ -26,6 +26,7 @@ Minor Changes
   Add dictionary fp_rcconfd_file mapping configuration groups to files in
   /etc/rc.conf.d
   Create dictionary fp_rcconfd_path in defaults/main/rcconfd.yml
+* Replace default() by alias d()
 
 Breaking Changes / Porting Guide
 --------------------------------

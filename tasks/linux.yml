@@ -49,7 +49,7 @@
   ansible.builtin.file:
     state: directory
     path: /compat/linux{{ item.src | dirname }}
-    mode: "{{ item.dirmode | default('0755') }}"
+    mode: "{{ item.dirmode | d('0755') }}"
   loop: "{{ fp_linux_lib }}"
 
 - name: "Linux: Copy libraries to /compat/linux from {{ fp_linux_lib_dir }}"
