@@ -17,6 +17,9 @@ Major Changes
 
 Minor Changes
 -------------
+* Update tasks/dhclient.yml
+  Optionally read the interfaces from /etc/rc.conf.d/*
+  Add var fp_dhclient_ifn_rcconfd (default=false)
 * Use community.general.sysrc to configure rc.conf
   Add var fp_rcconfd (default=false) switch /etc/rc.conf to /etc/rc.conf.d
   Add dictionary fp_rcconfd_file mapping configuration groups to files in

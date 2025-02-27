@@ -44,6 +44,7 @@ fp_sanity_tags:
   - fp_dhclient_hooks
   - fp_dhclient_ifn_leases
   - fp_dhclient_ifn_rcconf
+  - fp_dhclient_ifn_rcconfd
   - fp_dhclient_sanity
   - fp_do
   - fp_do_debug
