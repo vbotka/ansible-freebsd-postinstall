@@ -24,7 +24,7 @@ Release Summary
 
 Major Changes
 -------------
-* Meta: Ansible 2.18; FreeBSD 13.4, 14.1, 14.2
+* Meta: Ansible 2.18; FreeBSD 13.4, 13.5, 14.1, 14.2
 
 * New tasks/fn/rcconf.yml; enable/disable, configure, and optionally start/stop
   services.
