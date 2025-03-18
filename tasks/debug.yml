@@ -31,23 +31,23 @@
       fp_sanity: {{ fp_sanity }} fp_sanity_tags_fatal: {{ fp_sanity_tags_fatal }}
 
       fp_aliases: {{ fp_aliases }}
-      fp_apcupsd: {{ fp_apcupsd }} fp_apcupsd_install: {{ fp_apcupsd_install }} fp_apcupsd_enabled: {{ fp_apcupsd_enabled }}
+      fp_apcupsd: {{ fp_apcupsd }} fp_apcupsd_install: {{ fp_apcupsd_install }} fp_apcupsd_enable: {{ fp_apcupsd_enable }}
       fp_authorized_key: {{ fp_authorized_key }}
       fp_copy: {{ fp_copy }} fp_unarch_default: {{ fp_unarch_default }} fp_unarch_optional: {{ fp_unarch_optional }}
       fp_cron: {{ fp_cron }}
-      fp_devfs: {{ fp_devfs }} fp_devfs_enabled: {{ fp_devfs_enabled }}
+      fp_devfs: {{ fp_devfs }} fp_devfs_enable: {{ fp_devfs_enable }}
       fp_dhclient: {{ fp_dhclient }}
       fp_freebsd_update: {{ fp_freebsd_update }}
       fp_fstab: {{ fp_fstab }}
       fp_gitserver: {{ fp_gitserver }} fp_gitserver_install: {{ fp_gitserver_install }}
       fp_groups: {{ fp_groups }}
       fp_groupwrappers: {{ fp_groupwrappers }} fp_groupwrappers_install: {{ fp_groupwrappers_install }}
-      fp_hostapd: {{ fp_hostapd }} fp_hostapd_install: {{ fp_hostapd_install }} fp_hostapd_enabled: {{ fp_hostapd_enabled }}
+      fp_hostapd: {{ fp_hostapd }} fp_hostapd_install: {{ fp_hostapd_install }} fp_hostapd_enable: {{ fp_hostapd_enable }}
       fp_hostname: {{ fp_hostname }}
       fp_hosts: {{ fp_hosts }}
-      fp_inetd: {{ fp_inetd }} fp_inetd_enabled: {{ fp_inetd_enabled }}
+      fp_inetd: {{ fp_inetd }} fp_inetd_enable: {{ fp_inetd_enable }}
       fp_libmap: {{ fp_libmap }}
-      fp_linux: {{ fp_linux }} fp_linux_install: {{ fp_linux_install }} fp_linux_enabled: {{ fp_linux_enabled }}
+      fp_linux: {{ fp_linux }} fp_linux_install: {{ fp_linux_install }} fp_linux_enable: {{ fp_linux_enable }}
       fp_loader: {{ fp_loader }} fp_loader_load_modules: {{ fp_loader_load_modules }}
       fp_login: {{ fp_login }} fp_login_conf_global: {{ fp_login_conf_global }}
       fp_make: {{ fp_make }}
@@ -56,22 +56,22 @@
       fp_mount_iso: {{ fp_mount_iso }}
       fp_nfs: {{ fp_nfs }} fp_nfs_enable: {{ fp_nfs_enable }}
       fp_nfsd: {{ fp_nfsd }} fp_nfsd_enable: {{ fp_nfsd_enable }}
-      fp_ntp: {{ fp_ntp }} fp_ntp_enable: {{ fp_ntp_enable }}
+      fp_ntp: {{ fp_ntp }} fp_ntpd_enable: {{ fp_ntpd_enable }}
       fp_ntpdate: {{ fp_ntpdate }} fp_ntpdate_enable: {{ fp_ntpdate_enable }}
       fp_passwords: {{ fp_passwords }}
       fp_periodic: {{ fp_periodic }}
       fp_procmail: {{ fp_procmail }} fp_procmail_install: {{ fp_procmail_install }}
-      fp_qemu: {{ fp_qemu }} fp_qemu_enabled: {{ fp_qemu_enabled }}{% for k, v in _fp_qemu_install_dict.items() %} {{ k }}: {{ v }}{% endfor %}
+      fp_qemu: {{ fp_qemu }} fp_qemu_enable: {{ fp_qemu_enable }}{% for k, v in _fp_qemu_install_dict.items() %} {{ k }}: {{ v }}{% endfor %}
 
       fp_resolvconf: {{ fp_resolvconf }}
-      fp_smartd: {{ fp_smartd }} fp_smartd_install: {{ fp_smartd_install }} fp_smartd_enabled: {{ fp_smartd_enabled }}
-      fp_snmpd: {{ fp_snmpd }} fp_snmpd_install: {{ fp_snmpd_install }} fp_snmpd_enabled: {{ fp_snmpd_enabled }}
+      fp_smartd: {{ fp_smartd }} fp_smartd_install: {{ fp_smartd_install }} fp_smartd_enable: {{ fp_smartd_enable }}
+      fp_snmpd: {{ fp_snmpd }} fp_snmpd_install: {{ fp_snmpd_install }} fp_snmpd_enable: {{ fp_snmpd_enable }}
       fp_ssh: {{ fp_ssh }}
       fp_sshd: {{ fp_sshd }} fp_sshd_enable: {{ fp_sshd_enable }}
       fp_sudoers: {{ fp_sudoers }}
       fp_swap: {{ fp_swap }} fp_swap_enable: {{ fp_swap_enable }}
       fp_sysctl: {{ fp_sysctl }}
-      fp_syslogd: {{ fp_syslogd }} fp_syslogd_enabled: {{ fp_syslogd_enabled }}
+      fp_syslogd: {{ fp_syslogd }} fp_syslogd_enable: {{ fp_syslogd_enable }}
       fp_timezone: {{ fp_timezone }}
       fp_tmpmfs: {{ fp_tmpmfs }}
       fp_users: {{ fp_users }}
