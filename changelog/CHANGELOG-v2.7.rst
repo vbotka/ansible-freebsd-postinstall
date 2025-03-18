@@ -21,6 +21,8 @@ Release Summary
 
 * Required module vbotka.freebsd.service from the collection vbotka.freebsd
 
+* Update docs.
+
 
 Major Changes
 -------------

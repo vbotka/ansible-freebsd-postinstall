@@ -15,6 +15,7 @@ hostname, sshd, ...).
   * collection `ansible.posix`_
   * collection `ansible.utils`_
   * collection `community.general`_
+  * collection `vbotka.freebsd`_
 
 Enable tasks
 ------------
@@ -63,3 +64,4 @@ syntax, preview potential changes, and debug tasks.
 .. _`ansible.posix`: https://galaxy.ansible.com/ui/repo/published/ansible/posix/
 .. _`ansible.utils`: https://galaxy.ansible.com/ui/repo/published/ansible/utils/
 .. _`community.general`: https://galaxy.ansible.com/ui/repo/published/community/general/
+.. _`vbotka.freebsd`: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/
