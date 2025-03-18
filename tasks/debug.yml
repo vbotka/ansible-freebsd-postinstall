@@ -47,7 +47,7 @@
       fp_hosts: {{ fp_hosts }}
       fp_inetd: {{ fp_inetd }} fp_inetd_enabled: {{ fp_inetd_enabled }}
       fp_libmap: {{ fp_libmap }}
-      fp_linux: {{ fp_linux }} fp_linux_install: {{ fp_linux_install }} fp_linux_enable: {{ fp_linux_enable }}
+      fp_linux: {{ fp_linux }} fp_linux_install: {{ fp_linux_install }} fp_linux_enabled: {{ fp_linux_enabled }}
       fp_loader: {{ fp_loader }} fp_loader_load_modules: {{ fp_loader_load_modules }}
       fp_login: {{ fp_login }} fp_login_conf_global: {{ fp_login_conf_global }}
       fp_make: {{ fp_make }}

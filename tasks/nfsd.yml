@@ -45,31 +45,37 @@
         {{ fp_rpc_statd_enable_rcconf | to_yaml(indent=2) | indent(2) }}
       fp_rpc_statd_disable_rcconf:
         {{ fp_rpc_statd_disable_rcconf | to_yaml(indent=2) | indent(2) }}
-      fp_nfsd_service_paths:
-        {{ fp_nfsd_service_paths | to_nice_yaml(indent=2) | indent(2) }}
+      fp_nfsd_services:
+        {{ fp_nfsd_services | to_nice_yaml(indent=2) | indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
 
-  # Note: The module service_facts doesn't work in FreeBSD.
-- name: Get nfsd services
-  tags: fp_nfsd_services
+- name: Get services status.
+  tags:
+    - fp_nfsd_services
+    - fp_nfsd_enable
+    - fp_nfsd_disable
   block:
 
-    - name: "Nfsd: Service state info"
-      vars:
-        al_bsd_service_paths: "{{ fp_nfsd_service_paths }}"  # noqa: var-naming[no-role-prefix]
-      ansible.builtin.include_role:
-        name: vbotka.ansible_lib
-        tasks_from: al_bsd_service_facts
-        apply:
-          tags: fp_nfsd_services
+    - name: "Nfsd: Get services status."
+      register: out
+      vbotka.freebsd.service:
+        script: "{{ item }}"
+        command: status
+      loop: "{{ fp_nfsd_services }}"
 
-    - name: "Nfsd: Debug service state info fp_nfs_debug={{ fp_nfs_debug }}"
+    - name: "Nfsd: Set services status."
+      vars:
+        _query: '[].[item, status]'
+      ansible.builtin.set_fact:
+        fp_nfsd_services_status: "{{ dict(out.results | community.general.json_query(_query)) }}"
+
+    - name: "Nfsd: Debug services status fp_nfsd_debug={{ fp_nfsd_debug }}"
       when: fp_nfsd_debug | bool
       ansible.builtin.debug:
-        var: al_ansible_facts_services
+        var: fp_nfsd_services_status
 
-    - name: "Nfsd: Debug handlers fp_nfs_debug={{ fp_nfs_debug }}"
+    - name: "Nfsd: Debug handlers fp_nfsd_debug={{ fp_nfsd_debug }}"
       when: fp_nfsd_debug | bool
       ansible.builtin.debug:
         var: fp_nfsd_handlers

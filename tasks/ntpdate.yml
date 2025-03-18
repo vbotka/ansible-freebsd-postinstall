@@ -1,19 +1,8 @@
 ---
-- name: "Ntpdate: Configure ntpdate in {{ _path }}"
+- name: "Ntpdate: Configure rc.conf"
+  tags: fp_ntpdate_rcconf
   vars:
-    _path: "{{ fp_rcconfd | bool | ternary(fp_rcconfd_path.ntpdate, '/etc/rc.conf') }}"
-  community.general.sysrc:
-    path: "{{ _path }}"
-    name: "{{ item.key }}"
-    value: "{{ item.value | d(omit) }}"
-    state: "{{ item.state | d(omit) }}"
-  loop: "{{ fp_ntpdate_rcconf }}"
-
-- name: "Ntpdate: ntpdate {{ state }}"
-  ansible.builtin.service:
-    name: ntpdate
-    state: "{{ state }}"
-  vars:
-    state: "{{ fp_ntpdate_enable | bool | ternary('started', 'stopped') }}"
+    _service: ntpdate
+  ansible.builtin.import_tasks: fn/rcconf.yml
 
 # EOF

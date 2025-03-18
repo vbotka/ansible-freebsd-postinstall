@@ -1,6 +1,10 @@
 ---
 fp_qemu: false
-fp_qemu_enabled: false
+fp_qemu_enable: false
+fp_qemu_notify: true
+fp_qemu_service_task: false
+
+fp_qemu_rcconf: []
 
 # mutually exclusive
 fp_qemu_install: false # list of packages: qemu

@@ -1,0 +1,16 @@
+---
+fp_handlers:
+  default:
+    "YES": ["start {{ _service }}"]
+    "NO": ["stop {{ _service }}"]
+    "RELOAD": ["reload {{ _service }}"]
+  devd:
+    "RELOAD": [restart devd]
+  devfs:
+    "RELOAD": [restart devfs]
+  linux:
+    "RELOAD": [restart linux]
+  ntpdate:
+    "RELOAD": [restart ntpdate]
+  ntpd:
+    "RELOAD": [restart ntpd]

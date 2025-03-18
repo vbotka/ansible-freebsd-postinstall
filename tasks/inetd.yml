@@ -4,7 +4,10 @@
   tags: fp_inetd_debug
   vars:
     msg: |-
-      fp_inetd_enabled: {{ fp_inetd_enabled }}
+      fp_inetd_enable: {{ fp_inetd_enable }}
+      fp_inetd_notify: {{ fp_inetd_notify }}
+      fp_inetd_service_task: {{ fp_inetd_service_task }}
+
       fp_inetd_rcconf:
         {{ fp_inetd_rcconf | to_nice_yaml(indent=2) | indent(2) }}
       fp_inetd_conf_orig: {{ fp_inetd_conf_orig }}
@@ -21,37 +24,6 @@
         {{ fp_inetd_syslogd_newconfd | to_nice_yaml(indent=2) | indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
-
-- name: Configure /etc/rc.conf
-  vars:
-    _path: "{{ fp_rcconfd | bool | ternary(fp_rcconfd_path.inetd, '/etc/rc.conf') }}"
-  tags: fp_inetd_rcconf
-  block:
-
-    - name: "Inetd: Configure {{ _path }}"
-      notify: restart inetd
-      community.general.sysrc:
-        path: "{{ _path }}"
-        name: "{{ item.key }}"
-        value: "{{ item.value | d(omit) }}"
-        state: "{{ item.state | d(omit) }}"
-      loop: "{{ fp_inetd_rcconf }}"
-
-    - name: "Inetd: Enable and start inetd in {{ _path }}"
-      when: fp_inetd_enabled | bool
-      notify: enable and start inetd
-      community.general.sysrc:
-        path: "{{ _path }}"
-        name: inetd_enable
-        value: "YES"
-
-    - name: "Inetd: Disable and stop inetd in {{ _path }}"
-      when: not fp_inetd_enabled | bool
-      notify: disable and stop inetd
-      community.general.sysrc:
-        path: "{{ _path }}"
-        name: inetd_enable
-        value: "NO"
 
 - name: Configure syslog
   block:
@@ -142,12 +114,11 @@
     mode: "0644"
     backup: "{{ fp_backup }}"
 
-- name: "Inetd: inetd {{ state }}"
-  tags: fp_inetd_service
+
+- name: "Inetd: Configure rc.conf"
+  tags: fp_inetd_rcconf
   vars:
-    state: "{{ fp_inetd_enabled | bool | ternary('started', 'stopped') }}"
-  ansible.builtin.service:
-    name: inetd
-    state: "{{ state }}"
+    _service: inetd
+  ansible.builtin.import_tasks: fn/rcconf.yml
 
 # EOF

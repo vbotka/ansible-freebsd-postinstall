@@ -1,15 +1,15 @@
 ---
 - name: "Cron-rename-entry: Stat {{ fp_cron_dir ~ '/' ~ item.user }}"
+  register: result
   ansible.builtin.stat:
     path: "{{ fp_cron_dir }}/{{ item.user }}"
-  register: result
 
 - name: "Cron-rename-entry: Rename present crontab entry"
+  when: result.stat.exists
   ansible.builtin.replace:
     path: "{{ fp_cron_dir }}/{{ item.user }}"
     regexp: ^\s*#\s*{{ item.name }}$
     replace: "#Ansible: {{ item.name }}"
     backup: "{{ fp_backup }}"
-  when: result.stat.exists
 
 # EOF

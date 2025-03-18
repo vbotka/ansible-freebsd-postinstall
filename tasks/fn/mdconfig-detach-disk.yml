@@ -1,10 +1,10 @@
 ---
 - name: "Mdconfig-detach-disk: Detach memory disk"
-  ansible.builtin.include_role:
-    name: vbotka.ansible_lib
-    tasks_from: al_mdconfig.yml
   vars:
     al_mdconfig_file: "{{ item[_fp_mount_task] }}" # noqa: var-naming[no-role-prefix]
     al_mdconfig_state: absent
+  ansible.builtin.include_role:
+    name: vbotka.ansible_lib
+    tasks_from: al_mdconfig.yml
 
 # EOF

@@ -1,3 +1,4 @@
+---
 - name: Configure the role vbotka.freebsd_postinstall
   hosts: localhost
 
@@ -17,23 +18,27 @@
         fail_msg: Confirm that you know what you are doing.
 
     - name: Create list of all tags fp_sanity_tags in {{ tags_path }}
-      ansible.builtin.include_tasks: .configure.tasks/create_sanity_tags.yml
       when: fp_create_sanity_tags | d(false) | bool
+      ansible.builtin.include_tasks: .configure.tasks/create_sanity_tags.yml
+
+    - name: Create service handlers
+      when: fp_create_handlers_service | d(false) | bool
+      ansible.builtin.include_tasks: .configure.tasks/create_handlers_service.yml
 
     - name: Create handlers/main.yml
-      ansible.builtin.include_tasks: .configure.tasks/create_handlers_main.yml
       when: fp_create_handlers_main | d(false) | bool
+      ansible.builtin.include_tasks: .configure.tasks/create_handlers_main.yml
 
     - name: Create lists fp_nfs_services_enable and disable in {{ nfs_services_path }}
-      ansible.builtin.include_tasks: .configure.tasks/create_nfs_services.yml
       when: fp_create_nfs_services | d(false) | bool
       vars:
         nfs_services: {nfsclient: nfs, lockd: rpc_lockd, statd: rpc_statd}
+      ansible.builtin.include_tasks: .configure.tasks/create_nfs_services.yml
 
     - name: Create lists fp_nfsd_services_enable and disable in {{ nfsd_services_path }}
-      ansible.builtin.include_tasks: .configure.tasks/create_nfsd_services.yml
       when: fp_create_nfsd_services | d(false) | bool
       vars:
         nfsd_services: {nfsd: nfsd, mountd: mountd, rpcbind: rpcbind, lockd: rpc_lockd, statd: rpc_statd}
+      ansible.builtin.include_tasks: .configure.tasks/create_nfsd_services.yml
 
 # EOF

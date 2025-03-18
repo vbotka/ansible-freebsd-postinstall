@@ -1,32 +1,8 @@
 ---
-- name: Configure /etc/rc.conf
-  vars:
-    _path: "{{ fp_rcconfd | bool | ternary(fp_rcconfd_path.qemu, '/etc/rc.conf') }}"
+- name: "Qemu: Configure rc.conf"
   tags: fp_qemu_rcconf
-  block:
-
-    - name: "Qemu: Enable and start {{ fp_qemu_rcvar }}"
-      when: fp_qemu_enabled | bool
-      notify: enable and start qemu
-      community.general.sysrc:
-        path: "{{ _path }}"
-        name: "{{ fp_qemu_rcvar }}"
-        value: "YES"
-
-    - name: "Qemu: Disable and stop {{ fp_qemu_rcvar }}"
-      when: not fp_qemu_enabled | bool
-      notify: disable and stop qemu
-      community.general.sysrc:
-        path: "{{ _path }}"
-        name: "{{ fp_qemu_rcvar }}"
-        value: "NO"
-
-- name: "Qemu: smartd {{ state }}"
-  tags: fp_qemu_service
   vars:
-    state: "{{ fp_qemu_enabled | bool | ternary('started', 'stopped') }}"
-  ansible.builtin.service:
-    name: "{{ fp_qemu_rcvar }}"
-    state: "{{ state }}"
+    _service: qemu
+  ansible.builtin.import_tasks: fn/rcconf.yml
 
 # EOF

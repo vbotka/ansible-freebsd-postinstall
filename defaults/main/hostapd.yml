@@ -1,7 +1,24 @@
 ---
 fp_hostapd: false
 fp_hostapd_install: false # list of packages: hostap
-fp_hostapd_enabled: false
+fp_hostapd_enable: false
+fp_hostapd_notify: true
+fp_hostapd_service_task: false
+
+fp_hostapd_rcconf: []
+#  - key: create_args_{{ fp_hostapd_interface }}
+#    value: wlanmode hostap country {{ fp_hostapd_country }}
+#  - key: wlans_{{ fp_hostapd_device }}
+#    value: "{{ fp_hostapd_interface }}"
+#  - key: ifconfig_{{ fp_hostapd_interface }}
+#    value: inet {{ fp_hostapd_inet }} netmask {{ fp_hostapd_netmask }}
+
+fp_hostapd_conf_file: /etc/hostapd.conf
+fp_hostapd_conf_template: hostapd.conf.j2
+fp_hostapd_conf_owner: root
+fp_hostapd_conf_group: wheel
+fp_hostapd_conf_mode: "0640"
+
 fp_hostapd_name: hostapd
 fp_hostapd_ssid: MY-SSID
 fp_hostapd_wpa_passphrase: MY-PASSPHRASE
@@ -30,15 +47,3 @@ fp_hostapd_logger_syslog_level: 0
 fp_hostapd_logger_stdout: -1
 fp_hostapd_logger_stdout_level: 0
 fp_hostapd_eap_server: 0
-fp_hostapd_conf_file: /etc/hostapd.conf
-fp_hostapd_conf_template: hostapd.conf.j2
-fp_hostapd_conf_owner: root
-fp_hostapd_conf_group: wheel
-fp_hostapd_conf_mode: "0640"
-fp_hostapd_rcconf:
-  - key: create_args_{{ fp_hostapd_interface }}
-    value: wlanmode hostap country {{ fp_hostapd_country }}
-  - key: wlans_{{ fp_hostapd_device }}
-    value: "{{ fp_hostapd_interface }}"
-  - key: ifconfig_{{ fp_hostapd_interface }}
-    value: inet {{ fp_hostapd_inet }} netmask {{ fp_hostapd_netmask }}

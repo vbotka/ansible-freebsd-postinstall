@@ -11,11 +11,12 @@
 
 - name: "Tmpmfs: Configure tmpmfs in {{ _path }}"
   vars:
-    _path: "{{ fp_rcconfd | bool | ternary(fp_rcconfd_path.tmpmfs, '/etc/rc.conf') }}"
+    _rcconfd_path: "{{ fp_rcconfd_path[_service] }}"
+    _path: "{{ fp_rcconfd | bool | ternary(_rcconfd_path, '/etc/rc.conf') }}"
   tags: fp_tmpmfs_rcconf
   community.general.sysrc:
     path: "{{ _path }}"
-    name: "{{ item.key }}"
+    name: "{{ item.name }}"
     value: "{{ item.value | d(omit) }}"
     state: "{{ item.state | d(omit) }}"
   loop: "{{ fp_tmpmfs_rcconf }}"

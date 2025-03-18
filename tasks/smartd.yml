@@ -1,26 +1,4 @@
 ---
-- name: Congigure /etc/rc.conf
-  tags: fp_smartd_rcconf
-  block:
-
-    - name: "Smartd: Enable and start smartd"
-      when: fp_smartd_enabled | bool
-      notify: enable and start smartd
-      ansible.builtin.lineinfile:
-        dest: /etc/rc.conf
-        regexp: ^\s*smartd_enable\s*=(.*)$
-        line: smartd_enable="YES"
-        backup: "{{ fp_backup }}"
-
-    - name: "Smartd: Disable and stop smartd"
-      when: not fp_smartd_enabled | bool
-      notify: disable and stop smartd
-      ansible.builtin.lineinfile:
-        dest: /etc/rc.conf
-        regexp: ^\s*smartd_enable\s*=(.*)$
-        line: smartd_enable="NO"
-        backup: "{{ fp_backup }}"
-
 - name: Configure smartd
   tags: fp_smartd_conf
   notify: reload smartd
@@ -46,12 +24,10 @@
         backup: "{{ fp_backup }}"
       loop: "{{ fp_smartd_devices }}"
 
-- name: "Smartd: smartd {{ state }}"
-  tags: fp_smartd_service
+- name: "Smartd: Configure rc.conf"
+  tags: fp_smartd_rcconf
   vars:
-    state: "{{ fp_smartd_enabled | bool | ternary('started', 'stopped') }}"
-  ansible.builtin.service:
-    name: smartd
-    state: "{{ state }}"
+    _service: smartd
+  ansible.builtin.import_tasks: fn/rcconf.yml
 
 # EOF

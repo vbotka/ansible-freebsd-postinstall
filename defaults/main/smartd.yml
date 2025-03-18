@@ -1,7 +1,12 @@
 ---
 fp_smartd: false
 fp_smartd_install: false # list of packages: smart
-fp_smartd_enabled: false
+fp_smartd_enable: false
+fp_smartd_notify: true
+fp_smartd_service_task: false
+
+fp_smartd_rcconf: []
+
 fp_smartd_conf_file: /usr/local/etc/smartd.conf
 fp_smartd_conf_owner: root
 fp_smartd_conf_group: wheel

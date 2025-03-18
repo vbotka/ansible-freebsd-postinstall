@@ -1,17 +1,26 @@
 ---
 fp_devfs: false
+fp_devfs_enable: false
+fp_devfs_load_rulesets: "{{ fp_devfs_enable }}"
+fp_devfs_notify: true
+fp_devfs_service_task: false
 fp_devfs_debug: false
-fp_devfs_enabled: false
+
+# defaults
+# /etc/defaults/rc.conf:devfs_rulesets="/etc/defaults/devfs.rules /etc/devfs.rules" # Files containing
+# /etc/defaults/rc.conf:devfs_system_ruleset=""	# The name (NOT number) of a ruleset to apply to /dev
+# /etc/defaults/rc.conf:devfs_set_rulesets=""	# A list of /mount/dev=ruleset_name settings to
+# /etc/defaults/rc.conf:devfs_load_rulesets="YES"	# Enable to always load the default rulesets
+fp_devfs_rulesets: /etc/defaults/devfs.rules /etc/devfs.rules
+fp_devfs_system_ruleset: ""
+fp_devfs_set_rulesets: ""
+fp_devfs_rcconf: []
+# - { key: devfs_rulesets, value: "{{ fp_devfs_rulesets }}" }
+# - { key: devfs_system_rulesets, value: "{{ fp_devfs_system_ruleset }}" }
+# - { key: devfs_set_rulesets, value: "{{ fp_devfs_set_rulesets }}" }
+
 fp_devfs_owner: root
 fp_devfs_group: wheel
-fp_devfs_load_rulesets: "{{ fp_devfs_enabled }}"
-fp_devfs_system_ruleset: ""
-fp_devfs_rulesets: /etc/defaults/devfs.rules /etc/devfs.rules
-fp_devfs_set_rulesets: ""
-fp_devfs_rcconf:
-  - { key: devfs_system_rulesets, value: "{{ fp_devfs_system_ruleset }}" }
-  - { key: devfs_rulesets, value: "{{ fp_devfs_rulesets }}" }
-  - { key: devfs_set_rulesets, value: "{{ fp_devfs_set_rulesets }}" }
 fp_devfs_conf_path: /etc/devfs.conf
 fp_devfs_conf: []
 fp_devfs_rules_path: /etc/devfs.rules

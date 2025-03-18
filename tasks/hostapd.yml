@@ -1,38 +1,7 @@
 ---
-- name: Configure /etc/rc.conf
-  vars:
-    _path: "{{ fp_rcconfd | bool | ternary(fp_rcconfd_path.hostapd, '/etc/rc.conf') }}"
-  tags: fp_hostapd_rcconf
-  block:
-
-    - name: "Hostapd: Configure interface for hostapd in {{ _path }}"
-      notify: restart hostapd
-      community.general.sysrc:
-        path: "{{ _path }}"
-        name: "{{ item.key }}"
-        value: "{{ item.value | d(omit) }}"
-        state: "{{ item.state | d(omit) }}"
-      loop: "{{ fp_hostapd_rcconf }}"
-
-    - name: "Hostapd: Enable and start hostapd in {{ _path }}"
-      when: fp_hostapd_enabled | bool
-      notify: enable and start hostapd
-      community.general.sysrc:
-        path: "{{ _path }}"
-        name: hostapd_enable
-        value: "YES"
-
-    - name: "Hostapd: Disable and stop hostapd in {{ _path }}"
-      when: not fp_hostapd_enabled | bool
-      notify: disable and stop hostapd
-      community.general.sysrc:
-        path: "{{ _path }}"
-        name: hostapd_enable
-        value: "NO"
-
 - name: "Hostapd: Configure {{ fp_hostapd_conf_file }}"
-  tags: fp_hostapd_conf
   notify: restart hostapd
+  tags: fp_hostapd_conf
   ansible.builtin.template:
     src: "{{ fp_hostapd_conf_template }}"
     dest: "{{ fp_hostapd_conf_file }}"
@@ -41,12 +10,10 @@
     mode: "{{ fp_hostapd_conf_mode }}"
     backup: "{{ fp_backup }}"
 
-- name: "Hostapd: hostapd {{ state }}"
-  tags: fp_hostapd_service
+- name: "Hostapd: Configure rc.conf"
+  tags: fp_hostapd_rcconf
   vars:
-    state: "{{ fp_hostapd_enabled | bool | ternary('started', 'stopped') }}"
-  ansible.builtin.service:
-    name: hostapd
-    state: "{{ state }}"
+    _service: hostapd
+  ansible.builtin.import_tasks: fn/rcconf.yml
 
 # EOF

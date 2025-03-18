@@ -3,15 +3,18 @@ fp_rcconfd: false
 fp_rcconfd_dir: /etc/rc.conf.d
 fp_rcconfd_file:
   apcupsd: apcupsd
+  devd: devd
+  devfs: devfs
   digitalocean: digitalocean
   hostapd: hostapd
   hostname: hostname
   inetd: inetd
   linux: linux
-  ntp: ntp
+  ntpd: ntpd
   ntpdate: ntpdate
   motd: motd
   qemu: qemu
+  smartd: smartd
   snmpd: snmpd
   sshd: sshd
   syslogd: syslogd

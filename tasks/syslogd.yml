@@ -4,7 +4,10 @@
   tags: fp_syslogd_debug
   vars:
     msg: |-
-      fp_syslogd_enabled: {{ fp_syslogd_enabled }}
+      fp_syslogd_enable: {{ fp_syslogd_enable }}
+      fp_syslogd_notify: {{ fp_syslogd_notify }}
+      fp_syslogd_service_task: {{ fp_syslogd_service_task }}
+
       fp_syslogd_rcconf:
         {{ fp_syslogd_rcconf | to_yaml(indent=2) | indent(2) }}
       fp_syslogd_conf_orig: {{ fp_syslogd_conf_orig }}
@@ -19,37 +22,6 @@
         {{ fp_syslogd_newconfd | to_yaml(indent=2) | indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
-
-- name: Configure /etc/rc.conf
-  vars:
-    _path: "{{ fp_rcconfd | bool | ternary(fp_rcconfd_path.syslogd, '/etc/rc.conf') }}"
-  tags: fp_syslogd_rcconf
-  block:
-
-    - name: "Syslogd: Configure {{ _path }}"
-      notify: restart syslogd
-      community.general.sysrc:
-        path: "{{ _path }}"
-        name: "{{ item.key }}"
-        value: "{{ item.value | d(omit) }}"
-        state: "{{ item.state | d(omit) }}"
-      loop: "{{ fp_syslogd_rcconf }}"
-
-    - name: "Syslogd: Enable and start syslogd in {{ _path }}"
-      when: fp_syslogd_enabled | bool
-      notify: enable and start syslogd
-      community.general.sysrc:
-        path: "{{ _path }}"
-        name: syslogd_enable
-        value: "YES"
-
-    - name: "Syslogd: Disable and stop syslogd in {{ _path }}"
-      when: not fp_syslogd_enabled | bool
-      notify: disable and stop syslogd
-      community.general.sysrc:
-        path: "{{ _path }}"
-        name: syslogd_enable
-        value: "NO"
 
 - name: Configure syslogd
   tags: fp_syslogd_conf
@@ -123,12 +95,10 @@
       loop_control:
         label: "{{ item.path }}"
 
-- name: "Syslogd: syslogd {{ state }}"
-  tags: fp_syslogd_service
+- name: "Syslogd: Configure rc.conf"
+  tags: fp_syslogd_rcconf
   vars:
-    state: "{{ fp_syslogd_enabled | bool | ternary('started', 'stopped') }}"
-  ansible.builtin.service:
-    name: syslogd
-    state: "{{ state }}"
+    _service: syslogd
+  ansible.builtin.import_tasks: fn/rcconf.yml
 
 # EOF

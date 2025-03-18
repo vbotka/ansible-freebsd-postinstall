@@ -1,0 +1,32 @@
+---
+service:
+  default:
+    commands: [start, stop, restart, reload]
+  apcupsd:
+  devd:
+  devfs:
+  hostapd:
+  inetd:
+  lockd:
+  mountd:
+  nfsclient:
+  nfsd:
+  ntpd:
+  ntpdate:
+  qemu:
+  rpcbind:
+  snmpd:
+  smartd:
+  sshd:
+  statd:
+  sysctl:
+    commands: [reload]
+  syslogd:
+
+service_blacklist: [default]
+
+service_enable_var:
+  nfsclient: nfs
+
+service_condition_commands_allow: [reload, restart]
+service_condition_deny: [sysctl]
