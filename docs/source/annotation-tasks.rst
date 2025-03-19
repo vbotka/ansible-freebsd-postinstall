@@ -1584,10 +1584,41 @@ Description of the task.
 rcconf.yml
 ----------
 
-Synopsis: Configure rcconf.
+Synopsis: Configure a service in rc.conf
 
 
-Description of the task.
+:4-24: Declare local variables for given ``_service``
+:27: Display local varaibles if ``fp_rcconf_debug=true``.
+:52: Configure ``_service`` in rc.conf
+:67: Configure ``rcvar`` for the ``_service`` in rc.conf
+:80: Optionally, start/stop ``_service`` immediately.
+
+Example of ``_service=sshd`` ::
+
+  shell> ansible-playbook pb.yml -t fp_sshd -e fp_sshd_debug=true  -e fp_rcconf_debug=true
+  ...
+  TASK [vbotka.freebsd_postinstall : Rcconf: Debug fp_rcconf_debug=true] *****************
+  ok: [test.example.org] => 
+  msg: |-
+      fp_rcconfd: False
+      fp_rcconf_sanity_rcvar: True
+      _service: sshd
+      _rcconfd_path: /etc/rc.conf.d/sshd
+      _path: /etc/rc.conf
+      _var: fp_sshd_enable
+      _val: True
+      _name: sshd_enable
+      _value: YES
+      _command: start
+      _handlers: ['start sshd']
+      _handlers_reload: ['reload sshd']
+      _rcconf_var: fp_sshd_rcconf
+      _rcconf_val: []
+      _notify_var: fp_sshd_notify
+      _notify_val: True
+      _service_task_var: fp_sshd_service_task
+      _service_task_val: False
+  ...
 
 
 [`tasks/fn/rcconf.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/fn/rcconf.yml>`_]
@@ -1596,9 +1627,14 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/fn/rcconf.yml
     :language: Yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 4-24,27,52,67,80
     :linenos:
 
+.. seealso::
+   * :ref:`ug_rc`
+   * defaults/main/rcconf.yml
+   * defaults/main/rcconfd.yml
+   * defaults/main/handlers.yml
 
 
 

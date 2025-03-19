@@ -50,6 +50,7 @@ Minor Changes
 * Replace default() by alias d()
 * Update docs
   - Add chapter System configuration.
+  - Add annotation/vars/rcconf.yml
 
 Breaking Changes / Porting Guide
 --------------------------------
