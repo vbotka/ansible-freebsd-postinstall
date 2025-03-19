@@ -11,23 +11,17 @@ vbotka.freebsd_postinstall 2.7 Release Notes
 Release Summary
 ---------------
 * Unified configuration of rc.conf/rc.conf.d
-
 * Optionally, do not notify handler after the rc.conf/rc.conf.d
   configuration. Default fp_*_notify=True
-
 * Optionally, do not wait for a handler and start/stop a service right
   after the rc.conf/rc.conf.d configuration. Default
   fp_*_service_task=False
-
 * Required module vbotka.freebsd.service from the collection vbotka.freebsd
-
 * Update docs.
-
 
 Major Changes
 -------------
 * Meta: Ansible 2.18; FreeBSD 13.4, 13.5, 14.1, 14.2
-
 * New tasks/fn/rcconf.yml; enable/disable, configure, and optionally start/stop
   services.
 * New vars defaults/main/rcconf.yml
@@ -42,7 +36,6 @@ Major Changes
   - variables fp_*_enabled renamed to fp_*_enable
   - new variables fp_*_notify and fp_*_service_task
 
-
 Minor Changes
 -------------
 * New dictionary fp_environment default={CRYPTOGRAPHY_OPENSSL_NO_LEGACY: '1'}
@@ -55,6 +48,8 @@ Minor Changes
   /etc/rc.conf.d
   Dictionary fp_rcconfd_path is created in defaults/main/rcconfd.yml
 * Replace default() by alias d()
+* Update docs
+  - Add chapter System configuration.
 
 Breaking Changes / Porting Guide
 --------------------------------

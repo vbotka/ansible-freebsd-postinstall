@@ -20,11 +20,13 @@ This `role <https://galaxy.ansible.com/vbotka/freebsd_postinstall/>`_ and the do
 | SPDX-License-Identifier: `BSD-2-Clause <https://spdx.org/licenses/BSD-2-Clause.html>`_
 
 .. toctree::
+   :maxdepth: 1
    :caption: Table of Contents
-   :maxdepth: 2
 
    qsg
    guide
+   ag
+   dg
    annotation
    copyright
    legalnotice

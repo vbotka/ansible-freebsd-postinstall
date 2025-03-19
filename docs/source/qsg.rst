@@ -43,7 +43,7 @@ Installation
 
 Configure Ansible. Fit the paths to the inventory (3) and to the
 roles (4) to your needs. Disable *retry_files* (5). Don't' display
-*ok* and *skipped* hosts (6-8). Pipelining (12) should speedup the
+*ok* and *skipped* hosts (6-9). Pipelining (13) should speedup the
 execution of the playbook
 
 .. code-block:: bash
@@ -56,6 +56,7 @@ execution of the playbook
    roles_path = $HOME/.ansible/roles
    retry_files_enabled = false
    stdout_callback = default
+   callback_result_format = yaml
    display_ok_hosts=false
    display_skipped_hosts=false
    log_path = /var/log/ansible.log
@@ -76,17 +77,18 @@ Install the collections if necessary ::
    shell> ansible-galaxy collection install ansible.posix
    shell> ansible-galaxy collection install ansible.utils
    shell> ansible-galaxy collection install community.general
+   shell> ansible-galaxy collection install vbotka.freebsd
 
-Review the role
+Review the role's tasks, handlers, defaults, and vars
 
 .. code-block:: bash
    :emphasize-lines: 1
    :linenos:
 
    shell> ls ~/.ansible/roles/vbotka.freebsd_postinstall
-   contrib  defaults  docs  handlers  LICENSE  meta  README.md
-   tasks  templates  tests  vars
-
+   .ansible-lint .ansible-lint.local .configure.tasks .configure.vars .configure.yml
+   changelog contrib defaults docs files handlers tasks templates vars
+   meta tests .travis.yml LICENSE README.md
 
 Inventory and playbook
 ======================
@@ -303,9 +305,9 @@ Configure *sshd*
 
    shell> ansible-playbook playbook.yml -t fp_sshd
 
-   PLAY [test_14.example.com] *******************************************************************
+   PLAY [test_14.example.com] **************************************************************
 
-   TASK [vbotka.freebsd_postinstall : sshd: Configure /etc/ssh/sshd_config] *********************
+   TASK [vbotka.freebsd_postinstall : sshd: Configure /etc/ssh/sshd_config] ****************
    changed: [test_14.example.com] => (item={'key': 'PasswordAuthentication', 'value': 'no'})
    changed: [test_14.example.com] => (item={'key': 'ChallengeResponseAuthentication', 'value': 'no'})
    changed: [test_14.example.com] => (item={'key': 'PermitRootLogin', 'value': 'no'})
@@ -314,10 +316,10 @@ Configure *sshd*
    changed: [test_14.example.com] => (item={'key': 'X11Forwarding', 'value': 'no'})
    changed: [test_14.example.com] => (item={'key': 'UseBlacklist', 'value': 'yes'})
 
-   RUNNING HANDLER [vbotka.freebsd_postinstall : reload sshd] ***********************************
+   RUNNING HANDLER [vbotka.freebsd_postinstall : reload sshd] ******************************
    changed: [test_14.example.com]
 
-   PLAY RECAP ***********************************************************************************
+   PLAY RECAP ******************************************************************************
    test_14.example.com: ok=4 changed=2 unreachable=0 failed=0 skipped=23 rescued=0 ignored=0
 
 
@@ -344,12 +346,12 @@ Configure *sudoers*
 
    shell> ansible-playbook playbook.yml -t fp_sudoers
 
-   PLAY [test_14.example.com] *******************************************************************
+   PLAY [test_14.example.com] **************************************************************
 
-   TASK [vbotka.freebsd_postinstall : sudoers: Configure /usr/local/etc/sudoers] ****************
+   TASK [vbotka.freebsd_postinstall : sudoers: Configure /usr/local/etc/sudoers] ***********
    changed: [test_14.example.com] => (item={'key': 'devel', 'value': 'ALL=(ALL) NOPASSWD: ALL'})
 
-   PLAY RECAP ***********************************************************************************
+   PLAY RECAP ******************************************************************************
    test_14.example.com: ok=2 changed=1 unreachable=0 failed=0 skipped=22 rescued=0 ignored=0
 
 The user admin has already been enabled. Otherwise the Ansible escalation ``become: true`` wouldn't
@@ -392,9 +394,9 @@ installation to speedup the execution
 
    shell> ansible-playbook playbook.yml -e fp_install=false
 
-   PLAY [test_14.example.com] *******************************************************************
+   PLAY [test_14.example.com] ****************************************************************
 
-   PLAY RECAP ***********************************************************************************
+   PLAY RECAP ********************************************************************************
    test_14.example.com: ok=10 changed=0 unreachable=0 failed=0 skipped=172 rescued=0 ignored=0
 
 .. warning:: The host has not been secured by this playbook and should be used for testing only.
