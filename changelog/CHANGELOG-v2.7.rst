@@ -48,6 +48,7 @@ Minor Changes
   /etc/rc.conf.d
   Dictionary fp_rcconfd_path is created in defaults/main/rcconfd.yml
 * Replace default() by alias d()
+* Update vars/samples
 * Update docs
   - Add chapter System configuration.
   - Add annotation/vars/rcconf.yml

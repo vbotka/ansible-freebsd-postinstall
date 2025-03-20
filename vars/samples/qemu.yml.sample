@@ -1,5 +1,5 @@
 # fp_qemu: true
-# fp_qemu_enabled: true
+# fp_qemu_enable: true
 # fp_qemu_install: false              # list of packages: qemu
 # fp_qemu_user_static_install: true   # list of packages: qemu_user_static
 # fp_qemu_rcvar: qemu_user_static
