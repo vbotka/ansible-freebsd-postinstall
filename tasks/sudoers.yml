@@ -4,7 +4,7 @@
     dest: "{{ fp_sudoers_conf_file }}"
     regexp: ^\s*{{ item.key }}\s+(.*)$
     line: "{{ item.key }} {{ item.value }}"
-    state: "{{ item.state | default(omit) }}"
+    state: "{{ item.state | d(omit) }}"
     insertafter: EOF
     owner: "{{ fp_sudoers_conf_owner }}"
     group: "{{ fp_sudoers_conf_group }}"

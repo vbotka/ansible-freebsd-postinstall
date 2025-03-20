@@ -37,12 +37,12 @@
 
 - name: "Loader: Load modules"
   when: fp_loader_load_modules | bool
+  changed_when: false
   tags: fp_loader_load_modules
   ansible.builtin.shell:
     cmd: >
       kldstat -q -n {{ item }} || kldload -n {{ item }}
   loop: "{{ fp_loader_modules }}"
-  changed_when: false
 
 - name: Warn when fp_loader_conf keeps also non boot-time tuneables settable via loader.
   when: fp_loader_tuneables_warning | bool
@@ -51,9 +51,9 @@
 
     - name: "Loader: Get sysctls settable via loader."
       register: result
-      ansible.builtin.command: sysctl -aNT
       changed_when: false
       check_mode: false
+      ansible.builtin.command: sysctl -aNT
 
     - name: "Loader: Warn when fp_sysctl_conf keeps also non boot-time tuneables settable via loader."
       when: fp_loader_non_tuneables | length > 0

@@ -9,7 +9,7 @@
 
       fp_nfsd_services_enable:
       {% for service, var in nfsd_services.items() %}
-        - label: "nfsd: Enable and start {{ service }}"
+        - label: "nfsd: Start {{ service }}"
           conf: "{{ _beg }} fp_{{ var }}_enable_rcconf {{ _end }}"
           when: "{{ _beg }} fp_{{ var }}_enable | bool {{ _end }}"
           notify: "{{ _beg }} fp_nfsd_handlers.{{ service }} {{ _end }}"
@@ -17,8 +17,8 @@
 
       fp_nfsd_services_disable:
       {% for service, var in nfsd_services.items() %}
-        - label: "nfsd: Disable and stop {{ service }}"
+        - label: "nfsd: Stop {{ service }}"
           conf: "{{ _beg }} fp_{{ var }}_disable_rcconf {{ _end }}"
           when: "{{ _beg }} not fp_{{ var }}_enable | bool {{ _end }}"
-          notify: disable and stop {{ service }}
+          notify: stop {{ service }}
       {% endfor %}

@@ -10,9 +10,9 @@
     - name: "Freebsd-update: Read /etc/freebsd-update.conf"
       changed_when: false
       check_mode: false
+      register: out
       ansible.builtin.shell:
         cmd: set -o pipefail && freebsd-update showconfig | grep .*=.* | sort
-      register: out
 
     - name: "Freebsd-update: Create fp_freebsd_update_conf_current"
       ansible.builtin.set_fact:

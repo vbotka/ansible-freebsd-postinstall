@@ -4,9 +4,13 @@
   tags: fp_devd_debug
   vars:
     msg: |-
-      fp_devd_enabled: {{ fp_devd_enabled }}
-      fp_devd_flags: {{ fp_devd_flags }}
+      fp_devd_enable: {{ fp_devd_enable }}
+      fp_devd_notify: {{ fp_devd_notify }}
+      fp_devd_service_task: {{ fp_devd_service_task }}
 
+      fp_devd_rcconf:
+        {{ fp_devd_rcconf | to_yaml(indent=2) | indent(2) }}
+      fp_devd_flags: {{ fp_devd_flags }}
       fp_devd_conf_path: {{ fp_devd_conf_path }}
       fp_devd_conf_blocks:
         {{ fp_devd_conf_blocks | to_nice_yaml(indent=2) | indent(2) }}
@@ -26,8 +30,6 @@
   # TODO:
   # - Configure /etc/devd.conf
   # - Configure /etc/devd
-  # - Configure /etc/rc.conf
-  # - Start/stop devd
 
 - name: "Devd: Create {{ fp_devd_local_dir }}"
   tags: fp_devd_local_dir
@@ -51,5 +53,11 @@
   loop: "{{ fp_devd_local_files | dict2items }}"
   loop_control:
     label: "{{ item.key }}"
+
+- name: "Devd: Configure rc.conf"
+  tags: fp_devd_rcconf
+  vars:
+    _service: devd
+  ansible.builtin.import_tasks: fn/rcconf.yml
 
 # EOF

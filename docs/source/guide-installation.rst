@@ -24,6 +24,7 @@ Install the collections if necessary  ::
    shell> ansible-galaxy collection install ansible.posix
    shell> ansible-galaxy collection install ansible.utils
    shell> ansible-galaxy collection install community.general
+   shell> ansible-galaxy collection install vbotka.freebsd
 
 .. seealso::
 

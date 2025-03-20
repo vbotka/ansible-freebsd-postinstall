@@ -1,7 +1,12 @@
 ---
 fp_apcupsd: false
 fp_apcupsd_install: false # list of packages: apcups
-fp_apcupsd_enabled: false
+fp_apcupsd_enable: false
+fp_apcupsd_notify: true
+fp_apcupsd_service_task: false
+
+fp_apcupsd_rcconf: []
+
 fp_apcupsd_conf_dir: /usr/local/etc/apcupsd
 fp_apcupsd_conf_dir_mode: "0755"
 fp_apcupsd_conf_file: "{{ fp_apcupsd_conf_dir }}/apcupsd.conf"

@@ -8,31 +8,26 @@ task_nfsd_description: |
 
   :3: enable ``fp_nfsd_debug=true``.
 
-  :58: Collect status of the services stored in the list
-       ``fp_nfsd_service_paths``.
+  :60: Collect status of the services stored in the list
+       ``fp_nfsd_services``.
 
-  :62-63: The module ``service_facts`` doesn't work in
-          FreeBSD. Instead, use the task ``al_bsd_service_facts`` from
-          the library. This task doesn't support the check mode. This
-          task will return the dictionary
-          ``al_ansible_facts_services``.
+  :67: Create dictionary ``fp_nfsd_services_status``.
 
-  :67: Display this dictionary. This dictionary is used to select the
+  :73: Display this dictionary. This dictionary is used to select the
        handlers in the dictionary ``fp_nfsd_handlers``.
 
-  :72: Display the dictionary ``fp_nfsd_handlers``. The defaults are
+  :78: Display the dictionary ``fp_nfsd_handlers``. The defaults are
        used in check mode because of empty dictionary
-       ``al_ansible_facts_services``.
+       ``fp_nfsd_services_status``.
 
-  :77: Configure ``/etc/exports`` and notify handler ``reload
+  :83: Configure ``/etc/exports`` and notify handler ``reload
        mountd``.
 
-  :86: Configure and enable services.
+  :92: Enable services.
 
-  :95: Disable and stop services. If there are any changes the service will
-        be reloaded or restarted when already running.
+  :101: Disable services.
 
-task_nfsd_lines: 2,3,58,62,63,67,72,77,86,95
+task_nfsd_lines: 2,3,60,67,73,78,83,92,101
 
 task_nfsd_seealso:
   handlers:
@@ -43,7 +38,7 @@ task_nfsd_seealso:
     - <TBD>
 
 task_nfsd_note:
-  - "The variables ``fp_nfsd_services_enable`` (89) and ``fp_nfsd_services_disable`` (98) are created by the playbook ``.configure.yml``"
+  - "The variables ``fp_nfsd_services_enable`` (96) and ``fp_nfsd_services_disable`` (105) are created by the playbook ``.configure.yml``"
 
 task_nfsd_hint:
   - <TBD>
@@ -52,5 +47,4 @@ task_nfsd_warning:
   - <TBD>
 
 # EOF
-
 ...

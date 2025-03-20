@@ -20,16 +20,20 @@
   ansible.builtin.import_tasks: hostname.yml
 - name: Import inetd.yml
   ansible.builtin.import_tasks: inetd.yml
+- name: Import lockd.yml
+  ansible.builtin.import_tasks: lockd.yml
 - name: Import login.yml
   ansible.builtin.import_tasks: login.yml
 - name: Import messages.yml
   ansible.builtin.import_tasks: messages.yml
+- name: Import mountd.yml
+  ansible.builtin.import_tasks: mountd.yml
 - name: Import newaliases.yml
   ansible.builtin.import_tasks: newaliases.yml
 - name: Import newsyslog.yml
   ansible.builtin.import_tasks: newsyslog.yml
-- name: Import nfs.yml
-  ansible.builtin.import_tasks: nfs.yml
+- name: Import nfsclient.yml
+  ansible.builtin.import_tasks: nfsclient.yml
 - name: Import nfsd.yml
   ansible.builtin.import_tasks: nfsd.yml
 - name: Import ntpd.yml
@@ -40,12 +44,16 @@
   ansible.builtin.import_tasks: qemu.yml
 - name: Import resolvconf.yml
   ansible.builtin.import_tasks: resolvconf.yml
+- name: Import rpcbind.yml
+  ansible.builtin.import_tasks: rpcbind.yml
 - name: Import smartd.yml
   ansible.builtin.import_tasks: smartd.yml
 - name: Import snmpd.yml
   ansible.builtin.import_tasks: snmpd.yml
 - name: Import sshd.yml
   ansible.builtin.import_tasks: sshd.yml
+- name: Import statd.yml
+  ansible.builtin.import_tasks: statd.yml
 - name: Import swap.yml
   ansible.builtin.import_tasks: swap.yml
 - name: Import sysctl.yml

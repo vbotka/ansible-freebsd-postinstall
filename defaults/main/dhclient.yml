@@ -25,9 +25,10 @@ fp_dhclient_ifn: []
 fp_dhclient_ifn_leases: true
 
 # If set True the list of the iterfaces will be created from
-# /etc/rc.conf. Iterfaces set to *DHCP will be selected. Mutually
-# exclusive with fp_dhclient_ifn_leases
+# /etc/rc.conf and /etc/rc.conf.d. Iterfaces set to *DHCP will be
+# selected. Mutually exclusive with fp_dhclient_ifn_leases
 fp_dhclient_ifn_rcconf: false
+fp_dhclient_ifn_rcconfd: false
 
 fp_dhclient_etc_dir: /etc
 

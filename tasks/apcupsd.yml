@@ -1,27 +1,5 @@
 ---
-- name: Rcconf
-  tags: fp_apcupsd_rcconf
-  block:
-
-    - name: "Apcupsd: Enable and start apcupsd"
-      when: fp_apcupsd_enabled | bool
-      notify: enable and start apcupsd
-      ansible.builtin.lineinfile:
-        dest: /etc/rc.conf
-        regexp: ^\s*apcupsd_enable\s*=(.*)$
-        line: apcupsd_enable="YES"
-        backup: "{{ fp_backup }}"
-
-    - name: "Apcupsd: Disable and stop apcupsd"
-      when: not fp_apcupsd_enabled | bool
-      notify: disable and stop apcupsd
-      ansible.builtin.lineinfile:
-        dest: /etc/rc.conf
-        regexp: ^\s*apcupsd_enable\s*=(.*)$
-        line: apcupsd_enable="NO"
-        backup: "{{ fp_backup }}"
-
-- name: Conf
+- name: Configure apcupsd
   tags: fp_apcupsd_conf
   block:
 
@@ -41,12 +19,10 @@
         mode: "{{ fp_apcupsd_conf_mode }}"
         backup: "{{ fp_backup }}"
 
-- name: "Apcupsd: Service apcupsd {{ state }}"
-  tags: fp_apcupsd_service
-  ansible.builtin.service:
-    name: apcupsd
-    state: "{{ state }}"
+- name: "Apcupsd: Configure rc.conf"
+  tags: fp_apcupsd_rcconf
   vars:
-    state: "{{ fp_apcupsd_enabled | bool | ternary('started', 'stopped') }}"
+    _service: apcupsd
+  ansible.builtin.import_tasks: fn/rcconf.yml
 
 # EOF

@@ -60,3 +60,4 @@ fn/cron-rename-entry.yml
 fn/mdconfig-attach-disk.yml
 fn/mdconfig-detach-disk.yml
 fn/rcconf-item.yml
+fn/rcconf.yml

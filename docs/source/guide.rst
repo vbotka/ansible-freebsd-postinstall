@@ -13,6 +13,7 @@ User's guide
    guide-debug
    guide-sanity
    guide-tasks
+   guide-rc
    guide-devel
    guide-examples
    guide-variables

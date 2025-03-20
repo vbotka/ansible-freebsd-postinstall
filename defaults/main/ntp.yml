@@ -1,6 +1,29 @@
 ---
 fp_ntp: false
-fp_ntp_enable: false
+fp_ntpd_enable: false
+fp_ntpd_notify: true
+fp_ntpd_service_task: false
+
+# Configure ntpd_* and ntp_* in rc.conf
+fp_ntpd_rcconf: []
+# - { name: ntpd_program, value: /usr/sbin/ntpd }
+# - { name: ntp_src_leapfile, value: /etc/ntp/leap-seconds }
+
+# ntpd defaults
+# /etc/defaults/rc.conf:ntpd_program="/usr/sbin/ntpd"	# path to ntpd, if you want a different one.
+# /etc/defaults/rc.conf:ntpd_config="/etc/ntp.conf"	# ntpd(8) configuration file
+# /etc/defaults/rc.conf:ntpd_sync_on_start="NO"		# Sync time on ntpd startup, even if offset is high
+# /etc/defaults/rc.conf:ntpd_flags=""			# Additional flags to ntpd
+
+# ntp defaults
+# /etc/defaults/rc.conf:ntp_src_leapfile="/etc/ntp/leap-seconds"
+# /etc/defaults/rc.conf:ntp_db_leapfile="/var/db/ntpd.leap-seconds.list"
+# /etc/defaults/rc.conf:ntp_leapfile_sources="https://hpiers.obspm.fr/iers/bul/bulc/ntp/leap-seconds.list"
+# /etc/defaults/rc.conf:ntp_leapfile_fetch_opts="-mq"	# Options to use for ntp leapfile fetch,
+# /etc/defaults/rc.conf:ntp_leapfile_expiry_days=30	# Check for new leapfile 30 days prior to
+# /etc/defaults/rc.conf:ntp_leapfile_fetch_verbose="NO"	# Be verbose during NTP leapfile fetch
+
+# Configure /etc/ntp.conf
 fp_ntp_conf_file: /etc/ntp.conf
 fp_ntp_conf_mode: "0644"
 fp_ntp_conf_template: ntp.conf.j2

@@ -7,12 +7,12 @@
 
 - name: Reconfigure wpa_supplicant
   listen: reconfigure wpa_supplicant
+  when: item.changed
   ansible.builtin.shell: # noqa: no-changed-when
     cmd: >
       [ -S {{ fp_wpasupplicant_conf_ctrl_interface }}/{{ item.item.dev }} ] &&
       wpa_cli -p {{ fp_wpasupplicant_conf_ctrl_interface }} -i {{ item.item.dev }} reconfigure  ||
       exit 0
-  when: item.changed
   loop: "{{ fp_wpa_supplicant_conf_changes }}"
 
 # TODO: Wait for OK result. Error: 'RECONFIGURE' command timed out.

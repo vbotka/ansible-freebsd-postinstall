@@ -16,13 +16,15 @@
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
 
-- name: "Digitalocean: Configure /etc/rc.conf"
+- name: "Digitalocean: Configure {{ _path }}"
+  vars:
+    _path: "{{ fp_rcconfd | bool | ternary(fp_rcconfd_path.digitalocean, '/etc/rc.conf') }}"
   tags: fp_do_rcconf
-  ansible.builtin.lineinfile:
-    dest: /etc/rc.conf
-    regexp: ^\s*{{ item.key }}\s*=(.*)$
-    line: '{{ item.key }}="{{ item.value }}"'
-    backup: "{{ fp_backup }}"
+  community.general.sysrc:
+    path: "{{ _path }}"
+    name: "{{ item.key }}"
+    value: "{{ item.value | d(omit) }}"
+    state: "{{ item.state | d(omit) }}"
   loop: "{{ fp_do_rcconf }}"
 
 - name: "Digitalocean: Remove default user"

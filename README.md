@@ -39,11 +39,15 @@ This role has been developed and tested with [FreeBSD Supported Releases](https:
 
 * [ansible.posix](https://github.com/ansible-collections/ansible.posix)
 * [ansible.utils](https://github.com/ansible-collections/ansible.utils)
-* [community.general](https://github.com/ansible-collections/community.general) >= 9.3.0
+* [community.general](https://github.com/ansible-collections/community.general)
 
 ### Packages
 
-See the dictionaries pkg_dict_* in defaults/main/pkgdict_*.yml
+* [fqdn](https://pypi.org/project/fqdn/) required by [community.general.fqdn_valid](https://docs.ansible.com/ansible/latest/collections/community/general/fqdn_valid_test.html)
+* [jc](https://pypi.org/project/jc/) required by [community.general.jc](https://docs.ansible.com/ansible/latest/collections/community/general/jc_filter.html)
+* [rsync](https://rsync.samba.org/) required by [ansible.posix.synchronize](https://docs.ansible.com/ansible/latest/collections/ansible/posix/synchronize_module.html)
+
+* See the dictionaries pkg_dict_* in defaults/main/pkgdict_*.yml
 
 
 ## Variables

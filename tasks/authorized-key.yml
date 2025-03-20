@@ -49,8 +49,7 @@
 
 - name: "Authorized-key: Configure authorized keys individually"
   when: fp_authorized_key_install_individually | bool
-  environment:
-    CRYPTOGRAPHY_OPENSSL_NO_LEGACY: '1'
+  environment: "{{ fp_environment.crypto | d(fp_environment.default) }}"
   ansible.posix.authorized_key:
     user: "{{ item.user }}"
     key: "{{ item.key }}"
@@ -80,8 +79,7 @@
       loop: "{{ local_list_users }}"
 
     - name: "Authorized-key: Configure joined authorized keys"
-      environment:
-        CRYPTOGRAPHY_OPENSSL_NO_LEGACY: '1'
+      environment: "{{ fp_environment.crypto | d(fp_environment.default) }}"
       vars:
         my_query: "[?user=='{{ item }}'].key"
       ansible.posix.authorized_key:

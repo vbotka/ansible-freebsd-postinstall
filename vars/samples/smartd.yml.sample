@@ -1,6 +1,6 @@
 # fp_smartd: true
 # fp_smartd_install: true
-# fp_smartd_enabled: true
+# fp_smartd_enable: true
 # fp_smartd_devices:
 #   - regexp: "^/dev/ada0"
 #     line: "/dev/ada0 -a -o on -S on -s (S/../.././02|L/../../6/03) -m admin"

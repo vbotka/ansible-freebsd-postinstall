@@ -1,0 +1,11 @@
+---
+fp_rcconf_debug: false
+fp_rcconf_sanity_rcvar: true
+
+fp_rcconf_rcvar:
+  default: "{{ _service }}_enable"
+  devfs: devfs_load_rulesets
+  qemu: "{{ fp_qemu_rcvar }}"
+
+fp_rcconf_var:
+  default: "fp_{{ _service }}_enable"

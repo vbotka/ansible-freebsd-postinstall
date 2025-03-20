@@ -21,37 +21,41 @@
         {{ fp_rpc_statd_enable_rcconf | to_yaml(indent=2) | indent(2) }}
       fp_rpc_statd_disable_rcconf:
         {{ fp_rpc_statd_disable_rcconf | to_yaml(indent=2) | indent(2) }}
-      fp_nfs_service_paths:
-        {{ fp_nfs_service_paths | to_nice_yaml(indent=2) | indent(2) }}
+      fp_nfs_services: {{ fp_nfs_services | to_yaml(indent=2) | indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
 
-  # Note: The module service_facts doesn't work in FreeBSD.
-- name: "Nfs: Service state info"
-  tags: fp_nfs_services
-  vars:
-    al_bsd_service_paths: "{{ fp_nfs_service_paths }}" # noqa: var-naming[no-role-prefix]
-  ansible.builtin.include_role:
-    name: vbotka.ansible_lib
-    tasks_from: al_bsd_service_facts
-    apply:
-      tags: fp_nfs_services
-
-  # Note: There is no status option of nfsclient. If needed, restart the
-  # service when /var/db/mounttab exists.
-- name: Debug
-  tags: fp_nfs_services
+- name: Get services status.
+  tags:
+    - fp_nfs_services
+    - fp_nfs_enable
+    - fp_nfs_disable
   block:
 
+    - name: "Nfs: Get services status."
+      register: out
+      vbotka.freebsd.service:
+        script: "{{ item }}"
+        command: status
+      loop: "{{ fp_nfs_services }}"
+
+    - name: "Nfs: Set services status."
+      vars:
+        _query: '[].[item, status]'
+      ansible.builtin.set_fact:
+        fp_nfs_services_status: "{{ dict(out.results | community.general.json_query(_query)) }}"
+
+    - name: "Nfs: Debug services status fp_nfs_debug={{ fp_nfs_debug }}"
+      when: fp_nfs_debug | bool
+      ansible.builtin.debug:
+        var: fp_nfs_services_status
+
+      # Note: There is no status option of nfsclient. If needed, restart the
+      # service when /var/db/mounttab exists.
     - name: "Nfs: Stat /var/db/mounttab"
       register: fp_nfs_var_db_mounttab
       ansible.builtin.stat:
         path: /var/db/mounttab
-
-    - name: "Nfs: Debug service state info fp_nfs_debug={{ fp_nfs_debug }}"
-      when: fp_nfs_debug | bool
-      ansible.builtin.debug:
-        var: al_ansible_facts_services
 
     - name: "Nfs: Debug stat /var/db/mounttab fp_nfs_debug={{ fp_nfs_debug }}"
       when: fp_nfs_debug | bool
@@ -67,7 +71,7 @@
   tags: fp_nfs_enable
   ansible.builtin.include_tasks:
     file: fn/rcconf-item.yml
-  loop: "{{ fp_nfs_services_enable }}"
+  loop: "{{ fp_nfs_services_enable | selectattr('when') }}"
   loop_control:
     loop_var: oi
     label: "{{ oi.label }}"
@@ -76,7 +80,7 @@
   tags: fp_nfs_disable
   ansible.builtin.include_tasks:
     file: fn/rcconf-item.yml
-  loop: "{{ fp_nfs_services_disable }}"
+  loop: "{{ fp_nfs_services_disable | selectattr('when') }}"
   loop_control:
     loop_var: oi
     label: "{{ oi.label }}"

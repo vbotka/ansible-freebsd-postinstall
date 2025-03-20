@@ -1,11 +1,11 @@
 ---
 fp_nfsd: false
+fp_nfsd_enable: false
 fp_nfsd_debug: false
 
 # /etc/export
 fp_nfsd_exports: []
 # nfsd
-fp_nfsd_enable: false
 fp_nfs_server_flags: -u -t -n 4
 fp_nfs_server_managegids: "NO"
 fp_nfs_reserved_port_only: "NO"
@@ -72,22 +72,12 @@ fp_rpc_statd_disable_rcconf:
   - { key: rpc_statd_flags, value: "{{ fp_rpc_statd_flags }}" }
 
 # handlers
-fp_nfsd_service_paths:
-  - /etc/rc.d/nfsd
-  - /etc/rc.d/mountd
-  - /etc/rc.d/rpcbind
-  - /etc/rc.d/lockd
-  - /etc/rc.d/statd
+fp_nfsd_services: [nfsd, mountd, rpcbind, lockd, statd]
 fp_nfsd_handlers:
-  nfsd: "{{ (al_ansible_facts_services.nfsd.state | d('stopped') == 'running') |
-            ternary('restart nfsd', 'enable and start nfsd') }}"
-  mountd: "{{ (al_ansible_facts_services.mountd.state | d('stopped') == 'running') |
-              ternary('reload mountd', 'enable and start mountd') }}"
-  rpcbind: "{{ (al_ansible_facts_services.rpcbind.state | d('stopped') == 'running') |
-               ternary('restart rpcbind', 'enable and start rpcbind') }}"
-  lockd: "{{ (al_ansible_facts_services.lockd.state | d('stopped') == 'running') |
-             ternary('restart lockd', 'enable and start lockd') }}"
-  statd: "{{ (al_ansible_facts_services.statd.state | d('stopped') == 'running') |
-             ternary('restart statd', 'enable and start statd') }}"
+  nfsd: "{{ (fp_nfsd_services_status.nfsd | d('stopped') == 'running') | ternary('restart nfsd', 'start nfsd') }}"
+  mountd: "{{ (fp_nfsd_services_status.mountd | d('stopped') == 'running') | ternary('reload mountd', 'start mountd') }}"
+  rpcbind: "{{ (fp_nfs_services_status.rpcbind | d('stopped') == 'running') | ternary('restart rpcbind', 'start rpcbind') }}"
+  lockd: "{{ (fp_nfs_services_status.lockd | d('stopped') == 'running') | ternary('restart lockd', 'start lockd') }}"
+  statd: "{{ (fp_nfs_services_status.statd | d('stopped') == 'running') | ternary('restart statd', 'start statd') }}"
 
 # EOF

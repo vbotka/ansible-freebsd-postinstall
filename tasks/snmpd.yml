@@ -1,35 +1,4 @@
 ---
-- name: Configure /etc/rc.conf
-  tags: fp_snmpd_rcconf
-  block:
-
-    - name: "Snmpd: Enable and start snmpd"
-      when: fp_snmpd_enabled | bool
-      notify: enable and start snmpd
-      ansible.builtin.lineinfile:
-        dest: /etc/rc.conf
-        regexp: ^\s*snmpd_enable\s*=(.*)$
-        line: snmpd_enable="YES"
-        backup: "{{ fp_backup }}"
-
-    - name: "Snmpd: Disable and stop snmpd"
-      when: not fp_snmpd_enabled | bool
-      notify: disable and stop snmpd
-      ansible.builtin.lineinfile:
-        dest: /etc/rc.conf
-        regexp: ^\s*snmpd_enable\s*=(.*)$
-        line: snmpd_enable="NO"
-        backup: "{{ fp_backup }}"
-
-    - name: "Snmpd: Configure /etc/rc.conf"
-      notify: restart snmpd
-      ansible.builtin.lineinfile:
-        dest: /etc/rc.conf
-        regexp: ^\s*{{ item.key }}\s*=(.*)$
-        line: '{{ item.key }}="{{ item.value }}"'
-        backup: "{{ fp_backup }}"
-      loop: "{{ fp_snmpd_rcconf }}"
-
 - name: Configure /usr/local/etc/snmpd.conf
   tags: fp_snmpd_conf
   notify: restart snmpd
@@ -50,16 +19,14 @@
         path: /usr/local/etc/snmpd.conf
         regexp: ^\s*{{ item.key }}\s*=(.*)$
         line: "{{ item.key }} {{ item.value }}"
-        state: "{{ item.state | default(omit) }}"
+        state: "{{ item.state | d(omit) }}"
         backup: "{{ fp_backup }}"
       loop: "{{ fp_snmpd_conf }}"
 
-- name: "Snmpd: snmpd {{ state }}"
-  tags: fp_snmpd_service
+- name: "Snmpd: Configure rc.conf"
+  tags: fp_snmpd_rcconf
   vars:
-    state: "{{ fp_snmpd_enabled | bool | ternary('started', 'stopped') }}"
-  ansible.builtin.service:
-    name: snmpd
-    state: "{{ state }}"
+    _service: snmpd
+  ansible.builtin.import_tasks: fn/rcconf.yml
 
 # EOF

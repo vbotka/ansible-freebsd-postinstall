@@ -1,6 +1,8 @@
 ---
 fp_syslogd: false
-fp_syslogd_enabled: false
+fp_syslogd_enable: false
+fp_syslogd_notify: true
+fp_syslogd_service_task: false
 fp_syslogd_debug: false
 
 # See commented and tested examples in vars/samples/syslogd.yml.sample
@@ -15,5 +17,3 @@ fp_syslogd_confd: []
 fp_syslogd_newconf_orig: false
 fp_syslogd_newconf: []
 fp_syslogd_newconfd: []
-
-# EOF

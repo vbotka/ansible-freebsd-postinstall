@@ -3,59 +3,98 @@
 Introduction
 ============
 
-The role is a set of independent sets of tasks, grouped in separate
-files, that configure a particular functionality of the system (cron,
+This role is a set of independent groups of tasks(*tasks-group*), imported from
+separate files, that configure a particular functionality of the system (cron,
 hostname, sshd, ...).
 
 * Ansible role: `vbotka.freebsd_postinstall`_
 * Supported systems: `FreeBSD`_
-* Required:
+* Required collections:
 
-  * role `vbotka.ansible_lib`_
-  * collection `ansible.posix`_
-  * collection `ansible.utils`_
-  * collection `community.general`_
+  * `ansible.posix`_
+  * `ansible.utils`_
+  * `community.general`_
+  * `vbotka.freebsd`_
 
-Enable tasks
+* Required roles:
+
+  * `vbotka.ansible_lib`_
+
+
+Control flow
 ------------
 
-All tasks are disabled by default. See the control variables of the
-form ``fp_<tasks_group>`` in :ref:`as_main.yml`. There are two more
-categories of control variables used by some of the
-tasks. ``fp_<tasks_group>_install`` and ``fp_<task_group>_enable``.
+.. index:: single: control flow; Introduction
 
-Install packages
-----------------
+A few variables control the role execution flow. All of them are Boolean,
+disabled by default.
 
-The control variables ``fp_<tasks_group>_install`` can be used to
-install predefined groups of packages needed by the tasks. See
-:ref:`tasks_packages_frameworks` and ``defaults/main/pkgdict_*.yml``.
 
-Enable services
----------------
+fp_<tasks-group>
+^^^^^^^^^^^^^^^^
 
-The control variables ``fp_<tasks_group>_enable`` can be used to
-enable or disable the particular services. Configure and enable the
-tasks and services that you need.
+.. index:: single: import tasks-group; Introduction
 
-Display debug
--------------
+Import *tasks-group*. The imports of all *tasks-groups* are disabled by
+default. See the control variables of the form *fp_<tasks-group>* in
+:ref:`as_main.yml`.
 
-In addition to this, some groups of tasks start with the debug output
-which can be turned on by enabling ``fp_<tasks_group>_debug``. See the
-section :ref:`ug_debug`.
+
+fp_<tasks-group>_install
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. index:: single: install packages; Introduction
+
+Install packages. The control variables ``fp_<tasks-group>_install`` enable the
+installation of the predefined groups of packages. See the
+:ref:`tasks_packages_frameworks` and the files ``defaults/main/pkgdict_*.yml``.
+
+
+fp_<tasks-group>_enable
+^^^^^^^^^^^^^^^^^^^^^^^
+
+.. index:: single: enable service; Introduction
+
+Enable service. The control variables ``fp_<tasks-group>_enable`` enable or
+disable particular services. In most cases, the name of the service is used as
+*<tasks-group>*. All variables ``fp_<tasks-group>_enable`` are disabled by
+default. See :ref:`ug_rc`.
+
+
+fp_<tasks-group>_debug
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. index:: single: debug display variables; Introduction
+
+Display debug. Some *tasks-groups* provide the debug output which can be turned
+on by enabling ``fp_<tasks-group>_debug``. All variables
+``fp_<tasks-group>_debug`` are disabled by default. See the section
+:ref:`ug_debug`.
+
+
+Tags
+----
+
+.. index:: single: tags; Introduction
+
+Limit the *tasks-groups* execution by selecting or rejecting(skipping) tags. See
+:ref:`ug_tags`.
+
 
 Recommendations
 ---------------
 
-To speedup the execution of a playbook it's possible to select
-particular groups of tasks only. See the ``Tags`` section how to use
-them. Some tasks are described in detail in the section ``Tasks``. If
-the description of a task is missing it's necessary to review the
-source code on how to use it. To learn details, it's always
-recommended to review the code and notes in the section ``Annotated
-source code``.  See the section ``Best practice`` on how to check
+.. index:: single: recommendations; Introduction
+
+Some tasks are described in detail in the section :ref:`ug_tasks`. If the
+description of a task is missing it's necessary to review the source code on how
+to use it. To learn details, it's always recommended to review the code and
+notes in the section :ref:`as`. See the section :ref:`ug_bp` on how to check
 syntax, preview potential changes, and debug tasks.
+
+
+.. hint:: See ``vars/samples``
+
 
 .. _`vbotka.freebsd_postinstall`: https://galaxy.ansible.com/vbotka/freebsd_postinstall
 .. _`vbotka.ansible_lib`: https://galaxy.ansible.com/vbotka/ansible_lib
@@ -63,3 +102,4 @@ syntax, preview potential changes, and debug tasks.
 .. _`ansible.posix`: https://galaxy.ansible.com/ui/repo/published/ansible/posix/
 .. _`ansible.utils`: https://galaxy.ansible.com/ui/repo/published/ansible/utils/
 .. _`community.general`: https://galaxy.ansible.com/ui/repo/published/community/general/
+.. _`vbotka.freebsd`: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/

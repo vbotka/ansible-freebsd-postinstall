@@ -233,6 +233,29 @@ Description of the handler.
 
 
 
+.. _as_handler_lockd.yml:
+
+lockd.yml
+---------
+
+Synopsis: Handler lockd.
+
+
+Description of the handler.
+
+
+[`handlers/lockd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/lockd.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../handlers/lockd.yml
+    :language: Yaml
+    :emphasize-lines: 1,2
+    :linenos:
+
+
+
+
 .. _as_handler_login.yml:
 
 login.yml
@@ -272,6 +295,29 @@ Description of the handler.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/messages.yml
+    :language: Yaml
+    :emphasize-lines: 1,2
+    :linenos:
+
+
+
+
+.. _as_handler_mountd.yml:
+
+mountd.yml
+----------
+
+Synopsis: Handler mountd.
+
+
+Description of the handler.
+
+
+[`handlers/mountd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/mountd.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../handlers/mountd.yml
     :language: Yaml
     :emphasize-lines: 1,2
     :linenos:
@@ -325,22 +371,22 @@ Description of the handler.
 
 
 
-.. _as_handler_nfs.yml:
+.. _as_handler_nfsclient.yml:
 
-nfs.yml
--------
+nfsclient.yml
+-------------
 
-Synopsis: Handler nfs.
+Synopsis: Handler nfsclient.
 
 
 Description of the handler.
 
 
-[`handlers/nfs.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/nfs.yml>`_]
+[`handlers/nfsclient.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/nfsclient.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
-.. literalinclude:: ../../handlers/nfs.yml
+.. literalinclude:: ../../handlers/nfsclient.yml
     :language: Yaml
     :emphasize-lines: 1,2
     :linenos:
@@ -371,29 +417,6 @@ Description of the handler.
 
 
 
-.. _as_handler_ntpd.yml:
-
-ntpd.yml
---------
-
-Synopsis: Handler ntpd.
-
-
-Description of the handler.
-
-
-[`handlers/ntpd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/ntpd.yml>`_]
-
-.. highlight:: yaml
-    :linenothreshold: 5
-.. literalinclude:: ../../handlers/ntpd.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
-    :linenos:
-
-
-
-
 .. _as_handler_ntpdate.yml:
 
 ntpdate.yml
@@ -410,6 +433,29 @@ Description of the handler.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/ntpdate.yml
+    :language: Yaml
+    :emphasize-lines: 1,2
+    :linenos:
+
+
+
+
+.. _as_handler_ntpd.yml:
+
+ntpd.yml
+--------
+
+Synopsis: Handler ntpd.
+
+
+Description of the handler.
+
+
+[`handlers/ntpd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/ntpd.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../handlers/ntpd.yml
     :language: Yaml
     :emphasize-lines: 1,2
     :linenos:
@@ -456,6 +502,29 @@ Description of the handler.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/resolvconf.yml
+    :language: Yaml
+    :emphasize-lines: 1,2
+    :linenos:
+
+
+
+
+.. _as_handler_rpcbind.yml:
+
+rpcbind.yml
+-----------
+
+Synopsis: Handler rpcbind.
+
+
+Description of the handler.
+
+
+[`handlers/rpcbind.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/rpcbind.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../handlers/rpcbind.yml
     :language: Yaml
     :emphasize-lines: 1,2
     :linenos:
@@ -525,6 +594,29 @@ Description of the handler.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/sshd.yml
+    :language: Yaml
+    :emphasize-lines: 1,2
+    :linenos:
+
+
+
+
+.. _as_handler_statd.yml:
+
+statd.yml
+---------
+
+Synopsis: Handler statd.
+
+
+Description of the handler.
+
+
+[`handlers/statd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/statd.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../handlers/statd.yml
     :language: Yaml
     :emphasize-lines: 1,2
     :linenos:

@@ -7,7 +7,6 @@ fp_sanity_tags:
   - fp_apcupsd
   - fp_apcupsd_conf
   - fp_apcupsd_rcconf
-  - fp_apcupsd_service
   - fp_authorized_key
   - fp_cloud_proividers
   - fp_copy
@@ -29,13 +28,12 @@ fp_sanity_tags:
   - fp_devd_debug
   - fp_devd_local_dir
   - fp_devd_local_files
+  - fp_devd_rcconf
   - fp_devfs
   - fp_devfs_conf
   - fp_devfs_debug
   - fp_devfs_rcconf
-  - fp_devfs_rcvar
   - fp_devfs_rules
-  - fp_devfs_service
   - fp_dhclient
   - fp_dhclient_conf_blocks
   - fp_dhclient_conf_create
@@ -44,6 +42,7 @@ fp_sanity_tags:
   - fp_dhclient_hooks
   - fp_dhclient_ifn_leases
   - fp_dhclient_ifn_rcconf
+  - fp_dhclient_ifn_rcconfd
   - fp_dhclient_sanity
   - fp_do
   - fp_do_debug
@@ -72,7 +71,6 @@ fp_sanity_tags:
   - fp_hostapd
   - fp_hostapd_conf
   - fp_hostapd_rcconf
-  - fp_hostapd_service
   - fp_hostname
   - fp_hosts
   - fp_hosts_conf
@@ -85,7 +83,6 @@ fp_sanity_tags:
   - fp_inetd_hosts_allow_orig
   - fp_inetd_logfile
   - fp_inetd_rcconf
-  - fp_inetd_service
   - fp_inetd_syslogd
   - fp_inetd_syslogd_newconfd
   - fp_libmap
@@ -127,8 +124,8 @@ fp_sanity_tags:
   - fp_ntp
   - fp_ntp_conf
   - fp_ntp_rcconf
-  - fp_ntp_service
   - fp_ntpdate
+  - fp_ntpdate_rcconf
   - fp_packages
   - fp_packages_links
   - fp_passwords
@@ -145,7 +142,6 @@ fp_sanity_tags:
   - fp_procmail_rc
   - fp_qemu
   - fp_qemu_rcconf
-  - fp_qemu_service
   - fp_resolv_conf
   - fp_resolv_conf_absent
   - fp_resolvconf
@@ -156,11 +152,9 @@ fp_sanity_tags:
   - fp_smartd
   - fp_smartd_conf
   - fp_smartd_rcconf
-  - fp_smartd_service
   - fp_snmpd
   - fp_snmpd_conf
   - fp_snmpd_rcconf
-  - fp_snmpd_service
   - fp_ssh
   - fp_ssh_config
   - fp_ssh_debug
@@ -168,7 +162,6 @@ fp_sanity_tags:
   - fp_sshd_config
   - fp_sshd_debug
   - fp_sshd_rcconf
-  - fp_sshd_service
   - fp_sudoers
   - fp_swap
   - fp_swap_debug
@@ -183,7 +176,6 @@ fp_sanity_tags:
   - fp_syslogd_debug
   - fp_syslogd_newconfd
   - fp_syslogd_rcconf
-  - fp_syslogd_service
   - fp_timezone
   - fp_timezone_debug
   - fp_tmpmfs
@@ -196,6 +188,6 @@ fp_sanity_tags:
   - fp_wpasupplicant
   - fp_wpasupplicant_conf
   - fp_wpasupplicant_conf_file_link
-  - fp_wpasupplicant_conf_rc
   - fp_wpasupplicant_debug
   - fp_wpasupplicant_rcconf
+  - fp_wpasupplicant_rcd

@@ -2,12 +2,17 @@
 fp_nfs: false
 fp_nfs_debug: false
 fp_nfs_enable: false
+
+# defaults
+# /etc/defaults/rc.conf:nfs_client_enable="NO"  # This host is an NFS client (or NO).
+# /etc/defaults/rc.conf:nfs_access_cache="60"   # Client cache timeout in seconds
+# /etc/defaults/rc.conf:nfs_bufpackets=""       # bufspace (in packets) for client
 fp_nfs_access_cache: "60"
 fp_nfs_bufpackets: ""
 fp_nfs_enable_rcconf:
   - { key: nfs_client_enable, value: "YES" }
-  - { key: nfs_access_cache, value: "{{ fp_nfs_access_cache }}" }
-  - { key: nfs_bufpackets, value: "{{ fp_nfs_bufpackets }}" }
+# - { key: nfs_access_cache, value: "{{ fp_nfs_access_cache }}" }
+# - { key: nfs_bufpackets, value: "{{ fp_nfs_bufpackets }}" }
 fp_nfs_disable_rcconf:
   - { key: nfs_client_enable, value: "NO" }
 
@@ -15,15 +20,10 @@ fp_nfs_disable_rcconf:
 # rpc_statd (SEE nfsd.yml)
 
 # handlers
-fp_nfs_service_paths:
-  - /etc/rc.d/lockd
-  - /etc/rc.d/statd
+fp_nfs_services: [lockd, statd]
 fp_nfs_handlers:
-  nfsclient: "{{ fp_nfs_var_db_mounttab.stat.exists | d(false) |
-                 ternary('restart nfsclient', 'enable and start nfsclient') }}"
-  lockd: "{{ (al_ansible_facts_services.lockd.state | d('stopped') == 'running') |
-             ternary('restart lockd', 'enable and start lockd') }}"
-  statd: "{{ (al_ansible_facts_services.statd.state | d('stopped') == 'running') |
-             ternary('restart statd', 'enable and start statd') }}"
+  nfsclient: "{{ fp_nfs_var_db_mounttab.stat.exists | d(false) | ternary('restart nfsclient', 'start nfsclient') }}"
+  lockd: "{{ (fp_nfs_services_status.lockd | d('stopped') == 'running') | ternary('restart lockd', 'start lockd') }}"
+  statd: "{{ (fp_nfs_services_status.statd | d('stopped') == 'running') | ternary('restart statd', 'start statd') }}"
 
 # EOF

@@ -4,8 +4,11 @@
   tags: fp_linux_debug
   vars:
     msg: |-
-      fp_linux_install: {{ fp_linux_install }}
       fp_linux_enable: {{ fp_linux_enable }}
+      fp_linux_install: {{ fp_linux_install }}
+      fp_linux_notify: {{ fp_linux_notify }}
+      fp_linux_service_task: {{ fp_linux_service_task }}
+
       fp_linux_fstab:
         {{ fp_linux_fstab | to_yaml(indent=2) | indent(2) }}
       fp_linux_lib_dir: {{ fp_linux_lib_dir }}
@@ -13,26 +16,6 @@
         {{ fp_linux_lib | to_yaml(indent=2) | indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
-
-- name: Configure /etc/rc.conf
-  tags: fp_linux_rcconf
-  block:
-
-    - name: "Linux: Enable linux"
-      when: fp_linux_enable | bool
-      ansible.builtin.lineinfile:
-        dest: /etc/rc.conf
-        regexp: ^\s*linux_enable\s*=(.*)$
-        line: linux_enable="YES"
-        backup: "{{ fp_backup }}"
-
-    - name: "Linux: Disable linux"
-      when: not fp_linux_enable | bool
-      ansible.builtin.lineinfile:
-        dest: /etc/rc.conf
-        regexp: ^\s*linux_enable\s*=(.*)$
-        line: linux_enable="NO"
-        backup: "{{ fp_backup }}"
 
 - name: "Linux: Configure fstab"
   tags: fp_linux_fstab
@@ -49,7 +32,7 @@
   ansible.builtin.file:
     state: directory
     path: /compat/linux{{ item.src | dirname }}
-    mode: "{{ item.dirmode | default('0755') }}"
+    mode: "{{ item.dirmode | d('0755') }}"
   loop: "{{ fp_linux_lib }}"
 
 - name: "Linux: Copy libraries to /compat/linux from {{ fp_linux_lib_dir }}"
@@ -67,5 +50,11 @@
     src: /compat/linux{{ item.src }}
     dest: /compat/linux{{ item.link }}
   loop: "{{ fp_linux_lib }}"
+
+- name: "Linux: Configure rc.conf"
+  tags: fp_linux_rcconf
+  vars:
+    _service: linux
+  ansible.builtin.import_tasks: fn/rcconf.yml
 
 # EOF

@@ -4,7 +4,10 @@
   tags: fp_syslogd_debug
   vars:
     msg: |-
-      fp_syslogd_enabled: {{ fp_syslogd_enabled }}
+      fp_syslogd_enable: {{ fp_syslogd_enable }}
+      fp_syslogd_notify: {{ fp_syslogd_notify }}
+      fp_syslogd_service_task: {{ fp_syslogd_service_task }}
+
       fp_syslogd_rcconf:
         {{ fp_syslogd_rcconf | to_yaml(indent=2) | indent(2) }}
       fp_syslogd_conf_orig: {{ fp_syslogd_conf_orig }}
@@ -19,37 +22,6 @@
         {{ fp_syslogd_newconfd | to_yaml(indent=2) | indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
-
-- name: Configure /etc/rc.conf
-  tags: fp_syslogd_rcconf
-  block:
-
-    - name: "Syslogd: Configure /etc/rc.conf"
-      notify: restart syslogd
-      ansible.builtin.lineinfile:
-        dest: /etc/rc.conf
-        regexp: ^\s*{{ item.key }}\s*=(.*)$
-        line: '{{ item.key }}="{{ item.value }}"'
-        backup: "{{ fp_backup }}"
-      loop: "{{ fp_syslogd_rcconf }}"
-
-    - name: "Syslogd: Enable and start syslogd"
-      when: fp_syslogd_enabled | bool
-      notify: enable and start syslogd
-      ansible.builtin.lineinfile:
-        dest: /etc/rc.conf
-        regexp: ^\s*syslogd_enable\s*=(.*)$
-        line: syslogd_enable="YES"
-        backup: "{{ fp_backup }}"
-
-    - name: "Syslogd: Disable and stop syslogd"
-      when: not fp_syslogd_enabled | bool
-      notify: disable and stop syslogd
-      ansible.builtin.lineinfile:
-        dest: /etc/rc.conf
-        regexp: ^\s*syslogd_enable\s*=(.*)$
-        line: syslogd_enable="NO"
-        backup: "{{ fp_backup }}"
 
 - name: Configure syslogd
   tags: fp_syslogd_conf
@@ -123,12 +95,10 @@
       loop_control:
         label: "{{ item.path }}"
 
-- name: "Syslogd: syslogd {{ state }}"
-  tags: fp_syslogd_service
+- name: "Syslogd: Configure rc.conf"
+  tags: fp_syslogd_rcconf
   vars:
-    state: "{{ fp_syslogd_enabled | bool | ternary('started', 'stopped') }}"
-  ansible.builtin.service:
-    name: syslogd
-    state: "{{ state }}"
+    _service: syslogd
+  ansible.builtin.import_tasks: fn/rcconf.yml
 
 # EOF

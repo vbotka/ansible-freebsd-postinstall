@@ -4,34 +4,18 @@
   tags: fp_sshd_debug
   vars:
     msg: |-
+      fp_sshd_enable: {{ fp_sshd_enable }}
+      fp_sshd_notify: {{ fp_sshd_notify }}
+      fp_sshd_service_task: {{ fp_sshd_service_task }}
+
+      fp_sshd_rcconf:
+        {{ fp_sshd_rcconf | to_yaml(indent=2) | indent(2) }}
       fp_sshd_bin: {{ fp_sshd_bin }}
       fp_sshd_conf_file: {{ fp_sshd_conf_file }}
       fp_sshd_conf:
         {{ fp_sshd_conf | to_yaml(indent=2) | indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
-
-- name: Configure /etc/rc.conf
-  tags: fp_sshd_rcconf
-  block:
-
-    - name: "Sshd: Enable and start sshd"
-      when: fp_sshd_enable | bool
-      notify: enable and start sshd
-      ansible.builtin.lineinfile:
-        dest: /etc/rc.conf
-        regexp: ^\s*sshd_enable\s*=(.*)$
-        line: sshd_enable="YES"
-        backup: "{{ fp_backup }}"
-
-    - name: "Sshd: Disable and stop sshd"
-      when: not fp_sshd_enable | bool
-      notify: disable and stop sshd
-      ansible.builtin.lineinfile:
-        dest: /etc/rc.conf
-        regexp: ^\s*sshd_enable\s*=(.*)$
-        line: sshd_enable="NO"
-        backup: "{{ fp_backup }}"
 
 - name: "Sshd: Configure {{ fp_sshd_conf_file }}"
   tags: fp_sshd_config
@@ -45,12 +29,10 @@
     validate: "{{ fp_sshd_bin }} -t -f %s"
   loop: "{{ fp_sshd_conf }}"
 
-- name: "Sshd: sshd {{ state }}"
-  tags: fp_sshd_service
+- name: "Sshd: Configure rc.conf"
+  tags: fp_sshd_rcconf
   vars:
-    state: "{{ fp_sshd_enable | bool | ternary('started', 'stopped') }}"
-  ansible.builtin.service:
-    name: sshd
-    state: "{{ state }}"
+    _service: sshd
+  ansible.builtin.import_tasks: fn/rcconf.yml
 
 # EOF

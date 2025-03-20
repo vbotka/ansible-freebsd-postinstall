@@ -1,0 +1,86 @@
+---
+- name: Configure rc.conf
+  vars:
+    _rcconfd_path: "{{ fp_rcconfd_path[_service] }}"
+    _path: "{{ fp_rcconfd | bool | ternary(_rcconfd_path, '/etc/rc.conf') }}"
+    # default = fp_{{ _service }}_enable
+    _var: "{{ fp_rcconf_var[_service] | d(fp_rcconf_var.default) }}"
+    _val: "{{ lookup('ansible.builtin.vars', _var) | bool }}"
+    # default = {{ _service }}_enable
+    _name: "{{ fp_rcconf_rcvar[_service] | d(fp_rcconf_rcvar.default) }}"
+    _value: "{{ _val | ternary('YES', 'NO') }}"
+    _command: "{{ _val | ternary('start', 'stop') }}"
+    #   default:
+    #     "YES": ["start {{ _service }}"]
+    #     "NO": ["stop {{ _service }}"]
+    #     "RELOAD": ["reload {{ _service }}"]
+    _handlers: "{{ fp_handlers[_service][_value] | d(fp_handlers.default[_value]) }}"
+    _handlers_reload: "{{ fp_handlers[_service]['RELOAD'] | d(fp_handlers.default.RELOAD) }}"
+    _rcconf_var: "fp_{{ _service }}_rcconf"
+    _rcconf_val: "{{ lookup('ansible.builtin.vars', _rcconf_var, default=[]) }}"
+    _notify_var: "fp_{{ _service }}_notify"
+    _notify_val: "{{ lookup('ansible.builtin.vars', _notify_var, default=true) | bool }}"
+    _service_task_var: "fp_{{ _service }}_service_task"
+    _service_task_val: "{{ lookup('ansible.builtin.vars', _service_task_var, default=false) | bool }}"
+  block:
+
+    - name: "Rcconf: Debug fp_rcconf_debug={{ fp_rcconf_debug }}"
+      when: fp_rcconf_debug | bool
+      ansible.builtin.debug:
+        msg: |
+          fp_rcconfd: {{ fp_rcconfd }}
+          fp_rcconf_sanity_rcvar: {{ fp_rcconf_sanity_rcvar }}
+          _service: {{ _service }}
+          _rcconfd_path: {{ _rcconfd_path }}
+          _path: {{ _path }}
+          _var: {{ _var }}
+          _val: {{ _val }}
+          _name: {{ _name }}
+          _value: {{ _value }}
+          _command: {{ _command }}
+          _handlers: {{ _handlers }}
+          _handlers_reload: {{ _handlers_reload }}
+          _rcconf_var: {{ _rcconf_var }}
+          _rcconf_val: {{ _rcconf_val }}
+          _notify_var: {{ _notify_var }}
+          _notify_val: {{ _notify_val }}
+          _service_task_var: {{ _service_task_var }}
+          _service_task_val: {{ _service_task_val }}
+
+      # TODO: Find conflicting vars /etc/rc.conf vs. /etc/rc.conf.d/*
+
+    - name: "Rcconf: Configure {{ _service ~ ' in ' ~ _path }}"
+      notify: "{{ _notify_val | ternary(_handlers_reload, omit) }}"
+      register: out
+      community.general.sysrc:
+        path: "{{ _path }}"
+        name: "{{ item.name }}"
+        value: "{{ item.value | d(omit) }}"
+        state: "{{ item.state | d(omit) }}"
+      loop: "{{ _rcconf_val }}"
+
+    - name: "Rcconf: Debug configure service fp_rcconf_debug={{ fp_rcconf_debug }}"
+      when: fp_rcconf_debug | bool
+      ansible.builtin.debug:
+        var: out
+
+    - name: "Rcconf: Configure {{ _name ~ ' in ' ~ _path }}"
+      notify: "{{ _notify_val | ternary(_handlers, omit) }}"
+      register: out
+      community.general.sysrc:
+        path: "{{ _path }}"
+        name: "{{ _name }}"
+        value: "{{ _value }}"
+
+    - name: "Rcconf: Debug configure name fp_rcconf_debug={{ fp_rcconf_debug }}"
+      when: fp_rcconf_debug | bool
+      ansible.builtin.debug:
+        var: out
+
+    - name: "Rcconf: Service {{ _service ~ ' ' ~ _command ~ ' ' ~ _service_task_var ~ '=' ~ _service_task_val }}"
+      when: _service_task_val
+      vbotka.freebsd.service:
+        script: "{{ _service }}"
+        command: "{{ _command }}"
+
+# EOF

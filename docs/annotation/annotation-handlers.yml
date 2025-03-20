@@ -120,6 +120,18 @@ myhandlers:
     note: []
     warning: []
 
+  - file: lockd.yml
+    link: lockd.yml
+    path: handlers/lockd.yml
+    synopsis: |
+      Handler lockd.
+    description: |
+      Description of the handler.
+    lines: 1,2
+    seealso: []
+    note: []
+    warning: []
+
   - file: login.yml
     link: login.yml
     path: handlers/login.yml
@@ -137,6 +149,18 @@ myhandlers:
     path: handlers/messages.yml
     synopsis: |
       Handler messages.
+    description: |
+      Description of the handler.
+    lines: 1,2
+    seealso: []
+    note: []
+    warning: []
+
+  - file: mountd.yml
+    link: mountd.yml
+    path: handlers/mountd.yml
+    synopsis: |
+      Handler mountd.
     description: |
       Description of the handler.
     lines: 1,2
@@ -168,11 +192,11 @@ myhandlers:
     note: []
     warning: []
 
-  - file: nfs.yml
-    link: nfs.yml
-    path: handlers/nfs.yml
+  - file: nfsclient.yml
+    link: nfsclient.yml
+    path: handlers/nfsclient.yml
     synopsis: |
-      Handler nfs.
+      Handler nfsclient.
     description: |
       Description of the handler.
     lines: 1,2
@@ -192,11 +216,11 @@ myhandlers:
     note: []
     warning: []
 
-  - file: ntpd.yml
-    link: ntpd.yml
-    path: handlers/ntpd.yml
+  - file: ntpdate.yml
+    link: ntpdate.yml
+    path: handlers/ntpdate.yml
     synopsis: |
-      Handler ntpd.
+      Handler ntpdate.
     description: |
       Description of the handler.
     lines: 1,2
@@ -204,11 +228,11 @@ myhandlers:
     note: []
     warning: []
 
-  - file: ntpdate.yml
-    link: ntpdate.yml
-    path: handlers/ntpdate.yml
+  - file: ntpd.yml
+    link: ntpd.yml
+    path: handlers/ntpd.yml
     synopsis: |
-      Handler ntpdate.
+      Handler ntpd.
     description: |
       Description of the handler.
     lines: 1,2
@@ -233,6 +257,18 @@ myhandlers:
     path: handlers/resolvconf.yml
     synopsis: |
       Handler resolvconf.
+    description: |
+      Description of the handler.
+    lines: 1,2
+    seealso: []
+    note: []
+    warning: []
+
+  - file: rpcbind.yml
+    link: rpcbind.yml
+    path: handlers/rpcbind.yml
+    synopsis: |
+      Handler rpcbind.
     description: |
       Description of the handler.
     lines: 1,2
@@ -269,6 +305,18 @@ myhandlers:
     path: handlers/sshd.yml
     synopsis: |
       Handler sshd.
+    description: |
+      Description of the handler.
+    lines: 1,2
+    seealso: []
+    note: []
+    warning: []
+
+  - file: statd.yml
+    link: statd.yml
+    path: handlers/statd.yml
+    synopsis: |
+      Handler statd.
     description: |
       Description of the handler.
     lines: 1,2

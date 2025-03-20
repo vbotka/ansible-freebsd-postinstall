@@ -7,28 +7,14 @@
     mode: "{{ fp_motd_conf_mode }}"
     backup: "{{ fp_backup }}"
 
-- name: Configure /etc/rc.conf
+- name: "Motd: Configure rc.conf"
   tags: fp_motd_rcconf
-  block:
-
-    - name: "Motd: Set update_motd YES"
-      when: fp_update_motd | bool
-      ansible.builtin.lineinfile:
-        dest: /etc/rc.conf
-        regexp: ^\s*update_motd\s*=(.*)$
-        line: update_motd="YES"
-        backup: "{{ fp_backup }}"
-
-    - name: "Motd: Set update_motd NO"
-      when: not fp_update_motd | bool
-      ansible.builtin.lineinfile:
-        dest: /etc/rc.conf
-        regexp: ^\s*update_motd\s*=(.*)$
-        line: update_motd="NO"
-        backup: "{{ fp_backup }}"
-
-# NOTES
-# By default system info is added to the top of /etc/motd on reboot.
-# Set fp_update_motd=False to disable this update.
+  vars:
+    _rcconfd_path: "{{ fp_rcconfd_path[_service] }}"
+    _path: "{{ fp_rcconfd | bool | ternary(_rcconfd_path, '/etc/rc.conf') }}"
+  community.general.sysrc:
+    path: "{{ _path }}"
+    name: update_motd
+    value: "{{ fp_motd_update | bool | ternary('YES', 'NO') }}"
 
 # EOF

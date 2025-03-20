@@ -1,7 +1,11 @@
 ---
 fp_motd: false
-fp_update_motd: false
+# By default system info is added to the top of /etc/motd on reboot.
+# Set fp_motd_update_motd=false to disable this update.
+# This will be converted to update_motd='NO'. See tasks/motd.yml
+fp_motd_update: true
+
 fp_motd_conf_file: /etc/motd
 fp_motd_conf_mode: "0644"
 fp_motd_conf_template: motd.j2
-fp_motd_message: Welcome to Ansible FreeBSD postinstall!
+fp_motd_message: Welcome to system managed by vbotka.freebsd_postinstall!
