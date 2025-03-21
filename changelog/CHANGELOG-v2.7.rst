@@ -18,7 +18,7 @@ Major Changes
 Minor Changes
 -------------
 * Update README.
-
+* Make variable freebsd_use_packages optional.
 
 2.7.0
 =====

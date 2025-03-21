@@ -11,7 +11,7 @@
     msg: |-
       ansible_architecture: {{ ansible_architecture }}
       freebsd_install_method: {{ freebsd_install_method }}
-      freebsd_use_packages: {{ freebsd_use_packages }}
+      freebsd_use_packages: {{ freebsd_use_packages | d('UNDEFINED') }}
       freebsd_install_retries: {{ freebsd_install_retries }}
       freebsd_install_delay: {{ freebsd_install_delay }}
       fp_install: {{ fp_install }}

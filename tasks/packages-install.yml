@@ -22,7 +22,7 @@
   when: freebsd_install_method | lower == 'ports'
   community.general.portinstall:
     name: "{{ local_item }}"
-    use_packages: "{{ freebsd_use_packages }}"
+    use_packages: "{{ freebsd_use_packages | d(omit) | bool }}"
   loop: "{{ _fp_pkg_dict[item] }}"
   loop_control:
     loop_var: local_item
