@@ -3,12 +3,12 @@
 Packages *(packages)*
 ---------------------
 
-Install and upgrade packages or ports from the packages lists
-described below. This way you can create packages lists as needed for
-a particular purpose and install them automatically when enabled. The
-details are described in the section *Installation frameworks*
-below. For general management of FreeBSD packages and ports use
-Ansible roles `vbotka.freebsd_packages`_ and `vbotka.freebsd_ports`_
+Install and upgrade packages or ports from the packages lists described
+below. This way you can create packages lists as needed for a particular purpose
+and install them automatically when enabled. The details are described in the
+section *Installation frameworks* below. For general management of FreeBSD
+packages and ports use Ansible roles `vbotka.freebsd_packages`_ and
+`vbotka.freebsd_ports`_
 
 .. seealso::
 
@@ -298,6 +298,131 @@ Then disable the installation to speedup the play
 
    fp_install: false
 
+Install packages in jail
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. index:: single: jail; Install packages in jail
+
+The module `community.general.pkgng`_ is `jail-aware`_. The option *jail* says: ::
+
+   Pkg will execute in the given jail name or ID.
+
+For example, given the inventory
+
+.. code-block:: bash
+
+   (env) > ansible-inventory -i iocage-hosts.ini -i hosts --graph
+   @all:
+     |--@ungrouped:
+     |--@iocage:
+     |  |--iocage_01
+     |  |--iocage_02
+     |--@up:
+     |  |--afa9e515
+     |  |--c1670497
+     |  |--test_111
+
+The below configuration file keeps the hosts the jails are running on
+
+.. code-block:: ini
+
+   (env) > cat iocage-hosts.ini
+   iocage_01 ansible_host=10.1.0.18
+   iocage_02 ansible_host=10.1.0.73
+
+   [iocage]
+   iocage_01
+   iocage_02
+
+   [iocage:vars]
+   ansible_user=admin
+   ansible_become=true
+
+The below configuration files provide dynamic inventory comprising the jails
+
+.. code-block:: yaml
+
+   (env) > cat hosts/02_iocage.yml
+   plugin: vbotka.freebsd.iocage
+   host: 10.1.0.73
+   user: admin
+   env:
+     CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1
+   get_properties: True
+   hooks_results:
+     - /var/db/dhclient-hook.address.epair0b
+   compose:
+     ansible_host: (iocage_hooks.0 == '-') | ternary(iocage_ip4, iocage_hooks.0)
+     iocage_tags: dict(iocage_properties.notes | split | map('split', '='))
+
+.. code-block:: yaml
+
+   (env) > cat hosts/99_constructed.yml
+   plugin: ansible.builtin.constructed
+   groups:
+       up: iocage_state == 'up'
+
+.. seealso::
+
+   The examples in Ansible `collection vbotka.freebsd`_.
+
+The below playbook installs packages on the running jails. The jails are
+identified by the jail ID (JID) stored in the variable *iocage_jid*. A jail is
+running on the host *iocage_tags.vmm*
+
+.. code-block:: yaml
+
+   - name: Install packages in jails.
+     hosts: up
+     gather_facts: true
+     remote_user: admin
+     become: true
+
+     vars:
+
+       ansible_python_interpreter: auto_silent
+       act_pkg:
+         - security/sudo
+         - lang/python39
+
+     tasks:
+
+       - name: Install packages
+         delegate_to: "{{ iocage_tags.vmm }}"
+         community.general.pkgng:
+           name: "{{ act_pkg }}"
+           jail: "{{ iocage_jid }}"
+           use_globs: false
+
+The below playbook does the same by importing this role and task ``packages.yml``
+
+.. code-block:: yaml
+
+   - name: Install packages in jails.
+     hosts: up
+     gather_facts: true
+     remote_user: admin
+     become: true
+
+     vars:
+
+       ansible_python_interpreter: auto_silent
+       fp_packages:
+         - {list: custom, enabled: true}
+       pkg_dict_amd64:
+         - {pkglist: custom, packages: [security/sudo, lang/python39]}
+
+     tasks:
+
+       - name: Install packages
+         vars:
+           fp_install_delegate: "{{ iocage_tags.vmm }}"
+           fp_pkg_jail: "{{ iocage_jid }}"
+         ansible.builtin.import_role:
+           name: vbotka.freebsd_postinstall
+           tasks_from: packages.yml
+
+
 .. _`vbotka.freebsd_packages`: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_packages/
 .. _`vbotka.freebsd_ports`: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_ports/
 .. _`vbotka.freebsd_poudriere`: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_poudriere/
@@ -313,3 +438,6 @@ Then disable the installation to speedup the play
 .. _`pkg-upgrade`: https://man.freebsd.org/cgi/man.cgi?query=pkg-upgrade
 .. _`portinstall`: https://man.freebsd.org/cgi/man.cgi?query=portinstall
 .. _`smartd`: https://man.freebsd.org/cgi/man.cgi?smartd(8)
+
+.. _jail-aware: https://wiki.freebsd.org/Jails
+.. _collection vbotka.freebsd: https://ansible-collection-freebsd.readthedocs.io/en/stable/ug_examples.html
