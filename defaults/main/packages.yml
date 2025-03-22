@@ -7,8 +7,13 @@ freebsd_install_delay: 5
 
 fp_install: false
 fp_packages_debug: false
+fp_packages_debug2: false
 fp_packages: []
 fp_links: []
+
+# Delegate the jail installation to the vmm host.
+# Variable fp_pkg_jail is required when fp_install_delegate not empty.
+fp_install_delegate: ''
 
 # Optional parameters of the module community.general.pkgng
 # fp_pkg_annotation: [str]

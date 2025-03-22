@@ -5,6 +5,25 @@ vbotka.freebsd_postinstall 2.7 Release Notes
 .. contents:: Topics
 
 
+2.7.1
+=====
+
+Release Summary
+---------------
+Maintenance and feature update incl. docs update.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Update README.
+* Make variable freebsd_use_packages optional.
+* Add var fp_install_delegate (default=''). Delegate packages installation if
+  not empty.
+* Add chapter 'Install packages in jail'.
+
+
 2.7.0
 =====
 

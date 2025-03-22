@@ -37,9 +37,10 @@ This role has been developed and tested with [FreeBSD Supported Releases](https:
 
 ### Collections
 
-* [ansible.posix](https://github.com/ansible-collections/ansible.posix)
-* [ansible.utils](https://github.com/ansible-collections/ansible.utils)
-* [community.general](https://github.com/ansible-collections/community.general)
+* [ansible.posix](https://github.com/ansible-collections/ansible.posix/)
+* [ansible.utils](https://github.com/ansible-collections/ansible.utils/)
+* [community.general](https://github.com/ansible-collections/community.general/)
+* [vbotka.freebsd](https://github.com/vbotka/ansible-collection-freebsd/)
 
 ### Packages
 
@@ -101,11 +102,12 @@ and install the collections if necessary
 ```bash
 ansible-galaxy collection install ansible.posix
 ansible-galaxy collection install community.general
+ansible-galaxy collection install vbotka.freebsd
 ```
 
 3) Fit variables to your needs.
 
-4) Create playbook
+4) Create the playbook
 
 ```yaml
 cat freebsd-postinstall.yml

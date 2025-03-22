@@ -1,34 +1,51 @@
 ---
-- name: "Packages-install: Install packages list {{ item }}"
+- name: Install packages
   when: freebsd_install_method | lower == 'packages'
-  community.general.pkgng:
-    name: "{{ _fp_pkg_dict[item] }}"
-    annotation: "{{ fp_pkg_annotation | d(omit) }}"
-    autoremove: "{{ fp_pkg_autoremove | d(omit) | bool }}"
-    cached: "{{ fp_pkg_cached | d(omit) | bool }}"
-    chroot: "{{ fp_pkg_chroot | d(omit) }}"
-    ignore_osver: "{{ fp_pkg_ignore_osver | d(omit) | bool }}"
-    jail: "{{ fp_pkg_jail | d(omit) }}"
-    pkgsite: "{{ fp_pkg_pkgsite | d(omit) }}"
-    rootdir: "{{ fp_pkg_rootdir | d(omit) }}"
-    state: "{{ fp_pkg_state | d(omit) }}"
-    use_globs: "{{ fp_pkg_use_globs | d(omit) | bool }}"
-  register: result
-  retries: "{{ freebsd_install_retries }}"
-  until: result is succeeded
-  delay: "{{ freebsd_install_delay }}"
+  block:
 
-- name: "Packages-install: Install ports list {{ item }}"
+    - name: "Packages-install: Install packages list {{ item }}"
+      delegate_to: "{{ (fp_install_delegate | length > 0) | ternary(fp_install_delegate, omit) }}"
+      community.general.pkgng:
+        name: "{{ _fp_pkg_dict[item] }}"
+        annotation: "{{ fp_pkg_annotation | d(omit) }}"
+        autoremove: "{{ fp_pkg_autoremove | d(omit) | bool }}"
+        cached: "{{ fp_pkg_cached | d(omit) | bool }}"
+        chroot: "{{ fp_pkg_chroot | d(omit) }}"
+        ignore_osver: "{{ fp_pkg_ignore_osver | d(omit) | bool }}"
+        jail: "{{ fp_pkg_jail | d(omit) }}"
+        pkgsite: "{{ fp_pkg_pkgsite | d(omit) }}"
+        rootdir: "{{ fp_pkg_rootdir | d(omit) }}"
+        state: "{{ fp_pkg_state | d(omit) }}"
+        use_globs: "{{ fp_pkg_use_globs | d(omit) | bool }}"
+      register: result
+      retries: "{{ freebsd_install_retries }}"
+      until: result is succeeded
+      delay: "{{ freebsd_install_delay }}"
+
+    - name: "Packages-install: Debug installation packages fp_packages_debug2={{ fp_packages_debug2 }}"
+      when: fp_packages_debug2 | bool
+      ansible.builtin.debug:
+        var: result
+
+- name: Install ports
   when: freebsd_install_method | lower == 'ports'
-  community.general.portinstall:
-    name: "{{ local_item }}"
-    use_packages: "{{ freebsd_use_packages }}"
-  loop: "{{ _fp_pkg_dict[item] }}"
-  loop_control:
-    loop_var: local_item
-  register: result
-  retries: "{{ freebsd_install_retries }}"
-  until: result is succeeded
-  delay: "{{ freebsd_install_delay }}"
+  block:
+
+    - name: "Packages-install: Install ports list {{ item }}"
+      community.general.portinstall:
+        name: "{{ local_item }}"
+        use_packages: "{{ freebsd_use_packages | d(omit) | bool }}"
+      loop: "{{ _fp_pkg_dict[item] }}"
+      loop_control:
+        loop_var: local_item
+      register: result
+      retries: "{{ freebsd_install_retries }}"
+      until: result is succeeded
+      delay: "{{ freebsd_install_delay }}"
+
+    - name: "Packages-install: Debug installation ports fp_packages_debug2={{ fp_packages_debug2 }}"
+      when: fp_packages_debug2 | bool
+      ansible.builtin.debug:
+        var: result
 
 # EOF

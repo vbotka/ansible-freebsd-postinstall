@@ -11,10 +11,11 @@
     msg: |-
       ansible_architecture: {{ ansible_architecture }}
       freebsd_install_method: {{ freebsd_install_method }}
-      freebsd_use_packages: {{ freebsd_use_packages }}
+      freebsd_use_packages: {{ freebsd_use_packages | d('UNDEFINED') }}
       freebsd_install_retries: {{ freebsd_install_retries }}
       freebsd_install_delay: {{ freebsd_install_delay }}
       fp_install: {{ fp_install }}
+      fp_install_delegate: {{ fp_install_delegate }}
       fp_pkg_annotation: {{ fp_pkg_annotation | d('UNDEFINED') }}
       fp_pkg_autoremove: {{ fp_pkg_autoremove | d('UNDEFINED') }}
       fp_pkg_cached: {{ fp_pkg_cached | d('UNDEFINED') }}
@@ -64,6 +65,22 @@
         that: freebsd_install_method in ['packages', 'ports']
         fail_msg: |
           [ERR] freebsd_install_method must be 'packages' or 'ports'. Is '{{ freebsd_install_method }}'
+
+    - name: "Packages: Installation by pkgng required when fp_install_delegate"
+      when: fp_install_delegate | length > 0
+      ansible.builtin.assert:
+        quiet: true
+        that: freebsd_install_method | lower == 'packages'
+        fail_msg: |
+          [ERR] freebsd_install_method='packages' is required to delegate to {{ fp_install_delegate }}
+
+    - name: "Packages: Required variable fp_pkg_jail when fp_install_delegate"
+      when: fp_install_delegate | length > 0
+      ansible.builtin.assert:
+        quiet: true
+        that: fp_pkg_jail is defined
+        fail_msg: |
+          [ERR] Variable fp_pkg_jail is required to delegate to {{ fp_install_delegate }}
 
 - name: "Packages: Install packages"
   ansible.builtin.include_tasks: packages-install.yml
