@@ -16,12 +16,14 @@
 - name: Tags
   when: fp_sanity_tags_fatal | bool
   tags: fp_sanity_tags
+  vars:
+    _ansible_run_tags: "{{ ansible_run_tags | difference(['all']) }}"
   block:
 
     - name: "Sanity: Unknown run tags"
-      when: ansible_run_tags | length > 0
+      when: _ansible_run_tags | length > 0
       vars:
-        tags_unknown: "{{ ansible_run_tags | difference(fp_sanity_tags) }}"
+        tags_unknown: "{{ _ansible_run_tags | difference(fp_sanity_tags) }}"
       ansible.builtin.assert:
         that: tags_unknown | length == 0
         quiet: "{{ fp_sanity_quiet }}"

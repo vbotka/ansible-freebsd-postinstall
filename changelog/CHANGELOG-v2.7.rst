@@ -17,8 +17,9 @@ Major Changes
 
 Minor Changes
 -------------
-* Add variable fp_sanity_quiet (default=true).
 * Update docs. Chapter tasks/packages.
+* Tasks sanity.yml display nothing by default.
+* Add variable fp_sanity_quiet (default=true).
 
 
 2.7.1
