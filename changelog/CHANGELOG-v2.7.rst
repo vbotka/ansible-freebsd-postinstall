@@ -17,6 +17,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Add variable fp_sanity_quiet (default=true).
 
 
 2.7.1
