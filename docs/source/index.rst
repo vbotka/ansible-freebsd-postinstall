@@ -3,7 +3,7 @@ Ansible role FreeBSD postinstall
 
 `vbotka.freebsd_postinstall`_
 
-Role version 2.7.0
+Role version 2.7.2
 
 
 This `role`_ and the documentation is work in progress. If the documentation of
