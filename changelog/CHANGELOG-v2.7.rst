@@ -18,6 +18,7 @@ Major Changes
 Minor Changes
 -------------
 * Add variable fp_sanity_quiet (default=true).
+* Update docs. Chapter tasks/packages.
 
 
 2.7.1
