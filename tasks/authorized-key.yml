@@ -20,6 +20,7 @@
   when: fp_authorized_key_debug | bool
   vars:
     msg: |-
+      fp_authorized_key_sanity_quiet: {{ fp_authorized_key_sanity_quiet | bool }}"
       fp_authorized_key_install_individually: {{ fp_authorized_key_install_individually | bool }}
       fp_authorized_key_comment: {{ fp_authorized_key_comment | d('UNDEFINED') }}
       fp_authorized_key_install_exclusive: {{ fp_authorized_key_install_exclusive | d('UNDEFINED') }}
@@ -44,6 +45,7 @@
         users_missing: "{{ local_list_users | difference(getent_passwd.keys()) }}"
       ansible.builtin.assert:
         that: users_missing | length == 0
+        quiet: "{{ fp_authorized_key_sanity_quiet | bool }}"
         fail_msg: >
           [ERR] Users missing: {{ users_missing }}
 

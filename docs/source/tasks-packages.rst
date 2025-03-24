@@ -393,6 +393,44 @@ running on the host *iocage_tags.vmm*
            name: "{{ act_pkg }}"
            jail: "{{ iocage_jid }}"
            use_globs: false
+	   cached: true
+
+.. note::
+
+   By default, the module `community.general.pkgng`_ treats the *name* as a shell
+   glob pattern. This works fine with the form <pkg-name>. For example, ::
+
+     act_pkg:
+       - sudo
+       - python39
+
+   But, this doesn't work with the form <pkg-origin>. For example, ::
+
+     act_pkg:
+       - security/sudo
+       - lang/python39
+
+   Disable `parameter use_globs`_ if you want to use the form <pkg-origin> ::
+
+     use_globs: false
+
+   For details see the issue `FreeBSD. Add option use_globs to the module pkgng. #8632`_
+
+
+.. hint::
+
+   The advantage of the delegation to the iocage host is that the repositories
+   don't have to be updated each time *pkg* (inside the module
+   `community.general.pkgng`_) is running. The best practice is to update the
+   repositories on the iocage hosts and then set ::
+
+     cached: true
+
+   Quoting `parameter cached`_: ::
+
+     cached:  Use local package base instead of fetching an updated one.
+     default: false
+
 
 The below playbook does the same by importing this role and task ``packages.yml``
 
@@ -418,6 +456,8 @@ The below playbook does the same by importing this role and task ``packages.yml`
          vars:
            fp_install_delegate: "{{ iocage_tags.vmm }}"
            fp_pkg_jail: "{{ iocage_jid }}"
+	   fp_pkg_use_globs: false
+	   fp_pkg_cached: true
          ansible.builtin.import_role:
            name: vbotka.freebsd_postinstall
            tasks_from: packages.yml
@@ -432,6 +472,8 @@ The below playbook does the same by importing this role and task ``packages.yml`
 .. _`Chapter 7. Flavors`: https://docs.freebsd.org/en/books/porters-handbook/flavors/
 
 .. _`community.general.pkgng`: https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html
+.. _parameter cached: https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html#parameter-cached
+.. _parameter use_globs: https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html#parameter-use_globs
 .. _`community.general.portinstall`: https://docs.ansible.com/ansible/latest/collections/community/general/portinstall_module.html
 
 .. _`pkg`: https://man.freebsd.org/cgi/man.cgi?pkg(8)
@@ -441,3 +483,5 @@ The below playbook does the same by importing this role and task ``packages.yml`
 
 .. _jail-aware: https://wiki.freebsd.org/Jails
 .. _collection vbotka.freebsd: https://ansible-collection-freebsd.readthedocs.io/en/stable/ug_examples.html
+
+.. _FreeBSD. Add option use_globs to the module pkgng. #8632: https://github.com/ansible-collections/community.general/issues/8632

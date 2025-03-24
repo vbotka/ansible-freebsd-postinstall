@@ -5,6 +5,25 @@ vbotka.freebsd_postinstall 2.7 Release Notes
 .. contents:: Topics
 
 
+2.7.2
+=====
+
+Release Summary
+---------------
+Maintenance and feature update incl. docs update.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Update docs. Chapter tasks/packages.
+* Tasks sanity.yml display nothing by default.
+* Add variable fp_sanity_quiet (default=true).
+* Add variables: fp_authorized_key_sanity_quiet,
+  fp_dhclient_sanity_quiet, fp_hosts_sanity_quiet (default=true).
+
+
 2.7.1
 =====
 

@@ -1598,7 +1598,7 @@ Example of ``_service=sshd`` ::
   shell> ansible-playbook pb.yml -t fp_sshd -e fp_sshd_debug=true  -e fp_rcconf_debug=true
   ...
   TASK [vbotka.freebsd_postinstall : Rcconf: Debug fp_rcconf_debug=true] *****************
-  ok: [test.example.org] => 
+  ok: [test.example.org] =>
   msg: |-
       fp_rcconfd: False
       fp_rcconf_sanity_rcvar: True

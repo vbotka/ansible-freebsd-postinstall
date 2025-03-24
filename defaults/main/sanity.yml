@@ -1,5 +1,6 @@
 ---
 
 fp_sanity: true
+fp_sanity_quiet: true
 fp_sanity_debug: false
 fp_sanity_tags_fatal: true

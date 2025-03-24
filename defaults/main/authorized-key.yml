@@ -3,6 +3,8 @@ fp_authorized_key: false
 fp_authorized_key_debug: false
 fp_authorized_key_conf: []
 
+fp_authorized_key_sanity_quiet: true
+
 # If False, group keys by user and install string of keys
 fp_authorized_key_install_individually: true
 

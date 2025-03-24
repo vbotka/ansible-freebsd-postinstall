@@ -9,6 +9,7 @@
       fp_dhclient_ifn_rcconfd: {{ fp_dhclient_ifn_rcconfd }}
       fp_dhclient_ifn_leases: {{ fp_dhclient_ifn_leases }}
       fp_dhclient_sanity: {{ fp_dhclient_sanity }}
+      fp_dhclient_sanity_quiet: {{ fp_dhclient_sanity_quiet }}
       fp_dhclient_etc_dir: {{ fp_dhclient_etc_dir }}
       fp_dhclient_conf_path: {{ fp_dhclient_conf_path }}
 
@@ -31,6 +32,7 @@
         fp_dhclient_ifn_rc: "{{ fp_dhclient_ifn_rcconf | bool or fp_dhclient_ifn_rcconfd | bool }}"
       ansible.builtin.assert:
         that: (fp_dhclient_ifn | length == 0) | ternary(fp_dhclient_ifn_rc != fp_dhclient_ifn_leases, true)
+        quiet: "{{ fp_dhclient_sanity_quiet | bool }}"
         fail_msg: |
           The list of interfaces fp_dhclient_ifn is empty. One of the below options must be True,
           but not both
@@ -42,6 +44,7 @@
         fp_dhclient_ifn_rc: "{{ fp_dhclient_ifn_rcconf | bool or fp_dhclient_ifn_rcconfd | bool }}"
       ansible.builtin.assert:
         that: (fp_dhclient_ifn | length > 0) | ternary(not(fp_dhclient_ifn_rc or fp_dhclient_ifn_leases), true)
+        quiet: "{{ fp_dhclient_sanity_quiet | bool }}"
         fail_msg: |
           The list of interfaces fp_dhclient_ifn is not empty. Both below options must be False
           - fp_dhclient_ifn_leases
