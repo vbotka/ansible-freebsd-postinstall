@@ -20,6 +20,8 @@ Minor Changes
 * Update docs. Chapter tasks/packages.
 * Tasks sanity.yml display nothing by default.
 * Add variable fp_sanity_quiet (default=true).
+* Add variables: fp_authorized_key_sanity_quiet,
+  fp_dhclient_sanity_quiet, fp_hosts_sanity_quiet (default=true).
 
 
 2.7.1

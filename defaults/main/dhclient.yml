@@ -12,6 +12,7 @@ fp_dhclient_debug2: false
 # * If the list fp_dhclient_ifn is not empty both
 #   fp_dhclient_ifn_rcconf and fp_dhclient_ifn_leases must be False.
 fp_dhclient_sanity: true
+fp_dhclient_sanity_quiet: true
 
 # List of the iterfaces. The utility dhclient will be restarted on
 # these interfaces if the default parameters fp_dhclient_conf_defaults
