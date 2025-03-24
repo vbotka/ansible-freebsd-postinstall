@@ -7,13 +7,12 @@
 
 Ansible role [vbotka.freebsd_postinstall](https://galaxy.ansible.com/vbotka/freebsd_postinstall/) at galaxy.ansible.com
 
-FreeBSD post-install configuration: aliases, apcupsd, authorized keys,
-cron, devfs, dhclient, freebsd-update, fstab, groups, hostapd,
-hostname, hosts, inetd, libmap, linux compatibility, login.conf,
-loader.conf, make.conf, motd, nfsd, ntpd, ntpdate, procmail, qemu,
-resolvconf.conf, smartd, snmpd, sudoers, ssh, sshd, swap, sysctl,
-syslog, timezone, tmpmfs, users, packages and ports, periodic.conf,
-overlays, wpa_supplicant, (wip) ...
+FreeBSD post-install configuration: aliases, apcupsd, authorized keys, cron,
+devfs, dhclient, freebsd-update, fstab, groups, hostapd, hostname, hosts, inetd,
+libmap, linux compatibility, login.conf, loader.conf, make.conf, motd, nfsd,
+ntpd, ntpdate, procmail, qemu, resolvconf.conf, smartd, snmpd, sudoers, ssh,
+sshd, swap, sysctl, syslog, timezone, tmpmfs, users, packages and ports,
+periodic.conf, overlays, wpa_supplicant, (wip) ...
 
 Documentation [Ansible role FreeBSD postinstall](https://ansible-freebsd-postinstall.readthedocs.io) at readthedocs.io
 
@@ -58,9 +57,9 @@ Review defaults and examples in vars.
 
 ## freebsd_install_method
 
-By default *freebsd_install_method* is set to install
-packages. Installation is faster. But, later, after having upgraded
-from the ports (*portmaster -a*) switch the method to *ports*.
+By default *freebsd_install_method* is set to install packages. Installation is
+faster. But, later, after having upgraded from the ports (*portmaster -a*)
+switch the method to *ports*.
 
 ```yaml
 freebsd_install_method: packages
@@ -101,6 +100,7 @@ and install the collections if necessary
 
 ```bash
 ansible-galaxy collection install ansible.posix
+ansible-galaxy collection install ansible.utils
 ansible-galaxy collection install community.general
 ansible-galaxy collection install vbotka.freebsd
 ```
@@ -128,8 +128,8 @@ ansible-playbook freebsd-postinstall.yml
 ## Ansible lint
 
 Use the configuration file *.ansible-lint.local* when running
-*ansible-lint*. Some rules might be disabled and some warnings might
-be ignored. See the notes in the configuration file.
+*ansible-lint*. Some rules might be disabled and some warnings might be
+ignored. See the notes in the configuration file.
 
 ```bash
 shell> ansible-lint -c .ansible-lint.local
@@ -138,8 +138,8 @@ shell> ansible-lint -c .ansible-lint.local
 
 ## Configure the role
 
-The playbook *.configure.yml* provides blocks of tasks to configure
-the role. Read it to understand the details.
+The playbook *.configure.yml* provides blocks of tasks to configure the
+role. Read it to understand the details.
 
 
 ## Notes

@@ -17,6 +17,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Update README.md
 
 
 2.7.2
