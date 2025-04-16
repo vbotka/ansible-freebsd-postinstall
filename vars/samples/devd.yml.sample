@@ -1,8 +1,8 @@
 ---
-
 fp_devd: true
 
 fp_devd_local_files:
+
   notify_ue0: |
     notify 0 {
             match "system"    "IFNET";
@@ -10,3 +10,25 @@ fp_devd_local_files:
             match "type"      "ADDR_ADD";
             action "echo $address > /var/db/devd.address.$subsystem";
     };
+
+  # Create an alias for NICs based on their MAC address
+  # https://forums.FreeBSD.org/threads/how-to-associate-an-interface-name-with-its-mac.89337/post-613188
+  nicalias: |
+    notify 100 {
+            match "system"          "IFNET";
+            match "type"            "LINK_UP";
+            media-type              "ethernet";
+            action "/usr/local/bin/mapnic $subsystem";
+    };
+
+fp_devd_action_scripts:
+  /usr/local/bin/mapnic:
+    src: devd-action-manpic.sh
+    mode: "0775"
+
+fp_devd_misc_files:
+  /usr/local/etc/ifmap:
+    content: |
+      40:86:cb:d2:53:90 eth0
+      3c:33:32:c7:20:19 eth1
+    mode: "0664"

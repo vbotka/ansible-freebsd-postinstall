@@ -18,6 +18,10 @@ Major Changes
 Minor Changes
 -------------
 * Update README.md
+* Update devd
+  Add dict fp_devd_action_scripts. Create action scripts.
+  Add dict fp_devd_misc_files. Create misc files.
+  Update vars devd.yml.sample
 
 
 2.7.2
