@@ -17,11 +17,13 @@ Major Changes
 
 Minor Changes
 -------------
-* Update README.md
-* Update devd
+* Updated README.md
+* Updated devd
   Add dict fp_devd_action_scripts. Create action scripts.
   Add dict fp_devd_misc_files. Create misc files.
-  Update vars devd.yml.sample
+  Updated vars devd.yml.sample
+* Updated resolvconf.yml tasks and defaults.
+  Add vars +fp_resolvconf_conf_clean and fp_resolv_conf_clean (default=false)
 
 
 2.7.2

@@ -146,9 +146,11 @@ fp_sanity_tags:
   - fp_qemu_rcconf
   - fp_resolv_conf
   - fp_resolv_conf_absent
+  - fp_resolv_conf_clean
   - fp_resolvconf
   - fp_resolvconf_conf
   - fp_resolvconf_conf_absent
+  - fp_resolvconf_conf_clean
   - fp_sanity_debug
   - fp_sanity_tags
   - fp_smartd
