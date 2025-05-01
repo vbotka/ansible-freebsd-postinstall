@@ -1,14 +1,20 @@
 ---
-- name: Configuration of resolv.conf
+- name: Clean resolv.conf
+  when: fp_resolv_conf_clean | bool
+  tags: fp_resolv_conf_clean
   block:
 
-    - name: "Resolvconf: Clean file {{ fp_resolv_conf_file }}"
-      when: fp_resolv_conf_clean | bool
-      tags: fp_resolv_conf_clean
-      ansible.builtin.copy:
-        src: /dev/null
-        dest: "{{ fp_resolv_conf_file }}"
-        mode: "{{ fp_resolv_conf_mode }}"
+    - name: "Resolvconf: Stat file {{ fp_resolv_conf_file }}"
+      register: out
+      ansible.builtin.stat:
+        path: "{{ fp_resolv_conf_file }}"
+
+    - name: "Resolvconf: Clean file {{ fp_resolv_conf_file }}" # noqa: no-changed-when
+      when: out.stat.size > 0
+      ansible.builtin.shell: "cat /dev/null > {{ fp_resolv_conf_file }}"
+
+- name: Configuration of resolv.conf
+  block:
 
     - name: "Resolvconf: Absent lines in {{ fp_resolv_conf_file }}"
       tags: fp_resolv_conf_absent
@@ -49,42 +55,38 @@
     - name: "Resolvconf: End host."
       ansible.builtin.meta: end_host
 
+- name: Clean resolvconf.conf
+  when: fp_resolvconf_conf_clean | bool
+  tags: fp_resolvconf_conf_clean
+  block:
+
+    - name: "Resolvconf: Stat file {{ fp_resolvconf_conf_file }}"
+      register: out
+      ansible.builtin.stat:
+        path: "{{ fp_resolvconf_conf_file }}"
+
+    - name: "Resolvconf: Clean file {{ fp_resolvconf_conf_file }}" # noqa: no-changed-when
+      when: out.stat.size > 0
+      ansible.builtin.shell: "cat /dev/null > {{ fp_resolvconf_conf_file }}"
+
 - name: Configuration of resolvconf.conf
   notify: resolvconf apply
   block:
 
-    - name: "Resolvconf: Clean file {{ fp_resolvconf_conf_file }}"
-      when: fp_resolvconf_conf_clean | bool
-      tags: fp_resolvconf_conf_clean
-      ansible.builtin.copy:
-        src: /dev/null
-        dest: "{{ fp_resolvconf_conf_file }}"
-        mode: "{{ fp_resolvconf_conf_mode }}"
-
     - name: "Resolvconf: Absent lines in {{ fp_resolvconf_conf_file }}"
       tags: fp_resolvconf_conf_absent
-      ansible.builtin.lineinfile:
-        create: true
+      community.general.sysrc:
+        path: "{{ fp_resolvconf_conf_file }}"
+        name: "{{ item }}"
         state: absent
-        dest: "{{ fp_resolvconf_conf_file }}"
-        owner: "{{ fp_resolvconf_conf_owner }}"
-        group: "{{ fp_resolvconf_conf_group }}"
-        mode: "{{ fp_resolvconf_conf_mode }}"
-        regexp: ^\s*{{ item }}\s*$
-        backup: "{{ fp_backup }}"
       loop: "{{ fp_resolvconf_conf_absent }}"
 
     - name: "Resolvconf: Present lines in {{ fp_resolvconf_conf_file }}"
       tags: fp_resolvconf_conf
-      ansible.builtin.lineinfile:
-        create: true
-        dest: "{{ fp_resolvconf_conf_file }}"
-        owner: "{{ fp_resolvconf_conf_owner }}"
-        group: "{{ fp_resolvconf_conf_group }}"
-        mode: "{{ fp_resolvconf_conf_mode }}"
-        regexp: ^\s*{{ item.key }}\s*=(.*)$
-        line: '{{ item.key }}="{{ item.value }}"'
-        backup: "{{ fp_backup }}"
+      community.general.sysrc:
+        path: "{{ fp_resolvconf_conf_file }}"
+        name: "{{ item.key }}"
+        value: "{{ item.value }}"
       loop: "{{ fp_resolvconf_conf }}"
 
   rescue:

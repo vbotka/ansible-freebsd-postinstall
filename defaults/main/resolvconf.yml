@@ -7,12 +7,13 @@ fp_resolvconf_conf_owner: root
 fp_resolvconf_conf_group: wheel
 fp_resolvconf_conf_mode: "0644"
 fp_resolvconf_conf_clean: false
+# fp_resolvconf_conf_absent item requires 'key' only
 fp_resolvconf_conf_absent: []
-#  - 'resolvconf="NO"'
-#  - name_servers=192.168.1.1
+#  - resolvconf
+#  - name_servers
 fp_resolvconf_conf: []
 #  - {key: resolvconf, value: 'NO'}
-#  - {key: name_servers, val: 192.168.1.1}
+#  - {key: name_servers, value: 192.168.1.1}
 
 # resolv.conf
 fp_resolv_conf_file: /etc/resolv.conf
@@ -20,6 +21,7 @@ fp_resolv_conf_owner: root
 fp_resolv_conf_group: wheel
 fp_resolv_conf_mode: "0644"
 fp_resolv_conf_clean: false
+# fp_resolv_conf_absent item requires 'key value'
 fp_resolv_conf_absent: []
 #  - search example.com
 #  - nameserver 147.11.1.11
