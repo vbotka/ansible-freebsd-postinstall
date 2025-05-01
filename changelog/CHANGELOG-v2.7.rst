@@ -5,6 +5,31 @@ vbotka.freebsd_postinstall 2.7 Release Notes
 .. contents:: Topics
 
 
+2.7.3
+=====
+
+Release Summary
+---------------
+Maintenance update.
+
+Major Changes
+-------------
+* Updated resolvconf.yml tasks.
+  fp_resolvconf_conf_absent item requires 'key' only.
+
+Minor Changes
+-------------
+* Updated README.md
+* Updated devd
+  Add dict fp_devd_action_scripts. Create action scripts.
+  Add dict fp_devd_misc_files. Create misc files.
+  Updated vars devd.yml.sample
+* Updated resolvconf.yml tasks and defaults.
+  Optionally clean resolvconf.conf and resolv.conf before configuration.
+  Add vars fp_resolvconf_conf_clean and fp_resolv_conf_clean (default=false)
+  Use module community.general.sysrc to configure resolvconf.conf
+
+
 2.7.2
 =====
 

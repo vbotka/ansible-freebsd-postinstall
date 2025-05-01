@@ -20,6 +20,10 @@
       fp_devd_local_dir: {{ fp_devd_local_dir }}
       fp_devd_local_files:
         {{ fp_devd_local_files | to_nice_yaml(indent=2) | indent(2) }}
+      fp_devd_action_scripts:
+        {{ fp_devd_action_scripts | to_nice_yaml(indent=2) | indent(2) }}
+      fp_devd_misc_files:
+        {{ fp_devd_misc_files | to_nice_yaml(indent=2) | indent(2) }}
       fp_devd_owner: {{ fp_devd_owner }}
       fp_devd_group: {{ fp_devd_group }}
       fp_devd_dir_mode: {{ fp_devd_dir_mode }}
@@ -51,6 +55,34 @@
     mode: "{{ fp_devd_file_mode }}"
     backup: "{{ fp_backup }}"
   loop: "{{ fp_devd_local_files | dict2items }}"
+  loop_control:
+    label: "{{ item.key }}"
+
+- name: "Devd: Create action scripts."
+  tags: fp_devd_action_scripts
+  ansible.builtin.copy:
+    dest: "{{ item.key }}"
+    src: "{{ item.value.src | d(omit) }}"
+    content: "{{ item.value.content | d(omit) }}"
+    owner: "{{ item.value.owner | d(omit) }}"
+    group: "{{ item.value.group | d(omit) }}"
+    mode: "{{ item.value.mode | d(omit) }}"
+    backup: "{{ fp_backup }}"
+  loop: "{{ fp_devd_action_scripts | dict2items }}"
+  loop_control:
+    label: "{{ item.key }}"
+
+- name: "Devd: Create misc files."
+  tags: fp_devd_misc_files
+  ansible.builtin.copy:
+    dest: "{{ item.key }}"
+    src: "{{ item.value.src | d(omit) }}"
+    content: "{{ item.value.content | d(omit) }}"
+    owner: "{{ item.value.owner | d(omit) }}"
+    group: "{{ item.value.group | d(omit) }}"
+    mode: "{{ item.value.mode | d(omit) }}"
+    backup: "{{ fp_backup }}"
+  loop: "{{ fp_devd_misc_files | dict2items }}"
   loop_control:
     label: "{{ item.key }}"
 

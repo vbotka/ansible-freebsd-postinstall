@@ -16,6 +16,8 @@ fp_devd_files: {}
 
 fp_devd_local_dir: /usr/local/etc/devd
 fp_devd_local_files: {}
+fp_devd_action_scripts: {}
+fp_devd_misc_files: {}
 
 fp_devd_owner: root
 fp_devd_group: wheel
