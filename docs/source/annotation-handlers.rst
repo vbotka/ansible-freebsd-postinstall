@@ -14,14 +14,15 @@ Synopsis: Main task.
 Import handlers.
 
 
-[`handlers/main.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/main.yml>`_]
+[`handlers/main.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/main.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/main.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
+
 
 
 
@@ -37,14 +38,15 @@ Synopsis: Handler adjkerntz.
 Description of the handler.
 
 
-[`handlers/adjkerntz.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/adjkerntz.yml>`_]
+[`handlers/adjkerntz.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/adjkerntz.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/adjkerntz.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
+
 
 
 
@@ -60,14 +62,15 @@ Synopsis: Handler apcupsd.
 Description of the handler.
 
 
-[`handlers/apcupsd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/apcupsd.yml>`_]
+[`handlers/apcupsd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/apcupsd.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/apcupsd.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
+
 
 
 
@@ -83,14 +86,15 @@ Synopsis: Handler devd.
 Description of the handler.
 
 
-[`handlers/devd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/devd.yml>`_]
+[`handlers/devd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/devd.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/devd.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
+
 
 
 
@@ -106,14 +110,15 @@ Synopsis: Handler devfs.
 Description of the handler.
 
 
-[`handlers/devfs.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/devfs.yml>`_]
+[`handlers/devfs.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/devfs.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/devfs.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
+
 
 
 
@@ -129,14 +134,15 @@ Synopsis: Handler dhclient.
 Description of the handler.
 
 
-[`handlers/dhclient.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/dhclient.yml>`_]
+[`handlers/dhclient.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/dhclient.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/dhclient.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
+
 
 
 
@@ -152,14 +158,15 @@ Synopsis: Handler fstab.
 Description of the handler.
 
 
-[`handlers/fstab.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/fstab.yml>`_]
+[`handlers/fstab.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/fstab.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/fstab.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
+
 
 
 
@@ -175,14 +182,15 @@ Synopsis: Handler hostapd.
 Description of the handler.
 
 
-[`handlers/hostapd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/hostapd.yml>`_]
+[`handlers/hostapd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/hostapd.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/hostapd.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
+
 
 
 
@@ -198,14 +206,15 @@ Synopsis: Handler hostname.
 Description of the handler.
 
 
-[`handlers/hostname.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/hostname.yml>`_]
+[`handlers/hostname.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/hostname.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/hostname.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
+
 
 
 
@@ -221,14 +230,15 @@ Synopsis: Handler inetd.
 Description of the handler.
 
 
-[`handlers/inetd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/inetd.yml>`_]
+[`handlers/inetd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/inetd.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/inetd.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
+
 
 
 
@@ -244,14 +254,15 @@ Synopsis: Handler lockd.
 Description of the handler.
 
 
-[`handlers/lockd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/lockd.yml>`_]
+[`handlers/lockd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/lockd.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/lockd.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
+
 
 
 
@@ -267,14 +278,15 @@ Synopsis: Handler login.
 Description of the handler.
 
 
-[`handlers/login.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/login.yml>`_]
+[`handlers/login.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/login.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/login.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
+
 
 
 
@@ -290,14 +302,15 @@ Synopsis: Handler messages.
 Description of the handler.
 
 
-[`handlers/messages.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/messages.yml>`_]
+[`handlers/messages.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/messages.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/messages.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
+
 
 
 
@@ -313,14 +326,15 @@ Synopsis: Handler mountd.
 Description of the handler.
 
 
-[`handlers/mountd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/mountd.yml>`_]
+[`handlers/mountd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/mountd.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/mountd.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
+
 
 
 
@@ -336,14 +350,15 @@ Synopsis: Handler newaliases.
 Description of the handler.
 
 
-[`handlers/newaliases.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/newaliases.yml>`_]
+[`handlers/newaliases.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/newaliases.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/newaliases.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
+
 
 
 
@@ -359,14 +374,15 @@ Synopsis: Handler newsyslog.
 Description of the handler.
 
 
-[`handlers/newsyslog.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/newsyslog.yml>`_]
+[`handlers/newsyslog.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/newsyslog.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/newsyslog.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
+
 
 
 
@@ -382,14 +398,15 @@ Synopsis: Handler nfsclient.
 Description of the handler.
 
 
-[`handlers/nfsclient.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/nfsclient.yml>`_]
+[`handlers/nfsclient.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/nfsclient.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/nfsclient.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
+
 
 
 
@@ -405,14 +422,15 @@ Synopsis: Handler nfsd.
 Description of the handler.
 
 
-[`handlers/nfsd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/nfsd.yml>`_]
+[`handlers/nfsd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/nfsd.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/nfsd.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
+
 
 
 
@@ -428,14 +446,15 @@ Synopsis: Handler ntpdate.
 Description of the handler.
 
 
-[`handlers/ntpdate.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/ntpdate.yml>`_]
+[`handlers/ntpdate.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/ntpdate.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/ntpdate.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
+
 
 
 
@@ -451,14 +470,15 @@ Synopsis: Handler ntpd.
 Description of the handler.
 
 
-[`handlers/ntpd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/ntpd.yml>`_]
+[`handlers/ntpd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/ntpd.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/ntpd.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
+
 
 
 
@@ -474,14 +494,15 @@ Synopsis: Handler qemu.
 Description of the handler.
 
 
-[`handlers/qemu.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/qemu.yml>`_]
+[`handlers/qemu.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/qemu.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/qemu.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
+
 
 
 
@@ -497,14 +518,15 @@ Synopsis: Handler resolvconf.
 Description of the handler.
 
 
-[`handlers/resolvconf.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/resolvconf.yml>`_]
+[`handlers/resolvconf.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/resolvconf.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/resolvconf.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
+
 
 
 
@@ -520,14 +542,15 @@ Synopsis: Handler rpcbind.
 Description of the handler.
 
 
-[`handlers/rpcbind.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/rpcbind.yml>`_]
+[`handlers/rpcbind.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/rpcbind.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/rpcbind.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
+
 
 
 
@@ -543,14 +566,15 @@ Synopsis: Handler smartd.
 Description of the handler.
 
 
-[`handlers/smartd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/smartd.yml>`_]
+[`handlers/smartd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/smartd.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/smartd.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
+
 
 
 
@@ -566,14 +590,15 @@ Synopsis: Handler snmpd.
 Description of the handler.
 
 
-[`handlers/snmpd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/snmpd.yml>`_]
+[`handlers/snmpd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/snmpd.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/snmpd.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
+
 
 
 
@@ -589,14 +614,15 @@ Synopsis: Handler sshd.
 Description of the handler.
 
 
-[`handlers/sshd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/sshd.yml>`_]
+[`handlers/sshd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/sshd.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/sshd.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
+
 
 
 
@@ -612,14 +638,15 @@ Synopsis: Handler statd.
 Description of the handler.
 
 
-[`handlers/statd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/statd.yml>`_]
+[`handlers/statd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/statd.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/statd.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
+
 
 
 
@@ -635,14 +662,15 @@ Synopsis: Handler swap.
 Description of the handler.
 
 
-[`handlers/swap.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/swap.yml>`_]
+[`handlers/swap.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/swap.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/swap.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
+
 
 
 
@@ -658,14 +686,15 @@ Synopsis: Handler sysctl.
 Description of the handler.
 
 
-[`handlers/sysctl.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/sysctl.yml>`_]
+[`handlers/sysctl.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/sysctl.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/sysctl.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
+
 
 
 
@@ -681,14 +710,15 @@ Synopsis: Handler syslogd.
 Description of the handler.
 
 
-[`handlers/syslogd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/syslogd.yml>`_]
+[`handlers/syslogd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/syslogd.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/syslogd.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
+
 
 
 
@@ -704,14 +734,15 @@ Synopsis: Handler wpasupplicant.
 Description of the handler.
 
 
-[`handlers/wpasupplicant.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/wpasupplicant.yml>`_]
+[`handlers/wpasupplicant.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/wpasupplicant.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/wpasupplicant.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
+
 
 
 

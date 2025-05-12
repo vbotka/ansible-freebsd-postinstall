@@ -9,8 +9,9 @@ myhandlers:
       Import handlers.
     lines: 1,2
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: adjkerntz.yml
     link: adjkerntz.yml
@@ -21,8 +22,9 @@ myhandlers:
       Description of the handler.
     lines: 1,2
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: apcupsd.yml
     link: apcupsd.yml
@@ -33,8 +35,9 @@ myhandlers:
       Description of the handler.
     lines: 1,2
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: devd.yml
     link: devd.yml
@@ -45,8 +48,9 @@ myhandlers:
       Description of the handler.
     lines: 1,2
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: devfs.yml
     link: devfs.yml
@@ -57,8 +61,9 @@ myhandlers:
       Description of the handler.
     lines: 1,2
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: dhclient.yml
     link: dhclient.yml
@@ -69,8 +74,9 @@ myhandlers:
       Description of the handler.
     lines: 1,2
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: fstab.yml
     link: fstab.yml
@@ -81,8 +87,9 @@ myhandlers:
       Description of the handler.
     lines: 1,2
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: hostapd.yml
     link: hostapd.yml
@@ -93,8 +100,9 @@ myhandlers:
       Description of the handler.
     lines: 1,2
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: hostname.yml
     link: hostname.yml
@@ -105,8 +113,9 @@ myhandlers:
       Description of the handler.
     lines: 1,2
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: inetd.yml
     link: inetd.yml
@@ -117,8 +126,9 @@ myhandlers:
       Description of the handler.
     lines: 1,2
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: lockd.yml
     link: lockd.yml
@@ -129,8 +139,9 @@ myhandlers:
       Description of the handler.
     lines: 1,2
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: login.yml
     link: login.yml
@@ -141,8 +152,9 @@ myhandlers:
       Description of the handler.
     lines: 1,2
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: messages.yml
     link: messages.yml
@@ -153,8 +165,9 @@ myhandlers:
       Description of the handler.
     lines: 1,2
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: mountd.yml
     link: mountd.yml
@@ -165,8 +178,9 @@ myhandlers:
       Description of the handler.
     lines: 1,2
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: newaliases.yml
     link: newaliases.yml
@@ -177,8 +191,9 @@ myhandlers:
       Description of the handler.
     lines: 1,2
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: newsyslog.yml
     link: newsyslog.yml
@@ -189,8 +204,9 @@ myhandlers:
       Description of the handler.
     lines: 1,2
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: nfsclient.yml
     link: nfsclient.yml
@@ -201,8 +217,9 @@ myhandlers:
       Description of the handler.
     lines: 1,2
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: nfsd.yml
     link: nfsd.yml
@@ -213,8 +230,9 @@ myhandlers:
       Description of the handler.
     lines: 1,2
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: ntpdate.yml
     link: ntpdate.yml
@@ -225,8 +243,9 @@ myhandlers:
       Description of the handler.
     lines: 1,2
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: ntpd.yml
     link: ntpd.yml
@@ -237,8 +256,9 @@ myhandlers:
       Description of the handler.
     lines: 1,2
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: qemu.yml
     link: qemu.yml
@@ -249,8 +269,9 @@ myhandlers:
       Description of the handler.
     lines: 1,2
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: resolvconf.yml
     link: resolvconf.yml
@@ -261,8 +282,9 @@ myhandlers:
       Description of the handler.
     lines: 1,2
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: rpcbind.yml
     link: rpcbind.yml
@@ -273,8 +295,9 @@ myhandlers:
       Description of the handler.
     lines: 1,2
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: smartd.yml
     link: smartd.yml
@@ -285,8 +308,9 @@ myhandlers:
       Description of the handler.
     lines: 1,2
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: snmpd.yml
     link: snmpd.yml
@@ -297,8 +321,9 @@ myhandlers:
       Description of the handler.
     lines: 1,2
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: sshd.yml
     link: sshd.yml
@@ -309,8 +334,9 @@ myhandlers:
       Description of the handler.
     lines: 1,2
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: statd.yml
     link: statd.yml
@@ -321,8 +347,9 @@ myhandlers:
       Description of the handler.
     lines: 1,2
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: swap.yml
     link: swap.yml
@@ -333,8 +360,9 @@ myhandlers:
       Description of the handler.
     lines: 1,2
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: sysctl.yml
     link: sysctl.yml
@@ -345,8 +373,9 @@ myhandlers:
       Description of the handler.
     lines: 1,2
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: syslogd.yml
     link: syslogd.yml
@@ -357,8 +386,9 @@ myhandlers:
       Description of the handler.
     lines: 1,2
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: wpasupplicant.yml
     link: wpasupplicant.yml
@@ -369,7 +399,8 @@ myhandlers:
       Description of the handler.
     lines: 1,2
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
 ...
