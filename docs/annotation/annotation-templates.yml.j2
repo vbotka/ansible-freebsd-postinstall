@@ -18,8 +18,9 @@ mytemplates:{% if my_files | d([]) | length == 0  %} []{% endif %}
       Description of the template.
     {%- endif %}
     lines: {% if lookup('varnames', 'template_' ~ file.0 ~ '_lines') | length > 0 %}{{ lookup('vars', 'template_' ~ file.0 ~ '_lines') }}{% else %}1{% endif %}
-    seealso: {% if lookup('varnames', 'template_' ~ file.0 ~ '_seealso') | length > 0 %}{{ lookup('vars', 'template_' ~ file.0 ~ '_seealso') }}{% else %}[]{% endif %}
-    note: {% if lookup('varnames', 'template_' ~ file.0 ~ '_note') | length > 0 %}{{ lookup('vars', 'template_' ~ file.0 ~ '_note') }}{% else %}[]{% endif %}
-    warning: {% if lookup('varnames', 'template_' ~ file.0 ~ '_warning') | length > 0 %}{{ lookup('vars', 'template_' ~ file.0 ~ '_warning') }}{% else %}[]{% endif %}
+    seealso: {% if lookup('varnames', 'template_' ~ file.0 ~ '_seealso') | length > 0 %}{{ lookup('vars', 'template_' ~ file.0 ~ '_seealso') | indent(width=6) }}{% else %}[]{% endif %}
+    notes: {% if lookup('varnames', 'template_' ~ file.0 ~ '_note') | length > 0 %}{{ lookup('vars', 'template_' ~ file.0 ~ '_note') | indent(width=6) }}{% else %}[]{% endif %}
+    hints: {% if lookup('varnames', 'template_' ~ file.0 ~ '_hint') | length > 0 %}{{ lookup('vars', 'template_' ~ file.0 ~ '_hint') | indent(width=6) }}{% else %}[]{% endif %}
+    warnings: {% if lookup('varnames', 'template_' ~ file.0 ~ '_warning') | length > 0 %}{{ lookup('vars', 'template_' ~ file.0 ~ '_warning') | indent(width=6) }}{% else %}[]{% endif %}
 {% endfor %}
 ...

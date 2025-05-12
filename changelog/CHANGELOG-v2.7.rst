@@ -10,7 +10,7 @@ vbotka.freebsd_postinstall 2.7 Release Notes
 
 Release Summary
 ---------------
-Updated documentation.
+Updated documentation. Updated annotation templates.
 
 
 2.7.3

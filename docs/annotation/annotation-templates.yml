@@ -10,8 +10,9 @@ mytemplates:
       Description of the template.
     lines: 1
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: exports.j2
     link: exports.j2
@@ -22,8 +23,9 @@ mytemplates:
       Description of the template.
     lines: 1
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: freebsd-update.conf.j2
     link: freebsd-update.conf.j2
@@ -34,8 +36,9 @@ mytemplates:
       Description of the template.
     lines: 1
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: freebsd-update.conf2.j2
     link: freebsd-update.conf2.j2
@@ -46,8 +49,9 @@ mytemplates:
       Description of the template.
     lines: 1
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: groupadd.j2
     link: groupadd.j2
@@ -58,8 +62,9 @@ mytemplates:
       Description of the template.
     lines: 1
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: groupdel.j2
     link: groupdel.j2
@@ -70,8 +75,9 @@ mytemplates:
       Description of the template.
     lines: 1
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: groupmod.j2
     link: groupmod.j2
@@ -82,8 +88,9 @@ mytemplates:
       Description of the template.
     lines: 1
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: hostapd.conf.j2
     link: hostapd.conf.j2
@@ -94,8 +101,9 @@ mytemplates:
       Description of the template.
     lines: 1
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: hosts.j2
     link: hosts.j2
@@ -106,8 +114,9 @@ mytemplates:
       Description of the template.
     lines: 1
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: hosts-aliases-list.j2
     link: hosts-aliases-list.j2
@@ -118,8 +127,9 @@ mytemplates:
       Description of the template.
     lines: 1
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: hosts.allow-01.j2
     link: hosts.allow-01.j2
@@ -130,8 +140,9 @@ mytemplates:
       Description of the template.
     lines: 1
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: hosts.allow-02.j2
     link: hosts.allow-02.j2
@@ -142,8 +153,9 @@ mytemplates:
       Description of the template.
     lines: 1
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: loader.conf.j2
     link: loader.conf.j2
@@ -154,8 +166,9 @@ mytemplates:
       Description of the template.
     lines: 1
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: loader.conf2.j2
     link: loader.conf2.j2
@@ -166,8 +179,9 @@ mytemplates:
       Description of the template.
     lines: 1
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: login.conf.j2
     link: login.conf.j2
@@ -178,8 +192,9 @@ mytemplates:
       Description of the template.
     lines: 1
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: login_conf.j2
     link: login_conf.j2
@@ -190,8 +205,9 @@ mytemplates:
       Description of the template.
     lines: 1
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: make.conf.j2
     link: make.conf.j2
@@ -202,8 +218,9 @@ mytemplates:
       Description of the template.
     lines: 1
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: motd.j2
     link: motd.j2
@@ -214,8 +231,9 @@ mytemplates:
       Description of the template.
     lines: 1
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: newsyslog.conf.j2
     link: newsyslog.conf.j2
@@ -226,8 +244,9 @@ mytemplates:
       Description of the template.
     lines: 1
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: ntp.conf.j2
     link: ntp.conf.j2
@@ -238,8 +257,9 @@ mytemplates:
       Description of the template.
     lines: 1
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: procmailrc-includerc-capability.j2
     link: procmailrc-includerc-capability.j2
@@ -250,8 +270,9 @@ mytemplates:
       Description of the template.
     lines: 1
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: procmailrc-includerc-duplicates.j2
     link: procmailrc-includerc-duplicates.j2
@@ -262,8 +283,9 @@ mytemplates:
       Description of the template.
     lines: 1
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: procmailrc-includerc-get-certificate.j2
     link: procmailrc-includerc-get-certificate.j2
@@ -274,8 +296,9 @@ mytemplates:
       Description of the template.
     lines: 1
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: procmailrc-includerc-get-fingerprint.j2
     link: procmailrc-includerc-get-fingerprint.j2
@@ -286,8 +309,9 @@ mytemplates:
       Description of the template.
     lines: 1
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: procmailrc-includerc-get-fingerprints.j2
     link: procmailrc-includerc-get-fingerprints.j2
@@ -298,8 +322,9 @@ mytemplates:
       Description of the template.
     lines: 1
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: procmailrc-includerc-get-message.j2
     link: procmailrc-includerc-get-message.j2
@@ -310,8 +335,9 @@ mytemplates:
       Description of the template.
     lines: 1
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: procmailrc.j2
     link: procmailrc.j2
@@ -322,8 +348,9 @@ mytemplates:
       Description of the template.
     lines: 1
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: ssh_config.j2
     link: ssh_config.j2
@@ -334,8 +361,9 @@ mytemplates:
       Description of the template.
     lines: 1
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: syslog.conf.j2
     link: syslog.conf.j2
@@ -346,8 +374,9 @@ mytemplates:
       Description of the template.
     lines: 1
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: wpa_supplicant.conf.j2
     link: wpa_supplicant.conf.j2
@@ -358,7 +387,8 @@ mytemplates:
       Description of the template.
     lines: 1
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
 ...

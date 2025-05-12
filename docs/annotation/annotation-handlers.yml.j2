@@ -10,8 +10,9 @@ myhandlers:
       Import handlers.
     lines: 1,2
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 {% for file in my_files %}
   - file: {{ file.0 ~ file.1 }}
     link: {{ file.0 ~ file.1 }}
@@ -29,8 +30,9 @@ myhandlers:
       Description of the handler.
     {%- endif %}
     lines: {% if lookup('varnames', 'handler_' ~ file.0 ~ '_lines') | length > 0 %}{{ lookup('vars', 'handler_' ~ file.0 ~ '_lines') }}{% else %}1,2{% endif %}
-    seealso: {% if lookup('varnames', 'handler_' ~ file.0 ~ '_seealso') | length > 0 %}{{ lookup('vars', 'handler_' ~ file.0 ~ '_seealso') }}{% else %}[]{% endif %}
-    note: {% if lookup('varnames', 'handler_' ~ file.0 ~ '_note') | length > 0 %}{{ lookup('vars', 'handler_' ~ file.0 ~ '_note') }}{% else %}[]{% endif %}
-    warning: {% if lookup('varnames', 'handler_' ~ file.0 ~ '_warning') | length > 0 %}{{ lookup('vars', 'handler_' ~ file.0 ~ '_warning') }}{% else %}[]{% endif %}
+    seealso: {% if lookup('varnames', 'handler_' ~ file.0 ~ '_seealso') | length > 0 %}{{ lookup('vars', 'handler_' ~ file.0 ~ '_seealso') | indent(width=6) }}{% else %}[]{% endif %}
+    notes: {% if lookup('varnames', 'handler_' ~ file.0 ~ '_note') | length > 0 %}{{ lookup('vars', 'handler_' ~ file.0 ~ '_note') | indent(width=6) }}{% else %}[]{% endif %}
+    hints: {% if lookup('varnames', 'handler_' ~ file.0 ~ '_hint') | length > 0 %}{{ lookup('vars', 'handler_' ~ file.0 ~ '_hint') | indent(width=6) }}{% else %}[]{% endif %}
+    warnings: {% if lookup('varnames', 'handler_' ~ file.0 ~ '_warning') | length > 0 %}{{ lookup('vars', 'handler_' ~ file.0 ~ '_warning') | indent(width=6) }}{% else %}[]{% endif %}
 {% endfor %}
 ...

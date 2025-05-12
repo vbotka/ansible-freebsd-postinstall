@@ -9,8 +9,9 @@ mytasks:
       Import tasks if enabled.
     lines: 1,2
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: aliases.yml
     link: aliases.yml

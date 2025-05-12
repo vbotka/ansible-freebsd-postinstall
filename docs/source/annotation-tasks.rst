@@ -14,12 +14,12 @@ Synopsis: Main task.
 Import tasks if enabled.
 
 
-[`tasks/main.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/main.yml>`_]
+[`tasks/main.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/main.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/main.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -38,12 +38,12 @@ Synopsis: Configure aliases.
 Description of the task.
 
 
-[`tasks/aliases.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/aliases.yml>`_]
+[`tasks/aliases.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/aliases.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/aliases.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -62,12 +62,12 @@ Synopsis: Configure apcupsd.
 Description of the task.
 
 
-[`tasks/apcupsd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/apcupsd.yml>`_]
+[`tasks/apcupsd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/apcupsd.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/apcupsd.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -86,12 +86,12 @@ Synopsis: Configure authorized-key.
 Description of the task.
 
 
-[`tasks/authorized-key.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/authorized-key.yml>`_]
+[`tasks/authorized-key.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/authorized-key.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/authorized-key.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -110,12 +110,12 @@ Synopsis: Configure cloud-providers.
 Description of the task.
 
 
-[`tasks/cloud-providers.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/cloud-providers.yml>`_]
+[`tasks/cloud-providers.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/cloud-providers.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/cloud-providers.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -134,12 +134,12 @@ Synopsis: Configure copy.
 Description of the task.
 
 
-[`tasks/copy.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/copy.yml>`_]
+[`tasks/copy.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/copy.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/copy.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -158,12 +158,12 @@ Synopsis: Configure cron.
 Description of the task.
 
 
-[`tasks/cron.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/cron.yml>`_]
+[`tasks/cron.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/cron.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/cron.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -182,12 +182,12 @@ Synopsis: Configure debug.
 Description of the task.
 
 
-[`tasks/debug.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/debug.yml>`_]
+[`tasks/debug.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/debug.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/debug.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -206,12 +206,12 @@ Synopsis: Configure devd.
 Description of the task.
 
 
-[`tasks/devd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/devd.yml>`_]
+[`tasks/devd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/devd.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/devd.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -230,12 +230,12 @@ Synopsis: Configure devfs.
 Description of the task.
 
 
-[`tasks/devfs.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/devfs.yml>`_]
+[`tasks/devfs.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/devfs.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/devfs.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -254,12 +254,12 @@ Synopsis: Configure dhclient.
 Description of the task.
 
 
-[`tasks/dhclient.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/dhclient.yml>`_]
+[`tasks/dhclient.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/dhclient.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/dhclient.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -278,12 +278,12 @@ Synopsis: Configure freebsd-update.
 Description of the task.
 
 
-[`tasks/freebsd-update.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/freebsd-update.yml>`_]
+[`tasks/freebsd-update.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/freebsd-update.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/freebsd-update.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -302,12 +302,12 @@ Synopsis: Configure fstab.
 Description of the task.
 
 
-[`tasks/fstab.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/fstab.yml>`_]
+[`tasks/fstab.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/fstab.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/fstab.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -326,12 +326,12 @@ Synopsis: Configure gitserver.
 Description of the task.
 
 
-[`tasks/gitserver.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/gitserver.yml>`_]
+[`tasks/gitserver.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/gitserver.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/gitserver.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -350,12 +350,12 @@ Synopsis: Configure groups.
 Description of the task.
 
 
-[`tasks/groups.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/groups.yml>`_]
+[`tasks/groups.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/groups.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/groups.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -374,12 +374,12 @@ Synopsis: Configure groupwrappers.
 Description of the task.
 
 
-[`tasks/groupwrappers.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/groupwrappers.yml>`_]
+[`tasks/groupwrappers.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/groupwrappers.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/groupwrappers.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -398,12 +398,12 @@ Synopsis: Configure hostapd.
 Description of the task.
 
 
-[`tasks/hostapd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/hostapd.yml>`_]
+[`tasks/hostapd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/hostapd.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/hostapd.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -422,12 +422,12 @@ Synopsis: Configure hostname.
 Description of the task.
 
 
-[`tasks/hostname.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/hostname.yml>`_]
+[`tasks/hostname.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/hostname.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/hostname.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -446,12 +446,12 @@ Synopsis: Configure hosts.
 Description of the task.
 
 
-[`tasks/hosts.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/hosts.yml>`_]
+[`tasks/hosts.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/hosts.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/hosts.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -470,12 +470,12 @@ Synopsis: Configure inetd.
 Description of the task.
 
 
-[`tasks/inetd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/inetd.yml>`_]
+[`tasks/inetd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/inetd.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/inetd.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -494,12 +494,12 @@ Synopsis: Configure libmap.
 Description of the task.
 
 
-[`tasks/libmap.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/libmap.yml>`_]
+[`tasks/libmap.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/libmap.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/libmap.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -518,12 +518,12 @@ Synopsis: Configure linux.
 Description of the task.
 
 
-[`tasks/linux.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/linux.yml>`_]
+[`tasks/linux.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/linux.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/linux.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -542,12 +542,12 @@ Synopsis: Configure loader.
 Description of the task.
 
 
-[`tasks/loader.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/loader.yml>`_]
+[`tasks/loader.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/loader.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/loader.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -566,12 +566,12 @@ Synopsis: Configure login.
 Description of the task.
 
 
-[`tasks/login.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/login.yml>`_]
+[`tasks/login.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/login.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/login.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -590,12 +590,12 @@ Synopsis: Configure make.
 Description of the task.
 
 
-[`tasks/make.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/make.yml>`_]
+[`tasks/make.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/make.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/make.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -614,12 +614,12 @@ Synopsis: Configure motd.
 Description of the task.
 
 
-[`tasks/motd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/motd.yml>`_]
+[`tasks/motd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/motd.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/motd.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -638,12 +638,12 @@ Synopsis: Configure mount-img.
 Description of the task.
 
 
-[`tasks/mount-img.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/mount-img.yml>`_]
+[`tasks/mount-img.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/mount-img.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/mount-img.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -662,12 +662,12 @@ Synopsis: Configure mount-iso.
 Description of the task.
 
 
-[`tasks/mount-iso.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/mount-iso.yml>`_]
+[`tasks/mount-iso.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/mount-iso.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/mount-iso.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -686,12 +686,12 @@ Synopsis: Configure mount-vnode.
 Description of the task.
 
 
-[`tasks/mount-vnode.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/mount-vnode.yml>`_]
+[`tasks/mount-vnode.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/mount-vnode.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/mount-vnode.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -733,12 +733,12 @@ Synopsis: Configure NFS client.
 :79: Disable services.
 
 
-[`tasks/nfs.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/nfs.yml>`_]
+[`tasks/nfs.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/nfs.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/nfs.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 2,3,35,42,55,60,65,70,79
     :linenos:
 
@@ -788,12 +788,12 @@ Synopsis: Configure NFS server.
 :101: Disable services.
 
 
-[`tasks/nfsd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/nfsd.yml>`_]
+[`tasks/nfsd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/nfsd.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/nfsd.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 2,3,60,67,73,78,83,92,101
     :linenos:
 
@@ -822,12 +822,12 @@ Synopsis: Configure ntp.
 Description of the task.
 
 
-[`tasks/ntp.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/ntp.yml>`_]
+[`tasks/ntp.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/ntp.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/ntp.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -846,12 +846,12 @@ Synopsis: Configure ntpdate.
 Description of the task.
 
 
-[`tasks/ntpdate.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/ntpdate.yml>`_]
+[`tasks/ntpdate.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/ntpdate.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/ntpdate.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -870,12 +870,12 @@ Synopsis: Configure packages-install.
 Description of the task.
 
 
-[`tasks/packages-install.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/packages-install.yml>`_]
+[`tasks/packages-install.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/packages-install.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/packages-install.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -894,12 +894,12 @@ Synopsis: Configure packages.
 Description of the task.
 
 
-[`tasks/packages.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/packages.yml>`_]
+[`tasks/packages.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/packages.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/packages.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -918,12 +918,12 @@ Synopsis: Configure passwords.
 Description of the task.
 
 
-[`tasks/passwords.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/passwords.yml>`_]
+[`tasks/passwords.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/passwords.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/passwords.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -942,12 +942,12 @@ Synopsis: Configure periodic.
 Description of the task.
 
 
-[`tasks/periodic.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/periodic.yml>`_]
+[`tasks/periodic.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/periodic.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/periodic.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -966,12 +966,12 @@ Synopsis: Configure procmail.
 Description of the task.
 
 
-[`tasks/procmail.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/procmail.yml>`_]
+[`tasks/procmail.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/procmail.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/procmail.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -990,12 +990,12 @@ Synopsis: Configure qemu.
 Description of the task.
 
 
-[`tasks/qemu.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/qemu.yml>`_]
+[`tasks/qemu.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/qemu.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/qemu.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -1014,12 +1014,12 @@ Synopsis: Configure resolvconf.
 Description of the task.
 
 
-[`tasks/resolvconf.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/resolvconf.yml>`_]
+[`tasks/resolvconf.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/resolvconf.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/resolvconf.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -1038,12 +1038,12 @@ Synopsis: Configure sanity.
 Description of the task.
 
 
-[`tasks/sanity.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/sanity.yml>`_]
+[`tasks/sanity.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/sanity.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/sanity.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -1062,12 +1062,12 @@ Synopsis: Configure smartd.
 Description of the task.
 
 
-[`tasks/smartd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/smartd.yml>`_]
+[`tasks/smartd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/smartd.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/smartd.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -1086,12 +1086,12 @@ Synopsis: Configure snmpd.
 Description of the task.
 
 
-[`tasks/snmpd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/snmpd.yml>`_]
+[`tasks/snmpd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/snmpd.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/snmpd.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -1110,12 +1110,12 @@ Synopsis: Configure ssh.
 Description of the task.
 
 
-[`tasks/ssh.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/ssh.yml>`_]
+[`tasks/ssh.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/ssh.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/ssh.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -1134,12 +1134,12 @@ Synopsis: Configure sshd.
 Description of the task.
 
 
-[`tasks/sshd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/sshd.yml>`_]
+[`tasks/sshd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/sshd.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/sshd.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -1158,12 +1158,12 @@ Synopsis: Configure sudoers.
 Description of the task.
 
 
-[`tasks/sudoers.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/sudoers.yml>`_]
+[`tasks/sudoers.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/sudoers.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/sudoers.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -1182,12 +1182,12 @@ Synopsis: Configure swap.
 Description of the task.
 
 
-[`tasks/swap.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/swap.yml>`_]
+[`tasks/swap.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/swap.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/swap.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -1206,12 +1206,12 @@ Synopsis: Configure sysctl.
 Description of the task.
 
 
-[`tasks/sysctl.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/sysctl.yml>`_]
+[`tasks/sysctl.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/sysctl.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/sysctl.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -1230,12 +1230,12 @@ Synopsis: Configure syslogd.
 Description of the task.
 
 
-[`tasks/syslogd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/syslogd.yml>`_]
+[`tasks/syslogd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/syslogd.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/syslogd.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -1254,12 +1254,12 @@ Synopsis: Configure timezone.
 Description of the task.
 
 
-[`tasks/timezone.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/timezone.yml>`_]
+[`tasks/timezone.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/timezone.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/timezone.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -1278,12 +1278,12 @@ Synopsis: Configure tmpmfs.
 Description of the task.
 
 
-[`tasks/tmpmfs.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/tmpmfs.yml>`_]
+[`tasks/tmpmfs.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/tmpmfs.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/tmpmfs.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -1302,12 +1302,12 @@ Synopsis: Configure users.
 Description of the task.
 
 
-[`tasks/users.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/users.yml>`_]
+[`tasks/users.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/users.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/users.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -1326,12 +1326,12 @@ Synopsis: Configure vars.
 Description of the task.
 
 
-[`tasks/vars.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/vars.yml>`_]
+[`tasks/vars.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/vars.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/vars.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -1350,12 +1350,12 @@ Synopsis: Configure wpasupplicant.
 Description of the task.
 
 
-[`tasks/wpasupplicant.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/wpasupplicant.yml>`_]
+[`tasks/wpasupplicant.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/wpasupplicant.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/wpasupplicant.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -1374,12 +1374,12 @@ Synopsis: Configure digitalocean.
 Description of the task.
 
 
-[`tasks/cloud-providers/digitalocean.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/cloud-providers/digitalocean.yml>`_]
+[`tasks/cloud-providers/digitalocean.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/cloud-providers/digitalocean.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/cloud-providers/digitalocean.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -1398,12 +1398,12 @@ Synopsis: Configure sync-default.
 Description of the task.
 
 
-[`tasks/copy/sync-default.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/copy/sync-default.yml>`_]
+[`tasks/copy/sync-default.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/copy/sync-default.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/copy/sync-default.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -1422,12 +1422,12 @@ Synopsis: Configure sync-optional.
 Description of the task.
 
 
-[`tasks/copy/sync-optional.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/copy/sync-optional.yml>`_]
+[`tasks/copy/sync-optional.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/copy/sync-optional.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/copy/sync-optional.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -1446,12 +1446,12 @@ Synopsis: Configure unarch-default.
 Description of the task.
 
 
-[`tasks/copy/unarch-default.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/copy/unarch-default.yml>`_]
+[`tasks/copy/unarch-default.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/copy/unarch-default.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/copy/unarch-default.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -1470,12 +1470,12 @@ Synopsis: Configure unarch-optional.
 Description of the task.
 
 
-[`tasks/copy/unarch-optional.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/copy/unarch-optional.yml>`_]
+[`tasks/copy/unarch-optional.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/copy/unarch-optional.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/copy/unarch-optional.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -1494,12 +1494,12 @@ Synopsis: Configure cron-rename-entry.
 Description of the task.
 
 
-[`tasks/fn/cron-rename-entry.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/fn/cron-rename-entry.yml>`_]
+[`tasks/fn/cron-rename-entry.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/fn/cron-rename-entry.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/fn/cron-rename-entry.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -1518,12 +1518,12 @@ Synopsis: Configure mdconfig-attach-disk.
 Description of the task.
 
 
-[`tasks/fn/mdconfig-attach-disk.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/fn/mdconfig-attach-disk.yml>`_]
+[`tasks/fn/mdconfig-attach-disk.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/fn/mdconfig-attach-disk.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/fn/mdconfig-attach-disk.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -1542,12 +1542,12 @@ Synopsis: Configure mdconfig-detach-disk.
 Description of the task.
 
 
-[`tasks/fn/mdconfig-detach-disk.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/fn/mdconfig-detach-disk.yml>`_]
+[`tasks/fn/mdconfig-detach-disk.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/fn/mdconfig-detach-disk.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/fn/mdconfig-detach-disk.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -1566,12 +1566,12 @@ Synopsis: Configure rcconf-item.
 Description of the task.
 
 
-[`tasks/fn/rcconf-item.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/fn/rcconf-item.yml>`_]
+[`tasks/fn/rcconf-item.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/fn/rcconf-item.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/fn/rcconf-item.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -1621,12 +1621,12 @@ Example of ``_service=sshd`` ::
   ...
 
 
-[`tasks/fn/rcconf.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/fn/rcconf.yml>`_]
+[`tasks/fn/rcconf.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/fn/rcconf.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/fn/rcconf.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 4-24,27,52,67,80
     :linenos:
 

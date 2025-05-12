@@ -10,8 +10,9 @@ mytasks:
       Import tasks if enabled.
     lines: 1,2
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 {% for file in my_files %}
   - file: {{ file.0 ~ file.1 }}
     link: {{ file.0 ~ file.1 }}
@@ -29,9 +30,9 @@ mytasks:
       Description of the task.
     {%- endif %}
     lines: {% if lookup('varnames', 'task_' ~ file.0 ~ '_lines') | length > 0 %}{{ lookup('vars', 'task_' ~ file.0 ~ '_lines') }}{% else %}1,2{% endif %}
-    seealso: {% if lookup('varnames', 'task_' ~ file.0 ~ '_seealso') | length > 0 %}{{ lookup('vars', 'task_' ~ file.0 ~ '_seealso') }}{% else %}[]{% endif %}
-    notes: {% if lookup('varnames', 'task_' ~ file.0 ~ '_note') | length > 0 %}{{ lookup('vars', 'task_' ~ file.0 ~ '_note') }}{% else %}[]{% endif %}
-    hints: {% if lookup('varnames', 'task_' ~ file.0 ~ '_hint') | length > 0 %}{{ lookup('vars', 'task_' ~ file.0 ~ '_hint') }}{% else %}[]{% endif %}
-    warnings: {% if lookup('varnames', 'task_' ~ file.0 ~ '_warning') | length > 0 %}{{ lookup('vars', 'task_' ~ file.0 ~ '_warning') }}{% else %}[]{% endif %}
+    seealso: {% if lookup('varnames', 'task_' ~ file.0 ~ '_seealso') | length > 0 %}{{ lookup('vars', 'task_' ~ file.0 ~ '_seealso') | indent(width=6) }}{% else %}[]{% endif %}
+    notes: {% if lookup('varnames', 'task_' ~ file.0 ~ '_note') | length > 0 %}{{ lookup('vars', 'task_' ~ file.0 ~ '_note') | indent(width=6) }}{% else %}[]{% endif %}
+    hints: {% if lookup('varnames', 'task_' ~ file.0 ~ '_hint') | length > 0 %}{{ lookup('vars', 'task_' ~ file.0 ~ '_hint') | indent(width=6) }}{% else %}[]{% endif %}
+    warnings: {% if lookup('varnames', 'task_' ~ file.0 ~ '_warning') | length > 0 %}{{ lookup('vars', 'task_' ~ file.0 ~ '_warning') | indent(width=6) }}{% else %}[]{% endif %}
 {% endfor %}
 ...
