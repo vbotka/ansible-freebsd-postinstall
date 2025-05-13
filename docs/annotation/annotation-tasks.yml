@@ -21,10 +21,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: apcupsd.yml
     link: apcupsd.yml
@@ -34,10 +42,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: authorized-key.yml
     link: authorized-key.yml
@@ -47,10 +63,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: cloud-providers.yml
     link: cloud-providers.yml
@@ -60,10 +84,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: copy.yml
     link: copy.yml
@@ -73,10 +105,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: cron.yml
     link: cron.yml
@@ -86,10 +126,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: debug.yml
     link: debug.yml
@@ -99,10 +147,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: devd.yml
     link: devd.yml
@@ -112,10 +168,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: devfs.yml
     link: devfs.yml
@@ -125,10 +189,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: dhclient.yml
     link: dhclient.yml
@@ -138,10 +210,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: freebsd-update.yml
     link: freebsd-update.yml
@@ -151,10 +231,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: fstab.yml
     link: fstab.yml
@@ -164,10 +252,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: gitserver.yml
     link: gitserver.yml
@@ -177,10 +273,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: groups.yml
     link: groups.yml
@@ -190,10 +294,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: groupwrappers.yml
     link: groupwrappers.yml
@@ -203,10 +315,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: hostapd.yml
     link: hostapd.yml
@@ -216,10 +336,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: hostname.yml
     link: hostname.yml
@@ -229,10 +357,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: hosts.yml
     link: hosts.yml
@@ -242,10 +378,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: inetd.yml
     link: inetd.yml
@@ -255,10 +399,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: libmap.yml
     link: libmap.yml
@@ -268,10 +420,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: linux.yml
     link: linux.yml
@@ -281,10 +441,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: loader.yml
     link: loader.yml
@@ -294,10 +462,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: login.yml
     link: login.yml
@@ -307,10 +483,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: make.yml
     link: make.yml
@@ -320,10 +504,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: motd.yml
     link: motd.yml
@@ -333,10 +525,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: mount-img.yml
     link: mount-img.yml
@@ -346,10 +546,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: mount-iso.yml
     link: mount-iso.yml
@@ -359,10 +567,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: mount-vnode.yml
     link: mount-vnode.yml
@@ -372,10 +588,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: nfs.yml
     link: nfs.yml
@@ -410,10 +634,24 @@ mytasks:
       :79: Disable services.
 
     lines: 2,3,35,42,55,60,65,70,79
-    seealso: {'handlers': ['nfsclient', 'nfsd'], 'templates': [], 'others': ['<TBD>']}
-    notes: ['The variables ``fp_nfs_services_enable`` (74) and ``fp_nfs_services_disable`` (83) are created by the playbook ``.configure.yml``']
-    hints: ['<TBD>']
-    warnings: ['<TBD>']
+    seealso:
+      handlers:
+      - nfsclient
+      - nfsd
+      others:
+      - <TBD>
+      templates: []
+
+    notes:
+      - The variables ``fp_nfs_services_enable`` (74) and ``fp_nfs_services_disable`` (83)
+        are created by the playbook ``.configure.yml``
+
+    hints:
+      - <TBD>
+
+    warnings:
+      - <TBD>
+
 
   - file: nfsd.yml
     link: nfsd.yml
@@ -446,10 +684,24 @@ mytasks:
       :101: Disable services.
 
     lines: 2,3,60,67,73,78,83,92,101
-    seealso: {'handlers': ['nfsd'], 'templates': ['exports'], 'others': ['<TBD>']}
-    notes: ['The variables ``fp_nfsd_services_enable`` (96) and ``fp_nfsd_services_disable`` (105) are created by the playbook ``.configure.yml``']
-    hints: ['<TBD>']
-    warnings: ['<TBD>']
+    seealso:
+      handlers:
+      - nfsd
+      others:
+      - <TBD>
+      templates:
+      - exports
+
+    notes:
+      - The variables ``fp_nfsd_services_enable`` (96) and ``fp_nfsd_services_disable``
+        (105) are created by the playbook ``.configure.yml``
+
+    hints:
+      - <TBD>
+
+    warnings:
+      - <TBD>
+
 
   - file: ntp.yml
     link: ntp.yml
@@ -459,10 +711,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: ntpdate.yml
     link: ntpdate.yml
@@ -472,10 +732,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: packages-install.yml
     link: packages-install.yml
@@ -485,10 +753,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: packages.yml
     link: packages.yml
@@ -498,10 +774,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: passwords.yml
     link: passwords.yml
@@ -511,10 +795,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: periodic.yml
     link: periodic.yml
@@ -524,10 +816,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: procmail.yml
     link: procmail.yml
@@ -537,10 +837,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: qemu.yml
     link: qemu.yml
@@ -550,10 +858,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: resolvconf.yml
     link: resolvconf.yml
@@ -563,10 +879,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: sanity.yml
     link: sanity.yml
@@ -576,10 +900,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: smartd.yml
     link: smartd.yml
@@ -589,10 +921,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: snmpd.yml
     link: snmpd.yml
@@ -602,10 +942,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: ssh.yml
     link: ssh.yml
@@ -615,10 +963,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: sshd.yml
     link: sshd.yml
@@ -628,10 +984,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: sudoers.yml
     link: sudoers.yml
@@ -641,10 +1005,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: swap.yml
     link: swap.yml
@@ -654,10 +1026,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: sysctl.yml
     link: sysctl.yml
@@ -667,10 +1047,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: syslogd.yml
     link: syslogd.yml
@@ -680,10 +1068,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: timezone.yml
     link: timezone.yml
@@ -693,10 +1089,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: tmpmfs.yml
     link: tmpmfs.yml
@@ -706,10 +1110,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: users.yml
     link: users.yml
@@ -719,10 +1131,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: vars.yml
     link: vars.yml
@@ -732,10 +1152,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: wpasupplicant.yml
     link: wpasupplicant.yml
@@ -745,10 +1173,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: digitalocean.yml
     link: digitalocean.yml
@@ -758,10 +1194,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: sync-default.yml
     link: sync-default.yml
@@ -771,10 +1215,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: sync-optional.yml
     link: sync-optional.yml
@@ -784,10 +1236,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: unarch-default.yml
     link: unarch-default.yml
@@ -797,10 +1257,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: unarch-optional.yml
     link: unarch-optional.yml
@@ -810,10 +1278,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: cron-rename-entry.yml
     link: cron-rename-entry.yml
@@ -823,10 +1299,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: mdconfig-attach-disk.yml
     link: mdconfig-attach-disk.yml
@@ -836,10 +1320,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: mdconfig-detach-disk.yml
     link: mdconfig-detach-disk.yml
@@ -849,10 +1341,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: rcconf-item.yml
     link: rcconf-item.yml
@@ -862,10 +1362,18 @@ mytasks:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: rcconf.yml
     link: rcconf.yml
@@ -908,9 +1416,23 @@ mytasks:
         ...
 
     lines: 4-24,27,52,67,80
-    seealso: {'handlers': [], 'templates': [], 'others': [':ref:`ug_rc`', 'defaults/main/rcconf.yml', 'defaults/main/rcconfd.yml', 'defaults/main/handlers.yml']}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      handlers: []
+      others:
+      - :ref:`ug_rc`
+      - defaults/main/rcconf.yml
+      - defaults/main/rcconfd.yml
+      - defaults/main/handlers.yml
+      templates: []
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
 ...

@@ -21,10 +21,18 @@ myhandlers:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: apcupsd.yml
     link: apcupsd.yml
@@ -34,10 +42,18 @@ myhandlers:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: devd.yml
     link: devd.yml
@@ -47,10 +63,18 @@ myhandlers:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: devfs.yml
     link: devfs.yml
@@ -60,10 +84,18 @@ myhandlers:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: dhclient.yml
     link: dhclient.yml
@@ -73,10 +105,18 @@ myhandlers:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: fstab.yml
     link: fstab.yml
@@ -86,10 +126,18 @@ myhandlers:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: hostapd.yml
     link: hostapd.yml
@@ -99,10 +147,18 @@ myhandlers:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: hostname.yml
     link: hostname.yml
@@ -112,10 +168,18 @@ myhandlers:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: inetd.yml
     link: inetd.yml
@@ -125,10 +189,18 @@ myhandlers:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: lockd.yml
     link: lockd.yml
@@ -138,10 +210,18 @@ myhandlers:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: login.yml
     link: login.yml
@@ -151,10 +231,18 @@ myhandlers:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: messages.yml
     link: messages.yml
@@ -164,10 +252,18 @@ myhandlers:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: mountd.yml
     link: mountd.yml
@@ -177,10 +273,18 @@ myhandlers:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: newaliases.yml
     link: newaliases.yml
@@ -190,10 +294,18 @@ myhandlers:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: newsyslog.yml
     link: newsyslog.yml
@@ -203,10 +315,18 @@ myhandlers:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: nfsclient.yml
     link: nfsclient.yml
@@ -216,10 +336,18 @@ myhandlers:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: nfsd.yml
     link: nfsd.yml
@@ -229,10 +357,18 @@ myhandlers:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: ntpdate.yml
     link: ntpdate.yml
@@ -242,10 +378,18 @@ myhandlers:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: ntpd.yml
     link: ntpd.yml
@@ -255,10 +399,18 @@ myhandlers:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: qemu.yml
     link: qemu.yml
@@ -268,10 +420,18 @@ myhandlers:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: resolvconf.yml
     link: resolvconf.yml
@@ -281,10 +441,18 @@ myhandlers:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: rpcbind.yml
     link: rpcbind.yml
@@ -294,10 +462,18 @@ myhandlers:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: smartd.yml
     link: smartd.yml
@@ -307,10 +483,18 @@ myhandlers:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: snmpd.yml
     link: snmpd.yml
@@ -320,10 +504,18 @@ myhandlers:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: sshd.yml
     link: sshd.yml
@@ -333,10 +525,18 @@ myhandlers:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: statd.yml
     link: statd.yml
@@ -346,10 +546,18 @@ myhandlers:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: swap.yml
     link: swap.yml
@@ -359,10 +567,18 @@ myhandlers:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: sysctl.yml
     link: sysctl.yml
@@ -372,10 +588,18 @@ myhandlers:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: syslogd.yml
     link: syslogd.yml
@@ -385,10 +609,18 @@ myhandlers:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: wpasupplicant.yml
     link: wpasupplicant.yml
@@ -398,9 +630,17 @@ myhandlers:
     description: |
       Description of the task.
     lines: 1
-    seealso: {}
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
 ...
