@@ -9,69 +9,33 @@
 
     ansible_python_interpreter: auto_silent
     debug: false
-    bnames: "{{ paths | map('basename') }}"
-    fnames: "{{ bnames | map('splitext') | map('first') }}"
-    my_files: "{{ fnames | zip(bnames) | zip(paths) | map('flatten') }}"
+    base_names: "{{ paths | map('basename') }}"
+    file_names: "{{ base_names | map('splitext') | map('first') }}"
+    my_files: "{{ file_names | zip(base_names) | zip(paths) | map('flatten')
+                             | map('zip', ['file_name', 'base_name', 'path'])
+                             | map('map', 'reverse')
+                             | map('community.general.dict') }}"
 
   tasks:
 
-    - name: Read vars
+    - name: Read vars.
       ansible.builtin.include_vars:
         dir: vars
         extensions: [yml]
         ignore_unknown_extensions: true
-      tags: always
 
-    - name: Tasks
+    - name: Create annotations.
       vars:
-        paths: "{{ lookup('file', 'tasks-list.txt').splitlines() }}"
-      tags: tasks
-      block:
-
-        - name: Debug my_files
-          when: debug | bool
-          ansible.builtin.debug:
-            var: my_files
-
-        - name: Create annotation-tasks.yml
-          ansible.builtin.template:
-            src: annotation-tasks.yml.j2
-            dest: annotation-tasks.yml
-            mode: "0644"
-
-    - name: Handlers
-      vars:
-        paths: "{{ lookup('file', 'handlers-list.txt').splitlines() }}"
-      tags: handlers
-      block:
-
-        - name: Debug my_files
-          when: debug | bool
-          ansible.builtin.debug:
-            var: my_files
-
-        - name: Create annotation-handlers.yml
-          ansible.builtin.template:
-            src: annotation-handlers.yml.j2
-            dest: annotation-handlers.yml
-            mode: "0644"
-
-    - name: Templates
-      vars:
-        paths: "{{ lookup('file', 'templates-list.txt').splitlines() }}"
-      tags: templates
-      block:
-
-        - name: Debug my_files
-          when: debug | bool
-          ansible.builtin.debug:
-            var: my_files
-
-        - name: Create annotation-templates.yml
-          ansible.builtin.template:
-            src: annotation-templates.yml.j2
-            dest: annotation-templates.yml
-            mode: "0644"
+        file: "{{ item }}-list.txt"
+        paths: "{{ lookup('file', file).splitlines() }}"
+      ansible.builtin.template:
+        src: "annotation-{{ item }}.yml.j2"
+        dest: "annotation-{{ item }}.yml"
+        mode: "0644"
+      loop:
+        - tasks
+        - handlers
+        - templates
 
 # EOF
 ...
