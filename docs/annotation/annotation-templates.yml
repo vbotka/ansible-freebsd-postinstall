@@ -5,11 +5,11 @@ mytemplates:
     link: apcupsd.conf.j2
     path: templates/apcupsd.conf.j2
     synopsis: |
-      Template apcupsd.conf.
+      Configure apcupsd.conf
     description: |
-      Description of the template.
+      Description of the task.
     lines: 1
-    seealso: []
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -18,11 +18,11 @@ mytemplates:
     link: exports.j2
     path: templates/exports.j2
     synopsis: |
-      Template exports.
+      Configure exports
     description: |
-      Description of the template.
+      Description of the task.
     lines: 1
-    seealso: []
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -31,11 +31,11 @@ mytemplates:
     link: freebsd-update.conf.j2
     path: templates/freebsd-update.conf.j2
     synopsis: |
-      Template freebsd-update.conf.
+      Configure freebsd-update.conf
     description: |
-      Description of the template.
+      Description of the task.
     lines: 1
-    seealso: []
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -44,11 +44,11 @@ mytemplates:
     link: freebsd-update.conf2.j2
     path: templates/freebsd-update.conf2.j2
     synopsis: |
-      Template freebsd-update.conf2.
+      Configure freebsd-update.conf2
     description: |
-      Description of the template.
+      Description of the task.
     lines: 1
-    seealso: []
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -57,11 +57,11 @@ mytemplates:
     link: groupadd.j2
     path: templates/groupadd.j2
     synopsis: |
-      Template groupadd.
+      Configure groupadd
     description: |
-      Description of the template.
+      Description of the task.
     lines: 1
-    seealso: []
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -70,11 +70,11 @@ mytemplates:
     link: groupdel.j2
     path: templates/groupdel.j2
     synopsis: |
-      Template groupdel.
+      Configure groupdel
     description: |
-      Description of the template.
+      Description of the task.
     lines: 1
-    seealso: []
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -83,11 +83,11 @@ mytemplates:
     link: groupmod.j2
     path: templates/groupmod.j2
     synopsis: |
-      Template groupmod.
+      Configure groupmod
     description: |
-      Description of the template.
+      Description of the task.
     lines: 1
-    seealso: []
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -96,11 +96,11 @@ mytemplates:
     link: hostapd.conf.j2
     path: templates/hostapd.conf.j2
     synopsis: |
-      Template hostapd.conf.
+      Configure hostapd.conf
     description: |
-      Description of the template.
+      Description of the task.
     lines: 1
-    seealso: []
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -109,11 +109,11 @@ mytemplates:
     link: hosts.j2
     path: templates/hosts.j2
     synopsis: |
-      Template hosts.
+      Configure hosts
     description: |
-      Description of the template.
+      Description of the task.
     lines: 1
-    seealso: []
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -122,11 +122,11 @@ mytemplates:
     link: hosts-aliases-list.j2
     path: templates/hosts-aliases-list.j2
     synopsis: |
-      Template hosts-aliases-list.
+      Configure hosts-aliases-list
     description: |
-      Description of the template.
+      Description of the task.
     lines: 1
-    seealso: []
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -135,11 +135,11 @@ mytemplates:
     link: hosts.allow-01.j2
     path: templates/hosts.allow-01.j2
     synopsis: |
-      Template hosts.allow-01.
+      Configure hosts.allow-01
     description: |
-      Description of the template.
+      Description of the task.
     lines: 1
-    seealso: []
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -148,11 +148,11 @@ mytemplates:
     link: hosts.allow-02.j2
     path: templates/hosts.allow-02.j2
     synopsis: |
-      Template hosts.allow-02.
+      Configure hosts.allow-02
     description: |
-      Description of the template.
+      Description of the task.
     lines: 1
-    seealso: []
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -161,11 +161,11 @@ mytemplates:
     link: loader.conf.j2
     path: templates/loader.conf.j2
     synopsis: |
-      Template loader.conf.
+      Configure loader.conf
     description: |
-      Description of the template.
+      Description of the task.
     lines: 1
-    seealso: []
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -174,11 +174,11 @@ mytemplates:
     link: loader.conf2.j2
     path: templates/loader.conf2.j2
     synopsis: |
-      Template loader.conf2.
+      Configure loader.conf2
     description: |
-      Description of the template.
+      Description of the task.
     lines: 1
-    seealso: []
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -187,11 +187,11 @@ mytemplates:
     link: login.conf.j2
     path: templates/login.conf.j2
     synopsis: |
-      Template login.conf.
+      Configure login.conf
     description: |
-      Description of the template.
+      Description of the task.
     lines: 1
-    seealso: []
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -200,11 +200,11 @@ mytemplates:
     link: login_conf.j2
     path: templates/login_conf.j2
     synopsis: |
-      Template login_conf.
+      Configure login_conf
     description: |
-      Description of the template.
+      Description of the task.
     lines: 1
-    seealso: []
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -213,11 +213,11 @@ mytemplates:
     link: make.conf.j2
     path: templates/make.conf.j2
     synopsis: |
-      Template make.conf.
+      Configure make.conf
     description: |
-      Description of the template.
+      Description of the task.
     lines: 1
-    seealso: []
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -226,11 +226,11 @@ mytemplates:
     link: motd.j2
     path: templates/motd.j2
     synopsis: |
-      Template motd.
+      Configure motd
     description: |
-      Description of the template.
+      Description of the task.
     lines: 1
-    seealso: []
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -239,11 +239,11 @@ mytemplates:
     link: newsyslog.conf.j2
     path: templates/newsyslog.conf.j2
     synopsis: |
-      Template newsyslog.conf.
+      Configure newsyslog.conf
     description: |
-      Description of the template.
+      Description of the task.
     lines: 1
-    seealso: []
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -252,11 +252,11 @@ mytemplates:
     link: ntp.conf.j2
     path: templates/ntp.conf.j2
     synopsis: |
-      Template ntp.conf.
+      Configure ntp.conf
     description: |
-      Description of the template.
+      Description of the task.
     lines: 1
-    seealso: []
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -265,11 +265,11 @@ mytemplates:
     link: procmailrc-includerc-capability.j2
     path: templates/procmailrc-includerc-capability.j2
     synopsis: |
-      Template procmailrc-includerc-capability.
+      Configure procmailrc-includerc-capability
     description: |
-      Description of the template.
+      Description of the task.
     lines: 1
-    seealso: []
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -278,11 +278,11 @@ mytemplates:
     link: procmailrc-includerc-duplicates.j2
     path: templates/procmailrc-includerc-duplicates.j2
     synopsis: |
-      Template procmailrc-includerc-duplicates.
+      Configure procmailrc-includerc-duplicates
     description: |
-      Description of the template.
+      Description of the task.
     lines: 1
-    seealso: []
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -291,11 +291,11 @@ mytemplates:
     link: procmailrc-includerc-get-certificate.j2
     path: templates/procmailrc-includerc-get-certificate.j2
     synopsis: |
-      Template procmailrc-includerc-get-certificate.
+      Configure procmailrc-includerc-get-certificate
     description: |
-      Description of the template.
+      Description of the task.
     lines: 1
-    seealso: []
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -304,11 +304,11 @@ mytemplates:
     link: procmailrc-includerc-get-fingerprint.j2
     path: templates/procmailrc-includerc-get-fingerprint.j2
     synopsis: |
-      Template procmailrc-includerc-get-fingerprint.
+      Configure procmailrc-includerc-get-fingerprint
     description: |
-      Description of the template.
+      Description of the task.
     lines: 1
-    seealso: []
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -317,11 +317,11 @@ mytemplates:
     link: procmailrc-includerc-get-fingerprints.j2
     path: templates/procmailrc-includerc-get-fingerprints.j2
     synopsis: |
-      Template procmailrc-includerc-get-fingerprints.
+      Configure procmailrc-includerc-get-fingerprints
     description: |
-      Description of the template.
+      Description of the task.
     lines: 1
-    seealso: []
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -330,11 +330,11 @@ mytemplates:
     link: procmailrc-includerc-get-message.j2
     path: templates/procmailrc-includerc-get-message.j2
     synopsis: |
-      Template procmailrc-includerc-get-message.
+      Configure procmailrc-includerc-get-message
     description: |
-      Description of the template.
+      Description of the task.
     lines: 1
-    seealso: []
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -343,11 +343,11 @@ mytemplates:
     link: procmailrc.j2
     path: templates/procmailrc.j2
     synopsis: |
-      Template procmailrc.
+      Configure procmailrc
     description: |
-      Description of the template.
+      Description of the task.
     lines: 1
-    seealso: []
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -356,11 +356,11 @@ mytemplates:
     link: ssh_config.j2
     path: templates/ssh_config.j2
     synopsis: |
-      Template ssh_config.
+      Configure ssh_config
     description: |
-      Description of the template.
+      Description of the task.
     lines: 1
-    seealso: []
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -369,11 +369,11 @@ mytemplates:
     link: syslog.conf.j2
     path: templates/syslog.conf.j2
     synopsis: |
-      Template syslog.conf.
+      Configure syslog.conf
     description: |
-      Description of the template.
+      Description of the task.
     lines: 1
-    seealso: []
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -382,11 +382,11 @@ mytemplates:
     link: wpa_supplicant.conf.j2
     path: templates/wpa_supplicant.conf.j2
     synopsis: |
-      Template wpa_supplicant.conf.
+      Configure wpa_supplicant.conf
     description: |
-      Description of the template.
+      Description of the task.
     lines: 1
-    seealso: []
+    seealso: {}
     notes: []
     hints: []
     warnings: []

@@ -32,10 +32,10 @@ Import handlers.
 adjkerntz.yml
 -------------
 
-Synopsis: Handler adjkerntz.
+Synopsis: Configure adjkerntz
 
 
-Description of the handler.
+Description of the task.
 
 
 [`handlers/adjkerntz.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/adjkerntz.yml>`_]
@@ -44,7 +44,7 @@ Description of the handler.
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/adjkerntz.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -56,10 +56,10 @@ Description of the handler.
 apcupsd.yml
 -----------
 
-Synopsis: Handler apcupsd.
+Synopsis: Configure apcupsd
 
 
-Description of the handler.
+Description of the task.
 
 
 [`handlers/apcupsd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/apcupsd.yml>`_]
@@ -68,7 +68,7 @@ Description of the handler.
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/apcupsd.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -80,10 +80,10 @@ Description of the handler.
 devd.yml
 --------
 
-Synopsis: Handler devd.
+Synopsis: Configure devd
 
 
-Description of the handler.
+Description of the task.
 
 
 [`handlers/devd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/devd.yml>`_]
@@ -92,7 +92,7 @@ Description of the handler.
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/devd.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -104,10 +104,10 @@ Description of the handler.
 devfs.yml
 ---------
 
-Synopsis: Handler devfs.
+Synopsis: Configure devfs
 
 
-Description of the handler.
+Description of the task.
 
 
 [`handlers/devfs.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/devfs.yml>`_]
@@ -116,7 +116,7 @@ Description of the handler.
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/devfs.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -128,10 +128,10 @@ Description of the handler.
 dhclient.yml
 ------------
 
-Synopsis: Handler dhclient.
+Synopsis: Configure dhclient
 
 
-Description of the handler.
+Description of the task.
 
 
 [`handlers/dhclient.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/dhclient.yml>`_]
@@ -140,7 +140,7 @@ Description of the handler.
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/dhclient.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -152,10 +152,10 @@ Description of the handler.
 fstab.yml
 ---------
 
-Synopsis: Handler fstab.
+Synopsis: Configure fstab
 
 
-Description of the handler.
+Description of the task.
 
 
 [`handlers/fstab.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/fstab.yml>`_]
@@ -164,7 +164,7 @@ Description of the handler.
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/fstab.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -176,10 +176,10 @@ Description of the handler.
 hostapd.yml
 -----------
 
-Synopsis: Handler hostapd.
+Synopsis: Configure hostapd
 
 
-Description of the handler.
+Description of the task.
 
 
 [`handlers/hostapd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/hostapd.yml>`_]
@@ -188,7 +188,7 @@ Description of the handler.
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/hostapd.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -200,10 +200,10 @@ Description of the handler.
 hostname.yml
 ------------
 
-Synopsis: Handler hostname.
+Synopsis: Configure hostname
 
 
-Description of the handler.
+Description of the task.
 
 
 [`handlers/hostname.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/hostname.yml>`_]
@@ -212,7 +212,7 @@ Description of the handler.
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/hostname.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -224,10 +224,10 @@ Description of the handler.
 inetd.yml
 ---------
 
-Synopsis: Handler inetd.
+Synopsis: Configure inetd
 
 
-Description of the handler.
+Description of the task.
 
 
 [`handlers/inetd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/inetd.yml>`_]
@@ -236,7 +236,7 @@ Description of the handler.
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/inetd.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -248,10 +248,10 @@ Description of the handler.
 lockd.yml
 ---------
 
-Synopsis: Handler lockd.
+Synopsis: Configure lockd
 
 
-Description of the handler.
+Description of the task.
 
 
 [`handlers/lockd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/lockd.yml>`_]
@@ -260,7 +260,7 @@ Description of the handler.
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/lockd.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -272,10 +272,10 @@ Description of the handler.
 login.yml
 ---------
 
-Synopsis: Handler login.
+Synopsis: Configure login
 
 
-Description of the handler.
+Description of the task.
 
 
 [`handlers/login.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/login.yml>`_]
@@ -284,7 +284,7 @@ Description of the handler.
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/login.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -296,10 +296,10 @@ Description of the handler.
 messages.yml
 ------------
 
-Synopsis: Handler messages.
+Synopsis: Configure messages
 
 
-Description of the handler.
+Description of the task.
 
 
 [`handlers/messages.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/messages.yml>`_]
@@ -308,7 +308,7 @@ Description of the handler.
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/messages.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -320,10 +320,10 @@ Description of the handler.
 mountd.yml
 ----------
 
-Synopsis: Handler mountd.
+Synopsis: Configure mountd
 
 
-Description of the handler.
+Description of the task.
 
 
 [`handlers/mountd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/mountd.yml>`_]
@@ -332,7 +332,7 @@ Description of the handler.
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/mountd.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -344,10 +344,10 @@ Description of the handler.
 newaliases.yml
 --------------
 
-Synopsis: Handler newaliases.
+Synopsis: Configure newaliases
 
 
-Description of the handler.
+Description of the task.
 
 
 [`handlers/newaliases.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/newaliases.yml>`_]
@@ -356,7 +356,7 @@ Description of the handler.
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/newaliases.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -368,10 +368,10 @@ Description of the handler.
 newsyslog.yml
 -------------
 
-Synopsis: Handler newsyslog.
+Synopsis: Configure newsyslog
 
 
-Description of the handler.
+Description of the task.
 
 
 [`handlers/newsyslog.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/newsyslog.yml>`_]
@@ -380,7 +380,7 @@ Description of the handler.
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/newsyslog.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -392,10 +392,10 @@ Description of the handler.
 nfsclient.yml
 -------------
 
-Synopsis: Handler nfsclient.
+Synopsis: Configure nfsclient
 
 
-Description of the handler.
+Description of the task.
 
 
 [`handlers/nfsclient.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/nfsclient.yml>`_]
@@ -404,7 +404,7 @@ Description of the handler.
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/nfsclient.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -416,10 +416,10 @@ Description of the handler.
 nfsd.yml
 --------
 
-Synopsis: Handler nfsd.
+Synopsis: Configure nfsd
 
 
-Description of the handler.
+Description of the task.
 
 
 [`handlers/nfsd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/nfsd.yml>`_]
@@ -428,7 +428,7 @@ Description of the handler.
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/nfsd.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -440,10 +440,10 @@ Description of the handler.
 ntpdate.yml
 -----------
 
-Synopsis: Handler ntpdate.
+Synopsis: Configure ntpdate
 
 
-Description of the handler.
+Description of the task.
 
 
 [`handlers/ntpdate.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/ntpdate.yml>`_]
@@ -452,7 +452,7 @@ Description of the handler.
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/ntpdate.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -464,10 +464,10 @@ Description of the handler.
 ntpd.yml
 --------
 
-Synopsis: Handler ntpd.
+Synopsis: Configure ntpd
 
 
-Description of the handler.
+Description of the task.
 
 
 [`handlers/ntpd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/ntpd.yml>`_]
@@ -476,7 +476,7 @@ Description of the handler.
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/ntpd.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -488,10 +488,10 @@ Description of the handler.
 qemu.yml
 --------
 
-Synopsis: Handler qemu.
+Synopsis: Configure qemu
 
 
-Description of the handler.
+Description of the task.
 
 
 [`handlers/qemu.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/qemu.yml>`_]
@@ -500,7 +500,7 @@ Description of the handler.
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/qemu.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -512,10 +512,10 @@ Description of the handler.
 resolvconf.yml
 --------------
 
-Synopsis: Handler resolvconf.
+Synopsis: Configure resolvconf
 
 
-Description of the handler.
+Description of the task.
 
 
 [`handlers/resolvconf.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/resolvconf.yml>`_]
@@ -524,7 +524,7 @@ Description of the handler.
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/resolvconf.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -536,10 +536,10 @@ Description of the handler.
 rpcbind.yml
 -----------
 
-Synopsis: Handler rpcbind.
+Synopsis: Configure rpcbind
 
 
-Description of the handler.
+Description of the task.
 
 
 [`handlers/rpcbind.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/rpcbind.yml>`_]
@@ -548,7 +548,7 @@ Description of the handler.
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/rpcbind.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -560,10 +560,10 @@ Description of the handler.
 smartd.yml
 ----------
 
-Synopsis: Handler smartd.
+Synopsis: Configure smartd
 
 
-Description of the handler.
+Description of the task.
 
 
 [`handlers/smartd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/smartd.yml>`_]
@@ -572,7 +572,7 @@ Description of the handler.
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/smartd.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -584,10 +584,10 @@ Description of the handler.
 snmpd.yml
 ---------
 
-Synopsis: Handler snmpd.
+Synopsis: Configure snmpd
 
 
-Description of the handler.
+Description of the task.
 
 
 [`handlers/snmpd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/snmpd.yml>`_]
@@ -596,7 +596,7 @@ Description of the handler.
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/snmpd.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -608,10 +608,10 @@ Description of the handler.
 sshd.yml
 --------
 
-Synopsis: Handler sshd.
+Synopsis: Configure sshd
 
 
-Description of the handler.
+Description of the task.
 
 
 [`handlers/sshd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/sshd.yml>`_]
@@ -620,7 +620,7 @@ Description of the handler.
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/sshd.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -632,10 +632,10 @@ Description of the handler.
 statd.yml
 ---------
 
-Synopsis: Handler statd.
+Synopsis: Configure statd
 
 
-Description of the handler.
+Description of the task.
 
 
 [`handlers/statd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/statd.yml>`_]
@@ -644,7 +644,7 @@ Description of the handler.
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/statd.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -656,10 +656,10 @@ Description of the handler.
 swap.yml
 --------
 
-Synopsis: Handler swap.
+Synopsis: Configure swap
 
 
-Description of the handler.
+Description of the task.
 
 
 [`handlers/swap.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/swap.yml>`_]
@@ -668,7 +668,7 @@ Description of the handler.
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/swap.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -680,10 +680,10 @@ Description of the handler.
 sysctl.yml
 ----------
 
-Synopsis: Handler sysctl.
+Synopsis: Configure sysctl
 
 
-Description of the handler.
+Description of the task.
 
 
 [`handlers/sysctl.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/sysctl.yml>`_]
@@ -692,7 +692,7 @@ Description of the handler.
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/sysctl.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -704,10 +704,10 @@ Description of the handler.
 syslogd.yml
 -----------
 
-Synopsis: Handler syslogd.
+Synopsis: Configure syslogd
 
 
-Description of the handler.
+Description of the task.
 
 
 [`handlers/syslogd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/syslogd.yml>`_]
@@ -716,7 +716,7 @@ Description of the handler.
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/syslogd.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -728,10 +728,10 @@ Description of the handler.
 wpasupplicant.yml
 -----------------
 
-Synopsis: Handler wpasupplicant.
+Synopsis: Configure wpasupplicant
 
 
-Description of the handler.
+Description of the task.
 
 
 [`handlers/wpasupplicant.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/wpasupplicant.yml>`_]
@@ -740,7 +740,7 @@ Description of the handler.
     :linenothreshold: 5
 .. literalinclude:: ../../handlers/wpasupplicant.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 

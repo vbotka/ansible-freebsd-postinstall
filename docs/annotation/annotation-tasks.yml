@@ -17,11 +17,11 @@ mytasks:
     link: aliases.yml
     path: tasks/aliases.yml
     synopsis: |
-      Configure aliases.
+      Configure aliases
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -30,11 +30,11 @@ mytasks:
     link: apcupsd.yml
     path: tasks/apcupsd.yml
     synopsis: |
-      Configure apcupsd.
+      Configure apcupsd
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -43,11 +43,11 @@ mytasks:
     link: authorized-key.yml
     path: tasks/authorized-key.yml
     synopsis: |
-      Configure authorized-key.
+      Configure authorized-key
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -56,11 +56,11 @@ mytasks:
     link: cloud-providers.yml
     path: tasks/cloud-providers.yml
     synopsis: |
-      Configure cloud-providers.
+      Configure cloud-providers
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -69,11 +69,11 @@ mytasks:
     link: copy.yml
     path: tasks/copy.yml
     synopsis: |
-      Configure copy.
+      Configure copy
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -82,11 +82,11 @@ mytasks:
     link: cron.yml
     path: tasks/cron.yml
     synopsis: |
-      Configure cron.
+      Configure cron
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -95,11 +95,11 @@ mytasks:
     link: debug.yml
     path: tasks/debug.yml
     synopsis: |
-      Configure debug.
+      Configure debug
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -108,11 +108,11 @@ mytasks:
     link: devd.yml
     path: tasks/devd.yml
     synopsis: |
-      Configure devd.
+      Configure devd
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -121,11 +121,11 @@ mytasks:
     link: devfs.yml
     path: tasks/devfs.yml
     synopsis: |
-      Configure devfs.
+      Configure devfs
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -134,11 +134,11 @@ mytasks:
     link: dhclient.yml
     path: tasks/dhclient.yml
     synopsis: |
-      Configure dhclient.
+      Configure dhclient
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -147,11 +147,11 @@ mytasks:
     link: freebsd-update.yml
     path: tasks/freebsd-update.yml
     synopsis: |
-      Configure freebsd-update.
+      Configure freebsd-update
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -160,11 +160,11 @@ mytasks:
     link: fstab.yml
     path: tasks/fstab.yml
     synopsis: |
-      Configure fstab.
+      Configure fstab
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -173,11 +173,11 @@ mytasks:
     link: gitserver.yml
     path: tasks/gitserver.yml
     synopsis: |
-      Configure gitserver.
+      Configure gitserver
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -186,11 +186,11 @@ mytasks:
     link: groups.yml
     path: tasks/groups.yml
     synopsis: |
-      Configure groups.
+      Configure groups
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -199,11 +199,11 @@ mytasks:
     link: groupwrappers.yml
     path: tasks/groupwrappers.yml
     synopsis: |
-      Configure groupwrappers.
+      Configure groupwrappers
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -212,11 +212,11 @@ mytasks:
     link: hostapd.yml
     path: tasks/hostapd.yml
     synopsis: |
-      Configure hostapd.
+      Configure hostapd
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -225,11 +225,11 @@ mytasks:
     link: hostname.yml
     path: tasks/hostname.yml
     synopsis: |
-      Configure hostname.
+      Configure hostname
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -238,11 +238,11 @@ mytasks:
     link: hosts.yml
     path: tasks/hosts.yml
     synopsis: |
-      Configure hosts.
+      Configure hosts
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -251,11 +251,11 @@ mytasks:
     link: inetd.yml
     path: tasks/inetd.yml
     synopsis: |
-      Configure inetd.
+      Configure inetd
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -264,11 +264,11 @@ mytasks:
     link: libmap.yml
     path: tasks/libmap.yml
     synopsis: |
-      Configure libmap.
+      Configure libmap
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -277,11 +277,11 @@ mytasks:
     link: linux.yml
     path: tasks/linux.yml
     synopsis: |
-      Configure linux.
+      Configure linux
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -290,11 +290,11 @@ mytasks:
     link: loader.yml
     path: tasks/loader.yml
     synopsis: |
-      Configure loader.
+      Configure loader
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -303,11 +303,11 @@ mytasks:
     link: login.yml
     path: tasks/login.yml
     synopsis: |
-      Configure login.
+      Configure login
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -316,11 +316,11 @@ mytasks:
     link: make.yml
     path: tasks/make.yml
     synopsis: |
-      Configure make.
+      Configure make
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -329,11 +329,11 @@ mytasks:
     link: motd.yml
     path: tasks/motd.yml
     synopsis: |
-      Configure motd.
+      Configure motd
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -342,11 +342,11 @@ mytasks:
     link: mount-img.yml
     path: tasks/mount-img.yml
     synopsis: |
-      Configure mount-img.
+      Configure mount-img
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -355,11 +355,11 @@ mytasks:
     link: mount-iso.yml
     path: tasks/mount-iso.yml
     synopsis: |
-      Configure mount-iso.
+      Configure mount-iso
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -368,11 +368,11 @@ mytasks:
     link: mount-vnode.yml
     path: tasks/mount-vnode.yml
     synopsis: |
-      Configure mount-vnode.
+      Configure mount-vnode
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -455,11 +455,11 @@ mytasks:
     link: ntp.yml
     path: tasks/ntp.yml
     synopsis: |
-      Configure ntp.
+      Configure ntp
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -468,11 +468,11 @@ mytasks:
     link: ntpdate.yml
     path: tasks/ntpdate.yml
     synopsis: |
-      Configure ntpdate.
+      Configure ntpdate
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -481,11 +481,11 @@ mytasks:
     link: packages-install.yml
     path: tasks/packages-install.yml
     synopsis: |
-      Configure packages-install.
+      Configure packages-install
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -494,11 +494,11 @@ mytasks:
     link: packages.yml
     path: tasks/packages.yml
     synopsis: |
-      Configure packages.
+      Configure packages
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -507,11 +507,11 @@ mytasks:
     link: passwords.yml
     path: tasks/passwords.yml
     synopsis: |
-      Configure passwords.
+      Configure passwords
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -520,11 +520,11 @@ mytasks:
     link: periodic.yml
     path: tasks/periodic.yml
     synopsis: |
-      Configure periodic.
+      Configure periodic
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -533,11 +533,11 @@ mytasks:
     link: procmail.yml
     path: tasks/procmail.yml
     synopsis: |
-      Configure procmail.
+      Configure procmail
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -546,11 +546,11 @@ mytasks:
     link: qemu.yml
     path: tasks/qemu.yml
     synopsis: |
-      Configure qemu.
+      Configure qemu
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -559,11 +559,11 @@ mytasks:
     link: resolvconf.yml
     path: tasks/resolvconf.yml
     synopsis: |
-      Configure resolvconf.
+      Configure resolvconf
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -572,11 +572,11 @@ mytasks:
     link: sanity.yml
     path: tasks/sanity.yml
     synopsis: |
-      Configure sanity.
+      Configure sanity
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -585,11 +585,11 @@ mytasks:
     link: smartd.yml
     path: tasks/smartd.yml
     synopsis: |
-      Configure smartd.
+      Configure smartd
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -598,11 +598,11 @@ mytasks:
     link: snmpd.yml
     path: tasks/snmpd.yml
     synopsis: |
-      Configure snmpd.
+      Configure snmpd
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -611,11 +611,11 @@ mytasks:
     link: ssh.yml
     path: tasks/ssh.yml
     synopsis: |
-      Configure ssh.
+      Configure ssh
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -624,11 +624,11 @@ mytasks:
     link: sshd.yml
     path: tasks/sshd.yml
     synopsis: |
-      Configure sshd.
+      Configure sshd
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -637,11 +637,11 @@ mytasks:
     link: sudoers.yml
     path: tasks/sudoers.yml
     synopsis: |
-      Configure sudoers.
+      Configure sudoers
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -650,11 +650,11 @@ mytasks:
     link: swap.yml
     path: tasks/swap.yml
     synopsis: |
-      Configure swap.
+      Configure swap
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -663,11 +663,11 @@ mytasks:
     link: sysctl.yml
     path: tasks/sysctl.yml
     synopsis: |
-      Configure sysctl.
+      Configure sysctl
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -676,11 +676,11 @@ mytasks:
     link: syslogd.yml
     path: tasks/syslogd.yml
     synopsis: |
-      Configure syslogd.
+      Configure syslogd
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -689,11 +689,11 @@ mytasks:
     link: timezone.yml
     path: tasks/timezone.yml
     synopsis: |
-      Configure timezone.
+      Configure timezone
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -702,11 +702,11 @@ mytasks:
     link: tmpmfs.yml
     path: tasks/tmpmfs.yml
     synopsis: |
-      Configure tmpmfs.
+      Configure tmpmfs
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -715,11 +715,11 @@ mytasks:
     link: users.yml
     path: tasks/users.yml
     synopsis: |
-      Configure users.
+      Configure users
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -728,11 +728,11 @@ mytasks:
     link: vars.yml
     path: tasks/vars.yml
     synopsis: |
-      Configure vars.
+      Configure vars
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -741,11 +741,11 @@ mytasks:
     link: wpasupplicant.yml
     path: tasks/wpasupplicant.yml
     synopsis: |
-      Configure wpasupplicant.
+      Configure wpasupplicant
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -754,11 +754,11 @@ mytasks:
     link: digitalocean.yml
     path: tasks/cloud-providers/digitalocean.yml
     synopsis: |
-      Configure digitalocean.
+      Configure digitalocean
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -767,11 +767,11 @@ mytasks:
     link: sync-default.yml
     path: tasks/copy/sync-default.yml
     synopsis: |
-      Configure sync-default.
+      Configure sync-default
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -780,11 +780,11 @@ mytasks:
     link: sync-optional.yml
     path: tasks/copy/sync-optional.yml
     synopsis: |
-      Configure sync-optional.
+      Configure sync-optional
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -793,11 +793,11 @@ mytasks:
     link: unarch-default.yml
     path: tasks/copy/unarch-default.yml
     synopsis: |
-      Configure unarch-default.
+      Configure unarch-default
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -806,11 +806,11 @@ mytasks:
     link: unarch-optional.yml
     path: tasks/copy/unarch-optional.yml
     synopsis: |
-      Configure unarch-optional.
+      Configure unarch-optional
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -819,11 +819,11 @@ mytasks:
     link: cron-rename-entry.yml
     path: tasks/fn/cron-rename-entry.yml
     synopsis: |
-      Configure cron-rename-entry.
+      Configure cron-rename-entry
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -832,11 +832,11 @@ mytasks:
     link: mdconfig-attach-disk.yml
     path: tasks/fn/mdconfig-attach-disk.yml
     synopsis: |
-      Configure mdconfig-attach-disk.
+      Configure mdconfig-attach-disk
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -845,11 +845,11 @@ mytasks:
     link: mdconfig-detach-disk.yml
     path: tasks/fn/mdconfig-detach-disk.yml
     synopsis: |
-      Configure mdconfig-detach-disk.
+      Configure mdconfig-detach-disk
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []
@@ -858,11 +858,11 @@ mytasks:
     link: rcconf-item.yml
     path: tasks/fn/rcconf-item.yml
     synopsis: |
-      Configure rcconf-item.
+      Configure rcconf-item
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
+    lines: 1
+    seealso: {}
     notes: []
     hints: []
     warnings: []

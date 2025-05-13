@@ -5,6 +5,10 @@
   gather_facts: false
   debugger: on_failed
 
+  vars:
+
+    ansible_python_interpreter: auto_silent
+
   tasks:
 
     - name: Tasks

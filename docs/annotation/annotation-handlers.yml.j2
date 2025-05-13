@@ -14,25 +14,17 @@ myhandlers:
     hints: []
     warnings: []
 {% for file in my_files %}
-  - file: {{ file.0 ~ file.1 }}
-    link: {{ file.0 ~ file.1 }}
+  - file: {{ file.1 }}
+    link: {{ file.1 }}
     path: handlers/{{ file.2 }}
     synopsis: |
-    {%- if lookup('varnames', 'handler_' ~ file.0 ~ '_synopsis') | length > 0 %}
-      {{ lookup('vars', 'handler_' ~ file.0 ~ '_synopsis') | indent(width=6) }}
-    {%- else %}
-      Handler {{ file.0 }}.
-    {%- endif %}
+      {{ lookup('vars', 'handler_' ~ file.0 ~ '_synopsis', default='Configure ' ~ file.0) | indent(width=6) }}
     description: |
-    {%- if lookup('varnames', 'handler_' ~ file.0 ~ '_description') | length > 0 %}
-      {{ lookup('vars', 'handler_' ~ file.0 ~ '_description') | indent(width=6) }}
-    {%- else %}
-      Description of the handler.
-    {%- endif %}
-    lines: {% if lookup('varnames', 'handler_' ~ file.0 ~ '_lines') | length > 0 %}{{ lookup('vars', 'handler_' ~ file.0 ~ '_lines') }}{% else %}1,2{% endif %}
-    seealso: {% if lookup('varnames', 'handler_' ~ file.0 ~ '_seealso') | length > 0 %}{{ lookup('vars', 'handler_' ~ file.0 ~ '_seealso') | indent(width=6) }}{% else %}[]{% endif %}
-    notes: {% if lookup('varnames', 'handler_' ~ file.0 ~ '_note') | length > 0 %}{{ lookup('vars', 'handler_' ~ file.0 ~ '_note') | indent(width=6) }}{% else %}[]{% endif %}
-    hints: {% if lookup('varnames', 'handler_' ~ file.0 ~ '_hint') | length > 0 %}{{ lookup('vars', 'handler_' ~ file.0 ~ '_hint') | indent(width=6) }}{% else %}[]{% endif %}
-    warnings: {% if lookup('varnames', 'handler_' ~ file.0 ~ '_warning') | length > 0 %}{{ lookup('vars', 'handler_' ~ file.0 ~ '_warning') | indent(width=6) }}{% else %}[]{% endif %}
+      {{ lookup('vars', 'handler_' ~ file.0 ~ '_description', default='Description of the task.') | indent(width=6) }}
+    lines: {{ lookup('vars', 'handler_' ~ file.0 ~ '_lines', default='1') }}
+    seealso: {{ lookup('vars', 'handler_' ~ file.0 ~ '_seealso', default={}) }}
+    notes: {{ lookup('vars', 'handler_' ~ file.0 ~ '_note', default=[]) }}
+    hints: {{ lookup('vars', 'handler_' ~ file.0 ~ '_hint', default=[]) }}
+    warnings: {{ lookup('vars', 'handler_' ~ file.0 ~ '_warning', default=[]) }}
 {% endfor %}
 ...
