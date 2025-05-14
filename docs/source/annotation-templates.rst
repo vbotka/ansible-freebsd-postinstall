@@ -8,10 +8,10 @@ Templates
 apcupsd.conf.j2
 ---------------
 
-Synopsis: Template apcupsd.conf.
+Synopsis: Configure apcupsd.conf
 
 
-Description of the template.
+Description of the task.
 
 
 [`templates/apcupsd.conf.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/apcupsd.conf.j2>`_]
@@ -32,10 +32,10 @@ Description of the template.
 exports.j2
 ----------
 
-Synopsis: Template exports.
+Synopsis: Configure exports
 
 
-Description of the template.
+Description of the task.
 
 
 [`templates/exports.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/exports.j2>`_]
@@ -56,10 +56,10 @@ Description of the template.
 freebsd-update.conf.j2
 ----------------------
 
-Synopsis: Template freebsd-update.conf.
+Synopsis: Configure freebsd-update.conf
 
 
-Description of the template.
+Description of the task.
 
 
 [`templates/freebsd-update.conf.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/freebsd-update.conf.j2>`_]
@@ -80,10 +80,10 @@ Description of the template.
 freebsd-update.conf2.j2
 -----------------------
 
-Synopsis: Template freebsd-update.conf2.
+Synopsis: Configure freebsd-update.conf2
 
 
-Description of the template.
+Description of the task.
 
 
 [`templates/freebsd-update.conf2.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/freebsd-update.conf2.j2>`_]
@@ -104,10 +104,10 @@ Description of the template.
 groupadd.j2
 -----------
 
-Synopsis: Template groupadd.
+Synopsis: Configure groupadd
 
 
-Description of the template.
+Description of the task.
 
 
 [`templates/groupadd.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/groupadd.j2>`_]
@@ -128,10 +128,10 @@ Description of the template.
 groupdel.j2
 -----------
 
-Synopsis: Template groupdel.
+Synopsis: Configure groupdel
 
 
-Description of the template.
+Description of the task.
 
 
 [`templates/groupdel.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/groupdel.j2>`_]
@@ -152,10 +152,10 @@ Description of the template.
 groupmod.j2
 -----------
 
-Synopsis: Template groupmod.
+Synopsis: Configure groupmod
 
 
-Description of the template.
+Description of the task.
 
 
 [`templates/groupmod.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/groupmod.j2>`_]
@@ -176,10 +176,10 @@ Description of the template.
 hostapd.conf.j2
 ---------------
 
-Synopsis: Template hostapd.conf.
+Synopsis: Configure hostapd.conf
 
 
-Description of the template.
+Description of the task.
 
 
 [`templates/hostapd.conf.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/hostapd.conf.j2>`_]
@@ -200,10 +200,10 @@ Description of the template.
 hosts.j2
 --------
 
-Synopsis: Template hosts.
+Synopsis: Configure hosts
 
 
-Description of the template.
+Description of the task.
 
 
 [`templates/hosts.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/hosts.j2>`_]
@@ -224,10 +224,10 @@ Description of the template.
 hosts-aliases-list.j2
 ---------------------
 
-Synopsis: Template hosts-aliases-list.
+Synopsis: Configure hosts-aliases-list
 
 
-Description of the template.
+Description of the task.
 
 
 [`templates/hosts-aliases-list.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/hosts-aliases-list.j2>`_]
@@ -248,10 +248,10 @@ Description of the template.
 hosts.allow-01.j2
 -----------------
 
-Synopsis: Template hosts.allow-01.
+Synopsis: Configure hosts.allow-01
 
 
-Description of the template.
+Description of the task.
 
 
 [`templates/hosts.allow-01.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/hosts.allow-01.j2>`_]
@@ -272,10 +272,10 @@ Description of the template.
 hosts.allow-02.j2
 -----------------
 
-Synopsis: Template hosts.allow-02.
+Synopsis: Configure hosts.allow-02
 
 
-Description of the template.
+Description of the task.
 
 
 [`templates/hosts.allow-02.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/hosts.allow-02.j2>`_]
@@ -296,10 +296,10 @@ Description of the template.
 loader.conf.j2
 --------------
 
-Synopsis: Template loader.conf.
+Synopsis: Configure loader.conf
 
 
-Description of the template.
+Description of the task.
 
 
 [`templates/loader.conf.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/loader.conf.j2>`_]
@@ -320,10 +320,10 @@ Description of the template.
 loader.conf2.j2
 ---------------
 
-Synopsis: Template loader.conf2.
+Synopsis: Configure loader.conf2
 
 
-Description of the template.
+Description of the task.
 
 
 [`templates/loader.conf2.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/loader.conf2.j2>`_]
@@ -344,10 +344,10 @@ Description of the template.
 login.conf.j2
 -------------
 
-Synopsis: Template login.conf.
+Synopsis: Configure login.conf
 
 
-Description of the template.
+Description of the task.
 
 
 [`templates/login.conf.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/login.conf.j2>`_]
@@ -368,10 +368,10 @@ Description of the template.
 login_conf.j2
 -------------
 
-Synopsis: Template login_conf.
+Synopsis: Configure login_conf
 
 
-Description of the template.
+Description of the task.
 
 
 [`templates/login_conf.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/login_conf.j2>`_]
@@ -392,10 +392,10 @@ Description of the template.
 make.conf.j2
 ------------
 
-Synopsis: Template make.conf.
+Synopsis: Configure make.conf
 
 
-Description of the template.
+Description of the task.
 
 
 [`templates/make.conf.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/make.conf.j2>`_]
@@ -416,10 +416,10 @@ Description of the template.
 motd.j2
 -------
 
-Synopsis: Template motd.
+Synopsis: Configure motd
 
 
-Description of the template.
+Description of the task.
 
 
 [`templates/motd.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/motd.j2>`_]
@@ -440,10 +440,10 @@ Description of the template.
 newsyslog.conf.j2
 -----------------
 
-Synopsis: Template newsyslog.conf.
+Synopsis: Configure newsyslog.conf
 
 
-Description of the template.
+Description of the task.
 
 
 [`templates/newsyslog.conf.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/newsyslog.conf.j2>`_]
@@ -464,10 +464,10 @@ Description of the template.
 ntp.conf.j2
 -----------
 
-Synopsis: Template ntp.conf.
+Synopsis: Configure ntp.conf
 
 
-Description of the template.
+Description of the task.
 
 
 [`templates/ntp.conf.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/ntp.conf.j2>`_]
@@ -488,10 +488,10 @@ Description of the template.
 procmailrc-includerc-capability.j2
 ----------------------------------
 
-Synopsis: Template procmailrc-includerc-capability.
+Synopsis: Configure procmailrc-includerc-capability
 
 
-Description of the template.
+Description of the task.
 
 
 [`templates/procmailrc-includerc-capability.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/procmailrc-includerc-capability.j2>`_]
@@ -512,10 +512,10 @@ Description of the template.
 procmailrc-includerc-duplicates.j2
 ----------------------------------
 
-Synopsis: Template procmailrc-includerc-duplicates.
+Synopsis: Configure procmailrc-includerc-duplicates
 
 
-Description of the template.
+Description of the task.
 
 
 [`templates/procmailrc-includerc-duplicates.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/procmailrc-includerc-duplicates.j2>`_]
@@ -536,10 +536,10 @@ Description of the template.
 procmailrc-includerc-get-certificate.j2
 ---------------------------------------
 
-Synopsis: Template procmailrc-includerc-get-certificate.
+Synopsis: Configure procmailrc-includerc-get-certificate
 
 
-Description of the template.
+Description of the task.
 
 
 [`templates/procmailrc-includerc-get-certificate.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/procmailrc-includerc-get-certificate.j2>`_]
@@ -560,10 +560,10 @@ Description of the template.
 procmailrc-includerc-get-fingerprint.j2
 ---------------------------------------
 
-Synopsis: Template procmailrc-includerc-get-fingerprint.
+Synopsis: Configure procmailrc-includerc-get-fingerprint
 
 
-Description of the template.
+Description of the task.
 
 
 [`templates/procmailrc-includerc-get-fingerprint.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/procmailrc-includerc-get-fingerprint.j2>`_]
@@ -584,10 +584,10 @@ Description of the template.
 procmailrc-includerc-get-fingerprints.j2
 ----------------------------------------
 
-Synopsis: Template procmailrc-includerc-get-fingerprints.
+Synopsis: Configure procmailrc-includerc-get-fingerprints
 
 
-Description of the template.
+Description of the task.
 
 
 [`templates/procmailrc-includerc-get-fingerprints.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/procmailrc-includerc-get-fingerprints.j2>`_]
@@ -608,10 +608,10 @@ Description of the template.
 procmailrc-includerc-get-message.j2
 -----------------------------------
 
-Synopsis: Template procmailrc-includerc-get-message.
+Synopsis: Configure procmailrc-includerc-get-message
 
 
-Description of the template.
+Description of the task.
 
 
 [`templates/procmailrc-includerc-get-message.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/procmailrc-includerc-get-message.j2>`_]
@@ -632,10 +632,10 @@ Description of the template.
 procmailrc.j2
 -------------
 
-Synopsis: Template procmailrc.
+Synopsis: Configure procmailrc
 
 
-Description of the template.
+Description of the task.
 
 
 [`templates/procmailrc.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/procmailrc.j2>`_]
@@ -656,10 +656,10 @@ Description of the template.
 ssh_config.j2
 -------------
 
-Synopsis: Template ssh_config.
+Synopsis: Configure ssh_config
 
 
-Description of the template.
+Description of the task.
 
 
 [`templates/ssh_config.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/ssh_config.j2>`_]
@@ -680,10 +680,10 @@ Description of the template.
 syslog.conf.j2
 --------------
 
-Synopsis: Template syslog.conf.
+Synopsis: Configure syslog.conf
 
 
-Description of the template.
+Description of the task.
 
 
 [`templates/syslog.conf.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/syslog.conf.j2>`_]
@@ -704,10 +704,10 @@ Description of the template.
 wpa_supplicant.conf.j2
 ----------------------
 
-Synopsis: Template wpa_supplicant.conf.
+Synopsis: Configure wpa_supplicant.conf
 
 
-Description of the template.
+Description of the task.
 
 
 [`templates/wpa_supplicant.conf.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/wpa_supplicant.conf.j2>`_]

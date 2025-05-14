@@ -32,7 +32,7 @@ Import tasks if enabled.
 aliases.yml
 -----------
 
-Synopsis: Configure aliases.
+Synopsis: Configure aliases
 
 
 Description of the task.
@@ -44,7 +44,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/aliases.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -56,7 +56,7 @@ Description of the task.
 apcupsd.yml
 -----------
 
-Synopsis: Configure apcupsd.
+Synopsis: Configure apcupsd
 
 
 Description of the task.
@@ -68,7 +68,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/apcupsd.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -80,7 +80,7 @@ Description of the task.
 authorized-key.yml
 ------------------
 
-Synopsis: Configure authorized-key.
+Synopsis: Configure authorized-key
 
 
 Description of the task.
@@ -92,7 +92,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/authorized-key.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -104,7 +104,7 @@ Description of the task.
 cloud-providers.yml
 -------------------
 
-Synopsis: Configure cloud-providers.
+Synopsis: Configure cloud-providers
 
 
 Description of the task.
@@ -116,7 +116,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/cloud-providers.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -128,7 +128,7 @@ Description of the task.
 copy.yml
 --------
 
-Synopsis: Configure copy.
+Synopsis: Configure copy
 
 
 Description of the task.
@@ -140,7 +140,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/copy.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -152,7 +152,7 @@ Description of the task.
 cron.yml
 --------
 
-Synopsis: Configure cron.
+Synopsis: Configure cron
 
 
 Description of the task.
@@ -164,7 +164,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/cron.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -176,7 +176,7 @@ Description of the task.
 debug.yml
 ---------
 
-Synopsis: Configure debug.
+Synopsis: Configure debug
 
 
 Description of the task.
@@ -188,7 +188,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/debug.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -200,7 +200,7 @@ Description of the task.
 devd.yml
 --------
 
-Synopsis: Configure devd.
+Synopsis: Configure devd
 
 
 Description of the task.
@@ -212,7 +212,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/devd.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -224,7 +224,7 @@ Description of the task.
 devfs.yml
 ---------
 
-Synopsis: Configure devfs.
+Synopsis: Configure devfs
 
 
 Description of the task.
@@ -236,7 +236,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/devfs.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -248,7 +248,7 @@ Description of the task.
 dhclient.yml
 ------------
 
-Synopsis: Configure dhclient.
+Synopsis: Configure dhclient
 
 
 Description of the task.
@@ -260,7 +260,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/dhclient.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -272,7 +272,7 @@ Description of the task.
 freebsd-update.yml
 ------------------
 
-Synopsis: Configure freebsd-update.
+Synopsis: Configure freebsd-update
 
 
 Description of the task.
@@ -284,7 +284,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/freebsd-update.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -296,7 +296,7 @@ Description of the task.
 fstab.yml
 ---------
 
-Synopsis: Configure fstab.
+Synopsis: Configure fstab
 
 
 Description of the task.
@@ -308,7 +308,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/fstab.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -320,7 +320,7 @@ Description of the task.
 gitserver.yml
 -------------
 
-Synopsis: Configure gitserver.
+Synopsis: Configure gitserver
 
 
 Description of the task.
@@ -332,7 +332,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/gitserver.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -344,7 +344,7 @@ Description of the task.
 groups.yml
 ----------
 
-Synopsis: Configure groups.
+Synopsis: Configure groups
 
 
 Description of the task.
@@ -356,7 +356,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/groups.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -368,7 +368,7 @@ Description of the task.
 groupwrappers.yml
 -----------------
 
-Synopsis: Configure groupwrappers.
+Synopsis: Configure groupwrappers
 
 
 Description of the task.
@@ -380,7 +380,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/groupwrappers.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -392,7 +392,7 @@ Description of the task.
 hostapd.yml
 -----------
 
-Synopsis: Configure hostapd.
+Synopsis: Configure hostapd
 
 
 Description of the task.
@@ -404,7 +404,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/hostapd.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -416,7 +416,7 @@ Description of the task.
 hostname.yml
 ------------
 
-Synopsis: Configure hostname.
+Synopsis: Configure hostname
 
 
 Description of the task.
@@ -428,7 +428,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/hostname.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -440,7 +440,7 @@ Description of the task.
 hosts.yml
 ---------
 
-Synopsis: Configure hosts.
+Synopsis: Configure hosts
 
 
 Description of the task.
@@ -452,7 +452,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/hosts.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -464,7 +464,7 @@ Description of the task.
 inetd.yml
 ---------
 
-Synopsis: Configure inetd.
+Synopsis: Configure inetd
 
 
 Description of the task.
@@ -476,7 +476,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/inetd.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -488,7 +488,7 @@ Description of the task.
 libmap.yml
 ----------
 
-Synopsis: Configure libmap.
+Synopsis: Configure libmap
 
 
 Description of the task.
@@ -500,7 +500,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/libmap.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -512,7 +512,7 @@ Description of the task.
 linux.yml
 ---------
 
-Synopsis: Configure linux.
+Synopsis: Configure linux
 
 
 Description of the task.
@@ -524,7 +524,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/linux.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -536,7 +536,7 @@ Description of the task.
 loader.yml
 ----------
 
-Synopsis: Configure loader.
+Synopsis: Configure loader
 
 
 Description of the task.
@@ -548,7 +548,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/loader.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -560,7 +560,7 @@ Description of the task.
 login.yml
 ---------
 
-Synopsis: Configure login.
+Synopsis: Configure login
 
 
 Description of the task.
@@ -572,7 +572,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/login.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -584,7 +584,7 @@ Description of the task.
 make.yml
 --------
 
-Synopsis: Configure make.
+Synopsis: Configure make
 
 
 Description of the task.
@@ -596,7 +596,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/make.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -608,7 +608,7 @@ Description of the task.
 motd.yml
 --------
 
-Synopsis: Configure motd.
+Synopsis: Configure motd
 
 
 Description of the task.
@@ -620,7 +620,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/motd.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -632,7 +632,7 @@ Description of the task.
 mount-img.yml
 -------------
 
-Synopsis: Configure mount-img.
+Synopsis: Configure mount-img
 
 
 Description of the task.
@@ -644,7 +644,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/mount-img.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -656,7 +656,7 @@ Description of the task.
 mount-iso.yml
 -------------
 
-Synopsis: Configure mount-iso.
+Synopsis: Configure mount-iso
 
 
 Description of the task.
@@ -668,7 +668,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/mount-iso.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -680,7 +680,7 @@ Description of the task.
 mount-vnode.yml
 ---------------
 
-Synopsis: Configure mount-vnode.
+Synopsis: Configure mount-vnode
 
 
 Description of the task.
@@ -692,7 +692,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/mount-vnode.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -816,7 +816,7 @@ Synopsis: Configure NFS server.
 ntp.yml
 -------
 
-Synopsis: Configure ntp.
+Synopsis: Configure ntp
 
 
 Description of the task.
@@ -828,7 +828,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/ntp.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -840,7 +840,7 @@ Description of the task.
 ntpdate.yml
 -----------
 
-Synopsis: Configure ntpdate.
+Synopsis: Configure ntpdate
 
 
 Description of the task.
@@ -852,7 +852,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/ntpdate.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -864,7 +864,7 @@ Description of the task.
 packages-install.yml
 --------------------
 
-Synopsis: Configure packages-install.
+Synopsis: Configure packages-install
 
 
 Description of the task.
@@ -876,7 +876,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/packages-install.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -888,7 +888,7 @@ Description of the task.
 packages.yml
 ------------
 
-Synopsis: Configure packages.
+Synopsis: Configure packages
 
 
 Description of the task.
@@ -900,7 +900,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/packages.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -912,7 +912,7 @@ Description of the task.
 passwords.yml
 -------------
 
-Synopsis: Configure passwords.
+Synopsis: Configure passwords
 
 
 Description of the task.
@@ -924,7 +924,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/passwords.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -936,7 +936,7 @@ Description of the task.
 periodic.yml
 ------------
 
-Synopsis: Configure periodic.
+Synopsis: Configure periodic
 
 
 Description of the task.
@@ -948,7 +948,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/periodic.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -960,7 +960,7 @@ Description of the task.
 procmail.yml
 ------------
 
-Synopsis: Configure procmail.
+Synopsis: Configure procmail
 
 
 Description of the task.
@@ -972,7 +972,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/procmail.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -984,7 +984,7 @@ Description of the task.
 qemu.yml
 --------
 
-Synopsis: Configure qemu.
+Synopsis: Configure qemu
 
 
 Description of the task.
@@ -996,7 +996,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/qemu.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -1008,7 +1008,7 @@ Description of the task.
 resolvconf.yml
 --------------
 
-Synopsis: Configure resolvconf.
+Synopsis: Configure resolvconf
 
 
 Description of the task.
@@ -1020,7 +1020,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/resolvconf.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -1032,7 +1032,7 @@ Description of the task.
 sanity.yml
 ----------
 
-Synopsis: Configure sanity.
+Synopsis: Configure sanity
 
 
 Description of the task.
@@ -1044,7 +1044,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/sanity.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -1056,7 +1056,7 @@ Description of the task.
 smartd.yml
 ----------
 
-Synopsis: Configure smartd.
+Synopsis: Configure smartd
 
 
 Description of the task.
@@ -1068,7 +1068,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/smartd.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -1080,7 +1080,7 @@ Description of the task.
 snmpd.yml
 ---------
 
-Synopsis: Configure snmpd.
+Synopsis: Configure snmpd
 
 
 Description of the task.
@@ -1092,7 +1092,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/snmpd.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -1104,7 +1104,7 @@ Description of the task.
 ssh.yml
 -------
 
-Synopsis: Configure ssh.
+Synopsis: Configure ssh
 
 
 Description of the task.
@@ -1116,7 +1116,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/ssh.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -1128,7 +1128,7 @@ Description of the task.
 sshd.yml
 --------
 
-Synopsis: Configure sshd.
+Synopsis: Configure sshd
 
 
 Description of the task.
@@ -1140,7 +1140,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/sshd.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -1152,7 +1152,7 @@ Description of the task.
 sudoers.yml
 -----------
 
-Synopsis: Configure sudoers.
+Synopsis: Configure sudoers
 
 
 Description of the task.
@@ -1164,7 +1164,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/sudoers.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -1176,7 +1176,7 @@ Description of the task.
 swap.yml
 --------
 
-Synopsis: Configure swap.
+Synopsis: Configure swap
 
 
 Description of the task.
@@ -1188,7 +1188,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/swap.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -1200,7 +1200,7 @@ Description of the task.
 sysctl.yml
 ----------
 
-Synopsis: Configure sysctl.
+Synopsis: Configure sysctl
 
 
 Description of the task.
@@ -1212,7 +1212,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/sysctl.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -1224,7 +1224,7 @@ Description of the task.
 syslogd.yml
 -----------
 
-Synopsis: Configure syslogd.
+Synopsis: Configure syslogd
 
 
 Description of the task.
@@ -1236,7 +1236,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/syslogd.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -1248,7 +1248,7 @@ Description of the task.
 timezone.yml
 ------------
 
-Synopsis: Configure timezone.
+Synopsis: Configure timezone
 
 
 Description of the task.
@@ -1260,7 +1260,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/timezone.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -1272,7 +1272,7 @@ Description of the task.
 tmpmfs.yml
 ----------
 
-Synopsis: Configure tmpmfs.
+Synopsis: Configure tmpmfs
 
 
 Description of the task.
@@ -1284,7 +1284,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/tmpmfs.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -1296,7 +1296,7 @@ Description of the task.
 users.yml
 ---------
 
-Synopsis: Configure users.
+Synopsis: Configure users
 
 
 Description of the task.
@@ -1308,7 +1308,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/users.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -1320,7 +1320,7 @@ Description of the task.
 vars.yml
 --------
 
-Synopsis: Configure vars.
+Synopsis: Configure vars
 
 
 Description of the task.
@@ -1332,7 +1332,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/vars.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -1344,7 +1344,7 @@ Description of the task.
 wpasupplicant.yml
 -----------------
 
-Synopsis: Configure wpasupplicant.
+Synopsis: Configure wpasupplicant
 
 
 Description of the task.
@@ -1356,7 +1356,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/wpasupplicant.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -1368,7 +1368,7 @@ Description of the task.
 digitalocean.yml
 ----------------
 
-Synopsis: Configure digitalocean.
+Synopsis: Configure digitalocean
 
 
 Description of the task.
@@ -1380,7 +1380,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/cloud-providers/digitalocean.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -1392,7 +1392,7 @@ Description of the task.
 sync-default.yml
 ----------------
 
-Synopsis: Configure sync-default.
+Synopsis: Configure sync-default
 
 
 Description of the task.
@@ -1404,7 +1404,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/copy/sync-default.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -1416,7 +1416,7 @@ Description of the task.
 sync-optional.yml
 -----------------
 
-Synopsis: Configure sync-optional.
+Synopsis: Configure sync-optional
 
 
 Description of the task.
@@ -1428,7 +1428,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/copy/sync-optional.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -1440,7 +1440,7 @@ Description of the task.
 unarch-default.yml
 ------------------
 
-Synopsis: Configure unarch-default.
+Synopsis: Configure unarch-default
 
 
 Description of the task.
@@ -1452,7 +1452,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/copy/unarch-default.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -1464,7 +1464,7 @@ Description of the task.
 unarch-optional.yml
 -------------------
 
-Synopsis: Configure unarch-optional.
+Synopsis: Configure unarch-optional
 
 
 Description of the task.
@@ -1476,7 +1476,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/copy/unarch-optional.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -1488,7 +1488,7 @@ Description of the task.
 cron-rename-entry.yml
 ---------------------
 
-Synopsis: Configure cron-rename-entry.
+Synopsis: Configure cron-rename-entry
 
 
 Description of the task.
@@ -1500,7 +1500,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/fn/cron-rename-entry.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -1512,7 +1512,7 @@ Description of the task.
 mdconfig-attach-disk.yml
 ------------------------
 
-Synopsis: Configure mdconfig-attach-disk.
+Synopsis: Configure mdconfig-attach-disk
 
 
 Description of the task.
@@ -1524,7 +1524,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/fn/mdconfig-attach-disk.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -1536,7 +1536,7 @@ Description of the task.
 mdconfig-detach-disk.yml
 ------------------------
 
-Synopsis: Configure mdconfig-detach-disk.
+Synopsis: Configure mdconfig-detach-disk
 
 
 Description of the task.
@@ -1548,7 +1548,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/fn/mdconfig-detach-disk.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -1560,7 +1560,7 @@ Description of the task.
 rcconf-item.yml
 ---------------
 
-Synopsis: Configure rcconf-item.
+Synopsis: Configure rcconf-item
 
 
 Description of the task.
@@ -1572,7 +1572,7 @@ Description of the task.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/fn/rcconf-item.yml
     :language: yaml
-    :emphasize-lines: 1,2
+    :emphasize-lines: 1
     :linenos:
 
 

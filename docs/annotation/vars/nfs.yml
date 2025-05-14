@@ -40,7 +40,6 @@ task_nfs_seealso:
     - <TBD>
 
 task_nfs_note:
-
   - "The variables ``fp_nfs_services_enable`` (74) and ``fp_nfs_services_disable`` (83) are created
     by the playbook ``.configure.yml``"
 

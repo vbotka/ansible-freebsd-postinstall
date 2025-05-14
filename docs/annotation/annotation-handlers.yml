@@ -17,390 +17,630 @@ myhandlers:
     link: adjkerntz.yml
     path: handlers/adjkerntz.yml
     synopsis: |
-      Handler adjkerntz.
+      Configure adjkerntz
     description: |
-      Description of the handler.
-    lines: 1,2
-    seealso: []
-    notes: []
-    hints: []
-    warnings: []
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: apcupsd.yml
     link: apcupsd.yml
     path: handlers/apcupsd.yml
     synopsis: |
-      Handler apcupsd.
+      Configure apcupsd
     description: |
-      Description of the handler.
-    lines: 1,2
-    seealso: []
-    notes: []
-    hints: []
-    warnings: []
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: devd.yml
     link: devd.yml
     path: handlers/devd.yml
     synopsis: |
-      Handler devd.
+      Configure devd
     description: |
-      Description of the handler.
-    lines: 1,2
-    seealso: []
-    notes: []
-    hints: []
-    warnings: []
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: devfs.yml
     link: devfs.yml
     path: handlers/devfs.yml
     synopsis: |
-      Handler devfs.
+      Configure devfs
     description: |
-      Description of the handler.
-    lines: 1,2
-    seealso: []
-    notes: []
-    hints: []
-    warnings: []
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: dhclient.yml
     link: dhclient.yml
     path: handlers/dhclient.yml
     synopsis: |
-      Handler dhclient.
+      Configure dhclient
     description: |
-      Description of the handler.
-    lines: 1,2
-    seealso: []
-    notes: []
-    hints: []
-    warnings: []
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: fstab.yml
     link: fstab.yml
     path: handlers/fstab.yml
     synopsis: |
-      Handler fstab.
+      Configure fstab
     description: |
-      Description of the handler.
-    lines: 1,2
-    seealso: []
-    notes: []
-    hints: []
-    warnings: []
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: hostapd.yml
     link: hostapd.yml
     path: handlers/hostapd.yml
     synopsis: |
-      Handler hostapd.
+      Configure hostapd
     description: |
-      Description of the handler.
-    lines: 1,2
-    seealso: []
-    notes: []
-    hints: []
-    warnings: []
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: hostname.yml
     link: hostname.yml
     path: handlers/hostname.yml
     synopsis: |
-      Handler hostname.
+      Configure hostname
     description: |
-      Description of the handler.
-    lines: 1,2
-    seealso: []
-    notes: []
-    hints: []
-    warnings: []
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: inetd.yml
     link: inetd.yml
     path: handlers/inetd.yml
     synopsis: |
-      Handler inetd.
+      Configure inetd
     description: |
-      Description of the handler.
-    lines: 1,2
-    seealso: []
-    notes: []
-    hints: []
-    warnings: []
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: lockd.yml
     link: lockd.yml
     path: handlers/lockd.yml
     synopsis: |
-      Handler lockd.
+      Configure lockd
     description: |
-      Description of the handler.
-    lines: 1,2
-    seealso: []
-    notes: []
-    hints: []
-    warnings: []
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: login.yml
     link: login.yml
     path: handlers/login.yml
     synopsis: |
-      Handler login.
+      Configure login
     description: |
-      Description of the handler.
-    lines: 1,2
-    seealso: []
-    notes: []
-    hints: []
-    warnings: []
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: messages.yml
     link: messages.yml
     path: handlers/messages.yml
     synopsis: |
-      Handler messages.
+      Configure messages
     description: |
-      Description of the handler.
-    lines: 1,2
-    seealso: []
-    notes: []
-    hints: []
-    warnings: []
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: mountd.yml
     link: mountd.yml
     path: handlers/mountd.yml
     synopsis: |
-      Handler mountd.
+      Configure mountd
     description: |
-      Description of the handler.
-    lines: 1,2
-    seealso: []
-    notes: []
-    hints: []
-    warnings: []
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: newaliases.yml
     link: newaliases.yml
     path: handlers/newaliases.yml
     synopsis: |
-      Handler newaliases.
+      Configure newaliases
     description: |
-      Description of the handler.
-    lines: 1,2
-    seealso: []
-    notes: []
-    hints: []
-    warnings: []
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: newsyslog.yml
     link: newsyslog.yml
     path: handlers/newsyslog.yml
     synopsis: |
-      Handler newsyslog.
+      Configure newsyslog
     description: |
-      Description of the handler.
-    lines: 1,2
-    seealso: []
-    notes: []
-    hints: []
-    warnings: []
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: nfsclient.yml
     link: nfsclient.yml
     path: handlers/nfsclient.yml
     synopsis: |
-      Handler nfsclient.
+      Configure nfsclient
     description: |
-      Description of the handler.
-    lines: 1,2
-    seealso: []
-    notes: []
-    hints: []
-    warnings: []
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: nfsd.yml
     link: nfsd.yml
     path: handlers/nfsd.yml
     synopsis: |
-      Handler nfsd.
+      Configure nfsd
     description: |
-      Description of the handler.
-    lines: 1,2
-    seealso: []
-    notes: []
-    hints: []
-    warnings: []
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: ntpdate.yml
     link: ntpdate.yml
     path: handlers/ntpdate.yml
     synopsis: |
-      Handler ntpdate.
+      Configure ntpdate
     description: |
-      Description of the handler.
-    lines: 1,2
-    seealso: []
-    notes: []
-    hints: []
-    warnings: []
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: ntpd.yml
     link: ntpd.yml
     path: handlers/ntpd.yml
     synopsis: |
-      Handler ntpd.
+      Configure ntpd
     description: |
-      Description of the handler.
-    lines: 1,2
-    seealso: []
-    notes: []
-    hints: []
-    warnings: []
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: qemu.yml
     link: qemu.yml
     path: handlers/qemu.yml
     synopsis: |
-      Handler qemu.
+      Configure qemu
     description: |
-      Description of the handler.
-    lines: 1,2
-    seealso: []
-    notes: []
-    hints: []
-    warnings: []
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: resolvconf.yml
     link: resolvconf.yml
     path: handlers/resolvconf.yml
     synopsis: |
-      Handler resolvconf.
+      Configure resolvconf
     description: |
-      Description of the handler.
-    lines: 1,2
-    seealso: []
-    notes: []
-    hints: []
-    warnings: []
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: rpcbind.yml
     link: rpcbind.yml
     path: handlers/rpcbind.yml
     synopsis: |
-      Handler rpcbind.
+      Configure rpcbind
     description: |
-      Description of the handler.
-    lines: 1,2
-    seealso: []
-    notes: []
-    hints: []
-    warnings: []
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: smartd.yml
     link: smartd.yml
     path: handlers/smartd.yml
     synopsis: |
-      Handler smartd.
+      Configure smartd
     description: |
-      Description of the handler.
-    lines: 1,2
-    seealso: []
-    notes: []
-    hints: []
-    warnings: []
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: snmpd.yml
     link: snmpd.yml
     path: handlers/snmpd.yml
     synopsis: |
-      Handler snmpd.
+      Configure snmpd
     description: |
-      Description of the handler.
-    lines: 1,2
-    seealso: []
-    notes: []
-    hints: []
-    warnings: []
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: sshd.yml
     link: sshd.yml
     path: handlers/sshd.yml
     synopsis: |
-      Handler sshd.
+      Configure sshd
     description: |
-      Description of the handler.
-    lines: 1,2
-    seealso: []
-    notes: []
-    hints: []
-    warnings: []
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: statd.yml
     link: statd.yml
     path: handlers/statd.yml
     synopsis: |
-      Handler statd.
+      Configure statd
     description: |
-      Description of the handler.
-    lines: 1,2
-    seealso: []
-    notes: []
-    hints: []
-    warnings: []
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: swap.yml
     link: swap.yml
     path: handlers/swap.yml
     synopsis: |
-      Handler swap.
+      Configure swap
     description: |
-      Description of the handler.
-    lines: 1,2
-    seealso: []
-    notes: []
-    hints: []
-    warnings: []
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: sysctl.yml
     link: sysctl.yml
     path: handlers/sysctl.yml
     synopsis: |
-      Handler sysctl.
+      Configure sysctl
     description: |
-      Description of the handler.
-    lines: 1,2
-    seealso: []
-    notes: []
-    hints: []
-    warnings: []
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: syslogd.yml
     link: syslogd.yml
     path: handlers/syslogd.yml
     synopsis: |
-      Handler syslogd.
+      Configure syslogd
     description: |
-      Description of the handler.
-    lines: 1,2
-    seealso: []
-    notes: []
-    hints: []
-    warnings: []
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: wpasupplicant.yml
     link: wpasupplicant.yml
     path: handlers/wpasupplicant.yml
     synopsis: |
-      Handler wpasupplicant.
+      Configure wpasupplicant
     description: |
-      Description of the handler.
-    lines: 1,2
-    seealso: []
-    notes: []
-    hints: []
-    warnings: []
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
 ...
