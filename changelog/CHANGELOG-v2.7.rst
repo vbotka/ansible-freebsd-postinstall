@@ -12,6 +12,13 @@ Release Summary
 ---------------
 Maintenance update.
 
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Updated tasks/packages.yml. Added var _fp_pkg_arch
+
 
 2.7.5
 =====
