@@ -30,7 +30,7 @@ Dry-run the tasks, display the variables, and display the changes ::
 
    shell> ansible-playbook playbook.yml -t fp_users -e fp_users_debug=true -CD
 
-If all seems to be right configure the users ::
+If all seems to be right, configure the users ::
 
     shell> ansible-playbook playbook.yml -t fp_users
 

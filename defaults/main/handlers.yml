@@ -14,3 +14,7 @@ fp_handlers:
     "RELOAD": [restart ntpdate]
   ntpd:
     "RELOAD": [restart ntpd]
+  qemu:
+    "RELOAD": [restart qemu]
+  qemu_user_static:
+    "RELOAD": [restart qemu_user_static]

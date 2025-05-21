@@ -14,6 +14,7 @@ service:
   ntpd:
   ntpdate:
   qemu:
+  qemu_user_static:
   rpcbind:
   snmpd:
   smartd:

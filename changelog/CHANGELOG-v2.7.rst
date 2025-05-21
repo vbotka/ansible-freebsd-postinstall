@@ -5,6 +5,24 @@ vbotka.freebsd_postinstall 2.7 Release Notes
 .. contents:: Topics
 
 
+2.7.6
+=====
+
+Release Summary
+---------------
+Maintenance update.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Updated tasks/packages.yml. Added var _fp_pkg_arch
+* Updated tasks/qemu.yml. Use default fp_qemu_service=qemu_user_static
+* Updated handlers. Added handlers for qemu_user_static
+* Updated docs.
+
+
 2.7.5
 =====
 

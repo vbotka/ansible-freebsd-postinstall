@@ -3,18 +3,16 @@
 Packages *(packages)*
 ---------------------
 
-Install and upgrade packages or ports from the packages lists described
-below. This way you can create packages lists as needed for a particular purpose
-and install them automatically when enabled. The details are described in the
-section *Installation frameworks* below. For general management of FreeBSD
-packages and ports use Ansible roles `vbotka.freebsd_packages`_ and
+Install and upgrade packages or ports from the packages lists described below. This way you can
+create packages lists as needed for a particular purpose and install them automatically when
+enabled. The details are described in the section *Installation frameworks* below. For general
+management of FreeBSD packages and ports use Ansible roles `vbotka.freebsd_packages`_ and
 `vbotka.freebsd_ports`_
 
 .. seealso::
 
    * Annotated Source code :ref:`as_packages.yml`
    * Annotated Source code :ref:`as_packages-install.yml`
-
 
 .. _tasks_packages_defaults:
 
@@ -27,8 +25,8 @@ See `defaults/main/packages.yml`_. By default, the installation is disabled
 
    fp_install: false
 
-If enabled, the binary packages will be installed. If failed, the
-installation will be retried ten times delayed by five seconds
+If enabled, the binary packages will be installed. If failed, the installation will be retried ten
+times delayed by five seconds.
 
 .. code-block:: yaml
 
@@ -42,7 +40,7 @@ You can change the defaults to install from ports
 
    freebsd_install_method: ports
 
-and optionally, use the already created binaries
+and optionally, use the already created binaries.
 
 .. code-block:: yaml
 
@@ -54,17 +52,15 @@ and optionally, use the already created binaries
    * Ansible module `community.general.pkgng`_
    * Ansible module `community.general.portinstall`_
 
-
 .. _tasks_packages_lists_pkgorig:
 
 Packages lists pkg-orig
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-The mandatory structure is a list of dictionaries comprising
-attributes *pkglist* and *packages*. The items of the list *packages*
-can be of any form accepted by the FreeBSD utilities `pkg`_,
-`pkg-upgrade`_ and `portinstall`_. In the below example, the items are
-in the form *pkg-orig* aka *category/port*
+The mandatory structure is a list of dictionaries comprising attributes *pkglist* and
+*packages*. The items of the list *packages* can be of any form accepted by the FreeBSD utilities
+`pkg`_, `pkg-upgrade`_ and `portinstall`_. In the below example, the items are in the form
+*pkg-orig* aka *category/port*
 
 .. code-block:: yaml
 
@@ -110,7 +106,6 @@ You can use this form also to:
 
    See :ref:`as_packages-install.yml`
 
-
 .. _tasks_packages_lists_enable:
 
 Enable lists
@@ -126,7 +121,6 @@ In the variable *fp_packages* enable packages lists that shall be installed
    fp_packages:
      - {list: ansible, enabled: true}
      - {list: minimal, enabled: true}
-
 
 .. _tasks_packages_install:
 
@@ -156,7 +150,6 @@ Install packages
 
    ...
 
-
 .. _tasks_packages_upgrade:
 
 Upgrade packages
@@ -171,7 +164,6 @@ names as shell glob patterns"*. Disable this parameter and set
 .. code-block:: yaml
 
    shell> ansible-playbook pb.yml -t fp_packages -e fp_pkg_state=latest -e fp_pkg_use_globs=false
-
 
 .. _tasks_packages_lists_pkgname:
 
@@ -198,7 +190,6 @@ You'll have to explicitly include the flavors (py311).
 .. seealso :: FreeBSD Handbook `Chapter 7. Flavors`_
 
 .. note ::  The form *pkg-orig* takes the version from the default Python.
-
 
 .. _tasks_packages_frameworks:
 
@@ -416,13 +407,11 @@ running on the host *iocage_tags.vmm*
 
    For details see the issue `FreeBSD. Add option use_globs to the module pkgng. #8632`_
 
-
 .. hint::
 
-   The advantage of the delegation to the iocage host is that the repositories
-   don't have to be updated each time *pkg* (inside the module
-   `community.general.pkgng`_) is running. The best practice is to update the
-   repositories on the iocage hosts and then set ::
+   The advantage of the delegation to the iocage host is that the repositories don't have to be
+   updated each time *pkg* (inside the module `community.general.pkgng`_) is running. The best
+   practice is to update the repositories on the iocage hosts and then set ::
 
      cached: true
 

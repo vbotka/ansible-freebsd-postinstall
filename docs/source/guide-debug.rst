@@ -21,24 +21,21 @@ sshd below. Inspect the files in the ``tasks`` directory whether
 
 .. include:: debug-sshd-example.rst
 
-.. note::
+.. hint::
 
-   * The debug output of this role is optimized for the *yaml* callback plugin. Set the
-     plugin in the environment ::
+   The debug output of this role is optimized for ``result_format=yaml``. See
+   `result_format`_. Set it in the configuration
 
-       shell> export ANSIBLE_STDOUT_CALLBACK=yaml
+   .. code:: ini
 
-     or in the configuration file ::
+      [defaults]
+      callback_result_format = yaml
 
-       stdout_callback = yaml
+   , or in the environment
 
-   * See the details about the yaml callback plugin ::
+   .. code:: bash
 
-       shell> ansible-doc -t callback community.general.yaml
-
-   * See the list of other callback plugins ::
-
-       shell> ansible-doc -t callback -l
+      ANSIBLE_CALLBACK_RESULT_FORMAT=yaml
 
 
 .. seealso::
@@ -46,3 +43,8 @@ sshd below. Inspect the files in the ``tasks`` directory whether
    * `Playbook Debugger <https://docs.ansible.com/ansible/latest/user_guide/playbooks_debugger.html>`_
    * `Debugging modules <https://docs.ansible.com/ansible/latest/dev_guide/debugging.html#debugging-modules>`_
    * `Python Debugging With Pdb <https://docs.python.org/3/library/pdb.html>`_
+
+.. _Playbook Debugger: https://docs.ansible.com/ansible/latest/user_guide/playbooks_debugger.html
+.. _Debugging modules: https://docs.ansible.com/ansible/latest/dev_guide/debugging.html#debugging-modules
+.. _Python Debugging With Pdb: https://docs.python.org/3/library/pdb.html
+.. _result_format: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/default_callback.html#parameter-result_format

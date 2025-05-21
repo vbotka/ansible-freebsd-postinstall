@@ -5,15 +5,13 @@ System configuration
 
 .. seealso:: `Configuration, Services, Logging and Power Management`_
 
-
 Manage Services
 ---------------
 
 .. index:: single: rcconf.yml; Manage Services
 
-In most cases, the *tasks-group* :ref:`as_rcconf.yml` is used to configure and
-manage a service. For example, to configure *sshd* set the variable
-``_service=sshd`` and import ``fn/rcconf.yml`` ::
+In most cases, the *tasks-group* :ref:`as_rcconf.yml` is used to configure and manage a service. For
+example, to configure *sshd* set the variable ``_service=sshd`` and import ``fn/rcconf.yml`` ::
 
    - name: "Sshd: Configure rc.conf"
      tags: fp_sshd_rcconf
@@ -39,9 +37,7 @@ fp_rcconfd
 
 .. index:: single: fp_rcconfd; Manage Services
 
-Use */etc/rc.conf.d* or */etc/rc.conf*. By default ``fp_rcconfd=false``
-*/etc/rc.conf* is used.
-
+Use */etc/rc.conf.d* or */etc/rc.conf*. By default ``fp_rcconfd=false`` */etc/rc.conf* is used.
 
 fp_rcconfd_path
 ^^^^^^^^^^^^^^^
@@ -59,23 +55,20 @@ The dictionary of files used in /etc/rc.conf.d. By default the dictionary is tri
 
 .. note::
 
-   * The filename in /etc/rc.conf.d/ must be identical to the name of the rc
-     script (service).
+   * The filename in /etc/rc.conf.d/ must be identical to the name of the rc script (service).
    * The configuration in /etc/rc.conf.d/ overrides /etc/rc.conf
 
 .. seealso::
    * `man rc`_
    * `man rc.conf`_
     
-The dictionary *fp_rcconfd_file* is used to create the dictionary of paths
-*fp_rcconfd_path* ::
+he dictionary *fp_rcconfd_file* is used to create the dictionary of paths *fp_rcconfd_path* ::
 
    fp_rcconfd_path: "{{ dict(fp_rcconfd_file.keys()
                              | zip([fp_rcconfd_dir]
                                    | product(fp_rcconfd_file.values())
                                    | map('join', '/'))) }}"
 
-    
 fp_rcconf_var
 ^^^^^^^^^^^^^
 
@@ -144,8 +137,8 @@ Boolean. Notify handlers *fp_handlers*. The default is ``true``
 fp_{{ _service }}_service_task
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Boolean. Do not wait for the hanlers. Start/Stop a service right after the
-configuration. The default is ``false``.
+Boolean. Do not wait for the handlers. Start/Stop a service right after the configuration. The
+default is ``false``.
 
 
 .. seealso:: `Managing Services in FreeBSD`_

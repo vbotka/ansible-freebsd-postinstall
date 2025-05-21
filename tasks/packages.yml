@@ -1,7 +1,8 @@
 ---
 - name: "Packages: Set _fp_pkg_enabled and _fp_pkg_dict for {{ ansible_architecture }}"
   ansible.builtin.set_fact:
-    _fp_pkg_dict: "{{ lookup('vars', 'pkg_dict_' ~ ansible_architecture, default=[]) |
+    _fp_pkg_arch: "pkg_dict_{{ ansible_architecture }}"
+    _fp_pkg_dict: "{{ lookup('vars', _fp_pkg_arch, default=[]) |
                       items2dict(key_name='pkglist', value_name='packages') }}"
     _fp_pkg_enabled: "{{ fp_packages | selectattr('enabled') | map(attribute='list') }}"
 
@@ -14,6 +15,7 @@
       freebsd_use_packages: {{ freebsd_use_packages | d('UNDEFINED') }}
       freebsd_install_retries: {{ freebsd_install_retries }}
       freebsd_install_delay: {{ freebsd_install_delay }}
+
       fp_install: {{ fp_install }}
       fp_install_delegate: {{ fp_install_delegate }}
       fp_pkg_annotation: {{ fp_pkg_annotation | d('UNDEFINED') }}

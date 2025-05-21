@@ -41,10 +41,9 @@ Requirements on the remote host
 Installation
 ============
 
-Configure Ansible. Fit the paths to the inventory (3) and to the
-roles (4) to your needs. Disable *retry_files* (5). Don't' display
-*ok* and *skipped* hosts (6-9). Pipelining (13) should speedup the
-execution of the playbook
+Configure Ansible. Fit the paths to the inventory (3) and to the roles (4) to your needs. Disable
+*retry_files* (5). Don't' display *ok* and *skipped* hosts (8-9). Pipelining (13) should speedup the
+execution of the playbook.
 
 .. code-block:: bash
    :emphasize-lines: 1
@@ -141,7 +140,7 @@ Set hostname and timezone
 =========================
 
 Create ``host_vars`` with customized variables. Enable *hostname* (2) and *timezone* (5). Disable
-debug output (7) and backup of changed files (8)
+debug output (7) and backup of changed files (8).
 
 .. code-block:: bash
    :emphasize-lines: 1
@@ -206,7 +205,7 @@ Install packages
 Create users
 ============
 
-Enable the management of users (2) and create the configuration data (3). Delete default user (7)
+Enable the management of users (2) and create the configuration data (3). Delete default user (7).
 
 .. code-block:: bash
    :emphasize-lines: 1
@@ -220,7 +219,7 @@ Enable the management of users (2) and create the configuration data (3). Delete
      - {name: responder, shell: /usr/sbin/nologin}
      - {name: freebsd, state: absent}
 
-Manage users
+Manage users.
 
 .. code-block:: bash
    :emphasize-lines: 1
@@ -243,7 +242,7 @@ Update authorized SSH keys
 ==========================
 
 Enable the installation of authorized keys (2). Remove other keys if already configured (3). Install
-the keys in batches (4). Create the list of the public keys to be installed (5)
+the keys in batches (4). Create the list of the public keys to be installed (5).
 
 .. code-block:: bash
    :emphasize-lines: 1
@@ -259,7 +258,7 @@ the keys in batches (4). Create the list of the public keys to be installed (5)
      - user: admin
        key: "{{ lookup('file', '~/.ansible/ssh-pub-keys/devel-srv2/id_rsa.pub') }}"
 
-Update authorized keys
+Update authorized keys.
 
 .. code-block:: bash
    :emphasize-lines: 1
@@ -273,7 +272,7 @@ Configure sshd
 ==============
 
 Enable the configuration of *sshd* (2), enable *sshd* service (3), and create the configuration
-data (10)
+data (10).
 
 .. code-block:: bash
    :emphasize-lines: 1
@@ -297,7 +296,7 @@ data (10)
      - {key: X11Forwarding, value: "{{ fp_sshd_x11forwarding }}"}
      - {key: UseBlacklist, value: 'yes'}
 
-Configure *sshd*
+Configure *sshd*.
 
 .. code-block:: bash
    :emphasize-lines: 1
@@ -326,7 +325,7 @@ Configure *sshd*
 Configure sudo
 ==============
 
-Enable the configuration of *sudoers* (2) and create the configuration data (3)
+Enable the configuration of *sudoers* (2) and create the configuration data (3).
 
 .. code-block:: bash
    :emphasize-lines: 1
@@ -338,7 +337,7 @@ Enable the configuration of *sudoers* (2) and create the configuration data (3)
      - {key: admin, value: "ALL=(ALL) NOPASSWD: ALL"}
      - {key: devel, value: "ALL=(ALL) NOPASSWD: ALL"}
 
-Configure *sudoers*
+Configure *sudoers*.
 
 .. code-block:: bash
    :emphasize-lines: 1
@@ -363,7 +362,7 @@ Complete role
 
 To show the functionality of the role, the tasks in the previous examples (fp_hostname, fp_timezone,
 fp_packages, fp_users, fp_authorized_key, fp_sshd, fp_sudoers) were run separately. You can create
-the data and run the tasks all in one play
+the data and run the tasks all in one play.
 
 .. code-block:: bash
    :emphasize-lines: 1
@@ -385,8 +384,8 @@ the data and run the tasks all in one play
    
    2 directories, 9 files
 
-Run all enabled tasks in the playbook again. Optionally, disable the
-installation to speedup the execution
+Run all enabled tasks in the playbook again. Optionally, disable the installation to speedup the
+execution.
 
 .. code-block:: bash
    :emphasize-lines: 1

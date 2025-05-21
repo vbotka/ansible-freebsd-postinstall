@@ -2,7 +2,7 @@
 - name: "Qemu: Configure rc.conf"
   tags: fp_qemu_rcconf
   vars:
-    _service: qemu
+    _service: "{{ fp_qemu_service }}"
   ansible.builtin.import_tasks: fn/rcconf.yml
 
 # EOF

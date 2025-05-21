@@ -6,9 +6,9 @@ fp_qemu_service_task: false
 
 fp_qemu_rcconf: []
 
-# mutually exclusive
+# packages are mutually exclusive
 fp_qemu_install: false # list of packages: qemu
 fp_qemu_user_static_install: false # list of packages: qemu_user_static
 
-# set to the name of the installed package
-fp_qemu_rcvar: qemu_user_static
+# set according the installed packages
+fp_qemu_service: qemu_user_static

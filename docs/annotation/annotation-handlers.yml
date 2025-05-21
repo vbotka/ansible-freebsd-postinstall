@@ -433,6 +433,27 @@ myhandlers:
       []
 
 
+  - file: qemu_user_static.yml
+    link: qemu_user_static.yml
+    path: handlers/qemu_user_static.yml
+    synopsis: |
+      Configure qemu_user_static
+    description: |
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
+
   - file: resolvconf.yml
     link: resolvconf.yml
     path: handlers/resolvconf.yml

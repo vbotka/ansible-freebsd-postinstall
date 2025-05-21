@@ -18,6 +18,7 @@ nfsd.yml
 ntpdate.yml
 ntpd.yml
 qemu.yml
+qemu_user_static.yml
 resolvconf.yml
 rpcbind.yml
 smartd.yml
