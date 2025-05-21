@@ -4,7 +4,7 @@ Tags
 ====
 
 The :index:`tags` provide the user with a powerful tool to run selected groups of tasks. Use the
-command below to display available tags
+command below to display available tags.
 
 .. include:: tags-list.rst
 
@@ -34,7 +34,7 @@ For example,
 Validity
 --------
 
-The role is testing validity of the tags. The tests are enabled by default
+The role is testing the tags validity. The tests are enabled by default
 
 .. code-block:: yaml
 

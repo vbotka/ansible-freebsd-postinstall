@@ -507,6 +507,30 @@ Description of the task.
 
 
 
+.. _as_handler_qemu_user_static.yml:
+
+qemu_user_static.yml
+--------------------
+
+Synopsis: Configure qemu_user_static
+
+
+Description of the task.
+
+
+[`handlers/qemu_user_static.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/qemu_user_static.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../handlers/qemu_user_static.yml
+    :language: yaml
+    :emphasize-lines: 1
+    :linenos:
+
+
+
+
+
 .. _as_handler_resolvconf.yml:
 
 resolvconf.yml
