@@ -14,6 +14,7 @@ fp_rcconfd_file:
   ntpdate: ntpdate
   motd: motd
   qemu: qemu
+  qemu_user_static: qemu_user_static
   smartd: smartd
   snmpd: snmpd
   sshd: sshd

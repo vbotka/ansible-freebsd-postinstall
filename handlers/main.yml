@@ -42,6 +42,8 @@
   ansible.builtin.import_tasks: ntpdate.yml
 - name: Import qemu.yml
   ansible.builtin.import_tasks: qemu.yml
+- name: Import qemu_user_static.yml
+  ansible.builtin.import_tasks: qemu_user_static.yml
 - name: Import resolvconf.yml
   ansible.builtin.import_tasks: resolvconf.yml
 - name: Import rpcbind.yml
