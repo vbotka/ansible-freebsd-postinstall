@@ -17,6 +17,11 @@ Major Changes
 
 Minor Changes
 -------------
+* Updated defaults/main/pkgdict_*.yml
+
+Bug fix
+-------
+* Fix tasks/packages.yml
 
 
 2.7.6
