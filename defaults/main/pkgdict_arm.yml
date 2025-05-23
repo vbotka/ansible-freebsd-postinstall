@@ -23,7 +23,6 @@ pkg_dict_arm:
   - pkglist: smart
     packages:
       - sysutils/smartmontools
-      - sysutils/smart
   - pkglist: hostap
     packages:
       - net/hostapd
@@ -41,9 +40,7 @@ pkg_dict_arm:
       - emulators/linux_base-{{ bsd_linux_version }}
   - pkglist: devel
     packages:
-      - devel/llvm{{ bsd_gcc_version }}
-  - pkglist: pip
-    packages:
+      - devel/llvm60
       - devel/py-pip
   - pkglist: joomla
     packages:
@@ -74,7 +71,7 @@ pkg_dict_arm:
       - mail/roundcube
       - net/php{{ bsd_php_version }}-ldap
       - security/php{{ bsd_php_version }}-filter
-      #     - security/php{{ bsd_php_version }}-hash  # The hash module is now part of the PHP core
+#     - security/php{{ bsd_php_version }}-hash  # The hash module is now part of the PHP core
       - security/php{{ bsd_php_version }}-openssl
       - sysutils/php{{ bsd_php_version }}-fileinfo
       - sysutils/php{{ bsd_php_version }}-posix
@@ -82,7 +79,7 @@ pkg_dict_arm:
       - textproc/php{{ bsd_php_version }}-dom
       - textproc/php{{ bsd_php_version }}-pspell
       - textproc/php{{ bsd_php_version }}-simplexml
-      #     - textproc/php{{ bsd_php_version }}-wddx  # Deprecated
+#     - textproc/php{{ bsd_php_version }}-wddx  # Deprecated
       - textproc/php{{ bsd_php_version }}-xml
       - textproc/php{{ bsd_php_version }}-xmlreader
       - textproc/php{{ bsd_php_version }}-xmlwriter
@@ -97,7 +94,7 @@ pkg_dict_arm:
   - pkglist: mcrypt
     packages:
       - security/pecl-mcrypt
-  #     - security/{{ php_mcrypt }}
+#     - security/{{ php_mcrypt }}
   - pkglist: mysql
     packages:
       - databases/mysql{{ bsd_mysql_version }}-client
@@ -135,7 +132,6 @@ pkg_dict_arm:
   - pkglist: dns
     packages:
       - dns/bind{{ bsd_bind_version }}
-      - dns/bind-tools
   - pkglist: yazvs
     packages:
       - dns/p5-Net-DNS
@@ -162,7 +158,6 @@ pkg_dict_arm:
   - pkglist: jail
     packages:
       - sysutils/ezjail
-      - ports-mgmt/portsnap
   - pkglist: security
     packages:
       - security/openssl
@@ -184,8 +179,6 @@ pkg_dict_arm:
   - pkglist: python
     packages:
       - lang/python{{ bsd_python_version }}
-      - lang/python
-      - lang/python3
   - pkglist: rsnapshot
     packages:
       - sysutils/rsnapshot
@@ -195,3 +188,4 @@ pkg_dict_arm:
       - net-mgmt/py-pysnmp
 
 # EOF
+...

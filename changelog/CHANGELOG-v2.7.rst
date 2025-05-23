@@ -5,6 +5,25 @@ vbotka.freebsd_postinstall 2.7 Release Notes
 .. contents:: Topics
 
 
+2.7.7
+=====
+
+Release Summary
+---------------
+Maintenance update.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Updated defaults/main/pkgdict_*.yml
+
+Bug fix
+-------
+* Fix tasks/packages.yml
+
+
 2.7.6
 =====
 

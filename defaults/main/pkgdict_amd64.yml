@@ -23,7 +23,7 @@ pkg_dict_amd64_dict:
     - dns/bind{{ bsd_bind_version }}
     - dns/bind-tools
   docker:
-    - sysutils/docker-freebsd
+    - sysutils/docker
     - security/ca_root_nss
     - shells/bash
     - print/indexinfo
