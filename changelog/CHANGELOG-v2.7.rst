@@ -18,6 +18,7 @@ Major Changes
 Minor Changes
 -------------
 * Support FreeBSD 14.3
+* Updated tasks/syslogd.yml
 
 
 2.7.7
