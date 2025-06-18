@@ -17,6 +17,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Support FreeBSD 14.3
 
 
 2.7.7
