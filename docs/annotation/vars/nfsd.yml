@@ -1,5 +1,4 @@
 ---
-
 task_nfsd_synopsis: |
   Configure NFS server.
 

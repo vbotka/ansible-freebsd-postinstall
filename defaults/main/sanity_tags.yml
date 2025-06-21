@@ -180,6 +180,10 @@ fp_sanity_tags:
   - fp_syslogd_debug
   - fp_syslogd_newconfd
   - fp_syslogd_rcconf
+  - fp_syslogng
+  - fp_syslogng_conf
+  - fp_syslogng_debug
+  - fp_syslogng_rcconf
   - fp_timezone
   - fp_timezone_debug
   - fp_tmpmfs

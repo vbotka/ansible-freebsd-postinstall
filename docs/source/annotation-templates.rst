@@ -699,6 +699,30 @@ Description of the task.
 
 
 
+.. _as_template_syslog-ng.conf.j2:
+
+syslog-ng.conf.j2
+-----------------
+
+Synopsis: Configure syslog-ng.conf
+
+
+Description of the task.
+
+
+[`templates/syslog-ng.conf.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/syslog-ng.conf.j2>`_]
+
+.. highlight:: jinja
+    :linenothreshold: 5
+.. literalinclude:: ../../templates/syslog-ng.conf.j2
+    :language: jinja
+    :emphasize-lines: 1
+    :linenos:
+
+
+
+
+
 .. _as_template_wpa_supplicant.conf.j2:
 
 wpa_supplicant.conf.j2

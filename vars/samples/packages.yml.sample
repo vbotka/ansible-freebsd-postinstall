@@ -23,6 +23,7 @@ fp_packages:
   - {list: qemu_user_static, enabled: "{{ fp_qemu_user_static_install }}"}
   - {list: smart, enabled: "{{ fp_smartd_install }}"}
   - {list: snmpd, enabled: "{{ fp_snmpd_install }}"}
+  - {list: syslog-ng, enabled: "{{ fp_syslogng_install }}"}
   - {list: wpa_supplicant, enabled: "{{ fp_wpasupplicant_install }}"}
 
 fp_links:

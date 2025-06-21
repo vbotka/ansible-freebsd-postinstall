@@ -18,7 +18,10 @@ Major Changes
 Minor Changes
 -------------
 * Support FreeBSD 14.3
+* Added tasks/syslog-ng.yml incl. defaults, handlers, templates, and vars.
 * Updated tasks/syslogd.yml
+* Updated docs.
+* Updated .configure.yml incl. tasks and vars.
 
 
 2.7.7

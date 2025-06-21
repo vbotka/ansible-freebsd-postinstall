@@ -23,11 +23,12 @@ service:
   sysctl:
     commands: [reload]
   syslogd:
-
-service_blacklist: [default]
+  syslog-ng:
 
 service_enable_var:
   nfsclient: nfs
+  syslog-ng: syslogng
 
+service_blacklist: [default]
 service_condition_commands_allow: [reload, restart]
 service_condition_deny: [sysctl]

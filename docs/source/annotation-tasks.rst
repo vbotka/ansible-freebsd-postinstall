@@ -1243,6 +1243,30 @@ Description of the task.
 
 
 
+.. _as_syslog-ng.yml:
+
+syslog-ng.yml
+-------------
+
+Synopsis: Configure syslog-ng
+
+
+Description of the task.
+
+
+[`tasks/syslog-ng.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/syslog-ng.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../tasks/syslog-ng.yml
+    :language: yaml
+    :emphasize-lines: 1
+    :linenos:
+
+
+
+
+
 .. _as_timezone.yml:
 
 timezone.yml
@@ -1595,7 +1619,7 @@ Synopsis: Configure a service in rc.conf
 
 Example of ``_service=sshd`` ::
 
-  shell> ansible-playbook pb.yml -t fp_sshd -e fp_sshd_debug=true  -e fp_rcconf_debug=true
+  shell> ansible-playbook pb.yml -t fp_sshd -e fp_sshd_debug=true -e fp_rcconf_debug=true
   ...
   TASK [vbotka.freebsd_postinstall : Rcconf: Debug fp_rcconf_debug=true] *****************
   ok: [test.example.org] =>

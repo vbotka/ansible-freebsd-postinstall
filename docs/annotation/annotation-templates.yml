@@ -610,6 +610,27 @@ mytemplates:
       []
 
 
+  - file: syslog-ng.conf.j2
+    link: syslog-ng.conf.j2
+    path: templates/syslog-ng.conf.j2
+    synopsis: |
+      Configure syslog-ng.conf
+    description: |
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
+
   - file: wpa_supplicant.conf.j2
     link: wpa_supplicant.conf.j2
     path: templates/wpa_supplicant.conf.j2

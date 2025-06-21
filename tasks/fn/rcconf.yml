@@ -16,11 +16,11 @@
     #     "RELOAD": ["reload {{ _service }}"]
     _handlers: "{{ fp_handlers[_service][_value] | d(fp_handlers.default[_value]) }}"
     _handlers_reload: "{{ fp_handlers[_service]['RELOAD'] | d(fp_handlers.default.RELOAD) }}"
-    _rcconf_var: "fp_{{ _service }}_rcconf"
+    _rcconf_var: "{{ fp_rcconf_rcconf[_service] | d(fp_rcconf_rcconf.default) }}"
     _rcconf_val: "{{ lookup('ansible.builtin.vars', _rcconf_var, default=[]) }}"
-    _notify_var: "fp_{{ _service }}_notify"
+    _notify_var: "{{ fp_notify_var[_service] | d(fp_notify_var.default) }}"
     _notify_val: "{{ lookup('ansible.builtin.vars', _notify_var, default=true) | bool }}"
-    _service_task_var: "fp_{{ _service }}_service_task"
+    _service_task_var: "{{ fp_service_task_var[_service] | d(fp_service_task_var.default) }}"
     _service_task_val: "{{ lookup('ansible.builtin.vars', _service_task_var, default=false) | bool }}"
   block:
 

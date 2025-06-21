@@ -46,6 +46,7 @@ sudoers.yml
 swap.yml
 sysctl.yml
 syslogd.yml
+syslog-ng.yml
 timezone.yml
 tmpmfs.yml
 users.yml

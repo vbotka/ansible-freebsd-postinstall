@@ -747,6 +747,30 @@ Description of the task.
 
 
 
+.. _as_handler_syslog-ng.yml:
+
+syslog-ng.yml
+-------------
+
+Synopsis: Configure syslog-ng
+
+
+Description of the task.
+
+
+[`handlers/syslog-ng.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/syslog-ng.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../handlers/syslog-ng.yml
+    :language: yaml
+    :emphasize-lines: 1
+    :linenos:
+
+
+
+
+
 .. _as_handler_wpasupplicant.yml:
 
 wpasupplicant.yml

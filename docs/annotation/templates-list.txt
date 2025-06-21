@@ -27,4 +27,5 @@ procmailrc-includerc-get-message.j2
 procmailrc.j2
 ssh_config.j2
 syslog.conf.j2
+syslog-ng.conf.j2
 wpa_supplicant.conf.j2

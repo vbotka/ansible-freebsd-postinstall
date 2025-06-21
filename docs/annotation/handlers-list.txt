@@ -28,4 +28,5 @@ statd.yml
 swap.yml
 sysctl.yml
 syslogd.yml
+syslog-ng.yml
 wpasupplicant.yml

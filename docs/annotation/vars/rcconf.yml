@@ -1,5 +1,4 @@
 ---
-
 task_rcconf_synopsis: |
   Configure a service in rc.conf
 
@@ -12,7 +11,7 @@ task_rcconf_description: |
 
   Example of ``_service=sshd`` ::
 
-    shell> ansible-playbook pb.yml -t fp_sshd -e fp_sshd_debug=true  -e fp_rcconf_debug=true
+    shell> ansible-playbook pb.yml -t fp_sshd -e fp_sshd_debug=true -e fp_rcconf_debug=true
     ...
     TASK [vbotka.freebsd_postinstall : Rcconf: Debug fp_rcconf_debug=true] *****************
     ok: [test.example.org] =>
@@ -37,7 +36,6 @@ task_rcconf_description: |
         _service_task_val: False
     ...
 
-
 task_rcconf_lines: 4-24,27,52,67,80
 
 task_rcconf_seealso:
@@ -52,7 +50,6 @@ task_rcconf_seealso:
 task_rcconf_note: []
 task_rcconf_hint: []
 task_rcconf_warning: []
-
 
 # EOF
 ...

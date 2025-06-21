@@ -1,0 +1,58 @@
+---
+- name: "Syslog-ng: Debug fp_syslogng_debug={{ fp_syslogng_debug }}"
+  when: fp_syslogng_debug | bool
+  tags: fp_syslogng_debug
+  vars:
+    msg: |-
+      fp_syslogng_install: {{ fp_syslogng_install }}
+      fp_syslogng_enable: {{ fp_syslogng_enable }}
+      fp_syslogng_notify: {{ fp_syslogng_notify }}
+      fp_syslogng_service_task: {{ fp_syslogng_service_task }}
+
+      fp_syslogng_rcconf:
+        {{ fp_syslogng_rcconf | to_yaml(indent=2) | indent(2) }}
+      fp_syslogng_conf_orig: {{ fp_syslogng_conf_orig }}
+      fp_syslogng_conf_sanity: {{ fp_syslogng_conf_sanity }}
+      fp_syslogng_conf_template: {{ fp_syslogng_conf_template }}
+      fp_syslogng_conf_file: {{ fp_syslogng_conf_file }}
+      fp_syslogng_conf:
+        {{ fp_syslogng_conf | to_yaml(indent=2) | indent(2) }}
+  ansible.builtin.debug:
+    msg: "{{ '{}'.format(msg) }}"
+
+- name: Configure syslog-ng
+  tags: fp_syslogng_conf
+  block:
+
+    - name: "Syslog-ng: Backup origin {{ fp_syslogng_conf_file }}"
+      when: fp_syslogng_conf_orig | bool
+      ansible.builtin.command:
+        cmd: "cp {{ fp_syslogng_conf_file }} {{ fp_syslogng_conf_file }}.orig"
+        creates: "{{ fp_syslogng_conf_file }}.orig"
+
+    - name: "Syslog-ng: Sanity fp_syslogng_conf is empty."
+      when: fp_syslogng_conf_sanity | bool
+      ansible.builtin.assert:
+        that: fp_syslogng_conf | length > 0
+        fail_msg: "[ERR] fp_syslogng_conf is empty."
+        quiet: true
+
+    - name: "Syslog-ng: Configure {{ fp_syslogng_conf_file }}"
+      when: fp_syslogng_conf | length > 0
+      notify: reload syslog-ng
+      ansible.builtin.template:
+        src: "{{ fp_syslogng_conf_template }}"
+        dest: "{{ fp_syslogng_conf_file }}"
+        owner: root
+        group: wheel
+        mode: "0644"
+        backup: "{{ fp_backup }}"
+        validate: syslog-ng --syntax-only --cfgfile %s
+
+- name: "Syslog-ng: Configure rc.conf"
+  tags: fp_syslogng_rcconf
+  vars:
+    _service: syslog-ng
+  ansible.builtin.import_tasks: fn/rcconf.yml
+
+# EOF
