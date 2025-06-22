@@ -3,9 +3,9 @@
 {% if v is mapping %}
 {{ k }}
 {% for l,f in v.items() %}
-{{ f|join(';') }}		{{ l }}
+{{ f | join(';') }}		{{ l }}
 {% endfor %}
 {% else %}
-{{ v|join(';') }}		{{ k }}
+{{ v | join(';') }}		{{ k }}
 {% endif %}
 {% endfor %}

@@ -72,6 +72,7 @@
       fp_swap: {{ fp_swap }} fp_swap_enable: {{ fp_swap_enable }}
       fp_sysctl: {{ fp_sysctl }}
       fp_syslogd: {{ fp_syslogd }} fp_syslogd_enable: {{ fp_syslogd_enable }}
+      fp_syslogng: {{ fp_syslogng }} fp_syslogng_install: {{ fp_syslogng_install }} fp_syslogdng_enable: {{ fp_syslogdmg_enable }}
       fp_timezone: {{ fp_timezone }}
       fp_tmpmfs: {{ fp_tmpmfs }}
       fp_users: {{ fp_users }}

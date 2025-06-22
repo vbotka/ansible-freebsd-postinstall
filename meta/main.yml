@@ -15,6 +15,7 @@ galaxy_info:
         - 13.5
         - 14.1
         - 14.2
+        - 14.3
   galaxy_tags:
     - freebsd
     - ups

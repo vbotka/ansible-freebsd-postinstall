@@ -5,6 +5,25 @@ vbotka.freebsd_postinstall 2.7 Release Notes
 .. contents:: Topics
 
 
+2.7.8
+=====
+
+Release Summary
+---------------
+Maintenance update.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Support FreeBSD 14.3
+* Added tasks/syslog-ng.yml incl. defaults, handlers, templates, and vars.
+* Updated tasks/syslogd.yml incl. defaults, templates, and vars.
+* Updated docs.
+* Updated .configure.yml incl. tasks and vars.
+
+
 2.7.7
 =====
 

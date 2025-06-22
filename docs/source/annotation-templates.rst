@@ -675,6 +675,30 @@ Description of the task.
 
 
 
+.. _as_template_syslog.conf.client.j2:
+
+syslog.conf.client.j2
+---------------------
+
+Synopsis: Configure syslog.conf.client
+
+
+Description of the task.
+
+
+[`templates/syslog.conf.client.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/syslog.conf.client.j2>`_]
+
+.. highlight:: jinja
+    :linenothreshold: 5
+.. literalinclude:: ../../templates/syslog.conf.client.j2
+    :language: jinja
+    :emphasize-lines: 1
+    :linenos:
+
+
+
+
+
 .. _as_template_syslog.conf.j2:
 
 syslog.conf.j2
@@ -691,6 +715,78 @@ Description of the task.
 .. highlight:: jinja
     :linenothreshold: 5
 .. literalinclude:: ../../templates/syslog.conf.j2
+    :language: jinja
+    :emphasize-lines: 1
+    :linenos:
+
+
+
+
+
+.. _as_template_syslog-ng.conf.client.j2:
+
+syslog-ng.conf.client.j2
+------------------------
+
+Synopsis: Configure syslog-ng.conf.client
+
+
+Description of the task.
+
+
+[`templates/syslog-ng.conf.client.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/syslog-ng.conf.client.j2>`_]
+
+.. highlight:: jinja
+    :linenothreshold: 5
+.. literalinclude:: ../../templates/syslog-ng.conf.client.j2
+    :language: jinja
+    :emphasize-lines: 1
+    :linenos:
+
+
+
+
+
+.. _as_template_syslog-ng.conf.sample.j2:
+
+syslog-ng.conf.sample.j2
+------------------------
+
+Synopsis: Configure syslog-ng.conf.sample
+
+
+Description of the task.
+
+
+[`templates/syslog-ng.conf.sample.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/syslog-ng.conf.sample.j2>`_]
+
+.. highlight:: jinja
+    :linenothreshold: 5
+.. literalinclude:: ../../templates/syslog-ng.conf.sample.j2
+    :language: jinja
+    :emphasize-lines: 1
+    :linenos:
+
+
+
+
+
+.. _as_template_syslog-ng.conf.server.j2:
+
+syslog-ng.conf.server.j2
+------------------------
+
+Synopsis: Configure syslog-ng.conf.server
+
+
+Description of the task.
+
+
+[`templates/syslog-ng.conf.server.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/syslog-ng.conf.server.j2>`_]
+
+.. highlight:: jinja
+    :linenothreshold: 5
+.. literalinclude:: ../../templates/syslog-ng.conf.server.j2
     :language: jinja
     :emphasize-lines: 1
     :linenos:

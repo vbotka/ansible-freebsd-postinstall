@@ -60,6 +60,8 @@
   ansible.builtin.import_tasks: swap.yml
 - name: Import sysctl.yml
   ansible.builtin.import_tasks: sysctl.yml
+- name: Import syslog-ng.yml
+  ansible.builtin.import_tasks: syslog-ng.yml
 - name: Import syslogd.yml
   ansible.builtin.import_tasks: syslogd.yml
 - name: Import wpasupplicant.yml

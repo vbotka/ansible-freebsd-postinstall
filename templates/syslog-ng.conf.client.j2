@@ -1,0 +1,38 @@
+# {{ ansible_managed }}
+# {{ template_path }}
+
+{% for h in fp_syslogng_conf.header %}
+{{ h }}
+{% endfor %}
+
+#
+# sources
+#
+{% for source, opts in fp_syslogng_conf.source.items() %}
+source {{ source }} {
+{% for opt, param in opts.items() %}
+    {{ opt }}({{ param }});
+{% endfor %}
+{% endfor %}
+};
+
+#
+# destinations
+#
+{% for dest, opts in fp_syslogng_conf.destination.items() %}
+destination {{ dest }} {
+{% for k, v in opts.items() %}
+    {{ k }}({{ v }});
+{% endfor %}
+{% endfor %}
+};
+
+#
+# log
+#
+{% for i in fp_syslogng_conf.log %}
+log {
+  source({{ i.source }});
+  destination({{ i.destination }});
+{% endfor %}
+};

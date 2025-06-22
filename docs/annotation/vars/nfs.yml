@@ -1,5 +1,4 @@
 ---
-
 task_nfs_synopsis: |
   Configure NFS client.
 

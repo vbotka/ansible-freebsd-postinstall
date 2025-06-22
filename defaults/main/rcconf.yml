@@ -5,6 +5,20 @@ fp_rcconf_sanity_rcvar: true
 fp_rcconf_rcvar:
   default: "{{ _service }}_enable"
   devfs: devfs_load_rulesets
+  syslog-ng: syslog_ng_enable
 
 fp_rcconf_var:
   default: "fp_{{ _service }}_enable"
+  syslog-ng: fp_syslogng_enable
+
+fp_rcconf_rcconf:
+  default: "fp_{{ _service }}_rcconf"
+  syslog-ng: fp_syslogng_rcconf
+
+fp_notify_var:
+  default: "fp_{{ _service }}_notify"
+  syslog-ng: fp_syslogng_notify
+
+fp_service_task_var:
+  default: "fp_{{ _service }}_service_task"
+  syslog-ng: fp_syslogng_service_task

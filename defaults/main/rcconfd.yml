@@ -19,6 +19,7 @@ fp_rcconfd_file:
   snmpd: snmpd
   sshd: sshd
   syslogd: syslogd
+  syslog-ng: syslog-ng
   tmpmfs: tmpmfs
   wpasupplicant: wpasupplicant
 fp_rcconfd_path: "{{ dict(fp_rcconfd_file.keys()

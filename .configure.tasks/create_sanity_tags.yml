@@ -1,50 +1,50 @@
 - name: "Find tasks files"
+  register: out
+  check_mode: false
   ansible.builtin.find:
     path: tasks
     recurse: true
     patterns: '*.yml'
-  register: out
-  check_mode: false
 
 - name: "Create list of tasks"
+  vars:
+    _tasks: []
   ansible.builtin.set_fact:
     _tasks: "{{ _tasks + lookup('file', item) | from_yaml_all }}"
   loop: "{{ out.files | map(attribute='path') }}"
-  vars:
-    _tasks: []
 
 - name: "Debug list of tasks debug={{ debug | d(false) }}"
+  when: debug | d(false) | bool
   ansible.builtin.debug:
     msg: |
       {{ _tasks | to_yaml(indent=2) | indent(2) }}
-  when: debug | d(false) | bool
 
 - name: "Debug lists of tags debug={{ debug | d(false) }}" # noqa: jinja[invalid]
-  ansible.builtin.debug:
-    msg: |
-      _tags_tasks: {{ _tags_tasks | to_yaml(indent=2) | indent(2) }}"
-      _tags_block: {{ _tags_block | to_yaml(indent=2) | indent(2) }}"
+  when: debug | d(false) | bool
   vars:
     _tags_tasks: "{{ _tasks | json_query('[].tags') | flatten | unique | sort }}"
     _tags_block: "{{ _tasks | json_query('[].block[].tags') | flatten | unique | sort }}"
-  when: debug | d(false) | bool
+  ansible.builtin.debug:
+    msg: |
+      _tags_tasks: {{ _tags_tasks | to_yaml(indent=2) | indent(2) }}
+      _tags_block: {{ _tags_block | to_yaml(indent=2) | indent(2) }}
 
 - name: "Create list of tags" # noqa: jinja[invalid]
+  vars:
+    _tags_tasks: "{{ _tasks | json_query('[].tags') | flatten | unique | sort }}"
+    _tags_block: "{{ _tasks | json_query('[].block[].tags') | flatten | unique | sort }}"
   ansible.builtin.set_fact:
     _tags: "{{ (_tags_tasks + _tags_block + ['all']) |
                difference(['always', 'never']) |
                unique | sort }}"
   loop: "{{ out.files | map(attribute='path') }}"
-  vars:
-    _tags_tasks: "{{ _tasks | json_query('[].tags') | flatten | unique | sort }}"
-    _tags_block: "{{ _tasks | json_query('[].block[].tags') | flatten | unique | sort }}"
 
 - name: "Debug list of tags debug={{ debug | d(false) }}"
+  when: debug | d(false) | bool
   ansible.builtin.debug:
     msg: |
       no_of_tags: {{ _tags | length }}
       _tags: {{ _tags | to_yaml(indent=2) | indent(2) }}
-  when: debug | d(false) | bool
 
 - name: "Create {{ tags_path }}"
   ansible.builtin.copy:

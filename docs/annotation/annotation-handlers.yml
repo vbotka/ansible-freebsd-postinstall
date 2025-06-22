@@ -643,6 +643,27 @@ myhandlers:
       []
 
 
+  - file: syslog-ng.yml
+    link: syslog-ng.yml
+    path: handlers/syslog-ng.yml
+    synopsis: |
+      Configure syslog-ng
+    description: |
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
+
   - file: wpasupplicant.yml
     link: wpasupplicant.yml
     path: handlers/wpasupplicant.yml

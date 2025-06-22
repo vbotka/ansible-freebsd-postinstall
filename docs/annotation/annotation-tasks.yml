@@ -1081,6 +1081,27 @@ mytasks:
       []
 
 
+  - file: syslog-ng.yml
+    link: syslog-ng.yml
+    path: tasks/syslog-ng.yml
+    synopsis: |
+      Configure syslog-ng
+    description: |
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
+
   - file: timezone.yml
     link: timezone.yml
     path: tasks/timezone.yml
@@ -1390,7 +1411,7 @@ mytasks:
 
       Example of ``_service=sshd`` ::
 
-        shell> ansible-playbook pb.yml -t fp_sshd -e fp_sshd_debug=true  -e fp_rcconf_debug=true
+        shell> ansible-playbook pb.yml -t fp_sshd -e fp_sshd_debug=true -e fp_rcconf_debug=true
         ...
         TASK [vbotka.freebsd_postinstall : Rcconf: Debug fp_rcconf_debug=true] *****************
         ok: [test.example.org] =>
