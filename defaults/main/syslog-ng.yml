@@ -6,6 +6,8 @@ fp_syslogng_notify: true
 fp_syslogng_service_task: false
 fp_syslogng_debug: false
 
+# See commented and tested examples in vars/samples/syslog-ng.yml.sample
+
 # /etc/rc.conf
 fp_syslogng_rcconf: []
 
@@ -14,18 +16,5 @@ fp_syslogng_conf_orig: false
 fp_syslogng_conf_sanity: true
 fp_syslogng_conf_template: syslog-ng.conf.j2
 fp_syslogng_conf_file: /usr/local/etc/syslog-ng.conf
-fp_syslogng_conf:
-  header:
-    - '@version:4.8'
-    - '@include "scl.conf"'
-  source:
-    s_remote:
-      tcp:
-        port:
-          514
-  destination:
-    d_remote:
-      file: '"/var/log/remote/${HOST}/${YEAR}_${MONTH}_${DAY}.log" create-dirs(yes)'
-  log:
-    - source: s_remote
-      destination: d_remote
+fp_syslogng_conf: {}
+ 

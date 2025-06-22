@@ -21,6 +21,10 @@ fp_syslogd_conf:
     /etc/syslog.d: [include]
     /usr/local/etc/syslog.d: [include]
 
+# Log Client
+# fp_syslogd_conf:
+#   '@log-server.example.com': ['*.*']
+
 # /etc/newsyslog.conf
 fp_syslogd_newconf_orig: false
 fp_syslogd_newconf:

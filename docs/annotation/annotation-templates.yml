@@ -589,6 +589,27 @@ mytemplates:
       []
 
 
+  - file: syslog.conf.client.j2
+    link: syslog.conf.client.j2
+    path: templates/syslog.conf.client.j2
+    synopsis: |
+      Configure syslog.conf.client
+    description: |
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
+
   - file: syslog.conf.j2
     link: syslog.conf.j2
     path: templates/syslog.conf.j2
@@ -610,11 +631,53 @@ mytemplates:
       []
 
 
-  - file: syslog-ng.conf.j2
-    link: syslog-ng.conf.j2
-    path: templates/syslog-ng.conf.j2
+  - file: syslog-ng.conf.client.j2
+    link: syslog-ng.conf.client.j2
+    path: templates/syslog-ng.conf.client.j2
     synopsis: |
-      Configure syslog-ng.conf
+      Configure syslog-ng.conf.client
+    description: |
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
+
+  - file: syslog-ng.conf.sample.j2
+    link: syslog-ng.conf.sample.j2
+    path: templates/syslog-ng.conf.sample.j2
+    synopsis: |
+      Configure syslog-ng.conf.sample
+    description: |
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
+
+  - file: syslog-ng.conf.server.j2
+    link: syslog-ng.conf.server.j2
+    path: templates/syslog-ng.conf.server.j2
+    synopsis: |
+      Configure syslog-ng.conf.server
     description: |
       Description of the task.
     lines: 1

@@ -26,6 +26,9 @@ procmailrc-includerc-get-fingerprints.j2
 procmailrc-includerc-get-message.j2
 procmailrc.j2
 ssh_config.j2
+syslog.conf.client.j2
 syslog.conf.j2
-syslog-ng.conf.j2
+syslog-ng.conf.client.j2
+syslog-ng.conf.sample.j2
+syslog-ng.conf.server.j2
 wpa_supplicant.conf.j2
