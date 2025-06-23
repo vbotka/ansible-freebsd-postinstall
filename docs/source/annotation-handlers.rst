@@ -14,7 +14,7 @@ Synopsis: Main task.
 Import handlers.
 
 
-[`handlers/main.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/main.yml>`_]
+[`handlers/main.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/main.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -38,7 +38,7 @@ Synopsis: Configure adjkerntz
 Description of the task.
 
 
-[`handlers/adjkerntz.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/adjkerntz.yml>`_]
+[`handlers/adjkerntz.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/adjkerntz.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -62,7 +62,7 @@ Synopsis: Configure apcupsd
 Description of the task.
 
 
-[`handlers/apcupsd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/apcupsd.yml>`_]
+[`handlers/apcupsd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/apcupsd.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -86,7 +86,7 @@ Synopsis: Configure devd
 Description of the task.
 
 
-[`handlers/devd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/devd.yml>`_]
+[`handlers/devd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/devd.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -110,7 +110,7 @@ Synopsis: Configure devfs
 Description of the task.
 
 
-[`handlers/devfs.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/devfs.yml>`_]
+[`handlers/devfs.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/devfs.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -134,7 +134,7 @@ Synopsis: Configure dhclient
 Description of the task.
 
 
-[`handlers/dhclient.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/dhclient.yml>`_]
+[`handlers/dhclient.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/dhclient.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -158,7 +158,7 @@ Synopsis: Configure fstab
 Description of the task.
 
 
-[`handlers/fstab.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/fstab.yml>`_]
+[`handlers/fstab.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/fstab.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -182,7 +182,7 @@ Synopsis: Configure hostapd
 Description of the task.
 
 
-[`handlers/hostapd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/hostapd.yml>`_]
+[`handlers/hostapd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/hostapd.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -206,7 +206,7 @@ Synopsis: Configure hostname
 Description of the task.
 
 
-[`handlers/hostname.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/hostname.yml>`_]
+[`handlers/hostname.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/hostname.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -230,7 +230,7 @@ Synopsis: Configure inetd
 Description of the task.
 
 
-[`handlers/inetd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/inetd.yml>`_]
+[`handlers/inetd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/inetd.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -254,7 +254,7 @@ Synopsis: Configure lockd
 Description of the task.
 
 
-[`handlers/lockd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/lockd.yml>`_]
+[`handlers/lockd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/lockd.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -278,7 +278,7 @@ Synopsis: Configure login
 Description of the task.
 
 
-[`handlers/login.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/login.yml>`_]
+[`handlers/login.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/login.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -302,7 +302,7 @@ Synopsis: Configure messages
 Description of the task.
 
 
-[`handlers/messages.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/messages.yml>`_]
+[`handlers/messages.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/messages.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -326,7 +326,7 @@ Synopsis: Configure mountd
 Description of the task.
 
 
-[`handlers/mountd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/mountd.yml>`_]
+[`handlers/mountd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/mountd.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -350,7 +350,7 @@ Synopsis: Configure newaliases
 Description of the task.
 
 
-[`handlers/newaliases.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/newaliases.yml>`_]
+[`handlers/newaliases.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/newaliases.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -374,7 +374,7 @@ Synopsis: Configure newsyslog
 Description of the task.
 
 
-[`handlers/newsyslog.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/newsyslog.yml>`_]
+[`handlers/newsyslog.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/newsyslog.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -398,7 +398,7 @@ Synopsis: Configure nfsclient
 Description of the task.
 
 
-[`handlers/nfsclient.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/nfsclient.yml>`_]
+[`handlers/nfsclient.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/nfsclient.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -422,7 +422,7 @@ Synopsis: Configure nfsd
 Description of the task.
 
 
-[`handlers/nfsd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/nfsd.yml>`_]
+[`handlers/nfsd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/nfsd.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -446,7 +446,7 @@ Synopsis: Configure ntpdate
 Description of the task.
 
 
-[`handlers/ntpdate.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/ntpdate.yml>`_]
+[`handlers/ntpdate.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/ntpdate.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -470,7 +470,7 @@ Synopsis: Configure ntpd
 Description of the task.
 
 
-[`handlers/ntpd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/ntpd.yml>`_]
+[`handlers/ntpd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/ntpd.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -494,7 +494,7 @@ Synopsis: Configure qemu
 Description of the task.
 
 
-[`handlers/qemu.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/qemu.yml>`_]
+[`handlers/qemu.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/qemu.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -518,7 +518,7 @@ Synopsis: Configure qemu_user_static
 Description of the task.
 
 
-[`handlers/qemu_user_static.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/qemu_user_static.yml>`_]
+[`handlers/qemu_user_static.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/qemu_user_static.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -542,7 +542,7 @@ Synopsis: Configure resolvconf
 Description of the task.
 
 
-[`handlers/resolvconf.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/resolvconf.yml>`_]
+[`handlers/resolvconf.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/resolvconf.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -566,7 +566,7 @@ Synopsis: Configure rpcbind
 Description of the task.
 
 
-[`handlers/rpcbind.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/rpcbind.yml>`_]
+[`handlers/rpcbind.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/rpcbind.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -590,7 +590,7 @@ Synopsis: Configure smartd
 Description of the task.
 
 
-[`handlers/smartd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/smartd.yml>`_]
+[`handlers/smartd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/smartd.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -614,7 +614,7 @@ Synopsis: Configure snmpd
 Description of the task.
 
 
-[`handlers/snmpd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/snmpd.yml>`_]
+[`handlers/snmpd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/snmpd.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -638,7 +638,7 @@ Synopsis: Configure sshd
 Description of the task.
 
 
-[`handlers/sshd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/sshd.yml>`_]
+[`handlers/sshd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/sshd.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -662,7 +662,7 @@ Synopsis: Configure statd
 Description of the task.
 
 
-[`handlers/statd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/statd.yml>`_]
+[`handlers/statd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/statd.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -686,7 +686,7 @@ Synopsis: Configure swap
 Description of the task.
 
 
-[`handlers/swap.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/swap.yml>`_]
+[`handlers/swap.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/swap.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -710,7 +710,7 @@ Synopsis: Configure sysctl
 Description of the task.
 
 
-[`handlers/sysctl.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/sysctl.yml>`_]
+[`handlers/sysctl.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/sysctl.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -734,7 +734,7 @@ Synopsis: Configure syslogd
 Description of the task.
 
 
-[`handlers/syslogd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/syslogd.yml>`_]
+[`handlers/syslogd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/syslogd.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -758,7 +758,7 @@ Synopsis: Configure syslog-ng
 Description of the task.
 
 
-[`handlers/syslog-ng.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/syslog-ng.yml>`_]
+[`handlers/syslog-ng.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/syslog-ng.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -782,7 +782,7 @@ Synopsis: Configure wpasupplicant
 Description of the task.
 
 
-[`handlers/wpasupplicant.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/handlers/wpasupplicant.yml>`_]
+[`handlers/wpasupplicant.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/handlers/wpasupplicant.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5

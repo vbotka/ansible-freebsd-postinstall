@@ -14,7 +14,7 @@ Synopsis: Configure apcupsd.conf
 Description of the task.
 
 
-[`templates/apcupsd.conf.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/apcupsd.conf.j2>`_]
+[`templates/apcupsd.conf.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/apcupsd.conf.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -38,7 +38,7 @@ Synopsis: Configure exports
 Description of the task.
 
 
-[`templates/exports.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/exports.j2>`_]
+[`templates/exports.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/exports.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -62,7 +62,7 @@ Synopsis: Configure freebsd-update.conf
 Description of the task.
 
 
-[`templates/freebsd-update.conf.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/freebsd-update.conf.j2>`_]
+[`templates/freebsd-update.conf.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/freebsd-update.conf.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -86,7 +86,7 @@ Synopsis: Configure freebsd-update.conf2
 Description of the task.
 
 
-[`templates/freebsd-update.conf2.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/freebsd-update.conf2.j2>`_]
+[`templates/freebsd-update.conf2.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/freebsd-update.conf2.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -110,7 +110,7 @@ Synopsis: Configure groupadd
 Description of the task.
 
 
-[`templates/groupadd.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/groupadd.j2>`_]
+[`templates/groupadd.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/groupadd.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -134,7 +134,7 @@ Synopsis: Configure groupdel
 Description of the task.
 
 
-[`templates/groupdel.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/groupdel.j2>`_]
+[`templates/groupdel.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/groupdel.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -158,7 +158,7 @@ Synopsis: Configure groupmod
 Description of the task.
 
 
-[`templates/groupmod.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/groupmod.j2>`_]
+[`templates/groupmod.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/groupmod.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -182,7 +182,7 @@ Synopsis: Configure hostapd.conf
 Description of the task.
 
 
-[`templates/hostapd.conf.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/hostapd.conf.j2>`_]
+[`templates/hostapd.conf.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/hostapd.conf.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -206,7 +206,7 @@ Synopsis: Configure hosts
 Description of the task.
 
 
-[`templates/hosts.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/hosts.j2>`_]
+[`templates/hosts.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/hosts.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -230,7 +230,7 @@ Synopsis: Configure hosts-aliases-list
 Description of the task.
 
 
-[`templates/hosts-aliases-list.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/hosts-aliases-list.j2>`_]
+[`templates/hosts-aliases-list.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/hosts-aliases-list.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -254,7 +254,7 @@ Synopsis: Configure hosts.allow-01
 Description of the task.
 
 
-[`templates/hosts.allow-01.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/hosts.allow-01.j2>`_]
+[`templates/hosts.allow-01.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/hosts.allow-01.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -278,7 +278,7 @@ Synopsis: Configure hosts.allow-02
 Description of the task.
 
 
-[`templates/hosts.allow-02.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/hosts.allow-02.j2>`_]
+[`templates/hosts.allow-02.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/hosts.allow-02.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -302,7 +302,7 @@ Synopsis: Configure loader.conf
 Description of the task.
 
 
-[`templates/loader.conf.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/loader.conf.j2>`_]
+[`templates/loader.conf.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/loader.conf.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -326,7 +326,7 @@ Synopsis: Configure loader.conf2
 Description of the task.
 
 
-[`templates/loader.conf2.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/loader.conf2.j2>`_]
+[`templates/loader.conf2.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/loader.conf2.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -350,7 +350,7 @@ Synopsis: Configure login.conf
 Description of the task.
 
 
-[`templates/login.conf.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/login.conf.j2>`_]
+[`templates/login.conf.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/login.conf.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -374,7 +374,7 @@ Synopsis: Configure login_conf
 Description of the task.
 
 
-[`templates/login_conf.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/login_conf.j2>`_]
+[`templates/login_conf.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/login_conf.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -398,7 +398,7 @@ Synopsis: Configure make.conf
 Description of the task.
 
 
-[`templates/make.conf.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/make.conf.j2>`_]
+[`templates/make.conf.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/make.conf.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -422,7 +422,7 @@ Synopsis: Configure motd
 Description of the task.
 
 
-[`templates/motd.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/motd.j2>`_]
+[`templates/motd.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/motd.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -446,7 +446,7 @@ Synopsis: Configure newsyslog.conf
 Description of the task.
 
 
-[`templates/newsyslog.conf.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/newsyslog.conf.j2>`_]
+[`templates/newsyslog.conf.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/newsyslog.conf.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -470,7 +470,7 @@ Synopsis: Configure ntp.conf
 Description of the task.
 
 
-[`templates/ntp.conf.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/ntp.conf.j2>`_]
+[`templates/ntp.conf.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/ntp.conf.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -494,7 +494,7 @@ Synopsis: Configure procmailrc-includerc-capability
 Description of the task.
 
 
-[`templates/procmailrc-includerc-capability.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/procmailrc-includerc-capability.j2>`_]
+[`templates/procmailrc-includerc-capability.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/procmailrc-includerc-capability.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -518,7 +518,7 @@ Synopsis: Configure procmailrc-includerc-duplicates
 Description of the task.
 
 
-[`templates/procmailrc-includerc-duplicates.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/procmailrc-includerc-duplicates.j2>`_]
+[`templates/procmailrc-includerc-duplicates.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/procmailrc-includerc-duplicates.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -542,7 +542,7 @@ Synopsis: Configure procmailrc-includerc-get-certificate
 Description of the task.
 
 
-[`templates/procmailrc-includerc-get-certificate.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/procmailrc-includerc-get-certificate.j2>`_]
+[`templates/procmailrc-includerc-get-certificate.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/procmailrc-includerc-get-certificate.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -566,7 +566,7 @@ Synopsis: Configure procmailrc-includerc-get-fingerprint
 Description of the task.
 
 
-[`templates/procmailrc-includerc-get-fingerprint.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/procmailrc-includerc-get-fingerprint.j2>`_]
+[`templates/procmailrc-includerc-get-fingerprint.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/procmailrc-includerc-get-fingerprint.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -590,7 +590,7 @@ Synopsis: Configure procmailrc-includerc-get-fingerprints
 Description of the task.
 
 
-[`templates/procmailrc-includerc-get-fingerprints.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/procmailrc-includerc-get-fingerprints.j2>`_]
+[`templates/procmailrc-includerc-get-fingerprints.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/procmailrc-includerc-get-fingerprints.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -614,7 +614,7 @@ Synopsis: Configure procmailrc-includerc-get-message
 Description of the task.
 
 
-[`templates/procmailrc-includerc-get-message.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/procmailrc-includerc-get-message.j2>`_]
+[`templates/procmailrc-includerc-get-message.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/procmailrc-includerc-get-message.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -638,7 +638,7 @@ Synopsis: Configure procmailrc
 Description of the task.
 
 
-[`templates/procmailrc.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/procmailrc.j2>`_]
+[`templates/procmailrc.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/procmailrc.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -662,7 +662,7 @@ Synopsis: Configure ssh_config
 Description of the task.
 
 
-[`templates/ssh_config.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/ssh_config.j2>`_]
+[`templates/ssh_config.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/ssh_config.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -686,7 +686,7 @@ Synopsis: Configure syslog.conf.client
 Description of the task.
 
 
-[`templates/syslog.conf.client.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/syslog.conf.client.j2>`_]
+[`templates/syslog.conf.client.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/syslog.conf.client.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -710,7 +710,7 @@ Synopsis: Configure syslog.conf
 Description of the task.
 
 
-[`templates/syslog.conf.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/syslog.conf.j2>`_]
+[`templates/syslog.conf.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/syslog.conf.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -734,7 +734,7 @@ Synopsis: Configure syslog-ng.conf.client
 Description of the task.
 
 
-[`templates/syslog-ng.conf.client.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/syslog-ng.conf.client.j2>`_]
+[`templates/syslog-ng.conf.client.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/syslog-ng.conf.client.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -758,7 +758,7 @@ Synopsis: Configure syslog-ng.conf.sample
 Description of the task.
 
 
-[`templates/syslog-ng.conf.sample.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/syslog-ng.conf.sample.j2>`_]
+[`templates/syslog-ng.conf.sample.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/syslog-ng.conf.sample.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -782,7 +782,7 @@ Synopsis: Configure syslog-ng.conf.server
 Description of the task.
 
 
-[`templates/syslog-ng.conf.server.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/syslog-ng.conf.server.j2>`_]
+[`templates/syslog-ng.conf.server.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/syslog-ng.conf.server.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -806,7 +806,7 @@ Synopsis: Configure wpa_supplicant.conf
 Description of the task.
 
 
-[`templates/wpa_supplicant.conf.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/wpa_supplicant.conf.j2>`_]
+[`templates/wpa_supplicant.conf.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/wpa_supplicant.conf.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
