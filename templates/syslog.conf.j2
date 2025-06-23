@@ -1,8 +1,9 @@
 # {{ ansible_managed }}
-{% for k,v in fp_syslogd_conf.items() %}
+# {{ template_path }}
+{% for k, v in fp_syslogd_conf.items() %}
 {% if v is mapping %}
 {{ k }}
-{% for l,f in v.items() %}
+{% for l, f in v.items() %}
 {{ f | join(';') }}		{{ l }}
 {% endfor %}
 {% else %}

@@ -19,6 +19,7 @@ Minor Changes
 -------------
 * Fix Ansible Galaxy lint errors.
 * README added chapter Ansible Galaxy Import log lint errors.
+* Added template_path to the templates.
 
 
 2.7.8
