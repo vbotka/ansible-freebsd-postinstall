@@ -142,31 +142,54 @@ The playbook *.configure.yml* provides blocks of tasks to configure the
 role. Read it to understand the details.
 
 
-## Notes
+## Ansible Galaxy Import log lint errors v2.7.8
 
-1) devfs
+Ansible itself causes the below lint errors:
 
-"/etc/rc.d/devfs rcvar" returns no variable. As a result module "system" fails
+* Wrong indentation
 
-```bash
-fatal: [srv.example.com]: FAILED! => changed=false
-  msg: unable to determine rcvar
+```
+ansible-freebsd-postinstall/docs/annotation/annotation-tasks.yml:639: yaml[indentation][/]: Wrong indentation: expected 8 but found 6 
+ansible-freebsd-postinstall/docs/annotation/annotation-tasks.yml:642: yaml[indentation][/]: Wrong indentation: expected 8 but found 6 
+ansible-freebsd-postinstall/docs/annotation/annotation-tasks.yml:689: yaml[indentation][/]: Wrong indentation: expected 8 but found 6 
+ansible-freebsd-postinstall/docs/annotation/annotation-tasks.yml:691: yaml[indentation][/]: Wrong indentation: expected 8 but found 6 
+ansible-freebsd-postinstall/docs/annotation/annotation-tasks.yml:693: yaml[indentation][/]: Wrong indentation: expected 8 but found 6 
+ansible-freebsd-postinstall/docs/annotation/annotation-tasks.yml:1443: yaml[indentation][/]: Wrong indentation: expected 8 but found 6 
 ```
 
-To solve this problem apply the patch below
+The filter *to_nice_yaml* creates invalid YAML output. For example,
 
-```bash
---- devfs.orig	2019-07-13 20:31:04.688022000 +0200
-+++ devfs	2019-07-13 20:34:49.347159000 +0200
-@@ -11,6 +11,7 @@
- . /etc/rc.subr
-
- name="devfs"
-+rcvar="devfs_load_rulesets"
- desc="Device filesystem"
- start_cmd='devfs_start'
- stop_cmd=':'
+```yaml
+    - debug:
+        msg: "{{ foo | to_nice_yaml(indent=2) }}"
+      vars:
+        foo:
+          bar: [alice, bob]
 ```
+
+gives
+
+```yaml
+    msg: |-
+        bar:
+        - alice
+        - bob
+```
+
+* galaxy_info.platforms[0].versions[0] 13.4 is not one of ['6.1', '7.1', '7.2', 'all']
+
+FreeBSD 13.4 is not one of (very probably RH versions). Of course, it isn't. The error message also
+says:
+
+```
+See https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_reuse_roles.html#using-role-dependencies
+```
+
+This link has nothing to do with this error.
+
+* unknown-module - couldn't resolve module/action 'community.general.sysrc'
+
+The module [community.general.sysrc](https://docs.ansible.com/ansible/latest/collections/community/general/sysrc_module.html) is unknown?!
 
 
 ## License

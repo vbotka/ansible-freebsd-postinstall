@@ -18,6 +18,7 @@ Major Changes
 Minor Changes
 -------------
 * Fix Ansible Galaxy lint errors.
+* README added chapter Ansible Galaxy Import log lint errors.
 
 
 2.7.8
