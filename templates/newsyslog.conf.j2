@@ -1,12 +1,13 @@
 # {{ ansible_managed }}
+# {{ template_path }}
 {% set separator='	' %}
-{% for k,v in fp_syslogd_newconf.items() %}
+{% for k, v in fp_syslogd_newconf.items() %}
 {% if k == 'include' %}
 
 {% for i in v %}
 <include> {{ i }}
 {% endfor %}
 {% else %}
-{{ k }}		{{ v|join(separator) }}
+{{ k }}		{{ v | join(separator) }}
 {% endif %}
 {% endfor %}

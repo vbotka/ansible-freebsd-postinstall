@@ -17,4 +17,3 @@ fp_syslogng_conf_sanity: true
 fp_syslogng_conf_template: syslog-ng.conf.j2
 fp_syslogng_conf_file: /usr/local/etc/syslog-ng.conf
 fp_syslogng_conf: {}
- 

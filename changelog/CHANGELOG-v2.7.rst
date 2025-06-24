@@ -5,6 +5,24 @@ vbotka.freebsd_postinstall 2.7 Release Notes
 .. contents:: Topics
 
 
+2.7.9
+=====
+
+Release Summary
+---------------
+Maintenance update.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Fix Ansible Galaxy lint errors.
+* README added chapter Ansible Galaxy Import log lint errors.
+* Added template_path to the templates.
+* Updated docs annotation templates.
+
+
 2.7.8
 =====
 
