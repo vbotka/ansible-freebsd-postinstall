@@ -16,6 +16,7 @@ fp_syslogd_conf_sanity: true
 fp_syslogd_conf_template: syslog.conf.j2
 fp_syslogd_conf_file: /etc/syslog.conf
 fp_syslogd_conf: {}
+fp_syslogd_confd: []
 
 # /etc/newsyslog.conf
 fp_syslogd_newconf_orig: false

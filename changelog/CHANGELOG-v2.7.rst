@@ -17,6 +17,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Add /etc/syslog.d configuration. New var fp_syslogd_confd
 
 
 2.7.9

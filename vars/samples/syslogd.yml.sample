@@ -25,6 +25,22 @@ fp_syslogd_conf:
 # fp_syslogd_conf:
 #   '@log-server.example.com': ['*.*']
 
+# /etc/syslog.d
+fp_syslogd_confd:
+  - path: ftp.conf
+    template: syslog.conf.j2
+    conf:
+      /var/log/xferlog: [ftp.info]
+  - path: lpr.conf
+    template: syslog.conf.j2
+    conf:
+      /var/log/lpd-errs: [lpr.info]
+  - path: ppp.conf
+    template: syslog.conf.j2
+    conf:
+      '!ppp':
+        /var/log/ppp.log: ['*.*']
+
 # /etc/newsyslog.conf
 fp_syslogd_newconf_orig: false
 fp_syslogd_newconf:
