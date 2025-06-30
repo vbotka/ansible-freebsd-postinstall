@@ -16,10 +16,6 @@ hostname, sshd, ...).
   * `community.general`_
   * `vbotka.freebsd`_
 
-* Required roles:
-
-  * `vbotka.ansible_lib`_
-
 
 Control flow
 ------------
@@ -97,7 +93,6 @@ syntax, preview potential changes, and debug tasks.
 
 
 .. _`vbotka.freebsd_postinstall`: https://galaxy.ansible.com/vbotka/freebsd_postinstall
-.. _`vbotka.ansible_lib`: https://galaxy.ansible.com/vbotka/ansible_lib
 .. _`FreeBSD`: https://www.freebsd.org/releases
 .. _`ansible.posix`: https://galaxy.ansible.com/ui/repo/published/ansible/posix/
 .. _`ansible.utils`: https://galaxy.ansible.com/ui/repo/published/ansible/utils/

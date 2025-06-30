@@ -19,6 +19,7 @@ Minor Changes
 -------------
 * Add /etc/syslog.d configuration. New var fp_syslogd_confd
 * Use the role vbotka.freebsd.lib instead of vbotka.ansible_lib
+* Update docs.
 
 
 2.7.9
