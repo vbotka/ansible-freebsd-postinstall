@@ -17,7 +17,7 @@ Major Changes
 
 Minor Changes
 -------------
-
+Add the collection vbotka.freebsd to the test's requirements.
 
 2.7.10
 ======
