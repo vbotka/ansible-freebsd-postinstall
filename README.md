@@ -5,6 +5,8 @@
 [![Documentation Status](https://readthedocs.org/projects/docs/badge/?version=latest)](https://ansible-freebsd-postinstall.readthedocs.io/en/latest/)
 [![GitHub tag](https://img.shields.io/github/v/tag/vbotka/ansible-freebsd-postinstall)](https://github.com/vbotka/ansible-freebsd-postinstall/tags)
 
+This role is included in the collection [vbotka.freebsd](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/)
+
 Ansible role [vbotka.freebsd_postinstall](https://galaxy.ansible.com/vbotka/freebsd_postinstall/) at galaxy.ansible.com
 
 FreeBSD post-install configuration: aliases, apcupsd, authorized keys, cron,
@@ -29,10 +31,6 @@ This role has been developed and tested with [FreeBSD Supported Releases](https:
 
 
 ## Requirements and dependencies
-
-### Roles
-
-* Ansible role [vbotka.ansible_lib](https://galaxy.ansible.com/vbotka/ansible_lib)
 
 ### Collections
 
