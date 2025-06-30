@@ -67,10 +67,6 @@ Install the role ``vbotka.freebsd_postinstall`` ::
 
    shell> ansible-galaxy role install vbotka.freebsd_postinstall
 
-Install the library ``vbotka.ansible_lib`` ::
-
-   shell> ansible-galaxy role install vbotka.ansible_lib
-
 Install the collections if necessary ::
 
    shell> ansible-galaxy collection install ansible.posix
