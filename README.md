@@ -65,12 +65,12 @@ freebsd_install_method: packages
 #freebsd_use_packages: true
 ```
 
-Optionally, the packages can be built by [freebsd_poudriere](https://galaxy.ansible.com/vbotka/freebsd_poudriere) and installed by [freebsd_packages](https://galaxy.ansible.com/vbotka/freebsd_packages)
+Optionally, the packages can be built by [freebsd_poudriere](https://galaxy.ansible.com/vbotka/freebsd_poudriere) and installed by [freebsd_packages](https://galaxy.ansible.com/vbotka/freebsd_packages).
 
 
 ## freebsd_use_packages
 
-Role [freebsd_ports](https://galaxy.ansible.com/vbotka/freebsd_ports) will install packages if this option is set.
+Role [freebsd_ports](https://galaxy.ansible.com/vbotka/freebsd_ports) installs packages if this option is set.
 
 ```yaml
 #freebsd_install_method: packages
@@ -87,11 +87,10 @@ freebsd_use_packages: true
 ansible host -e ansible_shell_type=csh -e ansible_shell_executable=/bin/csh -a 'sudo pw usermod user -s /bin/sh'
 ```
 
-2) Install the roles
+2) Install the role
 
 ```bash
 ansible-galaxy role install vbotka.freebsd_postinstall
-ansible-galaxy role install vbotka.ansible_lib
 ```
 
 and install the collections if necessary
@@ -105,10 +104,9 @@ ansible-galaxy collection install vbotka.freebsd
 
 3) Fit variables to your needs.
 
-4) Create the playbook
+4) Create the playbook *freebsd-postinstall.yml*
 
 ```yaml
-cat freebsd-postinstall.yml
 - hosts: host
   roles:
     - vbotka.freebsd_postinstall
@@ -125,9 +123,8 @@ ansible-playbook freebsd-postinstall.yml
 
 ## Ansible lint
 
-Use the configuration file *.ansible-lint.local* when running
-*ansible-lint*. Some rules might be disabled and some warnings might be
-ignored. See the notes in the configuration file.
+Use the configuration file *.ansible-lint.local* when running *ansible-lint*. Some rules might be
+disabled and some warnings might be ignored. See the notes in the configuration file.
 
 ```bash
 shell> ansible-lint -c .ansible-lint.local
@@ -142,7 +139,7 @@ role. Read it to understand the details.
 
 ## Ansible Galaxy Import log lint errors v2.7.8
 
-Ansible itself causes the below lint errors:
+Ansible itself causes the following lint errors:
 
 * Wrong indentation
 
