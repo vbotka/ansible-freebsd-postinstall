@@ -4,7 +4,12 @@ fp_loader_debug: false
 fp_loader_tuneables_warning: true
 fp_loader_load_modules: false
 fp_loader_conf_file_backup_orig: true
-fp_loader_conf_template: loader.conf2.j2
 fp_loader_conf_file: /boot/loader.conf
 fp_loader_conf: []
 fp_loader_modules: []
+fp_loader_conf_modules: []
+
+# Template for fp_loader_conf_file
+# If empty, module sysrc is used instead of template. Available after
+# community.general #10417 merged.
+fp_loader_conf_template: loader.conf2.j2
