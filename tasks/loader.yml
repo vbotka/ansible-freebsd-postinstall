@@ -11,6 +11,8 @@
       fp_loader_conf_template: {{ fp_loader_conf_template }}
       fp_loader_conf:
         {{ fp_loader_conf | to_yaml(indent=2) | indent(2) }}
+      fp_loader_conf_modules:
+        {{ fp_loader_conf_modules | to_yaml(indent=2) | indent(2) }}
       fp_loader_modules:
         {{ fp_loader_modules | to_yaml(indent=2) | indent(2) }}
   ansible.builtin.debug:
@@ -24,7 +26,28 @@
     chdir: /boot
     creates: /boot/loader.conf.orig
 
-- name: "Loader: Configure {{ fp_loader_conf_file }}"
+- name: Configure loader.conf by sysrc
+  when: fp_loader_conf_template | length == 0
+  tags: fp_loader_conf
+  notify: loader message reboot
+  block:
+
+    - name: "Loader: Configure by sysrc {{ fp_loader_conf_file }}"
+      community.general.sysrc:
+        path: "{{ fp_loader_conf_file }}"
+        name: "{{ item.name }}"
+        value: "{{ item.value }}"
+      loop: "{{ fp_loader_conf }}"
+
+    - name: "Loader: Configure modules by sysrc {{ fp_loader_conf_file }}"
+      community.general.sysrc:
+        path: "{{ fp_loader_conf_file }}"
+        name: "{{ item }}_load"
+        value: "YES"
+      loop: "{{ fp_loader_conf_modules }}"
+
+- name: "Loader: Configure by template {{ fp_loader_conf_file }}"
+  when: fp_loader_conf_template | length > 0
   tags: fp_loader_conf
   notify: loader message reboot
   ansible.builtin.template:

@@ -5,6 +5,24 @@ vbotka.freebsd_postinstall 2.7 Release Notes
 .. contents:: Topics
 
 
+2.7.12
+======
+
+Release Summary
+---------------
+Fix loader.conf
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Optionally, if fp_loader_conf_template empty, Configure loader.conf
+  by sysrc. Available after community.general #10417 merged.
+* Add var fp_loader_conf_modules
+* Update template loader.conf2.j2
+
+
 2.7.11
 ======
 
