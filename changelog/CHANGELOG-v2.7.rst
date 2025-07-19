@@ -5,6 +5,20 @@ vbotka.freebsd_postinstall 2.7 Release Notes
 .. contents:: Topics
 
 
+2.7.12
+======
+
+Release Summary
+---------------
+Fix loader.conf
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+
+
 2.7.11
 ======
 
