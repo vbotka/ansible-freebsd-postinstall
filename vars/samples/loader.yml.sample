@@ -1,11 +1,11 @@
 # fp_loader: true
 # fp_loader_conf_template_enable: true
 # fp_loader_load_modules: false
-# fp_loader_conf_modules:
-#   - if_ath
-#   - wlan_wep
-#   - wlan_ccmp
-#   - wlan_tkip
-#   - pf
-#   - geom_eli
 # fp_loader_conf: []
+# fp_loader_conf_modules:
+#   - { name: if_ath, value: "YES" }
+#   - { name: wlan_wep, value: "YES" }
+#   - { name: wlan_ccmp, value: "YES" }
+#   - { name: wlan_tkip, value: "YES" }
+#   - { name: pf, value: "YES" }
+#   - { name: geom_eli, value: "YES" }
