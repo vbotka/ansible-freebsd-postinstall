@@ -17,6 +17,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Update docs index.html
 
 
 2.7.12

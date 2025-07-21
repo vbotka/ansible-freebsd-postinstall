@@ -17,6 +17,7 @@ what you want, create new tasks.
 
 | GitHub: `ansible-freebsd-postinstall`_
 | Ansible Galaxy: `vbotka.freebsd_postinstall`_
+| Ansible collection: `vbotka.freebsd.postinstall`_
 
 | This role is licensed and distributed as a whole under
 | **BSD 2-Clause "Simplified" License**
@@ -44,6 +45,7 @@ Indices and tables
 
 .. _role: https://galaxy.ansible.com/vbotka/freebsd_postinstall/
 .. _vbotka.freebsd_postinstall: https://galaxy.ansible.com/vbotka/freebsd_postinstall/
+.. _vbotka.freebsd.postinstall: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall/
 .. _config_light: https://galaxy.ansible.com/vbotka/config_light/
 
 .. _ansible-freebsd-postinstall: https://github.com/vbotka/ansible-freebsd-postinstall/
