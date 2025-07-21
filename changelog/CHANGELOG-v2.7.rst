@@ -5,6 +5,20 @@ vbotka.freebsd_postinstall 2.7 Release Notes
 .. contents:: Topics
 
 
+2.7.13
+======
+
+Release Summary
+---------------
+Fix loader.conf. Use ansible.posix.sysctl instead of community.general.sysrc
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+
+
 2.7.12
 ======
 
