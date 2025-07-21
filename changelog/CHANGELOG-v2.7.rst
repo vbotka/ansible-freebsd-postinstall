@@ -5,6 +5,28 @@ vbotka.freebsd_postinstall 2.7 Release Notes
 .. contents:: Topics
 
 
+2.7.13
+======
+
+Release Summary
+---------------
+Fix loader.conf
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Update docs index.html
+* Update loader.conf. Use ansible.posix.sysctl instead of
+  community.general.sysrc
+
+Breaking Changes / Porting Guide
+--------------------------------
+* Variable fp_loader_conf_modules structure changed. See
+  vars/samples/loader.yml.sample
+
+
 2.7.12
 ======
 

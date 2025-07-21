@@ -26,24 +26,28 @@
     chdir: /boot
     creates: /boot/loader.conf.orig
 
-- name: Configure loader.conf by sysrc
+- name: Configure loader.conf by sysctl
   when: fp_loader_conf_template | length == 0
   tags: fp_loader_conf
   notify: loader message reboot
   block:
 
-    - name: "Loader: Configure by sysrc {{ fp_loader_conf_file }}"
-      community.general.sysrc:
-        path: "{{ fp_loader_conf_file }}"
+    - name: "Loader: Configure by sysctl {{ fp_loader_conf_file }}"
+      ansible.posix.sysctl:
+        sysctl_file: "{{ fp_loader_conf_file }}"
         name: "{{ item.name }}"
-        value: "{{ item.value }}"
+        value: '"{{ item.value | d(omit) }}"'
+        state: "{{ item.state | d(omit) }}"
+        ignoreerrors: "{{ item.ignoreerrors | d(omit) }}"
       loop: "{{ fp_loader_conf }}"
 
-    - name: "Loader: Configure modules by sysrc {{ fp_loader_conf_file }}"
-      community.general.sysrc:
-        path: "{{ fp_loader_conf_file }}"
-        name: "{{ item }}_load"
-        value: "YES"
+    - name: "Loader: Configure modules by sysctl {{ fp_loader_conf_file }}"
+      ansible.posix.sysctl:
+        sysctl_file: "{{ fp_loader_conf_file }}"
+        name: "{{ item.name }}_load"
+        value: '"{{ item.value | d(omit) }}"'
+        state: "{{ item.state | d(omit) }}"
+        ignoreerrors: "{{ item.ignoreerrors | d(omit) }}"
       loop: "{{ fp_loader_conf_modules }}"
 
 - name: "Loader: Configure by template {{ fp_loader_conf_file }}"
