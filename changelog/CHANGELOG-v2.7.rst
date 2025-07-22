@@ -5,6 +5,14 @@ vbotka.freebsd_postinstall 2.7 Release Notes
 .. contents:: Topics
 
 
+2.7.14
+======
+
+Release Summary
+---------------
+Fix loader.conf. In ansible.posix.sysctl, set reload=false.
+
+
 2.7.13
 ======
 

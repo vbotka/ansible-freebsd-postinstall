@@ -39,6 +39,7 @@
         value: '"{{ item.value | d(omit) }}"'
         state: "{{ item.state | d(omit) }}"
         ignoreerrors: "{{ item.ignoreerrors | d(omit) }}"
+        reload: false
       loop: "{{ fp_loader_conf }}"
 
     - name: "Loader: Configure modules by sysctl {{ fp_loader_conf_file }}"
@@ -48,6 +49,7 @@
         value: '"{{ item.value | d(omit) }}"'
         state: "{{ item.state | d(omit) }}"
         ignoreerrors: "{{ item.ignoreerrors | d(omit) }}"
+        reload: false
       loop: "{{ fp_loader_conf_modules }}"
 
 - name: "Loader: Configure by template {{ fp_loader_conf_file }}"
