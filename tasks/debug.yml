@@ -63,6 +63,7 @@
       fp_procmail: {{ fp_procmail }} fp_procmail_install: {{ fp_procmail_install }}
       fp_qemu: {{ fp_qemu }} fp_qemu_enable: {{ fp_qemu_enable }}{% for k, v in _fp_qemu_install_dict.items() %} {{ k }}: {{ v }}{% endfor %}
 
+      fp_rcd: {{ fp_rcd }}
       fp_resolvconf: {{ fp_resolvconf }}
       fp_smartd: {{ fp_smartd }} fp_smartd_install: {{ fp_smartd_install }} fp_smartd_enable: {{ fp_smartd_enable }}
       fp_snmpd: {{ fp_snmpd }} fp_snmpd_install: {{ fp_snmpd_install }} fp_snmpd_enable: {{ fp_snmpd_enable }}

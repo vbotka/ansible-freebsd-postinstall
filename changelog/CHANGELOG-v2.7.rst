@@ -7,6 +7,7 @@ vbotka.freebsd_postinstall 2.7 Release Notes
 
 2.7.15
 ======
+Add tasks rcd.yml. Create rc.d scripts.
 
 Release Summary
 ---------------
@@ -16,6 +17,10 @@ Major Changes
 
 Minor Changes
 -------------
+* Add defaults/main/rcd.yml
+* Add vars/samples/rcd.yml.sample
+* Update tasks/main.yml and tasks/debug.yml
+* Update docs.
 
 
 2.7.14

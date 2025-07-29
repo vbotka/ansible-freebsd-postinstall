@@ -1,0 +1,38 @@
+---
+- name: "Rcd: Debug fp_rcd_debug={{ fp_rcd_debug }}"
+  when: fp_rcd_debug | bool
+  tags: fp_rcd_debug
+  vars:
+    msg: |-
+      fp_rcd_scripts_owner: {{ fp_rcd_scripts_owner }}
+      fp_rcd_scripts_group: {{ fp_rcd_scripts_group }}
+      fp_rcd_scripts_mode: {{ fp_rcd_scripts_mode }}
+      fp_rcd_scripts:
+        {{ fp_rcd_scripts | to_nice_yaml(indent=2) | indent(2) }}
+      fp_rcd_scripts_absent:
+        {{ fp_rcd_scripts_absent | to_nice_yaml(indent=2) | indent(2) }}
+  ansible.builtin.debug:
+    msg: "{{ '{}'.format(msg) }}"
+
+- name: "Rcd: Delete rc.d scripts"
+  tags: fp_rcd_scripts_absent
+  ansible.builtin.file:
+    state: absent
+    dest: "/etc/rc.d/{{ item }}"
+  loop: "{{ fp_rcd_scripts_absent }}"
+
+- name: "Rcd: Create rc.d scripts"
+  tags: fp_rcd_scripts
+  ansible.builtin.copy:
+    dest: "/etc/rc.d/{{ item.key }}"
+    content: |
+      {{ item.value.script }}
+    owner: "{{ item.value.owner | d(fp_rcd_scripts_owner) }}"
+    group: "{{ item.value.group | d(fp_rcd_scripts_group) }}"
+    mode: "{{ item.value.mode | d(fp_rcd_scripts_mode) }}"
+    backup: "{{ fp_backup }}"
+  loop: "{{ fp_rcd_scripts | dict2items }}"
+  loop_control:
+    label: "{{ item.key }}"
+
+# EOF

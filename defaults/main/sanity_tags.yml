@@ -144,6 +144,10 @@ fp_sanity_tags:
   - fp_procmail_rc
   - fp_qemu
   - fp_qemu_rcconf
+  - fp_rcd
+  - fp_rcd_debug
+  - fp_rcd_scripts
+  - fp_rcd_scripts_absent
   - fp_resolv_conf
   - fp_resolv_conf_absent
   - fp_resolv_conf_clean
@@ -178,7 +182,7 @@ fp_sanity_tags:
   - fp_syslogd
   - fp_syslogd_conf
   - fp_syslogd_debug
-  - fp_syslogd_newconfd
+  - fp_syslogd_newconf
   - fp_syslogd_rcconf
   - fp_syslogng
   - fp_syslogng_conf

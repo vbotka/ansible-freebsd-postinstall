@@ -45,6 +45,11 @@
   when: fp_devfs | bool
   tags: fp_devfs
 
+- name: Import rcd.yml
+  ansible.builtin.import_tasks: rcd.yml
+  when: fp_rcd | bool
+  tags: fp_rcd
+
 - name: Import dhclient.yml
   ansible.builtin.import_tasks: dhclient.yml
   when: fp_dhclient | bool
