@@ -1,0 +1,10 @@
+---
+fp_rcd: false
+fp_rcd_debug: false
+
+fp_rcd_scripts_absent: []
+
+fp_rcd_scripts: {}
+fp_rcd_scripts_owner: root
+fp_rcd_scripts_group: wheel
+fp_rcd_scripts_mode: "0555"

@@ -1003,6 +1003,30 @@ Description of the task.
 
 
 
+.. _as_rcd.yml:
+
+rcd.yml
+-------
+
+Synopsis: Configure rcd
+
+
+Description of the task.
+
+
+[`tasks/rcd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/rcd.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../tasks/rcd.yml
+    :language: yaml
+    :emphasize-lines: 1
+    :linenos:
+
+
+
+
+
 .. _as_resolvconf.yml:
 
 resolvconf.yml
