@@ -1,5 +1,6 @@
 ---
 - name: Set variables
+  tags: fp_authorized_key_sanity
   block:
 
     - name: "Authorized-key: Get passwd"
@@ -20,7 +21,8 @@
   when: fp_authorized_key_debug | bool
   vars:
     msg: |-
-      fp_authorized_key_sanity_quiet: {{ fp_authorized_key_sanity_quiet | bool }}"
+      fp_authorized_key_sanity_quiet: {{ fp_authorized_key_sanity_quiet | bool }}
+      fp_authorized_key_valid_regex: {{ fp_authorized_key_valid_regex }}
       fp_authorized_key_install_individually: {{ fp_authorized_key_install_individually | bool }}
       fp_authorized_key_comment: {{ fp_authorized_key_comment | d('UNDEFINED') }}
       fp_authorized_key_install_exclusive: {{ fp_authorized_key_install_exclusive | d('UNDEFINED') }}
@@ -34,10 +36,12 @@
         {{ fp_authorized_key_conf | to_nice_yaml(indent=2) | indent(2) }}
       getent_passwd keys:
         {{ getent_passwd.keys() | list | sort | to_yaml(indent=2) | indent(2) }}
+  tags: fp_authorized_key_debug
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
 
 - name: Sanity
+  tags: fp_authorized_key_sanity
   block:
 
     - name: "Authorized-key: Sanity: All users exist."
@@ -48,6 +52,16 @@
         quiet: "{{ fp_authorized_key_sanity_quiet | bool }}"
         fail_msg: >
           [ERR] Users missing: {{ users_missing }}
+
+    - name: "Authorized-key: Sanity: All keys are valid."
+      vars:
+        keys: "{{ fp_authorized_key_conf | map(attribute='key')
+                                         | map('regex_search', fp_authorized_key_valid_regex) }}"
+      ansible.builtin.assert:
+        that: keys is all
+        quiet: "{{ fp_authorized_key_sanity_quiet | bool }}"
+        fail_msg: >
+          [ERR] Invalid key(s).
 
 - name: "Authorized-key: Configure authorized keys individually"
   when: fp_authorized_key_install_individually | bool

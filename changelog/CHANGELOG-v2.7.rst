@@ -17,6 +17,9 @@ Major Changes
 
 Minor Changes
 -------------
+* Add var fp_authorized_key_valid_regex
+* Add tags fp_authorized_key_sanity and fp_authorized_key_debug
+* Update debug.yml
 
 
 2.7.15
