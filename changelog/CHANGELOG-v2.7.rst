@@ -5,6 +5,20 @@ vbotka.freebsd_postinstall 2.7 Release Notes
 .. contents:: Topics
 
 
+2.7.16
+======
+Update tasks authorized-key.yml; Test PK validity.
+
+Release Summary
+---------------
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+
+
 2.7.15
 ======
 Add tasks rcd.yml. Create rc.d scripts.
