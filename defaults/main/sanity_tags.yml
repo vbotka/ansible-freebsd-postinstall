@@ -8,6 +8,8 @@ fp_sanity_tags:
   - fp_apcupsd_conf
   - fp_apcupsd_rcconf
   - fp_authorized_key
+  - fp_authorized_key_debug
+  - fp_authorized_key_sanity
   - fp_cloud_proividers
   - fp_copy
   - fp_copy_debug

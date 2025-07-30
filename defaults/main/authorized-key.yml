@@ -4,6 +4,8 @@ fp_authorized_key_debug: false
 fp_authorized_key_conf: []
 
 fp_authorized_key_sanity_quiet: true
+# See https://regexr.com/64p5n
+fp_authorized_key_valid_regex: '^ssh-rsa\s+[A-Za-z0-9+/]+[=]{0,3}(\s+.+)?\s*$'
 
 # If False, group keys by user and install string of keys
 fp_authorized_key_install_individually: true
