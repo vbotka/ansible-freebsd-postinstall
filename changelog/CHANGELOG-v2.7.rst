@@ -5,6 +5,26 @@ vbotka.freebsd_postinstall 2.7 Release Notes
 .. contents:: Topics
 
 
+2.7.17
+======
+Update defaults/main/login.yml
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Add vars:
+  fp_login_conf_default
+  fp_login_conf_standard
+  fp_login_conf_xuser
+  fp_login_conf_staff
+  fp_login_conf_daemon
+  fp_login_conf_news
+  fp_login_conf_dialer
+  fp_login_conf_root
+
+
 2.7.16
 ======
 Update tasks authorized-key.yml; Test PK validity.
