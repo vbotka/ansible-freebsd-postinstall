@@ -5,6 +5,16 @@ vbotka.freebsd_postinstall 2.7 Release Notes
 .. contents:: Topics
 
 
+2.7.18
+======
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+
+
 2.7.17
 ======
 Update defaults/main/login.yml
