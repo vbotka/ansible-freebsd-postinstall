@@ -7,6 +7,7 @@ vbotka.freebsd_postinstall 2.7 Release Notes
 
 2.7.18
 ======
+Update pkg_dict_amd64. Update docs.
 
 Major Changes
 -------------
@@ -14,6 +15,7 @@ Major Changes
 Minor Changes
 -------------
 * Add security/sudo to pkg_dict_amd64_dict
+* Add collection examples to docs guide introduction.
 
 
 2.7.17
