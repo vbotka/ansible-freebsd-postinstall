@@ -13,6 +13,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Add security/sudo to pkg_dict_amd64_dict
 
 
 2.7.17
