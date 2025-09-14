@@ -17,6 +17,8 @@ Major Changes
 
 Minor Changes
 -------------
+* Explicit bool converion is no longer needed.
+
 
 Breaking Changes / Porting Guide
 --------------------------------

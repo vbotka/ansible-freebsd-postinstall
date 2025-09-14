@@ -8,15 +8,15 @@
       community.general.pkgng:
         name: "{{ _fp_pkg_dict[item] }}"
         annotation: "{{ fp_pkg_annotation | d(omit) }}"
-        autoremove: "{{ fp_pkg_autoremove | d(omit) | bool }}"
-        cached: "{{ fp_pkg_cached | d(omit) | bool }}"
+        autoremove: "{{ fp_pkg_autoremove | d(omit) }}"
+        cached: "{{ fp_pkg_cached | d(omit) }}"
         chroot: "{{ fp_pkg_chroot | d(omit) }}"
-        ignore_osver: "{{ fp_pkg_ignore_osver | d(omit) | bool }}"
+        ignore_osver: "{{ fp_pkg_ignore_osver | d(omit) }}"
         jail: "{{ fp_pkg_jail | d(omit) }}"
         pkgsite: "{{ fp_pkg_pkgsite | d(omit) }}"
         rootdir: "{{ fp_pkg_rootdir | d(omit) }}"
         state: "{{ fp_pkg_state | d(omit) }}"
-        use_globs: "{{ fp_pkg_use_globs | d(omit) | bool }}"
+        use_globs: "{{ fp_pkg_use_globs | d(omit) }}"
       register: result
       retries: "{{ freebsd_install_retries }}"
       until: result is succeeded
@@ -34,7 +34,7 @@
     - name: "Packages-install: Install ports list {{ item }}"
       community.general.portinstall:
         name: "{{ local_item }}"
-        use_packages: "{{ freebsd_use_packages | d(omit) | bool }}"
+        use_packages: "{{ freebsd_use_packages | d(omit) }}"
       loop: "{{ _fp_pkg_dict[item] }}"
       loop_control:
         loop_var: local_item
