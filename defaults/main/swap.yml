@@ -2,7 +2,7 @@
 fp_swap: false
 fp_swap_debug: false
 fp_swap_enable: false
-# fp_swap_file: /usr/swap0
+fp_swap_file: /usr/swap0
 # fp_swap_md: md99
 # fp_swap_size: 4096
 # fp_swap_size: 2048

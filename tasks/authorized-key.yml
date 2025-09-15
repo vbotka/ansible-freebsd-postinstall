@@ -102,13 +102,13 @@
         user: "{{ item }}"
         key: "{{ fp_authorized_key_conf | json_query(my_query) | join('\n') }}"
         comment: "{{ fp_authorized_key_comment | d(omit) }}"
-        exclusive: "{{ fp_authorized_key_install_exclusive | d(omit) | bool }}"
-        follow: "{{ fp_authorized_key_follow | d(omit) | bool }}"
-        manage_dir: "{{ fp_authorized_key_manage_dir | d(omit) | bool }}"
+        exclusive: "{{ fp_authorized_key_install_exclusive | d(omit) }}"
+        follow: "{{ fp_authorized_key_follow | d(omit) }}"
+        manage_dir: "{{ fp_authorized_key_manage_dir | d(omit) }}"
         path: "{{ fp_authorized_key_path | d(omit) }}"
         state: "{{ fp_authorized_key_state | d(omit) }}"
         key_options: "{{ fp_authorized_key_key_options | d(omit) }}"
-        validate_certs: "{{ fp_authorized_key_validate_certs | d(omit) | bool }}"
+        validate_certs: "{{ fp_authorized_key_validate_certs | d(omit) }}"
       loop: "{{ local_list_users }}"
 
 # EOF
