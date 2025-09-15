@@ -11,6 +11,7 @@
 
 - name: "Tmpmfs: Configure tmpmfs in {{ _path }}"
   vars:
+    _service: tmpmfs
     _rcconfd_path: "{{ fp_rcconfd_path[_service] }}"
     _path: "{{ fp_rcconfd | bool | ternary(_rcconfd_path, '/etc/rc.conf') }}"
   tags: fp_tmpmfs_rcconf

@@ -17,8 +17,13 @@ Major Changes
 
 Minor Changes
 -------------
-* Explicit bool converion is no longer needed.
+* Explicit bool conversion is no longer needed.
 
+Bug fix
+-------
+* Add missing default fp_qemu_user_static_enable=false
+* Add missing default fp_swap_file=/usr/swap0
+* Add missing variable _service=tmpmfs in tasks/tmpmfs.yml
 
 Breaking Changes / Porting Guide
 --------------------------------
