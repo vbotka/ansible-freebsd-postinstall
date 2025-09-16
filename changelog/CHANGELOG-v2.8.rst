@@ -16,7 +16,8 @@ Major Changes
 
 Minor Changes
 -------------
-
+* Add dictionary fp_ansible_lib
+* In collection import vbotka.freebsd.lib, otherwise import vbotka.ansible_lib
 
 
 2.8.0

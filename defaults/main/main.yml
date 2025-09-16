@@ -6,3 +6,8 @@ fp_backup: false
 fp_environment:
   default:
     CRYPTOGRAPHY_OPENSSL_NO_LEGACY: '1'
+
+# Use vbotka.freebsd.lib in collection vbotka.freebsd
+fp_ansible_lib:
+  vbotka.freebsd_postinstall: vbotka.ansible_lib
+  vbotka.freebsd.postinstall: vbotka.freebsd.lib
