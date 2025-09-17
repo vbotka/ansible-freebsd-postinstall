@@ -675,30 +675,6 @@ Description of the task.
 
 
 
-.. _as_mount-vnode.yml:
-
-mount-vnode.yml
----------------
-
-Synopsis: Configure mount-vnode
-
-
-Description of the task.
-
-
-[`tasks/mount-vnode.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/mount-vnode.yml>`_]
-
-.. highlight:: yaml
-    :linenothreshold: 5
-.. literalinclude:: ../../tasks/mount-vnode.yml
-    :language: yaml
-    :emphasize-lines: 1
-    :linenos:
-
-
-
-
-
 .. _as_nfs.yml:
 
 nfs.yml

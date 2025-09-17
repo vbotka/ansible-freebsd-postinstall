@@ -25,7 +25,6 @@ make.yml
 motd.yml
 mount-img.yml
 mount-iso.yml
-mount-vnode.yml
 nfs.yml
 nfsd.yml
 ntp.yml
