@@ -18,6 +18,7 @@ Minor Changes
 -------------
 * Add dictionary fp_ansible_lib
 * In collection import vbotka.freebsd.lib, otherwise import vbotka.ansible_lib
+* Remove mount-vnode.yml and put the content into mount-img.yml and mount-iso.yml
 
 
 2.8.0
