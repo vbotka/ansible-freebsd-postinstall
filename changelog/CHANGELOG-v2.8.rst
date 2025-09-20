@@ -10,6 +10,7 @@ vbotka.freebsd_postinstall 2.8 Release Notes
 
 Release Summary
 ---------------
+Add dictionary fp_ansible_lib; Update mount-\*.yml
 
 Major Changes
 -------------
@@ -27,6 +28,7 @@ Minor Changes
 
 Release Summary
 ---------------
+Ansible 2.19 upgrade.
 
 Major Changes
 -------------
