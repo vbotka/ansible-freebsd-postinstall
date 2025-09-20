@@ -3,7 +3,7 @@
   vars:
     al_mdconfig_file: "{{ item[_fp_mount_task] }}" # noqa: var-naming[no-role-prefix]
   ansible.builtin.include_role:
-    name: vbotka.freebsd.lib
+    name: "{{ fp_ansible_lib[ansible_role_name] }}"
     tasks_from: al_mdconfig.yml
 
 # EOF

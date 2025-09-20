@@ -5,11 +5,30 @@ vbotka.freebsd_postinstall 2.8 Release Notes
 .. contents:: Topics
 
 
+2.8.1
+=====
+
+Release Summary
+---------------
+Add dictionary fp_ansible_lib; Update mount-\*.yml
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Add dictionary fp_ansible_lib
+* In collection import vbotka.freebsd.lib, otherwise import vbotka.ansible_lib
+* Remove mount-vnode.yml and put the content into mount-img.yml and mount-iso.yml
+* Update docs.
+
+
 2.8.0
 =====
 
 Release Summary
 ---------------
+Ansible 2.19 upgrade.
 
 Major Changes
 -------------

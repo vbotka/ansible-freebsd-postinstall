@@ -580,27 +580,6 @@ mytasks:
       []
 
 
-  - file: mount-vnode.yml
-    link: mount-vnode.yml
-    path: tasks/mount-vnode.yml
-    synopsis: |
-      Configure mount-vnode
-    description: |
-      Description of the task.
-    lines: 1
-    seealso:
-      {}
-
-    notes:
-      []
-
-    hints:
-      []
-
-    warnings:
-      []
-
-
   - file: nfs.yml
     link: nfs.yml
     path: tasks/nfs.yml
