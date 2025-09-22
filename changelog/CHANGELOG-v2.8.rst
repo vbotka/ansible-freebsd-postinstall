@@ -5,6 +5,21 @@ vbotka.freebsd_postinstall 2.8 Release Notes
 .. contents:: Topics
 
 
+2.8.2
+=====
+
+Release Summary
+---------------
+Fix mount-iso and mount-img tasks.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Remove _fp_mount_debug variable frmon the names.
+
+
 2.8.1
 =====
 

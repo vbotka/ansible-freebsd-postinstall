@@ -34,7 +34,7 @@
     file: fn/mdconfig-attach-disk.yml
   loop: "{{ _fp_mount_entries }}"
 
-- name: "Mount-img: Debug attach memory disks _fp_mount_debug={{ _fp_mount_debug }}"
+- name: "Mount-img: Debug attach memory disks."
   when: _fp_mount_debug | bool
   ansible.builtin.debug:
     var: al_mdconfig_devs
@@ -57,7 +57,7 @@
     fstab: /tmp/tmp.fstab # Note 1.
   loop: "{{ _fp_mount_entries }}"
 
-- name: "Mount-img: Debug mount _fp_mount_debug={{ _fp_mount_debug }}"
+- name: "Mount-img: Debug mount."
   when: _fp_mount_debug | bool
   ansible.builtin.debug:
     var: result
@@ -71,7 +71,7 @@
     fstab: /tmp/tmp.fstab # Note 1.
   loop: "{{ _fp_mount_entries }}"
 
-- name: "Mount-img: Debug unmount _fp_mount_debug={{ _fp_mount_debug }}"
+- name: "Mount-img: Debug unmount."
   when: _fp_mount_debug | bool
   ansible.builtin.debug:
     var: result
@@ -82,7 +82,7 @@
     file: fn/mdconfig-detach-disk.yml
   loop: "{{ _fp_mount_entries }}"
 
-- name: "Mount-img: Debug detach memory disks _fp_mount_debug={{ _fp_mount_debug }}"
+- name: "Mount-img: Debug detach memory disks."
   when: _fp_mount_debug | bool
   ansible.builtin.debug:
     var: al_mdconfig_devs
