@@ -7,7 +7,7 @@
     _fp_mount_entries: "{{ fp_mount_iso_entries }}"
     _fp_mount_debug: "{{ fp_mount_iso_debug }}"
 
-- name: "Mount-iso: Debug fp_mount_iso_debug={{ fp_mount_iso_debug }}"
+- name: "Mount-iso: Debug."
   when: fp_mount_iso_debug | bool
   vars:
     msg: |-
@@ -34,7 +34,7 @@
     file: fn/mdconfig-attach-disk.yml
   loop: "{{ _fp_mount_entries }}"
 
-- name: "Mount-iso: Debug attach memory disks _fp_mount_debug={{ _fp_mount_debug }}"
+- name: "Mount-iso: Debug attach memory disks."
   when: _fp_mount_debug | bool
   ansible.builtin.debug:
     var: al_mdconfig_devs
@@ -57,7 +57,7 @@
     fstab: /tmp/tmp.fstab # Note 1.
   loop: "{{ _fp_mount_entries }}"
 
-- name: "Mount-iso: Debug mount _fp_mount_debug={{ _fp_mount_debug }}"
+- name: "Mount-iso: Debug mount."
   when: _fp_mount_debug | bool
   ansible.builtin.debug:
     var: result
@@ -71,18 +71,18 @@
     fstab: /tmp/tmp.fstab # Note 1.
   loop: "{{ _fp_mount_entries }}"
 
-- name: "Mount-iso: Debug unmount _fp_mount_debug={{ _fp_mount_debug }}"
+- name: "Mount-iso: Debug unmount."
   when: _fp_mount_debug | bool
   ansible.builtin.debug:
     var: result
 
-- name: "Mount-iso: Detach memory disks"
+- name: "Mount-iso: Detach memory disks."
   when: item.state | d("mounted") == "unmounted"
   ansible.builtin.include_tasks:
     file: fn/mdconfig-detach-disk.yml
   loop: "{{ _fp_mount_entries }}"
 
-- name: "Mount-iso: Debug detach memory disks _fp_mount_debug={{ _fp_mount_debug }}"
+- name: "Mount-iso: Debug detach memory disks."
   when: _fp_mount_debug | bool
   ansible.builtin.debug:
     var: al_mdconfig_devs
