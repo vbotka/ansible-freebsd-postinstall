@@ -5,6 +5,20 @@ vbotka.freebsd_postinstall 2.8 Release Notes
 .. contents:: Topics
 
 
+2.8.3
+=====
+
+Release Summary
+---------------
+Fix missing handlers.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+
+
 2.8.2
 =====
 
