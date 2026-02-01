@@ -3,3 +3,4 @@ fp_vars: false
 fp_vars_debug: false
 
 fp_vars_default_versions: false
+fp_vars_makefile: /tmp/Makefile.ansible.default-versions

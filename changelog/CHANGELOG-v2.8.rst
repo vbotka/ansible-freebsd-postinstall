@@ -17,6 +17,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Add var fp_vars_makefile default=/tmp/Makefile.ansible.default-versions
 
 
 2.8.2

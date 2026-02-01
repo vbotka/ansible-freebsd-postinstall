@@ -7,13 +7,13 @@
     - name: "Vars: Copy Makefile"
       ansible.builtin.copy:
         src: Makefile.default-versions
-        dest: Makefile
+        dest: "{{ fp_vars_makefile }}"
         mode: "0644"
 
     - name: "Vars: Get default versions"
       register: result
       ansible.builtin.command:
-        cmd: make default-versions
+        cmd: "make -f {{ fp_vars_makefile }} default-versions"
       changed_when: false
 
     - name: "Vars: Create dictionary pf_default_versions"
