@@ -5,6 +5,21 @@ vbotka.freebsd_postinstall 2.8 Release Notes
 .. contents:: Topics
 
 
+2.8.4
+=====
+
+Release Summary
+---------------
+Upgrade to Ansible 2.20
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Supported versions: 13.5, 14.3, 15.0
+
+
 2.8.3
 =====
 
