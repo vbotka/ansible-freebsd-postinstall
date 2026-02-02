@@ -35,7 +35,7 @@
       fp_authorized_key_conf:
         {{ fp_authorized_key_conf | to_nice_yaml(indent=2) | indent(2) }}
       getent_passwd keys:
-        {{ getent_passwd.keys() | list | sort | to_yaml(indent=2) | indent(2) }}
+        {{ ansible_facts.getent_passwd.keys() | list | sort | to_yaml(indent=2) | indent(2) }}
   tags: fp_authorized_key_debug
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
@@ -46,7 +46,7 @@
 
     - name: "Authorized-key: Sanity: All users exist."
       vars:
-        users_missing: "{{ local_list_users | difference(getent_passwd.keys()) }}"
+        users_missing: "{{ local_list_users | difference(ansible_facts.getent_passwd.keys()) }}"
       ansible.builtin.assert:
         that: users_missing | length == 0
         quiet: "{{ fp_authorized_key_sanity_quiet | bool }}"
