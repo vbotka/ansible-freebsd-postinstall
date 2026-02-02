@@ -20,6 +20,7 @@ Minor Changes
 * Add var fp_vars_makefile default=/tmp/Makefile.ansible.default-versions
 * Remove parseable option for the configuration ansible-lint.local
 * Variable getent_passwd now in the dictionary ansible_facts.getent_passwd
+* Put ansible facts into the dictionary ansible_facts
 
 
 2.8.2
