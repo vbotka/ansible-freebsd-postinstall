@@ -4,7 +4,7 @@
   tags: fp_do_debug
   vars:
     msg: |-
-      ansible_distribution_major_version: {{ ansible_distribution_major_version }}
+      ansible_facts.distribution_major_version: {{ ansible_facts.distribution_major_version }}
       fp_do_default_user: {{ fp_do_default_user }}
       fp_do_default_user_remove: {{ fp_do_default_user_remove }}
       fp_do_default_user_remove_home: {{ fp_do_default_user_remove_home }}
@@ -37,7 +37,7 @@
 
   # DO overwrites hostname from rc.conf
 - name: "Hostname: Configure hostname in /etc/rc.digitalocean.d/droplet.conf"
-  when: ansible_distribution_major_version | int < 11
+  when: ansible_facts.distribution_major_version | int < 11
   tags: fp_do_hostname_rcconf
   ansible.builtin.lineinfile:
     dest: /etc/rc.digitalocean.d/droplet.conf
