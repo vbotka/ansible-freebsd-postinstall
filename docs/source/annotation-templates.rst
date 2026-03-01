@@ -819,3 +819,27 @@ Description of the task.
 
 
 
+.. _as_template_wpa_supplicant.conf-v2.j2:
+
+wpa_supplicant.conf-v2.j2
+-------------------------
+
+Synopsis: Configure wpa_supplicant.conf-v2
+
+
+Description of the task.
+
+
+[`templates/wpa_supplicant.conf-v2.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/wpa_supplicant.conf-v2.j2>`_]
+
+.. highlight:: jinja
+    :linenothreshold: 5
+.. literalinclude:: ../../templates/wpa_supplicant.conf-v2.j2
+    :language: jinja
+    :emphasize-lines: 1
+    :linenos:
+
+
+
+
+
