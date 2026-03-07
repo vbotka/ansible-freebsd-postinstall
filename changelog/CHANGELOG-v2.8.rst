@@ -5,6 +5,21 @@ vbotka.freebsd_postinstall 2.8 Release Notes
 .. contents:: Topics
 
 
+2.8.5
+=====
+
+Release Summary
+---------------
+Feature update.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Add template wpa_supplicant.conf-v2.j2
+
+
 2.8.4
 =====
 

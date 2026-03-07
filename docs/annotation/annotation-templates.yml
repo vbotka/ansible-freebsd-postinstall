@@ -715,4 +715,25 @@ mytemplates:
       []
 
 
+  - file: wpa_supplicant.conf-v2.j2
+    link: wpa_supplicant.conf-v2.j2
+    path: templates/wpa_supplicant.conf-v2.j2
+    synopsis: |
+      Configure wpa_supplicant.conf-v2
+    description: |
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
+
 ...
