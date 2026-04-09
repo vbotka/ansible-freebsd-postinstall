@@ -5,6 +5,210 @@ vbotka.freebsd_postinstall 2.6 Release Notes
 .. contents:: Topics
 
 
+2.6.20
+======
+
+Release Summary
+---------------
+Add hooks configuration to dhclient.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Update dhclient tasks, defaults, and vars.
+* Add variables fp_dhclient_etc_dir, fp_dhclient_hooks, and
+  fp_dhclient_debug2
+* Update README
+
+
+2.6.19
+======
+
+Release Summary
+---------------
+Configure devd.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Add devd.yml tasks, handlers, default vars, and vars/samples
+* Update docs.
+
+
+2.6.18
+======
+
+Release Summary
+---------------
+Maintenance including docs update.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Update docs.
+
+
+2.6.17
+======
+
+Release Summary
+---------------
+Maintenance including docs update.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Update docs.
+
+
+2.6.16
+======
+
+Release Summary
+---------------
+Maintenance including docs update.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Improve tasks formatting.
+* Fix environment: CRYPTOGRAPHY_OPENSSL_NO_LEGACY: '1'
+* Update docs.
+
+
+2.6.15
+======
+
+Release Summary
+---------------
+Maintenance update.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+- Update docs.
+
+
+2.6.14
+======
+
+Release Summary
+---------------
+Maintenance including docs update.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+- Update python 3.11 in .travis.yml
+- Update playbook .configure.yml
+
+
+2.6.13
+======
+
+Release Summary
+---------------
+Ansible 2.17 Maintenance including docs update.
+
+Major Changes
+-------------
+* Update tasks/packages.yml and tasks/packages-install.yml Add
+  Pkglist: Assert freebsd_install_method in [packages, ports]
+* The playbook .configure.yml generates the files:
+  defaults/main/nfsd_services.yml
+  defaults/main/nfs_services.yml
+* Update defaults/main/nfsd.yml, tasks/nfsd.yml, and handlers/nfsd.yml
+* Update defaults/main/nfs.yml, tasks/nfs.yml, and handlers/nfs.yml
+
+Minor Changes
+-------------
+* Bump role and docs version
+* Update docs. Update tasks annotation.
+* Update docs/annotation/annotation-tasks.rst.j2
+
+
+2.6.12
+======
+
+Release Summary
+---------------
+Feature and bugfix release with docs update.
+
+Major Changes
+-------------
+
+* Support 14.1
+* Update flavor devel/git@default in pkg_dict_amd64
+* Update defaults/main/packages.yml
+  Update tasks/packages.yml and tasks/packages-install.yml
+  Enable upgrade "-t fp_packages -e fp_install=true -e
+  fp_pkg_state=latest -e fp_pkg_use_globs=false"
+
+Minor Changes
+-------------
+* Bump docs version.
+* Update debug.yml
+* Update hosts sanity testing.
+* Update passwords.
+* Update tasks mount-*
+* Update var pkg_dict_amd64. Add pkg_dict_amd64_dict.
+* Add variable fp_role_version
+* Add playbook .configure.yml to customize the role. Add file
+  defaults/main/sanity_tags.yml. Move default variable fp_sanity_tags
+  from defaults/main/sanity.yml to
+  defaults/main/sanity_tags.yml. Update tasks/sanity.yml
+
+Bugfixes
+--------
+* Ansible lint errors and warnings.
+* var fp_ntpdate_enable shall be boolean. Was string.
+
+Breaking Changes / Porting Guide
+--------------------------------
+* Simplified tasks sysctl.yml and loader.yml; Add var
+  fp_loader_conf_file_backup_orig
+* Rename var fp_sysctl_warning_loader_needed to fp_sysctl_tuneables_warning
+* Remove var fp_loader_conf_template_enable
+* Add default template loader.conf2.j2
+* Add default template freebsd-update.conf2.j2
+* var fp_ntpdate_enable changed to boolean. See defaults/main/ntpdate.yml
+
+
+2.6.11
+======
+
+Release Summary
+---------------
+Feature and docs update.
+
+Major changes
+-------------
+* Support 13.3 and 14.0
+
+Minor Changes
+-------------
+* Formatting Travis config.
+* Update Ansible lint config.
+* Update README
+* Exclude docs from local ansible-lint
+* Use default rules in local ansible-lint
+* Update docs.
+
+
 2.6.10
 ======
 

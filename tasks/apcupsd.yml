@@ -1,49 +1,28 @@
 ---
-
-- name: "apcupsd: Enable and start apcupsd"
-  ansible.builtin.lineinfile:
-    dest: /etc/rc.conf
-    regexp: '^\s*apcupsd_enable\s*=(.*)$'
-    line: 'apcupsd_enable="YES"'
-    backup: "{{ fp_backup }}"
-  when: fp_apcupsd_enabled|bool
-  notify: enable and start apcupsd
-  tags: fp_apcupsd_rcconf
-
-- name: "apcupsd: Disable and stop apcupsd"
-  ansible.builtin.lineinfile:
-    dest: /etc/rc.conf
-    regexp: '^\s*apcupsd_enable\s*=(.*)$'
-    line: 'apcupsd_enable="NO"'
-    backup: "{{ fp_backup }}"
-  when: not fp_apcupsd_enabled|bool
-  notify: disable and stop apcupsd
-  tags: fp_apcupsd_rcconf
-
-- name: "apcupsd: Create directory {{ fp_apcupsd_conf_dir }}"
-  ansible.builtin.file:
-    state: directory
-    path: "{{ fp_apcupsd_conf_dir }}"
-    mode: "{{ fp_apcupsd_conf_dir_mode }}"
+- name: Configure apcupsd
   tags: fp_apcupsd_conf
+  block:
 
-- name: "apcupsd: Configure apcupsd.conf"
-  ansible.builtin.template:
-    src: apcupsd.conf.j2
-    dest: "{{ fp_apcupsd_conf_file }}"
-    owner: "{{ fp_apcupsd_conf_owner }}"
-    group: "{{ fp_apcupsd_conf_group }}"
-    mode: "{{ fp_apcupsd_conf_mode }}"
-    backup: "{{ fp_backup }}"
-  notify: restart apcupsd
-  tags: fp_apcupsd_conf
+    - name: "Apcupsd: Create directory {{ fp_apcupsd_conf_dir }}"
+      ansible.builtin.file:
+        state: directory
+        path: "{{ fp_apcupsd_conf_dir }}"
+        mode: "{{ fp_apcupsd_conf_dir_mode }}"
 
-- name: "apcupsd: {{ state }} apcupsd"
-  ansible.builtin.service:
-    name: apcupsd
-    state: "{{ state }}"
+    - name: "Apcupsd: Configure apcupsd.conf"
+      notify: restart apcupsd
+      ansible.builtin.template:
+        src: apcupsd.conf.j2
+        dest: "{{ fp_apcupsd_conf_file }}"
+        owner: "{{ fp_apcupsd_conf_owner }}"
+        group: "{{ fp_apcupsd_conf_group }}"
+        mode: "{{ fp_apcupsd_conf_mode }}"
+        backup: "{{ fp_backup }}"
+
+- name: "Apcupsd: Configure rc.conf"
+  tags: fp_apcupsd_rcconf
   vars:
-    state: "{{ fp_apcupsd_enabled|bool|ternary('started', 'stopped') }}"
+    _service: apcupsd
+  ansible.builtin.import_tasks: fn/rcconf.yml
 
 # EOF
-...

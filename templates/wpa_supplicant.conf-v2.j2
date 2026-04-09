@@ -1,0 +1,21 @@
+# {{ ansible_managed }}
+# {{ template_path }}
+
+{% for k,v in fp_wpasupplicant_conf_global.items()  %}
+{{ k }}={{ v }}
+{% endfor %}
+{% for net in item.network | sort(attribute='ssid') %}
+
+network={
+{% for k,v in net.items() %}
+{% if k in ['ssid', 'psk'] %}
+{{ '\t' }}{{ k }}="{{ v }}"
+{% elif k in ['mesh_fwding'] %}
+{% else %}
+{{ '\t' }}{{ k }}={{ v }}
+{% endif %}
+{% endfor %}
+}
+{% endfor %}
+
+# EOF

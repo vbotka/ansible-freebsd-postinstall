@@ -23,7 +23,6 @@ pkg_dict_i386:
   - pkglist: smart
     packages:
       - sysutils/smartmontools
-      - sysutils/smart
   - pkglist: hostap
     packages:
       - net/hostapd
@@ -41,9 +40,7 @@ pkg_dict_i386:
       - emulators/linux_base-{{ bsd_linux_version }}
   - pkglist: devel
     packages:
-      - devel/llvm{{ bsd_gcc_version }}
-  - pkglist: pip
-    packages:
+      - devel/llvm60
       - devel/py-pip
   - pkglist: joomla
     packages:
@@ -135,7 +132,6 @@ pkg_dict_i386:
   - pkglist: dns
     packages:
       - dns/bind{{ bsd_bind_version }}
-      - dns/bind-tools
   - pkglist: yazvs
     packages:
       - dns/p5-Net-DNS
@@ -162,7 +158,6 @@ pkg_dict_i386:
   - pkglist: jail
     packages:
       - sysutils/ezjail
-      - ports-mgmt/portsnap
   - pkglist: security
     packages:
       - security/openssl

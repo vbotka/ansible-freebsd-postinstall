@@ -1,22 +1,20 @@
 ---
-# Unarch optional
-
-- name: "copy:unarch-optional: Debug optional archive exists"
-  ansible.builtin.debug:
-    msg: "Archive {{ mypath }} exists: {{ mystat }}"
+- name: "Copy:unarch-optional: Debug optional archive exists fp_copy_debug={{ fp_copy_debug }}"
+  when: fp_copy_debug | bool
   vars:
     mypath: "{{ fp_copy_dir }}/{{ fp_copy_arch_optional }}"
     mystat: "{{ mypath is exists }}"
-  when: fp_debug|bool
+  ansible.builtin.debug:
+    msg: "Archive {{ mypath }} exists: {{ mystat }}"
 
-- name: "copy:unarch-optional: Extract optional archive {{ fp_copy_dir }}/{{ fp_copy_arch_optional }}"
-  ansible.builtin.unarchive:
-    src: "{{ fp_copy_dir }}/{{ fp_copy_arch_optional }}"
-    dest: "/"
-    keep_newer: "{{ fp_unarchive_keep_newer }}"
+- name: "Copy:unarch-optional: Extract optional archive {{ fp_copy_dir ~ '/' ~ fp_copy_arch_optional }}"
+  when: mypath is exists
   vars:
     mypath: "{{ fp_copy_dir }}/{{ fp_copy_arch_optional }}"
-  when: mypath is exists
+  environment: "{{ fp_environment.crypto | d(fp_environment.default) }}"
+  ansible.builtin.unarchive:
+    src: "{{ fp_copy_dir }}/{{ fp_copy_arch_optional }}"
+    dest: /
+    keep_newer: "{{ fp_unarchive_keep_newer }}"
 
 # EOF
-...

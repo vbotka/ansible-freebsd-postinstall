@@ -1,3 +1,5 @@
+.. _as_tasks:
+
 Tasks
 =====
 
@@ -17,7 +19,7 @@ Import tasks if enabled.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/main.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -30,7 +32,7 @@ Import tasks if enabled.
 aliases.yml
 -----------
 
-Synopsis: Configure aliases.
+Synopsis: Configure aliases
 
 
 Description of the task.
@@ -41,8 +43,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/aliases.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -54,7 +56,7 @@ Description of the task.
 apcupsd.yml
 -----------
 
-Synopsis: Configure apcupsd.
+Synopsis: Configure apcupsd
 
 
 Description of the task.
@@ -65,8 +67,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/apcupsd.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -78,7 +80,7 @@ Description of the task.
 authorized-key.yml
 ------------------
 
-Synopsis: Configure authorized-key.
+Synopsis: Configure authorized-key
 
 
 Description of the task.
@@ -89,8 +91,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/authorized-key.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -102,7 +104,7 @@ Description of the task.
 cloud-providers.yml
 -------------------
 
-Synopsis: Configure cloud-providers.
+Synopsis: Configure cloud-providers
 
 
 Description of the task.
@@ -113,8 +115,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/cloud-providers.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -126,7 +128,7 @@ Description of the task.
 copy.yml
 --------
 
-Synopsis: Configure copy.
+Synopsis: Configure copy
 
 
 Description of the task.
@@ -137,8 +139,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/copy.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -150,7 +152,7 @@ Description of the task.
 cron.yml
 --------
 
-Synopsis: Configure cron.
+Synopsis: Configure cron
 
 
 Description of the task.
@@ -161,8 +163,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/cron.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -174,7 +176,7 @@ Description of the task.
 debug.yml
 ---------
 
-Synopsis: Configure debug.
+Synopsis: Configure debug
 
 
 Description of the task.
@@ -185,8 +187,32 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/debug.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
+    :linenos:
+
+
+
+
+
+.. _as_devd.yml:
+
+devd.yml
+--------
+
+Synopsis: Configure devd
+
+
+Description of the task.
+
+
+[`tasks/devd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/devd.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../tasks/devd.yml
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -198,7 +224,7 @@ Description of the task.
 devfs.yml
 ---------
 
-Synopsis: Configure devfs.
+Synopsis: Configure devfs
 
 
 Description of the task.
@@ -209,8 +235,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/devfs.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -222,7 +248,7 @@ Description of the task.
 dhclient.yml
 ------------
 
-Synopsis: Configure dhclient.
+Synopsis: Configure dhclient
 
 
 Description of the task.
@@ -233,8 +259,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/dhclient.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -246,7 +272,7 @@ Description of the task.
 freebsd-update.yml
 ------------------
 
-Synopsis: Configure freebsd-update.
+Synopsis: Configure freebsd-update
 
 
 Description of the task.
@@ -257,8 +283,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/freebsd-update.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -270,7 +296,7 @@ Description of the task.
 fstab.yml
 ---------
 
-Synopsis: Configure fstab.
+Synopsis: Configure fstab
 
 
 Description of the task.
@@ -281,8 +307,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/fstab.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -294,7 +320,7 @@ Description of the task.
 gitserver.yml
 -------------
 
-Synopsis: Configure gitserver.
+Synopsis: Configure gitserver
 
 
 Description of the task.
@@ -305,8 +331,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/gitserver.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -318,7 +344,7 @@ Description of the task.
 groups.yml
 ----------
 
-Synopsis: Configure groups.
+Synopsis: Configure groups
 
 
 Description of the task.
@@ -329,8 +355,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/groups.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -342,7 +368,7 @@ Description of the task.
 groupwrappers.yml
 -----------------
 
-Synopsis: Configure groupwrappers.
+Synopsis: Configure groupwrappers
 
 
 Description of the task.
@@ -353,8 +379,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/groupwrappers.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -366,7 +392,7 @@ Description of the task.
 hostapd.yml
 -----------
 
-Synopsis: Configure hostapd.
+Synopsis: Configure hostapd
 
 
 Description of the task.
@@ -377,8 +403,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/hostapd.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -390,7 +416,7 @@ Description of the task.
 hostname.yml
 ------------
 
-Synopsis: Configure hostname.
+Synopsis: Configure hostname
 
 
 Description of the task.
@@ -401,8 +427,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/hostname.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -414,7 +440,7 @@ Description of the task.
 hosts.yml
 ---------
 
-Synopsis: Configure hosts.
+Synopsis: Configure hosts
 
 
 Description of the task.
@@ -425,8 +451,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/hosts.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -438,7 +464,7 @@ Description of the task.
 inetd.yml
 ---------
 
-Synopsis: Configure inetd.
+Synopsis: Configure inetd
 
 
 Description of the task.
@@ -449,8 +475,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/inetd.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -462,7 +488,7 @@ Description of the task.
 libmap.yml
 ----------
 
-Synopsis: Configure libmap.
+Synopsis: Configure libmap
 
 
 Description of the task.
@@ -473,8 +499,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/libmap.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -486,7 +512,7 @@ Description of the task.
 linux.yml
 ---------
 
-Synopsis: Configure linux.
+Synopsis: Configure linux
 
 
 Description of the task.
@@ -497,8 +523,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/linux.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -510,7 +536,7 @@ Description of the task.
 loader.yml
 ----------
 
-Synopsis: Configure loader.
+Synopsis: Configure loader
 
 
 Description of the task.
@@ -521,8 +547,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/loader.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -534,7 +560,7 @@ Description of the task.
 login.yml
 ---------
 
-Synopsis: Configure login.
+Synopsis: Configure login
 
 
 Description of the task.
@@ -545,8 +571,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/login.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -558,7 +584,7 @@ Description of the task.
 make.yml
 --------
 
-Synopsis: Configure make.
+Synopsis: Configure make
 
 
 Description of the task.
@@ -569,8 +595,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/make.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -582,7 +608,7 @@ Description of the task.
 motd.yml
 --------
 
-Synopsis: Configure motd.
+Synopsis: Configure motd
 
 
 Description of the task.
@@ -593,8 +619,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/motd.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -606,7 +632,7 @@ Description of the task.
 mount-img.yml
 -------------
 
-Synopsis: Configure mount-img.
+Synopsis: Configure mount-img
 
 
 Description of the task.
@@ -617,8 +643,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/mount-img.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -630,7 +656,7 @@ Description of the task.
 mount-iso.yml
 -------------
 
-Synopsis: Configure mount-iso.
+Synopsis: Configure mount-iso
 
 
 Description of the task.
@@ -641,32 +667,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/mount-iso.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
-    :linenos:
-
-
-
-
-
-.. _as_mount-vnode.yml:
-
-mount-vnode.yml
----------------
-
-Synopsis: Configure mount-vnode.
-
-
-Description of the task.
-
-
-[`tasks/mount-vnode.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/mount-vnode.yml>`_]
-
-.. highlight:: yaml
-    :linenothreshold: 5
-.. literalinclude:: ../../tasks/mount-vnode.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -681,25 +683,30 @@ nfs.yml
 Synopsis: Configure NFS client.
 
 
-To display variables (3) enable ``fp_nfs_debug=true`` (27). Collect
-status of the services (31) stored in the list
-``fp_nfs_service_paths``. The module ``service_facts`` doesn't work
-in FreeBSD. Instead, use the task ``al_bsd_service_facts`` (34) from
-the library (33). This task doesn't support the check mode. This
-task will return the dictionary
-``al_ansible_facts_services``. Display this dictionary (42). This
-dictionary is used to select the handlers in the dictionary
-``fp_nfs_handlers``. There is no status option of the service
-``nfsclient``. Insteda of starting the service, restart it if there
-are any nfs mountpoints, i.e. the file ``/var/db/mounttab``
-exists. Test the existence of the file ``var/db/nounttab`` (50) and
-display the result ``fp_var_db_mounttab.stat.exists`` (56). This
-variable will be used to select the handler in the dictionary
-``fp_nfs_handlers``.  Display the dictionary ``fp_nfsd_handlers``
-(62). The defaults are used in check mode because of empty
-dictionary ``al_ansible_facts_services``. Configure and enable (68),
-or disable (89) services. If the configuration of a service changes
-the service will be reloaded or restarted when already running.
+:2: Display variables.
+
+:3: Enable ``fp_nfs_debug=true``.
+
+:35: Collect status of the services stored in the list
+     ``fp_nfs_services``.
+
+:42: Create dictionary ``fp_nfs_services_status``.
+
+:55: Test the existence of the file ``var/db/nounttab``. There is no status
+     option of the service ``nfsclient``. Instead of starting the service,
+     restart it if there are any nfs mountpoints. This means if the file
+     ``/var/db/mounttab`` exists.
+
+:60: Display the result ``fp_nfs_var_db_mounttab.stat.exists``. This variable
+     will be used to select the handler in the dictionary ``fp_nfs_handlers``.
+
+:65: Display the dictionary ``fp_nfsd_handlers``. The defaults are
+     used in check mode because of empty dictionary
+     ``fp_nfs_services_status``.
+
+:70: Enable services.
+
+:79: Disable services.
 
 
 [`tasks/nfs.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/nfs.yml>`_]
@@ -707,17 +714,17 @@ the service will be reloaded or restarted when already running.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/nfs.yml
-    :language: Yaml
-    :emphasize-lines: 3,31,42,50,56,62,68,89
+    :language: yaml
+    :emphasize-lines: 2,3,35,42,55,60,65,70,79
     :linenos:
 
 .. seealso::
-   * Handler :ref:`as_handler_nfs.yml`
+   * Handler :ref:`as_handler_nfsclient.yml`
    * Handler :ref:`as_handler_nfsd.yml`
    * <TBD>
 
 .. note::
-   * <TBD>
+   * The variables ``fp_nfs_services_enable`` (74) and ``fp_nfs_services_disable`` (83) are created by the playbook ``.configure.yml``
 
 .. hint::
    * <TBD>
@@ -733,20 +740,28 @@ nfsd.yml
 Synopsis: Configure NFS server.
 
 
-To display variables (3) enable ``fp_nfsd_debug=true`` (51). Collect
-status of the services (55) stored in the list
-``fp_nfsd_service_paths``. The module ``service_facts`` doesn't work
-in FreeBSD. Instead, use the task ``al_bsd_service_facts`` (58) from
-the library (57). This task doesn't support the check mode. This
-task will return the dictionary
-``al_ansible_facts_services``. Display this dictionary (66). This
-dictionary is used to select the handlers in the dictionary
-``fp_nfsd_handlers``.  Display the dictionary ``fp_nfsd_handlers``
-(72). The defaults are used in check mode because of empty
-dictionary ``al_ansible_facts_services``. Configure ``/etc/exports``
-(78) and notify handler ``reload mountd``. Configure and enable
-(87), or disable (116) services. If there are any changes the
-service will be reloaded or restarted when already running.
+:2: Display variables.
+
+:3: enable ``fp_nfsd_debug=true``.
+
+:60: Collect status of the services stored in the list
+     ``fp_nfsd_services``.
+
+:67: Create dictionary ``fp_nfsd_services_status``.
+
+:73: Display this dictionary. This dictionary is used to select the
+     handlers in the dictionary ``fp_nfsd_handlers``.
+
+:78: Display the dictionary ``fp_nfsd_handlers``. The defaults are
+     used in check mode because of empty dictionary
+     ``fp_nfsd_services_status``.
+
+:83: Configure ``/etc/exports`` and notify handler ``reload
+     mountd``.
+
+:92: Enable services.
+
+:101: Disable services.
 
 
 [`tasks/nfsd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/nfsd.yml>`_]
@@ -754,8 +769,8 @@ service will be reloaded or restarted when already running.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/nfsd.yml
-    :language: Yaml
-    :emphasize-lines: 3,55,66,72,78,87,116
+    :language: yaml
+    :emphasize-lines: 2,3,60,67,73,78,83,92,101
     :linenos:
 
 .. seealso::
@@ -764,7 +779,7 @@ service will be reloaded or restarted when already running.
    * <TBD>
 
 .. note::
-   * <TBD>
+   * The variables ``fp_nfsd_services_enable`` (96) and ``fp_nfsd_services_disable`` (105) are created by the playbook ``.configure.yml``
 
 .. hint::
    * <TBD>
@@ -777,7 +792,7 @@ service will be reloaded or restarted when already running.
 ntp.yml
 -------
 
-Synopsis: Configure ntp.
+Synopsis: Configure ntp
 
 
 Description of the task.
@@ -788,8 +803,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/ntp.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -801,7 +816,7 @@ Description of the task.
 ntpdate.yml
 -----------
 
-Synopsis: Configure ntpdate.
+Synopsis: Configure ntpdate
 
 
 Description of the task.
@@ -812,8 +827,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/ntpdate.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -825,7 +840,7 @@ Description of the task.
 packages-install.yml
 --------------------
 
-Synopsis: Configure packages-install.
+Synopsis: Configure packages-install
 
 
 Description of the task.
@@ -836,8 +851,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/packages-install.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -849,7 +864,7 @@ Description of the task.
 packages.yml
 ------------
 
-Synopsis: Configure packages.
+Synopsis: Configure packages
 
 
 Description of the task.
@@ -860,8 +875,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/packages.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -873,7 +888,7 @@ Description of the task.
 passwords.yml
 -------------
 
-Synopsis: Configure passwords.
+Synopsis: Configure passwords
 
 
 Description of the task.
@@ -884,8 +899,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/passwords.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -897,7 +912,7 @@ Description of the task.
 periodic.yml
 ------------
 
-Synopsis: Configure periodic.
+Synopsis: Configure periodic
 
 
 Description of the task.
@@ -908,8 +923,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/periodic.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -921,7 +936,7 @@ Description of the task.
 procmail.yml
 ------------
 
-Synopsis: Configure procmail.
+Synopsis: Configure procmail
 
 
 Description of the task.
@@ -932,8 +947,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/procmail.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -945,7 +960,7 @@ Description of the task.
 qemu.yml
 --------
 
-Synopsis: Configure qemu.
+Synopsis: Configure qemu
 
 
 Description of the task.
@@ -956,8 +971,32 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/qemu.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
+    :linenos:
+
+
+
+
+
+.. _as_rcd.yml:
+
+rcd.yml
+-------
+
+Synopsis: Configure rcd
+
+
+Description of the task.
+
+
+[`tasks/rcd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/rcd.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../tasks/rcd.yml
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -969,7 +1008,7 @@ Description of the task.
 resolvconf.yml
 --------------
 
-Synopsis: Configure resolvconf.
+Synopsis: Configure resolvconf
 
 
 Description of the task.
@@ -980,8 +1019,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/resolvconf.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -993,7 +1032,7 @@ Description of the task.
 sanity.yml
 ----------
 
-Synopsis: Configure sanity.
+Synopsis: Configure sanity
 
 
 Description of the task.
@@ -1004,8 +1043,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/sanity.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -1017,7 +1056,7 @@ Description of the task.
 smartd.yml
 ----------
 
-Synopsis: Configure smartd.
+Synopsis: Configure smartd
 
 
 Description of the task.
@@ -1028,8 +1067,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/smartd.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -1041,7 +1080,7 @@ Description of the task.
 snmpd.yml
 ---------
 
-Synopsis: Configure snmpd.
+Synopsis: Configure snmpd
 
 
 Description of the task.
@@ -1052,8 +1091,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/snmpd.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -1065,7 +1104,7 @@ Description of the task.
 ssh.yml
 -------
 
-Synopsis: Configure ssh.
+Synopsis: Configure ssh
 
 
 Description of the task.
@@ -1076,8 +1115,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/ssh.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -1089,7 +1128,7 @@ Description of the task.
 sshd.yml
 --------
 
-Synopsis: Configure sshd.
+Synopsis: Configure sshd
 
 
 Description of the task.
@@ -1100,8 +1139,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/sshd.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -1113,7 +1152,7 @@ Description of the task.
 sudoers.yml
 -----------
 
-Synopsis: Configure sudoers.
+Synopsis: Configure sudoers
 
 
 Description of the task.
@@ -1124,8 +1163,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/sudoers.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -1137,7 +1176,7 @@ Description of the task.
 swap.yml
 --------
 
-Synopsis: Configure swap.
+Synopsis: Configure swap
 
 
 Description of the task.
@@ -1148,8 +1187,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/swap.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -1161,7 +1200,7 @@ Description of the task.
 sysctl.yml
 ----------
 
-Synopsis: Configure sysctl.
+Synopsis: Configure sysctl
 
 
 Description of the task.
@@ -1172,8 +1211,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/sysctl.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -1185,7 +1224,7 @@ Description of the task.
 syslogd.yml
 -----------
 
-Synopsis: Configure syslogd.
+Synopsis: Configure syslogd
 
 
 Description of the task.
@@ -1196,8 +1235,32 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/syslogd.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
+    :linenos:
+
+
+
+
+
+.. _as_syslog-ng.yml:
+
+syslog-ng.yml
+-------------
+
+Synopsis: Configure syslog-ng
+
+
+Description of the task.
+
+
+[`tasks/syslog-ng.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/syslog-ng.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../tasks/syslog-ng.yml
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -1209,7 +1272,7 @@ Description of the task.
 timezone.yml
 ------------
 
-Synopsis: Configure timezone.
+Synopsis: Configure timezone
 
 
 Description of the task.
@@ -1220,8 +1283,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/timezone.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -1233,7 +1296,7 @@ Description of the task.
 tmpmfs.yml
 ----------
 
-Synopsis: Configure tmpmfs.
+Synopsis: Configure tmpmfs
 
 
 Description of the task.
@@ -1244,8 +1307,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/tmpmfs.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -1257,7 +1320,7 @@ Description of the task.
 users.yml
 ---------
 
-Synopsis: Configure users.
+Synopsis: Configure users
 
 
 Description of the task.
@@ -1268,8 +1331,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/users.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -1281,7 +1344,7 @@ Description of the task.
 vars.yml
 --------
 
-Synopsis: Configure vars.
+Synopsis: Configure vars
 
 
 Description of the task.
@@ -1292,8 +1355,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/vars.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -1305,7 +1368,7 @@ Description of the task.
 wpasupplicant.yml
 -----------------
 
-Synopsis: Configure wpasupplicant.
+Synopsis: Configure wpasupplicant
 
 
 Description of the task.
@@ -1316,8 +1379,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/wpasupplicant.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -1329,7 +1392,7 @@ Description of the task.
 digitalocean.yml
 ----------------
 
-Synopsis: Configure digitalocean.
+Synopsis: Configure digitalocean
 
 
 Description of the task.
@@ -1340,8 +1403,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/cloud-providers/digitalocean.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -1353,7 +1416,7 @@ Description of the task.
 sync-default.yml
 ----------------
 
-Synopsis: Configure sync-default.
+Synopsis: Configure sync-default
 
 
 Description of the task.
@@ -1364,8 +1427,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/copy/sync-default.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -1377,7 +1440,7 @@ Description of the task.
 sync-optional.yml
 -----------------
 
-Synopsis: Configure sync-optional.
+Synopsis: Configure sync-optional
 
 
 Description of the task.
@@ -1388,8 +1451,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/copy/sync-optional.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -1401,7 +1464,7 @@ Description of the task.
 unarch-default.yml
 ------------------
 
-Synopsis: Configure unarch-default.
+Synopsis: Configure unarch-default
 
 
 Description of the task.
@@ -1412,8 +1475,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/copy/unarch-default.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -1425,7 +1488,7 @@ Description of the task.
 unarch-optional.yml
 -------------------
 
-Synopsis: Configure unarch-optional.
+Synopsis: Configure unarch-optional
 
 
 Description of the task.
@@ -1436,8 +1499,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/copy/unarch-optional.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -1449,7 +1512,7 @@ Description of the task.
 cron-rename-entry.yml
 ---------------------
 
-Synopsis: Configure cron-rename-entry.
+Synopsis: Configure cron-rename-entry
 
 
 Description of the task.
@@ -1460,8 +1523,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/fn/cron-rename-entry.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -1473,7 +1536,7 @@ Description of the task.
 mdconfig-attach-disk.yml
 ------------------------
 
-Synopsis: Configure mdconfig-attach-disk.
+Synopsis: Configure mdconfig-attach-disk
 
 
 Description of the task.
@@ -1484,8 +1547,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/fn/mdconfig-attach-disk.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -1497,7 +1560,7 @@ Description of the task.
 mdconfig-detach-disk.yml
 ------------------------
 
-Synopsis: Configure mdconfig-detach-disk.
+Synopsis: Configure mdconfig-detach-disk
 
 
 Description of the task.
@@ -1508,8 +1571,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/fn/mdconfig-detach-disk.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -1521,7 +1584,7 @@ Description of the task.
 rcconf-item.yml
 ---------------
 
-Synopsis: Configure rcconf-item.
+Synopsis: Configure rcconf-item
 
 
 Description of the task.
@@ -1532,10 +1595,70 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/fn/rcconf-item.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
+
+
+
+
+.. _as_rcconf.yml:
+
+rcconf.yml
+----------
+
+Synopsis: Configure a service in rc.conf
+
+
+:4-24: Declare local variables for given ``_service``
+:27: Display local varaibles if ``fp_rcconf_debug=true``.
+:52: Configure ``_service`` in rc.conf
+:67: Configure ``rcvar`` for the ``_service`` in rc.conf
+:80: Optionally, start/stop ``_service`` immediately.
+
+Example of ``_service=sshd`` ::
+
+  shell> ansible-playbook pb.yml -t fp_sshd -e fp_sshd_debug=true -e fp_rcconf_debug=true
+  ...
+  TASK [vbotka.freebsd_postinstall : Rcconf: Debug fp_rcconf_debug=true] *****************
+  ok: [test.example.org] =>
+  msg: |-
+      fp_rcconfd: False
+      fp_rcconf_sanity_rcvar: True
+      _service: sshd
+      _rcconfd_path: /etc/rc.conf.d/sshd
+      _path: /etc/rc.conf
+      _var: fp_sshd_enable
+      _val: True
+      _name: sshd_enable
+      _value: YES
+      _command: start
+      _handlers: ['start sshd']
+      _handlers_reload: ['reload sshd']
+      _rcconf_var: fp_sshd_rcconf
+      _rcconf_val: []
+      _notify_var: fp_sshd_notify
+      _notify_val: True
+      _service_task_var: fp_sshd_service_task
+      _service_task_val: False
+  ...
+
+
+[`tasks/fn/rcconf.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/fn/rcconf.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../tasks/fn/rcconf.yml
+    :language: yaml
+    :emphasize-lines: 4-24,27,52,67,80
+    :linenos:
+
+.. seealso::
+   * :ref:`ug_rc`
+   * defaults/main/rcconf.yml
+   * defaults/main/rcconfd.yml
+   * defaults/main/handlers.yml
 
 
 

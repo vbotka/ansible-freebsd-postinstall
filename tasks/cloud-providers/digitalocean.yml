@@ -1,9 +1,10 @@
 ---
-
-- name: "digitalocean: Debug"
+- name: "Digitalocean: Debug fp_do_debug={{ fp_do_debug }}"
+  when: fp_do_debug | bool
+  tags: fp_do_debug
   vars:
     msg: |-
-      ansible_distribution_major_version: {{ ansible_distribution_major_version }}
+      ansible_facts.distribution_major_version: {{ ansible_facts.distribution_major_version }}
       fp_do_default_user: {{ fp_do_default_user }}
       fp_do_default_user_remove: {{ fp_do_default_user_remove }}
       fp_do_default_user_remove_home: {{ fp_do_default_user_remove_home }}
@@ -11,39 +12,38 @@
       fp_do_rcconf_digitaloceanpre_enable: {{ fp_do_rcconf_digitaloceanpre_enable }}
       fp_do_rcconf_digitalocean_enable: {{ fp_do_rcconf_digitalocean_enable }}
       fp_do_rcconf:
-        {{ fp_do_rcconf|to_yaml|indent(2) }}
+        {{ fp_do_rcconf | to_yaml | indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
-  when: fp_do_debug|bool
-  tags: fp_do_debug
 
-- name: "digitalocean: Configure /etc/rc.conf"
-  ansible.builtin.lineinfile:
-    dest: /etc/rc.conf
-    regexp: '^\s*{{ item.key }}\s*=(.*)$'
-    line: '{{ item.key }}="{{ item.value }}"'
-    backup: "{{ fp_backup }}"
-  loop: "{{ fp_do_rcconf }}"
+- name: "Digitalocean: Configure {{ _path }}"
+  vars:
+    _path: "{{ fp_rcconfd | bool | ternary(fp_rcconfd_path.digitalocean, '/etc/rc.conf') }}"
   tags: fp_do_rcconf
+  community.general.sysrc:
+    path: "{{ _path }}"
+    name: "{{ item.key }}"
+    value: "{{ item.value | d(omit) }}"
+    state: "{{ item.state | d(omit) }}"
+  loop: "{{ fp_do_rcconf }}"
 
-- name: "digitalocean: Remove default user"
+- name: "Digitalocean: Remove default user"
+  when: fp_do_default_user_remove | bool
+  tags: fp_do_defaul_user_remove
   ansible.builtin.user:
     name: "{{ fp_do_default_user }}"
     state: absent
     remove: "{{ fp_do_default_user_remove_home }}"
-  when: fp_do_default_user_remove|bool
-  tags: fp_do_defaul_user_remove
 
-# DO overwrites hostname from rc.conf
-- name: "hostname: Configure hostname in /etc/rc.digitalocean.d/droplet.conf"
+  # DO overwrites hostname from rc.conf
+- name: "Hostname: Configure hostname in /etc/rc.digitalocean.d/droplet.conf"
+  when: ansible_facts.distribution_major_version | int < 11
+  tags: fp_do_hostname_rcconf
   ansible.builtin.lineinfile:
     dest: /etc/rc.digitalocean.d/droplet.conf
-    regexp: '^\s*{{ item.key }}\s*=(.*)$'
+    regexp: ^\s*{{ item.key }}\s*=(.*)$
     line: '{{ item.key }}="{{ item.value }}"'
     backup: "{{ fp_backup }}"
   loop: "{{ fp_do_legacy_rcconf }}"
-  when: ansible_distribution_major_version|int < 11
-  tags: fp_do_hostname_rcconf
 
 # EOF
-...

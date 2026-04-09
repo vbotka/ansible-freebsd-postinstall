@@ -1,17 +1,17 @@
 ---
-
-- name: "ssh: Debug (fp_ssh_debug={{ fp_ssh_debug }})"
+- name: "Ssh: Debug fp_ssh_debug={{ fp_ssh_debug }}"
+  when: fp_ssh_debug | bool
+  tags: fp_ssh_debug
   vars:
     msg: |-
       fp_ssh_conf_file: {{ fp_ssh_conf_file }}
       fp_ssh_conf:
-        {{ fp_ssh_conf|to_yaml(indent=2)|indent(2) }}
+        {{ fp_ssh_conf | to_yaml(indent=2) | indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
-  when: fp_ssh_debug|bool
-  tags: fp_ssh_debug
 
-- name: "ssh: Configure {{ fp_ssh_conf_file }}"
+- name: "Ssh: Configure {{ fp_ssh_conf_file }}"
+  tags: fp_ssh_config
   ansible.builtin.template:
     src: "{{ fp_ssh_conf_template }}"
     dest: "{{ fp_ssh_conf_file }}"
@@ -19,7 +19,5 @@
     group: "{{ fp_ssh_conf_group }}"
     mode: "{{ fp_ssh_conf_mode }}"
     backup: "{{ fp_backup }}"
-  tags: fp_ssh_config
 
 # EOF
-...

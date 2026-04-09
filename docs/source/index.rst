@@ -1,20 +1,36 @@
 Ansible role FreeBSD postinstall
 ################################
 
-This `role <https://galaxy.ansible.com/vbotka/freebsd_postinstall/>`_ and the documentation is work in progress. If the documentation of a task is missing it's necessary to review the `source code <https://github.com/vbotka/ansible-freebsd-postinstall/tree/2.0-stable>`_ to learn how to use it. If a functionality is missing consider the role `config_light <https://galaxy.ansible.com/vbotka/config_light>`_. See various `examples <https://github.com/vbotka/ansible-config-light/tree/master/contrib>`_. If *config_light* is not able to do what you want create new tasks.
+`vbotka.freebsd_postinstall`_
+
+version |release|
 
 
-Feel free to `share your feedback and report issues
-<https://github.com/vbotka/ansible-freebsd-postinstall/issues>`_.
+This `role`_ and the documentation is work in progress. If the documentation of a task is missing
+it's necessary to review the `source code`_ to learn how to use it. If a functionality is missing
+consider the role `config_light`_. See various `examples`_. If `config_light`_ is not able to do
+what you want, create new tasks.
 
-`Contributions are welcome <https://github.com/firstcontributions/first-contributions>`_.
+
+| Feel free to `share your feedback and report issues`_.
+| `Contributions are welcome`_
+
+| GitHub: `ansible-freebsd-postinstall`_
+| Ansible Galaxy: `vbotka.freebsd_postinstall`_
+| Ansible collection: `vbotka.freebsd.postinstall`_
+
+| This role is licensed and distributed as a whole under
+| **BSD 2-Clause "Simplified" License**
+| SPDX-License-Identifier: `BSD-2-Clause`_
 
 .. toctree::
+   :maxdepth: 1
    :caption: Table of Contents
-   :maxdepth: 3
 
    qsg
    guide
+   ag
+   dg
    annotation
    copyright
    legalnotice
@@ -25,3 +41,18 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+
+
+.. _role: https://galaxy.ansible.com/vbotka/freebsd_postinstall/
+.. _vbotka.freebsd_postinstall: https://galaxy.ansible.com/vbotka/freebsd_postinstall/
+.. _vbotka.freebsd.postinstall: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall/
+.. _config_light: https://galaxy.ansible.com/vbotka/config_light/
+
+.. _ansible-freebsd-postinstall: https://github.com/vbotka/ansible-freebsd-postinstall/
+
+.. _source code: https://github.com/vbotka/ansible-freebsd-postinstall/tree/master/tasks/
+.. _examples: https://github.com/vbotka/ansible-config-light/tree/master/contrib/
+
+.. _share your feedback and report issues: https://github.com/vbotka/ansible-freebsd-postinstall/issues/
+.. _Contributions are welcome: https://github.com/firstcontributions/first-contributions/
+.. _BSD-2-Clause: https://spdx.org/licenses/BSD-2-Clause.html

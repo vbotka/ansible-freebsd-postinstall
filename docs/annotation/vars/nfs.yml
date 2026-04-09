@@ -1,41 +1,46 @@
 ---
-
 task_nfs_synopsis: |
   Configure NFS client.
 
 task_nfs_description: |
-  To display variables (3) enable ``fp_nfs_debug=true`` (27). Collect
-  status of the services (31) stored in the list
-  ``fp_nfs_service_paths``. The module ``service_facts`` doesn't work
-  in FreeBSD. Instead, use the task ``al_bsd_service_facts`` (34) from
-  the library (33). This task doesn't support the check mode. This
-  task will return the dictionary
-  ``al_ansible_facts_services``. Display this dictionary (42). This
-  dictionary is used to select the handlers in the dictionary
-  ``fp_nfs_handlers``. There is no status option of the service
-  ``nfsclient``. Insteda of starting the service, restart it if there
-  are any nfs mountpoints, i.e. the file ``/var/db/mounttab``
-  exists. Test the existence of the file ``var/db/nounttab`` (50) and
-  display the result ``fp_var_db_mounttab.stat.exists`` (56). This
-  variable will be used to select the handler in the dictionary
-  ``fp_nfs_handlers``.  Display the dictionary ``fp_nfsd_handlers``
-  (62). The defaults are used in check mode because of empty
-  dictionary ``al_ansible_facts_services``. Configure and enable (68),
-  or disable (89) services. If the configuration of a service changes
-  the service will be reloaded or restarted when already running.
+  :2: Display variables.
 
-task_nfs_lines: 3,31,42,50,56,62,68,89
+  :3: Enable ``fp_nfs_debug=true``.
+
+  :35: Collect status of the services stored in the list
+       ``fp_nfs_services``.
+
+  :42: Create dictionary ``fp_nfs_services_status``.
+
+  :55: Test the existence of the file ``var/db/nounttab``. There is no status
+       option of the service ``nfsclient``. Instead of starting the service,
+       restart it if there are any nfs mountpoints. This means if the file
+       ``/var/db/mounttab`` exists.
+
+  :60: Display the result ``fp_nfs_var_db_mounttab.stat.exists``. This variable
+       will be used to select the handler in the dictionary ``fp_nfs_handlers``.
+
+  :65: Display the dictionary ``fp_nfsd_handlers``. The defaults are
+       used in check mode because of empty dictionary
+       ``fp_nfs_services_status``.
+
+  :70: Enable services.
+
+  :79: Disable services.
+
+task_nfs_lines: 2,3,35,42,55,60,65,70,79
 
 task_nfs_seealso:
   handlers:
-    - nfs
+    - nfsclient
     - nfsd
   templates: []
   others:
     - <TBD>
 
 task_nfs_note:
-  - <TBD>
+  - "The variables ``fp_nfs_services_enable`` (74) and ``fp_nfs_services_disable`` (83) are created
+    by the playbook ``.configure.yml``"
 
 task_nfs_hint:
   - <TBD>
@@ -44,5 +49,4 @@ task_nfs_warning:
   - <TBD>
 
 # EOF
-
 ...

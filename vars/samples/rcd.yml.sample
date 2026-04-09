@@ -1,0 +1,21 @@
+---
+fp_rcd: false
+
+fp_rcd_scripts:
+  dummy:
+    script: |
+      {{ '#' }}!/bin/sh 
+
+      . /etc/rc.subr 
+
+      name="dummy" 
+      start_cmd="${name}_start" 
+      stop_cmd=":" 
+
+      dummy_start() 
+      {
+          echo "Nothing started."
+      }
+
+      load_rc_config $name 
+      run_rc_command "$1"

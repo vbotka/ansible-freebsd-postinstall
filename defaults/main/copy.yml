@@ -24,8 +24,8 @@ fp_synchronize_copy_links: false
 fp_synchronize_dirs: false
 fp_synchronize_existing_only: false
 fp_synchronize_mode: push
-fp_synchronize_group: true  # defaults to the value of the archive option
-fp_synchronize_owner: true  # defaults to the value of the archive option
-fp_synchronize_perms: true  # defaults to the value of the archive option
-fp_synchronize_times: true  # defaults to the value of the archive option
+fp_synchronize_group: true # defaults to the value of the archive option
+fp_synchronize_owner: true # defaults to the value of the archive option
+fp_synchronize_perms: true # defaults to the value of the archive option
+fp_synchronize_times: true # defaults to the value of the archive option
 fp_synchronize_verify_host: false

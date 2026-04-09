@@ -42,5 +42,18 @@ fp_dhclient_conf_blocks:
           default domain-name-servers 10.1.0.1;
       }
 
+fp_dhclient_hooks:
+  dhclient-enter-hooks: |
+    echo "dhclient-enter-hooks: $interface $reason new_ip_address=$new_ip_address" >> /var/log/dhclient-hook.log
+    # logger "dhclient-enter-hooks: $interface $reason new_ip_address=$new_ip_address"
+  dhclient-exit-hooks: |
+    echo "dhclient-exit-hooks: $interface $reason new_ip_address=$new_ip_address" >> /var/log/dhclient-hook.log
+    # logger "dhclient-exit-hooks: $interface $reason new_ip_address=$new_ip_address"
+    case "$reason" in
+        "BOUND"|"REBIND"|"REBOOT"|"RENEW")
+        echo $new_ip_address > /var/db/dhclient-hook.address.$interface
+        ;;
+    esac
+
 # EOF
 ...

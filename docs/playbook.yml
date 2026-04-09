@@ -1,41 +1,57 @@
 ---
 
-- name: Crreate source/annotation-[tasks,handlers,templates].rst
+- name: Create source/annotation-[tasks,handlers,templates].rst
   hosts: localhost
   gather_facts: false
   debugger: on_failed
 
+  vars:
+
+    ansible_python_interpreter: auto_silent
+
   tasks:
 
-    - block:
-        - name: Include variables
-          include_vars:
+    - name: Tasks
+      tags: tasks
+      block:
+
+        - name: Include annotation/annotation-tasks.yml
+          ansible.builtin.include_vars:
             file: annotation/annotation-tasks.yml
-        - name: Create rst file
-          template:
+
+        - name: Create source/annotation-tasks.rst
+          ansible.builtin.template:
             src: annotation/annotation-tasks.rst.j2
             dest: source/annotation-tasks.rst
-      tags: tasks
+            mode: "0644"
 
-    - block:
-        - name: Include variables
-          include_vars:
+    - name: Handlers
+      tags: handlers
+      block:
+
+        - name: Include annotation/annotation-handlers.yml
+          ansible.builtin.include_vars:
             file: annotation/annotation-handlers.yml
-        - name: Create rst file
-          template:
+
+        - name: Create source/annotation-handlers.rst
+          ansible.builtin.template:
             src: annotation/annotation-handlers.rst.j2
             dest: source/annotation-handlers.rst
-      tags: handlers
+            mode: "0644"
 
-    - block:
-        - name: Include variables
-          include_vars:
+    - name: Templates
+      tags: templates
+      block:
+
+        - name: Include annotation/annotation-templates.yml
+          ansible.builtin.include_vars:
             file: annotation/annotation-templates.yml
-        - name: Create rst file
-          template:
+
+        - name: Create source/annotation-templates.rst
+          ansible.builtin.template:
             src: annotation/annotation-templates.rst.j2
             dest: source/annotation-templates.rst
-      tags: templates
+            mode: "0644"
 
 # EOF
 ...

@@ -1,44 +1,41 @@
 ---
-# Sync optional
-
-- name: "copy:sync-optional: Debug optional directory exists"
-  ansible.builtin.debug:
-    msg: "Directory {{ mypath }} exists: {{ mystat }}"
+- name: "Copy:sync-optional: Debug optional directory exists fp_copy_debug={{ fp_copy_debug }}"
+  when: fp_copy_debug | bool
   vars:
     mypath: "{{ fp_copy_dir }}/{{ fp_copy_dir_optional }}"
     mystat: "{{ mypath is exists }}"
-  when: fp_copy_debug|bool
+  ansible.builtin.debug:
+    msg: "Directory {{ mypath }} exists: {{ mystat }}"
 
-- name: "copy:sync-optional: Synchronize optional files {{ fp_copy_dir }}/{{ fp_copy_dir_optional }}"
+- name: "Copy:sync-optional: Synchronize optional files {{ fp_copy_dir ~ '/' ~ fp_copy_dir_optional }}"
+  when: mypath is exists
+  register: result
+  vars:
+    mypath: "{{ fp_copy_dir }}/{{ fp_copy_dir_optional }}/{{ item.src }}"
   ansible.posix.synchronize:
     src: "{{ mypath }}"
     dest: "{{ item.dest }}"
-    archive: "{{ item.archive|default(fp_synchronize_archive) }}"
-    checksum: "{{ item.checksum|default(fp_synchronize_checksum) }}"
-    compress: "{{ item.compress|default(fp_synchronize_compress) }}"
-    copy_links: "{{ item.copy_links|default(fp_synchronize_copy_links) }}"
-    delete: "{{ item.delete|default(fp_synchronize_delete) }}"
-    dirs: "{{ item.dirs|default(fp_synchronize_dirs) }}"
-    existing_only: "{{ item.existing_only|default(fp_synchronize_existing_only) }}"
-    mode: "{{ item.mode|default(fp_synchronize_mode) }}"
-    group: "{{ item.group|default(omit) }}"
-    owner: "{{ item.owner|default(omit) }}"
-    perms: "{{ item.synchronize_perms|default(omit) }}"
-    times: "{{ item.synchronize_times|default(omit) }}"
-    recursive: "{{ item.recursive|default(omit) }}"
-    verify_host: "{{ item.verify_host|default(fp_synchronize_verify_host) }}"
-  register: result
+    archive: "{{ item.archive | d(fp_synchronize_archive) }}"
+    checksum: "{{ item.checksum | d(fp_synchronize_checksum) }}"
+    compress: "{{ item.compress | d(fp_synchronize_compress) }}"
+    copy_links: "{{ item.copy_links | d(fp_synchronize_copy_links) }}"
+    delete: "{{ item.delete | d(fp_synchronize_delete) }}"
+    dirs: "{{ item.dirs | d(fp_synchronize_dirs) }}"
+    existing_only: "{{ item.existing_only | d(fp_synchronize_existing_only) }}"
+    mode: "{{ item.mode | d(fp_synchronize_mode) }}"
+    group: "{{ item.group | d(omit) }}"
+    owner: "{{ item.owner | d(omit) }}"
+    perms: "{{ item.synchronize_perms | d(omit) }}"
+    times: "{{ item.synchronize_times | d(omit) }}"
+    recursive: "{{ item.recursive | d(omit) }}"
+    verify_host: "{{ item.verify_host | d(fp_synchronize_verify_host) }}"
   loop: "{{ fp_synchronize_optional }}"
   loop_control:
     label: "{{ item.dest }}"
-  vars:
-    mypath: "{{ fp_copy_dir }}/{{ fp_copy_dir_optional }}/{{ item.src }}"
-  when: mypath is exists
 
-- name: "copy:sync-optional: Debug synchronize optional files result"
+- name: "Copy:sync-optional: Debug synchronize optional files result fp_copy_debug={{ fp_copy_debug }}"
+  when: fp_copy_debug | bool
   ansible.builtin.debug:
     var: result
-  when: fp_copy_debug|bool
 
 # EOF
-...

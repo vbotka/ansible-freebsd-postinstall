@@ -1,9 +1,10 @@
 # {{ ansible_managed }}
+# {{ template_path }}
 
 # system classes
 {% for item in fp_login_conf %}
 {{ item.class }}:\
-{% for citem in item.conf|flatten %}
+{% for citem in item.conf | flatten %}
 {{ '\t' }}:{{ citem }}:{% if not loop.last %}\{% endif %}
 
 {% endfor %}
@@ -12,7 +13,7 @@
 # extra classes
 {% for item in fp_login_conf_extra %}
 {{ item.class }}:\
-{% for citem in item.conf|flatten %}
+{% for citem in item.conf | flatten %}
 {{ '\t' }}:{{ citem }}:{% if not loop.last %}\{% endif %}
 
 {% endfor %}

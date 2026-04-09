@@ -1,145 +1,232 @@
 ---
-
-- name: "dhclient: Debug (fp_dhclient_debug={{ fp_dhclient_debug }})"
+- name: "Dhclient: Debug fp_dhclient_debug={{ fp_dhclient_debug }}"
+  when: fp_dhclient_debug | bool
+  tags: fp_dhclient_debug
   vars:
     msg: |-
-         fp_dhclient_ifn: {{ fp_dhclient_ifn }}
-         fp_dhclient_ifn_rcconf: {{ fp_dhclient_ifn_rcconf }}
-         fp_dhclient_ifn_leases: {{ fp_dhclient_ifn_leases }}
-         fp_dhclient_sanity: {{ fp_dhclient_sanity }}
-         fp_dhclient_conf_path: {{ fp_dhclient_conf_path }}
+      fp_dhclient_ifn: {{ fp_dhclient_ifn }}
+      fp_dhclient_ifn_rcconf: {{ fp_dhclient_ifn_rcconf }}
+      fp_dhclient_ifn_rcconfd: {{ fp_dhclient_ifn_rcconfd }}
+      fp_dhclient_ifn_leases: {{ fp_dhclient_ifn_leases }}
+      fp_dhclient_sanity: {{ fp_dhclient_sanity }}
+      fp_dhclient_sanity_quiet: {{ fp_dhclient_sanity_quiet }}
+      fp_dhclient_etc_dir: {{ fp_dhclient_etc_dir }}
+      fp_dhclient_conf_path: {{ fp_dhclient_conf_path }}
 
-         fp_dhclient_conf_defaults:
-           {{ fp_dhclient_conf_defaults|to_yaml(indent=2)|indent(2) }}
-         fp_dhclient_conf_blocks:
-           {{ fp_dhclient_conf_blocks|to_nice_yaml(indent=2)|indent(2) }}
+      fp_dhclient_conf_defaults:
+        {{ fp_dhclient_conf_defaults | to_yaml(indent=2) | indent(2) }}
+      fp_dhclient_conf_blocks:
+        {{ fp_dhclient_conf_blocks | to_nice_yaml(indent=2) | indent(2) }}
+      fp_dhclient_hooks:
+        {{ fp_dhclient_hooks | to_nice_yaml(indent=2) | indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
-  when: fp_dhclient_debug|bool
-  tags: fp_dhclient_debug
 
-- name: "dhclient: Sanity"
-  block:
-    - name: "dhclient: Sanity: List fp_dhclient_ifn empty"
-      ansible.builtin.assert:
-        that: (fp_dhclient_ifn|length == 0)|
-              ternary(fp_dhclient_ifn_rcconf != fp_dhclient_ifn_leases, true)
-        fail_msg: |-
-          The list of interfaces fp_dhclient_ifn is empty. Either
-          fp_dhclient_ifn_rcconf or fp_dhclient_ifn_leases must be True,
-          but not both.
-    - name: "dhclient: Sanity: List fp_dhclient_ifn not empty"
-      ansible.builtin.assert:
-        that: (fp_dhclient_ifn|length > 0)|
-              ternary(not(fp_dhclient_ifn_rcconf or fp_dhclient_ifn_leases), true)
-        fail_msg: |-
-          The list of interfaces fp_dhclient_ifn is not empty. Both
-          fp_dhclient_ifn_rcconf and fp_dhclient_ifn_leases must be
-          False.
-  when: fp_dhclient_sanity|bool
+- name: Sanity
+  when: fp_dhclient_sanity | bool
   tags: fp_dhclient_sanity
+  block:
+
+    - name: "Dhclient: Sanity: List fp_dhclient_ifn empty."
+      vars:
+        fp_dhclient_ifn_rc: "{{ fp_dhclient_ifn_rcconf | bool or fp_dhclient_ifn_rcconfd | bool }}"
+      ansible.builtin.assert:
+        that: (fp_dhclient_ifn | length == 0) | ternary(fp_dhclient_ifn_rc != fp_dhclient_ifn_leases, true)
+        quiet: "{{ fp_dhclient_sanity_quiet | bool }}"
+        fail_msg: |
+          The list of interfaces fp_dhclient_ifn is empty. One of the below options must be True,
+          but not both
+          - fp_dhclient_ifn_leases
+          - fp_dhclient_ifn_rcconf or fp_dhclient_ifn_rcconfd
+
+    - name: "Dhclient: Sanity: List fp_dhclient_ifn not empty."
+      vars:
+        fp_dhclient_ifn_rc: "{{ fp_dhclient_ifn_rcconf | bool or fp_dhclient_ifn_rcconfd | bool }}"
+      ansible.builtin.assert:
+        that: (fp_dhclient_ifn | length > 0) | ternary(not(fp_dhclient_ifn_rc or fp_dhclient_ifn_leases), true)
+        quiet: "{{ fp_dhclient_sanity_quiet | bool }}"
+        fail_msg: |
+          The list of interfaces fp_dhclient_ifn is not empty. Both below options must be False
+          - fp_dhclient_ifn_leases
+          - fp_dhclient_ifn_rcconf or fp_dhclient_ifn_rcconfd
 
 - name: Get interfaces from /var/db/dhclient.leases.*
+  when: fp_dhclient_ifn_leases | bool
+  tags: fp_dhclient_ifn_leases
   block:
-    - name: "dhclient: Get interfaces /var/db/dhclient.leases.*"
+
+    - name: "Dhclient: Get interfaces /var/db/dhclient.leases.*"
+      register: result
+      changed_when: false
       ansible.builtin.shell:
-        cmd: ls -1 /var/db/dhclient* | rev | cut -d . -f 1 | rev
-      register: result
-      changed_when: false
-    - name: "dhclient: Debug interfaces /var/db/dhclient.leases.*"
+        cmd: set -o pipefail && ls -1 /var/db/dhclient.leases.* | rev | cut -d . -f 1 | rev
+
+    - name: "Dhclient: Debug interfaces /var/db/dhclient.leases.* fp_dhclient_debug2={{ fp_dhclient_debug2 }}"
+      when: fp_dhclient_debug2 | bool
       ansible.builtin.debug:
-        var: result.stdout_lines
-      when: fp_dhclient_debug|bool
-    - name: "dhclient: Get status of dhclients"
-      ansible.builtin.command:
-        cmd: "/etc/rc.d/dhclient status {{ item }}"
+        var: result
+
+    - name: "Dhclient: Get status of dhclients."
       register: result
-      failed_when: false
       changed_when: false
+      failed_when: false
+      ansible.builtin.command:
+        cmd: /etc/rc.d/dhclient status {{ item }}
       loop: "{{ result.stdout_lines }}"
-    - name: "dhclient: Set fp_dhclient_ifn"
+
+    - name: "Dhclient: Set fp_dhclient_ifn"
       ansible.builtin.set_fact:
-        fp_dhclient_ifn: "{{ result.results|
-                             rejectattr('rc', 'gt', 0)|
-                             map(attribute='item')|list }}"
-    - name: "dhclient: Debug fp_dhclient_ifn"
+        fp_dhclient_ifn: "{{ result.results | rejectattr('rc', 'gt', 0) | map(attribute='item') | list }}"
+
+    - name: "Dhclient: Debug fp_dhclient_ifn fp_dhclient_debug={{ fp_dhclient_debug }}"
+      when: fp_dhclient_debug | bool
       ansible.builtin.debug:
         var: fp_dhclient_ifn
-      when: fp_dhclient_debug|bool
-  when: fp_dhclient_ifn_leases|bool
-  tags: fp_dhclient_ifn_leases
 
 - name: Get interfaces from /etc/rc.conf
+  when: fp_dhclient_ifn_rcconf | bool
+  tags: fp_dhclient_ifn_rcconf
   block:
-    - name: "dhclient: Get interfaces from /etc/rc.conf"
-      ansible.builtin.command:
-        cmd: grep '^ifconfig_.*$' /etc/rc.conf
+
+    - name: "Dhclient: Get interfaces from /etc/rc.conf"
       register: result
       changed_when: false
-    - name: "dhclient: Debug interfaces from /etc/rc.conf"
+      ansible.builtin.command:
+        cmd: grep '^ifconfig_.*$' /etc/rc.conf
+
+    - name: "Dhclient: Debug interfaces from /etc/rc.conf fp_dhclient_debug2={{ fp_dhclient_debug2 }}"
+      when: fp_dhclient_debug2 | bool
       ansible.builtin.debug:
-        var: result.stdout_lines
-      when: fp_dhclient_debug|bool
-    - name: "dhclient: Set fp_dhclient_ifn"
+        var: result
+
+    - name: "Dhclient: Set fp_dhclient_ifn"
+      vars:
+        _regex: ^ifconfig_.*\s*=.*DHCP.*$
+        _arr: "{{ result.stdout_lines
+                  | select('match', _regex)
+                  | map('split', '=')
+                  | list }}"
+        _keys: "{{ _arr
+                   | map('first')
+                   | map('split', '_')
+                   | map('last')
+                   | list }}"
       ansible.builtin.set_fact:
         fp_dhclient_ifn: "{{ _keys }}"
-      vars:
-        _regex: '^ifconfig_.*\s*=.*DHCP.*$'
-        _arr: "{{ result.stdout_lines|
-                  select('match', _regex)|
-                  map('split', '=')|list }}"
-        _keys: "{{ _arr|
-                   map(attribute=0)|
-                   map('split', '_')|
-                   map(attribute=1)|list }}"
-    - name: "dhclient: Debug fp_dhclient_ifn"
+
+    - name: "Dhclient: Debug fp_dhclient_ifn fp_dhclient_debug={{ fp_dhclient_debug }}"
+      when: fp_dhclient_debug | bool
       ansible.builtin.debug:
         var: fp_dhclient_ifn
-      when: fp_dhclient_debug|bool
-  when: fp_dhclient_ifn_rcconf|bool
-  tags: fp_dhclient_ifn_rcconf
 
-- name: "dhclient: Change owner, group and permissions {{ fp_dhclient_conf_path }}"
+- name: Stat /etc/rc.conf.d
+  when: fp_dhclient_ifn_rcconfd | bool
+  tags: fp_dhclient_ifn_rcconfd
+  block:
+
+    - name: "Dhclient: Stat /etc/rc.conf.d"
+      register: result_stat
+      ansible.builtin.stat:
+        path: /etc/rc.conf.d
+
+    - name: "Dhclient: Debug stat fp_dhclient_debug2={{ fp_dhclient_debug2 }}"
+      when: fp_dhclient_debug2 | bool
+      ansible.builtin.debug:
+        var: result_stat
+
+- name: Get interfaces from /etc/rc.conf.d
+  when:
+    - fp_dhclient_ifn_rcconfd | bool
+    - result_stat.stat.exists
+  tags: fp_dhclient_ifn_rcconfd
+  block:
+
+    - name: "Dhclient: Get interfaces from /etc/rc.conf.d"
+      register: result
+      changed_when: false
+      failed_when: false
+      ansible.builtin.command:
+        cmd: grep -r '^ifconfig_.*$' /etc/rc.conf.d
+
+    - name: "Dhclient: Debug interfaces from /etc/rc.conf.d fp_dhclient_debug2={{ fp_dhclient_debug2 }}"
+      when: fp_dhclient_debug2 | bool
+      ansible.builtin.debug:
+        var: result
+
+    - name: "Dhclient: Set fp_dhclient_ifn"
+      vars:
+        _regex: ^ifconfig_.*\s*=.*DHCP.*$
+        _arr: "{{ result.stdout_lines
+                  | map('split', ':')
+                  | map('last')
+                  | select('match', _regex)
+                  | map('split', '=')
+                  | list }}"
+        _keys: "{{ _arr
+                   | map('first')
+                   | map('split', '_')
+                   | map('last')
+                   | list }}"
+      ansible.builtin.set_fact:
+        fp_dhclient_ifn: "{{ (fp_dhclient_ifn | d([]) + _keys) | unique }}"
+
+    - name: "Dhclient: Debug fp_dhclient_ifn fp_dhclient_debug={{ fp_dhclient_debug }}"
+      when: fp_dhclient_debug | bool
+      ansible.builtin.debug:
+        var: fp_dhclient_ifn
+
+- name: "Dhclient: Change owner, group and permissions {{ fp_dhclient_conf_path }}"
+  tags: fp_dhclient_conf_create
   ansible.builtin.file:
     path: "{{ fp_dhclient_conf_path }}"
     owner: root
     group: wheel
-    mode: '0644'
-  tags: fp_dhclient_conf_create
+    mode: "0644"
 
-- name: "dhclient: Configure defaults in {{ fp_dhclient_conf_path }}"
+- name: "Dhclient: Configure defaults in {{ fp_dhclient_conf_path }}"
+  tags: fp_dhclient_conf_defaults
+  notify: restart dhclient all
   ansible.builtin.lineinfile:
     dest: "{{ fp_dhclient_conf_path }}"
     insertbefore: BOF
-    regexp: '{{ item.key }}\s+(.*)$'
-    line: '{{ item.key }} {{ item.value }};'
+    regexp: "{{ item.key }}\\s+(.*)$"
+    line: "{{ item.key }} {{ item.value }};"
     backup: "{{ fp_backup }}"
   loop: "{{ fp_dhclient_conf_defaults }}"
-  notify: restart dhclient all
-  tags: fp_dhclient_conf_defaults
 
-- name: "dhclient: Configure blocks in {{ fp_dhclient_conf_path }}"
-  ansible.builtin.blockinfile:
-    dest: "{{ fp_dhclient_conf_path }}"
-    insertafter: EOF
-    marker: "# {mark} {{ item.type }} {{ item.ifn }}"
-    block: "{{ item.block }}"
+- name: Configure blocks
+  tags: fp_dhclient_conf_blocks
+  block:
+
+    - name: "Dhclient: Configure blocks in {{ fp_dhclient_conf_path }}"
+      register: fp_dhclient_conf_changes
+      notify: restart dhclient blocks
+      ansible.builtin.blockinfile:
+        dest: "{{ fp_dhclient_conf_path }}"
+        insertafter: EOF
+        marker: "# {mark} {{ item.type }} {{ item.ifn }}"
+        block: "{{ item.block }}"
+        backup: "{{ fp_backup }}"
+      loop: "{{ fp_dhclient_conf_blocks }}"
+      loop_control:
+        label: "{{ item.type }} {{ item.ifn }}"
+
+    - name: "Dhclient: Debug changed interfaces to be restarted fp_dhclient_debug={{ fp_dhclient_debug }}"
+      when: fp_dhclient_debug | bool
+      ansible.builtin.debug:
+        msg: "{{ fp_dhclient_conf_changes.results | selectattr('changed') | map(attribute='item.ifn') | unique }}"
+
+- name: "Dhclient: Create hooks."
+  tags: fp_dhclient_hooks
+  ansible.builtin.copy:
+    dest: "{{ fp_dhclient_etc_dir }}/{{ item.key }}"
+    content: "{{ item.value }}"
+    owner: root
+    group: wheel
+    mode: "0644"
     backup: "{{ fp_backup }}"
-  register: fp_dhclient_conf_changes
-  loop: "{{ fp_dhclient_conf_blocks }}"
+  loop: "{{ fp_dhclient_hooks | dict2items }}"
   loop_control:
-    label: "{{ item.type }} {{ item.ifn }}"
-  notify: restart dhclient blocks
-  tags: fp_dhclient_conf_blocks
-
-- name: "dhclient: Debug changed interfaces to be restarted"
-  ansible.builtin.debug:
-    msg: "{{ fp_dhclient_conf_changes.results|
-             selectattr('changed')|
-             map(attribute='item.ifn')|
-             unique }}"
-  when: fp_dhclient_debug|bool
-  tags: fp_dhclient_conf_blocks
+    label: "{{ item.key }}"
 
 # EOF
-...

@@ -3,5 +3,5 @@ fp_sudoers: false
 fp_sudoers_conf_file: /usr/local/etc/sudoers
 fp_sudoers_conf_owner: root
 fp_sudoers_conf_group: wheel
-fp_sudoers_conf_mode: '0440'
+fp_sudoers_conf_mode: "0440"
 fp_sudoers_conf: []

@@ -1,6 +1,6 @@
 # fp_snmpd: true
 # fp_snmpd_install: true
-#   fp_snmpd_enabled: true
-#   fp_snmpd_conf:
-#     - key: agentAddress
-#       value: "udp:127.0.0.1:161,udp:10.1.0.12:161"
+# fp_snmpd_enable: true
+# fp_snmpd_conf:
+#   - key: agentAddress
+#     value: "udp:127.0.0.1:161,udp:10.1.0.12:161"

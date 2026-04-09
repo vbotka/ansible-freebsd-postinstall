@@ -5,6 +5,7 @@ cloud-providers.yml
 copy.yml
 cron.yml
 debug.yml
+devd.yml
 devfs.yml
 dhclient.yml
 freebsd-update.yml
@@ -24,7 +25,6 @@ make.yml
 motd.yml
 mount-img.yml
 mount-iso.yml
-mount-vnode.yml
 nfs.yml
 nfsd.yml
 ntp.yml
@@ -35,6 +35,7 @@ passwords.yml
 periodic.yml
 procmail.yml
 qemu.yml
+rcd.yml
 resolvconf.yml
 sanity.yml
 smartd.yml
@@ -45,6 +46,7 @@ sudoers.yml
 swap.yml
 sysctl.yml
 syslogd.yml
+syslog-ng.yml
 timezone.yml
 tmpmfs.yml
 users.yml
@@ -59,3 +61,4 @@ fn/cron-rename-entry.yml
 fn/mdconfig-attach-disk.yml
 fn/mdconfig-detach-disk.yml
 fn/rcconf-item.yml
+fn/rcconf.yml

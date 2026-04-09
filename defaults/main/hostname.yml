@@ -4,4 +4,4 @@ rc_conf_hostname: srv.my.domain
 fp_hostname: false
 fp_domain: my.domain
 fp_hostname_rcconf:
-  - {key: hostname, value: "{{ rc_conf_hostname }}"}
+  - { key: hostname, value: "{{ rc_conf_hostname }}" }

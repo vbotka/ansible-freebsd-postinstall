@@ -1,0 +1,63 @@
+# {{ ansible_managed }}
+# {{ template_path }}
+
+{% for h in fp_syslogng_conf.header %}
+{{ h }}
+{% endfor %}
+
+#
+# options
+#
+options {
+{% for k, v in fp_syslogng_conf.options.items() %}
+    {{ k }}({{ v }});
+{% endfor %}
+};
+
+#
+# sources
+#
+source src {
+{% for k, v in fp_syslogng_conf.source.src.items() %}
+    {{ k }}({{ v }});
+{% endfor %}
+};
+
+#
+# destinations
+#
+{% for dest, opts in fp_syslogng_conf.destination.items() %}
+destination {{ dest }} { {% for k, v in opts.items() %}{{ k }}("{{ v }}"); {% endfor %}};
+{% endfor %}
+
+#
+# log facility filters
+#
+{% for k, v in fp_syslogng_conf.filter.facility.items() %}
+filter {{ k }} { facility({{ v }}); };
+{% endfor %}
+
+{% for k, v in fp_syslogng_conf.filter.facility_not.items() %}
+filter {{ k }} { not facility({{ v }}); };
+{% endfor %}
+
+#
+# log level filters
+#
+{% for k, v in fp_syslogng_conf.filter.level.items() %}
+filter {{ k }} { level({{ v }}); };
+{% endfor %}
+
+#
+# program filters
+#
+{% for k, v in fp_syslogng_conf.filter.program.items() %}
+filter {{ k }} { program("{{ v }}"); };
+{% endfor %}
+
+#
+# log
+#
+{% for i in fp_syslogng_conf.log.src %}
+log { source(src);{% for f in i.filter %} filter({{ f }}); {% endfor %}destination({{ i.destination }} ); };
+{% endfor %}

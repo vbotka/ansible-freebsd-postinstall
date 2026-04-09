@@ -1,23 +1,25 @@
 ---
-
-- name: "tmpmfs: Debug (fp_tmpmfs_debug={{ fp_tmpmfs_debug }})"
+- name: "Tmpmfs: Debug fp_tmpmfs_debug={{ fp_tmpmfs_debug }}"
+  when: fp_tmpmfs_debug | bool
+  tags: fp_tmpmfs_debug
   vars:
     msg: |-
       fp_tmpmfs_rcconf:
-        {{ fp_tmpmfs_rcconf|to_yaml(indent=2)|indent(2) }}
+        {{ fp_tmpmfs_rcconf | to_yaml(indent=2) | indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
-  when: fp_tmpmfs_debug|bool
-  tags: fp_tmpmfs_debug
 
-- name: "tmpmfs: Configure tmpmfs"
-  ansible.builtin.lineinfile:
-    dest: /etc/rc.conf
-    regexp: '^\s*{{ item.key }}\s*=(.*)$'
-    line: '{{ item.key }}="{{ item.value }}"'
-    backup: "{{ fp_backup }}"
-  loop: "{{ fp_tmpmfs_rcconf }}"
+- name: "Tmpmfs: Configure tmpmfs in {{ _path }}"
+  vars:
+    _service: tmpmfs
+    _rcconfd_path: "{{ fp_rcconfd_path[_service] }}"
+    _path: "{{ fp_rcconfd | bool | ternary(_rcconfd_path, '/etc/rc.conf') }}"
   tags: fp_tmpmfs_rcconf
+  community.general.sysrc:
+    path: "{{ _path }}"
+    name: "{{ item.name }}"
+    value: "{{ item.value | d(omit) }}"
+    state: "{{ item.state | d(omit) }}"
+  loop: "{{ fp_tmpmfs_rcconf }}"
 
 # EOF
-...

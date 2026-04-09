@@ -1,6 +1,5 @@
 ---
-roles:
-  - name: vbotka.ansible_lib
 collections:
   - name: ansible.posix
   - name: community.general
+  - name: vbotka.freebsd

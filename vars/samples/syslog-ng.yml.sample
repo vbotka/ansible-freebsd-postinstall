@@ -1,0 +1,137 @@
+---
+fp_syslogng: true
+fp_syslogng_install: true
+fp_syslogng_enable: true
+
+# /usr/local/etc/syslog-ng.conf
+fp_syslogng_conf_orig: true
+fp_syslogng_conf_template: syslog-ng.conf.sample.j2
+fp_syslogng_conf_file: /usr/local/etc/syslog-ng.conf
+
+# Log Server
+# fp_syslogng_conf:
+#   header:
+#     - '@version:4.8'
+#     - '@include "scl.conf"'
+#   source:
+#     s_remote:
+#       tcp:
+#         port:
+#           514
+#   destination:
+#     d_remote:
+#       file: '"/var/log/remote/${HOST}/${YEAR}_${MONTH}_${DAY}.log" create-dirs(yes)'
+#   log:
+#     - source: s_remote
+#       destination: d_remote
+
+# syslog-ng.conf.sample
+# fp_syslogng_conf:
+#   header:
+#     - '@version:4.8'
+#     - '@include "scl.conf"'
+#   options:
+#     chain_hostnames: 'off'
+#     flush_lines: 0
+#     threaded: 'yes'
+#   source:
+#     src:
+#       system:
+#       udp:
+#       internal:
+#   destination:
+#     messages:
+#       file: /var/log/messages
+#     security:
+#       file: /var/log/security
+#     authlog:
+#       file: /var/log/auth.log
+#     maillog:
+#       file: /var/log/maillog
+#     lpd-errs:
+#       file: /var/log/lpd-errs
+#     xferlog:
+#       file: /var/log/xferlog
+#     cron:
+#       file: /var/log/cron
+#     debuglog:
+#       file: /var/log/debug.log
+#     consolelog:
+#       file: /var/log/console.log
+#     all:
+#       file: /var/log/all.log
+#     newscrit:
+#       file: /var/log/news/news.crit
+#     newserr:
+#       file: /var/log/news/news.err
+#     newsnotice:
+#       file: /var/log/news/news.notice
+#     slip:
+#       file: /var/log/slip.log
+#     ppp:
+#       file: /var/log/ppp.log
+#     console:
+#       file: /dev/console
+#     allusers:
+#       usertty: '*'
+#     # loghost { udp("loghost" port(514)); };
+#   filter:
+#     facility:
+#       f_auth: auth
+#       f_authpriv: authpriv
+#       f_cron: cron
+#       f_daemon: daemon
+#       f_ftp: ftp
+#       f_kern: kern
+#       f_lpr: lpr
+#       f_mail: mail
+#       f_news: news
+#       f_security: security
+#       f_user: user
+#       f_uucp: uucp
+#       f_local0: local0
+#       f_local1: local1
+#       f_local2: local2
+#       f_local3: local3
+#       f_local4: local4
+#       f_local5: local5
+#       f_local6: local6
+#       f_local7: local7
+#     # f_console: console
+#     facility_not:
+#       f_not_authpriv: authpriv
+#     level:
+#       f_emerg: emerg
+#       f_alert: alert..emerg
+#       f_crit: crit..emerg
+#       f_err: err..emerg
+#       f_warning: warning..emerg
+#       f_notice: notice..emerg
+#       f_info: info..emerg
+#       f_debug: debug..emerg
+#       f_is_debug: debug
+#     program:
+#       f_ppp: ppp
+#       f_slip: startslip
+#   log:
+#     src:
+#       - {filter: [f_err], destination: console}
+#       - {filter: [f_kern, f_warning], destination: console}
+#       - {filter: [f_auth, f_notice], destination: console}
+#       - {filter: [f_mail, f_crit], destination: console}
+#       - {filter: [f_notice, f_not_authpriv], destination: messages}
+#       - {filter: [f_kern, f_debug], destination: messages}
+#       - {filter: [f_lpr, f_info], destination: messages}
+#       - {filter: [f_mail, f_crit], destination: messages}
+#       - {filter: [f_news, f_err], destination: messages}
+#       - {filter: [f_security], destination: security}
+#       - {filter: [f_auth, f_info], destination: authlog}
+#       - {filter: [f_authpriv, f_info], destination: authlog}
+#       - {filter: [f_mail, f_info], destination: maillog}
+#       - {filter: [f_lpr, f_info], destination: lpd-errs}
+#       - {filter: [f_ftp, f_info], destination: xferlog}
+#       - {filter: [f_cron], destination: cron}
+#       - {filter: [f_is_debug], destination: debuglog}
+#       - {filter: [f_emerg], destination: allusers}
+#       - {filter: [f_slip], destination: slip}
+#       - {filter: [f_ppp], destination: ppp}

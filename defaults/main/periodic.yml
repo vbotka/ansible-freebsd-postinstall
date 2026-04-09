@@ -3,7 +3,7 @@ fp_periodic: false
 fp_periodic_debug: false
 fp_periodic_conf_local_file: /etc/periodic.conf.local
 fp_periodic_conf_local:
-  - {key: daily_clean_hoststat_enable, value: 'YES'}
-  - {key: daily_status_mail_rejects_enable, value: 'YES'}
-  - {key: daily_status_include_submit_mailq, value: 'YES'}
-  - {key: daily_submit_queuerun, value: 'YES'}
+  - { key: daily_clean_hoststat_enable, value: "YES" }
+  - { key: daily_status_mail_rejects_enable, value: "YES" }
+  - { key: daily_status_include_submit_mailq, value: "YES" }
+  - { key: daily_submit_queuerun, value: "YES" }

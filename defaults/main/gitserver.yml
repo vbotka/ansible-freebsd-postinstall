@@ -1,7 +1,7 @@
 ---
-fp_gitserver: false  # list of packages: none
-fp_gitserver_install: false  # list of packages: none
+fp_gitserver: false # list of packages: none
+fp_gitserver_install: false # list of packages: none
 fp_gitserver_owner: gitserver
 fp_gitserver_group: gitusers
-fp_gitserver_dir: "/home/{{ fp_gitserver_owner }}/git"
-fp_gitserver_dir_mode: '0770'
+fp_gitserver_dir: /home/{{ fp_gitserver_owner }}/git
+fp_gitserver_dir_mode: "0770"

@@ -4,6 +4,7 @@ User's guide
 ************
 
 .. toctree::
+   :maxdepth: 1
 
    guide-introduction
    guide-installation
@@ -12,6 +13,7 @@ User's guide
    guide-debug
    guide-sanity
    guide-tasks
+   guide-rc
    guide-devel
    guide-examples
    guide-variables

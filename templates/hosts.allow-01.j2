@@ -1,13 +1,14 @@
 # {{ ansible_managed }}
+# {{ template_path }}
 {% for item in fp_inetd_hosts_allow_conf %}
-{% set v=item.values()|list %}
-{% if v|length == 2 %}
-{{ v[0]|join(' ') }} : {{ v[1]|join(' ') }}
+{% set v=item.values() | list %}
+{% if v | length == 2 %}
+{{ v[0] | join(' ') }} : {{ v[1] | join(' ') }}
 {% else %}
-{{ v[0]|join(' ') }} : {{ v[1]|join(' ') }} \
+{{ v[0] | join(' ') }} : {{ v[1] | join(' ') }} \
 {% for vi in v[2:-1] %}
-	: {{ vi|join(' ') }} \
+	: {{ vi | join(' ') }} \
 {% endfor %}
-	: {{ v[-1]|join(' ') }}
+	: {{ v[-1] | join(' ') }}
 {% endif %}
 {% endfor %}

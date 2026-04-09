@@ -1,7 +1,8 @@
 # {{ ansible_managed }}
+# {{ template_path }}
 
 {{ item.class }}:\
-{% for citem in item.conf|flatten %}
+{% for citem in item.conf | flatten %}
 {{ '\t' }}:{{ citem }}:{% if not loop.last %}\{% endif %}
 
 {% endfor %}

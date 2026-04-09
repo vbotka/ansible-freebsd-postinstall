@@ -1,15 +1,15 @@
 ---
 fp_procmail: false
-fp_procmail_install: false  # list of packages: procmail
+fp_procmail_install: false # list of packages: procmail
 fp_procmail_bin: /usr/local/bin/procmail
 fp_procmail_responder: responder
 fp_procmail_shell: /bin/sh
-fp_procmail_verbose: 'off'
-fp_procmail_path: '$HOME/bin:/bin:/usr/bin:/usr/local/bin:.'
-fp_procmail_maildir: '$HOME/Mail'
-fp_procmail_pmdir: '$HOME/.procmail'
-fp_procmail_logfile: '$PMDIR/pm.log'
-fp_procmail_lockfile: '$PMDIR/.lockfile'
+fp_procmail_verbose: "off"
+fp_procmail_path: $HOME/bin:/bin:/usr/bin:/usr/local/bin:.
+fp_procmail_maildir: $HOME/Mail
+fp_procmail_pmdir: $HOME/.procmail
+fp_procmail_logfile: $PMDIR/pm.log
+fp_procmail_lockfile: $PMDIR/.lockfile
 fp_procmail_sendmail: /usr/sbin/sendmail
 fp_procmail_forwarders_rebuild: false
 fp_procmail_forwarders: []
