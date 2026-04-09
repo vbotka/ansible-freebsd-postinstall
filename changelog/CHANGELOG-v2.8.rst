@@ -5,6 +5,23 @@ vbotka.freebsd_postinstall 2.8 Release Notes
 .. contents:: Topics
 
 
+2.8.6
+=====
+
+Release Summary
+---------------
+Feature update.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* By default, if fp_sudoers_conf is not empty create the file
+  /usr/local/etc/sudoers if missing.
+* Add variable fp_sudoers_conf_file_create (default=True).
+
+
 2.8.5
 =====
 
