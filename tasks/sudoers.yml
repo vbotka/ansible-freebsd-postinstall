@@ -1,8 +1,9 @@
 ---
 - name: "Sudoers: Configure {{ fp_sudoers_conf_file }}"
+  tags: fp_sudoers_conf
   ansible.builtin.lineinfile:
     dest: "{{ fp_sudoers_conf_file }}"
-    create: "{{ fp_sudoers_create_file_state|default(true) }}"
+    create: "{{ fp_sudoers_conf_file_create }}"
     regexp: ^\s*{{ item.key }}\s+(.*)$
     line: "{{ item.key }} {{ item.value }}"
     state: "{{ item.state | d(omit) }}"
