@@ -1,0 +1,34 @@
+# {{ ansible_managed }}
+# {{ template_path }}
+
+{% for header in fp_syslogng_conf.header %}
+{{ header }}
+{% endfor %}
+
+{% if 'options' in fp_syslogng_conf %}
+options {
+{% for option  in fp_syslogng_conf.options %}
+    {{ option }};
+{% endfor %}
+};
+{% endif %}
+{% for object,elements in fp_syslogng_conf.items() %}
+{% if object not in ['header', 'log', 'options'] %}
+
+{% for element,params in elements.items() %}
+{{ object }} {{ element }} {
+{% for param in  params %}
+    {{ param }};
+{% endfor %}
+};
+{% endfor %}
+{% endif %}
+{% endfor %}
+
+{% for i in fp_syslogng_conf.log %}
+log {
+{% for k,v in i.items() %}
+    {{ k }}({{ v }});
+{% endfor %}
+};
+{% endfor %}

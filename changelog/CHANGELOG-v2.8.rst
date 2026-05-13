@@ -5,6 +5,21 @@ vbotka.freebsd_postinstall 2.8 Release Notes
 .. contents:: Topics
 
 
+2.8.7
+=====
+
+Release Summary
+---------------
+Add templates/syslog-ng.conf.j2
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Add templates/syslog-ng.conf.j2
+
+
 2.8.6
 =====
 
