@@ -3,6 +3,8 @@
 Firstboot configuration
 =======================
 
+.. index:: single: firstboot; User Guide
+
 Configure hostname, users, sudoers, network and reboot
 
 .. code-block:: console

@@ -5,6 +5,7 @@ service:
   apcupsd:
   devd:
   devfs:
+  git_daemon:
   hostapd:
   inetd:
   lockd:

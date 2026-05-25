@@ -8,6 +8,8 @@ fp_handlers:
     "RELOAD": [restart devd]
   devfs:
     "RELOAD": [restart devfs]
+  git_daemon:
+    "RELOAD": [restart git_daemon]
   linux:
     "RELOAD": [restart linux]
   ntpdate:

@@ -6,20 +6,21 @@ fp_rcconfd_file:
   devd: devd
   devfs: devfs
   digitalocean: digitalocean
+  git_daemon: git_daemon
   hostapd: hostapd
   hostname: hostname
   inetd: inetd
   linux: linux
+  motd: motd
   ntpd: ntpd
   ntpdate: ntpdate
-  motd: motd
   qemu: qemu
   qemu_user_static: qemu_user_static
   smartd: smartd
   snmpd: snmpd
   sshd: sshd
-  syslogd: syslogd
   syslog-ng: syslog-ng
+  syslogd: syslogd
   tmpmfs: tmpmfs
   wpasupplicant: wpasupplicant
 fp_rcconfd_path: "{{ dict(fp_rcconfd_file.keys()

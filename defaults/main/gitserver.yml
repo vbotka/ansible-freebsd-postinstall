@@ -1,7 +1,16 @@
 ---
-fp_gitserver: false # list of packages: none
+fp_gitserver: false
 fp_gitserver_install: false # list of packages: none
-fp_gitserver_owner: gitserver
-fp_gitserver_group: gitusers
-fp_gitserver_dir: /home/{{ fp_gitserver_owner }}/git
-fp_gitserver_dir_mode: "0770"
+fp_gitserver_notify: true
+fp_gitserver_service_task: false
+fp_gitserver_debug: false
+
+fp_gitserver_owner: git_daemon
+fp_gitserver_group: git_daemon
+fp_gitserver_dir: /usr/local/git
+fp_gitserver_dir_mode: "0750"
+
+fp_git_daemon_enable: false
+fp_git_daemon_rcconf: []
+# - { name: git_daemon_directory, value: /usr/local/git }
+# - { name: git_daemon_flags, value: --syslog --base-path=/usr/local/git --export-all --reuseaddr --detach }
