@@ -5,6 +5,21 @@ vbotka.freebsd_postinstall 2.8 Release Notes
 .. contents:: Topics
 
 
+2.8.8
+=====
+
+Release Summary
+---------------
+Configuration of git_daemon. Docs updated.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Update tasks/gitserver.yml; configure service git_daemon
+* Docs. Add UG section QA. Add qa-how-rcconf-works.rst
+
 2.8.7
 =====
 

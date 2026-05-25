@@ -19,3 +19,4 @@ User's guide
    guide-variables
    guide-best-practice
    guide-firstboot
+   guide-qa

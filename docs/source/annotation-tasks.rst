@@ -1612,10 +1612,12 @@ Synopsis: Configure a service in rc.conf
 
 
 :4-24: Declare local variables for given ``_service``
-:27: Display local varaibles if ``fp_rcconf_debug=true``.
+:27: Display local variables if ``fp_rcconf_debug=true``.
 :52: Configure ``_service`` in rc.conf
 :67: Configure ``rcvar`` for the ``_service`` in rc.conf
 :80: Optionally, start/stop ``_service`` immediately.
+
+See :ref:`qa_how_rcconf_works`
 
 Example of ``_service=sshd`` ::
 

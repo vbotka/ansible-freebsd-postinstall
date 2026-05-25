@@ -1,25 +1,20 @@
 ---
-- name: "Gitserver: Add group {{ fp_gitserver_group }}"
-  tags: fp_gitserver_group
-  ansible.builtin.group:
-    name: "{{ fp_gitserver_group }}"
-    gid: "{{ fp_gitserver_group_gid | d(omit) }}"
+- name: "Gitserver: Debug fp_gitserver_debug={{ fp_gitserver_debug }}"
+  when: fp_gitserver_debug | bool
+  tags: fp_gitserver_debug
+  vars:
+    msg: |-
+      fp_gitserver_install: {{ fp_gitserver_install }}
+      fp_gitserver_notify: {{ fp_gitserver_notify }}
+      fp_gitserver_service_task: {{ fp_gitserver_service_task }}
 
-- name: "Gitserver: Add user {{ fp_gitserver_owner }}"
-  tags: fp_gitserver_owner
-  ansible.builtin.user:
-    name: "{{ fp_gitserver_owner }}"
-    uid: "{{ fp_gitserver_owner_uid | d(omit) }}"
-    shell: "{{ fp_gitserver_owner_shell | d(omit) }}"
-    home: "{{ fp_gitserver_owner_home | d(omit) }}"
+      fp_git_daemon_enable: {{ fp_git_daemon_enable }}
+      fp_git_daemon_rcconf:
+        {{ fp_git_daemon_rcconf | to_nice_yaml(indent=2) | indent(2) }}
+  ansible.builtin.debug:
+    msg: "{{ '{}'.format(msg) }}"
 
-- name: "Gitserver: Add user to group"
-  tags: fp_gitserver_owner
-  ansible.builtin.user:
-    name: "{{ fp_gitserver_owner }}"
-    groups: "{{ fp_gitserver_group }}"
-
-- name: "Gitserver: Set ownership and permissions of {{ fp_gitserver_dir }}"
+- name: "Gitserver: Create {{ fp_gitserver_dir }}"
   tags: fp_gitserver_dir
   ansible.builtin.file:
     state: directory
@@ -28,7 +23,10 @@
     group: "{{ fp_gitserver_group }}"
     mode: "{{ fp_gitserver_dir_mode }}"
 
-# TODO: How do I Setup up a Multi-User Git Server
-# https://forums.freebsd.org/threads/how-do-i-setup-up-a-multi-user-git-server.50969/
+- name: "Gitserver: Configure rc.conf"
+  tags: fp_gitserver_rcconf
+  vars:
+    _service: git_daemon
+  ansible.builtin.import_tasks: fn/rcconf.yml
 
 # EOF

@@ -3,15 +3,17 @@
 System configuration
 ====================
 
-.. seealso:: `Configuration, Services, Logging and Power Management`_
+.. seealso::
+
+   * `Configuration, Services, Logging and Power Management`_
 
 Manage Services
 ---------------
 
 .. index:: single: rcconf.yml; Manage Services
 
-In most cases, the *tasks-group* :ref:`as_rcconf.yml` is used to configure and manage a service. For
-example, to configure *sshd* set the variable ``_service=sshd`` and import ``fn/rcconf.yml`` ::
+In most cases, the ``tasks-group`` :ref:`as_rcconf.yml` is used to configure and manage a service. For
+example, to configure ``sshd`` set the variable ``_service=sshd`` and import ``fn/rcconf.yml`` ::
 
    - name: "Sshd: Configure rc.conf"
      tags: fp_sshd_rcconf
@@ -21,8 +23,10 @@ example, to configure *sshd* set the variable ``_service=sshd`` and import ``fn/
 
 .. seealso::
 
-   * tasks/:ref:`as_sshd.yml`
    * tasks/fn/:ref:`as_rcconf.yml`
+   * :ref:`qa_how_rcconf_works`
+   * tasks/:ref:`as_sshd.yml`
+   * `Managing Services in FreeBSD`_
 
 A few variables control the execution flow of these imported tasks.
 
@@ -37,7 +41,8 @@ fp_rcconfd
 
 .. index:: single: fp_rcconfd; Manage Services
 
-Use */etc/rc.conf.d* or */etc/rc.conf*. By default ``fp_rcconfd=false`` */etc/rc.conf* is used.
+Use ``/etc/rc.conf.d`` or ``/etc/rc.conf``. By default, ``/etc/rc.conf`` is used
+(``fp_rcconfd=false``).
 
 fp_rcconfd_path
 ^^^^^^^^^^^^^^^
@@ -45,7 +50,7 @@ fp_rcconfd_path
 .. index:: single: fp_rcconfd_path; Manage Services
 .. index:: single: fp_rcconfd_file; Manage Services
 
-The dictionary of files used in /etc/rc.conf.d. By default the dictionary is trivial ::
+The dictionary of files used in ``/etc/rc.conf.d``. The default dictionary is trivial ::
 
    fp_rcconfd_file:
      apcupsd: apcupsd
@@ -55,14 +60,14 @@ The dictionary of files used in /etc/rc.conf.d. By default the dictionary is tri
 
 .. note::
 
-   * The filename in /etc/rc.conf.d/ must be identical to the name of the rc script (service).
-   * The configuration in /etc/rc.conf.d/ overrides /etc/rc.conf
+   * The filename in ``/etc/rc.conf.d`` must be identical to the name of the rc script (service).
+   * The configuration in ``/etc/rc.conf.d`` overrides ``/etc/rc.conf``.
 
 .. seealso::
    * `man rc`_
    * `man rc.conf`_
     
-he dictionary *fp_rcconfd_file* is used to create the dictionary of paths *fp_rcconfd_path* ::
+The dictionary ``fp_rcconfd_file`` is used to create the dictionary of paths ``fp_rcconfd_path`` ::
 
    fp_rcconfd_path: "{{ dict(fp_rcconfd_file.keys()
                              | zip([fp_rcconfd_dir]
@@ -74,7 +79,7 @@ fp_rcconf_var
 
 .. index:: single: fp_rcconf_var; Manage Services
 
-The dictionary of the *fp_<tasks-group>_enable* variables ::
+The dictionary of the ``fp_<tasks-group>_enable`` variables ::
 
    fp_rcconf_var:
      default: "fp_{{ _service }}_enable"
@@ -85,7 +90,7 @@ fp_rcconf_rcvar
 
 .. index:: single: fp_rcconf_rcvar; Manage Services
 
-The dictionary of the *rcvar* variables ::
+The dictionary of the ``rcvar`` variables ::
 
    fp_rcconf_rcvar:
      default: "{{ _service }}_enable"
@@ -97,7 +102,7 @@ fp_handlers
 
 .. index:: single: fp_handlers; Manage Services
 
-The lists of handlers for the service *rcvar* values ::
+The lists of handlers for the service ``rcvar`` values ::
    
    fp_handlers:
      default:
@@ -131,17 +136,14 @@ The default is an empty list.
 fp_{{ _service }}_notify
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Boolean. Notify handlers *fp_handlers*. The default is ``true``
+Boolean. Notify handlers ``fp_handlers``. The default value is ``true``.
 
 
 fp_{{ _service }}_service_task
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Boolean. Do not wait for the handlers. Start/Stop a service right after the configuration. The
-default is ``false``.
-
-
-.. seealso:: `Managing Services in FreeBSD`_
+default value is ``false``.
 
 
 .. _Configuration, Services, Logging and Power Management: https://docs.freebsd.org/en/books/handbook/config/

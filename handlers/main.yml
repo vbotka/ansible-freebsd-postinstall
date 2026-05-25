@@ -14,6 +14,8 @@
   ansible.builtin.import_tasks: dhclient.yml
 - name: Import fstab.yml
   ansible.builtin.import_tasks: fstab.yml
+- name: Import git_daemon.yml
+  ansible.builtin.import_tasks: git_daemon.yml
 - name: Import hostapd.yml
   ansible.builtin.import_tasks: hostapd.yml
 - name: Import hostname.yml
