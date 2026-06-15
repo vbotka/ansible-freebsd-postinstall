@@ -18,6 +18,7 @@ Minor Changes
 -------------
 * Add templates hosts-v2.j2 and hosts-aliases-list-v2.j2
 * Add variables fp_hosts_localhost_ipv4_hosts and fp_hosts_localhost_ipv6_hosts
+* Update gitserver debug.
 
 
 2.8.8

@@ -8,6 +8,10 @@
       fp_gitserver_notify: {{ fp_gitserver_notify }}
       fp_gitserver_service_task: {{ fp_gitserver_service_task }}
 
+      fp_gitserver_dir: {{ fp_gitserver_dir }}
+      fp_gitserver_owner: {{ fp_gitserver_owner }}
+      fp_gitserver_group: {{ fp_gitserver_group }}
+
       fp_git_daemon_enable: {{ fp_git_daemon_enable }}
       fp_git_daemon_rcconf:
         {{ fp_git_daemon_rcconf | to_nice_yaml(indent=2) | indent(2) }}
