@@ -219,6 +219,30 @@ Description of the task.
 
 
 
+.. _as_template_hosts-v2.j2:
+
+hosts-v2.j2
+-----------
+
+Synopsis: Configure hosts-v2
+
+
+Description of the task.
+
+
+[`templates/hosts-v2.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/hosts-v2.j2>`_]
+
+.. highlight:: jinja
+    :linenothreshold: 5
+.. literalinclude:: ../../templates/hosts-v2.j2
+    :language: jinja
+    :emphasize-lines: 1
+    :linenos:
+
+
+
+
+
 .. _as_template_hosts-aliases-list.j2:
 
 hosts-aliases-list.j2
@@ -235,6 +259,30 @@ Description of the task.
 .. highlight:: jinja
     :linenothreshold: 5
 .. literalinclude:: ../../templates/hosts-aliases-list.j2
+    :language: jinja
+    :emphasize-lines: 1
+    :linenos:
+
+
+
+
+
+.. _as_template_hosts-aliases-list-v2.j2:
+
+hosts-aliases-list-v2.j2
+------------------------
+
+Synopsis: Configure hosts-aliases-list-v2
+
+
+Description of the task.
+
+
+[`templates/hosts-aliases-list-v2.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/hosts-aliases-list-v2.j2>`_]
+
+.. highlight:: jinja
+    :linenothreshold: 5
+.. literalinclude:: ../../templates/hosts-aliases-list-v2.j2
     :language: jinja
     :emphasize-lines: 1
     :linenos:

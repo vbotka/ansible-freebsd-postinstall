@@ -16,6 +16,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Docs. Update annotation files.
 
 
 2.8.9

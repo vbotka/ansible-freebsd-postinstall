@@ -190,11 +190,53 @@ mytemplates:
       []
 
 
+  - file: hosts-v2.j2
+    link: hosts-v2.j2
+    path: templates/hosts-v2.j2
+    synopsis: |
+      Configure hosts-v2
+    description: |
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
+
   - file: hosts-aliases-list.j2
     link: hosts-aliases-list.j2
     path: templates/hosts-aliases-list.j2
     synopsis: |
       Configure hosts-aliases-list
+    description: |
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
+
+  - file: hosts-aliases-list-v2.j2
+    link: hosts-aliases-list-v2.j2
+    path: templates/hosts-aliases-list-v2.j2
+    synopsis: |
+      Configure hosts-aliases-list-v2
     description: |
       Description of the task.
     lines: 1
