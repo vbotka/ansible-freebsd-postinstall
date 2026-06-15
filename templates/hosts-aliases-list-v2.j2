@@ -1,0 +1,11 @@
+# {{ ansible_managed }}
+# {{ template_path }}
+{{ fp_hosts_localhost_ipv6 }}	{{ fp_hosts_localhost_ipv6_hosts | join(' ') }}
+{{ fp_hosts_localhost_ipv4 }}	{{ fp_hosts_localhost_ipv4_hosts | join(' ') }}
+
+{% for item in fp_hosts_conf %}
+{{ item.ip }}    {{ item.fqdn }}{% for alias in item.aliases|default([]) %} {{ alias }}{% endfor %}{% if item.hostname|default('')|length > 0 %} {{ item.hostname }}
+{% endif %}
+{% endfor %}
+
+# EOF
