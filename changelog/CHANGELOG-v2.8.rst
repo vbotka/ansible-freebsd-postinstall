@@ -10,6 +10,7 @@ vbotka.freebsd_postinstall 2.8 Release Notes
 
 Release Summary
 ---------------
+Updated hosts and gitserver.
 
 Major Changes
 -------------
