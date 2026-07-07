@@ -5,20 +5,6 @@ vbotka.freebsd_postinstall 2.8 Release Notes
 .. contents:: Topics
 
 
-2.8.10
-======
-
-Release Summary
----------------
-
-Major Changes
--------------
-
-Minor Changes
--------------
-* Docs. Update annotation files.
-
-
 2.8.9
 =====
 
