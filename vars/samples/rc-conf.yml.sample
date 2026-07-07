@@ -1,0 +1,10 @@
+---
+fp_rc_conf_debug: false
+fp_rc_conf_debug2: false
+
+fp_rc_conf:
+  /etc/rc.conf:
+    - name: dumpdev
+      value: AUTO
+    - name: kld_list
+      value: fusefs i915kms if_rtw89

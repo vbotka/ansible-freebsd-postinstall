@@ -35,6 +35,7 @@ passwords.yml
 periodic.yml
 procmail.yml
 qemu.yml
+rc-conf.yml
 rcd.yml
 resolvconf.yml
 sanity.yml

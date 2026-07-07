@@ -144,6 +144,7 @@ fp_sanity_tags:
   - fp_procmail_rc
   - fp_qemu
   - fp_qemu_rcconf
+  - fp_rc_conf
   - fp_rcd
   - fp_rcd_debug
   - fp_rcd_scripts
