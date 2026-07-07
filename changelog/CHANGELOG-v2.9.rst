@@ -18,6 +18,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Add rc-conf.yml tasks, defaults, and vars samples.
 * Docs. Update annotation files.
 
 Bug fix

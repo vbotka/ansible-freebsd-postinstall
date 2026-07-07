@@ -979,6 +979,30 @@ Description of the task.
 
 
 
+.. _as_rc-conf.yml:
+
+rc-conf.yml
+-----------
+
+Synopsis: Configure rc-conf
+
+
+Description of the task.
+
+
+[`tasks/rc-conf.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/rc-conf.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../tasks/rc-conf.yml
+    :language: yaml
+    :emphasize-lines: 1
+    :linenos:
+
+
+
+
+
 .. _as_rcd.yml:
 
 rcd.yml

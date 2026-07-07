@@ -1,0 +1,26 @@
+---
+- name: "Rc-conf: Debug fp_rc_conf_debug={{ fp_rc_conf_debug }}"
+  when: fp_rc_conf_debug | bool
+  ansible.builtin.debug:
+    msg: |
+      fp_rc_conf: {{ fp_rc_conf }}
+
+- name: "Rc-conf: Configure rc."
+  register: out
+  community.general.sysrc:
+    path: "{{ item.0.key }}"
+    name: "{{ item.1.name }}"
+    value: "{{ item.1.value | d(omit) }}"
+    state: "{{ item.1.state | d(omit) }}"
+    jail: "{{ item.1.jail | d(omit) }}"
+    delim: "{{ item.1.delim | d(omit) }}"
+  loop: "{{ fp_rc_conf | dict2items | subelements('value') }}"
+  loop_control:
+    label: "{{ item.0.key }} {{ item.1.name }}"
+
+- name: "Rc-conf: Debug fp_rc_conf_debug2={{ fp_rc_conf_debug2 }}"
+  when: fp_rc_conf_debug2 | bool
+  ansible.builtin.debug:
+    var: out
+
+# EOF

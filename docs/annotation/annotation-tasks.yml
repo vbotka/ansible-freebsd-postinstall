@@ -850,6 +850,27 @@ mytasks:
       []
 
 
+  - file: rc-conf.yml
+    link: rc-conf.yml
+    path: tasks/rc-conf.yml
+    synopsis: |
+      Configure rc-conf
+    description: |
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
+
   - file: rcd.yml
     link: rcd.yml
     path: tasks/rcd.yml

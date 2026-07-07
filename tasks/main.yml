@@ -268,4 +268,9 @@
   when: fp_syslogng | bool
   tags: fp_syslogng
 
+- name: Import rc-conf.yml
+  ansible.builtin.import_tasks: rc-conf.yml
+  when: fp_rc_conf | length > 0
+  tags: fp_rc_conf
+
 # EOF
