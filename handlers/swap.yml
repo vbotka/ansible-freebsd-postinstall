@@ -12,7 +12,9 @@
   register: command_result
   failed_when: "'adding' not in command_result.stdout"
   ansible.builtin.command:
-    cmd: sh -c 'swapon -aL'
+    cmd: >
+      sh -c
+      'swapon -aL'
 
 # NOTE 1: swapon creates /dev/mdXX
 # NOTE 2: Successful mount returns exit code 1

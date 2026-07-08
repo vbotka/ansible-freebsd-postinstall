@@ -20,13 +20,13 @@
     - name: "Swap: Create swapfile {{ fp_swap_file }}"
       register: command_result
       notify: create swap
+      changed_when: command_result.stdout | d('none') == 'create'
       ansible.builtin.shell:
         cmd: >
           sh -c
           'if [ ! -e {{ fp_swap_file }} ]; then
              printf "create";
           fi'
-      changed_when: command_result.stdout | d('none') == 'create'
 
     - name: "Swap: Create swap entry in /etc/fstab"
       notify: mount swap
@@ -53,6 +53,7 @@
     - name: "Swap: Change swapfile {{ fp_swap_file }}"
       register: command_result
       notify: change and mount swap
+      changed_when: command_result.stdout | d('none') == 'change'
       ansible.builtin.shell:
         cmd: >
           sh -c
@@ -60,7 +61,6 @@
           [ "`stat -f %z {{ fp_swap_file }}`" -ne "{{ fp_swap_stsize }}" ]; then
              printf "change";
           fi'
-      changed_when: command_result.stdout | d('none') == 'change'
 
 - name: "Swap: Disable swap and remove entry from /etc/fstab"
   tags: fp_swap_disable
