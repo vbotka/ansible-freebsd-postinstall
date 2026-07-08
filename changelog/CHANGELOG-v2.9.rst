@@ -10,12 +10,18 @@ vbotka.freebsd_postinstall 2.9 Release Notes
 
 Release Summary
 ---------------
+Maintenance update.
 
 Major Changes
 -------------
 
 Minor Changes
 -------------
+* Formatting of tasks/swap.yml and handlers/swap.yml
+
+Bug fix
+-------
+* Fix mount swap entries in /etc/fstab; Add handler 'add swap'.
 
 
 2.9.0

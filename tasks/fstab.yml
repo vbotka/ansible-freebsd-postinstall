@@ -12,7 +12,7 @@
   loop: "{{ fp_fstab_entries | rejectattr('fstype', 'in', fp_fstab_fstype_blacklist) }}"
 
 - name: "Fstab: Configure fstab swap entries."
-  notify: mount swap
+  notify: add swap
   ansible.builtin.lineinfile:
     path: /etc/fstab
     regexp: ^\s*{{ item.src }}\s+(.*)$
