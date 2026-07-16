@@ -5,6 +5,23 @@ vbotka.freebsd_postinstall 2.9 Release Notes
 .. contents:: Topics
 
 
+2.9.2
+=====
+
+Release Summary
+---------------
+Maintenance update.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+
+Bug fix
+-------
+
+
 2.9.1
 =====
 
