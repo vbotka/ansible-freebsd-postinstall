@@ -16,6 +16,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Update default package versions.
 
 Bug fix
 -------
