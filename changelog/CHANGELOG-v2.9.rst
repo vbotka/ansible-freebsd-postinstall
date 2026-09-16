@@ -5,6 +5,26 @@ vbotka.freebsd_postinstall 2.9 Release Notes
 .. contents:: Topics
 
 
+2.9.3
+=====
+
+Release Summary
+---------------
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Add template hosts-aliases-list-v3.j2
+* Update default package versions.
+* Removed .ansible-lint.local
+* Updated README.md
+
+Bug fix
+-------
+
+
 2.9.2
 =====
 
