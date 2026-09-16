@@ -18,6 +18,8 @@ Minor Changes
 -------------
 * Add template hosts-aliases-list-v3.j2
 * Update default package versions.
+* Removed .ansible-lint.local
+* Updated README.md
 
 Bug fix
 -------

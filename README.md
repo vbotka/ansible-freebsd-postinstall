@@ -16,18 +16,23 @@ ntpd, ntpdate, procmail, qemu, resolvconf.conf, smartd, snmpd, sudoers, ssh,
 sshd, swap, sysctl, syslog, timezone, tmpmfs, users, packages and ports,
 periodic.conf, overlays, wpa_supplicant, (wip) ...
 
-Documentation [Ansible role FreeBSD postinstall](https://ansible-freebsd-postinstall.readthedocs.io) at readthedocs.io
+Documentation [Ansible role FreeBSD
+postinstall](https://ansible-freebsd-postinstall.readthedocs.io) at
+readthedocs.io
 
-This role and the documentation is work in progress. If the documentation of a task is missing it's necessary to review the [source code](https://github.com/vbotka/ansible-freebsd-postinstall/tree/master/tasks) to learn how to use it. If a functionality is missing consider role [config_light](https://galaxy.ansible.com/vbotka/config_light). See various [examples](https://github.com/vbotka/ansible-config-light/tree/master/contrib). If *config_light* is not able to do what you want create new tasks.
-
-Feel free to [share your feedback and report issues](https://github.com/vbotka/ansible-freebsd-postinstall/issues).
-
-[Contributions are welcome](https://github.com/firstcontributions/first-contributions).
+This role and the documentation is work in progress. If the documentation of a
+task is missing it's necessary to review the [source
+code](https://github.com/vbotka/ansible-freebsd-postinstall/tree/master/tasks)
+to learn how to use it. If a functionality is missing consider role
+[config_light](https://galaxy.ansible.com/vbotka/config_light). See various
+[examples](https://github.com/vbotka/ansible-config-light/tree/master/contrib). If
+*config_light* is not able to do what you want create new tasks.
 
 
 ## Supported platforms
 
-This role has been developed and tested with [FreeBSD Supported Releases](https://www.freebsd.org/releases/).
+This role has been developed and tested with [FreeBSD Supported
+Releases](https://www.freebsd.org/releases/).
 
 
 ## Requirements and dependencies
@@ -65,12 +70,16 @@ freebsd_install_method: packages
 #freebsd_use_packages: true
 ```
 
-Optionally, the packages can be built by [freebsd_poudriere](https://galaxy.ansible.com/vbotka/freebsd_poudriere) and installed by [freebsd_packages](https://galaxy.ansible.com/vbotka/freebsd_packages).
+Optionally, the packages can be built by
+[freebsd_poudriere](https://galaxy.ansible.com/vbotka/freebsd_poudriere) and
+installed by
+[freebsd_packages](https://galaxy.ansible.com/vbotka/freebsd_packages).
 
 
 ## freebsd_use_packages
 
-Role [freebsd_ports](https://galaxy.ansible.com/vbotka/freebsd_ports) installs packages if this option is set.
+Role [freebsd_ports](https://galaxy.ansible.com/vbotka/freebsd_ports) installs
+packages if this option is set.
 
 ```yaml
 #freebsd_install_method: packages
@@ -112,7 +121,8 @@ ansible-galaxy collection install vbotka.freebsd
     - vbotka.freebsd_postinstall
 ```
 
-See the [Best practice](https://ansible-freebsd-postinstall.readthedocs.io/en/latest/guide-best-practice.html).
+See the [Best
+practice](https://ansible-freebsd-postinstall.readthedocs.io/en/latest/guide-best-practice.html).
 
 5) Configure the system
 
@@ -123,8 +133,9 @@ ansible-playbook freebsd-postinstall.yml
 
 ## Ansible lint
 
-Use the configuration file *.ansible-lint.local* when running *ansible-lint*. Some rules might be
-disabled and some warnings might be ignored. See the notes in the configuration file.
+Use the configuration file *.ansible-lint.local* when running
+*ansible-lint*. Some rules might be disabled and some warnings might be
+ignored. See the notes in the configuration file.
 
 ```bash
 shell> ansible-lint -c .ansible-lint.local
@@ -171,10 +182,11 @@ gives
         - bob
 ```
 
-* galaxy_info.platforms[0].versions[0] 13.4 is not one of ['6.1', '7.1', '7.2', 'all']
+* galaxy_info.platforms[0].versions[0] 13.4 is not one of ['6.1', '7.1', '7.2',
+  'all']
 
-FreeBSD 13.4 is not one of (very probably RH versions). Of course, it isn't. The error message also
-says:
+FreeBSD 13.4 is not one of (very probably RH versions). Of course, it isn't. The
+error message also says:
 
 ```
 See https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_reuse_roles.html#using-role-dependencies
