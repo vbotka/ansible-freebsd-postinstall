@@ -411,6 +411,30 @@ Description of the task.
 
 
 
+.. _as_template_login.conf-v2.j2:
+
+login.conf-v2.j2
+----------------
+
+Synopsis: Configure login.conf-v2
+
+
+Description of the task.
+
+
+[`templates/login.conf-v2.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/templates/login.conf-v2.j2>`_]
+
+.. highlight:: jinja
+    :linenothreshold: 5
+.. literalinclude:: ../../templates/login.conf-v2.j2
+    :language: jinja
+    :emphasize-lines: 1
+    :linenos:
+
+
+
+
+
 .. _as_template_login_conf.j2:
 
 login_conf.j2
