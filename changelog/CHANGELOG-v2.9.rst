@@ -5,11 +5,26 @@ vbotka.freebsd_postinstall 2.9 Release Notes
 .. contents:: Topics
 
 
+2.9.5
+=====
+
+Release Summary
+---------------
+Docs update.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+
+
 2.9.4
 =====
 
 Release Summary
 ---------------
+Add login.conf-v2.j2 template. Docs update.
 
 Major Changes
 -------------

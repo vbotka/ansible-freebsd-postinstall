@@ -11,10 +11,6 @@ it's necessary to review the `source code`_ to learn how to use it. If a functio
 consider the role `config_light`_. See various `examples`_. If `config_light`_ is not able to do
 what you want, create new tasks.
 
-
-| Feel free to `share your feedback and report issues`_.
-| `Contributions are welcome`_
-
 | GitHub: `ansible-freebsd-postinstall`_
 | Ansible Galaxy: `vbotka.freebsd_postinstall`_
 | Ansible collection: `vbotka.freebsd.postinstall`_
@@ -34,13 +30,7 @@ what you want, create new tasks.
    annotation
    copyright
    legalnotice
-
-Indices and tables
-------------------
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   Index <genindex>
 
 
 .. _role: https://galaxy.ansible.com/vbotka/freebsd_postinstall/
