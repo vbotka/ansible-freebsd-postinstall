@@ -1,0 +1,18 @@
+# {{ ansible_managed }}
+# {{ template_path }}
+
+{% for class_name, caps in fp_login_conf.items() %}
+{{ class_name }}:\
+{% if caps %}
+{% for cap, val in caps.items() %}
+{% if val is sameas true %}
+	:{{ cap }}:\
+{% elif val is sameas false %}
+	:{{ cap }}@:\
+{% elif val is not none %}
+	:{{ cap }}={{ val }}:\
+{% endif %}
+{% endfor %}
+{% endif %}
+
+{% endfor %}
